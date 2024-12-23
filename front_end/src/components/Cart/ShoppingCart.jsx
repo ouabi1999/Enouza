@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { removeFromCart, addQuantity, subtractQuantity, setCartItems } from "../../features/cartSlice"
 import DeleteIcon from '@mui/icons-material/Delete';
 import styled from 'styled-components';
-import EmptyCart from './emptyCart';
+import EmptyCart from './EmptyCart';
 import ProductSubtotal from './ProductSubtotal';
 import { useLayoutEffect } from 'react';
 import { useState } from 'react';
