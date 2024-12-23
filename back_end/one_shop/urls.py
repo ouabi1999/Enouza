@@ -16,7 +16,7 @@ urlpatterns = [
     
     path('password-reset/', authView.PasswordResetView.as_view(), name='password-reset'),
     #path('', index, name='HomePageView'),
-    path('', TemplateView.as_view(template_name='./static/index.html')),
+    #path('', TemplateView.as_view(template_name='static/index.html')),
     path('create-payment-intent/', stripeChechout.CreatePaymentIntentView.as_view(), name='create_payment_intent'),
     path('webhook/', stripeChechout.StripeWebhookView.as_view(), name='handel_webhook'),
     path('handle-payment-success/', stripeChechout.HandlePaymentSuccessView.as_view(), name='handle_payment_success'),
