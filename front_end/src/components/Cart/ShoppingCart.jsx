@@ -13,7 +13,6 @@ import HeadeSeo from '../../../common/HeadeSeo';
 import productData from '../../../common/data.json'
 
 function ShoppingCart() {
-
   const dispatch = useDispatch()
   const [products, setProducts] = useState([])
   const cartItems =  useSelector((state) => state.cart.cartItems)

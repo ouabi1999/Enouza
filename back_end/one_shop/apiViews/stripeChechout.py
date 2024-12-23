@@ -10,13 +10,14 @@ import stripe
 from ..models import Orders
 from ..serializer import OrderSerializer
 from django.db import transaction
+import os
 
 
 
-stripe.api_key = 'sk_test_51MmjNCDJSVePKF96909V3aTkOUhFw6tS25zZq9jiujq7Ms49SmKk8KWJ4rQfKuaF4wLnP0dF8FKXLtztbeCECiFa00IBeFaqJE'
-YOUR_DOMAIN = 'http://localhost:3000'
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+YOUR_DOMAIN = os.getenv("HOST")
 
-endpoint_secret = "whsec_CHw2SqgcPfuqAtDWQbwgtwoc24CzogvN" # Add your endpoint secret to Django settings
+endpoint_secret = os.getenv("END_POINT_SECRET") # Add your endpoint secret to Django settings
 
 
 
