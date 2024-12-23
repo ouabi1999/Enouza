@@ -13,6 +13,9 @@ from datetime import timedelta
 from pathlib import Path
 import cloudinary
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 # Configuration       
@@ -34,9 +37,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS =  os.getenv("ALLOWED_HOSTS")
+ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1"]
 
 
 # Application definition

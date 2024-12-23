@@ -11,13 +11,20 @@ from ..models import Orders
 from ..serializer import OrderSerializer
 from django.db import transaction
 import os
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 
 
-stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
-YOUR_DOMAIN = os.getenv("HOST")
 
-endpoint_secret = os.getenv("END_POINT_SECRET") # Add your endpoint secret to Django settings
+stripe.api_key = env("STRIPE_SECRET_KEY")
+YOUR_DOMAIN = env("HOST")
+
+endpoint_secret = env("END_POINT_SECRET") # Add your endpoint secret to Django settings
 
 
 
