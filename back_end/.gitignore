@@ -6,3 +6,6 @@ Enouzadb.sqlite3
 *.db
 .env
 env
+./static
+/static
+static

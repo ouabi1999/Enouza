@@ -39,19 +39,20 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1"]
+ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", 'enouza.onrender.com', "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "one_shop.apps.ApiConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "one_shop.apps.ApiConfig",
+    
     "rest_framework",
     "corsheaders",
     "cloudinary",
@@ -93,7 +94,6 @@ REST_FRAMEWORK = {
     ),
 }
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [os.getenv("HOST")]
 CORS_ORIGIN_WHITELIST = [os.getenv("HOST")]
 
 ROOT_URLCONF = 'back_end.urls'
@@ -163,6 +163,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'one_shop.Users'
@@ -170,7 +171,7 @@ PARENT_PATH =  Path(__file__).resolve().parent.parent.parent
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 STATICFILES_DIRS = [
-    os.path.join(PARENT_PATH, 'front_end/dist')
+    os.path.join(PARENT_PATH , 'front_end/dist')
 ] 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
