@@ -2,7 +2,7 @@ import axios from   "axios"
 import { ACCESS_TOKEN } from './constant';
 
 const ApiInstance = axios.create({
-    baseURL: import.meta.env.VIT_API_BASE_URL,
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     timeout: 50000,
     
    
