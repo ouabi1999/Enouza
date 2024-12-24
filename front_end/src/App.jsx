@@ -66,7 +66,7 @@ useEffect(() => {
   return (
     <OrderContext.Provider value={{  formData, setFormData}}>
 
-    <BrowserRouter basename="https://enouza.onrender.com">
+    <BrowserRouter>
       <Routes>
         <Route
           path="/"
