@@ -39,7 +39,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", 'enouza.onrender.com', "localhost"]
+ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", 'https://enouza.onrender.com', "localhost"]
 
 
 # Application definition
@@ -175,7 +175,6 @@ STATICFILES_DIRS = [
     os.path.join(PARENT_PATH , 'front_end/dist')
 ] 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
