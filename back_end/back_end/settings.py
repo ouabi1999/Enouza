@@ -40,7 +40,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", 'https://enouza.onrender.com', "localhost"]
+ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv("SERVER_HOST"), "localhost"]
 
 
 # Application definition
