@@ -53,7 +53,7 @@ class Products(models.Model):
     SKU = models.CharField(max_length=100, blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount = models.DecimalField(max_digits=5, decimal_places=2)
-    sizes = models.JSONField(blank=True, null=True, default=[])  # Stores sizes as a JSON array
+    sizes = models.JSONField(blank=True, null=True)  # Stores sizes as a JSON array
     colors = models.JSONField()  # Stores color image URLs as a JSON array
     specifications = models.JSONField(blank=True, null=True)
     images = models.JSONField(blank=True, null=True)
