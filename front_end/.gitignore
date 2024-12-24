@@ -15,7 +15,8 @@ dist-ssr
 venv
 .venv
 ../db.sqlite3
-
+.env
+env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -2,7 +2,7 @@ import axios from   "axios"
 import { ACCESS_TOKEN } from './constant';
 
 const ApiInstance = axios.create({
-    baseURL: 'https://enouzaserver.onrender.com/api/',
+    baseURL: import.meta.env.VIT_API_BASE_URL,
     timeout: 50000,
     
    
