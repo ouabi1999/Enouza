@@ -26,7 +26,6 @@ from pathlib import Path
 User = get_user_model
 class UsersList(APIView):
     def get(self, request, format=None):
-        
         users_data = Users.objects.all()
         serializer = UserSerializer(users_data, many=True)
         return Response(serializer.data)
@@ -35,8 +34,6 @@ class Auth(generics.RetrieveAPIView):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
-
-    
     def get_object(self):
         #tasks = self.request.user.task_set.all()
         return self.request.user

@@ -7,9 +7,10 @@ export const getUser = createAsyncThunk("auth/getUser", (_, { rejectWithValue })
   .then((response) => {return response.data})
   .catch(error => {
     console.error('Profile fetch error:', error);
-     
-      window.localStorage.removeItem("access_token")
-      window.localStorage.removeItem("refresh_token")
+    if (error.response.status === 401) {
+          window.localStorage.removeItem("refresh_token")
+          window.localStorage.removeItem("access_token")
+    }
       console.log(error)
       // Redirect to login if the profile fetch fails
       return rejectWithValue(error.response?.data || "Failed to fetch user profile");
@@ -67,12 +68,10 @@ export const authSlice = createSlice({
         state.loading = false;
         state.hasErrors = action.error.message;        
         
-        console.log(action)
     })
     .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.loading = false;
-        console.log("worked", action.payload)
 
     });
     

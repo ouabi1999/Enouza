@@ -100,12 +100,13 @@ const Footer = () => {
         </div>
         <div className="CopyRight">
           
-            <span>All Right Reserved </span>
-            <CopyrightOutlinedIcon className="copy-icon" />
+            <span>All right reserved {" "}  </span>
+            
           
              <span>
-              Copyright {new Date().getFullYear()}
+            copyright {new Date().getFullYear() }
             </span>
+            <CopyrightOutlinedIcon className="copy-icon" />
           
         </div>
       </div>
@@ -116,7 +117,7 @@ export default Footer
 
 
 const Container = styled.div`
-    min-width:320px;
+    min-width:340px;
     background:#e3e3e4;
     padding:0px 10px;
     z-index:3;
@@ -125,33 +126,42 @@ const Container = styled.div`
     
     .payment-methods-image{
       margin-left:35px;
+      width:50vw;
+      max-width:360px;
+      min-width:320px;
 
       img{
-        width:360px;
+        width:100%;
+        height:auto;
+        object-fit:contain;
       }
     }
 
     .CopyRight{
         display:flex;
         align-items:center;
+        span{
+      font-size:14px;
+      color:#000000;
+      margin-left:4px;
+    }
         
       }
-
-    .icon{
-       font-size:18px;
+    
+    
+    .copy-icon{
+       font-size:15px;
     }
     .CopyRight div{
       color:#000000;
     
     }
-    .copy {
-      
-      
-    }
+    
     @media only screen and (max-width: 700px) {
   
   .CopyRight{
         margin-bottom:10px;
+      
         
       }
       .payment-methods-image{
@@ -161,8 +171,14 @@ const Container = styled.div`
     }
 
 }
-    
-
+@media only screen and (max-width: 400px) {
+  
+  .CopyRight{
+        margin-bottom:10px;
+        font-size:12px;
+        
+      }
+    }
 
 `
 const Wrapp = styled.div`
@@ -187,6 +203,7 @@ const Wrapp = styled.div`
       }
       .payment-methods-image{
       margin-left:4px;
+      
 
       
     }
