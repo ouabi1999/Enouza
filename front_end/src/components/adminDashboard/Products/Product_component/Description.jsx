@@ -10,19 +10,18 @@ import 'react-quill/dist/quill.snow.css';
 function Description({ formData, setFormData }) {
  
   const [value, setValue] = useState('');
-  useEffect(() => {
-       setFormData({
-        ...formData,
-        description:value
-
-       })
-  }, [value])
+ 
+ 
   
   const handleChange = (content, delta, source, editor) => {
    
     // console.log(JSON.stringify(editor.getContents())); // delta 사용시
-    setValue(editor.getHTML());
-   
+    setFormData({
+      ...formData,
+      description:editor.getContents()
+ 
+     })
+    
   };
   const modules = {
     toolbar: [
@@ -40,6 +39,7 @@ function Description({ formData, setFormData }) {
       [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
       ["clean"],
     ],
+    
   };
   
   const formats = [
@@ -62,6 +62,8 @@ function Description({ formData, setFormData }) {
     "size",
     
   ];
+  
+  
     return (
         <Container>
           
@@ -72,6 +74,7 @@ function Description({ formData, setFormData }) {
              onChange={handleChange} 
              modules={modules}
              formats={formats}
+
              
              />
         </Container>
@@ -84,17 +87,10 @@ const Container = styled.div`
      background-color:#fff;
      min-height:150px;
      padding:10px;
-    .wrapper-class {
-        padding: 1rem;
-        border: 1px solid #ccc;
-      }
+   
 
-    .editor-class {
-        background-color:#fff;
-        padding: 1rem;
-        border: 1px solid #ccc;
-      }
-
+    
+     
       .toolbar-class {
           border: 1px solid #ccc;
  }

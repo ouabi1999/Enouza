@@ -9,7 +9,7 @@ import ShippingFAQ from './ShippingFAQ';
 
   return (
     <Container>
-      <h2 className="main-header"> ANIMIS STORE FAQ</h2>
+      <span className="main-header"> ANIMIS STORE FAQ</span>
       <ReturnFAQ/>
       <ShippingFAQ/>
     </Container>
@@ -19,13 +19,22 @@ export default HelpCenter
 
 const Container = styled.div`
  margin-left:50px;
+ span{
+  font-size:20px;
+  font-weight:bold;
+ }
 .main-header{
-        font-family:"sans-serif";
         border-bottom:1px solid gray;
         width:fit-content;
         margin-left:15px;
         
       }
-
-     
+ 
+      @media only screen and (max-width: 460px) {
+    /* For mobile phones: */
+      
+    .main-header{
+      font-size:16px;
+    }
+  }
 `

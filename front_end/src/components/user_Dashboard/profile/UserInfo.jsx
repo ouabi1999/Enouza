@@ -316,16 +316,20 @@ export default  UserInfo
 
 const Container = styled.div`
     position:relative;
-`
-const Section = styled.div`
-    
     margin:auto;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding:2px 10px;
-    width:55%;
+    width:50%;
     min-width:320px;
-    
     border:1px solid lightgray;
+    display:flex;
+    justify-content:center;
+`   
+const Section = styled.div`
+    width:100%;
+    
+    
+    
     display:flex;
     flex-direction:column;
     align-items:center;

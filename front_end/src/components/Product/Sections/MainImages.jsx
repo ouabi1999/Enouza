@@ -45,6 +45,8 @@ const Container = styled.div`
     display:flex;
     margin-right:22px;
     max-height:410px;
+    padding:5px;
+
     #activate {
     border: 1px solid blue;
     
@@ -61,8 +63,10 @@ const ImageDetailsContainer = styled.div`
     max-width:50px;
     width:20vw;
     min-width:40px;
+    
      img{
       width:100%;
+      border:1px solid lightgray;
      
       height:auto;
       border-radius:4px;
@@ -76,10 +80,13 @@ const ProductImg = styled.div`
      max-width:410px;
      width:40vw;
      min-width:250px;
+     height:100%;
+     border:1px solid lightgray;
+     border-radius:6px;
      img{
       width:100%;
-      height:auto;
       border-radius:6px;
+
      }
 
     

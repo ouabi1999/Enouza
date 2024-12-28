@@ -59,7 +59,7 @@ function ProductManagement(props) {
   
   useEffect(()=>{
       if (isEditProductOn){
-        setFormData({...EditProduct, specifications :[], })
+        setFormData({...EditProduct})
       }
      
     },[])

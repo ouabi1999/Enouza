@@ -63,13 +63,13 @@ export default SideBar
 const Side_Bar = styled.div`
     background-color:#fff;
     width:100%;
-    height:calc(100vh - 60px);
+    height:calc(100vh);
     flex:0.5;
-    min-width:250px;
+    min-width:320px;
+
     padding-left:10px;
     position:sticky;
-    top:10%;
-    bottom:10%;
+    top:0%;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     
     
@@ -102,12 +102,12 @@ const Side_Bar = styled.div`
       
       &{
         position:sticky;
-        top:10%;
+        top:0;
         bottom:10%;
         left:5%;
         min-height:70px;
         display:flex;
-        width:100%;
+        width:calc(100% - 10px);
         justify-content:space-between;
         z-index: 1;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
