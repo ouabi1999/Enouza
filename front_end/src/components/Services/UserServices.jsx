@@ -19,7 +19,7 @@ function UserServices() {
       </MinWrap>
       <MinWrap>
           <SupportAgentIcon className= "icon"/>
-          <span> 24/7 Customer service</span>
+          <span> 24/7 Support</span>
       </MinWrap>
       </Wrapp>
     </Container>
@@ -96,7 +96,7 @@ const MinWrap = styled.div`
     .icon{
       color:#e65c00;
       margin-right:3px;
-      font-size:97%;
+      font-size:99%;
     }
     }
 `

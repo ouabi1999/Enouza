@@ -36,7 +36,7 @@ function ProductCart(props) {
         </Link>
 
         <div>
-          <h3>CHECKOUT</h3>
+          <span className='checkout'>Checkout</span>
         </div>
       </div>
       
@@ -110,14 +110,16 @@ export default ProductCart
 
 const Container = styled.div`
     
-    height:100%;
+    height:100vh;
     background: rgb(63,231,251);
     background: linear-gradient(90deg, rgba(63,231,251,0.4) 0%, rgba(68,55,251,0.5) 100%);
     display:flex;
     flex-direction:column;
 
-    h3{
+    .checkout{
       letter-spacing:2px;
+      font-weight:600;
+      font-size:20px;
       margin:0;
     }
 
@@ -130,7 +132,6 @@ const Container = styled.div`
       padding: 16px 20px;
       border-bottom:1px solid gray;
       margin-bottom:10px;
-      width:100%;
       box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
       0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
      }
@@ -157,7 +158,12 @@ const Container = styled.div`
       margin-right:8px;   
     }
     
-
+    @media only screen and (max-width: 500px){
+      &{
+        height:auto;
+      }
+    
+    }
 
 
 `
@@ -261,7 +267,6 @@ const Wrraper = styled.div`
 
 const Totals = styled.div`
     margin:15px 0;
-    width:100%;
     background:#fff;
     border-radius:6px;
     padding:15px;

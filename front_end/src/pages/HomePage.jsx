@@ -204,6 +204,7 @@ export default HomePage;
 
 const Container = styled.div`
   height: 100%;
+  position: relative;
   display: grid;
   grid-template-areas:
     'navBar navBar navBar navBar navBar navBar'

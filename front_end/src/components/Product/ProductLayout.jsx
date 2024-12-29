@@ -66,7 +66,12 @@ const ParentContainer = styled.div`
       min-width:320px;
       margin-bottom:20px;
      
+      @media only screen and (max-width: 835px) {
 
+&{
+  margin:auto;
+}
+}
 `
 const Container = styled.div`
      
@@ -75,10 +80,11 @@ const Container = styled.div`
     display:flex;
     justify-content:space-between;
     border-bottom:1px solid lightgray;
-    @media (max-width: 835px) {
+    @media only screen and (max-width: 835px) {
 
       &{
         flex-wrap:wrap;
+        margin:auto;
       }
     }
 

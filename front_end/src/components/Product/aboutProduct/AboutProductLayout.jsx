@@ -80,8 +80,23 @@ const Container = styled.div`
     font-size: 1rem;
     font-weight: 550;
     margin-right: 50px;
+    margin-bottom:2px;
     cursor: pointer;
   }
   .buttons-container button:hover {
   }
+  @media only screen and (max-width: 550px) {
+
+      .buttons-container button {
+      font-size: 0.8rem;
+      margin-right: 30px;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+
+.buttons-container button {
+font-size: 0.8rem;
+margin-right: 10px;
+}
+}
 `;

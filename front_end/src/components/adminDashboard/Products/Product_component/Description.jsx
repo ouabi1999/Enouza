@@ -10,19 +10,28 @@ import 'react-quill/dist/quill.snow.css';
 function Description({ formData, setFormData }) {
  
   const [value, setValue] = useState('');
- 
- 
-  
-  const handleChange = (content, delta, source, editor) => {
-   
-    // console.log(JSON.stringify(editor.getContents())); // delta 사용시
-    setFormData({
-      ...formData,
-      description:editor.getContents()
- 
-     })
+  useEffect(() => {
+      setFormData({
+          ...formData,
+          description: value
+
+      })
+  }, [value])
+
+  useEffect(() => {
     
-  };
+    setValue(formData.description)
+
+    
+  
+  }, [formData.description])
+
+
+  const handleChange = (content, delta, source, editor) => {
+      // console.log(JSON.stringify(editor.getContents())); // delta 사용시
+      setValue(editor.getHTML());
+     
+    };
   const modules = {
     toolbar: [
       [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
@@ -70,7 +79,7 @@ function Description({ formData, setFormData }) {
             <label htmlFor="Description" style={{fontFamily:"sans-serif"}}>Description</label>
             <ReactQuill 
             theme="snow"
-             value={formData.description} 
+             value={value} 
              onChange={handleChange} 
              modules={modules}
              formats={formats}

@@ -184,7 +184,7 @@ const ShippingMethods = styled.div`
   }
   @media only screen and (max-width: 500px){
       &{
-        width:100%;
+        width:90%;
       }
     .shipping-method{
           display:none;

@@ -38,7 +38,6 @@ class ProductView(APIView):
 
         # Get the color images from the request files
         color_images = request.data.getlist('colors')
-        print(color_images)
         # Upload each color image to Cloudinary and get the URL
         for color_img in color_images:
             upload_result = cloudinary.uploader.upload(color_img)

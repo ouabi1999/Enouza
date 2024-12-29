@@ -6,7 +6,10 @@ function LogendIn() {
     <Wrapper>
         <div>
             <CheckCircleIcon className='check-icon' />
-            <h3>You are loged in Continue</h3>
+            <div>
+              <span>You are loged in Continue
+                </span>
+                </div>
         </div>
 
     </Wrapper>
@@ -20,7 +23,7 @@ const Wrapper  =  styled.div`
    align-items:center;
    width:300px;
    height:180px;
-   background:#99ffdd;
+   background:#b2e0ff;
    border-radius:8px;
    div{
        display:flex;
@@ -30,7 +33,11 @@ const Wrapper  =  styled.div`
    }
    .check-icon{
        font-size:50px;
-       color:#66ff66;
+       color:#ffff;
+   }
+   span{
+    font-size:1.2rem;
+    font-weight:500;
    }
 
 `

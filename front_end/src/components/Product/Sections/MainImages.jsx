@@ -43,8 +43,9 @@ function MainImages(props) {
 export default MainImages
 const Container = styled.div`
     display:flex;
+   
     margin-right:22px;
-    max-height:410px;
+   
     padding:5px;
 
     #activate {
@@ -52,7 +53,11 @@ const Container = styled.div`
     
   }
 
-
+  @media only screen and (max-width: 500px) {
+      &{
+        flex-wrap:wrap-reverse;
+      }
+  }
 
 `
 const ImageDetailsContainer = styled.div`
@@ -60,32 +65,39 @@ const ImageDetailsContainer = styled.div`
     flex-direction:column;
     justify-content:space-between;
     margin-right:15px;
-    max-width:50px;
-    width:20vw;
     min-width:40px;
+    max-height:425px;
     
      img{
-      width:100%;
+      width:50px;;
       border:1px solid lightgray;
-     
       height:auto;
       border-radius:4px;
       cursor:pointer;
      }
   
+     @media only screen and (max-width: 500px) {
+      &{
+        flex-direction:row;
+        width:100%;
+      }
+  }
 
 `
 
 const ProductImg = styled.div`
-     max-width:410px;
-     width:40vw;
-     min-width:250px;
-     height:100%;
+     max-width:425px;
+     width:100%;
+     min-width:335px;
      border:1px solid lightgray;
      border-radius:6px;
+     margin-bottom:10px;
+    
      img{
       width:100%;
+      height:100%;
       border-radius:6px;
+      
 
      }
 

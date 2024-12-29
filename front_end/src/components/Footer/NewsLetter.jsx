@@ -166,7 +166,7 @@ const Wrapp = styled.div`
         display:flex;
         justify-content:center;
         height:30px;
-        min-width:300px;
+        min-width:290px;
         width:100vw;
         max-width:360px;
         

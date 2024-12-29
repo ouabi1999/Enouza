@@ -85,7 +85,7 @@ function ShoppingCart() {
 
                         <div className='flex-container'>
 
-                          <div className={productData.id === item.id ? "first-child" : "first-child skeleton"} >
+                          <div className="first-child" >
                           
                             <span>
                                 {item?.name}
@@ -175,10 +175,10 @@ const Container = styled.div`
   
   
   .shopping-cart-h2{
-      font-weight:bolder;
+      font-weight:bold;
       color:#000;
       margin-top:0;
-      padding: 15px 35px;
+      padding: 15px 20px;
       background:#fff;
       
 }

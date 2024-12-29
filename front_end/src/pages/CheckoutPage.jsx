@@ -60,7 +60,6 @@ export default CheckoutPage
 const Conatiner = styled.div`
     width:100%;
     margin:0 auto;
-    
     background:#fff;
     display:flex;
     flex-wrap:wrap;
@@ -74,7 +73,6 @@ const Conatiner = styled.div`
 const Left_Section = styled.div`
   flex:1;
   min-width:500px;
-  min-height:100vh;
   @media only screen and (max-width: 500px){
 
    
@@ -91,7 +89,6 @@ const Left_Section = styled.div`
 `
 const Right_Section = styled.div`
     min-width:500px;
-    min-height:100vh;
    
    
 
