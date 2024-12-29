@@ -19,7 +19,6 @@ const stars = Array(5).fill(0);
           <span>
             {" "}
             {((productData?.price/ productData?.discount) * 100).toFixed(0)}%
-            <span style={{fontSize:"20px"}}> off </span> {" "}
           </span>
         </div>
       </div>
@@ -109,19 +108,21 @@ const Container = styled.div`
     gap: 10px;
   }
   .product-price {
-    font-size: 1.8rem;
-    color: #fc4444;
+    font-size: 1.9rem;
     font-weight: bold;
   }
   .product-discount {
     text-decoration: line-through;
     font-size: 1.3rem;
+    color:#575757;
   }
   .product-discount-percent {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    color:#db0000;
   }
   .product-title {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    font-weight: bold;
     white-space:wrap;
     word-wrap:wrap;
     word-break:break-all;
@@ -130,6 +131,8 @@ const Container = styled.div`
   .product-color {
     display: flex;
     gap: 10px;
+    border-bottom:1px solid lightgray;
+    padding-bottom:10px;
     img {
       padding: 2px;
       border-radius: 4px;
@@ -169,6 +172,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+    border-bottom:1px solid lightgray;
+    padding-bottom:10px;
   }
   .stars-icons-container {
     margin-top: 4px;
