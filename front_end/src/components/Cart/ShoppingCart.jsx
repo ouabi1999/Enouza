@@ -62,7 +62,7 @@ function ShoppingCart() {
   
   return (
     <Container>
-      <HeadeSeo title = "Animis - shopping cart"/>
+      <HeadeSeo title = "Enouza - shopping cart"/>
       
       <h2 style={{ fontFamily: "sans-serif" }} className="shopping-cart-h2">Shopping Cart ({cartItems?.length})</h2>
       {cartItems?.length === 0 ? (

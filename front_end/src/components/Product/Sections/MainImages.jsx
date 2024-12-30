@@ -56,6 +56,9 @@ const Container = styled.div`
   @media only screen and (max-width: 500px) {
       &{
         flex-wrap:wrap-reverse;
+        margin-right:0;
+        margin:auto;
+
       }
   }
 
@@ -80,6 +83,7 @@ const ImageDetailsContainer = styled.div`
       &{
         flex-direction:row;
         width:100%;
+        margin-right:0;
       }
   }
 
