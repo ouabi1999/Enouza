@@ -95,7 +95,7 @@ REST_FRAMEWORK = {
     ),
 }
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173", "https://www.enouza.com"]
 
 ROOT_URLCONF = 'back_end.urls'
 
