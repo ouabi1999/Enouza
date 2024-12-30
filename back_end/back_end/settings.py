@@ -39,9 +39,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['*'] 
-#ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST"), "localhost"]
-CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1')]
+
+ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST"), "localhost"]
+CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1', 'enouza.com')]
 
 
 # Application definition
@@ -95,7 +95,7 @@ REST_FRAMEWORK = {
     ),
 }
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173", "enouza.com"]
 
 ROOT_URLCONF = 'back_end.urls'
 
