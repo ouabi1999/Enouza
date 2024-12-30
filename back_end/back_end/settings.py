@@ -41,7 +41,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST")]
-CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1', 'enouza.com')]
+CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1'), 'enouza.com']
 
 
 # Application definition
