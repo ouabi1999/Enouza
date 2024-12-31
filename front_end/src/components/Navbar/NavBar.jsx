@@ -63,7 +63,7 @@ function NavBar({outlet}) {
         <ChildContainer>
           <Logo>
           <Link to="/">
-            <img  width="125vw" src = "../Asset 19.png" alt=""/>
+            <img  width="100vw" src = "../Asset 4.png" alt=""/>
             </Link>
           </Logo>
           <SearchContainer>
@@ -166,7 +166,7 @@ const ParentContainer = styled.div`
       }
       .search-icon-container{
         height:100%;
-        background:orange;
+        background:#f37421;
         display:flex;
         align-items:center;
       }
@@ -241,6 +241,13 @@ const Container = styled.div`
     cursor:pointer;
     font-size:30px;
     display:none;
+  }
+  @media only screen and (max-width: 615px) {
+
+    img{
+      width:25vw;
+      max-width:120px;
+    }
   }
   @media only screen and (max-width: 815px) {
     /* For mobile phones: */
@@ -366,7 +373,7 @@ const SearchContainer = styled.div`
       }
       .search-icon-container{
         height:100%;
-        background:orange;
+        background:#f37421;
         border-radius: 0 4px 4px 0;
         display:flex;
         align-items:center;
