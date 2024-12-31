@@ -75,8 +75,8 @@ const ParentContainer = styled.div`
 `
 const Container = styled.div`
      
-    width:95%;
-    padding:20px 0;
+    width:100%;
+    padding:20px;
     display:flex;
     justify-content:space-between;
     border-bottom:1px solid lightgray;
@@ -98,6 +98,7 @@ const Container = styled.div`
       &{
         width:95%;
         margin:auto;
+        padding:20px 0;
 
       }
 

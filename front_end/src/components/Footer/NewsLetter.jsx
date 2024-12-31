@@ -135,7 +135,7 @@ const Container = styled.form`
 `
 const Wrapp = styled.div`
     height:90%;
-    width:85%;
+    width:100%;
 
     display:flex;
     justify-content:center;

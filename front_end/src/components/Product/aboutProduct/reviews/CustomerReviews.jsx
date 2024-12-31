@@ -62,10 +62,10 @@ function CustomerReviews(props) {
                   </div>
 
                   <div>
-                    <span style={{ marginLeft: "4px" }}> Color:White</span>
+                    <span style={{ marginLeft: "4px" , fontSize:"16px"}}> {rate.user?.name.slice(0, 2) + "***" + rate.user?.name.slice(4, 6)}</span>
                   </div>
 
-                  <div style={{ marginLeft: "4px" }}>
+                  <div style={{ marginLeft: "4px" , fontSize:"14px"}}>
                     <p>{rate.review.text}</p>
                   </div>
                   <div className="img-container">
@@ -133,7 +133,6 @@ export default CustomerReviews;
 
 const Container = styled.div`
   width: 100%;
-  position: relative;
 
   
 
@@ -157,11 +156,11 @@ const Container = styled.div`
   }
   .on {
     color: #ffba5a;
-    font-size: 20px;
+    font-size: 16px;
   }
   .off {
     color: #ccc;
-    font-size: 20px;
+    font-size: 16px;
   }
   .reviews-img {
     position: relative;
@@ -184,18 +183,24 @@ const Container = styled.div`
 
   .selected-img {
     height: 45vh;
-    min-width: 320px;
     min-height: 200px;
     max-height: 360px;
     max-width: 360px;
-    width: 40vw;
-
-    padding: 2px;
+    padding: 20px;
     object-fit: contain;
-    cursor: pointer;
     border-radius: 6px;
-
-    transition: width 1s, height 1s;
+    width: 40vw;
+    border-radius: 6px;
+    position: fixed;
+    z-index: 102;
+    top: 25%;
+    bottom: 25%;
+    right: 30%;
+    left: 30%;
+    background: #fdfdfd;
+    border: 1px solid lightgray;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 
   .cancel-icon {
@@ -214,7 +219,6 @@ const Container = styled.div`
     display: flex;
 
     flex-wrap: wrap;
-    position: relative;
   }
 `;
 const ChildContainer = styled.div`
@@ -222,7 +226,6 @@ const ChildContainer = styled.div`
     grid-template-columns: auto auto;
     grid-gap: 10px;
     margin-top: 15px;
-    position: relative;
 
 
   .ratings-container{
@@ -230,7 +233,6 @@ const ChildContainer = styled.div`
     padding: 10px;
     border-radius: 8px;
     display:flex;
-    position: relative;
   }
   
     
@@ -244,22 +246,9 @@ const ChildContainer = styled.div`
 
 `
 const PupUpSelectedImage = styled.div`
+      position: relative;
+      width:100%;
   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    border-radius: 6px;
-    position: fixed;
-    z-index: 102;
-    top: 25%;
-    bottom: 25%;
-    right: 25%;
-    left: 25%;
-    background: #fdfdfd;
-    border: 1px solid lightgray;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
       @media (max-width: 690px) {
     
   }

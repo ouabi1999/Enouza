@@ -43,11 +43,9 @@ function MainImages(props) {
 export default MainImages
 const Container = styled.div`
     display:flex;
-   
     margin-right:22px;
-   
     padding:5px;
-
+    margin-bottom:10px;
     #activate {
     border: 1px solid blue;
     
@@ -69,7 +67,9 @@ const ImageDetailsContainer = styled.div`
     justify-content:space-between;
     margin-right:15px;
     min-width:40px;
-    max-height:425px;
+   
+    width:100%;
+    max-width:50px;
     
      img{
       width:50px;;
@@ -83,19 +83,19 @@ const ImageDetailsContainer = styled.div`
       &{
         flex-direction:row;
         width:100%;
+        max-width:100%;
         margin-right:0;
+        margin-top:10px;
       }
   }
 
 `
 
 const ProductImg = styled.div`
-     max-width:425px;
      width:100%;
-     min-width:335px;
+     min-width:320px;
      border:1px solid lightgray;
      border-radius:6px;
-     margin-bottom:10px;
     
      img{
       width:100%;

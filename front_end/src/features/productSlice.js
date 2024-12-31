@@ -23,7 +23,7 @@ export const products_Slice = createSlice({
        productData:{},
        nextStart : 0,
        totalProducts : 0,
-       isLoading : 0,
+       isLoading : true,
        hasError  :false,
        isProductsLoaded: null,
        

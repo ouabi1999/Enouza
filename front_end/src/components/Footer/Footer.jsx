@@ -117,7 +117,7 @@ export default Footer
 
 
 const Container = styled.div`
-    min-width:340px;
+    min-width:320px;
     background:#e3e3e4;
     padding:0px 10px;
     z-index:3;

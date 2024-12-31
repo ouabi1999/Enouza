@@ -8,12 +8,16 @@ import BuyerTrustServices from "../components/Services/BuyerTrustServices";
 import SideCart from "../components/Product/Sections/SideCart";
 import PopUpShoppingMethod from "../components/Product/Sections/PopUpShoppingMethod";
 import productData from "../../common/data.json"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, buyNowItem } from "../features/cartSlice";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton'
+import CircularProgress from '@mui/material/CircularProgress';
+
 function HomePage() {
   const isAuth  = window.localStorage.getItem("access_token")
   const [quantity, setQuantity] = useState(1);
@@ -26,7 +30,7 @@ function HomePage() {
   const [sizeIndex, setSizeIndex] =  useState(0)
   const [picsDetailsIndex, setPicsDetailsIndex] = useState(0)
   const [maxOrderWorning, setMaxOrderWorning] = useState(false)
-
+  const isLoading = useSelector(state => state.products.isLoading)
   const [shippingInfo, setShippingInfo] = useState({
     date1:"sun Dec 22 2024",
     date2:"sun Dec 29 2024",
@@ -139,64 +143,69 @@ const buy_Now_item = (product) => {
   }
 };
   return (
-    <Container>
+    <>
+      {isLoading ? (
+        <div style={{height:"75vh", display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <CircularProgress style={{color:"gray", fontWeight:"bolder"}} />
 
-      <div className="item2">
-        <UserServices />
-      </div>
+       
+     </div>
+      ) : (
+        <Container>
+          <div className="item2">
+            <UserServices />
+          </div>
 
-      <div className="item3">
-        <ProductLayout
-          quantity={quantity}
-          shippingInfo={shippingInfo}
-          checkboxChange={checkboxChange}
-          picsDetailsIndex={picsDetailsIndex}
-          colorIndex={colorIndex}
-          selectPicsDetails={selectPicsDetails}
-          isColorActive={isColorActive}
-          isPicsDetailsActive={isPicsDetailsActive}
-          deselectPicsDetails={deselectPicsDetails}
-          setColorIndex={setColorIndex}
-          sizeIndex={sizeIndex}
-          selectSize={selectSize}
-          selectColor = {selectColor}
-        />
-      </div>
+          <div className="item3">
+            <ProductLayout
+              quantity={quantity}
+              shippingInfo={shippingInfo}
+              checkboxChange={checkboxChange}
+              picsDetailsIndex={picsDetailsIndex}
+              colorIndex={colorIndex}
+              selectPicsDetails={selectPicsDetails}
+              isColorActive={isColorActive}
+              isPicsDetailsActive={isPicsDetailsActive}
+              deselectPicsDetails={deselectPicsDetails}
+              setColorIndex={setColorIndex}
+              sizeIndex={sizeIndex}
+              selectSize={selectSize}
+              selectColor={selectColor}
+            />
+          </div>
 
-      <div className="item4">
-        <SideCart
-          quantity={quantity}
-          setQuantity={setQuantity}
-          addQuantity={addQuantity}
-          subtractQuantity={subtractQuantity}
-          setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-          isPopUpShippingOpen={isPopUpShippingOpen}
-          countryCode={countryCode}
-          shippingInfo={shippingInfo}
-          setCountryCode={setCountryCode}
-          add_item_to_cart={add_item_to_cart}
-          buy_Now_item={buy_Now_item}
-          shippingMethodIndex={shippingMethodIndex}
-          
-        />
-      </div>
-      <div className="item5">
-        <AboutProductLayout />
-      </div>
+          <div className="item4">
+            <SideCart
+              quantity={quantity}
+              setQuantity={setQuantity}
+              addQuantity={addQuantity}
+              subtractQuantity={subtractQuantity}
+              setIsPopUpShippingOpen={setIsPopUpShippingOpen}
+              isPopUpShippingOpen={isPopUpShippingOpen}
+              countryCode={countryCode}
+              shippingInfo={shippingInfo}
+              setCountryCode={setCountryCode}
+              add_item_to_cart={add_item_to_cart}
+              buy_Now_item={buy_Now_item}
+              shippingMethodIndex={shippingMethodIndex}
+            />
+          </div>
+          <div className="item5">
+            <AboutProductLayout />
+          </div>
 
-      {isPopUpShippingOpen && (
-        <PopUpShoppingMethod
-          setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-          isPopUpShippingOpen={isPopUpShippingOpen}
-          checkboxChange={checkboxChange}
-          shippingMethodIndex={shippingMethodIndex}
-          shippingInfo={shippingInfo}
-
-        />
+          {isPopUpShippingOpen && (
+            <PopUpShoppingMethod
+              setIsPopUpShippingOpen={setIsPopUpShippingOpen}
+              isPopUpShippingOpen={isPopUpShippingOpen}
+              checkboxChange={checkboxChange}
+              shippingMethodIndex={shippingMethodIndex}
+              shippingInfo={shippingInfo}
+            />
+          )}
+        </Container>
       )}
-      
-
-    </Container>
+    </>
   );
 }
 

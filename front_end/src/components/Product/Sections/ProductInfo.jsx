@@ -3,8 +3,8 @@ import styled from "styled-components";
 import StarIcon  from "@mui/icons-material/Star"; 
 function ProductInfo(props) {
     
-const {setColorIndex,  selectSize, sizeIndex, productData, colorIndex, ratings, sum_stars } = props
-const stars = Array(5).fill(0);
+      const {setColorIndex,  selectSize, sizeIndex, productData, colorIndex, ratings, sum_stars } = props
+      const stars = Array(5).fill(0);
 
   return (
     <Container>
@@ -51,7 +51,7 @@ const stars = Array(5).fill(0);
                        (sum_stars / ratings?.length ).toFixed(1) : "0.0"}</span>
         </div>
         <div>
-        <span> {productData?.orders.length>0 ? productData?.orders.length:"0"} Orders </span>
+        <span> {productData?.orders?.length + productData.aliexpress_ratings?.length} Orders </span>
         </div>
       </div>
       {productData?.sizes?.length > 0 && (
