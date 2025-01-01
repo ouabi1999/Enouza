@@ -96,7 +96,7 @@ function MyOrders() {
                         <div className="flex-start-product">
                           <div className="product-img">
                             <img
-                              src="https://ae01.alicdn.com/kf/S78c187c0e0aa46ffab8235ee67cc3f2fK.jpg"
+                              src={product.color}
                               alt={""}
                             />
                           </div>
