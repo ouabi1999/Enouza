@@ -106,7 +106,8 @@ function SignUpForm({ show }) {
         dispatch(setSignUp(response.data));
         console.log(response.data);
         setIsLoading(false);
-        navigate(-1);
+        window.location.href = "/"
+
         return response.data
       })
       .catch((error) => {

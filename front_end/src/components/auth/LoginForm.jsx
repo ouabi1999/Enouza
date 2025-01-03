@@ -56,7 +56,7 @@ function LoginForm({show}) {
       console.log(response)
       dispatch(setLogin(response.data))
       setIsLoading(false);
-      navigate(-1)
+     window.location.href = "/"
     
     })
 

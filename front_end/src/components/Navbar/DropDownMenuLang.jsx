@@ -136,6 +136,7 @@ const Container = styled.div`
         background-image:linear-gradient(45deg, transparent 84%, rgb(240, 240, 240, 0.7) 20%);
         cursor:pointer; 
     }
+    
 `;
 const Wrapper = styled.div`
     position:fixed;

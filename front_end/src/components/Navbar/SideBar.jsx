@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import styled from "styled-components";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
@@ -10,27 +10,42 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import PersonIcon from "@mui/icons-material/Person";
 import DropDownMenuLang from "./DropDownMenuLang";
 import { useSelector } from "react-redux";
+import { ClickAwayListener } from "@mui/material";
 
 function SideBar(props) {
   const user = useSelector(state => state.auth.user)
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+
+    const openProfileMenu = () => {
+      setIsProfileOpen(!isProfileOpen);
+    };
   return (
-    <Container>
+    <ClickAwayListener
+    mouseEvent="onMouseDown"
+                  touchEvent="onScroll"
+                  onClickAway={props.hideSideBarMenu}
+    
+    >
+    <Container> 
       <div className="first-section">
         <DisabledByDefaultIcon onClick={props.hideSideBarMenu} />
         <User_container>
           {props.isAuth !== null ? (
             <div className="user">
               <span> Hello, {user.firstName.slice(0, 20)} </span>
+              <div>
               <DropDownMenu
                 logout={props.logout}
                 isAuth={props.isAuth}
-                isProfileOpen={props.isProfileOpen}
-                openProfileMenu={props.openProfileMenu}
-                setIsProfileOpen={props.setIsProfileOpen}
+                isProfileOpen={isProfileOpen}
+                openProfileMenu={openProfileMenu}
+                setIsProfileOpen={setIsProfileOpen}
               />
+              </div>
             </div>
           ) : (
-            <Link to="/auth" className="sign_in_button">
+            <Link onClick={props.hideSideBarMenu}  to="/auth" className="sign_in_button">
               <span>
                 <PersonIcon />
               </span>
@@ -43,18 +58,18 @@ function SideBar(props) {
         <DropDownMenuLang
           topPosition="100px"
           rightPosition="-2px"
-          isLangMenuOpen={props.isLangMenuOpen}
-          setIsLangMenuOpen={props.setIsLangMenuOpen}
+          isLangMenuOpen={isLangMenuOpen}
+          setIsLangMenuOpen={setIsLangMenuOpen}
           country={props.country}
         />
       </div>
       <h4>Polices</h4>
       <Wrapper>
         <Wrapp>
-          <Link to="terms-of-services">Terms Of services</Link>
-          <Link to="about-us"> About us </Link>
-          <Link to="contact-us"> Contact us </Link>
-          <Link to="privacy-policy"> Privacy Policy </Link>
+          <Link onClick={props.hideSideBarMenu}  to="terms-of-services">Terms Of services</Link>
+          <Link onClick={props.hideSideBarMenu}  to="about-us"> About us </Link>
+          <Link onClick={props.hideSideBarMenu}  to="contact-us"> Contact us </Link>
+          <Link onClick={props.hideSideBarMenu}  to="privacy-policy"> Privacy Policy </Link>
         </Wrapp>
       </Wrapper>
       <h4>Follow us</h4>
@@ -81,6 +96,7 @@ function SideBar(props) {
         </a>
       </SocialMedia>
     </Container>
+    </ClickAwayListener>
   );
 }
 
@@ -93,7 +109,6 @@ const Container = styled.div`
   right: 0;
   padding: 2px 5px;
   width: 300px;
-
   background: #d9d9d9;
   height: 100%;
   transition: ease-in-out;

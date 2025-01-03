@@ -16,17 +16,17 @@ function AboutProductLayout() {
     <Container>
       <div className="buttons-container">
         <button onClick={() => setIsOpen(1)} id={isOpen == 1 && "selected"}>
-          {" "}
-          Custumer Reviews{" "}
+          
+          Custumer Reviews
         </button>
         <button onClick={() => setIsOpen(2)} id={isOpen == 2 && "selected"}>
-          {" "}
-          Specifications{" "}
+         
+          Specifications
         </button>
 
         <button onClick={() => setIsOpen(3)} id={isOpen == 3 && "selected"}>
-          {" "}
-          Description{" "}
+          
+          Description
         </button>
       </div>
       {isOpen == 1 && (
@@ -43,8 +43,8 @@ export default AboutProductLayout
 const Container = styled.div`
   
   #selected {
-    border-bottom: 4px solid green;
-    padding-bottom: 4px;
+    border-bottom: 2px solid green;
+    padding-bottom: 2px;
     animation-name: border-movement;
     animation-duration: 0.1s;
   }
@@ -58,28 +58,24 @@ const Container = styled.div`
       border-color:greenyellow;
     }
 
-    50% {
-      border-width: 2px;
-      border-color:blueviolet;
-    }
-    75% {
-      border-width: 3px;
-      border-color:yellowgreen;
-    }
+    
     100% {
-      border-width: 4px;
+      border-width: 2px;
       border-color:orangered;
     }
   }
   .buttons-container {
     margin-bottom: 20px;
+    display:flex;
+    flex-wrap:nowrap;
+    gap:30px;
   }
   .buttons-container button {
     border: none;
     background: none;
     font-size: 1rem;
     font-weight: 550;
-    margin-right: 50px;
+    white-space:nowrap;
     margin-bottom:2px;
     cursor: pointer;
   }
@@ -89,14 +85,14 @@ const Container = styled.div`
 
       .buttons-container button {
       font-size: 0.8rem;
-      margin-right: 30px;
+     
     }
   }
   @media only screen and (max-width: 400px) {
 
 .buttons-container button {
-font-size: 0.8rem;
-margin-right: 10px;
+font-size: 0.7rem;
+
 }
 }
 `;

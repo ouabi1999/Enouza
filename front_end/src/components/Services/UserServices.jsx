@@ -28,7 +28,7 @@ export default UserServices;
 
 const Container = styled.div`
   width:100%; 
-
+ margin:auto;
   padding: 10px 0;
   color: rgba(60, 60, 60, 0.9);
   border-bottom: 1px solid lightgray;

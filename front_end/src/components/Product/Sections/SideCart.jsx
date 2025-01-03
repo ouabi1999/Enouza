@@ -186,6 +186,7 @@ const Container = styled.div`
     -webkit-appearance: none;
     appearance: none;
     padding: 5px;
+    background:none;
   }
 
   .shipping-to {

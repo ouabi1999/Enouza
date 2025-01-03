@@ -32,11 +32,11 @@ function DropDownMenu(props) {
           onClickAway={props.openProfileMenu}
         >
           <Wrapper>
-            <Link to={user?.is_staff ? "admin-dashboard" : "/profile"}>
+            <Link onClick={props.openProfileMenu} to={user?.is_staff ? "admin-dashboard" : "/profile"}>
               <AccountBoxIcon className="icon" />
               <span> Dashbaord </span>
             </Link>
-            <Link to="/help-center">
+            <Link onClick={props.openProfileMenu} to="/help-center">
               <LiveHelpIcon className="icon" />
               <span>FAQ</span>
             </Link>

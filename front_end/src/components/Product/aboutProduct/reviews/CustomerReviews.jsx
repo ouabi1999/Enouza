@@ -132,8 +132,7 @@ function CustomerReviews(props) {
 export default CustomerReviews;
 
 const Container = styled.div`
-  width: 100%;
-
+    width:90%;
   
 
   .person-icon {
@@ -224,7 +223,7 @@ const Container = styled.div`
 const ChildContainer = styled.div`
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 10px;
+    column-gap: 10px;
     margin-top: 15px;
 
 
@@ -241,6 +240,7 @@ const ChildContainer = styled.div`
   @media (max-width: 690px) {
     &{
       grid-template-columns: 100%;
+      row-gap:10px;
     }
   }
 

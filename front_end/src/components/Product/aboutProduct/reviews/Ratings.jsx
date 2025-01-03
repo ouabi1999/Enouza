@@ -153,7 +153,7 @@ function Ratings(props) {
 export default Ratings
 
 const Container = styled.div`
-
+  width:calc(100% - 20px);
   padding: 10px;
   border-bottom: 1px solid lightgray;
 
@@ -170,13 +170,14 @@ const Container = styled.div`
   .ratings-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    gap: 15px;
+    column-gap: 10px;
     place-content:center;
   }
-  @media (max-width: 690px) {
+  @media (max-width: 715px) {
     .ratings-container {
       
-    grid-template-columns:100%  ;
+    grid-template-columns:100%;
+    row-gap: 10px;
   }
 }
  

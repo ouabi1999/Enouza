@@ -97,22 +97,24 @@ function NavBar({ outlet }) {
               </div>
             </div>
           </Link>
-          <DropDownMenuLang
-            isLangMenuOpen={isLangMenuOpen}
-            setIsLangMenuOpen={setIsLangMenuOpen}
-            country={country}
-            topPosition="60px"
-            righPosition="20px"
-          />
-
-          <DropDownMenu
-            logout={logout}
-            isAuth={isAuth}
-            isProfileOpen={isProfileOpen}
-            openProfileMenu={openProfileMenu}
-            setIsProfileOpen={setIsProfileOpen}
-          />
-
+          <div className="drop-down-lang-container">
+            <DropDownMenuLang
+              isLangMenuOpen={isLangMenuOpen}
+              setIsLangMenuOpen={setIsLangMenuOpen}
+              country={country}
+              topPosition="60px"
+              righPosition="20px"
+            />
+          </div>
+          <div className="drop-down-menu-container">
+            <DropDownMenu
+              logout={logout}
+              isAuth={isAuth}
+              isProfileOpen={isProfileOpen}
+              openProfileMenu={openProfileMenu}
+              setIsProfileOpen={setIsProfileOpen}
+            />
+          </div>
           <MenuIcon className="menu-icon" onClick={hideSideBarMenu} />
         </Wrapper>
       </Container>
@@ -226,7 +228,16 @@ const Container = styled.div`
     .menu-icon {
       display: inline;
     }
-    .Lang_currency {
+    .drop-down-lang-container {
+      display: none;
+    }
+    .drop-down-menu-container {
+      display: none;
+    }
+    .sign-in-button {
+      display: none;
+    }
+    .person-icon {
       display: none;
     }
   }
@@ -253,7 +264,7 @@ const Wrapper = styled.div`
   }
   .shopping-cart-icon {
     color: #ffffff;
-    font-size: 30px;
+    font-size: 25px;
   }
   .cart-number-container {
     display: flex;
@@ -265,8 +276,9 @@ const Wrapper = styled.div`
     background: #fff;
     color: #000000;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
   }
 
   .search-icon-container-responsive {
@@ -280,6 +292,11 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 650px) {
     .search-icon-container-responsive {
       display: flex;
+    }
+    &{
+      width: 50%;
+      justify-content: space-between;
+      
     }
   }
 `;
