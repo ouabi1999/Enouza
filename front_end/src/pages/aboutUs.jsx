@@ -16,21 +16,16 @@ import HeadeSeo from "../../common/HeadeSeo";
                     <div className="about_section">
                     <h1>About us</h1>
                         <p>
-                            Enouza is a retail experience created for fans of all things Japanese lifestyle and culture.
-                            We carry exclusive officially licensed apparel, accessories, and more.
-                            The store is run by our namesake herself, Enouza, and her fuzzy little companion,
-                            They’re here to make sure you feel welcome and find everything you’re looking for.
+                        Welcome to Enouza, your trusted marketplace for trading essentials and beyond. At Enouza, we believe in empowering our customers by offering high-quality products designed to provide value and benefits every single day.
                         </p>
                         <p>
-                            We carry 100% officially licensed EXCLUSIVE apparel, accessories,
-                            and more from the biggest names in anime like Dragon Ball Z,
-                            Cowboy Bebop, My Hero Academia, Crunchyroll, and many more.
-                            We started Enouza to create one spot for all anime fans
-                            to find cool anime goods — because there wasn’t one.
-                            We’re all about experience, lifestyle, and bringing anime into the bigger conversation.
+                        Our mission is simple: to deliver reliable solutions that cater to your needs, whether you're diving into trading or seeking innovative tools to enhance your lifestyle. Each product we offer is carefully selected to ensure it aligns with our commitment to quality and customer satisfaction.
                         </p>
                         <p>
-                            We are here to make sure you feel welcome and find everything you’re looking for.
+                        Enouza is more than just a store—it's a platform dedicated to your success. We understand that each day brings new opportunities, and with the right products, you can seize them effortlessly.
+                        </p>
+                        <p>
+                        Thank you for choosing Enouza. We're here to support your journey with excellent products, seamless shopping experiences, and a commitment to your satisfaction.
                         </p>
 
                     </div>

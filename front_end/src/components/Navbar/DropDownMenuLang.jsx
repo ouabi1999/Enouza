@@ -5,6 +5,9 @@ import data from "../../../common/countryData.json";
 import { ClickAwayListener } from "@mui/material";
 import { setLocation } from "../../features/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Flag from 'react-world-flags'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 function DropDownMenuLang(props) {
   const [isActive, setIsActive] = useState(false);
   const dispatch =  useDispatch()
@@ -29,13 +32,24 @@ function DropDownMenuLang(props) {
   
 
   return (
-    <ClickAwayListener
-      mouseEvent="onMouseDown"
-      touchEvent="onScroll"
-      onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
-    >
+           
       <Container>
-          <Wrapper>
+       <div className="Lang_currency">
+              <button onClick={()=> props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
+                <Flag className="flag-icon" code={props.country} />
+                <span> / English </span>
+                <span> / USD </span>
+                <ArrowDropDownIcon className="dropDownArrow-icon" />
+              </button>
+            </div>
+             {props.isLangMenuOpen && (
+                  <ClickAwayListener
+                  mouseEvent="onMouseDown"
+                  touchEvent="onScroll"
+                  onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
+                >
+                    
+          <Wrapper $topPosition={props.topPosition} $righPosition = {props.righPosition}>
             <div>
               <label> Ship to </label>
               <select
@@ -71,38 +85,66 @@ function DropDownMenuLang(props) {
               </button>
             </div>
           </Wrapper>
+          </ClickAwayListener>
+             )}
+             
       </Container>
-    </ClickAwayListener>
+
+    
   );
 }
 
 export default DropDownMenuLang;
 
 const Container = styled.div`
-   position:fixed;
+ 
+ 
+  
+  
+    .Lang_currency button {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:2px 10px;
+        background:#fff;
+        height:38px;
+        border-radius:5px 5px 0px 0;
+        z-index: 1;
+        
+      }
+      .Lang_currency span:nth-child(3){
+        margin-left:5px;
+      }
+    
+      .Lang_currency .flag-icon{
+          width:30px;
+          height:20px;
+          object-fit:cover;
+          margin-right:5px;
+      }
+      .Lang_currency span{
+          font-size:12.5px;
+          white-space: nowrap;
+          
+      }
+    select{
+        width:100%;
+        border-radius:4px;
+        padding:10px;
+        border:1px solid lightgrey;
+        color:black;
+        background-image:linear-gradient(45deg, transparent 84%, rgb(240, 240, 240, 0.7) 20%);
+        cursor:pointer; 
+    }
+`;
+const Wrapper = styled.div`
+    position:fixed;
     padding:10px;
-    right:10px;
-    top:60px;
+    right:${props => props.$righPosition || "10px"};
+    top:${props => props.$topPosition  || "60px"};
     background:#ffff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     width:255px;
- 
-  select {
-    width: 100%;
-    border-radius: 4px;
-    padding: 10px;
-    border: 1px solid lightgrey;
-    color: black;
-    background-image: linear-gradient(
-      45deg,
-      transparent 84%,
-      rgb(240, 240, 240, 0.7) 20%
-    );
-    cursor: pointer;
-  }
-`;
-const Wrapper = styled.div`
- 
   
 
   .save-button {

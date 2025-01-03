@@ -117,10 +117,9 @@ export default Footer
 
 
 const Container = styled.div`
-    min-width:320px;
+    width:calc(100% - 20px); 
     background:#e3e3e4;
     padding:0px 10px;
-    z-index:3;
     position:relative;
     
     
@@ -158,7 +157,7 @@ const Container = styled.div`
     }
     
     @media only screen and (max-width: 700px) {
-  
+       
   .CopyRight{
         margin-bottom:10px;
       

@@ -27,25 +27,23 @@ function UserServices() {
 export default UserServices;
 
 const Container = styled.div`
-  
+  width:100%; 
+
   padding: 10px 0;
   color: rgba(60, 60, 60, 0.9);
   border-bottom: 1px solid lightgray;
   background: #ffff;
-  overflow:none;
+  overflow:hidden;
   -webkit-overflow:hidden;
 `;
 const Wrapp = styled.div`
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 
-  @media only screen and (max-width: 400px) {
-  &{
-    width:95%;
-  }
-}
+
+  
 `;
 
 const MinWrap = styled.div`
