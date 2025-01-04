@@ -46,7 +46,6 @@ function ReviewsLayout() {
 
       const handelRatingSubmit = (event) => {
         
-        console.log(comment)
         if(comment.text !== ""){
   
         

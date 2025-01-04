@@ -158,13 +158,29 @@ class UserLoginSerializer(serializers.Serializer):
         return data 
 
 
-
+class UserRatingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = (
+            "firstName",
+            "lastName",
+            "country",
+            'countryCode'
+        )
+        
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ratings
         fields = ['id', 'stars', 'review', 'user', 'product', 'created_at']
         read_only_fields = ['id', 'created_at']
         
+class getRatingSerializer(serializers.ModelSerializer):
+    user = UserRatingsSerializer(read_only=True)
+    class Meta:
+        model = Ratings
+        fields = ['id', 'stars', 'review', 'user', 'product', 'created_at']
+        read_only_fields = ['id', 'created_at']
+               
 
 class AliExpressRatingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -184,7 +200,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     read_only_fields = ['id', 'release_date'] 
     aliexpress_ratings = AliExpressRatingSerializer(source='aliratings', many=True, read_only=True)
-    ratings=  RatingSerializer(source='rating', many=True, read_only=True, default=[])
+    ratings=  getRatingSerializer(source='rating', many=True, read_only=True, default=[])
     
     def validate_price(self, value):
         if value < 0:

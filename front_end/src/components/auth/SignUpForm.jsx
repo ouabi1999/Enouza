@@ -125,7 +125,7 @@ function SignUpForm({ show }) {
   });
   return (
     <>
-      <HeadeSeo title=" Animis - Sign-up" />
+      <HeadeSeo title=" Enouza - Sign-up" />
       {!isAuth && (
         <Form onSubmit={formik.handleSubmit}>
           <div className="logo-img-container">

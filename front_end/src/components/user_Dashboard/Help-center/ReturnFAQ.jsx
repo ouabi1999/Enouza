@@ -31,7 +31,7 @@ function ReturnFAQ() {
       answer:{
           paragraphe:[],
           list:[
-            "Log in to your ANIMIS account and contact our Customer Service Team",
+            "Log in to your Enouza account and contact our Customer Service Team",
             "Provide as much information as possible about the products you wish to return or exchange from your order.",
             "Returned items must have no visible signs of wear or use.",
             "Print the prepaid shipping label that you will receive by email.",
@@ -89,9 +89,9 @@ function ReturnFAQ() {
             "Upon completion of your return, a refund will be processed within 1-5 business days.",
             "After a refund has been processed, please allow 3-5 business days for Paypal refunds and 3-10 business days for all other payment methods.",
             "We will notify you via email when your refund has been issued.",
-            "A full refund will be issued even if a ANIMIS Store Digital Gift Card was used as full or partial payment on the order.",
+            "A full refund will be issued even if a Enouza Store Digital Gift Card was used as full or partial payment on the order.",
             "An order can be cancelled and immediately refunded if the package has not yet begun processing for shipment. ",
-            "Once a package begins processing for shipment, it will have to be delivered to its destination and returned to ANIMIS before a refund can be issued.Please contact our Customer Service Team for more detailed information.",
+            "Once a package begins processing for shipment, it will have to be delivered to its destination and returned to Enouza before a refund can be issued.Please contact our Customer Service Team for more detailed information.",
             
 
         ]
@@ -113,7 +113,6 @@ function ReturnFAQ() {
     <Container>
       <div>
         <h2>Return</h2>
-
         <div >
           {data.map((item , index)=> {
             return (
@@ -142,7 +141,7 @@ function ReturnFAQ() {
                     {item.answer?.paragraphe?.map(item => {
                       return (
                         <div className="text" >
-                          <span> {item} </span>
+                          <p> {item} </p>
                         </div>
                       )
                     })}
@@ -175,70 +174,147 @@ function ReturnFAQ() {
 
 export default ReturnFAQ
 export const Container = styled.div`
+ 
 
-      h2{
-        
-        color:orange;
-        font-family:"arial monospace";
-        margin-left:15px;
+  h2 {
+    color: #130161;
+    margin-left: 15px;
+    font-size: 1.4rem;
+    text-decoration:underline;
+  }
 
-      }
+  ul {
+    margin-left: 20px;
+    padding-left: 20px;
+  }
 
-      
-      ul{
-        margin-left:15px;
-      }
-      li{
-        list-style-type:circle;
-        font-size:14px;
-      }
-      .text{
-        font-size:15px;
-        margin-left:15px;
-      }
-      .button-container{
-        display:flex;
-        align-items:center;
-        background:none;
-      }
-      
-      .button-container span {
-        font-weight:bold;
-        font-family:"arial";
-        font-size:15px;
-      }
-      
-      h3{
-      
-      }
+  li {
+    list-style-type: circle;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
 
-      
-        .show{
-        transition: 1s;
-        transition: all 0.5s;
-        max-height:auto;
-        
-      }
-        
-        
+  .text {
+    font-size: 15px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
 
-      
-      .content {
-        border-bottom:1px solid lightgray;
-        width:fit-content;
-        padding:15px 0; 
-        background: #fff;
-        margin-bottom:4px;
-        margin-left:15px;
-       
-      }
-      .content:last-child {
-             border-bottom:none;
-      }
-      @media only screen and (max-width: 820px) {
+  .button-container {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    justify-content: space-between;
+    font-family: "Arial", sans-serif;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
 
+  .button-container:hover {
+    background: #f9f9f9;
+  }
 
-        
-      }
-   
-`
+  .button-container span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .show {
+    transition: max-height 0.5s ease-in-out, opacity 0.5s;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+
+  .content {
+    border-bottom: 1px solid lightgray;
+    padding: 15px 0;
+    background: #fff;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .content:last-child {
+    border-bottom: none;
+  }
+
+  .arrow-icon {
+    font-size: 1.2rem;
+    color: gray;
+    margin-right: 10px;
+  }
+
+  @media only screen and (max-width: 820px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .button-container {
+      font-size: 0.95rem;
+    }
+
+    .text {
+      font-size: 14px;
+    }
+
+    li {
+      font-size: 13px;
+    }
+
+    .arrow-icon {
+      font-size: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    h2 {
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+
+    .button-container {
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+
+    .text {
+      font-size: 13px;
+    }
+
+    li {
+      font-size: 12px;
+    }
+
+    .arrow-icon {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    h2 {
+      font-size: 0.9rem;
+    }
+
+    .button-container  span{
+      font-size: 0.7rem;
+      font-weight:bolder;
+    }
+
+    .text {
+      font-size: 10px;
+    }
+
+    li {
+      font-size: 9px;
+    }
+
+    .arrow-icon {
+      font-size: 1rem;
+    }
+  }
+`;

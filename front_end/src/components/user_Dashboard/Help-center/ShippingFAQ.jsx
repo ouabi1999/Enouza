@@ -81,9 +81,9 @@ function ShippingFAQ() {
             "Upon completion of your return, a refund will be processed within 1-5 business days.",
             "After a refund has been processed, please allow 3-5 business days for Paypal refunds and 3-10 business days for all other payment methods.",
             "We will notify you via email when your refund has been issued.",
-            "A full refund will be issued even if a ANIMIS Store Digital Gift Card was used as full or partial payment on the order.",
+            "A full refund will be issued even if a Enouza Store Digital Gift Card was used as full or partial payment on the order.",
             "An order can be cancelled and immediately refunded if the package has not yet begun processing for shipment. ",
-            "Once a package begins processing for shipment, it will have to be delivered to its destination and returned to ANIMIS before a refund can be issued.Please contact our Customer Service Team for more detailed information.",
+            "Once a package begins processing for shipment, it will have to be delivered to its destination and returned to Enouza before a refund can be issued.Please contact our Customer Service Team for more detailed information.",
             
 
         ]
@@ -134,7 +134,7 @@ function ShippingFAQ() {
                     {item.answer?.paragraphe?.map(item => {
                       return (
                         <div className="text" >
-                          <span> {item} </span>
+                          <p> {item} </p>
                         </div>
                       )
                     })}

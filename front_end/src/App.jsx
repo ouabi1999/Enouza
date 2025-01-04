@@ -32,6 +32,7 @@ import TermsOfServices from "./components/polices/TermsOfServices";
 import AboutUs from "./pages/aboutUs";
 import ContactUs from "./pages/ContactUs";
 import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
+import ShippingPolicy from "./components/polices/ShippingPolicy";
 export const OrderContext = createContext();
 function App() {
    const dispatch = useDispatch()
@@ -92,6 +93,9 @@ useEffect(() => {
               <Route path = "privacy-policy"      element = {<PrivacyPolicy/>}/>
               <Route path = "terms-of-services"   element = {<TermsOfServices/>}/>
               <Route path = "return-policy"       element = {<RefundPolicy/>}/>
+              <Route path = "shipping-policy"       element = {<ShippingPolicy/>}/>
+
+
               <Route path = "help-center" element = {<HelpCenter/>}/>
         </Route>
 

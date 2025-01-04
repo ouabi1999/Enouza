@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Users
-from .models import Products
+from .models import *
 
 # Register your models here.
 class TodoAdmin(admin.ModelAdmin):
@@ -21,6 +20,9 @@ class TodoAdmin(admin.ModelAdmin):
 
     
 admin.site.register(Products)
+admin.site.register(Ratings)
+admin.site.register(AliExpressRatings)
+
     
 
 admin.site.register(Users, TodoAdmin)

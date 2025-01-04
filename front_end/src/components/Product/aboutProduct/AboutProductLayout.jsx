@@ -29,19 +29,21 @@ function AboutProductLayout() {
           Description
         </button>
       </div>
+      <div>
       {isOpen == 1 && (
         <ReviewsLayout />
         
       )}
       {isOpen == 2 && <Specifications />}
       {isOpen == 3 && <Description />}
+      </div>
     </Container>
   );
 }
 
 export default AboutProductLayout
 const Container = styled.div`
-  
+  margin:auto;
   #selected {
     border-bottom: 2px solid green;
     padding-bottom: 2px;

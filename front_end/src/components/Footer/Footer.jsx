@@ -46,7 +46,22 @@ const Footer = () => {
               </a>
             </li>
           </ul>
+          <ul className="policy">
+            <li className="text-info">Polices</li>
+            <li>
+              <Link to="terms-of-services">Terms of services</Link>
+            </li>
 
+            <li>
+              <Link to="privacy-policy"> Privacy policy </Link>
+            </li>
+            <li>
+              <Link to="shipping-policy"> Shipping policy </Link>
+            </li>
+            <li>
+              <Link to="return-policy"> Return policy </Link>
+            </li>
+          </ul>
           <ul className="social-categorie">
             <li className="text-info">Help</li>
             <li>
@@ -70,16 +85,7 @@ const Footer = () => {
             </li>
           </ul>
 
-          <ul className="policy">
-            <li className="text-info">Polices</li>
-            <li>
-              <Link to="terms-of-services">Terms of services</Link>
-            </li>
-
-            <li>
-              <Link to="privacy-policy"> Privacy policy </Link>
-            </li>
-          </ul>
+          
 
           <NewsLetter />
         </Wrapp>

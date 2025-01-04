@@ -7,9 +7,9 @@ const Specifications = () => {
   const productData = useSelector(state => state.products.productData)
 
   return (
-    <Box sx={{ p: 3, maxWidth: '1016px', margin: 'auto' }}>
+    <Box sx={{ maxWidth: '1016px', margin: 'auto' }}>
       
-      <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
+      <TableContainer component={Paper} sx={{border:"1px solid lightgray", borderRadius:"0" }}>
         <Table>
           <TableBody>
             {productData[0]?.specifications?.map((spec, index) => (

@@ -68,54 +68,90 @@ function RefundPolicy() {
 export default RefundPolicy
 
 const Container = styled.div`
-    width:90%;
-    min-height:100vh;
-    margin: 10px auto;
-    padding: 10px 15px;
-    border-radius:4px;
-    background: #D3CCE3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 90%;
+  min-height: 100vh;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
 
-    a{
-    word-break:break-all;
-    }
-
-    p{
-        font-size:13px;
-        line-height:3;
-        font-weight:600;
-    }
-
-    h3{
-        font-weight:900;
-        font-size:18px;
-        border-bottom:2px solid lightgray;
-        width:fit-content;
-        padding:5px 0;
-    }
-  
-  ol li  {
-    list-style-type: circle;
-    
-  }
-  ol li >span{
-    font-size:0.84em;
-    font-weight:normal;
-    color:#000
-
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 15px;
   }
 
-  ol li strong{
-    
-     font-size:0.86em;
-     font-weight:900;
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 10px;
   }
-      h1{
-        font-weight:900;
-        font-size:30px;
-        margin:auto;
-        display:flex;
-        justify-content:center;
-      }
-`
+`;
+
+const Title = styled.h1`
+  font-weight: 900;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
+`;
+
+const Section = styled.div`
+  margin-bottom: 20px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 15px;
+  }
+`;
+
+const Subtitle = styled.h3`
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
+`;
+
+const Text = styled.p`
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+`;
+
+const OrderedList = styled.ol`
+  padding-left: 20px;
+
+  li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 5px;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
+  }
+`;

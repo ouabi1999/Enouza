@@ -15,7 +15,8 @@ export const AliExpressRating= ({ product }) => {
       images: []
     },
     user: {
-      name: '',
+      firstName: '',
+      lastName:"",
       avatar: '',
       country: '',
       countryCode:"",
@@ -44,7 +45,6 @@ export const AliExpressRating= ({ product }) => {
         [name]: value
       }
     }));
-    console.log(formData);
   };
 
   const handleReviewInput = (e) => {
@@ -91,7 +91,7 @@ export const AliExpressRating= ({ product }) => {
         ...formData,
         stars: 0,
         review: { text: '', images: [] },
-        user: { name: '', avatar: '', country: '' }
+        user: { firstName: '', lastName:"",  avatar: '', country: '', countryCode: '' }
       });
     } catch (error) {
       toast.error('Failed to submit rating');
@@ -113,11 +113,21 @@ export const AliExpressRating= ({ product }) => {
         </FormGroup>
 
         <FormGroup>
-          <Label>Your Name</Label>
+          <Label>firstName</Label>
           <Input
             type="text"
-            name="name"
-            value={formData.user.name}
+            name="firstName"
+            value={formData.user.firstName}
+            onChange={handleUserInput}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>lastName</Label>
+          <Input
+            type="text"
+            name="lastName"
+            value={formData.user.lastName}
             onChange={handleUserInput}
             required
           />

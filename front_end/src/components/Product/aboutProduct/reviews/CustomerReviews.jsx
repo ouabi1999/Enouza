@@ -62,14 +62,14 @@ function CustomerReviews(props) {
                   </div>
 
                   <div>
-                    <span style={{ marginLeft: "4px" , fontSize:"16px"}}> {rate.user?.name.slice(0, 2) + "***" + rate.user?.name.slice(4, 6)}</span>
+                    <span style={{ marginLeft: "4px" , fontSize:"16px"}}> {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)}</span>
                   </div>
 
                   <div style={{ marginLeft: "4px" , fontSize:"14px"}}>
                     <p>{rate.review.text}</p>
                   </div>
                   <div className="img-container">
-                    {rate.review.images?.slice(0, 4)?.map((img, index) => {
+                    {rate.review?.images?.slice(0, 4)?.map((img, index) => {
                       return (
                         <img
                           key={index}
@@ -132,7 +132,7 @@ function CustomerReviews(props) {
 export default CustomerReviews;
 
 const Container = styled.div`
-    width:90%;
+    
   
 
   .person-icon {
