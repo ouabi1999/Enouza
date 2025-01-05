@@ -10,7 +10,7 @@ function PrivacyPolicy() {
   return (
     <Container>
       <HeadeSeo title = "Enouza - Privacy policy"/>
-      <div style={{marginLeft:"10px"}}>
+      
         <div>
             <h1>PRIVACY POLICY</h1>
             <p> This Privacy Policy describes how Enouza.com (the “Site” or “we”)  collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site.</p>
@@ -265,7 +265,7 @@ function PrivacyPolicy() {
         </p>
         <p>Last updated: June 15. 2022</p>
       </div>
-      </div>
+      
     </Container>
   )
 }
@@ -274,134 +274,10 @@ export default PrivacyPolicy
 
 const Container = styled.div`
   
-  width: 95%;
   max-width: 1200px;
   min-height: 100vh;
-  margin: 20px auto;
-  padding: 20px;
   border-radius: 4px;
   background: #d3cce3;
   background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
   background: linear-gradient(to right, #e9e4f0, #d3cce3);
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  h3 {
-    font-weight: 900;
-    font-size: 1.2rem;
-    border-bottom: 2px solid lightgray;
-    margin: 20px 0 10px;
-    width: fit-content;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-
-  ol {
-    margin-left: 20px;
-
-    li {
-      list-style-type: circle;
-      margin-bottom: 10px;
-
-      span {
-        font-size: 0.9rem;
-        font-weight: normal;
-        color: #000;
-      }
-
-      strong {
-        font-size: 0.9rem;
-        font-weight: 800;
-      }
-    }
-  }
-
-  a {
-    word-break: break-word;
-    color: blue;
-    text-decoration: underline;
-  }
-
-  .list {
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    padding: 15px;
-
-    h1 {
-      font-size: 1.5rem;
-    }
-
-    h3 {
-      font-size: 1rem;
-    }
-
-    p {
-      font-size: 0.9rem;
-    }
-
-    ol {
-      margin-left: 15px;
-
-      li {
-        span {
-          font-size: 0.8rem;
-        }
-
-        strong {
-          font-size: 0.85rem;
-        }
-      }
-    }
-
-    a {
-      font-size: 0.85rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 10px;
-
-    h1 {
-      font-size: 1.2rem;
-    }
-
-    h3 {
-      font-size: 0.9rem;
-    }
-
-    p {
-      font-size: 0.8rem;
-    }
-
-    ol {
-      margin-left: 10px;
-
-      li {
-        span {
-          font-size: 0.75rem;
-        }
-
-        strong {
-          font-size: 0.8rem;
-        }
-      }
-    }
-
-    a {
-      font-size: 0.75rem;
-    }
-  }
-`;
+  `

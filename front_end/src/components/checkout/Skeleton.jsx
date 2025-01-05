@@ -7,7 +7,7 @@ function SkeletonLoader() {
     <SkeletonTheme baseColor="#cccccc" >
     
     <p>
-      <Skeleton count={6} enableAnimation={true} height={50}  width={400}/>
+      <Skeleton count={6}  enableAnimation={true} height={50}/>
     </p>
     </SkeletonTheme>
   )

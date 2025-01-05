@@ -104,7 +104,6 @@ function ShippingFAQ() {
   return (
     <Container>
       <div>
-        <h2>Shipping</h2>
 
         <div >
           {data.map((item , index) => {

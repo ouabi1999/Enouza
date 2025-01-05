@@ -112,7 +112,6 @@ function ReturnFAQ() {
   return (
     <Container>
       <div>
-        <h2>Return</h2>
         <div >
           {data.map((item , index)=> {
             return (

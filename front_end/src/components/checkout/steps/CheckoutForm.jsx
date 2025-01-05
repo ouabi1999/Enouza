@@ -3,7 +3,7 @@ import {
   PaymentElement,
   useStripe,
   useElements,
-  ShippingAddressElement
+  
 } from "@stripe/react-stripe-js";
 import styled from "styled-components";
 
@@ -98,14 +98,17 @@ export default function CheckoutForm() {
      
     setIsLoading(false);
   }
-
+  const paymentElementOptions = {
+    layout: "accordion"
+  }
+ 
  
   return (
   
     <Container>
      
-        <form id="payment-form" onSubmit={handleSubmit}>
-          <PaymentElement id="payment-element" />
+        <form id="payment-form" onSubmit={handleSubmit} options={paymentElementOptions}>
+        <PaymentElement id="payment-element"  />
             <button disabled={isLoading || !stripe || !elements} id="submit">
               <span id="button-text">
                 {isLoading ? <div className="spinner" id="spinner"></div> : "Pay Now"}

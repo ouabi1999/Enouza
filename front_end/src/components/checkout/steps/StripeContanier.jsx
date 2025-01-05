@@ -16,7 +16,7 @@ import { json } from "react-router";
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
 const stripePromise = loadStripe(
-  "pk_test_51MmjNCDJSVePKF96pkaAntU5Qbfu9tgiZYGbp9OtsAWjPvQO1RogW4pnmYy9uYk2UBjyJ9YGvRTsGoOc5UijySPL00w23RXVVK"
+  "pk_live_51MmjNCDJSVePKF96sGNBrwMJuUvxbzzCTGZlhhhZrHYh36ndzSHohZfsl7y7kGt8oHgEPIIsk1VOiMvVvtrc5ZCJ005ealqUmZ"
 );
 export default function StripeContanier() {
   const [clientSecret, setClientSecret] = useState("");
@@ -67,7 +67,7 @@ export default function StripeContanier() {
           <CheckoutForm />
         </Elements>
       ) : (
-        <div style={{ padding: "0 10px" }}>
+        <div style={{ padding: "0 10px", width:"30vw", minWidth:"320px" }}>
           <SkeletonLoader />
         </div>
       )}
