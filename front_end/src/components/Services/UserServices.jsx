@@ -34,6 +34,7 @@ const Container = styled.div`
   background: #ffff;
   overflow:hidden;
   -webkit-overflow:hidden;
+  margin-left:10px;
 `;
 const Wrapp = styled.div`
 
@@ -72,7 +73,7 @@ const MinWrap = styled.div`
       font-size:99%;
     }
     }
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 420px) {
      
     /* For mobile phones: */
     span{

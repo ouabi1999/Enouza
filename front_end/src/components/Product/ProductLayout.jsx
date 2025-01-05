@@ -74,9 +74,8 @@ const ParentContainer = styled.div`
 }
 `
 const Container = styled.div`
-     
+     margin-left:15px;
     width:100%;
-    padding:20px;
     display:flex;
     justify-content:space-between;
     border-bottom:1px solid lightgray;
@@ -84,7 +83,6 @@ const Container = styled.div`
 
       &{
         flex-wrap:wrap;
-        margin:auto;
       }
     }
 
@@ -96,9 +94,7 @@ const Container = styled.div`
     @media (max-width: 924px) {
 
       &{
-        width:95%;
-        margin:auto;
-        padding:20px 0;
+        width:100%;
 
       }
 

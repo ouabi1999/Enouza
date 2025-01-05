@@ -99,6 +99,7 @@ function ProductInfo(props) {
 
 export default ProductInfo;
 const Container = styled.div`
+margin-bottom:8px;
   #activate {
     border: 1px solid blue;
   }
@@ -125,7 +126,7 @@ const Container = styled.div`
     font-weight: bold;
     white-space:wrap;
     word-wrap:wrap;
-    word-break:break-all;
+    
     width:80%;
   }
   .product-color {
@@ -187,5 +188,17 @@ const Container = styled.div`
   }
   #off{
     color:lightgray;
+  }
+  @media only screen and (max-width:420px){
+    &{
+      margin-left:5px;
+      width:100%;
+      
+
+    }
+    .product-title{
+      width:100%;
+      font-size:0.77rem;
+    }
   }
 `;

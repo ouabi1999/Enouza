@@ -143,7 +143,7 @@ const buy_Now_item = (product) => {
   }
 };
   return (
-    <>
+    <PrentContainer>
       {isLoading ? (
         <div style={{height:"75vh", display:"flex", justifyContent:"center", alignItems:"center"}}>
                 <CircularProgress style={{color:"gray", fontWeight:"bolder"}} />
@@ -205,28 +205,39 @@ const buy_Now_item = (product) => {
           )}
         </Container>
       )}
-    </>
+    </PrentContainer>
   );
 }
 
 export default HomePage;
+const PrentContainer =styled.div`
+  height: 100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+  `
 
 const Container = styled.div`
   height: 100%;
+  width:100%;
   position: relative;
   display: grid;
+  justify-content:center;
+  align-content:center;
   grid-template-areas:
-    'navBar navBar navBar navBar navBar navBar'
     'userServices userServices userServices userServices userServices userServices'
     'product product product product product  sideCart'
     'aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct sideCart'
     'buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices sideCart';
 
-  & > div {
-  }
+
  
   .item2 {
     grid-area: userServices;
+    padding:0;
+    margin:0;
   }
   .item3 {
     grid-area: product;
@@ -235,7 +246,6 @@ const Container = styled.div`
     grid-area: sideCart;
     margin-top:20px;
     width: 310px;
-    margin-right:10px;
     height:400px;
     min-width: 300px;
     position:sticky;
@@ -266,7 +276,6 @@ const Container = styled.div`
 @media (max-width: 1200px) {
   /* Your desktop/large screen styles here */
     grid-template-areas:
-    'navBar navBar navBar navBar navBar navBar'
     'userServices userServices userServices userServices userServices userServices'
     'product product product product product  product'
     "sideCart sideCart sideCart sideCart sideCart sideCart"
