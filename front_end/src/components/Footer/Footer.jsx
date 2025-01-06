@@ -22,26 +22,26 @@ const Footer = () => {
             <li className="text-info">Follow us</li>
             <li>
               <i className="fab fa-facebook-f" />
-              <a target="_blank" href="https://facebook.com/animisstore">
+              <a target="_blank" href="">
                 {" "}
                 Facebook
               </a>
             </li>
             <li>
               <i className="fab fa-instagram" />
-              <a target="_blank" href="https://www.instagram.com/an.imis">
+              <a target="_blank" href="https://www.instagram.com/en.ouza">
                 Instagram
               </a>
             </li>
             <li>
               <i className="fab fa-twitter" />
-              <a target="_blank" href="https://twitter.com/animisshop">
+              <a target="_blank" href="https://twitter.com/en_ouza">
                 Twitter
               </a>
             </li>
             <li>
               <i className="fab fa-youtube" />
-              <a target="_blank" href="https://www.youtube.com/@animisshop">
+              <a target="_blank" href="https://www.youtube.com/@enouza">
                 Tik Tok
               </a>
             </li>

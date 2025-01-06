@@ -100,10 +100,15 @@ const ProductImg = styled.div`
      img{
       width:100%;
       height:100%;
-      border-radius:6px;
+      border-radius:4px;
       
 
      }
+     @media only screen and (max-width: 500px) {
+      &{
+        border-radius:0;
+      }
+  }
 
     
 

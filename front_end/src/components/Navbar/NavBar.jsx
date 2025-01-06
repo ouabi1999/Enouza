@@ -26,6 +26,8 @@ function NavBar({ outlet }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
   const country = useSelector((state) => state.location.country);
 
   const logout = () => {
@@ -56,11 +58,11 @@ function NavBar({ outlet }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder="Search" />
+              <input placeholder="Search"  value = {searchValue} onChange={()=> setSearchValue(event.target.value)}/>
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" />
+              <SearchIcon className="search-icon" onClick={()=> setSearchValue("")} />
             </div>
           </div>
         </ClickAwayListener>
@@ -74,11 +76,11 @@ function NavBar({ outlet }) {
           </Logo>
           <SearchContainer>
             <div className="search-bar">
-              <input placeholder="Search " />
+              <input placeholder="Search " value = {searchValue} onChange={()=> setSearchValue(event.target.value)}/>
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" />
+              <SearchIcon className="search-icon" onClick={()=> setSearchValue("")} />
             </div>
           </SearchContainer>
         </ChildContainer>
@@ -139,8 +141,7 @@ function NavBar({ outlet }) {
 export default NavBar;
 const ParentContainer = styled.div`
   position: relative;
-  width: calc(100% - 20px);
-
+  width:100%;
   .search-container {
     display: none;
     align-items: center;
@@ -199,7 +200,6 @@ const Container = styled.div`
   align-items: center;
   height: 40px;
   padding: 10px;
-  width: 100%;
   max-width: 1920px;
   min-width: 320px;
   background: #141414;

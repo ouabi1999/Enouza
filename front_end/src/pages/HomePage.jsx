@@ -217,6 +217,7 @@ const PrentContainer =styled.div`
   justify-content:center;
   align-items:center;
   
+  
   `
 
 const Container = styled.div`
@@ -244,18 +245,19 @@ const Container = styled.div`
   }
   .item4 {
     grid-area: sideCart;
-    margin-top:20px;
     width: 310px;
     height:400px;
     min-width: 300px;
     position:sticky;
     top:75px;
+    margin-right:10px;
+    margin-top:5px;
     
   }
   .item5 {
     grid-area: aboutProduct;
     margin-top:15px;
-    padding:0 20px
+    padding:0 10px
   }
   
 /* Mobile Devices */
@@ -285,7 +287,7 @@ const Container = styled.div`
       
        margin:auto;
        position:static;
-       width: 90vw;
+       width: 90%;
        min-width:300px;
        max-width:924px;
     

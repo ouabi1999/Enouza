@@ -43,10 +43,8 @@ function AboutProductLayout() {
 
 export default AboutProductLayout
 const Container = styled.div`
-  margin:auto;
   #selected {
     border-bottom: 2px solid green;
-    padding-bottom: 2px;
     animation-name: border-movement;
     animation-duration: 0.1s;
   }
@@ -82,6 +80,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   .buttons-container button:hover {
+     color:gray;
   }
   @media only screen and (max-width: 550px) {
 

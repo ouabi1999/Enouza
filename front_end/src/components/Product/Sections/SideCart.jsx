@@ -221,7 +221,7 @@ const Container = styled.div`
     border: none;
     cursor: pointer;
     padding: 10px 5px;
-    border-radius: 6px;
+    border-radius: 4px;
     background: #055bfc;
     color: #fff;
     font-weight: bold;
@@ -231,7 +231,7 @@ const Container = styled.div`
     border: none;
     cursor: pointer;
     padding: 10px 5px;
-    border-radius: 6px;
+    border-radius: 4px;
     background: #252525;
     color: #fff;
     font-weight: bold;
@@ -288,13 +288,21 @@ const Container = styled.div`
     border: none;
     border-radius: 50%;
     padding: 5px;
-    width: 33px;
-    height: 33px;
+    width: 30px;
+    height: 30px;
     margin: 0 10px;
     cursor: pointer;
   }
   .quantity-container span:nth-child(1) {
     font-size: 0.8rem;
     color: #5e5c5c;
+  }
+  @media only screen and (max-width: 500px) {
+    .add-button, .buy-button {
+      font-size:12px;
+      padding: 8px 4px;
+      width:76px;
+                
+      }
   }
 `;

@@ -127,7 +127,7 @@ margin-bottom:8px;
     white-space:wrap;
     word-wrap:wrap;
     
-    width:80%;
+    width:95%;
   }
   .product-color {
     display: flex;

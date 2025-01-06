@@ -60,21 +60,22 @@ export default Product
 const ParentContainer = styled.div`
       display:flex;
       justify-content:center;
-      
-      width:100%;
       max-width:1920px;
       min-width:320px;
       margin-bottom:20px;
-     
-      @media only screen and (max-width: 835px) {
+      padding:0 10px;
+      @media (max-width: 480px) {
 
 &{
-  margin:auto;
+  padding:0 2px;
+
 }
+
 }
+
+      
 `
 const Container = styled.div`
-     margin-left:15px;
     width:100%;
     display:flex;
     justify-content:space-between;

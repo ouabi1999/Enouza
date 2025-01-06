@@ -15,7 +15,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 const BorderLinearProgress = styles(LinearProgress)(({ theme }) => ({
     height: 6,
     maxWidth:"265px",
-    width:"25vw",
+    width:"30%",
     minWidth:"150px",
    
     
@@ -152,6 +152,9 @@ function Ratings(props) {
 export default Ratings
 
 const Container = styled.div`
+  width:90%;
+  margin:auto;
+  padding:10px;
   border-bottom: 1px solid lightgray;
 
   .user-name {

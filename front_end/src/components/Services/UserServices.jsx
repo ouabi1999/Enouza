@@ -34,7 +34,7 @@ const Container = styled.div`
   background: #ffff;
   overflow:hidden;
   -webkit-overflow:hidden;
-  margin-left:10px;
+  margin-bottom:10px;
 `;
 const Wrapp = styled.div`
 

@@ -74,7 +74,7 @@ function SideBar(props) {
       </Wrapper>
       <h4>Follow us</h4>
       <SocialMedia>
-        <a rel="noreferrer" target="_blank" href="https://facebook.com/enouza">
+        <a rel="noreferrer" target="_blank" href="https://www.facebook.com/profile.php?id=61571681156358">
           <FacebookIcon className="social-icon" />
         </a>
         <a
@@ -87,11 +87,11 @@ function SideBar(props) {
         <a
           rel="noreferrer"
           target="_blank"
-          href="https://www.instagram.com/enouza"
+          href="https://www.instagram.com/en.ouza"
         >
           <InstagramIcon className="social-icon" />
         </a>
-        <a rel="noreferrer" target="_blank" href="https://twitter.com/enouza">
+        <a rel="noreferrer" target="_blank" href="https://twitter.com/en_ouza">
           <TwitterIcon className="social-icon" />
         </a>
       </SocialMedia>
