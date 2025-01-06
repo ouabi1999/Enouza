@@ -218,7 +218,7 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 615px) {
     img {
-      width: 25vw;
+      width: 20vw;
       max-width: 120px;
     }
   }

@@ -46,6 +46,9 @@ const Container = styled.div`
     margin-right:22px;
     padding:5px;
     margin-bottom:10px;
+    max-height:480px;
+  
+
     #activate {
     border: 1px solid blue;
     
@@ -72,9 +75,10 @@ const ImageDetailsContainer = styled.div`
     max-width:50px;
     
      img{
-      width:50px;;
+      width:50px;
+      height:50px;
+      
       border:1px solid lightgray;
-      height:auto;
       border-radius:4px;
       cursor:pointer;
      }
@@ -101,7 +105,8 @@ const ProductImg = styled.div`
       width:100%;
       height:100%;
       border-radius:4px;
-      
+      object-fit:cover;
+
 
      }
      @media only screen and (max-width: 500px) {
