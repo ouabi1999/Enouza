@@ -99,6 +99,8 @@ function ProductInfo(props) {
 
 export default ProductInfo;
 const Container = styled.div`
+    padding:5px;
+
 margin-bottom:8px;
   #activate {
     border: 1px solid blue;
