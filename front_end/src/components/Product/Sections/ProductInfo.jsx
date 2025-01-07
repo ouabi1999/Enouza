@@ -191,7 +191,6 @@ margin-bottom:8px;
   }
   @media only screen and (max-width:420px){
     &{
-      margin-left:5px;
       width:100%;
       
 
