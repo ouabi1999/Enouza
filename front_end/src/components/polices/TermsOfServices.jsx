@@ -188,11 +188,10 @@ function TermsOfServices() {
 
 export default TermsOfServices
 const Container = styled.div`
-  width: 90%;
+  width: calc(100% - 30px);
   min-height: 100vh;
   margin: 10px auto;
   padding: 10px 15px;
-  border-radius: 4px;
   background: #d3cce3; /* Fallback for old browsers */
   background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #e9e4f0, #d3cce3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -232,14 +231,10 @@ const Container = styled.div`
   }
 
   /* Media Queries for Responsiveness */
-  @media (max-width: 1200px) {
-    width: 85%;
-    padding: 10px;
-  }
+ 
 
   @media (max-width: 992px) {
-    width: 95%;
-    padding: 8px;
+   
     
     h2 {
       font-size: 2.2rem;

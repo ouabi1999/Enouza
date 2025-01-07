@@ -273,10 +273,10 @@ function PrivacyPolicy() {
 export default PrivacyPolicy
 
 const Container = styled.div`
-  
-  max-width: 1200px;
+  width: calc(100% - 30px);
   min-height: 100vh;
-  border-radius: 4px;
+  margin: 10px auto;
+  padding: 10px 15px;
   background: #d3cce3;
   background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
   background: linear-gradient(to right, #e9e4f0, #d3cce3);

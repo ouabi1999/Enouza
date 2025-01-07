@@ -197,7 +197,7 @@ margin-bottom:8px;
 
     }
     .product-title{
-      width:100%;
+      width:95%;
       font-size:0.77rem;
     }
   }

@@ -68,22 +68,13 @@ function RefundPolicy() {
 export default RefundPolicy
 
 const Container = styled.div`
-  width: 90%;
+  width: calc(100% - 30px);
   min-height: 100vh;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
+  margin: 10px auto;
+  padding: 10px 15px;
   background: linear-gradient(to right, #E9E4F0, #D3CCE3);
 
-  @media (max-width: 768px) {
-    width: 95%;
-    padding: 15px;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    padding: 10px;
-  }
+  
 `;
 
 const Title = styled.h1`

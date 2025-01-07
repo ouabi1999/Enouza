@@ -46,22 +46,14 @@ export default ShippingPolicy;
 
 // Styled Components
 const Container = styled.div`
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
+  width: calc(100% - 30px);
+  min-height: 100vh;
+  margin: 10px auto;
+  padding: 10px 15px;
   background: linear-gradient(to right, #e9e4f0, #d3cce3);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 768px) {
-    width: 95%;
-    padding: 15px;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    padding: 10px;
-  }
+ 
 `;
 
 const Title = styled.h1`

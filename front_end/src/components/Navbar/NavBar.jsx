@@ -87,7 +87,7 @@ function NavBar({ outlet }) {
         <Wrapper>
           <div className="search-icon-container-responsive">
             <SearchIcon
-              onClick={() => setIsSearchInputOpen(!isSearchInputOpen)}
+              onClick={() => setIsSearchInputOpen(true)}
               className="search-icon-responsive"
             />
           </div>

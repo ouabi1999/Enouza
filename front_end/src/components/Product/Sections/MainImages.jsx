@@ -46,7 +46,6 @@ const Container = styled.div`
     margin-right:22px;
     padding:5px;
     margin-bottom:10px;
-    max-height:480px;
   
 
     #activate {
@@ -86,6 +85,7 @@ const ImageDetailsContainer = styled.div`
      @media only screen and (max-width: 500px) {
       &{
         flex-direction:row;
+        flex-wrap:wrap;
         width:100%;
         max-width:100%;
         margin-right:0;
@@ -105,7 +105,6 @@ const ProductImg = styled.div`
       width:100%;
       height:100%;
       border-radius:4px;
-      object-fit:cover;
 
 
      }
