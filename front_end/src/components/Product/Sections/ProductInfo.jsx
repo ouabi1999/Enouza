@@ -193,12 +193,12 @@ margin-bottom:8px;
   }
   @media only screen and (max-width:420px){
     &{
-      width:100%;
+      width:calc(100%- 10px);
       
 
     }
     .product-title{
-      width:95%;
+      width:calc(95% - 10px);
       font-size:0.77rem;
     }
   }
