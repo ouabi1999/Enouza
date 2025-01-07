@@ -10,14 +10,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import axios from 'axios';
 import HeadeSeo from '../../../common/HeadeSeo';
-import productData from '../../../common/data.json'
 
 function ShoppingCart() {
   const dispatch = useDispatch()
   const [products, setProducts] = useState([])
   const cartItems =  useSelector((state) => state.cart.cartItems)
   const [isLoading, setIsLoading] = useState(false)
-
+  const productData = useSelector((state) => state.products.productData)
   useLayoutEffect(() => {
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -31,7 +30,7 @@ function ShoppingCart() {
   const updateCart = (products) => {
       
       const newCart = cartItems.filter((item) =>
-        productData.some((product) => product.id === item.id)
+        productData[0].some((product) => product.id === item.id)
       );
       window.localStorage.setItem("cartItems", JSON.stringify(newCart))
       dispatch(setCartItems(newCart))
@@ -94,7 +93,7 @@ function ShoppingCart() {
 
                               <div className="delete-button">
                                 <button onClick={() => dispatch(removeFromCart(index))}>
-                                {productData.id === item.id &&(
+                                {productData[0]?.id === item.id &&(
                                       <DeleteIcon />
                                 )}
                                 </button>

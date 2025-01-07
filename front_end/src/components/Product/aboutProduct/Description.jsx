@@ -26,6 +26,10 @@ const Container = styled.div`
     width:45%;
     margin-right:4px;
   }
+  ul,
+li {
+    list-style: initial;
+}
   
 
 `

@@ -88,6 +88,10 @@ const Container = styled.div`
       font-size: 0.8rem;
      
     }
+    &{
+      margin:auto;
+       width:90%;
+    }
   }
   @media only screen and (max-width: 400px) {
 

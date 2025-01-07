@@ -71,7 +71,7 @@ function NavBar({ outlet }) {
         <ChildContainer>
           <Logo>
             <Link to="/">
-              <img width="100vw" src="../Asset 4.png" alt="" />
+              <img width="100vw" src="../Asset 10.svg" alt="" />
             </Link>
           </Logo>
           <SearchContainer>
