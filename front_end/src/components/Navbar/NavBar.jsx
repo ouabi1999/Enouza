@@ -301,8 +301,12 @@ const Wrapper = styled.div`
   }
 `;
 const Logo = styled.div`
-  display: flex;
-  justify-content: space-between;
+   @media only screen and (max-width: 650px) {
+    /* For mobile phones: */
+    &{
+      margin-top:4px;
+    }
+  }
 `;
 const SearchContainer = styled.div`
   display: flex;
