@@ -5,16 +5,9 @@ from django.urls import path, include
 from . import views
 from django.views.generic import TemplateView
 from .apiViews import authView, stripeChechout, productView , ordersView, chatView
-from .apiViews.sitemap import StaticSitemap, ProductSitemap
-from django.contrib.sitemaps.views import sitemap
 
-sitemaps = {
-    'static': StaticSitemap,
-    'products': ProductSitemap,
-}
 urlpatterns = [
-        path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-
+    
     path("index", views.index, name="mainView" ),
     path('register/', authView.RegisterView.as_view(), name='register'),
     path('login/', authView.LoginView.as_view(), name='login'),

@@ -6,10 +6,9 @@ function HeadeSeo({title, description, product}) {
     <Helmet>
         <title>{title}</title>
         <meta name="description" data-hr="true"
-            content={description}
+            content={product?.description}
         />
-       <h1>{product?.name}</h1>
-       <p>{product?.description}</p>
+      
        
     </Helmet>
   )
