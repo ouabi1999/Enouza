@@ -142,7 +142,8 @@ function HomePage() {
     }
   };
   return (
-    <HeadeSeo title="Enouza" product={productData[0]}>
+    <>
+    <HeadeSeo title="Enouza" product={productData[0]}/>
       <PrentContainer>
         {isLoading ? (
           <div
@@ -211,7 +212,8 @@ function HomePage() {
           </Container>
         )}
       </PrentContainer>
-    </HeadeSeo>
+      </>
+    
   );
 }
 
