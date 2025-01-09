@@ -18,7 +18,7 @@ function ProductInfo(props) {
         <div className="product-discount-percent" >
           <span>
             {" "}
-            {((productData?.price / productData?.discount) * 100).toFixed(0)}%
+            {(((productData?.discount - productData?.price) / productData?.discount) * 100).toFixed(0)}%
           </span>
         </div>
       </div>
