@@ -12,6 +12,7 @@ import PopUpShoppingMethod from './PopUpShoppingMethod';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../../features/cartSlice';
 import { setLocation } from '../../../features/locationSlice';
+import { ClickAwayListener } from '@mui/material';
 
 function SideCart(props) {
     const {isOpen, setIsOpen} = useState(false)
@@ -25,6 +26,8 @@ function SideCart(props) {
    const {
     shippingInfo,
     addQuantity,
+    maxOrderWorning,
+    setMaxOrderWorning,
     subtractQuantity,
     quantity,
     add_item_to_cart,
@@ -147,7 +150,20 @@ function SideCart(props) {
           <div>
             <span>{productData[0]?.quantity - quantity} available</span>
           </div>
+          
+          <ClickAwayListener
+          mouseEvent="onMouseDown"
+          touchEvent="onScroll"
+          onClickAway={()=> setMaxOrderWorning(false)}
+          
+          >
+            <span className={maxOrderWorning ? "max-order-warning":"not-show"}>
+              You have reached the maximum order limit
+              </span>
+        </ClickAwayListener>
+      
         </div>
+        
         <div>
           <div className="button-container">
             <button className="buy-button" onClick={()=> buy_Now_item(productData[0])}> Buy now</button>
@@ -305,4 +321,24 @@ const Container = styled.div`
                 
       }
   }
+  .not-show {
+    display: none;
+  }
+  .max-order-warning {
+    display: block;
+    color: #f73939;
+    font-size: 0.8rem;
+    animation-name: warning;
+    animation-duration: 250ms;  
+    transition:all 250ms ease-in;   
+  
+  @keyframes warning {
+    from {
+      font-size: 0.1rem;
+    }
+    to {
+      font-size: 0.8rem;
+    }
+  }
+}
 `;

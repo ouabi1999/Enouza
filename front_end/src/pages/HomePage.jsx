@@ -77,19 +77,18 @@ function HomePage({setRetry , retry}) {
   };
 
   const addQuantity = () => {
-    if (quantity < productData.quantity && quantity < 5) {
+    if (quantity < productData[0].quantity && quantity < 5) {
       setQuantity(quantity + 1);
     } else {
       setMaxOrderWorning(true);
     }
-    setTimeout(() => {
-      setMaxOrderWorning(false);
-    }, 5000);
+   
   };
 
   const subtractQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+      setMaxOrderWorning(false);
     }
   };
 
@@ -221,6 +220,8 @@ function HomePage({setRetry , retry}) {
                     subtractQuantity={subtractQuantity}
                     setIsPopUpShippingOpen={setIsPopUpShippingOpen}
                     isPopUpShippingOpen={isPopUpShippingOpen}
+                    maxOrderWorning={maxOrderWorning}
+                    setMaxOrderWorning = {setMaxOrderWorning}
                     countryCode={countryCode}
                     shippingInfo={shippingInfo}
                     setCountryCode={setCountryCode}

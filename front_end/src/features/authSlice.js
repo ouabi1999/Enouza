@@ -47,11 +47,10 @@ export const authSlice = createSlice({
 
       setLogout(state, action) {
         const data = action.payload
-        console.log(action.payload)
-        console.log(window.localStorage.getItem("refresh_token"))
         if(data.status === 200){
           window.localStorage.removeItem("access_token")
           window.localStorage.removeItem("refresh_token")
+          window.location.reload()
         }
        
 
