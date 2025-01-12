@@ -22,26 +22,26 @@ const Footer = () => {
             <li className="text-info">Follow us</li>
             <li>
               <i className="fab fa-facebook-f" />
-              <a target="_blank" href="">
+              <a rel="noreferrer" target="_blank" href="https://www.facebook.com/profile.php?id=61571681156358">
                 {" "}
                 Facebook
               </a>
             </li>
             <li>
               <i className="fab fa-instagram" />
-              <a target="_blank" href="https://www.instagram.com/en.ouza">
+              <a rel="noreferrer" target="_blank" href="https://www.instagram.com/en.ouza">
                 Instagram
               </a>
             </li>
             <li>
               <i className="fab fa-twitter" />
-              <a target="_blank" href="https://twitter.com/en_ouza">
+              <a rel="noreferrer" target="_blank" href="https://twitter.com/en_ouza">
                 Twitter
               </a>
             </li>
             <li>
-              <i className="fab fa-youtube" />
-              <a target="_blank" href="https://www.youtube.com/@enouza">
+              <i className="fab fa-tiktok" />
+              <a rel="noreferrer" target="_blank" href="https://www.tiktok.com/@en.ouza">
                 Tik Tok
               </a>
             </li>

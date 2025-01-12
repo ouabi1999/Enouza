@@ -24,7 +24,7 @@ export const products_Slice = createSlice({
        nextStart : 0,
        totalProducts : 0,
        isLoading : true,
-       hasError  :false,
+       hasError  : false,
        isProductsLoaded: null,
        
    },
@@ -48,14 +48,16 @@ export const products_Slice = createSlice({
         builder
         .addCase(getProduct.pending, (state, action) => {
             state.isLoading = true;
+            state.hasError = false;
         })
         .addCase(getProduct.rejected, (state, action) => {
             state.isLoading = false;
-            state.hasError = action.error.message;
+            state.hasError = true;
       })
       .addCase(getProduct.fulfilled, (state, action) => {
         state.productData = action.payload;
         state.isLoading = false;
+        state.hasError = false;
 
       });
       

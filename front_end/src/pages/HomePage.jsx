@@ -19,7 +19,7 @@ import Skeleton from "@mui/material/Skeleton";
 import CircularProgress from "@mui/material/CircularProgress";
 import HeadeSeo from "../../common/HeadeSeo";
 
-function HomePage() {
+function HomePage({setRetry , retry}) {
   const isAuth = window.localStorage.getItem("access_token");
   const [quantity, setQuantity] = useState(1);
   const [isPopUpShippingOpen, setIsPopUpShippingOpen] = useState(false);
@@ -35,6 +35,8 @@ function HomePage() {
   const [maxOrderWorning, setMaxOrderWorning] = useState(false);
   const isLoading = useSelector((state) => state.products.isLoading);
   const productData = useSelector((state) => state.products.productData);
+  const hasError = useSelector((state) => state.products.hasError);
+
 
   const [shippingInfo, setShippingInfo] = useState({
     date1: "sun Dec 22 2024",
@@ -122,6 +124,7 @@ function HomePage() {
     );
   };
 
+  
   const buy_Now_item = (product) => {
     if (isAuth) {
       navigate("/checkout");
@@ -143,77 +146,108 @@ function HomePage() {
   };
   return (
     <>
-    <HeadeSeo title="Enouza" product={productData[0]}/>
-      <PrentContainer>
-        {isLoading ? (
-          <div
+      {hasError ? (
+        <div
+          style={{
+            height: "70vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <span style={{color:"gray"}}>Opps an error accourd</span>
+
+          <button
             style={{
-              height: "75vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              fontWeight: "bolder",
+              background: "lightgray",
+              padding: "10px 20px",
+              borderRadius: "4px",
             }}
+            onClick={() => setRetry(!retry)}
           >
-            <CircularProgress style={{ color: "gray", fontWeight: "bolder" }} />
-          </div>
-        ) : (
-          <Container>
-            <div className="item2">
-              <UserServices />
-            </div>
+            Retry
+          </button>
+        </div>
+      ) : (
+        <>
+          <HeadeSeo title="Enouza" product={productData[0]} />
+          <PrentContainer>
+            {isLoading ? (
+              <div
+                style={{
+                  height: "70vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress
+                size={30}
+                  
+                />
+              </div>
+            ) : (
+              <Container>
+                <div className="item2">
+                  <UserServices />
+                </div>
 
-            <div className="item3">
-              <ProductLayout
-                quantity={quantity}
-                shippingInfo={shippingInfo}
-                checkboxChange={checkboxChange}
-                picsDetailsIndex={picsDetailsIndex}
-                colorIndex={colorIndex}
-                selectPicsDetails={selectPicsDetails}
-                isColorActive={isColorActive}
-                isPicsDetailsActive={isPicsDetailsActive}
-                deselectPicsDetails={deselectPicsDetails}
-                setColorIndex={setColorIndex}
-                sizeIndex={sizeIndex}
-                selectSize={selectSize}
-                selectColor={selectColor}
-              />
-            </div>
+                <div className="item3">
+                  <ProductLayout
+                    quantity={quantity}
+                    shippingInfo={shippingInfo}
+                    checkboxChange={checkboxChange}
+                    picsDetailsIndex={picsDetailsIndex}
+                    colorIndex={colorIndex}
+                    selectPicsDetails={selectPicsDetails}
+                    isColorActive={isColorActive}
+                    isPicsDetailsActive={isPicsDetailsActive}
+                    deselectPicsDetails={deselectPicsDetails}
+                    setColorIndex={setColorIndex}
+                    sizeIndex={sizeIndex}
+                    selectSize={selectSize}
+                    selectColor={selectColor}
+                  />
+                </div>
 
-            <div className="item4">
-              <SideCart
-                quantity={quantity}
-                setQuantity={setQuantity}
-                addQuantity={addQuantity}
-                subtractQuantity={subtractQuantity}
-                setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                isPopUpShippingOpen={isPopUpShippingOpen}
-                countryCode={countryCode}
-                shippingInfo={shippingInfo}
-                setCountryCode={setCountryCode}
-                add_item_to_cart={add_item_to_cart}
-                buy_Now_item={buy_Now_item}
-                shippingMethodIndex={shippingMethodIndex}
-              />
-            </div>
-            <div className="item5">
-              <AboutProductLayout />
-            </div>
+                <div className="item4">
+                  <SideCart
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                    addQuantity={addQuantity}
+                    subtractQuantity={subtractQuantity}
+                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
+                    isPopUpShippingOpen={isPopUpShippingOpen}
+                    countryCode={countryCode}
+                    shippingInfo={shippingInfo}
+                    setCountryCode={setCountryCode}
+                    add_item_to_cart={add_item_to_cart}
+                    buy_Now_item={buy_Now_item}
+                    shippingMethodIndex={shippingMethodIndex}
+                  />
+                </div>
+                <div className="item5">
+                  <AboutProductLayout />
+                </div>
 
-            {isPopUpShippingOpen && (
-              <PopUpShoppingMethod
-                setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                isPopUpShippingOpen={isPopUpShippingOpen}
-                checkboxChange={checkboxChange}
-                shippingMethodIndex={shippingMethodIndex}
-                shippingInfo={shippingInfo}
-              />
+                {isPopUpShippingOpen && (
+                  <PopUpShoppingMethod
+                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
+                    isPopUpShippingOpen={isPopUpShippingOpen}
+                    checkboxChange={checkboxChange}
+                    shippingMethodIndex={shippingMethodIndex}
+                    shippingInfo={shippingInfo}
+                  />
+                )}
+              </Container>
             )}
-          </Container>
-        )}
-      </PrentContainer>
-      </>
-    
+          </PrentContainer>
+        </>
+      )}
+    </>
   );
 }
 

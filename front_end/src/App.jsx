@@ -38,6 +38,7 @@ function App() {
    const dispatch = useDispatch()
    const cartItems = useSelector(state=> state.cart.cartItems)
    const [newArrivalsProducts, setNewArrivalsProducts] = useState([])
+   const [retry, setRetry] = useState(false)
     const [formData, setFormData ] = useState({
       firstName: "",
       lastName:"",
@@ -60,10 +61,11 @@ function App() {
   });
  
 
-useEffect(() => {
-    dispatch(getProduct())
+
+  useEffect(() => {
     dispatch(getUser())
-  }, []);
+     dispatch(getProduct())
+  }, [retry]);
   return (
     <OrderContext.Provider value={{  formData, setFormData}}>
 
@@ -82,7 +84,7 @@ useEffect(() => {
             path="/"
             element={
               <>
-                <HomePage /> 
+                <HomePage  setRetry = {setRetry} retry = {retry} /> 
                 <BuyerTrustServices />
               </>
             }
