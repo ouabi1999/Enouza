@@ -125,7 +125,7 @@ function HomePage({setRetry , retry}) {
 
   
   const buy_Now_item = (product) => {
-    if (isAuth) {
+  
       navigate("/checkout");
       dispatch(
         buyNowItem({
@@ -139,9 +139,7 @@ function HomePage({setRetry , retry}) {
           index: index,
         })
       );
-    } else {
-      navigate("/auth");
-    }
+    
   };
   return (
     <>

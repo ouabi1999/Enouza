@@ -27,21 +27,18 @@ function Steps() {
       }
 
     const onSubmit=() => {
-        if(isAuth){
+  
             setActiveStepIndex(activeStepIndex + 1);
             setFormData({...formData, userId:user.id})
            
-            }
-        else{
-          setsignInMessage("You have to sign-in first to continue")
-        }
+          
        
         
       }
     let stepContent;
     switch (activeStepIndex) {
       case 0:
-        stepContent = !isAuth ? navigate("/auth") : <LogendIn/>;
+        stepContent = !isAuth ? <div> Checkout as guest. No login required.</div>: <LogendIn/>;
         break;
       case 1:
         
@@ -65,9 +62,7 @@ function Steps() {
         {activeStepIndex === 0 &&(
           <button  className='button' onClick={onSubmit}>Next</button>
         )}
-        {signInMessage && user == null&&(
-          <span>{signInMessage}</span>
-        )}
+        
        
     </Container>
     )

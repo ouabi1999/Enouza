@@ -39,7 +39,6 @@ class OrderSerializer(serializers.ModelSerializer):
             except json.JSONDecodeError:
                 raise serializers.ValidationError({"ordered_items": "Invalid format for ordered_items"})
             
-        print(validated_data)
         address_data = validated_data.pop("address")
         # Create address
         address = Address.objects.create(**address_data)

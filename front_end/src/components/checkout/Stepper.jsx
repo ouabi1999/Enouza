@@ -20,12 +20,12 @@ function Stepper() {
     <Container>
        <Wraper>
         <div className='stepper-item'>
-            <h5> Sign in </h5>
+            <h5> Log in </h5>
         </div>
         <div className="flex-auto border-t-2"></div>
    
         <div className='stepper-item'>
-            <h5> Address </h5>
+            <h5>Billing </h5>
         </div>
         <div className="flex-auto border-t-2"></div>
         <div className='stepper-item' >

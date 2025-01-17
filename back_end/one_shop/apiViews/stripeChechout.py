@@ -93,7 +93,6 @@ class StripeWebhookView(APIView):
         payload = request.body
         sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
         event = None
-
         # Verify the event by constructing it with Stripe's webhook
         try:
             event = stripe.Webhook.construct_event(

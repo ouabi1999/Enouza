@@ -15,9 +15,8 @@ import { json } from "react-router";
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
-const stripePromise = loadStripe(
-  "pk_live_51MmjNCDJSVePKF96sGNBrwMJuUvxbzzCTGZlhhhZrHYh36ndzSHohZfsl7y7kGt8oHgEPIIsk1VOiMvVvtrc5ZCJ005ealqUmZ"
-);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
+
 export default function StripeContanier() {
   const [clientSecret, setClientSecret] = useState("");
   const [isLoading, setIsLoading] = useState(false);

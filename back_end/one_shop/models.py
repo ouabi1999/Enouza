@@ -110,7 +110,7 @@ class Orders(models.Model):
     payment_method = models.CharField(max_length=50)
     ordered_at = models.DateField(auto_now_add=True)
     # Association to User
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders", blank=True, null=True)
 
 
     def __str__(self):

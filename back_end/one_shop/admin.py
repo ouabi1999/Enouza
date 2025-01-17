@@ -20,6 +20,7 @@ class TodoAdmin(admin.ModelAdmin):
 
     
 admin.site.register(Products)
+admin.site.register(Orders)
 admin.site.register(Ratings)
 admin.site.register(AliExpressRatings)
 

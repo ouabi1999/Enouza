@@ -10,12 +10,9 @@ function ProductSubtotal(props) {
     const location = window.locationbar
     const navigateTo = ()=>{
      
-        if (auth){
+
             navigate("/checkout")
-        }
-        else{
-            navigate("/auth")
-        }
+        
     }
   return (
         <Container>
