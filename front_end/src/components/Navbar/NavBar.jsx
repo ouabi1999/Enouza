@@ -66,7 +66,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" onClick={()=> handleSearchInput()} />
+              <SearchIcon className="search-icon" onClick={handleSearchInput} />
             </div>
           </div>
         </ClickAwayListener>
@@ -84,7 +84,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" onClick={()=> handleSearchInput()}/>
+              <SearchIcon className="search-icon" onClick={handleSearchInput}/>
             </div>
           </SearchContainer>
         </ChildContainer>
