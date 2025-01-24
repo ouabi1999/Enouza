@@ -127,71 +127,58 @@ export default Footer
 
 
 const Container = styled.div`
-    width:calc(100% - 20px); 
-    background:#e3e3e4;
-    padding:0px 10px;
-    position:relative;
-    
-    
-    .payment-methods-image{
-      margin-left:35px;
-      width:50vw;
-      max-width:360px;
-      min-width:320px;
+  width: calc(100% - 20px);
+  background: #e3e3e4;
+  padding: 0px 10px;
+  position: relative;
 
-      img{
-        width:100%;
-        height:auto;
-        object-fit:contain;
-      }
-    }
+  .payment-methods-image {
+    margin-left: 35px;
+    width: 50vw;
+    max-width: 360px;
+    min-width: 320px;
 
-    .CopyRight{
-        display:flex;
-        align-items:center;
-        span{
-      font-size:14px;
-      color:#000000;
-      margin-left:4px;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
-        
-      }
-    
-    
-    .copy-icon{
-       font-size:15px;
-       margin-top:2px;
-       margin-left:4px;
-    }
-    .CopyRight div{
-      color:#000000;
-    
-    }
-    
-    @media only screen and (max-width: 700px) {
-       
-  .CopyRight{
-        margin-bottom:10px;
-      
-        
-      }
-      .payment-methods-image{
-      margin-left:0;
+  }
 
-      
+  .CopyRight {
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 14px;
+      color: #000000;
+      margin-left: 4px;
     }
+  }
 
-}
-@media only screen and (max-width: 400px) {
-  
-  .CopyRight{
-        margin-bottom:10px;
-        font-size:12px;
-        
-      }
+  .copy-icon {
+    font-size: 15px;
+    margin-top: 2px;
+    margin-left: 4px;
+  }
+  .CopyRight div {
+    color: #000000;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .CopyRight {
+      margin-bottom: 10px;
     }
-
-`
+    .payment-methods-image {
+      margin-left: 0;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .CopyRight {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+  }
+`;
 const Wrapp = styled.div`
      display:grid;
      grid-template-columns: repeat(4, auto);
@@ -226,7 +213,7 @@ const Wrapper = styled.div`
   a{
       color:#4d4a4a;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       line-height: 1;
     
     }
@@ -236,9 +223,8 @@ const Wrapper = styled.div`
     
     .text-info{
       font-weight: bold;
-      font-size:20px;
+      font-size:15px;
       color:black;
-      text-transform:uppercase;
     
     }
     

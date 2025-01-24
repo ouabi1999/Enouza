@@ -13,7 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SideBar from "./SideBar";
 import { ClickAwayListener } from "@mui/material";
 
-function NavBar({ outlet }) {
+function NavBar({ outlet, setSearchValue, value }) {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const isAuth = window.localStorage.getItem("refresh_token");
   const refresh_token = window.localStorage.getItem("refresh_token");
@@ -26,7 +26,6 @@ function NavBar({ outlet }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
 
   const country = useSelector((state) => state.location.country);
 
@@ -48,6 +47,11 @@ function NavBar({ outlet }) {
   const hideSideBarMenu = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
+
+  const handleSearchInput = (e)=>{
+    setSearchValue(e.target.value)
+    navigate("/search")
+  }
   return (
     <ParentContainer>
       {isSearchInputOpen && (
@@ -58,11 +62,11 @@ function NavBar({ outlet }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder="Search"  value = {searchValue} onChange={()=> setSearchValue(event.target.value)}/>
+              <input placeholder="Search"  value = {value} onChange={()=> setSearchValue(event.target.value)} maxlength="100"/>
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" onClick={()=> setSearchValue("")} />
+              <SearchIcon className="search-icon" onClick={()=> handleSearchInput()} />
             </div>
           </div>
         </ClickAwayListener>
@@ -71,16 +75,16 @@ function NavBar({ outlet }) {
         <ChildContainer>
           <Logo>
             <Link to="/">
-              <img width="100vw" src="../Asset 10.svg" alt="" />
+              <img width="90vw" src="../Asset 10.svg" alt="" />
             </Link>
           </Logo>
           <SearchContainer>
             <div className="search-bar">
-              <input placeholder="Search " value = {searchValue} onChange={()=> setSearchValue(event.target.value)}/>
+              <input placeholder="Search " value = {value} onChange={()=> setSearchValue(event.target.value)} maxlength="50"/>
             </div>
 
             <div className="search-icon-container">
-              <SearchIcon className="search-icon" onClick={()=> setSearchValue("")} />
+              <SearchIcon className="search-icon" onClick={()=> handleSearchInput()}/>
             </div>
           </SearchContainer>
         </ChildContainer>
