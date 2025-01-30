@@ -23,8 +23,7 @@ export default Description
 const Container = styled.div`
   font-size:0.8rem;
   img{
-    width:45%;
-    margin-right:4px;
+    width:99%;
   }
   ul,
 li {

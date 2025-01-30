@@ -34,6 +34,7 @@ import ContactUs from "./pages/ContactUs";
 import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
 import ShippingPolicy from "./components/polices/ShippingPolicy";
 import SearchPage from "./pages/SearchPage";
+import OrderSuccess from "./components/checkout/OrderSuccsess";
 export const OrderContext = createContext();
 function App() {
   const dispatch = useDispatch();
@@ -90,8 +91,7 @@ function App() {
                 </>
               }
             />
-                  <Route path="/search" element={<SearchPage value = {searchValue}/>}/>
-
+            <Route path="/search" element={<SearchPage value = {searchValue}/>}/>
             <Route path="/shopping-cart" element={<ShoppingCart />} />
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="about-us" element={<AboutUs />} />
@@ -111,6 +111,7 @@ function App() {
             <Route path="/profile/help-center" element={<HelpCenter />} />
             <Route path="/profile/contact-us" element={<ContactUs />} />
           </Route>
+          <Route path ="/order-success" element={<OrderSuccess/>}/>
           <Route path="/checkout" element={<CheckoutPage />} />
 
           <Route path="/admin-dashboard" element={<AdminDashboardPage />}>
