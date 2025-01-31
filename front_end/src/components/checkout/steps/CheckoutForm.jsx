@@ -26,7 +26,7 @@ export default function CheckoutForm() {
   const [isLoadingCOD, setIsLoadingCOD] = useState(false);
 
   const [cashOnDelivery, setCashOnDelivery] = useState(false);
-  const [creditCard, setCreditCard] = useState(false);
+  const [creditCard, setCreditCard] = useState(true);
 
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
@@ -134,7 +134,7 @@ export default function CheckoutForm() {
   };
   return (
     <>
-      <div>
+      {/*<div>
         <Radio
           name="Cash On Delivery"
           checked={cashOnDelivery}
@@ -155,7 +155,7 @@ export default function CheckoutForm() {
           }}
         />
         <span>Credit Card</span>
-      </div>
+      </div>*/}
     <Container>
       {creditCard && (
         <form
@@ -180,14 +180,14 @@ export default function CheckoutForm() {
           </button>
         </form>
       )}
-      {cashOnDelivery && <button onClick={CreatCashONDeliveryOrder}>
+      {/*cashOnDelivery && <button onClick={CreatCashONDeliveryOrder}>
       <span id="button-text">
               {isLoadingCOD ? (
                 <div className="spinner" id="spinner"></div>
               ) : (
                 "buy Now"
               )}
-            </span></button>}
+            </span></button>*/}
     </Container>
     </>
   );

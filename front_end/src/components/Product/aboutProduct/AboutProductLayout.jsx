@@ -30,12 +30,11 @@ function AboutProductLayout() {
         </button>
       </div>
       <div>
-      {isOpen == 1 && (
-        <ReviewsLayout />
-        
-      )}
-      {isOpen == 2 && <Specifications />}
-      {isOpen == 3 && <Description />}
+
+        {isOpen == 1 && <ReviewsLayout />}
+        {isOpen == 2 && <Specifications />}
+        {isOpen == 3 &&<Description />}
+      
       </div>
     </Container>
   );
