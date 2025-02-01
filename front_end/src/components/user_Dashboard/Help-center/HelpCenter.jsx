@@ -11,7 +11,7 @@ import ShippingFAQ from './ShippingFAQ';
   }, []);
   return (
     <Container>
-      <span className="main-header"> ANIMIS STORE FAQ</span>
+      <span className="main-header">ENOUZA STORE FAQ</span>
       <ReturnFAQ/>
       <ShippingFAQ/>
     </Container>
