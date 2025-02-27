@@ -241,7 +241,7 @@ const Container = styled.div`
     background: #055bfc;
     color: #fff;
     font-weight: bold;
-    width: 80px;
+    min-width: 80px;
   }
   .add-button {
     border: none;
@@ -251,7 +251,7 @@ const Container = styled.div`
     background: #252525;
     color: #fff;
     font-weight: bold;
-    width: 100px;
+    min-width: 100px;
   }
   .shipping-method {
   }
