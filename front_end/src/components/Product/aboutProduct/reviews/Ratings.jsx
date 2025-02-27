@@ -216,7 +216,7 @@ const Container = styled.div`
   }
   .star-number {
   min-width:60px;
-  margin-right: 8px;
+  margin-right: 4px;
 
   }
   .star1 {
