@@ -74,6 +74,7 @@ function Ratings(props) {
             <span className="star-number">5 Stars</span>
             <span>
               <BorderLinearProgress
+                 className='linear-progress-icon'
                 variant="determinate"
                 value={sum_stars <= 0 ? 0 : ((fiveStars / sum_stars) * 100).toFixed(0)}
               />
@@ -86,6 +87,7 @@ function Ratings(props) {
             <span className="star-number">4 Stars</span>
             <span>
               <BorderLinearProgress
+               className='linear-progress-icon'
                 variant="determinate"
                 value={
                   sum_stars <= 0
@@ -103,6 +105,7 @@ function Ratings(props) {
             <span>
               <BorderLinearProgress
                 variant="determinate"
+                className='linear-progress-icon'
                 value={
                   sum_stars <= 0
                     ? 0
@@ -120,6 +123,7 @@ function Ratings(props) {
             <span>
               <BorderLinearProgress
                 variant="determinate"
+                className='linear-progress-icon'
                 value={
                   sum_stars <= 0 ? 0 : ((twoStars / sum_stars) * 100).toFixed(0)
                 }
@@ -133,6 +137,7 @@ function Ratings(props) {
             <span className="star-number star1">1 Star</span>
             <span>
               <BorderLinearProgress
+              className='linear-progress-icon'
                 variant="determinate"
                 value={
                   sum_stars <= 0 ? 0 : ((oneStar / sum_stars) * 100).toFixed(0)
@@ -200,6 +205,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  
   }
   
   .sum-ratings {
@@ -228,9 +234,12 @@ const Container = styled.div`
     border: 1px solid lightgray;
     width: 45px;
     border-radius: 4px;
-    margin-left: 8px;
+    
   }
-
+  .linear-progress-icon {
+      margin-left: 8px;
+      margin-right:8px;
+  }
  
 `;
 
