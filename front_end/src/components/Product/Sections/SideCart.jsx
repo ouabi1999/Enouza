@@ -118,7 +118,7 @@ function SideCart(props) {
                 <span> {fromDate.slice(3, -4) } - {toDate.slice(7, -4) }</span>
 
             ):
-            <span> {shippingInfo.date1?.slice(3, -4) } - {shippingInfo.date2?.slice(7, -4) }</span>
+            <span> {shippingInfo.date1?.slice(3, -4) } /  {shippingInfo.date2?.slice(7, -4) }</span>
 
           }
           </div>
