@@ -16,7 +16,7 @@ const BorderLinearProgress = styles(LinearProgress)(({ theme }) => ({
     height: 6,
     maxWidth:"265px",
     width:"30%",
-    minWidth:"135px",
+    minWidth:"150px",
    
     
     
@@ -215,7 +215,7 @@ const Container = styled.div`
     font-size: 13px;
   }
   .star-number {
-   width:50px;
+  min-width:60px;
   }
   .star1 {
     padding-left: 2px;
