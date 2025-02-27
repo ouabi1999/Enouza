@@ -115,7 +115,7 @@ function SideCart(props) {
           <div className="delivrey-time">
             <span> Delivrey:</span>
             {productData[0]?.available_shipping?.length > 0 ? (
-                <span> {fromDate.slice(3, -4) } / {toDate.slice(7, -4) }</span>
+                <span> {fromDate.slice(3, -4) } / {toDate.slice(3, -4) }</span>
 
             ):
             <span> {shippingInfo.date1?.slice(3, -4) } /  {shippingInfo.date2?.slice(3, -4) }</span>
