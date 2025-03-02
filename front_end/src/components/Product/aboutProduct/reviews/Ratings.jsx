@@ -1,10 +1,10 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { createTheme } from '@mui/material/styles';
-import { styled as styles} from '@mui/material/styles';
+import { styled as styles } from '@mui/material/styles';
 import { purple, red, orange, lightGreen } from '@mui/material/colors';
-import {Stack} from "@mui/material"
+import { Stack } from "@mui/material"
 import Box from '@mui/material/Box';
 import styled from 'styled-components';
 import StarIcon from '@mui/icons-material/Star';
@@ -13,50 +13,50 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 
 const BorderLinearProgress = styles(LinearProgress)(({ theme }) => ({
-    height: 6,
-    maxWidth:"265px",
-    width:"30%",
-    minWidth:"155px",
-   
-    
-    
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 50 : 800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-     
-      backgroundColor: theme.palette.mode === 'light' ? '#181616' : '#0044ff',
-    },
-  }));
+  height: 6,
+  maxWidth: "265px",
+  width: "40%",
+  minWidth: "160px",
+
+
+
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 50 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+
+    backgroundColor: theme.palette.mode === 'light' ? '#181616' : '#0044ff',
+  },
+}));
 function Ratings(props) {
 
-  const {fiveStars,
+  const { fiveStars,
     twoStars,
     fourStars,
     threeStars,
     oneStar,
     sum_stars,
     ratings,
-    productData} = props;
-    
-    
-    const [selected, setSelected] = useState({index:null, id:null})
-    const [reviews , setReviews] = useState(productData?.ratings)
-     
-    const stars = Array(5).fill(0);
-   
- 
-   
+    productData } = props;
 
-  
-   
+
+  const [selected, setSelected] = useState({ index: null, id: null })
+  const [reviews, setReviews] = useState(productData?.ratings)
+
+  const stars = Array(5).fill(0);
+
+
+
+
+
+
   return (
     <Container>
 
       <div className="ratings-container">
         <div className="sum-ratings">
           <span>{ratings?.length > 0 ?
-                        (sum_stars / ratings?.length).toFixed(1) : "0.0"}</span>
+            (sum_stars / ratings?.length).toFixed(1) : "0.0"}</span>
           <div className="start-icons-container">
             <StarIcon />
             <StarIcon />
@@ -65,15 +65,16 @@ function Ratings(props) {
             <StarIcon />
           </div>
           <div>
-            <bold style={{color:"green", fontWeight:"bold"}}>All from verified purchases</bold>
+            <bold style={{ color: "green", fontWeight: "bold" }}>All from verified purchases</bold>
           </div>
         </div>
-        
+
         <div className="border-linear-container">
           <div>
             <span className="star-number">5 Stars</span>
             <span>
               <BorderLinearProgress
+              className='progress-bar'
                 variant="determinate"
                 value={sum_stars <= 0 ? 0 : ((fiveStars / sum_stars) * 100).toFixed(0)}
               />
@@ -86,6 +87,8 @@ function Ratings(props) {
             <span className="star-number">4 Stars</span>
             <span>
               <BorderLinearProgress
+                className='progress-bar'
+
                 variant="determinate"
                 value={
                   sum_stars <= 0
@@ -102,6 +105,7 @@ function Ratings(props) {
             <span className="star-number">3 Stars</span>
             <span>
               <BorderLinearProgress
+              className='progress-bar'
                 variant="determinate"
                 value={
                   sum_stars <= 0
@@ -119,6 +123,7 @@ function Ratings(props) {
             <span className="star-number">2 Stars</span>
             <span>
               <BorderLinearProgress
+                className='progress-bar'
                 variant="determinate"
                 value={
                   sum_stars <= 0 ? 0 : ((twoStars / sum_stars) * 100).toFixed(0)
@@ -134,6 +139,7 @@ function Ratings(props) {
             <span>
               <BorderLinearProgress
                 variant="determinate"
+                className='progress-bar'
                 value={
                   sum_stars <= 0 ? 0 : ((oneStar / sum_stars) * 100).toFixed(0)
                 }
@@ -185,6 +191,7 @@ const Container = styled.div`
   .border-linear-container > div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     margin-bottom: 5px;
   }
@@ -210,13 +217,17 @@ const Container = styled.div`
       font-weight: bold;
     }
   }
-
+   .progress-bar{
+   margin-left:10px;
+   margin-right:10px;
+   }
+   
   span {
     font-size: 13px;
   }
   .star-number {
-  min-width:70px;
-  width:10%;
+    text-wrap:nowrap;
+    white-spacing:nowrap;
 
   }
   .star1 {
@@ -230,7 +241,6 @@ const Container = styled.div`
     border: 1px solid lightgray;
     width: 45px;
     border-radius: 4px;
-    margin-left: 8px;
   }
 
  

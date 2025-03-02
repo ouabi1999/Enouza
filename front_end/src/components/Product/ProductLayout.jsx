@@ -14,7 +14,7 @@ function Product(props) {
     const date = new Date()
     const productData = useSelector(state => state.products.productData)
 
-    let ratings = productData[0]?.ratings.concat(productData[0]?.aliexpress_ratings);
+    let ratings = productData[0]?.ratings?.concat(productData[0]?.aliexpress_ratings);
 
     let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
          return total += value.stars

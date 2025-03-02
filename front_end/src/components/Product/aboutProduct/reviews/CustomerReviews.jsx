@@ -223,7 +223,7 @@ const Container = styled.div`
 const ChildContainer = styled.div`
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 10px;
+    gap: 10px;
     margin-top: 15px;
 
 
