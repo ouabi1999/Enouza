@@ -1,2 +1,0 @@
-web: gunicorn one_shop.wsgi --log-file -
-heroku config:set DISABLE_COLLECTSTATIC=1
