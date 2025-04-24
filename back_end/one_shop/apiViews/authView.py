@@ -9,14 +9,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
-from django.views.generic import TemplateView
-from django.views.decorators.cache import never_cache
 from ..serializer import UserSerializer, UserCreateSerializer, UserLoginSerializer, UserUpdateSerializer,  UpdatePasswordSerializer
 from ..models import Users
-from rest_framework.permissions import AllowAny
-from django.http.response import JsonResponse
 from django.contrib.auth import get_user_model, login, logout, authenticate
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 import os

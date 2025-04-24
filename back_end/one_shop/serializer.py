@@ -29,9 +29,7 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        
-     
-        
+    
         ordered_items = validated_data.pop('ordered_items')
         if isinstance(ordered_items, str):
             try:

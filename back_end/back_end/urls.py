@@ -1,5 +1,4 @@
 from django.urls import include, path
-
 """
 URL configuration for back_end project.
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,6 +18,5 @@ from django.contrib import admin
 from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    path("api/", include("one_shop.urls") ), 
+    path("api/", include("one_shop.urls")), 
 ]

@@ -23,9 +23,11 @@ export default function DisplayCategory({formData, setFormData}) {
   const handleImageInput1 =  ()=>{
     RefInput1.current.click()
   }
+
   const handleImageInput2 =  ()=>{
     RefInput2.current.click()
   }
+  
   const handleImageInput3 =  ()=>{
     RefInput3.current.click()
   }

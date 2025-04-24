@@ -6,6 +6,7 @@ from django.conf import settings
 
 def get_uuid():
     return str(uuid.uuid4())
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:

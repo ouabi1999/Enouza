@@ -65,6 +65,7 @@ function App() {
     dispatch(getUser());
     dispatch(getProduct());
   }, [retry]);
+
   return (
     <OrderContext.Provider value={{ formData, setFormData }}>
       <BrowserRouter>
@@ -116,7 +117,6 @@ function App() {
 
           <Route path="/admin-dashboard" element={<AdminDashboardPage />}>
             <Route path="/admin-dashboard" element={<HomeDashboard />} />
-
             <Route path="dashproducts" element={<ProductsLayout />} />
             <Route path="analytics" element={<Chart />} />
             <Route path="display-setting" element={<Displaylayout />} />
