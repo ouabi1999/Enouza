@@ -68,7 +68,7 @@ function App() {
 
   return (
     <OrderContext.Provider value={{ formData, setFormData }}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <Routes>
           <Route
             path="/"
