@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "cloudinary",
     'rest_framework_simplejwt'
-]
+]    
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
