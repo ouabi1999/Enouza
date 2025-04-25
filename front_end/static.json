@@ -1,6 +1,7 @@
 {
   "routes": {
-    "/api/*": "/api/:splat",
-    "/**": "index.html"
+    "/**": {
+      "path": "index.html"
+    }
   }
 }
