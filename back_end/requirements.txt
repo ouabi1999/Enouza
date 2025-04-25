@@ -16,6 +16,8 @@ idna==3.10
 packaging==24.2
 psycopg2-binary==2.9.10
 PyJWT==2.9.0
+python-dotenv==1.1.0
+python-environ==0.4.54
 requests==2.32.3
 six==1.16.0
 sqlparse==0.5.1
