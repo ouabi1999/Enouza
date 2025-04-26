@@ -214,9 +214,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 PRENT_DIR = Path(__file__).resolve().parent.parent.parent
 
-STATICFILES_DIRS = [
-    BASE_DIR / "frontend" / "dist", 
-]
+#STATICFILES_DIRS = [PRENT_DIR / "frontend" / "dist"]
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = BASE_DIR / 'static'
