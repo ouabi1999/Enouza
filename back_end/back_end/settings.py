@@ -41,11 +41,7 @@ import os
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"  # defaults to development
 CORS_ALLOW_CREDENTIALS = True
 if DEVELOPMENT_MODE == False:
-    ALLOWED_HOSTS = [
-        "enouza.com",
-        "www.enouza.com",
-        "shark-app-3jni5.ondigitalocean.app",  # Your Django backend host
-    ]
+    ALLOWED_HOSTS = ["*"]
 
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
