@@ -22,13 +22,7 @@ import dj_database_url
 load_dotenv()
 
 
-# Configuration       
-cloudinary.config( 
-    cloud_name = os.getenv("CLOUD_NAME"), 
-    api_key = os.getenv("API_KEY"), 
-    api_secret = os.getenv("API_SECRET"), # Click 'View API Keys' above to copy your API secret
-    secure=True
-)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,8 +128,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173", "https://www.enouza.com"]
+
 
 ROOT_URLCONF = 'back_end.urls'
 
@@ -192,6 +185,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Configuration       
+cloudinary.config( 
+    cloud_name = os.getenv("CLOUD_NAME"), 
+    api_key = os.getenv("API_KEY"), 
+    api_secret = os.getenv("API_SECRET"), # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
