@@ -35,7 +35,7 @@ DEBUG = os.getenv("DEBUG", "False")
 # settings.py
 import os
 
-ENVIRONMENT = os.getenv('DJANGO_ENV', 'production')  # defaults to development
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # defaults to development
 
 if ENVIRONMENT == "production" :
     ALLOWED_HOSTS = ["enouza.com", "www.enouza.com","monkfish-app-t7uv3.ondigitalocean.app","shark-app-3jni5.ondigitalocean.app"]
