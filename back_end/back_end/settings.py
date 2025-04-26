@@ -41,16 +41,22 @@ import os
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"  # defaults to development
 
 if DEVELOPMENT_MODE == False:
-    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com"]
+    ALLOWED_HOSTS = [
+        "enouza.com",
+        "www.enouza.com",
+        "shark-app-3jni5.ondigitalocean.app",  # Your Django backend host
+    ]
 
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
+        "https://monkfish-app-t7uv3.ondigitalocean.app",
     ]
 
     CORS_ALLOWED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
+        "https://monkfish-app-t7uv3.ondigitalocean.app",
     ]
 
     SECURE_SSL_REDIRECT = True
@@ -62,12 +68,12 @@ if DEVELOPMENT_MODE == False:
 
 else:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-    
+
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:5173",
         "http://127.0.0.1:8000",
     ]
-    
+
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:5173",
         "http://127.0.0.1:8000",
