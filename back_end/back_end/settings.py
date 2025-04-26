@@ -38,7 +38,7 @@ import os
 ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # defaults to development
 
 if ENVIRONMENT == "production" :
-    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com","monkfish-app-t7uv3.ondigitalocean.app",]
+    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com","monkfish-app-t7uv3.ondigitalocean.app","shark-app-3jni5.ondigitalocean.app"]
 
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
