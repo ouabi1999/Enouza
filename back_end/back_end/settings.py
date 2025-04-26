@@ -22,7 +22,13 @@ import dj_database_url
 load_dotenv()
 
 
-
+# Configuration       
+cloudinary.config( 
+    cloud_name = os.getenv("CLOUD_NAME"), 
+    api_key = os.getenv("API_KEY"), 
+    api_secret = os.getenv("API_SECRET"), # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,48 +42,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
-import os
-
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"  # defaults to development
-CORS_ALLOW_CREDENTIALS = True
-if DEVELOPMENT_MODE == False:
-    ALLOWED_HOSTS = ["*"]
-
-    CSRF_TRUSTED_ORIGINS = [
-        "https://enouza.com",
-        "https://www.enouza.com",
-        "https://monkfish-app-t7uv3.ondigitalocean.app",
-    ]
-
-    CORS_ALLOWED_ORIGINS = [
-        "https://enouza.com",
-        "https://www.enouza.com",
-        "https://monkfish-app-t7uv3.ondigitalocean.app",
-    ]
-
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-
-else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:5173",
-        "http://127.0.0.1:8000",
-    ]
-
-    CSRF_TRUSTED_ORIGINS = [
-        "http://localhost:5173",
-        "http://127.0.0.1:8000",
-    ]
-
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
+ALLOWED_HOSTS = ['*'] 
+#ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST"), "localhost"]
+CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1')]
 
 
 # Application definition
@@ -130,7 +97,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173", "https://www.enouza.com"]
 
 ROOT_URLCONF = 'back_end.urls'
 
@@ -151,6 +119,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'back_end.wsgi.application'
+
+
+
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 if DEVELOPMENT_MODE is True:
     DATABASES = {
@@ -187,13 +159,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Configuration       
-cloudinary.config( 
-    cloud_name = os.getenv("CLOUD_NAME"), 
-    api_key = os.getenv("API_KEY"), 
-    api_secret = os.getenv("API_SECRET"), # Click 'View API Keys' above to copy your API secret
-    secure=True
-)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
