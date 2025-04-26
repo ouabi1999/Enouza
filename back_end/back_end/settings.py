@@ -39,7 +39,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 import os
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"  # defaults to development
-
+CORS_ALLOW_CREDENTIALS = True
 if DEVELOPMENT_MODE == False:
     ALLOWED_HOSTS = [
         "enouza.com",
