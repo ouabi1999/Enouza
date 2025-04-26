@@ -51,7 +51,7 @@ function ProductInfo(props) {
                        (sum_stars / ratings?.length ).toFixed(1) : "0.0"}</span>
         </div>
         <div>
-        <span> {productData?.orders?.length + productData.aliexpress_ratings?.length} Orders </span>
+        <span> {productData?.orders?.length + productData?.aliexpress_ratings?.length} Orders </span>
         </div>
       </div>
       {productData?.sizes?.length > 0 && (

@@ -1,44 +1,41 @@
-
 from datetime import timedelta
 from pathlib import Path
-import cloudinary
 import os
+import cloudinary
 from dotenv import load_dotenv
 import dj_database_url
-from django.core.management.utils import get_random_secret_key
-import sys
-import dj_database_url
 
+# Load environment variables
 load_dotenv()
 
-
-# Configuration       
+# Configuration for Cloudinary
 cloudinary.config( 
     cloud_name = os.getenv("CLOUD_NAME"), 
     api_key = os.getenv("API_KEY"), 
-    api_secret = os.getenv("API_SECRET"), # Click 'View API Keys' above to copy your API secret
+    api_secret = os.getenv("API_SECRET"),
     secure=True
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+FRONTEND_DIR = BASE_DIR.parent / "front_end"  # <-- correctly pointing to frontend
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") 
-# settings.py
-import os
+DEBUG = os.getenv("DEBUG")
 
-ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # defaults to development
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # default to development
 
-if ENVIRONMENT == "production" :
-    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com","monkfish-app-t7uv3.ondigitalocean.app","shark-app-3jni5.ondigitalocean.app"]
+# Allowed Hosts
+if ENVIRONMENT == "production":
+    ALLOWED_HOSTS = [
+        "enouza.com",
+        "www.enouza.com",
+        "monkfish-app-t7uv3.ondigitalocean.app",
+        "shark-app-3jni5.ondigitalocean.app"
+    ]
 
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
@@ -51,41 +48,35 @@ if ENVIRONMENT == "production" :
         "https://enouza.com",
         "https://www.enouza.com",
         "https://monkfish-app-t7uv3.ondigitalocean.app",
-        "https://shark-app-3jni5.ondigitalocean.app"
+        "https://shark-app-3jni5.ondigitalocean.app",
     ]
 
+    # Security settings for HTTPS
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-
 else:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-    
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:5173",
-        "http://127.0.0.1:8000",
-    ]
-    
+
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:5173",
         "http://127.0.0.1:8000",
     ]
 
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+    ]
+
+    # No HTTPS redirects for development
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
 
-
-
-
-
-
-
-
-
+# Database
 if ENVIRONMENT == "development":
     DATABASES = {
         'default': {
@@ -94,18 +85,14 @@ if ENVIRONMENT == "development":
         }
     }
 else:
-    if os.getenv("DATABASE_URL", None) is None:
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    if not DATABASE_URL:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": dj_database_url.parse(os.getenv("DATABASE_URL")),
+        'default': dj_database_url.parse(DATABASE_URL),
     }
 
-
-
-
-
 # Application definition
-
 INSTALLED_APPS = [
     "one_shop.apps.ApiConfig",
     "django.contrib.admin",
@@ -117,50 +104,27 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "cloudinary",
-    'rest_framework_simplejwt'
-]    
+    "rest_framework_simplejwt",
+]
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-
-  
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=15),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=15),
-    "ROTATE_REFRESH_TOKENS": False,
-    "BLACKLIST_AFTER_ROTATION": False,
-    "UPDATE_LAST_LOGIN": False,
-}
-REST_FRAMEWORK = {
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
-
 
 ROOT_URLCONF = 'back_end.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],  # Add templates directory if you have one
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -175,54 +139,51 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'back_end.wsgi.application'
 
-
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
+}
+
+# Simple JWT Settings
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=15),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
+}
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-PRENT_DIR = Path(__file__).resolve().parent.parent.parent
-
-STATICFILES_DIRS = [PRENT_DIR / "frontend" / "dist"]
-if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = BASE_DIR / 'static'
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
+if ENVIRONMENT == "production":
+    STATIC_ROOT = BASE_DIR / "staticfiles"
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_DIRS = [FRONTEND_DIR / "dist"]
+else:
+    STATICFILES_DIRS = [FRONTEND_DIR / "dist"]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'one_shop.Users'
