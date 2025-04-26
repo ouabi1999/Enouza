@@ -43,6 +43,7 @@ if ENVIRONMENT == "production" :
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
+        "shark-app-3jni5.ondigitalocean.app",
         "monkfish-app-t7uv3.ondigitalocean.app",
     ]
 
@@ -50,6 +51,7 @@ if ENVIRONMENT == "production" :
         "https://enouza.com",
         "https://www.enouza.com",
         "monkfish-app-t7uv3.ondigitalocean.app",
+        "shark-app-3jni5.ondigitalocean.app"
     ]
 
     SECURE_SSL_REDIRECT = True
