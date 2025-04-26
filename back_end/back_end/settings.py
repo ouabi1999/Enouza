@@ -41,10 +41,47 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*'] 
-#ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST"), "localhost"]
-CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1')]
+DEBUG = os.getenv("DEBUG", "False") == "True"
+import os
+
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"  # defaults to development
+
+if DEVELOPMENT_MODE == False:
+    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com"]
+
+    CSRF_TRUSTED_ORIGINS = [
+        "https://enouza.com",
+        "https://www.enouza.com",
+    ]
+
+    CORS_ALLOWED_ORIGINS = [
+        "https://enouza.com",
+        "https://www.enouza.com",
+    ]
+
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+else:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+    ]
+    
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+    ]
+
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
 
 # Application definition
@@ -119,10 +156,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'back_end.wsgi.application'
-
-
-
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 if DEVELOPMENT_MODE is True:
     DATABASES = {
