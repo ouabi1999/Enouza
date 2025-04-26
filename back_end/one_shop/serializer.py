@@ -132,7 +132,6 @@ class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True, required=True)
     
     def validate(self, data):
-        print(data)
         email = data.get('email')
         password = data.get('password')
         

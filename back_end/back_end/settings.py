@@ -43,39 +43,56 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 # settings.py
+import os
+
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # defaults to development
+
+if ENVIRONMENT == "production" :
+    ALLOWED_HOSTS = ["enouza.com", "www.enouza.com"]
+
+    CSRF_TRUSTED_ORIGINS = [
+        "https://enouza.com",
+        "https://www.enouza.com",
+    ]
+
+    CORS_ALLOWED_ORIGINS = [
+        "https://enouza.com",
+        "https://www.enouza.com",
+    ]
+
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+else:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+    ]
+    
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+    ]
+
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
 
 
 
 
-ALLOWED_HOSTS = [
-    'shark-app-3jni5.ondigitalocean.app',
-    'enouza.com',
-    'www.enouza.com',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    'https://enouza.com',
-    'https://www.enouza.com',
-    'https://monkfish-app-t7uv3.ondigitalocean.app',
-]
-
-CORS_ALLOW_CREDENTIALS = True  # <-- Important!
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://enouza.com',
-    'https://www.enouza.com',
-    'https://monkfish-app-t7uv3.ondigitalocean.app',
-]
-
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
 
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
-if DEVELOPMENT_MODE is True:
+
+if ENVIRONMENT == "development":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
