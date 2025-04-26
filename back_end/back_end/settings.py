@@ -42,9 +42,55 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = ['*'] 
-#ALLOWED_HOSTS =  ["f93b-197-147-124-175.ngrok-free.app", "127.0.0.1", os.getenv('RENDER_EXTERNAL_HOSTNAME'), os.getenv("SERVER_HOST"), "localhost"]
-CSRF_TRUSTED_ORIGINS = ['https://' + os.getenv('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1')]
+# settings.py
+
+
+
+
+
+ALLOWED_HOSTS = [
+    'shark-app-3jni5.ondigitalocean.app',
+    'enouza.com',
+    'www.enouza.com',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://enouza.com',
+    'https://www.enouza.com',
+    'https://monkfish-app-t7uv3.ondigitalocean.app',
+]
+
+CORS_ALLOW_CREDENTIALS = True  # <-- Important!
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://enouza.com',
+    'https://www.enouza.com',
+    'https://monkfish-app-t7uv3.ondigitalocean.app',
+]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
+
+
+
 
 
 # Application definition
@@ -69,7 +115,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -97,8 +142,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = [os.getenv("HOST"), "http://localhost:5173", "https://www.enouza.com"]
+
 
 ROOT_URLCONF = 'back_end.urls'
 
@@ -119,26 +163,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'back_end.wsgi.application'
-
-
-
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-
-if DEVELOPMENT_MODE is True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
-
-
 
 
 # Password validation
