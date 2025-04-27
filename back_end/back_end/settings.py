@@ -33,7 +33,7 @@ if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "enouza.com",
         "www.enouza.com",
-        "monkfish-app-t7uv3.ondigitalocean.app",
+        "enouza-xzmub.ondigitalocean.app",
         "shark-app-3jni5.ondigitalocean.app"
     ]
 
@@ -41,13 +41,13 @@ if ENVIRONMENT == "production":
         "https://enouza.com",
         "https://www.enouza.com",
         "https://shark-app-3jni5.ondigitalocean.app",
-        "https://monkfish-app-t7uv3.ondigitalocean.app",
+        "https://enouza-xzmub.ondigitalocean.app",
     ]
 
     CORS_ALLOWED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
-        "https://monkfish-app-t7uv3.ondigitalocean.app",
+        "https://enouza-xzmub.ondigitalocean.app",
         "https://shark-app-3jni5.ondigitalocean.app",
     ]
 
