@@ -61,9 +61,9 @@ function CustomerReviews(props) {
                     })}
                   </div>
 
-                  <div>
+                  {/*<div>
                     <span style={{ marginLeft: "4px" , fontSize:"16px"}}> {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)}</span>
-                  </div>
+                  </div>*/}
 
                   <div style={{ marginLeft: "4px" , fontSize:"14px"}}>
                     <p>{rate.review.text}</p>
