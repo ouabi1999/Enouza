@@ -37,9 +37,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     token_expiration = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-
     objects = UserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -72,6 +70,7 @@ class Products(models.Model):
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
     orders = models.ManyToManyField('Orders', related_name='products', blank=True)
+    
 
    
 
@@ -125,7 +124,7 @@ class Ratings(models.Model):
     stars = models.IntegerField()
     review = models.JSONField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='rating')
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='ratings')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
@@ -135,7 +134,7 @@ class AliExpressRatings(models.Model):
     stars = models.IntegerField()
     review = models.JSONField()
     user = models.JSONField()
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='ali_express_ratings')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
