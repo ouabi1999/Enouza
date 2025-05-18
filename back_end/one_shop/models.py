@@ -124,7 +124,7 @@ class Ratings(models.Model):
     stars = models.IntegerField()
     review = models.JSONField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='ratings')
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='rating')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
@@ -134,7 +134,7 @@ class AliExpressRatings(models.Model):
     stars = models.IntegerField()
     review = models.JSONField()
     user = models.JSONField()
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='ali_express_ratings')
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return f"{self.stars} stars by {self.review}"

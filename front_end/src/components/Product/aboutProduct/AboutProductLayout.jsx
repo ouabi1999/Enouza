@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import CustomerReviews from './reviews/CustomerReviews'
 import Description from './Description'
 import Specifications from './Specifications'
-import productData from "../../../../common/data.json"
-import { useSelector } from 'react-redux'
 import ReviewsLayout from './reviews/ReviewsLayout'
 
 
