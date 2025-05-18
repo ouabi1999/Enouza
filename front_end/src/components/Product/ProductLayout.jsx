@@ -27,7 +27,7 @@ function Product(props) {
       <Container>
         <FirstSection>
           <MainImages
-            productData = {productData[1]}
+            productData = {productData[0]}
             picsDetailsIndex={props.picsDetailsIndex}
             colorIndex={props.colorIndex}
             selectPicsDetails={props.selectPicsDetails}
@@ -43,7 +43,7 @@ function Product(props) {
             colorIndex={props.colorIndex}
             sizeIndex={props.sizeIndex}
             selectSize={props.selectSize}
-            productData = {productData[1]}
+            productData = {productData[0]}
             ratings = {ratings}
             sum_stars = {sum_stars}
 
