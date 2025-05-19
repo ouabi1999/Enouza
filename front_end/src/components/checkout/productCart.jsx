@@ -6,8 +6,7 @@ import { useState, useContext} from 'react';
 import { OrderContext } from "../../App"
 import { FormContext } from '../../pages/CheckoutPage'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import productData from "../../../common/data.json"
+
 
 
 function ProductCart(props) {
