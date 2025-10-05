@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Radio } from "@mui/material";
 import ApiInstance from "../../../../common/baseUrl";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -31,10 +32,10 @@ export default function CheckoutForm() {
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  const {t} = useTranslation()
   const [successOrder, setSuccessOrder] = useState(false);
 
-  useEffect(() => {
+  {/*useEffect(() => {
     if (!stripe) {
       return;
     }
@@ -63,7 +64,7 @@ export default function CheckoutForm() {
           break;
       }
     });
-  }, [stripe]);
+  }, [stripe]);*/}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -169,14 +170,13 @@ export default function CheckoutForm() {
               {isLoading ? (
                 <div className="spinner" id="spinner"></div>
               ) : (
-                "Pay Now"
+                t("common.payNow")
               )}
             </span>
           </button>
           {/* Show any error or success messages */}
-          {message && <div id="payment-message">{message}</div>}
           <button onClick={() => setActiveStepIndex(activeStepIndex - 1)}>
-            Back
+            {t("common.back")}
           </button>
         </form>
       )}

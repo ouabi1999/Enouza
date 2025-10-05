@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik, useFormik } from 'formik';
 import * as Yup from "yup"
 import { UserContext } from '../UserInfo';
+import { propTypes } from 'react-world-flags';
 
 function EditName(props) {
 
@@ -13,12 +14,12 @@ function EditName(props) {
     const { formData, setFormData , updateUserInfo, loading } = useContext(UserContext)
     const editSechema = Yup.object({ 
         firstName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
-          .required('Required'),
+          .max(10, props.t('errors.error_max_name_characters'))
+          .required(props.t('common.required')),
         
           lastName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
-          .required('Required'),
+          .max(10, props.t('errors.error_max_name_characters'))
+          .required(props.t('common.required')),
        
         })
         
@@ -62,18 +63,13 @@ function EditName(props) {
         <form onSubmit={formik.handleSubmit}>
         <PopUpEdit>
             <div className='edit-title'>
-                <span>Edit your name</span>
+                <span>{props.t("profile.edit_your_name")}</span>
                 <DisabledByDefaultIcon className="disable-icon" onClick={props.closeNameEdit} />
             </div>
-            <div className='text'>
-                <span>
-                    Changes made to your profile name here,
-                    will be shown anywhere your profile is used
-                </span>
-            </div>
+            
             <div className="input">
                 <TextField
-                    label="First Name"
+                    label={props.t("common.firstName")}
                     id="filled-size-small"
                     fullWidth
                     variant="filled"
@@ -84,11 +80,21 @@ function EditName(props) {
                     onChange={formik.handleChange}
                     error={formik.touched.firstName && Boolean(formik.errors.firstName)}
                     helperText={formik.touched.firstName && formik.errors.firstName}
+                
+                    slotProps={{
+                        inputLabel: {
+                          sx: {
+                            textAlign: props.i18n.dir() === "rtl" ? "right" : "left",
+                            
+                            width: "100%", // important for text-align to work
+                          }
+                        }
+                      }}
                 />
             </div>
             <div className="input">
                 <TextField
-                    label="Last Name"
+                    label={props.t("common.lastName")}
                     id="filled-size-small"
                     fullWidth
                     variant="filled"
@@ -99,11 +105,20 @@ function EditName(props) {
                     onChange={formik.handleChange}
                     error={formik.touched.lastName && Boolean(formik.errors.lastName)}
                     helperText={formik.touched.lastName && formik.errors.lastName}
+                    slotProps={{
+                        inputLabel: {
+                          sx: {
+                            textAlign: props.i18n.dir() === "rtl" ? "right" : "left",
+                            
+                            width: "100%", // important for text-align to work
+                          }
+                        }
+                      }}
                 />
             </div>
             <div className='save-button'>
 
-                          <Button type="submit" variant="contained">Save changes
+                          <Button type="submit" variant="contained">{props.t("common.save")}
                               {loading && (
                                   <CircularProgress
                                       style={{ marginLeft: "5px", color: "white" }}

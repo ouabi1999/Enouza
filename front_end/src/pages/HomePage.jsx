@@ -18,8 +18,9 @@ import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import CircularProgress from "@mui/material/CircularProgress";
 import HeadeSeo from "../../common/HeadeSeo";
+import { useTranslation } from "react-i18next";
 
-function HomePage({setRetry , retry}) {
+function HomePage({ setRetry, retry }) {
   const isAuth = window.localStorage.getItem("access_token");
   const [quantity, setQuantity] = useState(1);
   const [isPopUpShippingOpen, setIsPopUpShippingOpen] = useState(false);
@@ -36,7 +37,8 @@ function HomePage({setRetry , retry}) {
   const isLoading = useSelector((state) => state.products.isLoading);
   const productData = useSelector((state) => state.products.productData);
   const hasError = useSelector((state) => state.products.hasError);
-
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const { t } = useTranslation()
 
   const [shippingInfo, setShippingInfo] = useState({
     date1: "sun Dec 22 2024",
@@ -44,8 +46,9 @@ function HomePage({setRetry , retry}) {
     from: 5,
     to: 7,
     cost: 0.0,
-    methodName: "Free Shipping",
+    methodName: t("sideCard.free_Shipping"),
   });
+
 
   const today = new Date();
   let date1 = new Date(today);
@@ -82,7 +85,7 @@ function HomePage({setRetry , retry}) {
     } else {
       setMaxOrderWorning(true);
     }
-   
+
   };
 
   const subtractQuantity = () => {
@@ -107,10 +110,51 @@ function HomePage({setRetry , retry}) {
 
     setShippingMethodIndex(index);
   };
+
+
+
+
   const add_item_to_cart = (product) => {
-    console.log(product);
+    if (cartItems.find(item => item.id === product.id
+      &&
+      item.color === product.colors[colorIndex]
+      &&
+      item.size === product.sizes[sizeIndex])
+
+
+    ) {
+
+      toast.success(t("sideCard.item_already_in_cart"))
+
+    }
+    else {
+      dispatch(addToCart(
+        {
+          
+          id: product.id,
+          name: product.name,
+          available_shipping: product.shippingInfo,
+          color: product.colors[colorIndex],
+          size: product.sizes[sizeIndex],
+          quantity: quantity,
+          index: index,
+          price: parseFloat(product.price),
+          subtotal: parseFloat(product.price) * product.quantity,
+          
+        })
+      )
+      toast.success(t("sideCard.item_has_been_added"))
+
+    }
+
+  };
+
+
+  const buy_Now_item = (product) => {
+
+    navigate("/checkout");
     dispatch(
-      addToCart({
+      buyNowItem({
         id: product.id,
         name: product.name,
         shipping_info: shippingInfo,
@@ -121,25 +165,7 @@ function HomePage({setRetry , retry}) {
         index: index,
       })
     );
-  };
 
-  
-  const buy_Now_item = (product) => {
-  
-      navigate("/checkout");
-      dispatch(
-        buyNowItem({
-          id: product.id,
-          name: product.name,
-          shipping_info: shippingInfo,
-          price: product.price,
-          selectedColor: product.colors[colorIndex],
-          selectedSize: product.sizes[sizeIndex],
-          selectedQuantity: quantity,
-          index: index,
-        })
-      );
-    
   };
   return (
     <>
@@ -154,7 +180,7 @@ function HomePage({setRetry , retry}) {
             gap: "10px",
           }}
         >
-          <span style={{color:"gray"}}>Opps an error accourd</span>
+          <span style={{ color: "gray" }}>{t("common.error")}</span>
 
           <button
             style={{
@@ -165,7 +191,7 @@ function HomePage({setRetry , retry}) {
             }}
             onClick={() => setRetry(!retry)}
           >
-            Retry
+            {t("common.tryAgain")}
           </button>
         </div>
       ) : (
@@ -182,8 +208,8 @@ function HomePage({setRetry , retry}) {
                 }}
               >
                 <CircularProgress
-                size={30}
-                  
+                  size={30}
+
                 />
               </div>
             ) : (
@@ -219,7 +245,7 @@ function HomePage({setRetry , retry}) {
                     setIsPopUpShippingOpen={setIsPopUpShippingOpen}
                     isPopUpShippingOpen={isPopUpShippingOpen}
                     maxOrderWorning={maxOrderWorning}
-                    setMaxOrderWorning = {setMaxOrderWorning}
+                    setMaxOrderWorning={setMaxOrderWorning}
                     countryCode={countryCode}
                     shippingInfo={shippingInfo}
                     setCountryCode={setCountryCode}
@@ -287,7 +313,7 @@ const Container = styled.div`
     min-width: 300px;
     position: sticky;
     top: 75px;
-    margin-right: 10px;
+    margin: 0 20px;
     margin-top: 5px;
   }
   .item5 {

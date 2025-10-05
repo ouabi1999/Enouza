@@ -3,21 +3,23 @@ import styled from "styled-components";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import { useTranslation } from "react-i18next";
 function UserServices() {
+  const {t, i18n} = useTranslation();
   return (
     <Container>
       <Wrapp>
         <MinWrap>
           <MonetizationOnIcon className="icon" />
-          <span>Money back guarantee</span>
+          <span>{t("homePage.money_Back")}</span>
         </MinWrap>
         <MinWrap>
           <VerifiedUserIcon className="icon" />
-          <span>Safe & reliable payments</span>
+          <span>{t("homePage.safe_reliable_payments")}</span>
         </MinWrap>
         <MinWrap>
           <SupportAgentIcon className="icon" />
-          <span> 24/7 Support</span>
+          <span> {t("homePage.support_24_7")}</span>
         </MinWrap>
       </Wrapp>
     </Container>

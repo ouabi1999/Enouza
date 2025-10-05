@@ -13,7 +13,7 @@ function EditCountry(props) {
     const countriesData = Data.slice()
     const { formData, setFormData, updateUserInfo, loading} = useContext(UserContext)
     const editSechema = Yup.object({
-        country: Yup.string().required("Please select your country "),
+        country: Yup.string().required(props.t("errors.required")),
       
         })
 
@@ -41,18 +41,10 @@ function EditCountry(props) {
                 <form onSubmit={formik.handleSubmit}>
                 <PopUpEdit>
                     <div className='edit-title'>
-                        <span>Edit your Country</span>
+                        <span>{props.t("profile.edit_your_email")}</span>
                         <DisabledByDefaultIcon className="disable-icon" onClick={closeCountryEdit} />
                     </div>
-                    <div className='text'>
-
-                        <span>
-                            Changes made to your profile Country here,
-                            will be shown anywhere your profile is used
-                        </span>
-
-
-                    </div>
+                    
                     <div className="input">
                         <TextField
                             label="Country"
@@ -91,7 +83,7 @@ function EditCountry(props) {
 
                     <div className='save-button'>
                         <Button type="submit" variant="contained">
-                        <span>Save changes</span>
+                        <span>{props.t("common.save")}</span>
                             {loading && (
                                    
                                 <CircularProgress

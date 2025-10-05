@@ -24,7 +24,7 @@ import { useLayoutEffect } from "react";
 import HeadeSeo from "../../../common/HeadeSeo";
 import ApiInstance from "../../../common/baseUrl";
 
-function SignUpForm({ show }) {
+function SignUpForm({ show, t, i18n }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
@@ -51,8 +51,8 @@ function SignUpForm({ show }) {
   }, []);
 
   const genders = [
-    { gender: "Male", icon: <MaleIcon /> },
-    { gender: "Female", icon: <FemaleIcon /> },
+    { gender: "male", icon: <MaleIcon /> },
+    { gender: "female", icon: <FemaleIcon /> },
   ];
   const handleClickShowPassword = () => {
     setFormData({
@@ -67,19 +67,19 @@ function SignUpForm({ show }) {
 
   const editSechema = Yup.object({
     firstName: Yup.string()
-      .max(15, "Must be 15 characters or less")
-      .required("Please enter your Fist Name"),
-
+      .max(15, t("errors.error_max_name_characters"))
+      .required(t("errors.please_enter_your_first_name")),
+      
     lastName: Yup.string()
-      .max(15, "Must be 15 characters or less")
-      .required("Required"),
-    country: Yup.string().required("Please select yoyr country "),
-    email: Yup.string().email("Invalid email address").required("Required"),
-    gender: Yup.mixed().oneOf(["Male", "Female"]).defined(),
+      .max(15, t("errors.error_max_name_characters"))
+      .required(t("errors.please_enter_your_last_name")),
+    country: Yup.string().required(t("errors.please_enter_your_country")),
+    email: Yup.string().email(t("errors.error_invalid_email")).required(t("errors.please_enter_your_email")),
+    gender: Yup.mixed().required(t("errors.error_required_gender")),
     birthDate: Yup.date()
-      .required("Please enter a date of birth")
-      .max(new Date(), "You can't be born in the future!"),
-    password: Yup.string().required("Please Enter your password"),
+      .required(t("errors.please_enter_your_birthdate"))
+      .max(new Date(), t("errors.error_invalid_birthdate")),
+    password: Yup.string().required(t("errors.please_enter_your_password")).min(8, t("errors.error_min_password_characters")),
   });
 
   const formik = useFormik({
@@ -129,7 +129,7 @@ function SignUpForm({ show }) {
       {!isAuth && (
         <Form onSubmit={formik.handleSubmit}>
           <div className="logo-img-container">
-            <strong>Sign Up</strong>
+            <strong>{t("common.register")} </strong>
           </div>
           <Formwrapper>
             <Grid container spacing={2}>
@@ -139,7 +139,7 @@ function SignUpForm({ show }) {
                   name="firstName"
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label= {t("common.firstName")}
                   variant="filled"
                   size="small"
                   value={formik.values.firstName}
@@ -150,6 +150,16 @@ function SignUpForm({ show }) {
                   helperText={
                     formik.touched.firstName && formik.errors.firstName
                   }
+                  slotProps={{
+                  
+                    inputLabel: {
+                      sx: {
+                        textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                        width: "100%", // important for text-align to work
+                      }
+                    }
+                  }}
+                  
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -158,7 +168,7 @@ function SignUpForm({ show }) {
                   name="lastName"
                   fullWidth
                   id="firstName"
-                  label="Last Name"
+                  label={t("common.lastName")}
                   variant="filled"
                   size="small"
                   value={formik.values.lastName}
@@ -167,13 +177,23 @@ function SignUpForm({ show }) {
                     formik.touched.lastName && Boolean(formik.errors.lastName)
                   }
                   helperText={formik.touched.lastName && formik.errors.lastName}
+                  slotProps={{
+                  
+                    inputLabel: {
+                      sx: {
+                        textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                        width: "100%", // important for text-align to work
+                      }
+                    }
+                  }}
+                  
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label={t("common.email")}
                   name="email"
                   autoComplete="email"
                   variant="filled"
@@ -182,11 +202,21 @@ function SignUpForm({ show }) {
                   onChange={formik.handleChange}
                   error={formik.touched.email && Boolean(formik.errors.email)}
                   helperText={formik.touched.email && formik.errors.email}
+                  slotProps={{
+                  
+                    inputLabel: {
+                      sx: {
+                        textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                        width: "100%", // important for text-align to work
+                      }
+                    }
+                  }}
+                  
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  label="Gender"
+                  label={t("common.gender")}
                   id="filled-size-small"
                   fullWidth
                   variant="filled"
@@ -197,13 +227,14 @@ function SignUpForm({ show }) {
                   helperText={formik.touched.gender && formik.errors.gender}
                   value={formik.values.gender}
                   onChange={formik.handleChange}
+                  
                 >
                   {genders.map((sex, index) => {
                     return (
                       <MenuItem key={index} value={sex.gender}>
                         <div style={{ display: "flex", alignItems: "center" }}>
                           {sex.icon}
-                          <span>{sex.gender}</span>
+                          <span> {t(`common.${sex.gender}`)}</span>
                         </div>
                       </MenuItem>
                     );
@@ -213,7 +244,7 @@ function SignUpForm({ show }) {
 
               <Grid item xs={12} sm={6}>
                 <TextField
-                  label="Country"
+                  label={t("common.country")}
                   id="filled-size-small"
                   select
                   fullWidth
@@ -252,7 +283,7 @@ function SignUpForm({ show }) {
 
               <Grid item xs={12}>
                 <TextField
-                  label="Password"
+                  label= {t("common.password")}
                   id="filled-size-small"
                   fullWidth
                   variant="filled"
@@ -265,22 +296,34 @@ function SignUpForm({ show }) {
                   }
                   helperText={formik.touched.password && formik.errors.password}
                   type={formData.showPassword ? "text" : "password"}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                        >
-                          {formData.showPassword ? (
-                            <VisibilityOff />
-                          ) : (
-                            <Visibility />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
+                  slotProps={{
+                  
+                  
+                      inputLabel: {
+                        sx: {
+                          textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                          width: "100%", // important for text-align to work
+                        }
+                      },
+                    
+                    
+                    input: {
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {formData.showPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }
                   }}
                 />
               </Grid>
@@ -301,7 +344,7 @@ function SignUpForm({ show }) {
                 <Button type="submit" variant="contained" disabled={isLoading}>
                   {isLoading ? (
                     <>
-                      <span>Sign up</span>
+                      <span>{t("common.create_an_account")}</span>
 
                       <CircularProgress
                         style={{ marginLeft: "3px" }}
@@ -311,7 +354,7 @@ function SignUpForm({ show }) {
                       />
                     </>
                   ) : (
-                    "Sign up"
+                    t("common.create_an_account")
                   )}
                 </Button>
               </Grid>
@@ -319,10 +362,10 @@ function SignUpForm({ show }) {
           </Formwrapper>
 
           <Wrapper>
-            <span> By clicking "Sign up", I agree to the </span>
-            <Link to="/terms-of-services"> Terms of services </Link>
+            <span> {t("common.By_clicking_Sign_up_I_agree_to_the")} </span>
+            <Link to="/terms-of-services">{t("policies.termsOfService.title")} </Link>
             <Link to="#" onClick={() => show("login")} className="login-link">
-              I have already an account
+              {t("common.already_have_an_account")}
             </Link>
           </Wrapper>
         </Form>

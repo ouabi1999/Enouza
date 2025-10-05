@@ -16,17 +16,20 @@ function CustomerReviews(props) {
     fourStars,
     threeStars,
     oneStar,
-    product,
     sum_stars,
     newRatings,
     productData,
     ratings,
+    t,
+    i18n
   } = props;
 
   const stars = Array(5).fill(0);
   return (
     <Container>
       <Ratings
+        t = {t}
+        i18n = {i18n}
         fiveStars={fiveStars}
         twoStars={twoStars}
         fourStars={fourStars}

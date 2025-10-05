@@ -3,27 +3,29 @@ import styled from 'styled-components'
 import Description from './Description'
 import Specifications from './Specifications'
 import ReviewsLayout from './reviews/ReviewsLayout'
+import { useTranslation } from 'react-i18next'
 
 
 
 function AboutProductLayout() {
    const [isOpen, setIsOpen] = useState(1)
+   const {t, i18n} = useTranslation();
    
   return (
     <Container>
       <div className="buttons-container">
         <button onClick={() => setIsOpen(1)} id={isOpen == 1 && "selected"}>
           
-          Custumer Reviews
+          {t("productInfo.reviews")}
         </button>
         <button onClick={() => setIsOpen(2)} id={isOpen == 2 && "selected"}>
          
-          Specifications
+           {t("productInfo.specifications")}
         </button>
 
         <button onClick={() => setIsOpen(3)} id={isOpen == 3 && "selected"}>
           
-          Description
+          {t("productInfo.description")}
         </button>
       </div>
       <div>

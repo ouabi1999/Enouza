@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import StarIcon  from "@mui/icons-material/Star"; 
+import { useTranslation } from "react-i18next";
 function ProductInfo(props) {
     
       const {setColorIndex,  selectSize, sizeIndex, productData, colorIndex, ratings, sum_stars } = props
       const stars = Array(5).fill(0);
+      const {t, i18n} = useTranslation()
 
   return (
     <Container>
@@ -51,12 +53,12 @@ function ProductInfo(props) {
                        (sum_stars / ratings?.length ).toFixed(1) : "0.0"}</span>
         </div>
         <div>
-        <span> {productData?.orders?.length + productData?.aliexpress_ratings?.length} Orders </span>
+        <span> {productData?.orders?.length + productData?.aliexpress_ratings?.length  || 0} {t("productInfo.order")} </span>
         </div>
       </div>
       {productData?.sizes?.length > 0 && (
           <div>
-           <span>Size:</span>
+           <span>{t("productInfo.size")}:</span>
            <div className="product-size">
              {productData?.sizes?.map((size, index) => {
                return (
@@ -76,7 +78,7 @@ function ProductInfo(props) {
       )}
       
       <div>
-        <span>Color:</span>
+        <span>{t("productInfo.color")}:</span>
         <div className="product-color">
           {productData?.colors?.map((img, index) => {
 

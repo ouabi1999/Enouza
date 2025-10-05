@@ -10,7 +10,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 
 function DropDownMenu(props) {
   const user = useSelector((state) => state.auth.user);
-
+  const {t} = props;
   return (
     <Container>
       {props.isAuth !== null ? (
@@ -22,7 +22,7 @@ function DropDownMenu(props) {
         </div>
       ) : (
         <div className="sign-in-button">
-          <Link to="auth"> Login </Link>
+          <Link to="auth"> {t("common.register")} </Link>
         </div>
       )}
       {props.isProfileOpen && (
@@ -71,8 +71,8 @@ const Container = styled.div`
     background: #ffffff;
     color: #000000;
     border-radius: 5px 5px 0px 0;
-    width: 50px;
     height: 38px;
+    font-size: 14px;
   }
 
   .logout-button button {
@@ -100,7 +100,7 @@ position: fixed;
   button {
     display: flex;
     align-items: center;
-    font-weight: normal;
+    
     font-size: normal;
   }
   button {

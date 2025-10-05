@@ -10,183 +10,160 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { UserContext } from '../UserInfo';
 import * as Yup from "yup"
 function EditPassword(props) {
-    const { formData, setFormData, updateUserPassword, loading} = useContext(UserContext)
+    const { formData, setFormData, updateUserPassword, loading } = useContext(UserContext)
 
     const handleClickShowPassword = (value) => {
 
-        if(value === "old"){
-        setFormData({
-          ...formData,
-          showPassword: !formData.showPassword,
-        });
-     }
-       if(value === "new"){
-      setFormData({
-        ...formData,
-        showNewPassword: !formData.showNewPassword,
-      });
-     }
-      if(value === "confirm"){
-        setFormData({
-            ...formData,
-            showConfirmPassword: !formData.showConfirmPassword,
-          });
-      }
+        if (value === "old") {
+            setFormData({
+                ...formData,
+                showPassword: !formData.showPassword,
+            });
+        }
+        if (value === "new") {
+            setFormData({
+                ...formData,
+                showNewPassword: !formData.showNewPassword,
+            });
+        }
+        if (value === "confirm") {
+            setFormData({
+                ...formData,
+                showConfirmPassword: !formData.showConfirmPassword,
+            });
+        }
     }
 
-      const handleMouseDownPassword = (event) => {
+    const handleMouseDownPassword = (event) => {
         event.preventDefault();
-      };
+    };
     const editSechema = Yup.object({
-        
-        oldPassword:Yup.string().required("Please Enter your old password"),
+
+        oldPassword: Yup.string().required(props.t("common.please_enter_your_password")),
+
         
         newPassword: Yup.string()
-            .required("Please Enter your new password")
-            .matches(
+              .required(props.t("common.please_enter_your_new_password"))
+              .matches(
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-                "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-            ),
-        confirmPassword: Yup.string()
-        .required("Please confirm your password")
-        .oneOf([Yup.ref("newPassword")], "Passwords do not match"),
-       
-            })
+                props.t("errors.error_weak_password")
+              ),
+
+    })
 
     const formik = useFormik({
-        initialValues : formData,
-        validationSchema :editSechema,
+        initialValues: formData,
+        validationSchema: editSechema,
         onSubmit: values => {
-           
-          updateUserPassword({...formData, oldPassword: values.oldPassword, newPassword: values.newPassword })
+
+            updateUserPassword({ ...formData, oldPassword: values.oldPassword, newPassword: values.newPassword })
 
         },
     });
-   
+
 
     return (
         <Container>
-
             {props.passwordEdit && (
                 <form onSubmit={formik.handleSubmit}>
-                <PopUpEdit>
-                    <div className='edit-title'>
-                        <span>Edit your password</span>
-                        <DisabledByDefaultIcon className="disable-icon" onClick={props.closePasswordEdit} />
-                    </div>
-                    <div className='text'>
+                    <PopUpEdit>
+                        <div className='edit-title'>
+                            <span>{props.t("profile.change_your_password")}</span>
+                            <DisabledByDefaultIcon className="disable-icon" onClick={props.closePasswordEdit} />
+                        </div>
+                        <div className="input">
+                            <TextField
+                                label={props.t("common.old_password")}
+                                fullWidth
+                                variant="filled"
+                                size="small"
 
-                        <span>
-                            Changes made to your profile password here,
-                            will be the password that you will use
-                            when  you want login into animis website
-                        </span>
+                                name="oldPassword"
+                                value={formik.values.oldPassword}
+                                onChange={formik.handleChange}
+                                error={formik.touched.oldPassword && Boolean(formik.errors.oldPassword)}
+                                helperText={formik.touched.oldPassword && formik.errors.oldPassword}
+                                type={formData.showPassword ? "text" : "password"}
+                                slotProps={{
+                                    inputLabel: {
+                                        sx: {
+                                          textAlign: props.i18n.dir() === "rtl" ? "right" : "left",
+                                          width: "100%", // important for text-align to work
+                                        }
+                                      },
+                                    input: {
+                                        endAdornment: <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={(e) => handleClickShowPassword("old")}
+                                                onMouseDown={handleMouseDownPassword}
+                                            >
+                                                {formData.showPassword === true ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
 
+                                        </InputAdornment>,
+                                    }
+                                }}
+                            />
+                        </div>
+                        <div className="input">
+                            <TextField
+                                label={props.t("common.new_password")}
+                                fullWidth
+                                variant="filled"
+                                size="small"
+                                name="newPassword"
+                                value={formik.values.newPassword}
+                                onChange={formik.handleChange}
+                                error={formik.touched.newPassword && Boolean(formik.errors.newPassword)}
+                                helperText={formik.touched.newPassword && formik.errors.newPassword}
+                                type={formData.showNewPassword ? "text" : "password"}
+                                slotProps={{
+                                    inputLabel: {
+                                        sx: {
+                                          textAlign: props.i18n.dir() === "rtl" ? "right" : "left",
+                                          width: "100%", // important for text-align to work
+                                        }
+                                      },
+                                    input: {
+                                        endAdornment: <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={() => handleClickShowPassword("new")}
+                                                onMouseDown={handleMouseDownPassword}
+                                            >
+                                                {formData.showNewPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
 
-                    </div>
-                    <div className="input">
-                        <TextField
-                            label="Old password"
-                            fullWidth
-                            variant="filled"
-                            size="small"
+                                        </InputAdornment>,
+                                    }
+                                }}
+                            />
+                        </div>
+                    
+                        <div className='save-button'>
 
-                            name="oldPassword"
-                            value={formik.values.oldPassword}
-                            onChange={formik.handleChange}
-                            error={formik.touched.oldPassword && Boolean(formik.errors.oldPassword)}
-                            helperText={formik.touched.oldPassword && formik.errors.oldPassword}
-                            type={formData.showPassword ? "text" : "password"}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={(e) => handleClickShowPassword("old")}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {formData.showPassword === true ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
+                            <Button type="submit" variant="contained">
+                                <span>{props.t("common.save")}</span>
+                                {loading && (
 
-                                </InputAdornment>,
-                            }}
-                        />
-                    </div>
-                    <div className="input">
-                        <TextField
-                            label="New password"
-                            fullWidth
-                            variant="filled"
-                            size="small"
-                            name="newPassword"
-                            value={formik.values.newPassword}
-                            onChange={formik.handleChange}
-                            error={formik.touched.newPassword && Boolean(formik.errors.newPassword)}
-                            helperText={formik.touched.newPassword && formik.errors.newPassword}
-                            type={formData.showNewPassword ? "text" : "password"}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={() => handleClickShowPassword("new")}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {formData.showNewPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-
-                                </InputAdornment>,
-                            }}
-                        />
-                    </div>
-                    <div className="input">
-                        <TextField
-                            label="Confirm password"
-                            fullWidth
-                            variant="filled"
-                            size="small"
-                            name="confirmPassword"
-                            value={formik.values.confirmPassword}
-                            onChange={formik.handleChange}
-                            error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-                            type={formData.showConfirmPassword ? "text" : "password"}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={() => handleClickShowPassword("confirm")} 
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {formData.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-
-                                </InputAdornment>,
-                            }}
-                        />
-                    </div>
-                    <div className='save-button'>
-
-                        <Button type="submit" variant="contained">
-                        <span>Save changes</span>
-                            {loading && (
-                                   
-                                <CircularProgress
+                                    <CircularProgress
                                         style={{ marginLeft: "5px", color: "white" }}
                                         size={23}
                                         thickness={6}
-                                        
+
                                         value={100}
                                     />
                                 )
-                                
-                            }
-                        </Button>
-                    </div>
-                </PopUpEdit>
+
+                                }
+                            </Button>
+                        </div>
+                    </PopUpEdit>
                 </form>
             )}
-
         </Container>
-    )
+    );
 }
 
 export default EditPassword
@@ -195,7 +172,7 @@ const Container = styled.div`
 
 
 `
-const  PopUpEdit = styled.div`
+const PopUpEdit = styled.div`
      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
      border:2px solid lightgray;
      border-radius:6px;

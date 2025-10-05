@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import { Checkbox } from "@mui/material";
 import { pink, yellow } from "@mui/material/colors";
 import { ClickAwayListener } from "@mui/base";
+import { useTranslation } from "react-i18next";
 
 function PopUpShoppingMethod(props) {
   const productData = useSelector((state) => state.products.productData);
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const {t, i18n} = useTranslation()
 
   const {
     checkboxChange,
@@ -28,7 +30,7 @@ function PopUpShoppingMethod(props) {
     >
       <ShippingMethods role="presentation">
         <div className="header">
-          <h5>Available shipping methods</h5>
+          <h5>{t("sideCard.available_shipping_methods")}</h5>
           <InfoIcon className="info-icon" />
         </div>
 
@@ -42,7 +44,7 @@ function PopUpShoppingMethod(props) {
                   </span>
 
                   <span className="shipping-time">
-                    {item.from + " - " + item.to + " " + "Days"}
+                    {item.from + " - " + item.to + " " + t("sideCard.days")}
                   </span>
                 </div>
                 <div>
@@ -74,7 +76,7 @@ function PopUpShoppingMethod(props) {
               </span>
 
               <span className="shipping-time">
-                {shippingInfo.from} - {shippingInfo.to} Days
+                {shippingInfo.from} - {shippingInfo.to}{" "}{t("sideCard.days")}
               </span>
             </div>
             <div>

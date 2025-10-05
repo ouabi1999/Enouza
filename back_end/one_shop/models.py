@@ -63,7 +63,7 @@ class Products(models.Model):
     seo = models.JSONField(blank=True, null=True)
     warranty = models.CharField(max_length=100, blank=True, null=True)
     care_instructions = models.TextField(blank=True, null=True)
-    release_date = models.DateField(default=timezone.now, blank=True, null=True)
+    release_date = models.DateTimeField(default=timezone.now, blank=True, null=True)
     sale_end_date = models.CharField(max_length=255, blank=True, null=True)
     available_shipping = models.JSONField(blank=True, null=True)
     return_policy = models.TextField(blank=True, null=True)
@@ -128,7 +128,7 @@ class Ratings(models.Model):
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
-    
+        
 class AliExpressRatings(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()

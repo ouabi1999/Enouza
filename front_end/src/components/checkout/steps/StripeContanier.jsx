@@ -17,13 +17,12 @@ import { json } from "react-router";
 // This is your test publishable API key.
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
-export default function StripeContanier() {
+export default function StripeContanier({t, i18n}) {
   const [clientSecret, setClientSecret] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
-
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     ApiInstance.post("create-payment-intent/", {
@@ -57,6 +56,7 @@ export default function StripeContanier() {
   const options = {
     clientSecret,
     appearance,
+    locale: i18n.language || "en",
   };
 
   return (

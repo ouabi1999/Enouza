@@ -1,29 +1,32 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import countriesData from "../../../../common/countryData.json"
-
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import AutoAwesomeMotionOutlinedIcon  from "@mui/icons-material/AutoAwesomeMotionOutlined";
-import LocationOnOutlinedIcon from  "@mui/icons-material/LocationOnOutlined";
+import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import { ClickAwayListener } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
 import PopUpShoppingMethod from './PopUpShoppingMethod';
 import { useDispatch, useSelector } from 'react-redux';
+
+import countriesData from "../../../../common/countryData.json"
 import { addToCart } from '../../../features/cartSlice';
 import { setLocation } from '../../../features/locationSlice';
-import { ClickAwayListener } from '@mui/material';
 
 function SideCart(props) {
-    const {isOpen, setIsOpen} = useState(false)
-    const dispatch = useDispatch()
-   const productData = useSelector(state => state.products.productData)
-   const [fromDate, setFromDate] = useState("")
-   const [toDate, setToDate] = useState("")
-   let country = useSelector(state => state.location.country)
+  const { isOpen, setIsOpen } = useState(false)
+  const dispatch = useDispatch()
+  const productData = useSelector(state => state.products.productData)
+  const [fromDate, setFromDate] = useState("")
+  const [toDate, setToDate] = useState("")
+  let country = useSelector(state => state.location.country)
+  const { t, i18n } = useTranslation()
 
-   const today = new Date();
-   const {
+  const today = new Date();
+  const {
     shippingInfo,
     addQuantity,
     maxOrderWorning,
@@ -40,32 +43,32 @@ function SideCart(props) {
   } = props;
 
   let Date1 = new Date(today)
-  let  Date2 = new Date(today)
+  let Date2 = new Date(today)
 
-    useEffect(() => {
-      
-      Date1.setDate(Date1.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.from) || 5))
-      setFromDate(Date1.toDateString())
-      Date2.setDate(Date2.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.to) || 7))
-      setToDate(Date2.toDateString())
-      
+  useEffect(() => {
 
-      
+    Date1.setDate(Date1.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.from) || 5))
+    setFromDate(Date1.toDateString())
+    Date2.setDate(Date2.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.to) || 7))
+    setToDate(Date2.toDateString())
 
-    }, [productData, shippingMethodIndex])
-    
-    const intervalRef = useRef(0);
 
-  
 
-    
+
+  }, [productData, shippingMethodIndex])
+
+  const intervalRef = useRef(0);
+
+
+
+
   return (
     <Container>
       <div>
         <div className="shipping-to">
           <div className="center-align">
             <LocationOnOutlinedIcon className="location-icon" />
-            <span className="header">Chip to </span>
+            <span className="header"> {t("sideCard.Ship_to")}</span>
           </div>
 
           <div className="center-align flex-end">
@@ -74,7 +77,7 @@ function SideCart(props) {
             <div>
               <select
                 value={country}
-                className="chip-to-select"
+                className="ship-to-select"
                 style={{
                   border: "none",
                   width: "75px",
@@ -97,49 +100,48 @@ function SideCart(props) {
             </div>
           </div>
         </div>
-        <div className="shipping-method">
-          <div className="shipping">
-            <div className="center-align" style={{ marginTop: "10px" }}>
+        <div className="shipping">
+            <div className="center-align" >
               <LocalShippingOutlinedIcon className="Shipping-icon" />
               {productData[0]?.available_shipping?.length > 0 ? (
                 <span className="header"> {Number(productData[0]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? "Free shipping" : productData[0]?.available_shipping[shippingMethodIndex]?.methodName}</span>
-            ):
-            <span className="header"> {shippingInfo.cost <= 0 ? "Free shipping" : shippingInfo.methodName} </span>
+              ) :
+                <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
 
-          }
+              }
             </div>
-            <div> 
+            <div>
               <ArrowForwardIosOutlinedIcon className="arrow-icon" onClick={() => setIsPopUpShippingOpen(!isPopUpShippingOpen)} />
             </div>
           </div>
-          <div className="delivrey-time">
-            <span> Delivrey:</span>
+          
+          
+          <div className="delivrey-time center-align">
+            <DeliveryDiningIcon className="Shipping-icon" />
+            <span className="header"> {t("sideCard.Delivrey")} :</span>
             {productData[0]?.available_shipping?.length > 0 ? (
-                <span> {fromDate.slice(3, -4) } / {toDate.slice(3, -4) }</span>
+              <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
 
-            ):
-            <span> {shippingInfo.date1?.slice(3, -4) } /  {shippingInfo.date2?.slice(3, -4) }</span>
+            ) :
+              <span style={{ margin: "0 4px 0 4px", fontSize: "14px" }}>  {shippingInfo.date1?.slice(3, -4)} /  {shippingInfo.date2?.slice(3, -4)}</span>
 
-          }
+            }
           </div>
-        </div>
-        <div className="security-privacy">
-          <div style={{ display: "flex", alignItems: "center" }}>
+         
+
+          <div style={{ display: "flex", alignItems: "center" , marginBottom:"10px"}}>
             <VerifiedUserOutlinedIcon className="security-icon" />
-            <span className="header">Security & Privacy</span>
+            <span className="header">{t("sideCard.Security_&_Privacy.header")}</span>
           </div>
           <div className="security-privacy-text">
             <span>
-              Safe payments: We do not share your personal details with any
-              third parties without your consent. Secure personal details: We
-              protect your privacy and keep your personal details safe and
-              secure.
+              {t("sideCard.Security_&_Privacy.text")}
             </span>
           </div>
-        </div>
+        
         <div className="center-align">
           <AutoAwesomeMotionOutlinedIcon className="security-icon" />
-          <span className="header"> Quantity </span>
+          <span className="header"> {t("sideCard.Quantity")} </span>
         </div>
         <div className="quantity-container">
           <div className="quantity-button-container">
@@ -148,31 +150,31 @@ function SideCart(props) {
             <button onClick={addQuantity}>+</button>
           </div>
           <div>
-            <span>{productData[0]?.quantity - quantity} available</span>
+            <span>{productData[0]?.quantity - quantity} {t("sideCard.available")}</span>
           </div>
-          
+
           <ClickAwayListener
-          mouseEvent="onMouseDown"
-          touchEvent="onScroll"
-          onClickAway={()=> setMaxOrderWorning(false)}
-          
+            mouseEvent="onMouseDown"
+            touchEvent="onScroll"
+            onClickAway={() => setMaxOrderWorning(false)}
+
           >
-            <span className={maxOrderWorning ? "max-order-warning":"not-show"}>
-              You have reached the maximum order limit
-              </span>
-        </ClickAwayListener>
-      
+            <span className={maxOrderWorning ? "max-order-warning" : "not-show"}>
+            {t("sideCard.max-order-warning")} 
+            </span>
+          </ClickAwayListener>
+
         </div>
-        
+
         <div>
           <div className="button-container">
-            <button className="buy-button" onClick={()=> buy_Now_item(productData[0])}> Buy now</button>
+            <button className="buy-button" onClick={() => buy_Now_item(productData[0])}>{t("common.buyNow")}</button>
             <button
               className="add-button"
               onClick={() => add_item_to_cart(productData[0])}
             >
               {" "}
-              Add to cart
+              { t("common.addToCart")}
             </button>
           </div>
         </div>
@@ -182,9 +184,9 @@ function SideCart(props) {
 }
 
 export default SideCart
- 
- 
- 
+
+
+
 
 const Container = styled.div`
   padding: 10px;
@@ -194,11 +196,12 @@ const Container = styled.div`
  .center-align{
   display:flex;
   align-items:center;
+  margin-bottom:10px;
  }
-
+ 
 
   
-  .chip-to-select {
+  .ship-to-select {
     -webkit-appearance: none;
     appearance: none;
     padding: 5px;
@@ -207,6 +210,7 @@ const Container = styled.div`
 
   .shipping-to {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
@@ -262,10 +266,11 @@ const Container = styled.div`
     width: 100%;
   }
   .arrow-icon {
-    display: grid;
-    place-self: end;
-    font-size: 15px;
+    
+    font-size: 13px;
+    font-weight: bold;
     cursor: pointer;
+    margin-bottom:5px;
   }
   .Shipping-icon {
     font-size: 16px;
@@ -273,7 +278,6 @@ const Container = styled.div`
     margin-right: 3px;
   }
   .delivrey-time {
-    margin-bottom: 10px;
   }
   .delivrey-time span:first-child {
     color: gray;
@@ -281,12 +285,14 @@ const Container = styled.div`
     font-size: 0.99rem;
   }
   .security-privacy-text {
-    width: 75%;
+    width: 100%;
     margin-left: 10px;
     white-space: wrap;
     border-bottom: 1px solid lightgray;
-    padding: 10px;
+    font-size: 0.8rem;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+   
   }
 
   .quantity-container {

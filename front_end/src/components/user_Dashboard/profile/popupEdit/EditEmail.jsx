@@ -12,7 +12,7 @@ function EditEmail(props) {
     const { formData, updateUserInfo, loading} = useContext(UserContext)
     const editSechema = Yup.object({
         
-        email: Yup.string().email('Invalid email address').required('Required'),
+        email: Yup.string().email(props.t("errors.error_invalid_email")).required(props.t("errors.required")),
         
         })
 
@@ -46,18 +46,10 @@ function EditEmail(props) {
             {emailEdit && (
                 <PopUpEdit>
                     <div className='edit-title'>
-                        <span>Edit your email</span>
+                        <span>{props.t("profile.edit_your_email")}</span>
                         <DisabledByDefaultIcon className="disable-icon" onClick={closeEmailEdit} />
                     </div>
-                    <div className='text'>
-
-                        <span>
-                            Changes made to your profile email here,
-                            will be shown anywhere your profile is used
-                        </span>
-
-
-                    </div>
+                   
                     <div className="input">
                         <TextField
                             label="email"
@@ -75,7 +67,7 @@ function EditEmail(props) {
                     <div className='save-button'>
 
                         <Button type="submit" variant="contained">
-                            <span>Save changes</span>
+                            <span>{props.t("common.save")}</span>
                             {loading && (
                                   
                                 <CircularProgress

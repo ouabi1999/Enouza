@@ -1,9 +1,10 @@
 import React, {useEffect, useContext} from 'react'
 import styled from "styled-components"
 import { FormContext } from '../../pages/CheckoutPage';
-
+import { useTranslation } from 'react-i18next';
 function Stepper() {
     const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
+    const {t, i18n} = useTranslation()
     
     useEffect(() => {
         const stepperItems = document.querySelectorAll(".stepper-item");
@@ -20,20 +21,20 @@ function Stepper() {
     <Container>
        <Wraper>
         <div className='stepper-item'>
-            <h5> Log in </h5>
+            <h5> {t("common.signin")} </h5>
         </div>
         <div className="flex-auto border-t-2"></div>
    
         <div className='stepper-item'>
-            <h5>Billing </h5>
+            <h5>{t("common.billingAddress")} </h5>
         </div>
         <div className="flex-auto border-t-2"></div>
         <div className='stepper-item' >
-            <h5> Shipping  </h5>
+            <h5>{t("common.shipping")}  </h5>
         </div>
         <div className="flex-auto border-t-2"></div>
         <div className='stepper-item'>
-            <h5> Payment </h5>
+            <h5> {t("common.payment")} </h5>
         </div>
       </Wraper>
     </Container>

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToastContainer, toast } from 'react-toastify';
 
 const initialCartState = {
   cartItems: JSON.parse(window.localStorage.getItem("cartItems")) || [],
@@ -18,39 +17,10 @@ export const cart_Slice = createSlice({
     addToCart(state, action) {
       
       const cartItems = JSON.parse(window.localStorage.getItem("cartItems")) || [];
-      if (cartItems.find(item => item.id === action.payload.id
-        &&
-        item.color === action.payload.selectedColor
-        &&
-        item.size === action.payload.selectedSize)
+      cartItems.push(action.payload)
+      state.cartItems = cartItems
+      window.localStorage.setItem("cartItems", JSON.stringify(cartItems))
       
-      
-      ) {
-
-        toast.success("Already Shopping Cart!.")
-
-      }
-
-
-
-      else {
-        toast.success("A new item has been added to your Shopping Cart.")
-
-        cartItems.push({
-
-          id: action.payload.id,
-          name: action.payload.name,
-          available_shipping:action.payload.shipping_info,
-          color: action.payload.selectedColor,
-          quantity: action.payload.selectedQuantity,
-          size: action.payload.selectedSize,
-          price: parseFloat(action.payload.price),
-          subtotal: parseFloat(action.payload.price) * action.payload.selectedQuantity,
-
-        })
-        state.cartItems = cartItems
-        window.localStorage.setItem("cartItems", JSON.stringify(cartItems))
-      }
 
     },
 

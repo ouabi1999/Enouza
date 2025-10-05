@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import axios from 'axios';
 import HeadeSeo from '../../../common/HeadeSeo';
+import { useTranslation } from 'react-i18next';
 
 function ShoppingCart() {
   const dispatch = useDispatch()
@@ -17,6 +18,7 @@ function ShoppingCart() {
   const cartItems =  useSelector((state) => state.cart.cartItems)
   const [isLoading, setIsLoading] = useState(false)
   const productData = useSelector((state) => state.products.productData)
+  const {t} = useTranslation()
   useLayoutEffect(() => {
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -63,9 +65,9 @@ function ShoppingCart() {
     <Container>
       <HeadeSeo title = "Enouza - shopping cart"/>
       
-      <h2 style={{ fontFamily: "sans-serif" }} className="shopping-cart-h2">Shopping Cart ({cartItems?.length})</h2>
+      <h2 style={{ fontFamily: "sanc-serif" }} className="shopping-cart-h2">{t("common.shopping_cart")} ({cartItems?.length})</h2>
       {cartItems?.length === 0 ? (
-        <EmptyCart />
+        <EmptyCart t ={t} />
       )
         :
         (
@@ -133,12 +135,7 @@ function ShoppingCart() {
 
 
 
-                          {/*this.props.cartItems.cartItems.length !== 0 && (
-                              <div className="subtotal">
-                                {" "}
-                                <span>${item.subtotal.toFixed(2)}</span>
-                              </div>
-                            )*/}
+                         
 
                         </div>
                       </div>
@@ -151,6 +148,7 @@ function ShoppingCart() {
 
               <ProductSubtotal
                 cartItems={cartItems}
+                t = {t}
               />
             </Wrap>
           </div>

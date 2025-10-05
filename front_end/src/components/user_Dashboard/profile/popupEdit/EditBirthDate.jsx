@@ -47,18 +47,10 @@ function EditBirthDate(props) {
             {birthDateEdit && (
                 <PopUpEdit>
                     <div className='edit-title'>
-                        <span>Edit your birthday</span>
+                        <span>{props.t("profile.edit_your_birthdate")}</span>
                         <DisabledByDefaultIcon className="disable-icon" onClick={closeBirthDateEdit} />
                     </div>
-                    <div className='text'>
-
-                        <span>
-                            Changes made to your profile birthday here,
-                            will be shown anywhere your profile is used
-                        </span>
-
-
-                    </div>
+                    
                     <div className="input">
                         <TextField
                             label="BirthDate"
@@ -78,7 +70,7 @@ function EditBirthDate(props) {
 
                         <Button variant="contained">
                          
-                            <span>Save changes</span>
+                            <span>{props.t("common.save")}</span>
                             {loading && (
                                   
                                 <CircularProgress

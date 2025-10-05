@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-function LogendIn() {
+function LogendIn({t}) {
   return (
     <Wrapper>
         <div>
             <CheckCircleIcon className='check-icon' />
             <div>
-              <span>You are loged in Continue
+              <span>{t("common.you_are_logged_in")}
                 </span>
                 </div>
         </div>

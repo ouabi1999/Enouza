@@ -1,15 +1,17 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState,Suspense, createContext } from "react";
 import ApiInstance from "../common/baseUrl";
-import "./App.css";
-import axios from "axios";
-import HomePage from "./pages/HomePage";
-import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import BuyerTrustServices from "./components/Services/BuyerTrustServices";
+import { useDispatch, useSelector } from "react-redux";
+
+////////////////////////////////////////////////////////////////
+
 import Auth from "./pages/Auth";
 import NavBar from "./components/Navbar/NavBar";
 import ShoppingCart from "./components/Cart/ShoppingCart";
-import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer/Footer";
 import { getUser } from "./features/authSlice";
 import UserProfile from "./pages/UserProfile";
 import UserInfo from "./components/user_Dashboard/profile/UserInfo";
@@ -35,6 +37,11 @@ import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
 import ShippingPolicy from "./components/polices/ShippingPolicy";
 import SearchPage from "./pages/SearchPage";
 import OrderSuccess from "./components/checkout/OrderSuccsess";
+import "../public/i18n/index.jsx"
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import ResetPassword from "./components/auth/ResetPassword";
+
 export const OrderContext = createContext();
 function App() {
   const dispatch = useDispatch();
@@ -60,13 +67,17 @@ function App() {
     currency: "usd",
     ordered_products: cartItems,
   });
-
+ const {i18n} = useTranslation()
   useEffect(() => {
     dispatch(getUser());
     dispatch(getProduct());
   }, [retry]);
+  
+
 
   return (
+    <div style={{ direction: i18n.dir(), unicodeBidi: "plaintext" }} >
+      <Suspense fallback="loading">
     <OrderContext.Provider value={{ formData, setFormData }}>
       <BrowserRouter>
         <Routes>
@@ -104,6 +115,7 @@ function App() {
             <Route path="help-center" element={<HelpCenter />} />
           </Route>
           <Route path="/auth" element={<Auth />} />
+          <Route path="reset-password/:id/:token" element={<ResetPassword/>} />
 
           <Route path="/profile" element={<UserProfile />}>
             <Route path="/profile" element={<UserInfo />} />
@@ -128,6 +140,8 @@ function App() {
         </Routes>
       </BrowserRouter>
     </OrderContext.Provider>
+    </Suspense>
+    </div>
   );
 }
 

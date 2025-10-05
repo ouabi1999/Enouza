@@ -7,13 +7,15 @@ import { Grid, TextField, Button, IconButton, InputAdornment } from '@mui/materi
 import { useFormik } from 'formik';
 import * as Yup from "yup"
 import ApiInstance from "../../../common/baseUrl"
+import { useTranslation } from 'react-i18next';
+import Footer from './Footer';
 
 function NewsLetter(){
     const [isLoading,  setIsLoading] = useState(false)
     const [email, setEmail] = useState("")
     const [error, setError] = useState(null)
 
-
+    const {t, i18n} = useTranslation()
    
     
     
@@ -72,9 +74,9 @@ function NewsLetter(){
                 
                 <Wrapp>
                
-                    <span className="title">Newsletter</span>
+                    <span className="title">{t("footer.newsletter.title")}</span>
                     <p>
-                        Signup for our newsletter to get notified about sales.
+                        {t("footer.newsletter.description")}
 
                     </p>
                     
@@ -87,6 +89,7 @@ function NewsLetter(){
                             id="email"
                             name="email"
                             type="email"
+                            placeholder={t("footer.newsletter.placeholder")}
                             onChange={formik.handleChange}
                             value={formik.values.email}
                         />
@@ -104,7 +107,7 @@ function NewsLetter(){
                      />
                      </span>
                     )}         
-                    <span>Subscribe</span>
+                    <span>{t("footer.newsletter.subscribeButton")}</span>
                     </button>
                         
                     </div>
@@ -136,7 +139,6 @@ const Container = styled.form`
 const Wrapp = styled.div`
     height:90%;
     width:100%;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -191,6 +193,7 @@ const Wrapp = styled.div`
         border-left:none;
         display:flex;
         align-items:center;
+        padding: 0 6px;
       
        
     }

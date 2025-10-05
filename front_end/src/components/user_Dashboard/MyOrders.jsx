@@ -3,7 +3,8 @@ import Pagination from '@mui/material/Pagination';
 import { useSelector } from 'react-redux';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material'
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import HeadeSeo from "../../../common/HeadeSeo";
 import ApiInstance from '../../../common/baseUrl';
@@ -15,7 +16,8 @@ function MyOrders() {
   const [totalPages, setTotalPages] = useState(1)
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
-
+  const  { t } = useTranslation()
+  
   const handleChange = (event, value) => {
     setCurrentPage(value);
     console.log(currentPage)
@@ -60,8 +62,8 @@ function MyOrders() {
               flexDirection: "column",
             }}
           >
-            <span> You haven't placed any orders yet</span>
-            <Link to="/">Start shopping</Link>
+            <span>{t("profile.you_havent_placed_any_orders_yet")}</span>
+            <Link to="/">{t("profile.start_shopping")}</Link>
           </div>
         ) : (
           <div>
@@ -70,23 +72,23 @@ function MyOrders() {
                 <Wrapper key={index}>
                   <div className="order-details">
                     <div className="order-status">
-                      <span>Processing</span>
+                      <span>{t("profile.processing")}</span>
                     </div>
                     <div className="shippingInfo font">
-                      <span> Order take between: {order.delivery_time}</span>
+                      <span> {t("profile.order_take_between:")} {order.delivery_time}</span>
                       <span>
                         {" "}
-                        TrackingNumber:{" "}
+                        {t("profile.tracking_number:")}{" "}
                         {order.trackingNumber === null
-                          ? "Not available"
+                          ? t("profile.not_available")
                           : order.trackingNumber}{" "}
                       </span>
-                      <span> ShippingMethod: {order.shipping_method}</span>
+                      <span> {t("profile.shippingMethod:")} {order.shipping_method}</span>
                     </div>
                     <div className="order-end-section font">
-                      <span> Order placed on: {order.ordered_at}</span>
-                      <span> Order ID: {order.id} </span>
-                      <span> Payment method: Credit/Debit card</span>
+                      <span> {t("profile.order_placed_on")}: {order.ordered_at}</span>
+                      <span>{t("profile.order_id: ")}{order.id} </span>
+                      <span> {t("profile.payment_method")}: {t("profile.Credit_Debit_card")}</span>
                     </div>
                   </div>
 
@@ -125,13 +127,13 @@ function MyOrders() {
 
                         <div className="flex-end-product">
                           <div className="subtotal">
-                            <span> Subtotal </span>
+                            <span> {t("profile.subtotal")} </span>
                             <span>
                               $ {(product.price * product.quantity).toFixed(2)}
                             </span>
                           </div>
                           <div className="shipping">
-                            <span> Shipping </span>
+                            <span> {t("profile.shipping")} </span>
                             <span>
                               ${" "}
                               {order.shipping_price
@@ -141,7 +143,7 @@ function MyOrders() {
                           </div>
 
                           <div className="total">
-                            <span> Total </span>
+                            <span> {t("profile.total")} </span>
                             <span>
                               {" "}
                               ${" "}

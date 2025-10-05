@@ -9,6 +9,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import FemaleIcon from '@mui/icons-material/Female';
 import { ToastContainer, toast } from 'react-toastify';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {useTranslation} from 'react-i18next'
 import HeadeSeo from "../../../../common/HeadeSeo"
 import ApiInstance from "../../../../common/baseUrl"
 import EditBirthDate from "./popupEdit/EditBirthDate"
@@ -24,7 +25,7 @@ export const UserContext = createContext()
 
 function UserInfo(props){
     const dispatch = useDispatch()
-      
+    const { t, i18n } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("")   
     const user = useSelector(state=> state.auth.user)
@@ -103,13 +104,13 @@ function UserInfo(props){
              console.log(res.data)
              
              setLoading(false)
-             toast.success("SAVED")
+             toast.success(t("success.updated" ))
    
            })
            .catch((error) => {
              console.error('Error:', error);
              setLoading(false)
-             toast.error("an error accourd")
+             toast.error(t("errors.server_error"))
            });
        }
 
@@ -130,14 +131,14 @@ function UserInfo(props){
                 setFormData(result.data);
 
                 setLoading(false)
-                toast.success("Password updated")
+                toast.success(t("success.password_changed_successfully"))
     
     
            
    
            })
            .catch((error) => {
-            toast.error("Somthing went wrong..!")
+            toast.error(t("errors.bad_request"))
             console.error('There has been a problem with your fetch operation:', error);
             setLoading(false)
             
@@ -197,7 +198,7 @@ function UserInfo(props){
           loading,
         }}
       >
-        <HeadeSeo title="Dashboard / profile" />
+        <HeadeSeo title={`Dashboard / ${t("profile.my_profile")}`} />
         <Container>
             <ToastContainer/>
           <Section>
@@ -219,7 +220,7 @@ function UserInfo(props){
             <div className="location">
               <div className="flex-icon">
                 <LocationOnIcon className="icon" />
-                <span> From </span>
+                <span> {t("common.from")} </span>
               </div>
               <div>
                 <span> {formData?.country}</span>
@@ -233,7 +234,7 @@ function UserInfo(props){
             <div className="member-since">
               <div className="flex-icon">
                 <EmailIcon className="icon" />
-                <span> Email </span>
+                <span> {t("common.email")} </span>
               </div>
               <div className="email">
                 <div className="email-content">
@@ -250,7 +251,7 @@ function UserInfo(props){
               <div className="flex-icon">
                 <LockIcon className="icon" />
 
-                <span> Password </span>
+                <span> {t("common.password")} </span>
               </div>
 
               <div>
@@ -266,11 +267,11 @@ function UserInfo(props){
               <div className="flex-icon">
                 <FemaleIcon className="icon" />
 
-                <span> Gender </span>
+                <span> {t("common.gender")}</span>
               </div>
 
               <div>
-                <span>{formData?.gender}</span>
+                <span>{t(`common.${formData.gender.toLowerCase()}`)}</span>
                 <EditIcon
                   className="edit-icon"
                   onClick={() => setGenderEdit(true)}
@@ -281,22 +282,26 @@ function UserInfo(props){
             <div className="member-since">
               <div className="flex-icon">
                 <PersonIcon className="icon" />
-                <span> Member since </span>
+                <span> {t("common.member_since")}</span>
               </div>
               <span> {formData?.joined_at}</span>
             </div>
           </Section>
           <EditBirthDate
+           t = {t}
             birthDateEdit={birthDateEdit}
             closeBirthDateEdit={closeBirthDateEdit}
           />
-          <EditName nameEdit={nameEdit} closeNameEdit={closeNameEdit} />
-          <EditEmail emailEdit={emailEdit} closeEmailEdit={closeEmailEdit} />
+          <EditName nameEdit={nameEdit} t = {t} closeNameEdit={closeNameEdit} />
+          <EditEmail emailEdit={emailEdit} t = {t} closeEmailEdit={closeEmailEdit} />
           <EditCountry
             countryEdit={countryEdit}
             closeCountryEdit={closeCountryEdit}
+            t = {t}
           />
           <EditPassword
+            t = {t}
+           i18n ={i18n}
             passwordEdit={passwordEdit}
             closePasswordEdit={closePasswordEdit}
             handleClickShowPassword={handleClickShowPassword}
@@ -304,6 +309,7 @@ function UserInfo(props){
           <EditGender
             genderEdit={genderEdit}
             closeGenderEdit={closeGenderEdit}
+            t = {t}
           />
         </Container>
       </UserContext.Provider>

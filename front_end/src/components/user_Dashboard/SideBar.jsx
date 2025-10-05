@@ -9,8 +9,10 @@ import FeedIcon from '@mui/icons-material/Feed';
 import { Link } from 'react-router-dom';
 import EmailIcon from '@mui/icons-material/Email';
 import EditIcon from '@mui/icons-material/Edit';
-
+import { useTranslation } from 'react-i18next';
 function SideBar() { 
+  const { t } = useTranslation()
+  
   return (
     <Side_Bar>
 
@@ -19,21 +21,21 @@ function SideBar() {
         <FeedIcon className="sidebar_icons" />
         
           <span>
-            My Profile
+            {t("common.myProfile")}
           </span>
         </Link>
       
       <Link to="my-orders">
         <ShoppingBasketIcon className="sidebar_icons" />
         
-          <span>My Orders</span>
+          <span> {t("common.myOrders")}</span>
         </Link>
       
       <Link to="notifications">
         <NotificationsIcon className="sidebar_icons" />
         
           <span>
-            Notifications
+             {t("common.notifications")}
           </span>
         </Link>
       
@@ -41,7 +43,7 @@ function SideBar() {
         <EmailIcon className="sidebar_icons" />
         
           <span>
-            Chat
+             {t("common.chat")}
           </span>
         </Link>
      
@@ -49,7 +51,7 @@ function SideBar() {
         <HelpCenterIcon className="sidebar_icons" />
         
           <span>
-            Help Center
+             {t("common.helpCenter")}
           </span>
         </Link>
         

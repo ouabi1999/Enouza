@@ -7,6 +7,7 @@ import MainImages from './Sections/MainImages';
 import ProductInfo from './Sections/ProductInfo';
 import PopUpShoppingMethod from './Sections/PopUpShoppingMethod';
 import { buyNowItem, addToCart } from '../../features/cartSlice';
+import { useTranslation } from 'react-i18next';
 
 function Product(props) {
 
@@ -14,12 +15,13 @@ function Product(props) {
     const date = new Date()
     const productData = useSelector(state => state.products.productData)
 
-    let ratings = productData[1]?.ratings?.concat(productData[1]?.aliexpress_ratings);
+    let ratings = productData[0]?.ratings?.concat(productData[0]?.aliexpress_ratings);
 
     let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
          return total += value.stars
       }, 0):""
-    
+      
+    const {t, i18n} = useTranslation();
 
    
   return (

@@ -12,6 +12,7 @@ import DropDownMenuLang from "./DropDownMenuLang";
 import MenuIcon from "@mui/icons-material/Menu";
 import SideBar from "./SideBar";
 import { ClickAwayListener } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function NavBar({ outlet, setSearchValue, value }) {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -26,7 +27,7 @@ function NavBar({ outlet, setSearchValue, value }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const country = useSelector((state) => state.location.country);
 
   const logout = () => {
@@ -48,10 +49,11 @@ function NavBar({ outlet, setSearchValue, value }) {
     setIsSideBarOpen(!isSideBarOpen);
   };
 
-  const handleSearchInput = (e)=>{
+  const handleSearchInput = (e) => {
     setSearchValue(e.target.value)
     navigate("/search")
   }
+
   return (
     <ParentContainer>
       {isSearchInputOpen && (
@@ -62,10 +64,14 @@ function NavBar({ outlet, setSearchValue, value }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder="Search"  value = {value} onChange={()=> setSearchValue(event.target.value)} maxlength="100"/>
+              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
+                borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
+              }} />
             </div>
 
-            <div className="search-icon-container">
+            <div className="search-icon-container" style={{
+              borderRadius: i18n.dir() === "rtl" ? "4px 0 0 4px" : "0 4px 4px 0"
+            }}>
               <SearchIcon className="search-icon" onClick={handleSearchInput} />
             </div>
           </div>
@@ -80,11 +86,15 @@ function NavBar({ outlet, setSearchValue, value }) {
           </Logo>
           <SearchContainer>
             <div className="search-bar">
-              <input placeholder="Search " value = {value} onChange={()=> setSearchValue(event.target.value)} maxlength="50"/>
+              <input placeholder={t("common.search")} style={{
+                borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
+              }} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="50" />
             </div>
 
-            <div className="search-icon-container">
-              <SearchIcon className="search-icon" onClick={handleSearchInput}/>
+            <div className="search-icon-container" style={{
+              borderRadius: i18n.dir() === "rtl" ? "4px 0 0 4px" : "0 4px 4px 0"
+            }}>
+              <SearchIcon className="search-icon" onClick={handleSearchInput} />
             </div>
           </SearchContainer>
         </ChildContainer>
@@ -110,6 +120,7 @@ function NavBar({ outlet, setSearchValue, value }) {
               country={country}
               topPosition="60px"
               righPosition="20px"
+              t = {t}
             />
           </div>
           <div className="drop-down-menu-container">
@@ -119,6 +130,7 @@ function NavBar({ outlet, setSearchValue, value }) {
               isProfileOpen={isProfileOpen}
               openProfileMenu={openProfileMenu}
               setIsProfileOpen={setIsProfileOpen}
+              t = {t}
             />
           </div>
           <MenuIcon className="menu-icon" onClick={hideSideBarMenu} />
@@ -126,6 +138,7 @@ function NavBar({ outlet, setSearchValue, value }) {
       </Container>
       {isSideBarOpen && (
         <SideBar
+          t = {t}
           isAuth={isAuth}
           isLangMenuOpen={isLangMenuOpen}
           setIsLangMenuOpen={setIsLangMenuOpen}

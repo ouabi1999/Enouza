@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link, NavLink, useNavigate } from "react-router-dom"
 //import {setCategory } from '../../features/categories/categorySlice'
+import {useTranslation} from 'react-i18next'
 import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
 import NewsLetter from './NewsLetter'
 
@@ -11,7 +12,7 @@ const Footer = () => {
   //const dispatch = useDispatch()
   //const SelectedCategory = (value)=>{
    // dispatch(setCategory(value))
-    
+    const {t, i18n} = useTranslation()
 
   //}
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
       <Wrapper>
         <Wrapp>
           <ul className="social-categorie">
-            <li className="text-info">Follow us</li>
+            <li className="text-info">{t("footer.followUs.title")}</li>
             <li>
               <i className="fab fa-facebook-f" />
               <a
@@ -28,7 +29,7 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=61571681156358"
               >
                 {" "}
-                Facebook
+               {t("footer.followUs.facebook")}
               </a>
             </li>
             <li>
@@ -38,7 +39,7 @@ const Footer = () => {
                 target="_blank"
                 href="https://www.instagram.com/en.ouza"
               >
-                Instagram
+                {t("footer.followUs.instagram")}
               </a>
             </li>
             <li>
@@ -48,7 +49,7 @@ const Footer = () => {
                 target="_blank"
                 href="https://twitter.com/en_ouza"
               >
-                Twitter
+                {t("footer.followUs.twitter")}
               </a>
             </li>
             <li>
@@ -58,39 +59,39 @@ const Footer = () => {
                 target="_blank"
                 href="https://www.tiktok.com/@en.ouza"
               >
-                Tik Tok
+                {t("footer.followUs.tiktok")}
               </a>
             </li>
           </ul>
           <ul className="policy">
-            <li className="text-info">Polices</li>
+            <li className="text-info">{t("footer.policies.title")}</li>
             <li>
-              <Link to="terms-of-services">Terms of services</Link>
+              <Link to="terms-of-services">{t("footer.policies.termsOfService")}</Link>
             </li>
 
             <li>
-              <Link to="privacy-policy"> Privacy policy </Link>
+              <Link to="privacy-policy">{t("footer.policies.privacyPolicy")} </Link>
             </li>
             <li>
-              <Link to="shipping-policy"> Shipping policy </Link>
+              <Link to="shipping-policy"> {t("footer.policies.shippingPolicy")} </Link>
             </li>
             <li>
-              <Link to="return-policy"> Return policy </Link>
+              <Link to="return-policy"> {t("footer.policies.refundPolicy")} </Link>
             </li>
           </ul>
           <ul className="social-categorie">
-            <li className="text-info">Help</li>
+            <li className="text-info">{t("footer.help.title")}</li>
             <li>
               <i className="fab fa-facebook-f" />
-              <Link to="contact-us"> Contact us</Link>
+              <Link to="contact-us">{t("footer.help.contactUs")}</Link>
             </li>
             <li>
               <i className="fab fa-instagram" />
-              <Link to="about-us">About us</Link>
+              <Link to="about-us">{t("footer.help.aboutUs")}</Link>
             </li>
             <li>
               <i className="fab fa-twitter" />
-              <Link to="help-center">FAQ</Link>
+              <Link to="help-center"> {t("footer.help.faq")}</Link>
             </li>
           </ul>
 
@@ -112,9 +113,9 @@ const Footer = () => {
           <img src="./payment-methods.png" alt="secure payment" />
         </div>
         <div className="CopyRight">
-          <span>All right reserved </span>
-
-          <span>copyright </span>
+          <span>{t("footer.newsletter.all_rights_reserved")} </span>
+           
+          <span>{t("footer.newsletter.copyright")} </span>
           <CopyrightOutlinedIcon className="copy-icon" />
 
           <span>{new Date().getFullYear()}</span>

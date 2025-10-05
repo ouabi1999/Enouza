@@ -5,15 +5,26 @@ import data from "../../../common/countryData.json";
 import { ClickAwayListener } from "@mui/material";
 import { setLocation } from "../../features/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
+
 import Flag from 'react-world-flags'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+import i18n from "../../../public/i18n/index"
 function DropDownMenuLang(props) {
   const [isActive, setIsActive] = useState(false);
-  const dispatch =  useDispatch()
- 
- 
-  
+  const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "English")
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "es", label: "Spanish" },
+    { code: "ar", label: "Arabic" },
+  ];
+  const dispatch = useDispatch()
+  const { t } = props
+
+  /*useEffect(() => {
+    document.body.dir = i18n.dir();
+  }, [i18n, i18n.language]);*/
+
 
   useEffect(() => {
     if (!window.localStorage.getItem("country")) {
@@ -25,33 +36,38 @@ function DropDownMenuLang(props) {
         })
         .catch((error) => console.log(error));
     }
+    console.log(props)
   }, []);
-  useEffect(() => {
-    console.log(props.country)
-  }, [])
-  
+
+
+  const switchLanguage = (e) => {
+   
+    setSelectedLang(e.target.options[e.target.selectedIndex].text);
+    window.localStorage.setItem("selectedLang", e.target.options[e.target.selectedIndex].text)
+    i18n.changeLanguage(e.target.value);
+  };
 
   return (
-           
-      <Container>
-       <div className="Lang_currency">
-              <button onClick={()=> props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
-                <Flag className="flag-icon" code={props.country} />
-                <span> / English </span>
-                <span> / USD </span>
-                <ArrowDropDownIcon className="dropDownArrow-icon" />
-              </button>
-            </div>
-             {props.isLangMenuOpen && (
-                  <ClickAwayListener
-                  mouseEvent="onMouseDown"
-                  touchEvent="onScroll"
-                  onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
-                >
-                    
-          <Wrapper $topPosition={props.topPosition} $righPosition = {props.righPosition}>
+
+    <Container>
+      <div className="Lang_currency">
+        <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
+          <Flag className="flag-icon" code={props.country} />
+          <span>{selectedLang} </span>
+          <span> / USD </span>
+          <ArrowDropDownIcon className="dropDownArrow-icon" />
+        </button>
+      </div>
+      {props.isLangMenuOpen && (
+        <ClickAwayListener
+          mouseEvent="onMouseDown"
+          touchEvent="onScroll"
+          onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
+        >
+
+          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition}>
             <div>
-              <label> Ship to </label>
+              <label> {t('sideCard.Ship_to')} </label>
               <select
                 value={props.country}
                 onChange={(e) => {
@@ -68,29 +84,33 @@ function DropDownMenuLang(props) {
               </select>
             </div>
             <div>
-              <label> Language </label>
-              <select>
-                <option value="Japan">English</option>
+              <label> {t("sideCard.Language")} </label>
+              <select onChange={ switchLanguage} value={i18n.language} >
+
+                {languages.map((lang, index  )=> {
+                  return <option  key = {index} value={lang.code}> {lang.label}</option>
+                })}
+
               </select>
             </div>
             <div>
-              <label> Currency </label>
+              <label> {t('sideCard.Currency')} </label>
               <select>
                 <option value="Japan">USD</option>
               </select>
             </div>
             <div className="save-button">
-              <button onClick={()=> props.setIsLangMenuOpen(!props.isLangMenuOpen)} type="button">
-                Save
+              <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)} type="button">
+                {t('common.save')}
               </button>
             </div>
           </Wrapper>
-          </ClickAwayListener>
-             )}
-             
-      </Container>
+        </ClickAwayListener>
+      )}
 
-    
+    </Container>
+
+
   );
 }
 
@@ -121,6 +141,7 @@ const Container = styled.div`
           height:20px;
           object-fit:cover;
           margin-right:5px;
+          margin-left:5px;
       }
       .Lang_currency span{
           font-size:12.5px;
@@ -142,7 +163,7 @@ const Wrapper = styled.div`
     position:fixed;
     padding:10px;
     right:${props => props.$righPosition || "10px"};
-    top:${props => props.$topPosition  || "60px"};
+    top:${props => props.$topPosition || "60px"};
     background:#ffff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     width:255px;

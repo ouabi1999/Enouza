@@ -15,8 +15,8 @@ import CircularProgress from "@mui/material/CircularProgress"
 function EditGender(props) {
     const { formData, setFormData, updateUserInfo, loading} = useContext(UserContext)
     const editSechema = Yup.object({
-        gender :  Yup.mixed().oneOf(['Male', 'Female'])
-        .defined()
+        gender :  Yup.mixed().oneOf(["male", "female"])
+        .defined(props.t("errors.error_gender_must_be_defined"))
        
             })
 
@@ -46,8 +46,8 @@ function EditGender(props) {
         ageEdit } = props;
 
     const genders = [
-        {gender : "Male", icon:<MaleIcon/>},
-        {gender : "Female", icon:<FemaleIcon/>}
+       {gender : "male", tranGender : props.t("common.male"), icon:<MaleIcon/>},
+        {gender : "female", tranGender : props.t("common.female"), icon:<FemaleIcon/>}
     ]
     return (
         <div>
@@ -55,21 +55,13 @@ function EditGender(props) {
                 <form onSubmit={formik.handleSubmit}>
                 <PopUpEdit>
                     <div className='edit-title'>
-                        <span>Edit your gender</span>
+                        <span>{props.t("profile.edit_your_gender")}</span>
                         <DisabledByDefaultIcon className="disable-icon" onClick={closeGenderEdit} />
                     </div>
-                    <div className='text'>
-
-                        <span>
-                            Changes made to your profile gender here,
-                            will be shown anywhere your profile is used
-                        </span>
-
-
-                    </div>
+                    
                     <div className="input">
                         <TextField
-                            label="Gender"
+                            label={props.t("common.gender")}
                             id="filled-size-small"
                             fullWidth
                             variant="filled"
@@ -87,7 +79,7 @@ function EditGender(props) {
                             <MenuItem key= {index} value = {sex.gender} >
                                     <div style={{display:"flex" , alignItems:"center"}}>
                                     {sex.icon}
-                                    <span>{sex.gender}</span>
+                                    <span>{sex.tranGender}</span>
                                     </div>
                             </MenuItem>
                             )
@@ -97,7 +89,7 @@ function EditGender(props) {
                     <div className='save-button'>
 
                         <Button type="submit" variant="contained">
-                        <span>Save changes</span>
+                        <span>{props.t("common.save")}</span>
                             {loading && (
                                    
                                 <CircularProgress

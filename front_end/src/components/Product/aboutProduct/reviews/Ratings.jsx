@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
@@ -37,7 +38,10 @@ function Ratings(props) {
     oneStar,
     sum_stars,
     ratings,
-    productData } = props;
+    productData,
+    i18n,
+    t
+  } = props;
 
 
   const [selected, setSelected] = useState({ index: null, id: null })
@@ -65,13 +69,13 @@ function Ratings(props) {
             <StarIcon />
           </div>
           <div>
-            <bold style={{ color: "green", fontWeight: "bold" }}>All from verified purchases</bold>
+            <bold style={{ color: "green", fontWeight: "bold" }}>{t("productInfo.all_from_verified_purchases")}</bold>
           </div>
         </div>
 
         <div className="border-linear-container">
           <div>
-            <span className="star-number">5 Stars</span>
+            <span className="star-number">5 {t("productInfo.stars")}</span>
             <span>
               <BorderLinearProgress
               className='progress-bar'
@@ -84,7 +88,7 @@ function Ratings(props) {
             </span>
           </div>
           <div>
-            <span className="star-number">4 Stars</span>
+            <span className="star-number">4 {t("productInfo.stars")}</span>
             <span>
               <BorderLinearProgress
                 className='progress-bar'
@@ -102,7 +106,7 @@ function Ratings(props) {
             </span>
           </div>
           <div>
-            <span className="star-number">3 Stars</span>
+            <span className="star-number">3 {t("productInfo.stars")}</span>
             <span>
               <BorderLinearProgress
               className='progress-bar'
@@ -115,12 +119,12 @@ function Ratings(props) {
               />
             </span>
             <span className="percent">
-              {sum_stars <= 0 ? 0 : ((threeStars / sum_stars) * 100).toFixed(0)}
+              {sum_stars <= 0 ? 0: ((threeStars / sum_stars) * 100).toFixed(0)}
               %
             </span>
           </div>
           <div>
-            <span className="star-number">2 Stars</span>
+            <span className="star-number">{i18n.language === "ar" ? t("productInfo.two_stars"): "2 " + t("productInfo.two_stars") }</span>
             <span>
               <BorderLinearProgress
                 className='progress-bar'
@@ -135,7 +139,7 @@ function Ratings(props) {
             </span>
           </div>
           <div>
-            <span className="star-number star1">1 Star</span>
+            <span className="star-number star1">{i18n.language === "ar" ? t("productInfo.one_star"): "1 " + t("productInfo.one_star") }</span>
             <span>
               <BorderLinearProgress
                 variant="determinate"
@@ -228,10 +232,11 @@ const Container = styled.div`
   .star-number {
     text-wrap:nowrap;
     white-spacing:nowrap;
+    width: 55px;
 
   }
   .star1 {
-    padding-left: 2px;
+    
   }
 
   .percent {
@@ -239,10 +244,9 @@ const Container = styled.div`
     justify-content: center;
     padding: 0px 8px;
     border: 1px solid lightgray;
-    width: 45px;
+    width: 35px;
     border-radius: 4px;
   }
 
  
 `;
-

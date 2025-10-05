@@ -10,7 +10,7 @@ import HeadeSeo from "../../../common/HeadeSeo";
 
   
   
-function ForgotPassword() {
+function ForgotPassword({t}) {
 
 
     const [message, setMessage] = useState('');
@@ -42,7 +42,7 @@ function ForgotPassword() {
 
     const editSechema = Yup.object({
 
-        email: Yup.string().email('Invalid email address').required('Required'),
+        email: Yup.string().email(t("common.error_invalid_email")).required(t("common.required")),
     })
 
 
@@ -79,13 +79,13 @@ function ForgotPassword() {
             <div className='text'>
                    
                 <span>
-                    Enter your user account's verified email address and we will send you a password reset link.
+                    {t("common.password_reset_text")}
                 </span>
 
             </div>
             <div className="input">
                 <TextField
-                    label="email"
+                    label={t("common.email")}
                     id="filled-size-small"
                     fullWidth
                     variant="filled"
@@ -100,7 +100,7 @@ function ForgotPassword() {
             <div className='save-button'>
 
                 <Button type="submit" variant="contained">
-                    <span> Send password reset link </span>
+                    <span> {t("common.send_password_reset_link")} </span>
                     {loading && (
 
                         <CircularProgress

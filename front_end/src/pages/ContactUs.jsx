@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import { CircularProgress } from '@mui/material'
 import HeadeSeo from '../../common/HeadeSeo'
 import ApiInstance from '../../common/baseUrl'
-
+import { useTranslation } from 'react-i18next'
 
 function ContactUs(){
     const [email, setEmail] = useState("")
@@ -12,7 +12,7 @@ function ContactUs(){
     const [loading, setIsLoading] = useState(false)
     const [messageRequired, setMessageRequired] = useState(false)
     const [emailRequired,  setEmailRequired] = useState(false)
-
+    const { t } = useTranslation()
     useLayoutEffect(() => {
         window.scrollTo({top: 0, left: 0,});
       }, [])
@@ -32,14 +32,14 @@ function ContactUs(){
          )
         .then(() => {
             setIsLoading(false)
-            toast.success("Email sent")
+            toast.success(t("success.message_sent_successfully"))
             setEmail("")
             setMessage("")
             
         })
         .catch(message => {
             console.log(message)
-            toast.error("an error occurred in the server ")
+            toast.error(t("errors.server_error"))
             setIsLoading(false)  
         })
     }
@@ -47,22 +47,22 @@ function ContactUs(){
      
         return (
             <Container>
-                <HeadeSeo title = {"Animis - Contact us"}/>
+                <HeadeSeo title = {`Animis - ${t("common.footer.contactUs")}`}/>
                 
                 
             <div className="contact_container">
                 <form onSubmit={handldSendEmail}>
                     <div className="contact_sections">
-                        <label for="email">Please fell free, and text us about any problem.</label>
+                        <label for="email">{t("footer.help.contact_note")}</label>
                         <input type="email" 
                                 value={email} 
                                 onChange={(e)=> setEmail(e.target.value)}
-                                placeholder="email@example.com" required/>
+                                placeholder={t("common.please_enter_your_email")} required/>
                         
                         <textarea type="text" max="105" 
                             value={message} 
                             required 
-                            placeholder="Message"
+                            placeholder={t("common.enter_message")}
                             onChange={(e)=> setMessage(e.target.value)}
                         >
                         </textarea>
@@ -80,7 +80,7 @@ function ContactUs(){
                  />
                  </span>
                 )}         
-                <span>Send</span>
+                <span>{t("common.send")}</span>
                 </button>
                     </div>
                 </form>
@@ -123,7 +123,6 @@ const Container = styled.div`
     
     padding-top: 20px;
     color:rgb(1, 39, 1);
-    text-transform: uppercase;
     min-width:300px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:0.9rem;

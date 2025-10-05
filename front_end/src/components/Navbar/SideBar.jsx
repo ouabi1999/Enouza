@@ -11,11 +11,13 @@ import PersonIcon from "@mui/icons-material/Person";
 import DropDownMenuLang from "./DropDownMenuLang";
 import { useSelector } from "react-redux";
 import { ClickAwayListener } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function SideBar(props) {
   const user = useSelector(state => state.auth.user)
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    const {t, i18n} = useTranslation();
 
     const openProfileMenu = () => {
       setIsProfileOpen(!isProfileOpen);
@@ -33,7 +35,7 @@ function SideBar(props) {
         <User_container>
           {props.isAuth !== null ? (
             <div className="user">
-              <span> Hello, {user?.firstName.slice(0, 20)} </span>
+              <span> {t(common.Hello)}, {user?.firstName.slice(0, 20)} </span>
               <div>
               <DropDownMenu
                 logout={props.logout}
@@ -49,7 +51,7 @@ function SideBar(props) {
               <span>
                 <PersonIcon />
               </span>
-              <span>Sign in</span>
+              <span>{t("common.register")}</span>
             </Link>
           )}
         </User_container>
@@ -63,16 +65,16 @@ function SideBar(props) {
           country={props.country}
         />
       </div>
-      <h4>Polices</h4>
+      <h4>{t("policies.title")}</h4>
       <Wrapper>
         <Wrapp>
-          <Link onClick={props.hideSideBarMenu}  to="terms-of-services">Terms Of services</Link>
-          <Link onClick={props.hideSideBarMenu}  to="about-us"> About us </Link>
-          <Link onClick={props.hideSideBarMenu}  to="contact-us"> Contact us </Link>
-          <Link onClick={props.hideSideBarMenu}  to="privacy-policy"> Privacy Policy </Link>
+          <Link onClick={props.hideSideBarMenu}  to="terms-of-services">{t("policies.termsOfService.title")}</Link>
+          <Link onClick={props.hideSideBarMenu}  to="about-us"> {t("policies.aboutUs.title")} </Link>
+          <Link onClick={props.hideSideBarMenu}  to="contact-us"> {t("footer.contactUs")} </Link>
+          <Link onClick={props.hideSideBarMenu}  to="privacy-policy"> {t("policies.privacyPolicy.title")} </Link>
         </Wrapp>
       </Wrapper>
-      <h4>Follow us</h4>
+      <h4>{t("footer.followUs")}</h4>
       <SocialMedia>
         <a rel="noreferrer" target="_blank" href="https://www.facebook.com/profile.php?id=61571681156358">
           <FacebookIcon className="social-icon" />

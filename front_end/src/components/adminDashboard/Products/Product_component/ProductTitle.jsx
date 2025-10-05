@@ -1,16 +1,49 @@
 import React from 'react'
 import styled from "styled-components"
 
-function ProductTitle({formData, handelChange}) {
+function ProductTitle({formData, setFormData}) {
+
+  const handelChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      name: {
+        ...prev.name,
+        [name]: value,
+      },
+    }));
+  }
   return (
     <Container>
     <div>
-      <label htmlFor="title" style={{fontFamily:"sans-serif"}}> Product Title</label>
+      <label htmlFor="title" style={{fontFamily:"sans-serif"}}> Product Title english</label>
       <div className="title">
         <input
           type="text"
-          name="name"
-          value={formData.name}
+          name="en"
+          value={formData?.name?.en}
+          onChange={handelChange}
+        />
+      </div>
+    </div>
+    <div>
+      <label htmlFor="title" style={{fontFamily:"sans-serif"}}> Product Title spanish</label>
+      <div className="title">
+        <input
+          type="text"
+          name="es"
+          value={formData?.name?.es}
+          onChange={handelChange}
+        />
+      </div>
+    </div>
+    <div>
+      <label htmlFor="title" style={{fontFamily:"sans-serif"}}> Product Title arabic</label>
+      <div className="title">
+        <input
+          type="text"
+          name="ar"
+          value={formData?.name?.ar}
           onChange={handelChange}
         />
       </div>

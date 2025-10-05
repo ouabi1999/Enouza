@@ -91,7 +91,7 @@ class ProductDetailsView(APIView):
         product_to_delete = Products.objects.get(id = pk)
         product_to_delete.delete()
         
-        return JsonResponse("Student Deleted Successfully", safe=False)
+        return JsonResponse("User Deleted Successfully", safe=False)
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id = pk)
         data = request.data.copy() # Make a copy to modify
@@ -108,13 +108,11 @@ class ProductDetailsView(APIView):
 
         # Get the color images from the request files
         color_images = request.data.getlist('colors')
-        print(color_images)
         # Upload each color image to Cloudinary and get the URL
         for color_img in color_images:
             upload_result = cloudinary.uploader.upload(color_img)
             # Append the secure URL of the uploaded image
             color_urls.append(upload_result['secure_url'])
-            print(upload_result['secure_url'])
         # Update the 'colors' field with the list of color image URLs (flat list)
         data['colors'] = json.dumps(color_urls)
 
@@ -204,10 +202,8 @@ class AliExpressRatingView(APIView):
     def post(self, request):
         data = request.data.copy() 
         product_id = request.data.get('product')
-        
-        
-        
-        product = Products.objects.get(id=product_id) 
+        # Check if the product exists
+        product = Products.objects.get(id=product_id)
         if not product:
             return Response(
                     {"error": "Product not found"},

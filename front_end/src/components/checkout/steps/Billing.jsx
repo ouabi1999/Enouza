@@ -10,23 +10,24 @@ import {OrderContext} from "../../../App"
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const ValidationSchema  =  Yup.object().shape({
-  firstName : Yup.string().required(),
-  lastName : Yup.string().required(),
-  email : Yup.string().email().required(),
-  city : Yup.string().required(),
-  country : Yup.string().required(),
-  zip : Yup.string().required(),
-  state : Yup.string().required(),
-  address1 : Yup.string().required()
- 
-  
-})
-function Billing() {
+
+function Billing({t}) {
   const { activeStepIndex, setActiveStepIndex } =
     useContext(FormContext);
   const { formData, setFormData} = useContext(OrderContext);
- 
+
+  const ValidationSchema  =  Yup.object().shape({
+    firstName : Yup.string().required(t("common.please_enter_your_first_name")),
+    lastName : Yup.string().required(t("common.please_enter_your_last_name")),
+    email : Yup.string().email(t("errors.error_invalid_email")).required(t("common.please_enter_your_email")),
+    city : Yup.string().required(t("common.please_enter_your_city")),
+    country : Yup.string().required(t("common.please_enter_your_country")),
+    zip : Yup.string().required(t("common.please_enter_your_zip_code")),
+    state : Yup.string().required(t("common.please_enter_your_state")),
+    address1 : Yup.string().required(t("common.please_enter_your_address"))
+   
+    
+  })
   
   return (
     <Conatiner>
@@ -61,7 +62,7 @@ function Billing() {
             onChange={handleChange}
             id="firstName"
             name="firstName"
-            label="First name"
+            label={t("common.firstName")}
             fullWidth
             autoComplete="given-name"
             variant="outlined"
@@ -76,7 +77,7 @@ function Billing() {
             onChange={handleChange}
             id="lastName"
             name="lastName"
-            label="Last name"
+            label={t("common.lastName")}
             fullWidth
             autoComplete="family-name"
             variant="outlined"
@@ -90,7 +91,7 @@ function Billing() {
             onChange={handleChange}
             id="email"
             name="email"
-            label="Email"
+            label={t("common.email")}
             type="email"
             fullWidth
             autoComplete="email"
@@ -99,13 +100,13 @@ function Billing() {
             error={touched.email && Boolean(errors.email)}
         />
         </Grid>
-        <Grid item  sm={5} xs={12}>
+        <Grid item  sm={10} xs={12}>
           <TextField
             value={values.address1} 
             onChange={handleChange}
             id="address1"
             name="address1"
-            label="Address line 1"
+            label={t("common.address")}
             fullWidth
             autoComplete="shipping address-line1"
             variant="outlined"
@@ -113,19 +114,7 @@ function Billing() {
             error={touched.address1 && Boolean(errors.address1)}
           />
         </Grid>
-        <Grid item sm={5} xs={12}>
-          <TextField
-            value={values.address2} 
-            onChange={handleChange}
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="outlined"
-           
-          />
-        </Grid>
+     
         <Grid item xs={12} sm={5}>
           <TextField
             value={values.city} 
@@ -133,9 +122,9 @@ function Billing() {
             
             id="city"
             name="city"
-            label="City"
+            label={t("common.city")}
             fullWidth
-            autoComplete="shipping address-level2"
+            autoComplete
             variant="outlined"
             helperText={touched.city ? errors.city : ""}
             error={touched.city && Boolean(errors.city)}
@@ -147,7 +136,7 @@ function Billing() {
             onChange={handleChange}
             id="state"
             name="state"
-            label="State/Province/Region"
+            label={t("common.state")}
             fullWidth
             variant="outlined"
             helperText={touched.state ? errors.state : ""}
@@ -160,10 +149,11 @@ function Billing() {
             onChange={handleChange}
             id="zip"
             name="zip"
-            label="Zip / Postal code"
-            fullWidth
+            label={t("common.zipCode")}
             autoComplete="shipping postal-code"
             variant="outlined"
+            fullWidth
+
             helperText={touched.zip ? errors.zip : ""}
             error={touched.zip && Boolean(errors.zip)}
           />
@@ -174,7 +164,7 @@ function Billing() {
             onChange={handleChange}
             id="country"
             name="country"
-            label="Country"
+            label={t("common.country")}
             fullWidth
             autoComplete="shipping country"
             variant="outlined"
@@ -182,10 +172,10 @@ function Billing() {
             error={touched.country && Boolean(errors.country)}
           />
         </Grid>
-        <Grid item marginLeft="60px" justifyContent="center" paddingBottom="5px" xs={12}>
+        <Grid item marginLeft="60px" justifyContent="center" paddingBottom="5px">
           <FormControlLabel 
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
+            label={t("common.saving_address")}
           />
         </Grid>
 

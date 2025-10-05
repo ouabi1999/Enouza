@@ -10,7 +10,7 @@ import LogendIn from './LogendIn';
 import Shipping from './Shipping';
 import {OrderContext} from "../../../App"
 import { useNavigate } from 'react-router-dom';
- 
+import { useTranslation } from 'react-i18next';
 function Steps() {
  
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ function Steps() {
   
     const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
     const { formData, setFormData} = useContext(OrderContext);
-    
+    const { t, i18n } = useTranslation();
     
     const backButton =() => {
         setActiveStepIndex(activeStepIndex - 1);
@@ -38,17 +38,17 @@ function Steps() {
     let stepContent;
     switch (activeStepIndex) {
       case 0:
-        stepContent = !isAuth ? <div> Checkout as guest. No login required.</div>: <LogendIn/>;
+        stepContent = !isAuth ? <div> {t("common.checkout_as_guest")}</div>: <LogendIn t= {t}/>;
         break;
       case 1:
         
-        stepContent = <Billing/>;
+        stepContent = <Billing t= {t} />;
         break;
       case 2:
-        stepContent = <Shipping/>;
+        stepContent = <Shipping t= {t}/>;
         break;
         case 3:
-          stepContent = <StripeContanier/>;
+          stepContent = <StripeContanier i18n = {i18n} t = {t}/>;
           break;
       default:
         break;
@@ -60,7 +60,7 @@ function Steps() {
         {stepContent}
 
         {activeStepIndex === 0 &&(
-          <button  className='button' onClick={onSubmit}>Next</button>
+          <button  className='button' onClick={onSubmit}>{t("common.next")}</button>
         )}
         
        

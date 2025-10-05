@@ -3,6 +3,7 @@ import CustomerReviews from './CustomerReviews'
 import Feedback from './FeedBack'
 import { useSelector } from 'react-redux'
 import ApiInstance from '../../../../../common/baseUrl'
+import { useTranslation } from 'react-i18next'
 
 
 function ReviewsLayout() {
@@ -16,6 +17,7 @@ function ReviewsLayout() {
     isDescription:true,
     isReviews : false
   })
+  const {t, i18n} = useTranslation()
 
   const [preveiwImages, setPreviewImages] = useState([])
 
@@ -92,6 +94,8 @@ function ReviewsLayout() {
              sum_stars={sum_stars}
              ratings= {ratings}
              newRatings = {newRatings}
+             t = {t}
+             i18n = {i18n}
         />
         <Feedback
               comment = {comment}
@@ -106,6 +110,8 @@ function ReviewsLayout() {
               handelRatingSubmit = {handelRatingSubmit}
              preveiwImages={ preveiwImages}
              setPreviewImages = {setPreviewImages}
+             t = {t}
+             i18n = {i18n}
         />
     </div>
   )

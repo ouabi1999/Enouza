@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function EmptyCart() {
+function EmptyCart({t}) {
   return (
 
       <Container>
           <div className="emptycart">
-              Your cart is currently empty..
+              {t("common.noItemsInCart")}
           </div>
       </Container>
    

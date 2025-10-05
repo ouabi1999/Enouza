@@ -14,7 +14,7 @@ function Feedback(props) {
     const user = useSelector(state => state.auth.user)
 
 
-    const {handelRatingSubmit , setComment, required , set_star_rating, isLoading, star_rating , comment} = props;
+    const {handelRatingSubmit , setComment, required , set_star_rating, isLoading, star_rating , comment, t} = props;
  
     const stars = Array(5).fill(0);
     const imgInput = React.createRef()
@@ -60,7 +60,7 @@ function Feedback(props) {
  
     return (
         <Conatiner>
-            <h3> GIVE US YOUR FEEDBACK</h3>
+            <h3> {t("productInfo.give_us_your_feedback")}</h3>
             <div className='Stars'>
                 {stars.map((_, index) => {
                     return (
@@ -81,7 +81,7 @@ function Feedback(props) {
                         onChange={handel_CommentChange}
                         value = {comment.text}
                         type = "text"
-                        placeholder = "rates"
+                        placeholder = {t("productInfo.comment")}
                         required = {true}
                     />
                     <input
@@ -107,7 +107,7 @@ function Feedback(props) {
                         })}
                     </Add_image_container>
                     {required === true &&(
-                        <span className="required"> Text field required </span>
+                        <span className="required"> {t("common.text_field_required")} </span>
                     )}
                     <button
                         type="submit"
@@ -115,7 +115,7 @@ function Feedback(props) {
                         onClick={(e) => handelRatingSubmit(e, comment, star_rating)}>
                         {isLoading ? (
                             <>
-                                <span>Rate</span>
+                                <span>{t("common.submit")}</span>
                                 <CircularProgress
                                     style={{ marginLeft: "3px" }}
                                     size={20}
@@ -123,7 +123,7 @@ function Feedback(props) {
                                     value={100}
                                 />
                             </>)
-                            : "Rate"}
+                            : t("common.submit")}
                     </button>
                     
              
@@ -138,7 +138,7 @@ const Conatiner = styled.div`
   h3{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing:2px;
-    border-bottom:15px solid lightgray;
+    border-bottom:6px solid lightgray;
     width:fit-content;
     margin-bottom:2px;
   }

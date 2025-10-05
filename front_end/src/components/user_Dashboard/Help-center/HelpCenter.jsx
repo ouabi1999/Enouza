@@ -1,19 +1,21 @@
-import React, {useLayoutEffect} from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ReturnFAQ from './ReturnFAQ';
 import ShippingFAQ from './ShippingFAQ';
+import { useTranslation } from 'react-i18next';
 
 
- function HelpCenter() {
- useLayoutEffect(() => {
+function HelpCenter() {
+  const { t } = useTranslation()
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0 });
   }, []);
   return (
     <Container>
-      <span className="main-header">ENOUZA STORE FAQ</span>
-      <ReturnFAQ/>
-      <ShippingFAQ/>
+      <span className="main-header">{t("profile.enouza_faq")} </span>
+      <ReturnFAQ />
+      <ShippingFAQ />
     </Container>
   )
 }
@@ -25,6 +27,7 @@ const Container = styled.div`
  .main-header{
   font-size:20px;
   font-weight:bold;
+  margin-right:20px;
  }
 .main-header{
         border-bottom:1px solid gray;

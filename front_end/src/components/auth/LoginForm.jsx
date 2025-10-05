@@ -13,8 +13,9 @@ import { useLayoutEffect } from 'react';
 //import HeadeSeo from "../../common/Heade"
 import ApiInstance from "../../../common/baseUrl"
 import { setLogin } from '../../features/authSlice';
+import { common } from '@mui/material/colors';
 
-function LoginForm({show}) {
+function LoginForm({show, t, i18n}) {
   
   const { state } = useLocation();
   
@@ -64,11 +65,11 @@ function LoginForm({show}) {
       .catch(error => {
         console.log('There has been a problem with your fetch operation:', error.status);
         if (error.status === 400){
-          setError("Password or email incorrect")
+          setError(t("errors.error_invalid_credentials"))
         }else if (error.status === 401){
-          setError("This email address not registered.")
+          setError(t("errors.error_user_not_found"))
         }else{
-          setError("Somthing went wrong..!")
+          setError(t("errors.error_something_went_wrong"))
         }
         setIsLoading(false)
 
@@ -88,8 +89,8 @@ function LoginForm({show}) {
   }, [])
 
   const editSechema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string().required("Please Enter your password")
+    email: Yup.string().email(t('errors.error_invalid_email')).required(t('common.please_enter_your_email')),
+    password: Yup.string().required(t("common.please_enter_your_password"))
 
   })
 
@@ -107,110 +108,128 @@ function LoginForm({show}) {
   
   return (
     <>
-    
-    {/*<HeadeSeo title= "Animis - Login"/>*/}
-    
-    {isAuth == null && (
-    <Form onSubmit = {formik.handleSubmit}>
-        <div className='logo-img-container'>
-          
-      
-      <strong> LOGIN</strong>
-      </div>
-      {user == null && (
-     <Grid container spacing={2}>
+      {/*<HeadeSeo title= "Animis - Login"/>*/}
+      {isAuth == null && (
+      <Form onSubmit = {formik.handleSubmit}>
+          <div className='logo-img-container'>
+            
+        
+        <strong> {t("common.login")}</strong>
+        </div>
+        {user == null && (
+       <Grid container spacing={2}>
 
-          <Grid item xs={12}>
-            <TextField
-              label="Email"
-              id="filled-size-small"
-              fullWidth
-              variant="filled"
-         
-              name="email"
-              onMouseDown={hideerror}
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Password"
-              id="filled-size-small"
-              fullWidth
-              variant="filled"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-              onMouseDown={hideerror}
-              type={showPassword ? "text" : "password"}
-              InputProps={{
-                endAdornment: <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-
-                </InputAdornment>
-              }}
-            />
-           
-          </Grid>
-          {error && (
-            <Grid item xs={12} container
-              justifyContent="center" >
-              <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
-            </Grid>
-          )}
-          
-          <Grid item xs={12} 
-                  container    
-                  justifyContent="center"
+            <Grid item xs={12}>
+              <TextField
+                label={t("common.email")}
+                id="filled-size-small"
+                fullWidth
+                variant="filled"
+               
+                name="email"
+                onMouseDown={hideerror}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                slotProps={{
                   
-          
-          >
-            <Button type="submit" variant="contained" disabled={isLoading} >
+                  inputLabel: {
+                    sx: {
+                      textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                      width: "100%", // important for text-align to work
+                    }
+                  }
+                }}
+                
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                
+                label= {t("common.password")}
+                id="filled-size-small"
+                fullWidth
+                variant="filled"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
+                onMouseDown={hideerror}
+                type={showPassword ? "text" : "password"}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
 
-             {isLoading ? (
-                  <>
-                   <span>Login</span>
-                    <CircularProgress 
-                      style={{marginLeft:"3px"}}
-                        size={22} 
-                        thickness={6} 
-                        value={100}
-                                  />
-                    </>) 
-                  : "Login"}
+                    </InputAdornment>
+                  },
+                  inputLabel: {
+                    sx: {
+                      textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                      
+                      width: "100%", // important for text-align to work
+                    }
+                  }
+                }}
+              />
+             
+            </Grid>
+            {error && (
+              <Grid item xs={12} container
+                justifyContent="center" >
+                <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
+              </Grid>
+            )}
+            
+            <Grid item xs={12} 
+                    container    
+                    justifyContent="center"
+                    
+            
+            >
+              <Button type="submit" variant="contained" disabled={isLoading} >
 
-            </Button>
+               {isLoading ? (
+                    <>
+                     <span>{t("common.login")}</span>
+                      <CircularProgress 
+                        style={{marginLeft:"3px"}}
+                          size={22} 
+                          thickness={6} 
+                          value={100}
+                                    />
+                      </>) 
+                    : t("common.login")}
+
+              </Button>
+            </Grid>
+            <Grid item xs={12}
+                container 
+                justifyContent="space-evenly" 
+                className="other-info" >
+           
+              <Link to="#"  onClick={()=> show("reset")} className="f-password"> {t("common.forgot_password")}</Link>
+              <Link to="#" onClick={()=> show("sign-up")}> {t("common.create_an_account")}</Link>
+
+            </Grid>
+            
           </Grid>
-          <Grid item xs={12}
-              container 
-              justifyContent="space-evenly" 
-              className="other-info" >
-         
-            <Link to="#"  onClick={()=> show("reset")} className="f-password"> Forgot Password</Link>
-            <Link to="#" onClick={()=> show("sign-up")}> Create an account</Link>
-
-          </Grid>
-          
-        </Grid>
-         ) 
-         
-        }
-    
-      </Form>
-    )}
+           ) 
+           
+          }
+      
+        </Form>
+      )}
     </>
-  )
+  );
 }
 
 export default LoginForm
@@ -263,8 +282,9 @@ const Form = styled.form`
 strong{
     margin-bottom:15px;
     font-family:sans-serif;
-    font-size:25px;
-  }
+    font-size:20px;
+    text-wrap:nowrap
+    }
 /* spinner/processing state, errors */
 .spinner,
 .spinner:before,

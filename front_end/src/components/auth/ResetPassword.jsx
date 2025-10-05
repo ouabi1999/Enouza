@@ -9,7 +9,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as Yup from "yup"
-import HeadeSeo from '../../common/HeadeSeo';
+import HeadeSeo from "../../../common/HeadeSeo";
+import { useTranslation } from 'react-i18next';
 const ResetPassword = (props) => {
   const params = useParams()
   const [password, setPassword] = useState('');
@@ -19,18 +20,18 @@ const ResetPassword = (props) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [hasError, setHasError] = useState(null)
+  const {t, i18n} = useTranslation()
   const editSechema = Yup.object({
 
     newPassword: Yup.string()
-      .required("Please Enter your new password")
+      .required(t("common.please_enter_your_new_password"))
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+        t("common.error_weak_password")
       ),
     confirmPassword: Yup.string()
-      .required("Please confirm your password")
-      .oneOf([Yup.ref("newPassword")], "Passwords do not match"),
-
+      .required(t("common.please_confirm_your_password"))
+      .oneOf([Yup.ref("newPassword")],  t("common.error_password_dont_match"))
   })
 
   const formik = useFormik({
@@ -82,99 +83,114 @@ const ResetPassword = (props) => {
   return (
     <Wrapp>
       <HeadeSeo title = "Reset password"/>
-    <Container onSubmit={formik.handleSubmit}>
-      <div className='edit-title'>
-        <span> Reset your password </span>
-      </div>
-        {hasError === true && (
-          <div style={{fontSize:"13px", background: "#ff9999", color: "#000", padding: "5px 10px" }}>
-            <span>{message}</span>
-          </div>
-        )
-        }
-      <div className='text'>
-        
-
-        <span>
-          Changes made to your profile password here,
-          will be the password that you will use
-          when  you want login into animis website
-        </span>
-
-      </div>
-      <div className="input">
-        <TextField
-          label="New password"
-          fullWidth
-          variant="filled"
-          size="small"
-          name="newPassword"
-          value={formik.values.newPassword}
-          onChange={formik.handleChange}
-          onMouseDown={()=> setHasError(null)}
-          error={formik.touched.newPassword && Boolean(formik.errors.newPassword)}
-          helperText={formik.touched.newPassword && formik.errors.newPassword}
-          type={showNewPassword ? "text" : "password"}
-          InputProps={{
-            endAdornment: <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => handleClickShowPassword("new")}
-                
-              >
-                {showNewPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-
-            </InputAdornment>,
-          }}
-        />
-      </div>
-      <div className="input">
-        <TextField
-          label="Confirm password"
-          fullWidth
-          variant="filled"
-          size="small"
-          name="confirmPassword"
-          onMouseDown={()=> setHasError(null)}
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-          type={showConfirmPassword ? "text" : "password"}
-          InputProps={{
-            endAdornment: <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => handleClickShowPassword("confirm")}
-            
-              >
-                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-
-            </InputAdornment>,
-          }}
-        />
-      </div>
-      <div className='save-button'>
-
-        <Button type="submit" variant="contained">
-          <span>Reset Password</span>
-          {loading && (
-
-            <CircularProgress
-              style={{ marginLeft: "5px", color: "white" }}
-              size={23}
-              thickness={6}
-
-              value={100}
-            />
+      <Container onSubmit={formik.handleSubmit}>
+        <div className='edit-title'>
+          <span> {t("common.reset_your_password")}</span>
+        </div>
+          {hasError === true && (
+            <div style={{fontSize:"13px", background: "#ff9999", color: "#000", padding: "5px 10px" }}>
+              <span>{message}</span>
+            </div>
           )
-
           }
-        </Button>
-      </div>
-    </Container>
+        <div className='text'>
+          
+
+          <span>
+            {t("common.reset_password_text")}
+          </span>
+
+        </div>
+        <div className="input">
+          <TextField
+            label={t("common.new_password")}
+            fullWidth
+            variant="filled"
+            size="small"
+            name="newPassword"
+            value={formik.values.newPassword}
+            onChange={formik.handleChange}
+            onMouseDown={()=> setHasError(null)}
+            error={formik.touched.newPassword && Boolean(formik.errors.newPassword)}
+            helperText={formik.touched.newPassword && formik.errors.newPassword}
+            type={showNewPassword ? "text" : "password"}
+              
+            slotProps={{
+              inputLabel: {
+                sx: {
+                  textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                  width: "100%", // important for text-align to work
+                }
+              },
+              input: {
+                endAdornment: <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => handleClickShowPassword("new")}
+                    
+                  >
+                    {showNewPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+
+                </InputAdornment>,
+              }
+            }}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            label={t("common.confirm_password")}
+            fullWidth
+            variant="filled"
+            size="small"
+            name="confirmPassword"
+            onMouseDown={()=> setHasError(null)}
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+            type={showConfirmPassword ? "text" : "password"}
+            slotProps={{
+              inputLabel: {
+                sx: {
+                  textAlign: i18n.dir() === "rtl" ? "right" : "left",
+                  width: "100%", // important for text-align to work
+                }
+              },
+              input: {
+                endAdornment: <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => handleClickShowPassword("confirm")}
+                
+                  >
+                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+
+                </InputAdornment>,
+              }
+            }}
+          />
+        </div>
+        <div className='save-button'>
+
+          <Button type="submit" variant="contained">
+            <span>{t("common.reset_password")}</span>
+            {loading && (
+
+              <CircularProgress
+                style={{ marginLeft: "5px", color: "white" }}
+                size={23}
+                thickness={6}
+
+                value={100}
+              />
+            )
+
+            }
+          </Button>
+        </div>
+      </Container>
     </Wrapp>
   );
 }

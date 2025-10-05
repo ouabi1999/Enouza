@@ -38,6 +38,7 @@ class CreatePaymentIntentView(APIView):
         try:
             data = request.data
             items = data.get('ordered_items', [])
+            locale = data.get("locale", "auto")
 
             # Calculate total order amount including tax
             
@@ -48,6 +49,7 @@ class CreatePaymentIntentView(APIView):
                 currency='usd',
                 receipt_email =  data["email"],
                 automatic_payment_methods={'enabled': True},
+               
             )
             
             

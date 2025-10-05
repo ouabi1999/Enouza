@@ -6,6 +6,7 @@ import { useState, useContext} from 'react';
 import { OrderContext } from "../../App"
 import { FormContext } from '../../pages/CheckoutPage'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -15,7 +16,7 @@ function ProductCart(props) {
   const {formData} = useContext(OrderContext);
   const [products, setProducts] = useState([])
   const cartItems =  useSelector((state) => state.cart.cartItems)
-
+  const {t} = useTranslation()
   
   
   
@@ -29,13 +30,13 @@ function ProductCart(props) {
             <ArrowBackIcon style={{width:"19px"}} />
           </span>
           <span>
-          Back
+          {t("common.back")}
         </span>
         </div>
         </Link>
 
         <div>
-          <span className='checkout'>Checkout</span>
+          <span className='checkout'>{t("common.checkout")}</span>
         </div>
       </div>
       
@@ -69,14 +70,14 @@ function ProductCart(props) {
         </div>
 
         <div className='discount'>
-          <input type="text" placeholder='Discount code' />
-          <button   disabled={true} style={{ opacity:"0.8", cursor:"not-allowed"}} type="button"> Apply </button>
+          <input type="text" placeholder={t("common.enterCouponCode")} />
+          <button   disabled={true} style={{ opacity:"0.8", cursor:"not-allowed"}} type="button"> {t("common.apply")} </button>
         </div>
 
         <Totals>
         <div>
               <span>
-                Subtotal
+                {t("common.subtotal")}
               </span>
               <span>
                ${total}
@@ -84,7 +85,7 @@ function ProductCart(props) {
             </div>
             <div>
               <span>
-                Shipping
+                {t("common.shipping")}
               </span>
               <span>
                  ${Number(formData.shippingPrice).toFixed(2)}
@@ -92,7 +93,7 @@ function ProductCart(props) {
             </div>
           <div className='Total-price'>
             <span>
-              Total
+              {t("common.total")}
             </span>
             <span>
               ${(Number(total) + Number(formData.shippingPrice)).toFixed(2)}

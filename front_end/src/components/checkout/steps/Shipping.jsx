@@ -6,7 +6,7 @@ import {OrderContext} from "../../../App"
 import Radio from '@mui/material/Radio';
 import {useSelector} from "react-redux"
 
-function Shipping() {
+function Shipping({t}) {
     const { activeStepIndex, setActiveStepIndex, total} = useContext(FormContext);
     const { formData, setFormData} = useContext(OrderContext);
     const [shippingMethod, setShippingMethod] = useState("")
@@ -44,7 +44,7 @@ function Shipping() {
     <ShippingMethods>
 
       <div className='header'>
-        <h5>Available shipping methods</h5>
+        <h5>{t("common.selectPaymentMethod")}</h5>
         <InfoIcon className='info-icon' />
       </div>
 
@@ -59,7 +59,7 @@ function Shipping() {
                 </span>
 
                 <span className="shipping-time">
-                  {item.from + " - " + item.to + " " + "Days"}
+                  {item.from + " - " + item.to + " " + t("common.days")}
                 </span>
               </div>
               <div>

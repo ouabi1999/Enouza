@@ -26,8 +26,18 @@ import Specifications from "./Product_component/Specifications";
  
 function ProductManagement(props) {
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
+    name: {
+      "en": "",
+      "fr": "",
+      "es": "",
+      "ar": "",
+    },
+    description: {
+      "en": "",
+      "fr": "",
+      "es": "",
+      "ar": "",
+    },
     brand: "",
     SKU: "",
     price: "",

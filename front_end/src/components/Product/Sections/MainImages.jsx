@@ -43,7 +43,6 @@ function MainImages(props) {
 export default MainImages
 const Container = styled.div`
     display:flex;
-    margin-right:22px;
     padding:5px;
     margin-bottom:10px;
   
@@ -67,7 +66,7 @@ const ImageDetailsContainer = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    margin-right:15px;
+    margin:0 15px;
     min-width:40px;
    
     width:100%;

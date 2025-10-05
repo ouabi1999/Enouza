@@ -19,10 +19,10 @@ function ProductSubtotal(props) {
             <div className='container'>
             <div className="total-section">
 
-            <h2>Summary</h2>
+            <h2>{props.t("common.orderSummary")}</h2>
 
               <div className="total">
-                  <h4>Subtotal</h4>
+                  <h4>{props.t("common.subtotal")}</h4>
                   {props.cartItems?.length !== 0 && (
 
                       <span>
@@ -33,7 +33,7 @@ function ProductSubtotal(props) {
                   )}
               </div>
               <div className="total">
-                  <h4>Total</h4>
+                  <h4>{props.t("common.total")}</h4>
                   {props.cartItems?.length !== 0 && (
 
                       <span>
@@ -48,7 +48,7 @@ function ProductSubtotal(props) {
             </div>
             <div className='procces-button-container'>
                 <button  onClick={navigateTo} className="procces-button">
-                    Checkout
+                    {props.t("common.checkout")}
                 </button>
             </div>
             </div>

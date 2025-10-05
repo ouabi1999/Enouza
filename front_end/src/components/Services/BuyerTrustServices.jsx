@@ -4,33 +4,37 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { useTranslation } from 'react-i18next';
 
 const BuyerTrustServices = ({divRef}) => {
+    const {t, i18n} = useTranslation()
+
     return (
         <Container>
             <div ref = {divRef}>
               <SupportAgentIcon className="icon"/>
-              <span>Help center</span>
-              <p> Round-the-clock assistance for a smooth shopping experience.</p>
+              <span>{t("buyerTrustServices.help_center.title")}</span>
+              <p> {t("buyerTrustServices.help_center.description")}</p>
             </div>
             
             <div>
               <LocalShippingIcon className="icon"/>
-              <span>Worldwide shopping</span>
-              <p> We ship to over 10 countries and regions.</p>
+              <span>{t("buyerTrustServices.worldwide_shipping.title")}</span>
+              <p> {t("buyerTrustServices.worldwide_shipping.description")}</p>
+              
             </div>
 
             <div>
               <CreditScoreIcon className="icon"/>
-              <span>Safe payment</span>
-              <p> Pay with the world’s most popular and secure payment methods.</p>
+              <span>{t("buyerTrustServices.safe_Payment.title")}</span>
+              <p> {t("buyerTrustServices.safe_Payment.description")}</p>
             </div>
-           
+            
             
             <div>
               <AdminPanelSettingsIcon className="icon"/>
-              <span>Shop with confidence</span>
-              <p> Our Buyer Protection policy covers your entire purchase journey.</p>
+              <span>{t("buyerTrustServices.Shop_with_confidence.title")}</span>
+              <p> {t("buyerTrustServices.Shop_with_confidence.description")}</p>
             </div>
            
             
