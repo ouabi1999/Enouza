@@ -107,8 +107,8 @@ function ProductManagement(props) {
     );
 
     // Append individual fields
-    data.append("name", formData.name);
-    data.append("description", formData.description);
+    data.append("name", JSON.stringify(formData.name));
+    data.append("description", JSON.stringify(formData.description));
     data.append("brand", formData.brand);
     data.append("SKU", formData.SKU);
     data.append("price", formData.price);

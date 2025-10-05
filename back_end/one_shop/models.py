@@ -46,8 +46,8 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 class Products(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
-    name = models.TextField()
-    description =  models.TextField()
+    name = models.JSONField()
+    description =  models.JSONField()
     brand = models.CharField(max_length=100, blank=True, null=True)
     SKU = models.CharField(max_length=100, blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)

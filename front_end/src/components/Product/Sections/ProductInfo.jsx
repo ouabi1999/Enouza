@@ -26,7 +26,7 @@ function ProductInfo(props) {
       </div>
 
       <div className="product-title">
-        <p>{productData?.name}</p>
+        <p>{productData?.name?.[i18n.language]}</p>
       </div>
       
       <div className="product-rating">
@@ -88,7 +88,7 @@ function ProductInfo(props) {
                   id  = {colorIndex === index && "activate"}
                   onClick={() => setColorIndex(index)}
                   src={img}
-                  alt={productData?.name}
+                  alt={productData?.name?.[i18n.language]}
                 />
               </div>
             );

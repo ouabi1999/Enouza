@@ -1,15 +1,17 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styled from "styled-components"
 
 function Description() {
   const productData = useSelector(state => state.products.productData)
+  const { i18n } = useTranslation()
   return (
     <Container>
 
 <div>
       <div
-        dangerouslySetInnerHTML={{ __html: productData[0]?.description }}
+        dangerouslySetInnerHTML={{ __html: productData[0]?.description?.[i18n.language]}}
         style={{ border: '1px solid #ddd', padding: '10px' }}
       />
     </div>
