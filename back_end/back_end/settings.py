@@ -33,22 +33,22 @@ if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "enouza.com",
         "www.enouza.com",
-        "enouza-xzmub.ondigitalocean.app",
-        "shark-app-3jni5.ondigitalocean.app"
+        "enouza-wlvkc.ondigitalocean.app/",
+        "enouza-h0mx.onrender.com"
     ]
 
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
-        "https://shark-app-3jni5.ondigitalocean.app",
-        "https://enouza-xzmub.ondigitalocean.app",
+        "https://enouza-h0mx.onrender.com",
+        "https://enouza-wlvkc.ondigitalocean.app",
     ]
 
     CORS_ALLOWED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
-        "https://enouza-xzmub.ondigitalocean.app",
-        "https://shark-app-3jni5.ondigitalocean.app",
+        "https://enouza-wlvkc.ondigitalocean.app",
+        "https://enouza-h0mx.onrender.com",
     ]
 
     # Security settings for HTTPS
