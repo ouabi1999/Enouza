@@ -33,7 +33,7 @@ if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "enouza.com",
         "www.enouza.com",
-        "enouza-wlvkc.ondigitalocean.app/",
+        "enouza-wlvkc.ondigitalocean.app",
         "enouza-h0mx.onrender.com"
     ]
 
