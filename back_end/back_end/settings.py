@@ -34,8 +34,8 @@ if ENVIRONMENT == "production":
         "enouza.com",
         "www.enouza.com",
         "enouza-wlvkc.ondigitalocean.app",
-        "enouza-h0mx.onrender.com",
-        "https://enouza-h0mx.onrender.com"
+        "enouza-h0mx.onrender.com"
+        
     ]
 
     CSRF_TRUSTED_ORIGINS = [
@@ -46,8 +46,8 @@ if ENVIRONMENT == "production":
     ]
 
     CORS_ALLOWED_ORIGINS = [
-        "https://enouza.com/",
-        "https://www.enouza.com/",
+        "https://enouza.com",
+        "https://www.enouza.com",
         "https://enouza-wlvkc.ondigitalocean.app",
         "https://enouza-h0mx.onrender.com",
     ]
