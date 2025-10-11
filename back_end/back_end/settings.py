@@ -45,8 +45,8 @@ if ENVIRONMENT == "production":
     ]
 
     CORS_ALLOWED_ORIGINS = [
-        "https://enouza.com",
-        "https://www.enouza.com",
+        "https://enouza.com/",
+        "https://www.enouza.com/",
         "https://enouza-wlvkc.ondigitalocean.app",
         "https://enouza-h0mx.onrender.com",
     ]
