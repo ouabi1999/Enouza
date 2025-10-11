@@ -34,7 +34,8 @@ if ENVIRONMENT == "production":
         "enouza.com",
         "www.enouza.com",
         "enouza-wlvkc.ondigitalocean.app",
-        "enouza-h0mx.onrender.com"
+        "enouza-h0mx.onrender.com",
+        "https://enouza-h0mx.onrender.com"
     ]
 
     CSRF_TRUSTED_ORIGINS = [
