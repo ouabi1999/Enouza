@@ -22,7 +22,7 @@ env = environ.Env(
 
 
 stripe.api_key = env("STRIPE_SECRET_KEY")
-YOUR_DOMAIN = env("HOST")
+YOUR_DOMAIN = env("SERVER_HOST")
 
 endpoint_secret = env("END_POINT_SECRET") # Add your endpoint secret to Django settings
 
