@@ -32,7 +32,7 @@ export default function CheckoutForm() {
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   const [successOrder, setSuccessOrder] = useState(false);
 
   useEffect(() => {
