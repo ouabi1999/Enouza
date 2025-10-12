@@ -35,7 +35,7 @@ function SideBar(props) {
         <User_container>
           {props.isAuth !== null ? (
             <div className="user">
-              <span> {t(common.Hello)}, {user?.firstName.slice(0, 20)} </span>
+              <span> {t("common.Hello")}, {user?.firstName.slice(0, 20)} </span>
               <div>
               <DropDownMenu
                 logout={props.logout}
