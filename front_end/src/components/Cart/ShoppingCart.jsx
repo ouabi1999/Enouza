@@ -18,7 +18,7 @@ function ShoppingCart() {
   const cartItems =  useSelector((state) => state.cart.cartItems)
   const [isLoading, setIsLoading] = useState(false)
   const productData = useSelector((state) => state.products.productData)
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   useLayoutEffect(() => {
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -89,7 +89,7 @@ function ShoppingCart() {
                           <div className="first-child" >
                           
                             <span>
-                                {item?.name}
+                                {item?.name?.[i18n.language]}
                             </span>
                             
 
