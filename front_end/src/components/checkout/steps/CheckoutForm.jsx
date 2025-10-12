@@ -35,7 +35,7 @@ export default function CheckoutForm() {
   const {t} = useTranslation()
   const [successOrder, setSuccessOrder] = useState(false);
 
-  {/*useEffect(() => {
+  useEffect(() => {
     if (!stripe) {
       return;
     }
@@ -64,7 +64,7 @@ export default function CheckoutForm() {
           break;
       }
     });
-  }, [stripe]);*/}
+  }, [stripe]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
