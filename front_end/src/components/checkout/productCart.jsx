@@ -16,7 +16,7 @@ function ProductCart(props) {
   const {formData} = useContext(OrderContext);
   const [products, setProducts] = useState([])
   const cartItems =  useSelector((state) => state.cart.cartItems)
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   
   
   
@@ -58,7 +58,7 @@ function ProductCart(props) {
 
                    
                   
-                  <span className="product-title">{item.name}</span>
+                  <span className="product-title">{item?.name?.[i18n.language]}</span>
                   <span className='price'>${(item?.price * item.quantity).toFixed(2)}</span>
                   
                   {/*products?.find(product => product.id === item.id)?.sizes[item.selectedSize]*/}
