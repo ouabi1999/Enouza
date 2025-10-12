@@ -164,6 +164,7 @@ margin-bottom:8px;
       border: 1px solid #bcbec0;
       width: 50px;
       background:none;
+      text-wrap:nowrap;
     }
     div {
       display: flex;
