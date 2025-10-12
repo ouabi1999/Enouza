@@ -121,7 +121,7 @@ export default function CheckoutForm() {
         delivery_time: formData.deliveryTime,
         total_price: formData.totalPrice,
         currency: "usd",
-        ordered_items: JSON.stringify(cartItems),
+        ordered_items: JSON.stringify([{...cartItems, name:cartItems.name[i18n.language]}]),
       }
     ).then((res) => {
       navigate("/order-success");
