@@ -23,7 +23,6 @@ export default function StripeContanier({t, i18n}) {
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const {t, i18n} = useTranslation()
   
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
