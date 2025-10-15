@@ -124,8 +124,8 @@ function Shipping({t}) {
         </div>
       }
       <Buttons_container>
-        <button className='button' onClick={() => setActiveStepIndex(activeStepIndex - 1)}>Back</button>
-        <button className="button" onClick={nextStep} methodName="submit">Next</button>
+        <button className='button' onClick={() => setActiveStepIndex(activeStepIndex - 1)}>{t("common.back")}</button>
+        <button className="button" onClick={nextStep} methodName="submit">{t("common.next")}</button>
       </Buttons_container>
     </ShippingMethods>
   )

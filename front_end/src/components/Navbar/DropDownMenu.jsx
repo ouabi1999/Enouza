@@ -10,7 +10,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 
 function DropDownMenu(props) {
   const user = useSelector((state) => state.auth.user);
-  const {t} = props;
+  const {t, i18n} = props;
   return (
     <Container>
       {props.isAuth !== null ? (
@@ -31,7 +31,7 @@ function DropDownMenu(props) {
           touchEvent="onScroll"
           onClickAway={props.openProfileMenu}
         >
-          <Wrapper>
+          <Wrapper style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }}>
             <Link onClick={props.openProfileMenu} to={user?.is_staff ? "admin-dashboard" : "/profile"}>
               <AccountBoxIcon className="icon" />
               <span> Dashbaord </span>
@@ -55,7 +55,10 @@ export default DropDownMenu;
 
 const Container = styled.div`
   
-
+   span{
+     font-size: 14px;
+     font-weight: 500;
+   }
   .person-icon {
     color: #ffff;
     font-size: 30px;
@@ -101,13 +104,14 @@ position: fixed;
     display: flex;
     align-items: center;
     
-    font-size: normal;
+    font-weight: 500;
   }
   button {
     background: none;
   }
   .icon {
     font-size: 20px;
+    color: gray;
   }
 
 `;

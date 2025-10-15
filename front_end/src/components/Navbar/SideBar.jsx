@@ -68,7 +68,7 @@ function SideBar(props) {
       <h4>{t("policies.title")}</h4>
       <Wrapper>
         <Wrapp>
-          <Link onClick={props.hideSideBarMenu}  to="terms-of-services">{t("policies.termsOfService.title")}</Link>
+        <Link onClick={props.hideSideBarMenu}  to="terms-of-services">{t("policies.termsOfService.title")}</Link>
           <Link onClick={props.hideSideBarMenu}  to="about-us"> {t("policies.aboutUs.title")} </Link>
           <Link onClick={props.hideSideBarMenu}  to="contact-us"> {t("footer.contactUs")} </Link>
           <Link onClick={props.hideSideBarMenu}  to="privacy-policy"> {t("policies.privacyPolicy.title")} </Link>

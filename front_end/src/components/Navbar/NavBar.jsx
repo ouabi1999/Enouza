@@ -121,6 +121,8 @@ function NavBar({ outlet, setSearchValue, value }) {
               topPosition="60px"
               righPosition="20px"
               t = {t}
+              i18n={i18n}
+
             />
           </div>
           <div className="drop-down-menu-container">
@@ -131,6 +133,7 @@ function NavBar({ outlet, setSearchValue, value }) {
               openProfileMenu={openProfileMenu}
               setIsProfileOpen={setIsProfileOpen}
               t = {t}
+              i18n={i18n}
             />
           </div>
           <MenuIcon className="menu-icon" onClick={hideSideBarMenu} />

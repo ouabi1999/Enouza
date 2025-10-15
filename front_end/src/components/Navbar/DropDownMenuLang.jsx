@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 
 import Flag from 'react-world-flags'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import i18n from "../../../public/i18n/index"
 function DropDownMenuLang(props) {
   const [isActive, setIsActive] = useState(false);
   const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "English")
@@ -19,7 +18,7 @@ function DropDownMenuLang(props) {
     { code: "ar", label: "Arabic" },
   ];
   const dispatch = useDispatch()
-  const { t } = props
+  const { t, i18n } = props
 
   /*useEffect(() => {
     document.body.dir = i18n.dir();
@@ -65,7 +64,7 @@ function DropDownMenuLang(props) {
           onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
         >
 
-          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition}>
+          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition}  style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }}>
             <div>
               <label> {t('sideCard.Ship_to')} </label>
               <select

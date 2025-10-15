@@ -181,8 +181,8 @@ function Billing({t}) {
 
       </Grid>
         <Buttons_container>
-            <button className='button' onClick={()=> setActiveStepIndex(activeStepIndex - 1)}>Back</button>
-            <button  className="button" type="submit">Next</button>
+            <button className='button' onClick={()=> setActiveStepIndex(activeStepIndex - 1)}>{t("common.back")}</button>
+            <button  className="button" type="submit">{t("common.next")}</button>
         </Buttons_container>
         
       </Form>
