@@ -38,7 +38,7 @@ function HomePage({ setRetry, retry }) {
   const productData = useSelector((state) => state.products.productData);
   const hasError = useSelector((state) => state.products.hasError);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const { t } = useTranslation()
+  const { t , i18n} = useTranslation()
 
   const [shippingInfo, setShippingInfo] = useState({
     date1: "sun Dec 22 2024",
@@ -132,7 +132,7 @@ function HomePage({ setRetry, retry }) {
         {
           
           id: product.id,
-          name: product.name,
+          name: product.name[i18n.language] || product.name["en"],
           available_shipping: product.shippingInfo,
           color: product.colors[colorIndex],
           size: product.sizes[sizeIndex],
@@ -156,7 +156,7 @@ function HomePage({ setRetry, retry }) {
     dispatch(
       buyNowItem({
         id: product.id,
-        name: product.name,
+        name: product.name[i18n.language] || product.name["en"],
         shipping_info: shippingInfo,
         price: product.price,
         selectedColor: product.colors[colorIndex],

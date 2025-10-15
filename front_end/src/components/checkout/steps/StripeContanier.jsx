@@ -43,8 +43,8 @@ export default function StripeContanier({t, i18n}) {
       delivery_time: formData.deliveryTime,
       total_price: formData.totalPrice,
       currency: "usd",
-      ordered_items: JSON.stringify([{...cartItems, name:cartItems.name[i18n.language]}])
-      ,
+      ordered_items:JSON.stringify(cartItems)
+      
     })
 
       .then((response) => setClientSecret(response.data.clientSecret))

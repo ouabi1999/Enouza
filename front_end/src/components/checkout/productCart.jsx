@@ -58,7 +58,7 @@ function ProductCart(props) {
 
                    
                   
-                  <span className="product-title">{item?.name?.[i18n.language]}</span>
+                  <span className="product-title">{item?.name}</span>
                   <span className='price'>${(item?.price * item.quantity).toFixed(2)}</span>
                   
                   {/*products?.find(product => product.id === item.id)?.sizes[item.selectedSize]*/}
