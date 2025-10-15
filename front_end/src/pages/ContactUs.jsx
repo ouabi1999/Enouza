@@ -47,7 +47,7 @@ function ContactUs(){
      
         return (
             <Container>
-                <HeadeSeo title = {`Animis - ${t("common.footer.contactUs")}`}/>
+                <HeadeSeo title = {`Enouza - ${t("footer.help.contactUs")}`}/>
                 
                 
             <div className="contact_container">
