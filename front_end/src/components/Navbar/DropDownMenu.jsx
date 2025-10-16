@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { ClickAwayListener } from "@mui/material";
 import { useSelector } from "react-redux";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { useTranslation } from "react-i18next";
 
 function DropDownMenu(props) {
+  const { t, i18n } = useTranslation();
+  
   const user = useSelector((state) => state.auth.user);
-  const {t, i18n} = props;
   return (
     <Container>
       {props.isAuth !== null ? (

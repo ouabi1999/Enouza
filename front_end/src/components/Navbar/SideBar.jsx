@@ -15,89 +15,101 @@ import { useTranslation } from "react-i18next";
 
 function SideBar(props) {
   const user = useSelector(state => state.auth.user)
-    const [isProfileOpen, setIsProfileOpen] = useState(false);
-    const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-    const {t, i18n} = useTranslation();
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
-    const openProfileMenu = () => {
-      setIsProfileOpen(!isProfileOpen);
-    };
+  const openProfileMenu = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
   return (
     <ClickAwayListener
-    mouseEvent="onMouseDown"
-                  touchEvent="onScroll"
-                  onClickAway={props.hideSideBarMenu}
-    
+      mouseEvent="onMouseDown"
+      touchEvent="onScroll"
+      onClickAway={props.hideSideBarMenu}
+
     >
-    <Container> 
-      <div className="first-section">
-        <DisabledByDefaultIcon onClick={props.hideSideBarMenu} />
-        <User_container>
-          {props.isAuth !== null ? (
-            <div className="user">
-              <span> {t("common.Hello")}, {user?.firstName.slice(0, 20)} </span>
-              <div>
-              <DropDownMenu
-                logout={props.logout}
-                isAuth={props.isAuth}
-                isProfileOpen={isProfileOpen}
-                openProfileMenu={openProfileMenu}
-                setIsProfileOpen={setIsProfileOpen}
-              />
+      <Container>
+        <div className="first-section">
+          <DisabledByDefaultIcon onClick={props.hideSideBarMenu} />
+          <User_container>
+            {props.isAuth !== null ? (
+              <div className="user">
+                <span> {t("common.Hello")}, {user?.firstName.slice(0, 20)} </span>
+                <div>
+                  <DropDownMenu
+                    logout={props.logout}
+                    isAuth={props.isAuth}
+                    isProfileOpen={isProfileOpen}
+                    openProfileMenu={openProfileMenu}
+                    setIsProfileOpen={setIsProfileOpen}
+                  />
+                </div>
               </div>
-            </div>
-          ) : (
-            <Link onClick={props.hideSideBarMenu}  to="/auth" className="sign_in_button">
-              <span>
-                <PersonIcon />
-              </span>
-              <span>{t("common.register")}</span>
-            </Link>
-          )}
-        </User_container>
-      </div>
-      <div className="lang">
-        <DropDownMenuLang
-          topPosition="100px"
-          rightPosition="-2px"
-          isLangMenuOpen={isLangMenuOpen}
-          setIsLangMenuOpen={setIsLangMenuOpen}
-          country={props.country}
-        />
-      </div>
-      <h4>{t("policies.title")}</h4>
-      <Wrapper>
-        <Wrapp>
-        <Link onClick={props.hideSideBarMenu}  to="terms-of-services">{t("policies.termsOfService.title")}</Link>
-          <Link onClick={props.hideSideBarMenu}  to="about-us"> {t("policies.aboutUs.title")} </Link>
-          <Link onClick={props.hideSideBarMenu}  to="contact-us"> {t("footer.contactUs")} </Link>
-          <Link onClick={props.hideSideBarMenu}  to="privacy-policy"> {t("policies.privacyPolicy.title")} </Link>
-        </Wrapp>
-      </Wrapper>
-      <h4>{t("footer.followUs")}</h4>
-      <SocialMedia>
-        <a rel="noreferrer" target="_blank" href="https://www.facebook.com/profile.php?id=61571681156358">
-          <FacebookIcon className="social-icon" />
-        </a>
-        <a
-          rel="noreferrer"
-          target="_blank"
-          href="https://www.youtube.com/@enouza"
-        >
-          <YouTubeIcon className="social-icon" />
-        </a>
-        <a
-          rel="noreferrer"
-          target="_blank"
-          href="https://www.instagram.com/en.ouza"
-        >
-          <InstagramIcon className="social-icon" />
-        </a>
-        <a rel="noreferrer" target="_blank" href="https://twitter.com/en_ouza">
-          <TwitterIcon className="social-icon" />
-        </a>
-      </SocialMedia>
-    </Container>
+            ) : (
+              <Link onClick={props.hideSideBarMenu} to="/auth" className="sign_in_button">
+                <span>
+                  <PersonIcon />
+                </span>
+                <span>{t("common.register")}</span>
+              </Link>
+            )}
+          </User_container>
+        </div>
+        <div className="lang">
+          <DropDownMenuLang
+            topPosition="100px"
+            rightPosition="-2px"
+            isLangMenuOpen={isLangMenuOpen}
+            setIsLangMenuOpen={setIsLangMenuOpen}
+            country={props.country}
+          />
+        </div>
+        <h4>{t("policies.title")}</h4>
+        <Wrapper>
+          <Wrapp>
+            <Link onClick={props.hideSideBarMenu} to="terms-of-services">{t("policies.termsOfService.title")}</Link>
+            <Link onClick={props.hideSideBarMenu} to="about-us"> {t("policies.aboutUs.title")} </Link>
+            <Link onClick={props.hideSideBarMenu} to="contact-us"> {t("footer.contactUs")} </Link>
+            <Link onClick={props.hideSideBarMenu} to="privacy-policy"> {t("policies.privacyPolicy.title")} </Link>
+          </Wrapp>
+        </Wrapper>
+        <h4>{t("footer.followUs.title")}</h4>
+        <SocialMedia>
+          <a
+            href="https://www.facebook.com/profile.php?id=61571681156358"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FacebookIcon className="social-icon" />
+          </a>
+
+          <a
+            href="https://www.youtube.com/@enouza"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <YouTubeIcon className="social-icon" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/en.ouza"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <InstagramIcon className="social-icon" />
+          </a>
+
+          <a
+            href="https://twitter.com/en_ouza"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <TwitterIcon className="social-icon" />
+          </a>
+
+        </SocialMedia>
+      </Container>
     </ClickAwayListener>
   );
 }

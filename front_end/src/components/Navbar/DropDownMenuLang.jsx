@@ -18,7 +18,7 @@ function DropDownMenuLang(props) {
     { code: "ar", label: "Arabic" },
   ];
   const dispatch = useDispatch()
-  const { t, i18n } = props
+  const { t, i18n } = useTranslation();
 
   /*useEffect(() => {
     document.body.dir = i18n.dir();
@@ -53,7 +53,7 @@ function DropDownMenuLang(props) {
         <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
           <Flag className="flag-icon" code={props.country} />
           <span>{selectedLang} </span>
-          <span> / USD </span>
+          <span> // USD </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
       </div>
@@ -64,7 +64,7 @@ function DropDownMenuLang(props) {
           onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
         >
 
-          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition}  style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }}>
+          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition} >
             <div>
               <label> {t('sideCard.Ship_to')} </label>
               <select
