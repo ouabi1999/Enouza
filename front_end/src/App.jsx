@@ -1,4 +1,4 @@
-import React, { useEffect, useState,Suspense, createContext } from "react";
+import React, { useEffect, useState, Suspense, createContext } from "react";
 import ApiInstance from "../common/baseUrl";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import BuyerTrustServices from "./components/Services/BuyerTrustServices";
@@ -41,6 +41,7 @@ import "../public/i18n/index.jsx"
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import ResetPassword from "./components/auth/ResetPassword";
+import Spinner from "../common/Spinner.jsx";
 
 export const OrderContext = createContext();
 function App() {
@@ -67,80 +68,80 @@ function App() {
     currency: "usd",
     ordered_products: cartItems,
   });
- const {i18n} = useTranslation()
+  const { i18n } = useTranslation()
   useEffect(() => {
     dispatch(getUser());
     dispatch(getProduct());
   }, [retry]);
-  
+
 
 
   return (
     <div style={{ direction: i18n.dir(), unicodeBidi: "plaintext" }} >
-      <Suspense fallback="loading">
-    <OrderContext.Provider value={{ formData, setFormData }}>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar
-                  outlet={<Outlet />}
-                  setSearchValue={setSearchValue}
-                  value={searchValue}
+      <Suspense fallback={<Spinner />}>
+        <OrderContext.Provider value={{ formData, setFormData }}>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <NavBar
+                      outlet={<Outlet />}
+                      setSearchValue={setSearchValue}
+                      value={searchValue}
+                    />
+                    <Footer />
+                  </>
+                }
+              >
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <HomePage setRetry={setRetry} retry={retry} />
+                      <BuyerTrustServices />
+                    </>
+                  }
                 />
-                <Footer />
-              </>
-            }
-          >
-            <Route
-              path="/"
-              element={
-                <>
-                  <HomePage setRetry={setRetry} retry={retry} />
-                  <BuyerTrustServices />
-                </>
-              }
-            />
-            <Route path="/search" element={<SearchPage value = {searchValue}/>}/>
-            <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="contact-us" element={<ContactUs />} />
-            <Route path="about-us" element={<AboutUs />} />
-            <Route path="privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="terms-of-services" element={<TermsOfServices />} />
-            <Route path="return-policy" element={<RefundPolicy />} />
-            <Route path="shipping-policy" element={<ShippingPolicy />} />
+                <Route path="/search" element={<SearchPage value={searchValue} />} />
+                <Route path="/shopping-cart" element={<ShoppingCart />} />
+                <Route path="contact-us" element={<ContactUs />} />
+                <Route path="about-us" element={<AboutUs />} />
+                <Route path="privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="terms-of-services" element={<TermsOfServices />} />
+                <Route path="return-policy" element={<RefundPolicy />} />
+                <Route path="shipping-policy" element={<ShippingPolicy />} />
 
-            <Route path="help-center" element={<HelpCenter />} />
-          </Route>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="reset-password/:id/:token" element={<ResetPassword/>} />
+                <Route path="help-center" element={<HelpCenter />} />
+              </Route>
+              <Route path="/auth" element={<Auth />} />
+              <Route path="reset-password/:id/:token" element={<ResetPassword />} />
 
-          <Route path="/profile" element={<UserProfile />}>
-            <Route path="/profile" element={<UserInfo />} />
-            <Route path="/profile/my-orders" element={<MyOrders />} />
-            <Route path="/profile/notifications" element={<Notifications />} />
-            <Route path="/profile/help-center" element={<HelpCenter />} />
-            <Route path="/profile/contact-us" element={<ContactUs />} />
-          </Route>
-          <Route path ="/order-success" element={<OrderSuccess/>}/>
-          <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/profile" element={<UserProfile />}>
+                <Route path="/profile" element={<UserInfo />} />
+                <Route path="/profile/my-orders" element={<MyOrders />} />
+                <Route path="/profile/notifications" element={<Notifications />} />
+                <Route path="/profile/help-center" element={<HelpCenter />} />
+                <Route path="/profile/contact-us" element={<ContactUs />} />
+              </Route>
+              <Route path="/order-success" element={<OrderSuccess />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
 
-          <Route path="/admin-dashboard" element={<AdminDashboardPage />}>
-            <Route path="/admin-dashboard" element={<HomeDashboard />} />
-            <Route path="dashproducts" element={<ProductsLayout />} />
-            <Route path="analytics" element={<Chart />} />
-            <Route path="display-setting" element={<Displaylayout />} />
-            <Route path="dashboard-orders" element={<Orders />} />
-            <Route path="emails" element={<Email />} />
-            <Route path="customers" element={<Customers />} />
-          </Route>
-          <Route path="*" element={<PageNoteFound />} />
-        </Routes>
-      </BrowserRouter>
-    </OrderContext.Provider>
-    </Suspense>
+              <Route path="/admin-dashboard" element={<AdminDashboardPage />}>
+                <Route path="/admin-dashboard" element={<HomeDashboard />} />
+                <Route path="dashproducts" element={<ProductsLayout />} />
+                <Route path="analytics" element={<Chart />} />
+                <Route path="display-setting" element={<Displaylayout />} />
+                <Route path="dashboard-orders" element={<Orders />} />
+                <Route path="emails" element={<Email />} />
+                <Route path="customers" element={<Customers />} />
+              </Route>
+              <Route path="*" element={<PageNoteFound />} />
+            </Routes>
+          </BrowserRouter>
+        </OrderContext.Provider>
+      </Suspense>
     </div>
   );
 }

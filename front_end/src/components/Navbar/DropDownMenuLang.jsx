@@ -10,13 +10,13 @@ import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 function DropDownMenuLang(props) {
-  const [isActive, setIsActive] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "English")
   const { t, i18n } = useTranslation();
-  const languges = [
-    { code: "en", label: t("languges.en") },
-    { code: "es", label: t("languges.es") },
-    { code: "ar", label: t("languges.ar") },
+  const [isActive, setIsActive] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(i18n.language || "en")
+  const languages = [
+    { code: "en", label: t("languages.en") },
+    { code: "es", label: t("languages.es") },
+    { code: "ar", label: t("languages.ar") },
   ];
   const dispatch = useDispatch()
 
@@ -52,7 +52,7 @@ function DropDownMenuLang(props) {
       <div className="Lang_currency">
         <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
           <Flag className="flag-icon" code={props.country} />
-          <span>{t(`languges.${selectedLang}`)} </span>
+          <span>{t(`languages.${selectedLang}`)} </span>
           <span> // USD </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
@@ -84,9 +84,9 @@ function DropDownMenuLang(props) {
             </div>
             <div>
               <label> {t("sideCard.Language")} </label>
-              <select onChange={ switchLanguage} value={i18n.language} >
+              <select onChange={ switchLanguage} value={i18n.language || "en"} >
 
-                {languges.map((lang, index  )=> {
+                {languages.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>
                 })}
 
