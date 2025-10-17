@@ -105,7 +105,7 @@ const Container = styled.div`
 
 margin-bottom:8px;
   #activate {
-    border: 1px solid blue;
+    border: 1px solidrgb(1, 150, 9);
   }
   .prices-container {
     display: flex;
@@ -160,9 +160,9 @@ margin-bottom:8px;
       border: none;
       cursor: pointer;
       padding: 5px;
-      border-radius: 6px;
-      border: 1px solid #bcbec0;
-      width: 50px;
+      border-radius: 4px;
+      border: 1px solidrgb(206, 2, 80);
+      min-width: 50px;
       background:none;
       text-wrap:nowrap;
     }
