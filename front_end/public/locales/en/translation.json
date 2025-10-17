@@ -505,5 +505,19 @@
     "error_required_gender": "Gender is required",
     "required": "Required"
 
+  },
+  "languges": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "hi": "Hindi"
   }
 }

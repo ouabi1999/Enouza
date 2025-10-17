@@ -12,13 +12,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 function DropDownMenuLang(props) {
   const [isActive, setIsActive] = useState(false);
   const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "English")
-  const languages = [
-    { code: "en", label: "English" },
-    { code: "es", label: "Spanish" },
-    { code: "ar", label: "Arabic" },
+  const { t, i18n } = useTranslation();
+  const languges = [
+    { code: "en", label: t("languges.en") },
+    { code: "es", label: t("languges.es") },
+    { code: "ar", label: t("languges.ar") },
   ];
   const dispatch = useDispatch()
-  const { t, i18n } = useTranslation();
 
   /*useEffect(() => {
     document.body.dir = i18n.dir();
@@ -41,8 +41,8 @@ function DropDownMenuLang(props) {
 
   const switchLanguage = (e) => {
    
-    setSelectedLang(e.target.options[e.target.selectedIndex].text);
-    window.localStorage.setItem("selectedLang", e.target.options[e.target.selectedIndex].text)
+    setSelectedLang(e.target.value);
+    window.localStorage.setItem("selectedLang", e.target.value)
     i18n.changeLanguage(e.target.value);
   };
 
@@ -52,7 +52,7 @@ function DropDownMenuLang(props) {
       <div className="Lang_currency">
         <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
           <Flag className="flag-icon" code={props.country} />
-          <span>{selectedLang} </span>
+          <span>{t(`languges.${selectedLang}`)} </span>
           <span> // USD </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
@@ -86,7 +86,7 @@ function DropDownMenuLang(props) {
               <label> {t("sideCard.Language")} </label>
               <select onChange={ switchLanguage} value={i18n.language} >
 
-                {languages.map((lang, index  )=> {
+                {languges.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>
                 })}
 

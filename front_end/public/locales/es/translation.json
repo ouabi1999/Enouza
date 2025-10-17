@@ -467,5 +467,20 @@
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa teléfono",
     "please_enter_your_birthdate": "Ingresa fecha de nacimiento"
+  },
+  "languges": {
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "de": "Alemán",
+    "it": "Italiano",
+    "pt": "Portugués",
+    "zh": "Chino",
+    "ja": "Japonés",
+    "ko": "Coreano",
+    "ru": "Ruso",
+    "ar": "Árabe",
+    "hi": "Hindi"
   }
+
 }
