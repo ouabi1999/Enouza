@@ -104,7 +104,7 @@ function SideCart(props) {
             <div className="center-align" >
               <LocalShippingOutlinedIcon className="Shipping-icon" />
               {productData[0]?.available_shipping?.length > 0 ? (
-                <span className="header"> {Number(productData[0]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? "Free shipping" : productData[0]?.available_shipping[shippingMethodIndex]?.methodName}</span>
+                <span className="header"> {Number(productData[0]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData[0]?.available_shipping[shippingMethodIndex]?.methodName}</span>
               ) :
                 <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
 
