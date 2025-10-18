@@ -53,7 +53,8 @@ function DropDownMenuLang(props) {
         <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}>
           <Flag className="flag-icon" code={props.country} />
           <span>{t(`languages.${selectedLang}`)} </span>
-          <span> // USD </span>
+          <span style={{margin:"0 4px"}}> / </span>
+          <span> USD </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
       </div>
@@ -64,7 +65,7 @@ function DropDownMenuLang(props) {
           onClickAway={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)}
         >
 
-          <Wrapper $topPosition={props.topPosition} $righPosition={props.righPosition} >
+          <Wrapper style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }} >
             <div>
               <label> {t('sideCard.Ship_to')} </label>
               <select
@@ -84,7 +85,7 @@ function DropDownMenuLang(props) {
             </div>
             <div>
               <label> {t("sideCard.Language")} </label>
-              <select onChange={ switchLanguage} value={i18n.language || "en"} >
+              <select onChange={ switchLanguage} value={selectedLang} >
 
                 {languages.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>
@@ -161,8 +162,8 @@ const Container = styled.div`
 const Wrapper = styled.div`
     position:fixed;
     padding:10px;
-    right:${props => props.$righPosition || "10px"};
-    top:${props => props.$topPosition || "60px"};
+    right:10px;
+    top:60px;
     background:#ffff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     width:255px;

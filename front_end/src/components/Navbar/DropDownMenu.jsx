@@ -36,15 +36,15 @@ function DropDownMenu(props) {
           <Wrapper style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }}>
             <Link onClick={props.openProfileMenu} to={user?.is_staff ? "admin-dashboard" : "/profile"}>
               <AccountBoxIcon className="icon" />
-              <span> Dashbaord </span>
+              <span> {t("common.profile") }</span>
             </Link>
             <Link onClick={props.openProfileMenu} to="/help-center">
               <LiveHelpIcon className="icon" />
-              <span>FAQ</span>
+              <span>{t("common.faq")}</span>
             </Link>
             <button onClick={props.logout}>
               <ExitToAppOutlinedIcon className="icon" />
-              <span>Logout</span>
+              <span>{t("common.logout")}</span>
             </button>
           </Wrapper>
         </ClickAwayListener>

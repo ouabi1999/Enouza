@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { AnimatePresence } from "motion/react"
+import * as motion from "motion/react-client"
 
 function MainImages(props) {
     const {colorIndex, productData , picsDetailsIndex, selectPicsDetails, isPicsDetailsActive , deselectPicsDetails, isColorActive } = props; 
@@ -10,7 +12,6 @@ function MainImages(props) {
     <ImageDetailsContainer>
       {productData?.images.additional_images?.map((img, index) => {
         return (
-          <>
             <img
               onMouseOver={()=> selectPicsDetails(index)}
               key={index}
@@ -18,11 +19,20 @@ function MainImages(props) {
               alt={productData?.name}
               id = {picsDetailsIndex === index && isPicsDetailsActive  && "activate"}
             />
-          </>
         );
       })}
     </ImageDetailsContainer>
     <ProductImg>
+    <AnimatePresence mode="wait">
+
+    <motion.div 
+    key={isColorActive ? productData?.colors[colorIndex]:productData?.images.additional_images[picsDetailsIndex] }
+    initial={{ y: 10, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -10, opacity: 0 }}
+    transition={{ duration: 0.2 }}
+    >
+    
      
         <img  
         src={isColorActive ? productData?.colors[colorIndex]
@@ -34,8 +44,10 @@ function MainImages(props) {
            />
 
  
-      
+</motion.div>
+</AnimatePresence>
     </ProductImg>
+
   </Container>
   )
 }

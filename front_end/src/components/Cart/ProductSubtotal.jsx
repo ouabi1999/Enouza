@@ -27,7 +27,7 @@ function ProductSubtotal(props) {
 
                       <span>
                           {" "}
-                          ${props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
+                          €{props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
                       </span>
 
                   )}
@@ -38,7 +38,7 @@ function ProductSubtotal(props) {
 
                       <span>
                           {" "}
-                          ${props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
+                          €{props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
                       </span>
 
                   )}

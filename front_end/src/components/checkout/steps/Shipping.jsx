@@ -63,7 +63,7 @@ function Shipping({t}) {
                 </span>
               </div>
               <div>
-                <span>${item.cost}</span>
+                <span>€{item.cost}</span>
                 <Radio
                   value={item.cost}
                   style={inputRequired ? { color: "red" } : {}}
@@ -100,7 +100,7 @@ function Shipping({t}) {
 
           </div>
           <div>
-            <span>$0.00 </span>
+            <span>€0.00 </span>
             <Radio
               style={inputRequired ? { color: "red" } : {}}
               name= "e-packet"

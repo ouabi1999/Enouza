@@ -7,6 +7,8 @@ import { Checkbox } from "@mui/material";
 import { pink, yellow } from "@mui/material/colors";
 import { ClickAwayListener } from "@mui/base";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence, motion } from "motion/react"
+
 
 function PopUpShoppingMethod(props) {
   const productData = useSelector((state) => state.products.productData);
@@ -23,6 +25,16 @@ function PopUpShoppingMethod(props) {
 
   return (
     <ParentContainer>
+      <AnimatePresence mode="wait">
+  
+      <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            key="box"
+            className="box"
+        >
+                 
       <ClickAwayListener
     mouseEvent="onMouseDown"
     touchEvent="onScroll"
@@ -33,7 +45,6 @@ function PopUpShoppingMethod(props) {
           <h5>{t("sideCard.available_shipping_methods")}</h5>
           <InfoIcon className="info-icon" />
         </div>
-
         {productData[0]?.available_shipping?.length > 0 ? (
           productData[0]?.available_shipping?.map((item, index) => {
             return (
@@ -48,7 +59,7 @@ function PopUpShoppingMethod(props) {
                   </span>
                 </div>
                 <div>
-                  <span>${item.cost}</span>
+                  <span>€{item.cost}</span>
                   <Checkbox
                     {...label}
                     name={item.methodName}
@@ -63,12 +74,14 @@ function PopUpShoppingMethod(props) {
                         color: yellow[900],
                       },
                     }}
-                  />
+                    />
                 </div>
               </div>
             );
           })
+          
         ) : (
+          
           <div className="methods_container">
             <div className="shipping-type">
               <span className="shipping-method">
@@ -80,7 +93,7 @@ function PopUpShoppingMethod(props) {
               </span>
             </div>
             <div>
-              <span className="shipping-cost">${shippingInfo.cost}</span>
+              <span className="shipping-cost">€{shippingInfo.cost}</span>
               <Checkbox
                 {...label}
                 name="e-packet"
@@ -95,18 +108,26 @@ function PopUpShoppingMethod(props) {
                     color: yellow[900],
                   },
                 }}
-              />
+                />
             </div>
           </div>
+         
         )}
       </ShippingMethods>
        </ClickAwayListener>
+                </motion.div>
+                </AnimatePresence>
     </ParentContainer>
+                
   );
 }
 
 export default PopUpShoppingMethod;
 const ParentContainer = styled.div`
+  top: 0%;
+  position: fixed;
+  z-index: 100;
+  .box{
   background: #665e5e88;
   width: 100%;
   height: 100%;
@@ -116,6 +137,7 @@ const ParentContainer = styled.div`
   display:flex;
   justify-content: center;
   align-items: center;
+  }
 
 `;
 const ShippingMethods = styled.div`

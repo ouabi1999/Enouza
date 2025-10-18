@@ -4,10 +4,13 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { useTranslation } from "react-i18next";
+import { motion } from 'framer-motion';
+
 function UserServices() {
   const {t, i18n} = useTranslation();
   return (
     <Container>
+       
       <Wrapp>
         <MinWrap>
           <MonetizationOnIcon className="icon" />
@@ -37,6 +40,23 @@ const Container = styled.div`
   overflow:hidden;
   -webkit-overflow:hidden;
   margin-bottom:10px;
+  animation: lightning-glow 1.2s linear infinite;
+  transition: all 0.3s ease-in-out;
+  
+@keyframes lightning-glow {
+  0% {
+   border-bottom: 1px solid rgb(87, 0, 58);
+  }
+  50% {
+    border-bottom: 2px solid rgb(4, 170, 17)
+  }
+  100% {
+    border-bottom:  1px solid rgb(255, 60, 0);
+  }
+}
+
+ 
+
 `;
 const Wrapp = styled.div`
 
@@ -61,7 +81,7 @@ const MinWrap = styled.div`
     color: #000;
   }
   .icon {
-    color: #e65c00;
+    color:rgb(129, 1, 119);
     margin-right: 3px;
   }
   @media only screen and (max-width: 815px) {

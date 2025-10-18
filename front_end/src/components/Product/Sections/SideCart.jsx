@@ -12,6 +12,7 @@ import Flag from 'react-world-flags';
 import PopUpShoppingMethod from './PopUpShoppingMethod';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 import countriesData from "../../../../common/countryData.json"
 import { addToCart } from '../../../features/cartSlice';
 import { setLocation } from '../../../features/locationSlice';
@@ -242,7 +243,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background: #055bfc;
+    background:rgb(211, 17, 4);
     color: #fff;
     font-weight: bold;
     min-width: 80px;
@@ -252,7 +253,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background: #252525;
+    background:rgb(34, 167, 1);
     color: #fff;
     font-weight: bold;
     min-width: 100px;

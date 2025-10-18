@@ -12,10 +12,10 @@ function ProductInfo(props) {
     <Container>
       <div className="prices-container">
         <div className="product-price">
-          <span>${productData?.price}</span>
+          <span>€{productData?.price}</span>
         </div>
         <div className="product-discount">
-          <span> ${productData?.discount} </span>
+          <span> €{productData?.discount} </span>
         </div>
         <div className="product-discount-percent" >
           <span>
@@ -105,7 +105,7 @@ const Container = styled.div`
 
 margin-bottom:8px;
   #activate {
-    border: 1px solidrgb(1, 150, 9);
+    border: 1px solid rgb(17, 182, 2);
   }
   .prices-container {
     display: flex;
@@ -161,7 +161,7 @@ margin-bottom:8px;
       cursor: pointer;
       padding: 5px;
       border-radius: 4px;
-      border: 1px solidrgb(206, 2, 80);
+      border: 1px solid rgb(163, 162, 162);
       min-width: 50px;
       background:none;
       text-wrap:nowrap;

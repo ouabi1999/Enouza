@@ -59,7 +59,7 @@ function ProductCart(props) {
                    
                   
                   <span className="product-title">{item?.name}</span>
-                  <span className='price'>${(item?.price * item.quantity).toFixed(2)}</span>
+                  <span className='price'>€{(item?.price * item.quantity).toFixed(2)}</span>
                   
                   {/*products?.find(product => product.id === item.id)?.sizes[item.selectedSize]*/}
                 </div>
@@ -80,7 +80,7 @@ function ProductCart(props) {
                 {t("common.subtotal")}
               </span>
               <span>
-               ${total}
+              €{total}
               </span>
             </div>
             <div>
@@ -88,7 +88,7 @@ function ProductCart(props) {
                 {t("common.shipping")}
               </span>
               <span>
-                 ${Number(formData.shippingPrice).toFixed(2)}
+              €{Number(formData.shippingPrice).toFixed(2)}
               </span>
             </div>
           <div className='Total-price'>
@@ -96,7 +96,7 @@ function ProductCart(props) {
               {t("common.total")}
             </span>
             <span>
-              ${(Number(total) + Number(formData.shippingPrice)).toFixed(2)}
+            €{(Number(total) + Number(formData.shippingPrice)).toFixed(2)}
             </span>
           </div>
         </Totals>
