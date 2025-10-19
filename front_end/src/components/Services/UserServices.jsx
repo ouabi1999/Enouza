@@ -35,7 +35,7 @@ const Container = styled.div`
   width:100%; 
   padding: 10px 0;
   color: rgba(60, 60, 60, 0.9);
-  border-bottom: 1px solid lightgray;
+  border-bottom: 2px solid lightgray;
   background: #ffff;
   overflow:hidden;
   -webkit-overflow:hidden;
@@ -48,7 +48,7 @@ const Container = styled.div`
    border-bottom: 1px solid rgb(87, 0, 58);
   }
   50% {
-    border-bottom: 2px solid rgb(4, 170, 17)
+    border-bottom: 1px solid rgb(4, 170, 17)
   }
   100% {
     border-bottom:  1px solid rgb(255, 60, 0);

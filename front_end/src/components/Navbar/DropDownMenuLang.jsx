@@ -54,7 +54,7 @@ function DropDownMenuLang(props) {
           <Flag className="flag-icon" code={props.country} />
           <span>{t(`languages.${selectedLang}`)} </span>
           <span style={{margin:"0 4px"}}> / </span>
-          <span> USD </span>
+          <span> EUR</span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
       </div>
