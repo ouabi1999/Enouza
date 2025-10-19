@@ -96,7 +96,7 @@ function DropDownMenuLang(props) {
             <div>
               <label> {t('sideCard.Currency')} </label>
               <select>
-                <option value="Japan">USD</option>
+                <option value="Japan">EUR</option>
               </select>
             </div>
             <div className="save-button">
