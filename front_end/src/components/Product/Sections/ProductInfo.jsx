@@ -27,7 +27,7 @@ function ProductInfo(props) {
       </div>
 
       <div className="product-title">
-        <p>{productData?.name[i18n.language]}</p>
+        <p>{productData?.name[i18n.language] || productData?.name["en"]}</p>
       </div>
       
       <div className="product-rating">

@@ -12,18 +12,14 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 function DropDownMenuLang(props) {
   const { t, i18n } = useTranslation();
   const [isActive, setIsActive] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(i18n.language || "en")
+  const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "en")
+
   const languages = [
     { code: "en", label: t("languages.en") },
     { code: "es", label: t("languages.es") },
     { code: "ar", label: t("languages.ar") },
   ];
   const dispatch = useDispatch()
-
-  /*useEffect(() => {
-    document.body.dir = i18n.dir();
-  }, [i18n, i18n.language]);*/
-
 
   useEffect(() => {
     if (!window.localStorage.getItem("country")) {
@@ -54,7 +50,7 @@ function DropDownMenuLang(props) {
           <Flag className="flag-icon" code={props.country} />
           <span>{t(`languages.${selectedLang}`)} </span>
           <span style={{margin:"0 4px"}}> / </span>
-          <span> EUR</span>
+          <span> EUR </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
       </div>
@@ -85,7 +81,7 @@ function DropDownMenuLang(props) {
             </div>
             <div>
               <label> {t("sideCard.Language")} </label>
-              <select onChange={ switchLanguage} value={selectedLang} >
+              <select onChange={ switchLanguage} value={i18n.language}>
 
                 {languages.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>
