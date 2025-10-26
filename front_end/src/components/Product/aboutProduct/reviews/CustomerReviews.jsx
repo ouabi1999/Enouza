@@ -7,6 +7,7 @@ import Flag from "react-world-flags";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ClickAwayListener } from "@mui/base";
 import Feedback from "./FeedBack";
+import ReviewImagePopup from "./ReviewImagePopup";
 function CustomerReviews(props) {
   const [selected, setSelected] = useState({ index: null, id: null });
 
@@ -98,30 +99,10 @@ function CustomerReviews(props) {
                     {rate.created_at}
                   </p>
                 </div>
-                  {selected.index != null && rate.id === selected.id && (
-                    <ClickAwayListener
-                      mouseEvent="onMouseDown"
-                      touchEvent="onScroll"
-                      onClickAway={() => setSelected({ index: null, id: null })}
-                    >
-                    <PupUpSelectedImage>
-
-                        {/*<div>
-                            <ClearIcon 
-                                className="cancel-icon"
-                                onClick={()=> setSelected({index:null, id:null})}/>
-                                </div>*/}
-
-                        <img
-                          className=" selected-img"
-                          src={rate.review.images[selected.index]}
-                          alt=""
-                        />
-                    </PupUpSelectedImage>
-                    </ClickAwayListener>
-                  )}
+                  
                 
               </div>
+              <ReviewImagePopup rate={rate} selected={selected} setSelected={setSelected} />
             </div>
           );
         })}
@@ -181,28 +162,6 @@ const Container = styled.div`
     cursor: pointer;
   }
 
-  .selected-img {
-    height: 45vh;
-    min-height: 200px;
-    max-height: 360px;
-    max-width: 360px;
-    padding: 20px;
-    object-fit: contain;
-    border-radius: 6px;
-    width: 40vw;
-    border-radius: 6px;
-    position: fixed;
-    z-index: 102;
-    top: 25%;
-    bottom: 25%;
-    right: 30%;
-    left: 30%;
-    background: #fdfdfd;
-    border: 1px solid lightgray;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  }
-
   .cancel-icon {
     display: flex;
     color: #fff;
@@ -247,9 +206,14 @@ const ChildContainer = styled.div`
 
 `
 const PupUpSelectedImage = styled.div`
-      position: relative;
-      width:100%;
-  
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 90%;
+    width: 90%;
+    margin: auto;
+    background-color: rgba(200, 255, 255);
+    
       @media (max-width: 690px) {
     
   }
