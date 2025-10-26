@@ -23,7 +23,7 @@ function ReviewsLayout() {
 
   const [star_rating, set_star_rating] = useState(1);
 
-  let ratings = productData[0]?.ratings?.concat(productData[0]?.aliexpress_ratings);
+  let ratings = productData[1]?.ratings?.concat(productData[1]?.aliexpress_ratings);
 
     const fiveStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 5).reduce((total, value) => {
       return total += value.stars
@@ -56,7 +56,7 @@ function ReviewsLayout() {
         ApiInstance.post("set-rating/", 
             
             {
-                product: productData[0].id,
+                product: productData[1].id,
                 user: user.id,
                 stars: star_rating,
                 review: comment,

@@ -12,7 +12,7 @@ const Specifications = () => {
       <TableContainer component={Paper} sx={{border:"1px solid lightgray", borderRadius:"0" }}>
         <Table>
           <TableBody>
-            {productData[0]?.specifications?.map((spec, index) => (
+            {productData[1]?.specifications?.map((spec, index) => (
               <TableRow key={index}>
                 <TableCell sx={{ fontWeight: 'bold', width: '40%' }}>
                   {spec.label}
