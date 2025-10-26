@@ -29,7 +29,7 @@ function Product(props) {
       <Container>
         <FirstSection>
           <MainImages
-            productData = {productData[0]}
+            productData = {productData[1]}
             picsDetailsIndex={props.picsDetailsIndex}
             colorIndex={props.colorIndex}
             selectPicsDetails={props.selectPicsDetails}
