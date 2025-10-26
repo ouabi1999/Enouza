@@ -11,7 +11,7 @@ import DropDownMenu from "./DropDownMenu";
 import DropDownMenuLang from "./DropDownMenuLang";
 import MenuIcon from "@mui/icons-material/Menu";
 import SideBar from "./SideBar";
-import { ClickAwayListener } from "@mui/material";
+import { ClickAwayListener, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 function NavBar({ outlet, setSearchValue, value }) {
@@ -64,7 +64,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
+              <TextField placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
                 borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
               }} />
             </div>
@@ -176,9 +176,11 @@ const ParentContainer = styled.div`
     .responsive-input {
       height: 100%;
       width: 100%;
+      font-size: 16px;
     }
 
     .responsive-input input {
+      font-size: 16px;
       height: 100%;
       width: 100%;
       border: none;

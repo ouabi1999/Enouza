@@ -39,13 +39,13 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
           animate={{ scale: 1 }}
           exit={{ scale: 0.95 }}
         >
+
           <Header>
             <Title>Customer Images</Title>
             <CloseButton onClick={handleClose}>
               <X size={20} />
             </CloseButton>
           </Header>
-
           <Content>
             {/* LEFT: Thumbnails */}
             <ThumbColumn>
