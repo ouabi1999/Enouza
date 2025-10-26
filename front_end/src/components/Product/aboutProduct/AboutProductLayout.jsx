@@ -18,10 +18,13 @@ function AboutProductLayout() {
           
           {t("productInfo.reviews")}
         </button>
+        {/*
         <button onClick={() => setIsOpen(2)} id={isOpen == 2 && "selected"}>
          
            {t("productInfo.specifications")}
         </button>
+        
+        */}
 
         <button onClick={() => setIsOpen(3)} id={isOpen == 3 && "selected"}>
           
@@ -31,7 +34,7 @@ function AboutProductLayout() {
       <div>
 
         {isOpen == 1 && <ReviewsLayout />}
-        {isOpen == 2 && <Specifications />}
+        {/*{isOpen == 2 && <Specifications />}*/}
         {isOpen == 3 &&<Description />}
       
       </div>
