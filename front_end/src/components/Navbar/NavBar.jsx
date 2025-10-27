@@ -64,7 +64,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <TextField placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
+              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
                 borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
               }} />
             </div>
