@@ -481,6 +481,18 @@
     "ru": "Ruso",
     "ar": "Árabe",
     "hi": "Hindi"
+  },
+  "filters": {
+    "clearAll": "Limpiar todo",
+    "applyFilters": "Aplicar filtros",
+    "priceRange": "Rango de precios",
+    "brand": "Marca",
+    "category": "Categoría",
+    "rating": "Valoración",
+    "availability": "Disponibilidad",
+    "inStock": "En stock",
+    "outOfStock": "Agotado",
+    "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto. Por favor, inténtalo de nuevo."
   }
 
 }

@@ -519,5 +519,14 @@
     "ru": "Russian",
     "ar": "Arabic",
     "hi": "Hindi"
+  },
+  "filters": {
+    "category": "Category",
+    "brand": "Brand",
+    "priceRange": "Price Range",
+    "rating": "Rating",
+    "applyFilters": "Apply Filters",
+    "clearFilters": "Clear Filters",
+    "search_did_not_match":"Sorry, your search did not match any products. Please try again."
   }
 }

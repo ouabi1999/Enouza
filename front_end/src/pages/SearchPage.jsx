@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next';
 
 function SearchPage({value}) {
+   const {t, i18n} = useTranslation();
   return (
     <Container>
         <span>
             
-           Sorry, your search "{value}" did not match any products. Please try again.
+         {t("filters.search_did_not_match")}
         </span>
         
         </Container>
@@ -20,6 +22,7 @@ const Container = styled.div`
    justify-content:center;
    align-items:center;
    height: 70vh;
+   font-size:16px;
    span{
     max-width:50%;
 

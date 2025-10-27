@@ -25,7 +25,7 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
   const handleClose = () => setSelected({ index: null, id: null });
 
   return (
-      <AnimatePresence>
+    <AnimatePresence>
       <Overlay
         as={motion.div}
         initial={{ opacity: 0 }}
@@ -33,60 +33,60 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
         exit={{ opacity: 0 }}
       >
         <ClickAwayListener onClickAway={handleClose}>
-        <PopupContainer
-          as={motion.div}
-          initial={{ scale: 0.95 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 0.95 }}
-        >
+          <PopupContainer
+            as={motion.div}
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.95 }}
+          >
 
-          <Header>
-            <Title>Customer Images</Title>
-            <CloseButton onClick={handleClose}>
-              <X size={20} />
-            </CloseButton>
-          </Header>
-          <Content>
-            {/* LEFT: Thumbnails */}
-            <ThumbColumn>
-              {images.map((img, i) => (
-                <Thumb
-                  key={i}
-                  src={img}
-                  active={i === selected.index}
-                  onClick={() => setSelected({ ...selected, index: i })}
-                />
-              ))}
-            </ThumbColumn>
+            <Header>
+              <Title>Customer Images</Title>
+              <CloseButton onClick={handleClose}>
+                <X size={20} />
+              </CloseButton>
+            </Header>
+            <Content>
+              {/* LEFT: Thumbnails */}
+              <ThumbColumn>
+                {images.map((img, i) => (
+                  <Thumb
+                    key={i}
+                    src={img}
+                    active={i === selected.index}
+                    onClick={() => setSelected({ ...selected, index: i })}
+                  />
+                ))}
+              </ThumbColumn>
 
-            {/* CENTER: Main image */}
-            <MainImageWrapper>
-              {images.length > 1 && (
-                <>
-                  <NavButtonLeft onClick={handlePrev}>
-                    <ArrowLeft size={28} />
-                  </NavButtonLeft>
-                  <NavButtonRight onClick={handleNext}>
-                    <ArrowRight size={28} />
-                  </NavButtonRight>
-                </>
-              )}
-              <MainImage src={currentImage} alt="review" />
-            </MainImageWrapper>
+              {/* CENTER: Main image */}
+              <MainImageWrapper>
+                {images.length > 1 && (
+                  <>
+                    <NavButtonLeft onClick={handlePrev}>
+                      <ArrowLeft size={28} />
+                    </NavButtonLeft>
+                    <NavButtonRight onClick={handleNext}>
+                      <ArrowRight size={28} />
+                    </NavButtonRight>
+                  </>
+                )}
+                <MainImage src={currentImage} alt="review" />
+              </MainImageWrapper>
 
-            {/* RIGHT: Review text */}
-            <ReviewInfo>
-              <Stars>★★★★★</Stars>
-              <SmallText>{rate.review.color? "Color:" + " "+ rate.review.color:""}</SmallText>
-              <SmallText>
-                {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)} | {rate.created_at}
+              {/* RIGHT: Review text */}
+              <ReviewInfo>
+                <Stars>★★★★★</Stars>
+                <SmallText>{rate.review.color ? "Color:" + " " + rate.review.color : ""}</SmallText>
+                <SmallText>
+                  {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)} | {rate.created_at}
 
-              </SmallText>
-              <ReviewText>{rate.review.text}</ReviewText>
-            </ReviewInfo>
-          </Content>
-        </PopupContainer>
-    </ClickAwayListener>
+                </SmallText>
+                <ReviewText>{rate.review.text}</ReviewText>
+              </ReviewInfo>
+            </Content>
+          </PopupContainer>
+        </ClickAwayListener>
       </Overlay>
     </AnimatePresence>
   );
@@ -227,17 +227,28 @@ export const MainImageWrapper = styled.div`
 `;
 
 export const MainImage = styled.img`
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: zoom-in;
-  opacity: 0;
-  animation: fadeIn 0.4s forwards;
+      min-width:200px;
+      width:450px;
+      height:450px;
+      object-fit:contain;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+       cursor: zoom-in;
+        opacity: 0;
+        animation: fadeIn 0.4s forwards;
+
+
+     
+     @media only screen and (max-width: 500px) {
+      &{
+        width:100%;
+        height:100%;
+        min-width:300px;
+        min-height:300px;
+      }
+      
+  }
+
+  
 
   @keyframes fadeIn {
     to {
