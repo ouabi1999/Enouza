@@ -48,9 +48,9 @@ function Shipping({t}) {
         <InfoIcon className='info-icon' />
       </div>
 
-      {productData[0].available_shipping?.length > 0 ? (
+      {productData[1].available_shipping?.length > 0 ? (
 
-        productData[0].available_shipping?.map((item, index) => {
+        productData[1].available_shipping?.map((item, index) => {
           return (
             <div className="methods_container" key={index}>
               <div className="shipping-methodName">
