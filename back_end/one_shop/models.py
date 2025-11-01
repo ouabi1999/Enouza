@@ -70,12 +70,16 @@ class Products(models.Model):
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
     orders = models.ManyToManyField('Orders', related_name='products', blank=True)
-    
-
-   
 
     def __str__(self):
-        return self.name
+        if isinstance(self.name, dict):
+        # If name is a dictionary, try to extract a readable field
+            return self.name.get("en", next(iter(self.name.values()), "Unnamed Product"))
+        elif isinstance(self.name, list):
+        # If name is a list, join elements
+            return ", ".join(map(str, self.name))
+        return str(self.name or "Unnamed Product")
+
 
 class GlobalCoupon(models.Model):
     id = models.UUIDField(primary_key=True, default=get_uuid, editable=False)
@@ -137,7 +141,13 @@ class AliExpressRatings(models.Model):
     product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
-        return f"{self.stars} stars by {self.review}"
+        # Always handle cases where JSONField returns a dict
+        user_name = ""
+        if isinstance(self.user, dict):
+            str(self.user)
+
+
+
 
 
 

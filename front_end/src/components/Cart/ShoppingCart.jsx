@@ -32,7 +32,7 @@ function ShoppingCart() {
   const updateCart = (products) => {
       
       const newCart = cartItems.filter((item) =>
-        productData[0].some((product) => product.id === item.id)
+        productData[1].some((product) => product.id === item.id)
       );
       window.localStorage.setItem("cartItems", JSON.stringify(newCart))
       dispatch(setCartItems(newCart))
@@ -95,7 +95,7 @@ function ShoppingCart() {
 
                               <div className="delete-button">
                                 <button onClick={() => dispatch(removeFromCart(index))}>
-                                {productData[0]?.id === item.id &&(
+                                {productData[1]?.id === item.id &&(
                                       <DeleteIcon />
                                 )}
                                 </button>

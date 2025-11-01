@@ -48,9 +48,9 @@ function SideCart(props) {
 
   useEffect(() => {
 
-    Date1.setDate(Date1.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.from) || 5))
+    Date1.setDate(Date1.getDate() + (Number(productData[1]?.available_shipping[shippingMethodIndex]?.from) || 5))
     setFromDate(Date1.toDateString())
-    Date2.setDate(Date2.getDate() + (Number(productData[0]?.available_shipping[shippingMethodIndex]?.to) || 7))
+    Date2.setDate(Date2.getDate() + (Number(productData[1]?.available_shipping[shippingMethodIndex]?.to) || 7))
     setToDate(Date2.toDateString())
 
 
@@ -104,8 +104,8 @@ function SideCart(props) {
         <div className="shipping">
             <div className="center-align" >
               <LocalShippingOutlinedIcon className="Shipping-icon" />
-              {productData[0]?.available_shipping?.length > 0 ? (
-                <span className="header"> {Number(productData[0]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData[0]?.available_shipping[shippingMethodIndex]?.methodName}</span>
+              {productData[1]?.available_shipping?.length > 0 ? (
+                <span className="header"> {Number(productData[1]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData[1]?.available_shipping[shippingMethodIndex]?.methodName}</span>
               ) :
                 <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
 
@@ -120,7 +120,7 @@ function SideCart(props) {
           <div className="delivrey-time center-align">
             <DeliveryDiningIcon className="Shipping-icon" />
             <span className="header"> {t("sideCard.Delivrey")} :</span>
-            {productData[0]?.available_shipping?.length > 0 ? (
+            {productData[1]?.available_shipping?.length > 0 ? (
               <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
 
             ) :
@@ -151,7 +151,7 @@ function SideCart(props) {
             <button onClick={addQuantity}>+</button>
           </div>
           <div>
-            <span>{productData[0]?.quantity - quantity} {t("sideCard.available")}</span>
+            <span>{productData[1]?.quantity - quantity} {t("sideCard.available")}</span>
           </div>
 
           <ClickAwayListener
@@ -169,10 +169,10 @@ function SideCart(props) {
 
         <div>
           <div className="button-container">
-            <button className="buy-button" onClick={() => buy_Now_item(productData[0])}>{t("common.buyNow")}</button>
+            <button className="buy-button" onClick={() => buy_Now_item(productData[1])}>{t("common.buyNow")}</button>
             <button
               className="add-button"
-              onClick={() => add_item_to_cart(productData[0])}
+              onClick={() => add_item_to_cart(productData[1])}
             >
               {" "}
               { t("common.addToCart")}

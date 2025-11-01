@@ -18,12 +18,15 @@ class TodoAdmin(admin.ModelAdmin):
 
 
 
+class AliExpressRatingsAdmin(admin.ModelAdmin):
+    list_display = ('id',  'stars',"review", 'created_at')
+    
+
+    
+
     
 admin.site.register(Products)
 admin.site.register(Orders)
 admin.site.register(Ratings)
-admin.site.register(AliExpressRatings)
-
-    
-
+admin.site.register(AliExpressRatings, AliExpressRatingsAdmin)
 admin.site.register(Users, TodoAdmin)
