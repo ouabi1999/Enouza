@@ -78,7 +78,7 @@ else:
     CSRF_COOKIE_SECURE = False
 
 # Database
-if not ENVIRONMENT == "development":
+if ENVIRONMENT == "development":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
