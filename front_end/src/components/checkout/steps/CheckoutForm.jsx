@@ -97,9 +97,7 @@ export default function CheckoutForm() {
 
     setIsLoading(false);
   };
-  const paymentElementOptions = {
-    layout: "accordion",
-  };
+ 
    const CreatCashONDeliveryOrder = () => {
     setIsLoadingCOD(true);
     ApiInstance.post("create-order/",
@@ -133,6 +131,9 @@ export default function CheckoutForm() {
 
     });
   };
+  const paymentElementOptions = {
+    layout: "accordion"
+  }
   return (
     <>
       {/*<div>
@@ -157,14 +158,14 @@ export default function CheckoutForm() {
         />
         <span>Credit Card</span>
       </div>*/}
+
     <Container>
       {creditCard && (
         <form
           id="payment-form"
           onSubmit={handleSubmit}
-          options={paymentElementOptions}
         >
-          <PaymentElement id="payment-element" />
+          <PaymentElement id="payment-element"   />
           <button disabled={isLoading || !stripe || !elements} id="submit">
             <span id="button-text">
               {isLoading ? (

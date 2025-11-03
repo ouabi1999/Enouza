@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from .models import *
 
@@ -20,6 +21,8 @@ class TodoAdmin(admin.ModelAdmin):
 
 class AliExpressRatingsAdmin(admin.ModelAdmin):
     list_display = ('id',  'stars',"review", 'created_at')
+    
+    
     
 
     

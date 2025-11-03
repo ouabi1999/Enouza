@@ -55,12 +55,14 @@ export default function StripeContanier({t, i18n}) {
     theme: "night",
     labels: "floating",
   };
+  const loader = 'auto';
   const options = {
     clientSecret,
     appearance,
+    loader,
     locale: i18n.language || "en",
   };
-
+  
   return (
     <Container>
       {clientSecret ? (

@@ -141,11 +141,7 @@ class AliExpressRatings(models.Model):
     product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
     created_at = models.DateField(auto_now_add=True)
     def __str__(self):
-        # Always handle cases where JSONField returns a dict
-        user_name = ""
-        if isinstance(self.user, dict):
-            str(self.user)
-
+        return str(self.id)
 
 
 
