@@ -106,7 +106,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "cloudinary",
     "rest_framework_simplejwt",
-    'django_json_widget'
+    
 ]
 
 MIDDLEWARE = [
