@@ -33,9 +33,9 @@ urlpatterns = [
     path("update-user-password/<str:pk>/", authView.UpdateUserPasswordView.as_view(), name='update_user_password'),
     path("contact-us/", chatView.ContactUsView.as_view(), name="contact-us"),
     path("subscribe-newsletter/", chatView.NewsLetterView.as_view(), name="subscribe-newsletter"),
-    path("api/aliexpress/product/<int:product_id>/", aliExpressView.aliexpress_product.as_view()),
-    path("api/store/products/", aliExpressView.store_product.as_view()),
-
+    #path("api/aliexpress/product/<int:product_id>/", aliExpressView.aliexpress_product.as_view()),
+    #path("api/store/products/", aliExpressView.store_product.as_view()),
+    
 
 
 

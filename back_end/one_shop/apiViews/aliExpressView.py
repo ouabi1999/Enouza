@@ -8,16 +8,16 @@ from django.conf import settings
 import json
 from ..models import Products 
 
-
-def generate_aliexpress_signature(params: dict, app_secret: str) -> str:
-    """Generate AliExpress API signature."""
+"""
+def Generate_aliexpress_signature(params: dict, app_secret: str) -> str:
+    #Generate AliExpress API signature.
     sorted_params = "".join(f"{k}{v}" for k, v in sorted(params.items()))
     sign_string = app_secret + sorted_params + app_secret
     return hashlib.md5(sign_string.encode("utf-8")).hexdigest().upper()
 
 
-def aliexpress_product(request, product_id):
-    """Fetch AliExpress product details securely."""
+def Aliexpress_product(request, product_id):
+    #Fetch AliExpress product details securely.
     APP_KEY = settings.ALIEXPRESS_APP_KEY
     APP_SECRET = settings.ALIEXPRESS_APP_SECRET
 
@@ -34,7 +34,7 @@ def aliexpress_product(request, product_id):
     }
 
     # 🔒 Generate secure sign
-    params["sign"] = generate_aliexpress_signature(params, APP_SECRET)
+    params["sign"] = Generate_aliexpress_signature(params, APP_SECRET)
 
     try:
         response = requests.get(base_url, params=params)
@@ -48,8 +48,8 @@ def aliexpress_product(request, product_id):
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-def store_product(request):
-    """Save imported product to your store database."""
+def Store_product(request):
+    #Save imported product to your store database.
     if request.method != "POST":
         return JsonResponse({"error": "POST required"}, status=405)
     try:
@@ -64,3 +64,4 @@ def store_product(request):
         return JsonResponse({"success": True, "id": product.id})
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=400)
+        """
