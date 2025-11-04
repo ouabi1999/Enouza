@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from . import views
 from django.views.generic import TemplateView
-from .apiViews import authView, stripeChechout, productView , ordersView, chatView, aliExpressView
+from .apiViews import authView, stripeChechout, productView , ordersView, chatView
 
 urlpatterns = [
     
@@ -32,9 +32,7 @@ urlpatterns = [
     path("update-user/<str:pk>/", authView.UpdateUserView.as_view(), name='update_user_info'),
     path("update-user-password/<str:pk>/", authView.UpdateUserPasswordView.as_view(), name='update_user_password'),
     path("contact-us/", chatView.ContactUsView.as_view(), name="contact-us"),
-    path("subscribe-newsletter/", chatView.NewsLetterView.as_view(), name="subscribe-newsletter"),
-    #path("api/aliexpress/product/<int:product_id>/", aliExpressView.aliexpress_product.as_view()),
-    #path("api/store/products/", aliExpressView.store_product.as_view()),
+    
     
 
 
