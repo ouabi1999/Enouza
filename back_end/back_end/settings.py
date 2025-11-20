@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
 ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')  # default to development
-
+CORS_ALLOW_CREDENTIALS = True
 # Allowed Hosts
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [

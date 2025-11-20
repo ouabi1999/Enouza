@@ -42,6 +42,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import ResetPassword from "./components/auth/ResetPassword";
 import Spinner from "../common/Spinner.jsx";
+import AliExpressProductFetcher from "./components/adminDashboard/AliDropship/AliExpressProductFetcher.jsx";
 
 export const OrderContext = createContext();
 function App() {
@@ -136,6 +137,7 @@ function App() {
                 <Route path="dashboard-orders" element={<Orders />} />
                 <Route path="emails" element={<Email />} />
                 <Route path="customers" element={<Customers />} />
+                <Route path ="aliexpress-product-fetcher"  element={<AliExpressProductFetcher />} />
               </Route>
               <Route path="*" element={<PageNoteFound />} />
             </Routes>
