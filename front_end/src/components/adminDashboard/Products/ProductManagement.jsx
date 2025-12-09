@@ -1,132 +1,138 @@
 import React, { Component, useState, createRef, useEffect } from "react";
 import styled from "styled-components";
-import {
-  Button,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  TextField,
-} from "@mui/material";
+
 import CancelIcon from "@mui/icons-material/Cancel";
 import { ToastContainer, toast } from "react-toastify";
 import CircularProgress from "@mui/material/CircularProgress";
-import Tags from "./Product_component/Tags";
-import Inventory from "./Product_component/Inventory";
-import Pricing from "./Product_component/Pricing";
-import Description from "./Product_component/Description";
-import Shipping from "./Product_component/Shipping";
-import Organization from "./Product_component/Organization";
-import Variant from "./Product_component/Variant";
-import ProductTitle from "./Product_component/ProductTitle";
-import Media from "./Product_component/Media";
-import Color from "./Product_component/Color";
+import { Button as MUIButton } from '@mui/material';
+
 import ApiInstance from "../../../../common/baseUrl";
-import Specifications from "./Product_component/Specifications";
+import Stepper from "./Product_component/Stepper"
+import AliExpressAuth from "../AliDropship/AliExpressAuth";
+import AliExpressProductFetcher from "../AliDropship/AliExpressProductFetcher";
+import { useSelector } from "react-redux";
+
+
+function ProductManagement(props) {
+  const productData = useSelector((state) => state.aliExpressProduct.product);
+   const [formData, setFormData] = useState({
+  product_id: "",
+  name: { en:"", fr:"", es:"", ar:"" },
+  description: { en:"", fr:"", es:"", ar:"" },
+  brand: "",
+  skuInfo: [],
+  specifications: [],
+  multimediaInfo: [],
+  in_stock: true,
+  category: "",
+  tags: [],
+  warranty: "",
+  care_instructions: "",
+  sale_end_date: "",
+  available_shipping: [],
+  return_policy: "",
+  country_of_origin: "",
+  social_media_links: { facebook: "", instagram: "" },
+  ali_express_ratings: []
+}
+);
+
+  useEffect(() => {
+  if (productData) {
+    const sku_info_slice = productData.ae_item_sku_info_dtos?.map(sku => ({
+      color: sku.ae_sku_property_dtos?.[0]?.sku_property_value || "",
+      size: sku.ae_sku_property_dtos?.[1]?.sku_property_value || "",
+      image: sku.ae_sku_property_dtos?.[0]?.sku_image || null,
+      cost: sku.offer_sale_price || 0,
+      sellingPrice: "",
+      profitPrice: "",
+      comparePrice: "",
+      sku_attr: sku.sku_attr|| "",
+      shipping: ""
+    }));
+    setFormData((prev) => ({
+      ...prev,
+      product_id: productData.ae_item_base_info_dto?.product_id || "",
+      name: {
+        ...prev.name,
+        en: productData.ae_item_base_info_dto?.subject || "",
+      },
+
+      description: {
+        ...prev.description,
+        en: productData.ae_item_base_info_dto?.detail || "",
+      },
+
+      skuInfo: sku_info_slice || [],
+      multimediaInfo:  productData.ae_multimedia_info_dto || [],
+      
+    }));
+  } 
+  console.log("Form Data Updated:", formData);
+}, [productData]);
+
+
 
  
-function ProductManagement(props) {
-  const [formData, setFormData] = useState({
-    name: {
-      "en": "",
-      "fr": "",
-      "es": "",
-      "ar": "",
-    },
-    description: {
-      "en": "",
-      "fr": "",
-      "es": "",
-      "ar": "",
-    },
-    brand: "",
-    SKU: "",
-    price: "",
-    discount: "",
-    sizes: [],
-    colors: [],
-    specifications: [],
-    images: {
-      main_image: null,
-      additional_images: [],
-    },
-    quantity: 0,
-    inStock: true,
-    tags: [],
-    seo: [],
-    warranty: "",
-    care_instructions: "",
-    sale_end_date: null,
-    available_shipping: [],
-    return_policy: "",
-    country_of_origin: "",
-    social_media_links: { facebook: "", instagram: "" },
-    ali_express_ratings: [],
-  });
+
   const [loading, setLoading] = useState(false);
 
-  const { close_Modal, isEditProductOn, EditProduct,  isAddProductOn} = props;
+  const { close_Modal, isEditProductOn, EditProduct, isAddProductOn } = props;
 
-  
-  useEffect(()=>{
-      if (isEditProductOn){
-        setFormData({...EditProduct})
-      }
-     
-    },[])
-    
+
+  useEffect(() => {
+    if (isEditProductOn) {
+      setFormData({ ...EditProduct })
+    }
+
+  }, [])
+
   /// send products info to the backend
   const product_submit = (value) => {
     const data = new FormData();
-    console.log(formData)
-    // Append arrays (sizes, colors, tags, available_shipping, ali_express_ratings) using forEach
-    formData.sizes?.forEach((size) => data.append("sizes", size));
-    formData.colors?.forEach((color) => data.append("colors", color));
+    console.log(formData)    
     formData.tags?.forEach((tag) => data.append("tags", tag));
-   
+
     formData.ali_express_ratings?.forEach((rating) =>
       data.append("ali_express_ratings", JSON.stringify(rating))
     );
-   
-      data.append("available_shipping", JSON.stringify(formData.available_shipping))
-    
+
+    data.append("available_shipping", JSON.stringify(formData.available_shipping))
+
     // Append nested objects like specifications, images, social_media_links, etc.
     data.append("specifications", JSON.stringify(formData.specifications));
     // Append `main_image` as a file if it exists
+
+
+
    
-    data.append("main_image", formData.images.main_image); // Assuming main_image is a file
-    
+      data.append("skuInfo", JSON.stringify(formData.skuInfo));
 
-    // Append each `additional_image` as a separate file
-    formData.images?.additional_images?.forEach((file, index) => {
-      data.append("additional_images", file); // Assuming each additional image is a file
-    });
-
-    data.append(
-      "social_media_links",
-      JSON.stringify(formData.social_media_links)
-    );
+    data.append("social_media_links", JSON.stringify(formData.social_media_links));
 
     // Append individual fields
     data.append("name", JSON.stringify(formData.name));
     data.append("description", JSON.stringify(formData.description));
+    data.append("multimediaInfo", JSON.stringify(formData.multimediaInfo));
     data.append("brand", formData.brand);
+    data.append("product_id", formData.product_id);
+
     data.append("SKU", formData.SKU);
     data.append("price", formData.price);
     data.append("discount", formData.discount);
     data.append("quantity", formData.quantity);
-    data.append("inStock", formData.inStock);
     data.append("warranty", formData.warranty);
     data.append("care_instructions", formData.care_instructions);
     data.append("sale_end_date", formData.sale_end_date);
     data.append("return_policy", formData.return_policy);
     data.append("country_of_origin", formData.country_of_origin);
     data.append("global_coupon", formData.global_coupon);
-  
+
     // Append SEO (which might be an array of objects or just simple strings)
     formData.seo?.forEach((seoItem) =>
       data.append("seo", JSON.stringify(seoItem))
     );
-  
+
 
     // Append all data from formData to FormData
     setLoading(true);
@@ -142,26 +148,26 @@ function ProductManagement(props) {
         setLoading(false);
       });
 
-    isEditProductOn && ApiInstance.put(`product-details/${value.id}/`,data)
-    
-    .then((response) => {
-      setLoading(false);
-      toast.success("A Product has been updated .");
-      return response.data
-    })
-    .catch((err) => {
-      console.log(err);
-      toast.error("Oops something went wrong!");
-      setLoading(false);
-    })
-    
-    
-    
-    
+    isEditProductOn && ApiInstance.put(`product-details/${value.id}/`, data)
+
+      .then((response) => {
+        setLoading(false);
+        toast.success("A Product has been updated .");
+        return response.data
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Oops something went wrong!");
+        setLoading(false);
+      })
+
+
+
+
   };
 
 
-  
+
   // handle change input
   const handelChange = (event) => {
     setFormData({
@@ -172,11 +178,7 @@ function ProductManagement(props) {
 
   return (
     <AddNew_Product>
-      {loading && (
-        <div className="loader">
-          <CircularProgress size={25} thickness={4} />
-        </div>
-      )}
+
 
       <ToastContainer
         position="top-right"
@@ -189,39 +191,14 @@ function ProductManagement(props) {
         draggable
         pauseOnHover
       />
-      <Left_container id="useform">
-        <div className="exit-button-container">
-          <CancelIcon
-            className="exit-button"
-            onClick={close_Modal}
-          />
-        </div>
-        <div className="wrapper">
-          <ProductTitle
-            formData={formData}
-            setFormData={setFormData}
-            handelChange={handelChange}
-          />
-          <Media formData={formData} setFormData={setFormData} />
+      <ButtonsContainer>
+        <AliExpressAuth />
+        <AliExpressProductFetcher />
 
-          <Color formData={formData} setFormData={setFormData} />
 
-          <Description
-            setFormData={setFormData}
-            formData={formData}
-            handelChange={handelChange}
-          />
-          <Specifications
-            setFormData={setFormData}
-            formData={formData}
-            handelChange={handelChange} />
-        </div>
-
-        <Pricing formData={formData} handelChange={handelChange} />
-
-        <Button
+        <SubmitButton
           type="submit"
-          onClick={()=> product_submit(formData)}
+          onClick={() => product_submit(formData)}
           variant="contained"
           className="submitButton"
           disabled={loading}
@@ -229,7 +206,7 @@ function ProductManagement(props) {
           <span>
             {" "}
             {isEditProductOn && "Update Product"}{" "}
-            {isAddProductOn && "add product"}
+            {isAddProductOn && "Push to store"}
           </span>
           {loading && (
             <CircularProgress
@@ -239,45 +216,21 @@ function ProductManagement(props) {
               value={100}
             />
           )}
-        </Button>
-      </Left_container>
-      <Right_container>
-        <Inventory
-          formData={formData}
-          handelChange={handelChange}
-          setFormData={setFormData}
-        />
+        </SubmitButton>
+      </ButtonsContainer>
 
-        <Shipping
-          formData={formData}
-          handelChange={handelChange}
-          setFormData={setFormData}
-        />
-        <Organization
-          formData={formData}
-          handelChange={handelChange}
-          setFormData={setFormData}
-        />
+      <Stepper
+        setFormData={setFormData}
+        formData={formData}
+        handelChange={handelChange}
+      />
 
-        <Variant
-          formData={formData}
-          handelChange={handelChange}
-          setFormData={setFormData}
-        />
-
-        <Tags
-          formData={formData}
-          handelChange={handelChange}
-          setFormData={setFormData}
-        />
-      </Right_container>
     </AddNew_Product>
   );
 }
 export default ProductManagement;
 
 const AddNew_Product = styled.div`
-  display: flex;
   position: relative;
 
   .loader {
@@ -286,31 +239,32 @@ const AddNew_Product = styled.div`
     right: 50%;
   }
 
-  .submitButton {
-    display: flex;
-    padding: 10px 15px;
-    background: goldenrod;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    margin: auto;
-  }
+ 
   .exit-button {
     cursor: pointer;
   }
-`;
-const Left_container = styled.div`
-  flex: 2;
+`
+const ButtonsContainer = styled.div`
+display:flex;
+justify-content:space-between;
+`
 
-  border-radius: 6px;
-  padding: 10px;
-  margin-right: 10px;
-`;
-const Right_container = styled.div`
-  flex: 0.7;
-  .text_input {
-    width: 100%;
-    background: #fff;
-    margin-bottom: 15px;
+const SubmitButton = styled.button`
+  background-color: #00ad3cfc !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  transition: background 0.3s !important;
+  margin-bottom: 15px;
+
+  &:hover {
+    background-color: #00ad3daa  !important;
+  }
+
+  &:disabled {
+    background-color: #9ca3af !important;
+    color: #f3f4f6 !important;
   }
 `;

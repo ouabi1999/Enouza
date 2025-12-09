@@ -19,7 +19,6 @@ from os.path import expanduser
 import socket
 import platform
 import unicodedata
-
 # dir = os.getenv('HOME')
 dir = expanduser("~")
 isExists = os.path.exists(dir + "/logs")
@@ -108,7 +107,7 @@ class IopRequest(object):
     def set_simplify(self):
         self._simplify = "true"
     def set_format(self,value):
-        self._format = value;
+        self._format = value
 
 class IopResponse(object):
     def __init__(self):
@@ -128,7 +127,7 @@ class IopResponse(object):
 class IopClient(object):
     
     log_level = P_LOG_LEVEL_ERROR
-    def __init__(self, server_url,app_key,app_secret,timeout=30):
+    def __init__(self, server_url,app_key,app_secret,timeout=50):
         self._server_url = server_url
         self._app_key = app_key
         self._app_secret = app_secret
@@ -152,7 +151,7 @@ class IopClient(object):
         if(access_token):
             sys_parameters[P_ACCESS_TOKEN] = access_token
 
-        application_parameter = request._api_params;
+        application_parameter = request._api_params
 
         sign_parameter = sys_parameters.copy()
         sign_parameter.update(application_parameter)
@@ -161,9 +160,9 @@ class IopClient(object):
 
         api_url = self._server_url
 
-        full_url = api_url + "?";
+        full_url = api_url + "?"
         for key in sign_parameter:
-            full_url += key + "=" + str(sign_parameter[key]) + "&";
+            full_url += key + "=" + str(sign_parameter[key]) + "&"
         full_url = full_url[0:-1]
 
         try:

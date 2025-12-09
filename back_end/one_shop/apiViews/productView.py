@@ -29,7 +29,7 @@ class ProductView(APIView):
         
 
         # Cloudinary - Upload main image, check if file exists in request.FILES
-        if 'main_image' in request.data:
+        """if 'main_image' in request.data:
             main_image = request.data['main_image']
             main_image_result = cloudinary.uploader.upload(main_image)
             images_object["main_image"] = main_image_result["secure_url"]
@@ -56,7 +56,7 @@ class ProductView(APIView):
                 additional_urls.append(upload_result["secure_url"])
                 
         images_object["additional_images"] = additional_urls
-        data["images"] = json.dumps(images_object)
+        data["images"] = json.dumps(images_object)"""
 
         
         serializer = ProductSerializer(data = data)

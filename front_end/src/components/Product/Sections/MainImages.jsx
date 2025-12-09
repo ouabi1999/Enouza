@@ -6,11 +6,12 @@ import * as motion from "motion/react-client"
 function MainImages(props) {
     const {colorIndex, productData , picsDetailsIndex, selectPicsDetails, isPicsDetailsActive , deselectPicsDetails, isColorActive } = props; 
   
-    
+  const images = productData?.multimediaInfo.image_urls.split(";").filter(Boolean)
+
   return (
     <Container>
     <ImageDetailsContainer>
-      {productData?.images.additional_images?.map((img, index) => {
+      {images?.map((img, index) => {
         return (
             <img
               onMouseOver={()=> selectPicsDetails(index)}
@@ -25,8 +26,7 @@ function MainImages(props) {
     <ProductImg>
     <AnimatePresence mode="wait">
 
-    <motion.div 
-    key={isColorActive ? productData?.colors[colorIndex]:productData?.images.additional_images[picsDetailsIndex] }
+    <motion.div
     initial={{ y: 10, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     exit={{ y: -10, opacity: 0 }}
@@ -35,11 +35,11 @@ function MainImages(props) {
     
      
         <img  
-        src={isColorActive ? productData?.colors[colorIndex]
+        src={isColorActive ? images[colorIndex]
           : 
-          isPicsDetailsActive? productData?.images.additional_images[picsDetailsIndex]
+          isPicsDetailsActive? images[colorIndex][picsDetailsIndex]
           : 
-          productData?.images.main_image
+          images[0]
         }  alt=''
            />
 

@@ -15,7 +15,7 @@ function Product(props) {
     const date = new Date()
     const productData = useSelector(state => state.products.productData)
 
-    let ratings = productData[1]?.ratings?.concat(productData[1]?.aliexpress_ratings);
+    let ratings = productData[0]?.ratings?.concat(productData[0]?.aliexpress_ratings);
 
     let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
          return total += value.stars
@@ -29,7 +29,7 @@ function Product(props) {
       <Container>
         <FirstSection>
           <MainImages
-            productData = {productData[1]}
+            productData = {productData[0]}
             picsDetailsIndex={props.picsDetailsIndex}
             colorIndex={props.colorIndex}
             selectPicsDetails={props.selectPicsDetails}
@@ -45,7 +45,7 @@ function Product(props) {
             colorIndex={props.colorIndex}
             sizeIndex={props.sizeIndex}
             selectSize={props.selectSize}
-            productData = {productData[1]}
+            productData = {productData[0]}
             ratings = {ratings}
             sum_stars = {sum_stars}
 

@@ -41,15 +41,15 @@ if ENVIRONMENT == "production":
     CSRF_TRUSTED_ORIGINS = [
         "https://enouza.com",
         "https://www.enouza.com",
-        "https://enouza-h0mx.onrender.com",
-        "https://enouza-wlvkc.ondigitalocean.app",
+        "https://enouza-h0mx.onrender.com", #frontend on render
+        "https://enouza-wlvkc.ondigitalocean.app", #server
     ]
 
     CORS_ALLOWED_ORIGINS = [
-        "https://enouza.com",
-        "https://www.enouza.com",
-        "https://enouza-wlvkc.ondigitalocean.app",
-        "https://enouza-h0mx.onrender.com",
+        "https://enouza.com", #frontend on custom domain
+        "https://www.enouza.com", #frontend on custom domain
+        "https://enouza-wlvkc.ondigitalocean.app", #server
+        "https://enouza-h0mx.onrender.com", #frontend on render
     ]
 
     # Security settings for HTTPS
@@ -64,12 +64,12 @@ else:
 
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:5173",
-        "http://127.0.0.1:8000",
     ]
 
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:5173",
-        "http://127.0.0.1:8000",
+        "http://localhost:3000",
+        
     ]
 
     # No HTTPS redirects for development

@@ -57,18 +57,18 @@ function ProductInfo(props) {
         <span> {productData?.orders?.length + productData?.aliexpress_ratings?.length  || 0} {t("productInfo.order")} </span>
         </div>
       </div>
-      {productData?.sizes?.length > 0 && (
+      {productData?.skuInfo?.length > 0 && (
           <div>
            <span>{t("productInfo.size")}:</span>
            <div className="product-size">
-             {productData?.sizes?.map((size, index) => {
+             {productData?.skuInfo?.map((item, index) => {
                return (
                  <div key={index}>
                    <button
                      onClick={() => selectSize(index)}
                      id={sizeIndex === index && "activate"}
                    >
-                     {size}
+                     {item.size}
                    </button>
                  </div>
                );
@@ -81,14 +81,14 @@ function ProductInfo(props) {
       <div>
         <span>{t("productInfo.color")}:</span>
         <div className="product-color">
-          {productData?.colors?.map((img, index) => {
+          {productData?.skuInfo?.map((value, index) => {
 
             return (
               <div >
                 <img
                   id  = {colorIndex === index && "activate"}
                   onClick={() => setColorIndex(index)}
-                  src={img}
+                  src={value.image}
                   alt={productData?.name?.[i18n.language]}
                 />
               </div>
@@ -139,6 +139,8 @@ margin-bottom:8px;
     gap: 10px;
     border-bottom:1px solid lightgray;
     padding-bottom:10px;
+        flex-wrap:wrap;
+
     img {
       padding: 2px;
       border-radius: 4px;
@@ -151,6 +153,8 @@ margin-bottom:8px;
   }
   .product-size {
     display: flex;
+    flex-wrap:wrap;
+
     gap: 10px;
     margin: 15px 0;
     

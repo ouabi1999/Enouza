@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import axios from "axios";
 
-function Media({ setFormData, formData }) {
+function MediaManagement({ setFormData, formData }) {
   const main_img_input = useRef();
   const additional_image_input = useRef()
 
@@ -90,7 +90,7 @@ function Media({ setFormData, formData }) {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-
+  const images = formData.multimediaInfo.image_urls?.split(";").filter(Boolean)
   return (
     <>
       <Container>
@@ -119,7 +119,10 @@ function Media({ setFormData, formData }) {
               <AddPhotoAlternateIcon className="add_photo_icon" />
             </button>
           </div>
-
+           <video width="300" controls>
+  <source src={formData.multimediaInfo.ae_video_dtos.media_url} type="video"  controls/>
+  Your browser does not support video.
+</video>
           {formData.images?.main_image && (
               <div>
                 <img
@@ -163,7 +166,7 @@ function Media({ setFormData, formData }) {
             </button>
           </div>
 
-          {formData.images?.additional_images?.map((img) => {
+          {images?.map((img) => {
             return (
               <div key={img.index}>
                 <img
@@ -184,7 +187,7 @@ function Media({ setFormData, formData }) {
   );
 }
 
-export default Media;
+export default MediaManagement;
 const Container = styled.div`
   background: #ffff;
   padding: 10px;

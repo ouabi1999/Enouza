@@ -187,11 +187,10 @@ class AliExpressRatingSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     available_shipping = serializers.JSONField()
     specifications = serializers.JSONField()
-    images = serializers.JSONField()
     seo = serializers.JSONField(required= False)
     tags = serializers.JSONField(required= False)
-    colors = serializers.JSONField()
-    sizes = serializers.ListField(required= False, default=[])    
+    skuInfo = serializers.JSONField()
+    multimediaInfo = serializers.JSONField()  
     read_only_fields = ['id', 'release_date'] 
     aliexpress_ratings = AliExpressRatingSerializer(source='aliratings', many=True, read_only=True)
     ratings=  getRatingSerializer(source='rating', many=True, read_only=True, default=[])

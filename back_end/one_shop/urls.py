@@ -34,7 +34,8 @@ urlpatterns = [
     path("contact-us/", chatView.ContactUsView.as_view(), name="contact-us"),
     path("subscribe-newsletter/", chatView.NewsLetterView.as_view(), name="subscribe-newsletter"),
     path("aliexpress/product/<int:product_id>/", aliExpressView.AliExpressProductView.as_view(), name="aliexpress_product"),
-    path("aliexpress/token/<str:code>/", aliExpressView.AliExpressTokenView.as_view(), name="aliexpress-token")
+    path("aliexpress/token/", aliExpressView.AliExpressTokenView.as_view(), name="aliexpress-token"),
+    path("aliexpress/token/refresh/", aliExpressView.AliExpressRefreshTokenView.as_view(), name="aliexpress-token-refresh"),
 
   
     
