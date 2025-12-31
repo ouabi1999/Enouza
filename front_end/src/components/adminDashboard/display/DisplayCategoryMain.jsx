@@ -8,7 +8,7 @@ import { Button, InputLabel, MenuItem, OutlinedInput, TextField } from '@mui/mat
 
 export default function DisplayCategoryMain({formData, setFormData}) {
   const [mainCategory, setMainCategory] = useState({
-    img:[],
+    img:"",
     categoryName:"",
 
   })
@@ -24,28 +24,24 @@ export default function DisplayCategoryMain({formData, setFormData}) {
       main_category:[...formData.main_category, mainCategory]
     })
     setMainCategory({
-      img:[],
+      img:"",
       categoryName:"",
 
     })
+    console.log(formData.main_category);
   }
 
- const handleImageChange = (e)=>{
-     if(e.target.files){
-      const reader = new FileReader();
-      reader.onload = ()=>{
-        if(reader.readyState === 2){
-          setMainCategory({
-            ...mainCategory,
-            img:[...mainCategory.img, reader.result]
-          })
-        }
-      };
-      reader.readAsDataURL(e.target.files[0])
-     
+ const handleImageChange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-     }
- }
+  setMainCategory(prev => ({
+    ...prev,
+    img: file
+  }));
+};
+ 
+ 
   const remove = (item)=>{
     
       setFormData({
@@ -69,7 +65,10 @@ export default function DisplayCategoryMain({formData, setFormData}) {
                {formData.main_category?.map((item, index) =>{
                   return(
                     <div className="child-container" key={index} >
-                        <img src={item.img}  alt="previw-img" />
+                       {formData.id? (
+                            <img src={item.img} alt="categreyMain img" />
+                        ): <img src={URL.createObjectURL(item.img)} alt="slider img" />
+                        }
                         <span>{item.categoryName}</span>
                         <DeleteIcon className="delete-icon" onClick={()=> remove(item)}/>
                     </div>
@@ -102,12 +101,12 @@ export default function DisplayCategoryMain({formData, setFormData}) {
             )}
            
             <div className='priveiw-img-container'>
-               {mainCategory?.img?.map((img, index) =>{
-                  return(
-                      <img src={img} key={index} alt="previw-img" />
+               {mainCategory?.img && (
 
-                   )
-               })}
+                      <img src={mainCategory.img}  alt="previw-img" />
+               )}
+                   
+               
             </div>
             <InputContainer>
                 <TextField

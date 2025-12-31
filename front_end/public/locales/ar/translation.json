@@ -76,6 +76,67 @@
     }
   },
   "productInfo": {
+    
+    "Color": "اللون",
+    "Color Name": "اللون",
+    "Colour": "اللون",
+    "Color Classification": "تصنيف اللون",
+
+    "Size": "المقاس",
+    "Sizes": "المقاسات",
+    "Item Length": "الطول",
+    "Item Width": "العرض",
+    "Item Height": "الارتفاع",
+    "Dimensions": "الأبعاد",
+
+    "Sd Card Memory": "سعة بطاقة الذاكرة",
+    "Memory": "الذاكرة",
+    "Memory Size": "حجم الذاكرة",
+    "Storage": "سعة التخزين",
+    "Internal Storage": "التخزين الداخلي",
+    "ROM": "ذاكرة ROM",
+    "RAM": "ذاكرة RAM",
+    "Capacity": "السعة",
+
+    "Plug Type": "نوع القابس",
+    "Power Plug": "قابس الطاقة",
+    "Socket Type": "نوع المقبس",
+    "Power Specification": "مواصفات الطاقة",
+    "Voltage": "الجهد الكهربائي",
+    "Wattage": "القدرة الكهربائية",
+
+    
+    "Ships From": "الشحن من",
+    "Ship From": "يُشحن من",
+    "Warehouse": "المستودع",
+    "Origin": "بلد المنشأ",
+
+    "Bundle": "حزمة",
+    "Sale by Pack": "يباع بالحزمة",
+    "Pack": "عبوة",
+    "Set": "طقم",
+    "Package": "العبوة",
+    "Quantity": "الكمية",
+
+    
+    "Model": "الموديل",
+    "Compatible Model": "الموديلات المتوافقة",
+    "Version": "الإصدار",
+    "Edition": "النسخة",
+    "Variant": "النوع",
+
+    
+    "Material": "الخامة",
+    "Fabric": "القماش",
+    "Fit": "القياس",
+    "Pattern": "النقشة",
+    "Sleeve Length": "طول الكم",
+
+    "Frequency": "التردد",
+    "Resolution": "الدقة",
+    "Interface": "الواجهة",
+    "Speed": "السرعة",
+    "Power": "الطاقة",
     "description": "الوصف",
     "specifications": "المواصفات",
     "reviews": "التقييمات",

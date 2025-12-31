@@ -23,27 +23,33 @@ export default function StripeContanier({t, i18n}) {
   const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  
+   const ordered_items = cartItems?.map(item => ({
+    id : item.id,
+    quantity : item.quantity,
+    sku_attr : item.selectedSku.sku_attr
+
+
+
+   }));
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     ApiInstance.post("create-payment-intent/", {
       user: formData.userId,
-      first_name: formData.firstName,
-      last_name: formData.lastName,
+      first_name:formData.logistics_address.firstName,
+      last_name: formData.logistics_address.lastName,
+      city: formData.logistics_address.city,
+      address1: formData.logistics_address.address1,
+      zipcode: formData.logistics_address.zip,
+      state: formData.logistics_address.state,
+      country: formData.logistics_address.country,
       email: formData.email,
-      city: formData.city,
-      address1: formData.address1,
-      address2: formData.address2,
-      zipcode: formData.zip,
-      state: formData.state,
-      country: formData.country,
       shipping_method: formData.shippingMethod,
       payment_method: "Credit Card",
       shipping_price: formData.shippingPrice,
       delivery_time: formData.deliveryTime,
       total_price: formData.totalPrice,
       currency: "usd",
-      ordered_items:JSON.stringify(cartItems)
+      ordered_items: JSON.stringify(ordered_items )
       
     })
 

@@ -20,21 +20,17 @@ function DisplayBanners({formData, setFormData}) {
 
    /// handel image change
    const handleImageChange = (e) => {
-     e.preventDefault();
-     if (e.target.files) {
-       const reader = new FileReader();
-       reader.onload = () => {
-         if (reader.readyState === 2) {
-           setFormData({
-             ...formData,
-             banners:[...formData.banners, reader.result]
-           })
-           
-         }
-       };
-       reader.readAsDataURL(e.target.files[0]);
-     }
-   };
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  setFormData(prev => ({
+    ...prev,
+    banners: Array.isArray(prev.banners)
+      ? [...prev.banners, file]
+      : [file],
+  }));
+};
+
    const remove = (item)=>{
     
     setFormData({

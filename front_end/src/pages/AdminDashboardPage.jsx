@@ -160,7 +160,7 @@ const Wrapper = styled.div`
        min-width:780px;
        width:calc(100vw - 260px);
        flex:4;
-       background-color:rgb(248, 222, 196);
+       background-color:rgba(252, 205, 250, 0.34);
        
    }
    @media only screen and (max-width:1200px) {

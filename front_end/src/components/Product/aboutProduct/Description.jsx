@@ -11,7 +11,7 @@ function Description() {
 
 <div>
       <div
-        dangerouslySetInnerHTML={{ __html: productData[1]?.description?.[i18n.language]}}
+        dangerouslySetInnerHTML={{ __html: productData[0]?.description[i18n.language || 'en']  }}
         style={{ border: '1px solid #ddd', padding: '10px' }}
       />
     </div>

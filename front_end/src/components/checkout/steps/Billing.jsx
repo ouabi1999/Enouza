@@ -32,11 +32,11 @@ function Billing({t}) {
   return (
     <Conatiner>
     <Formik
-        initialValues = {formData}
+        initialValues = {formData.logistics_address}
         validationSchema = {ValidationSchema}
         onSubmit={(values) => {
         setActiveStepIndex(activeStepIndex +1 )
-        setFormData({...formData, ...values})
+        setFormData({...formData, logistics_address: {...formData.logistics_address, ...values}})
 
     }}
     
@@ -47,9 +47,7 @@ function Billing({t}) {
         errors,
         touched,
         handleChange,
-        handleBlur,
         handleSubmit,
-        isSubmitting,
          /* and other goodies */
        }) =>
     <Form onSubmit={handleSubmit} >
@@ -108,7 +106,7 @@ function Billing({t}) {
             name="address1"
             label={t("common.address")}
             fullWidth
-            autoComplete="shipping address-line1"
+            autoComplete="address-line1"
             variant="outlined"
             helperText={touched.address1 ? errors.address1 : ""}
             error={touched.address1 && Boolean(errors.address1)}
@@ -150,7 +148,7 @@ function Billing({t}) {
             id="zip"
             name="zip"
             label={t("common.zipCode")}
-            autoComplete="shipping postal-code"
+            autoComplete="postal-code"
             variant="outlined"
             fullWidth
 
@@ -166,7 +164,7 @@ function Billing({t}) {
             name="country"
             label={t("common.country")}
             fullWidth
-            autoComplete="shipping country"
+            autoComplete="country"
             variant="outlined"
             helperText={touched.country ? errors.country : ""}
             error={touched.country && Boolean(errors.country)}

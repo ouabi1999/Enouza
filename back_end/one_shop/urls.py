@@ -3,11 +3,15 @@ from django.conf.urls.static import static
 
 from django.urls import path, include
 from . import views
-from django.views.generic import TemplateView
-from .apiViews import authView, stripeChechout, productView , ordersView, chatView, aliExpressView
+from rest_framework.routers import DefaultRouter
 
+from django.views.generic import TemplateView
+from .apiViews import authView, stripeChechout, productView , ordersView, chatView, aliExpressView , displayView
+
+router = DefaultRouter()
+router.register("displayInfo", displayView.DisplayInfoAPIView, basename="display")
 urlpatterns = [
-    
+    path("", include(router.urls)),
     path("index", views.index, name="mainView" ),
     path('register/', authView.RegisterView.as_view(), name='register'),
     path('login/', authView.LoginView.as_view(), name='login'),
@@ -20,8 +24,8 @@ urlpatterns = [
     path('create-payment-intent/', stripeChechout.CreatePaymentIntentView.as_view(), name='create_payment_intent'),
     path('webhook/', stripeChechout.StripeWebhookView.as_view(), name='handel_webhook'),
     path('handle-payment-success/', stripeChechout.HandlePaymentSuccessView.as_view(), name='handle_payment_success'),
-    path('product-api/', productView.ProductView.as_view(), name='create-product'),
-    path('product-details/<str:pk>/', productView.ProductDetailsView.as_view(), name='product-details'),
+    path('product-api/', productView.ProductView.as_view(), name='product-api'),
+    path('product/<str:pk>/', productView.ProductDetailsView.as_view(), name='product-details'),
     path('get_dashboard_products/', productView.DashboardProductsView.as_view(), name='get_dashboard_products'),
     path('create-order/', productView.OrderCreateView.as_view(), name='create-order'),
     path('aliexpress-ratings/', productView.AliExpressRatingView.as_view(), name='ali-express-ratings'),
@@ -34,7 +38,10 @@ urlpatterns = [
     path("contact-us/", chatView.ContactUsView.as_view(), name="contact-us"),
     path("subscribe-newsletter/", chatView.NewsLetterView.as_view(), name="subscribe-newsletter"),
     path("aliexpress/product/<int:product_id>/", aliExpressView.AliExpressProductView.as_view(), name="aliexpress_product"),
-    path("aliexpress/token/<str:code>/", aliExpressView.AliExpressTokenView.as_view(), name="aliexpress-token")
+    path("aliexpress/token/", aliExpressView.AliExpressTokenView.as_view(), name="aliexpress-token"),
+    path("aliexpress/token/refresh/", aliExpressView.AliExpressRefreshTokenView.as_view(), name="aliexpress-token-refresh"),
+    path("product-search/", productView.ProductFilterView.as_view(), name="product-search"),
+    
 
   
     

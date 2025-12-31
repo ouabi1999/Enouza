@@ -14,7 +14,7 @@ function AboutProductLayout() {
   return (
     <Container>
       <div className="buttons-container">
-        <button onClick={() => setIsOpen(1)} id={isOpen == 1 && "selected"}>
+        <button onClick={() => setIsOpen(1)} id={isOpen == 1 ? "selected" : undefined}>
           
           {t("productInfo.reviews")}
         </button>
@@ -26,7 +26,7 @@ function AboutProductLayout() {
         
         */}
 
-        <button onClick={() => setIsOpen(3)} id={isOpen == 3 && "selected"}>
+        <button onClick={() => setIsOpen(3)} id={isOpen == 3 ? "selected": undefined}>
           
           {t("productInfo.description")}
         </button>

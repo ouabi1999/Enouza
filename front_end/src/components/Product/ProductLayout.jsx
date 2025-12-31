@@ -3,53 +3,81 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios"
-import MainImages from './Sections/MainImages';
-import ProductInfo from './Sections/ProductInfo';
-import PopUpShoppingMethod from './Sections/PopUpShoppingMethod';
+import MainImages from './productDetails/MainImages';
+import ProductInfo from './productDetails/ProductInfo';
+import PopUpShoppingMethod from './productDetails/PopUpShoppingMethod';
 import { buyNowItem, addToCart } from '../../features/cartSlice';
 import { useTranslation } from 'react-i18next';
 
-function Product(props) {
+function Product({currentSku, setCurrentSku}) {
 
     // select thumb img to render specific image
     const date = new Date()
-    const productData = useSelector(state => state.products.productData)
+    const productData = useSelector(state => state.product.productData)
 
-    let ratings = productData[1]?.ratings?.concat(productData[1]?.aliexpress_ratings);
+    let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
 
     let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
          return total += value.stars
       }, 0):""
       
-    const {t, i18n} = useTranslation();
+   useEffect(()=>{
+    console.log(productData)
 
+   },[])
+    const [selectedAttributes, setSelectedAttributes] = useState({});
+    const [availableAttributes, setAvailableAttributes] = useState({});
+    const [isColorActive, setIsColorActive] = useState(true);
+    const [isPicsDetailsActive, setIsPicsDetailsActive] = useState(false);
+    const [picsDetailsIndex, setPicsDetailsIndex] = useState(0)
+
+   const selectColor = () => {
+    setIsColorActive(true);
+    setIsPicsDetailsActive(false);
+  };
+
+  const selectPicsDetails = (index) => {
+    setPicsDetailsIndex(index);
+    setIsColorActive(false);
+    setIsPicsDetailsActive(true);
+  };
+  
+  
+    
+    
    
   return (
     <ParentContainer>
       <Container>
         <FirstSection>
           <MainImages
-            productData = {productData[1]}
-            picsDetailsIndex={props.picsDetailsIndex}
-            colorIndex={props.colorIndex}
-            selectPicsDetails={props.selectPicsDetails}
-            isColorActive={props.isColorActive}
-            isPicsDetailsActive={props.isPicsDetailsActive}
-            deselectPicsDetails={props.deselectPicsDetails}
+            productData = {productData}
+            picsDetailsIndex={picsDetailsIndex}
+            selectPicsDetails={selectPicsDetails}
+            isColorActive={isColorActive}
+            isPicsDetailsActive={isPicsDetailsActive}
+            currentSku= {currentSku}
+            
+
           />
         </FirstSection>
 
         <SecondSection>
           <ProductInfo
-            setColorIndex={props.selectColor}
-            colorIndex={props.colorIndex}
-            sizeIndex={props.sizeIndex}
-            selectSize={props.selectSize}
-            productData = {productData[1]}
+            
+
+            productData = {productData}
             ratings = {ratings}
             sum_stars = {sum_stars}
+            selectedAttributes={selectedAttributes}
+            setSelectedAttributes=            {setSelectedAttributes}
+            availableAttributes=            {availableAttributes}
+            setAvailableAttributes=            {setAvailableAttributes}
+            currentSku=            {currentSku}
+            setCurrentSku=            {setCurrentSku}
+            selectColor = {selectColor}
 
-            
+
           />
         </SecondSection>  
       </Container>

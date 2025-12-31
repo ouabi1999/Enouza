@@ -46,21 +46,16 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 class Products(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
+    product_id = models.CharField(max_length=100, unique=True)
     name = models.JSONField()
     description =  models.JSONField()
     brand = models.CharField(max_length=100, blank=True, null=True)
-    SKU = models.CharField(max_length=100, blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    discount = models.DecimalField(max_digits=5, decimal_places=2)
-    sizes = models.JSONField(blank=True, null=True)  # Stores sizes as a JSON array
-    colors = models.JSONField()  # Stores color image URLs as a JSON array
+    skuInfo = models.JSONField()
     specifications = models.JSONField(blank=True, null=True)
-    images = models.JSONField(blank=True, null=True)
-    quantity = models.IntegerField()
+    multimediaInfo= models.JSONField(blank=True, null=True)
     in_stock = models.BooleanField(default=True)
     category = models.CharField(max_length=255, blank=True, null=True)
     tags = models.JSONField(blank=True, null=True)
-    seo = models.JSONField(blank=True, null=True)
     warranty = models.CharField(max_length=100, blank=True, null=True)
     care_instructions = models.TextField(blank=True, null=True)
     release_date = models.DateTimeField(default=timezone.now, blank=True, null=True)
@@ -70,7 +65,6 @@ class Products(models.Model):
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
     orders = models.ManyToManyField('Orders', related_name='products', blank=True)
-
     def __str__(self):
         if isinstance(self.name, dict):
         # If name is a dictionary, try to extract a readable field
@@ -137,6 +131,7 @@ class AliExpressRatings(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
+
     user = models.JSONField()
     product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
     created_at = models.DateField(auto_now_add=True)
@@ -175,4 +170,21 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Display(models.Model):
+    id = models.BigAutoField(primary_key=True, unique=True)
+    logo = models.BinaryField(blank=True, null=True)
+    header = models.JSONField(default=dict)
+    main_category = models.JSONField(default=list)
+    category = models.JSONField(default=list)
+    banners = models.JSONField(default=list)
+    slider = models.JSONField(default=list)
+    pop_up = models.JSONField(default=dict)
+    count_Down = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Display Settings {self.id}"
 

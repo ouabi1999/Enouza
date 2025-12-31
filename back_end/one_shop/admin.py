@@ -24,11 +24,14 @@ class AliExpressRatingsAdmin(admin.ModelAdmin):
     
     
     
+from django.contrib import admin
 
-    
+
 
     
 admin.site.register(Products)
+admin.site.register(Display)
+
 admin.site.register(Orders)
 admin.site.register(Ratings)
 admin.site.register(AliExpressRatings, AliExpressRatingsAdmin)

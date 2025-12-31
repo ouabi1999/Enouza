@@ -8,9 +8,9 @@ import { Button, InputLabel, MenuItem, OutlinedInput, TextField } from '@mui/mat
 
 export default function DisplayCategory({formData, setFormData}) {
   const [category, setCategory] = useState({
-    img1 : null,
-    img2 :null,
-    img3 : null,
+    img0 : null,
+    img1 :null,
+    img2 : null,
     categoryName:"",
 
   })
@@ -38,30 +38,26 @@ export default function DisplayCategory({formData, setFormData}) {
       category:[...formData.category, category]
     })
     setCategory({
+      img0:null,
       img1:null,
       img2:null,
-      img3:null,
       categoryName:"",
 
     })
   }
 
- const handleImageChange = (e)=>{
-     if(e.target.files){
-      console.log(e.target.name)
-      const reader = new FileReader();
-      reader.onload = ()=>{
-        if(reader.readyState === 2){
-          setCategory({
-            ...category,
-            [e.target.name]:reader.result
-          })
-        }
-      };
-      reader.readAsDataURL(e.target.files[0])
-     
-     }
- }
+const handleImageChange = (e) => {
+  const { name, files } = e.target;
+  const file = files?.[0];
+  if (!file) return;
+
+  setCategory(prev => ({
+    ...prev,
+    [name]: file,
+  }));
+};
+
+
 
 
   const remove = (item)=>{
@@ -88,21 +84,13 @@ export default function DisplayCategory({formData, setFormData}) {
                     <div className="child-container"  key={index} >
                       <div className="child-imgs-container">
 
-                        {item.img1 !== null && (
+                        {item.img`${index}` !== null && (
 
-                          <img src={item.img1} alt="" />
-                        )
-                        }
-                        {item.img2 !== null && (
-
-                          <img src={item.img2} alt="" />
-                        )
-                        }
-                        {item.img3 !== null && (
-
-                          <img src={item.img3} alt="" />
-                        )
-                        }
+                          formData.id? (
+                            <img src={item.img`${index}`} alt="category img" />
+                        ): <img src={URL.createObjectURL(item.img`${index}`)} alt="category img" />
+               )}
+                        
                       </div>
                        
                         

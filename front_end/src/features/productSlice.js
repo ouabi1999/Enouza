@@ -1,26 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import ApiInstance from '../../common/baseUrl';
 
-export const getProduct = createAsyncThunk("product/getProduct", (_, { rejectWithValue }) => {
-    return ApiInstance.get("product-api/")
-    
-    .then((response) => {
-        console.log(response.data)
-        return response.data ; 
-    })
-    .catch(error => {
-      console.error('Profile fetch error:', error);
-     
-      console.log(error)
-      // Redirect to login if the profile fetch fails
-      return rejectWithValue(error.response?.data || "Failed to fetch user profile");
-  
-    });
-    });
+export const getProduct = createAsyncThunk(
+  "product/getProduct",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await ApiInstance.get("product-api/");
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Product fetch error:", error);
+
+      return rejectWithValue(
+        error.response?.data || "Failed to fetch products"
+      );
+    }
+  }
+);
+
 export const products_Slice = createSlice({
    name:"product",
    initialState:{
-       productData:{},
+       productData:[],
        nextStart : 0,
        totalProducts : 0,
        isLoading : true,
@@ -30,7 +31,6 @@ export const products_Slice = createSlice({
    },
    reducers:{
        setProducts(state, action){
-           state.products = [...state.products, ...action.payload]
            state.isProductsLoaded = true
         },
        

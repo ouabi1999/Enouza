@@ -9,13 +9,9 @@ import {useSelector} from "react-redux"
 function Shipping({t}) {
     const { activeStepIndex, setActiveStepIndex, total} = useContext(FormContext);
     const { formData, setFormData} = useContext(OrderContext);
-    const [shippingMethod, setShippingMethod] = useState("")
     const [shippingMethodIndex, setShippingMethodIndex] = useState("")
-
-    const [shippingPrice, setshippingPrice] = useState(0)
-    const [delivery, setDelivery] = useState(0)
     const [inputRequired, setInputRequired] = useState(false)
-    const productData = useSelector(state => state.products.productData)
+    const productData = useSelector(state => state.product.productData) || []
 
   
     const cartItems =  useSelector((state) => state.cart.cartItems)
@@ -48,9 +44,9 @@ function Shipping({t}) {
         <InfoIcon className='info-icon' />
       </div>
 
-      {productData[1].available_shipping?.length > 0 ? (
+      {productData.available_shipping?.length > 0 ? (
 
-        productData[1].available_shipping?.map((item, index) => {
+        productData.available_shipping?.map((item, index) => {
           return (
             <div className="methods_container" key={index}>
               <div className="shipping-methodName">
@@ -95,7 +91,7 @@ function Shipping({t}) {
             </span>
 
             <span className="shipping-time">
-               7 - 15 Days
+               7 - 15 {t("common.days")}
             </span>
 
           </div>

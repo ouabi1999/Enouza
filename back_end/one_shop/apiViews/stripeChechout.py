@@ -121,7 +121,6 @@ class StripeWebhookView(APIView):
                             "last_name": request_data["last_name"],
                             "email": request_data["email"],
                             "address1": request_data["address1"],
-                            "address2": request_data["address2"],  # Optional field with default
                             "city": request_data["city"],
                             "state": request_data["state"],        # Optional field with default
                             "country": request_data["country"],

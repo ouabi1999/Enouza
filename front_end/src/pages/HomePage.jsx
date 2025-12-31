@@ -1,351 +1,148 @@
-import React, { useEffect, useRef, useState } from "react";
-import NavBar from "../components/Navbar/NavBar";
-import styled from "styled-components";
-import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
-import UserServices from "../components/Services/UserServices";
-import ProductLayout from "../components/Product/ProductLayout";
-import BuyerTrustServices from "../components/Services/BuyerTrustServices";
-import SideCart from "../components/Product/Sections/SideCart";
-import PopUpShoppingMethod from "../components/Product/Sections/PopUpShoppingMethod";
-import productData from "../../common/data.json";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart, buyNowItem } from "../features/cartSlice";
-import { v4 as uuidv4 } from "uuid";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Skeleton from "@mui/material/Skeleton";
-import CircularProgress from "@mui/material/CircularProgress";
-import HeadeSeo from "../../common/HeadeSeo";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from "react-redux"
+import { setProducts } from "../features/productSlice"
+import axios from 'axios'
+import { CircularProgress } from '@mui/material'
+import Products from '../components/Product/home/Products'
+import UserServices from '../components/Services/UserServices'
+import ApiInstance from '../../common/baseUrl'
+import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsX'
 
-function HomePage({ setRetry, retry }) {
-  const isAuth = window.localStorage.getItem("access_token");
-  const [quantity, setQuantity] = useState(1);
-  const [isPopUpShippingOpen, setIsPopUpShippingOpen] = useState(false);
-  const [shippingMethodIndex, setShippingMethodIndex] = useState(0);
-  const [countryCode, setCountryCode] = useState(
-    window.localStorage.getItem("country") || "us"
-  );
-  const [isColorActive, setIsColorActive] = useState(false);
-  const [isPicsDetailsActive, setIsPicsDetailsActive] = useState(false);
-  const [colorIndex, setColorIndex] = useState(0);
-  const [sizeIndex, setSizeIndex] = useState(0);
-  const [picsDetailsIndex, setPicsDetailsIndex] = useState(0);
-  const [maxOrderWorning, setMaxOrderWorning] = useState(false);
-  const isLoading = useSelector((state) => state.products.isLoading);
-  const productData = useSelector((state) => state.products.productData);
-  const hasError = useSelector((state) => state.products.hasError);
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const { t , i18n} = useTranslation()
-
-  const [shippingInfo, setShippingInfo] = useState({
-    date1: "sun Dec 22 2024",
-    date2: "sun Dec 29 2024",
-    from: 5,
-    to: 7,
-    cost: 0.0,
-    methodName: t("sideCard.free_Shipping"),
-  });
+function HomePage() {
+  const dispatch = useDispatch()
+  //const products = useSelector((state) => state.products?.products)
 
 
-  const today = new Date();
-  let date1 = new Date(today);
-  let date2 = new Date(today);
+  const [nextStart, setNextStart] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [totalProducts, setTotalProducts] = useState(0)
+  const [homeProducts, setHomeProducts] = useState([]);
 
-  const navigate = useNavigate();
-  // constant
-  const dispatch = useDispatch();
-  const index = uuidv4();
-
-  const selectSize = (index) => {
-    setSizeIndex(index);
-  };
-
-  const selectColor = (index) => {
-    setColorIndex(index);
-    setIsColorActive(true);
-    setIsPicsDetailsActive(false);
-  };
-
-  const selectPicsDetails = (index) => {
-    setPicsDetailsIndex(index);
-    setIsColorActive(false);
-    setIsPicsDetailsActive(true);
-  };
-  const deselectPicsDetails = () => {
-    setIsColorActive(true);
-    setIsPicsDetailsActive(false);
-  };
-
-  const addQuantity = () => {
-    if (quantity < productData[0].quantity && quantity < 5) {
-      setQuantity(quantity + 1);
-    } else {
-      setMaxOrderWorning(true);
-    }
-
-  };
-
-  const subtractQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      setMaxOrderWorning(false);
-    }
-  };
-
-  const checkboxChange = (item, index) => {
-    date1.setDate(date1.getDate() + Number(item.from));
-    date2.setDate(date2.getDate() + Number(item.to));
-
-    setShippingInfo({
-      date1: date1.toDateString(),
-      date2: date2.toDateString(),
-      from: item.from,
-      to: item.to,
-      cost: item.cost,
-      methodName: item.methodName,
-    });
-
-    setShippingMethodIndex(index);
-  };
+  const scrolTo = useRef()
+  // show more products
 
 
 
 
-  const add_item_to_cart = (product) => {
-    if (cartItems.find(item => item.id === product.id
-      &&
-      item.color === product.colors[colorIndex]
-      &&
-      item.size === product.sizes[sizeIndex])
+  const viewMore = () => {
+    setNextStart(prevStart => prevStart + 10);
+
+  }
 
 
-    ) {
-
-      toast.success(t("sideCard.item_already_in_cart"))
-
-    }
-    else {
-      dispatch(addToCart(
-        {
-          
-          id: product.id,
-          name: product.name[i18n.language] || product.name["en"],
-          available_shipping: product.shippingInfo,
-          color: product.colors[colorIndex],
-          size: product.sizes[sizeIndex],
-          quantity: quantity,
-          index: index,
-          price: parseFloat(product.price),
-          subtotal: parseFloat(product.price) * product.quantity,
-          
-        })
-      )
-      toast.success(t("sideCard.item_has_been_added"))
-
-    }
-
-  };
 
 
-  const buy_Now_item = (product) => {
-
-    navigate("/checkout");
-    dispatch(
-      buyNowItem({
-        id: product.id,
-        name: product.name[i18n.language] || product.name["en"],
-        shipping_info: shippingInfo,
-        price: product.price,
-        selectedColor: product.colors[colorIndex],
-        selectedSize: product.sizes[sizeIndex],
-        selectedQuantity: quantity,
-        index: index,
+  useLayoutEffect(() => {
+    setIsLoading(true);
+    ApiInstance.get('product-api/', { params: { currentPage: nextStart, per_page: 10 } })
+      .then(response => {
+        setIsLoading(false);
+        setHomeProducts(prev => {
+          const newProducts = response.data.products.filter(
+            p => !prev.some(prevP => prevP.id === p.id)
+          );
+          return [...prev, ...newProducts];
+        });
+        setTotalProducts(response.data.total_products);
+        dispatch(setProducts(response.data.products));
       })
-    );
+      .catch(error => {
+        setIsLoading(false);
+        console.error(error);
+      });
+  }, [nextStart]);
 
-  };
+
+  useEffect(() => {
+
+    scrolTo.current?.scrollTo({ behavior: "smooth", block: "center", inline: "nearest" });
+  }, [nextStart])
+
+
+
+
   return (
-    <>
-      {hasError ? (
-        <div
-          style={{
-            height: "70vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: "10px",
-          }}
-        >
-          <span style={{ color: "gray" }}>{t("common.error")}</span>
+    <Container>
+      <UserServices />
+      <AdvertiseMain />
+      <div className="product-header">
+        <strong>More to love</strong>
+      </div>
 
-          <button
-            style={{
-              fontWeight: "bolder",
-              background: "lightgray",
-              padding: "10px 20px",
-              borderRadius: "4px",
-            }}
-            onClick={() => setRetry(!retry)}
-          >
-            {t("common.tryAgain")}
-          </button>
+
+
+      <Products isLoading={isLoading} products={homeProducts} columsNumber={5} placeItems="center" scrolTo={scrolTo} />
+
+
+
+      {isLoading && (
+
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", margin: "10px" }}>
+          <CircularProgress
+            size={25}
+            thickness={4}
+          />
         </div>
-      ) : (
-        <>
-          <HeadeSeo title="Enouza" product={productData[0]} />
-          <PrentContainer>
-            {isLoading ? (
-              <div
-                style={{
-                  height: "70vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress
-                  size={30}
-
-                />
-              </div>
-            ) : (
-              <Container>
-                <div className="item2">
-                  <UserServices />
-                </div>
-
-                <div className="item3">
-                  <ProductLayout
-                    quantity={quantity}
-                    shippingInfo={shippingInfo}
-                    checkboxChange={checkboxChange}
-                    picsDetailsIndex={picsDetailsIndex}
-                    colorIndex={colorIndex}
-                    selectPicsDetails={selectPicsDetails}
-                    isColorActive={isColorActive}
-                    isPicsDetailsActive={isPicsDetailsActive}
-                    deselectPicsDetails={deselectPicsDetails}
-                    setColorIndex={setColorIndex}
-                    sizeIndex={sizeIndex}
-                    selectSize={selectSize}
-                    selectColor={selectColor}
-                  />
-                </div>
-
-                <div className="item4">
-                  <SideCart
-                    quantity={quantity}
-                    setQuantity={setQuantity}
-                    addQuantity={addQuantity}
-                    subtractQuantity={subtractQuantity}
-                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                    isPopUpShippingOpen={isPopUpShippingOpen}
-                    maxOrderWorning={maxOrderWorning}
-                    setMaxOrderWorning={setMaxOrderWorning}
-                    countryCode={countryCode}
-                    shippingInfo={shippingInfo}
-                    setCountryCode={setCountryCode}
-                    add_item_to_cart={add_item_to_cart}
-                    buy_Now_item={buy_Now_item}
-                    shippingMethodIndex={shippingMethodIndex}
-                  />
-                </div>
-                <div className="item5">
-                  <AboutProductLayout />
-                </div>
-
-                {isPopUpShippingOpen && (
-                  <PopUpShoppingMethod
-                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                    isPopUpShippingOpen={isPopUpShippingOpen}
-                    checkboxChange={checkboxChange}
-                    shippingMethodIndex={shippingMethodIndex}
-                    shippingInfo={shippingInfo}
-                  />
-                )}
-              </Container>
-            )}
-          </PrentContainer>
-        </>
+      )
+      }
+      {!isLoading && (
+        <div className="veiw-more"  >
+          <button onClick={viewMore}
+            className=""
+            style={nextStart >= totalProducts ? { opacity: "0.5", cursor: "not-allowed" } : {}}
+            disabled={nextStart >= totalProducts ? true : false}> view more</button>
+        </div>
       )}
-    </>
-  );
+
+
+    </Container>
+  )
 }
 
-export default HomePage;
-const PrentContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
+export default HomePage
 const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  grid-template-areas:
-    "userServices userServices userServices userServices userServices userServices"
-    "product product product product product  sideCart"
-    "aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct sideCart"
-    "buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices sideCart";
-
-  .item2 {
-    grid-area: userServices;
-    padding: 0;
-    margin: 0;
-  }
-  .item3 {
-    grid-area: product;
-  }
-  .item4 {
-    grid-area: sideCart;
-    width: 310px;
-    height: 400px;
-    min-width: 300px;
-    position: sticky;
-    top: 75px;
-    margin: 0 20px;
-    margin-top: 5px;
-  }
-  .item5 {
-    grid-area: aboutProduct;
-    margin-top: 15px;
-    padding: 0 10px;
-  }
-
-  /* Mobile Devices */
-  @media (max-width: 480px) {
-    /* Your mobile styles here */
-  }
-
-  /* Tablets/iPads */
-  @media (max-width: 924px) {
-    /* Your tablet styles here */
-  }
-
-  /* Desktops/Large Screens */
-  @media (max-width: 1200px) {
-    /* Your desktop/large screen styles here */
-    grid-template-areas:
-      "userServices userServices userServices userServices userServices userServices"
-      "product product product product product  product"
-      "sideCart sideCart sideCart sideCart sideCart sideCart"
-      "aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct";
-    .item4 {
-      margin: auto;
-      position: static;
-      width: 90%;
-      min-width: 300px;
-      max-width: 924px;
+    width:97%;
+    margin:auto;
+    min-height:80vh;
+.product-header{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(194, 193, 193);
+    border-top: 1px solid rgb(194, 193, 193);
+    margin:15px 5px;
+    margin-top:25px;
+    background-color:white;  
     }
-  }
-`;
+
+.product-header strong{
+    padding:15px;
+    letter-spacing: 2px;
+    font-size:1rem;
+    font-weight:490;
+    font-family:'Arial Narrow', Arial, sans-serif
+} 
+
+
+
+.veiw-more > button{
+    outline-style: none;
+    width:115px;
+    height: 40px;
+    outline-style: none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin:auto;
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    color:white;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+`
