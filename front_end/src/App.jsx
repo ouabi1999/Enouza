@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Suspense, createContext } from "react";
-import ApiInstance from "../common/baseUrl";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import BuyerTrustServices from "./components/Services/BuyerTrustServices";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,13 +36,11 @@ import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
 import ShippingPolicy from "./components/polices/ShippingPolicy";
 import OrderSuccess from "./components/checkout/OrderSuccsess";
 import "../public/i18n/index.jsx"
-import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import ResetPassword from "./components/auth/ResetPassword";
 import Spinner from "../common/Spinner.jsx";
 import AliExpressProductFetcher from "./components/adminDashboard/AliDropship/AliExpressProductFetcher.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import AdvertiseMain from "./components/Advertise/AdvertiseMain.jsX";
 import { getDisplayInfo } from "./features/DisplaySlice.js";
 import FillterPage from "./pages/FillterPage.jsx";
 
