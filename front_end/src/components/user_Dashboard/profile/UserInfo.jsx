@@ -292,7 +292,7 @@ function UserInfo(props){
             birthDateEdit={birthDateEdit}
             closeBirthDateEdit={closeBirthDateEdit}
           />
-          <EditName nameEdit={nameEdit} t = {t} closeNameEdit={closeNameEdit} />
+          <EditName nameEdit={nameEdit} t = {t}  i18n ={i18n} closeNameEdit={closeNameEdit} />
           <EditEmail emailEdit={emailEdit} t = {t} closeEmailEdit={closeEmailEdit} />
           <EditCountry
             countryEdit={countryEdit}
