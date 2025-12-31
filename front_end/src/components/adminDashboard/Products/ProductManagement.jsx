@@ -37,38 +37,47 @@ function ProductManagement(props) {
 }
 );
 
-  useEffect(() => {
+ useEffect(() => {
   if (productData) {
-    const sku_info_slice = productData.ae_item_sku_info_dtos?.map(sku => ({
-      color: sku.ae_sku_property_dtos?.[0]?.sku_property_value || "",
-      size: sku.ae_sku_property_dtos?.[1]?.sku_property_value || "",
-      image: sku.ae_sku_property_dtos?.[0]?.sku_image || null,
-      cost: sku.offer_sale_price || 0,
-      sellingPrice: "",
-      profitPrice: "",
-      comparePrice: "",
-      sku_attr: sku.sku_attr|| "",
-      shipping: ""
-    }));
-    setFormData((prev) => ({
+    const sku_info_slice = productData.ae_item_sku_info_dtos?.map(sku => {
+      const attributes = {};  // ✅ new object per SKU
+      let colorKey = null;    // ✅ new colorKey per SKU
+
+      sku.ae_sku_property_dtos.forEach(attr => {
+        attributes[attr.sku_property_name] = {
+          value: attr.sku_property_value,
+          image: attr.sku_image || null
+        };
+        if (attr.sku_image) colorKey = attr.sku_property_name;
+      });
+
+      return {
+        cost: sku.offer_sale_price || 0,
+        attributes,
+        colorKey,
+        sellingPrice: "",
+        profitPrice: "",
+        comparePrice: "",
+        sku_attr: sku.sku_attr || "",
+        available_stock: sku.sku_available_stock || 0,
+      };
+    });
+
+    setFormData(prev => ({
       ...prev,
       product_id: productData.ae_item_base_info_dto?.product_id || "",
       name: {
         ...prev.name,
         en: productData.ae_item_base_info_dto?.subject || "",
       },
-
       description: {
         ...prev.description,
         en: productData.ae_item_base_info_dto?.detail || "",
       },
-
       skuInfo: sku_info_slice || [],
-      multimediaInfo:  productData.ae_multimedia_info_dto || [],
-      
+      multimediaInfo: productData.ae_multimedia_info_dto || [],
     }));
-  } 
-  console.log("Form Data Updated:", formData);
+  }
 }, [productData]);
 
 
@@ -117,8 +126,7 @@ function ProductManagement(props) {
     data.append("brand", formData.brand);
     data.append("product_id", formData.product_id);
 
-    data.append("SKU", formData.SKU);
-    data.append("price", formData.price);
+ 
     data.append("discount", formData.discount);
     data.append("quantity", formData.quantity);
     data.append("warranty", formData.warranty);
@@ -136,7 +144,7 @@ function ProductManagement(props) {
 
     // Append all data from formData to FormData
     setLoading(true);
-    isAddProductOn && ApiInstance.post("product-api/", data)
+    isAddProductOn && ApiInstance.post("product/", data)
 
       .then((response) => {
         setLoading(false);
@@ -148,7 +156,7 @@ function ProductManagement(props) {
         setLoading(false);
       });
 
-    isEditProductOn && ApiInstance.put(`product-details/${value.id}/`, data)
+    isEditProductOn && ApiInstance.put(`product/${value.id}/`, data)
 
       .then((response) => {
         setLoading(false);

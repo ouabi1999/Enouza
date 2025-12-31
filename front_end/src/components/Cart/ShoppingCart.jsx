@@ -17,29 +17,27 @@ function ShoppingCart() {
   const [products, setProducts] = useState([])
   const cartItems =  useSelector((state) => state.cart.cartItems)
   const [isLoading, setIsLoading] = useState(false)
-  const productData = useSelector((state) => state.products.productData)
+  
+  const productData =  useSelector((state) => state.product.productData)
   const {t, i18n} = useTranslation()
   useLayoutEffect(() => {
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [])
 
-  useEffect(() => {
-    getShoppingCart_product()
-    console.log(cartItems)
-  }, [])
+ 
   
   const updateCart = (products) => {
       
       const newCart = cartItems.filter((item) =>
-        productData[1].some((product) => product.id === item.id)
+        productData.some((product) => product.id === item.id)
       );
       window.localStorage.setItem("cartItems", JSON.stringify(newCart))
       dispatch(setCartItems(newCart))
     };
 
     
-  const getShoppingCart_product = ()=>{
+  /*const getShoppingCart_product = ()=>{
     setIsLoading(true)
     axios.post('/api/get_shopping_cart_products', cartItems)
       .then(response => {
@@ -56,8 +54,7 @@ function ShoppingCart() {
         console.error(error);
       });
 
-  } 
-   
+  } */   
   
 
   
@@ -80,7 +77,7 @@ function ShoppingCart() {
 
                       <div key={index} className="product-container">
                         <div className="product-img">
-                          <img src={item.color} alt={""} />
+                          <img src={item.selectedSku.attributes[item.selectedSku.colorKey].image} alt={item.selectedSku.colorKey} />
 
                         </div>
 
@@ -95,9 +92,9 @@ function ShoppingCart() {
 
                               <div className="delete-button">
                                 <button onClick={() => dispatch(removeFromCart(index))}>
-                                {productData[1]?.id === item.id &&(
+                                
                                       <DeleteIcon />
-                                )}
+                                
                                 </button>
                               </div>
 
@@ -216,6 +213,8 @@ const Wrap = styled.div`
    margin:auto;
   
    display:flex;
+       gap:20px;
+
    @media only screen and (max-width: 1200px){
 
   &{
@@ -233,7 +232,7 @@ const Wrapper = styled.div`
     position:relative;
     box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px, rgba(60, 64, 67, 0.12) 0px 2px 6px 2px;
     background:#ffff;
-    margin-right:20px;
+    
    
 
     .product-container{
@@ -250,6 +249,8 @@ const Wrapper = styled.div`
       max-width:780px;
       width:calc(95vw - 100px);
       min-width:175px;
+      
+   
     
       
      

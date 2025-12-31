@@ -69,7 +69,7 @@ function Ratings(props) {
             <StarIcon />
           </div>
           <div>
-            <bold style={{ color: "green", fontWeight: "bold" }}>{t("productInfo.all_from_verified_purchases")}</bold>
+            <h4 style={{ color: "green", fontWeight: "bold" }}>{t("productInfo.all_from_verified_purchases")}</h4>
           </div>
         </div>
 

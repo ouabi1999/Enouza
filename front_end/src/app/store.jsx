@@ -5,6 +5,8 @@ import display_Reducer from "../features/DisplaySlice"
 import productReducer from "../features/productSlice"
 import locationReducer from "../features/locationSlice"
 import AliExpressReducer from "../features/AliExpressProductSlice"
+import productDetails_reducer from "../features/productDetails_slice"
+import filterReducer from '../features/filterSlice'
 
 
 
@@ -15,6 +17,13 @@ export const store = configureStore({
     display: display_Reducer,
     products : productReducer,
     location : locationReducer,
-    aliExpressProduct : AliExpressReducer
+    aliExpressProduct : AliExpressReducer,
+    //orders : orderReducer,
+    //filteredProduct : categoryReducer,
+    product : productDetails_reducer,
+    //customers : customers_Reducer,
+    filter: filterReducer,
+
+
   },
 })

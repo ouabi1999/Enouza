@@ -1,0 +1,17 @@
+<svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="90" fill="#0b0b0b"/>
+
+  <g opacity="0.95">
+    <image href="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+           x="40" y="22" height="46"/>
+
+    <image href="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+           x="210" y="22" height="46"/>
+
+    <image href="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+           x="390" y="22" height="46"/>
+
+    <image href="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+           x="600" y="22" height="46"/>
+  </g>
+</svg>

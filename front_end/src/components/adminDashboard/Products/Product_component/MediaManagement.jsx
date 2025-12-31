@@ -120,7 +120,7 @@ function MediaManagement({ setFormData, formData }) {
             </button>
           </div>
            <video width="300" controls>
-  <source src={formData.multimediaInfo.ae_video_dtos.media_url} type="video"  controls/>
+  <source src={formData.multimediaInfo.ae_video_dtos?.media_url} type="video"  controls/>
   Your browser does not support video.
 </video>
           {formData.images?.main_image && (

@@ -20,13 +20,15 @@ import { setLocation } from '../../../features/locationSlice';
 function SideCart(props) {
   const { isOpen, setIsOpen } = useState(false)
   const dispatch = useDispatch()
-  const productData = useSelector(state => state.products.productData)
+  
   const [fromDate, setFromDate] = useState("")
   const [toDate, setToDate] = useState("")
   let country = useSelector(state => state.location.country)
   const { t, i18n } = useTranslation()
-
+  const productData = useSelector(state => state.product.productData)
   const today = new Date();
+  let date1 = new Date(today);
+  let date2 = new Date(today);
   const {
     shippingInfo,
     addQuantity,
@@ -39,28 +41,35 @@ function SideCart(props) {
     setIsPopUpShippingOpen,
     isPopUpShippingOpen,
     shippingMethodIndex,
-    hideDiv,
-    divRef
+    currentSku,
+    setShippingInfo
   } = props;
 
-  let Date1 = new Date(today)
-  let Date2 = new Date(today)
-
-  useEffect(() => {
-
-    Date1.setDate(Date1.getDate() + (Number(productData[1]?.available_shipping[shippingMethodIndex]?.from) || 5))
-    setFromDate(Date1.toDateString())
-    Date2.setDate(Date2.getDate() + (Number(productData[1]?.available_shipping[shippingMethodIndex]?.to) || 7))
-    setToDate(Date2.toDateString())
-
-
-
-
-  }, [productData, shippingMethodIndex])
+  
 
   const intervalRef = useRef(0);
+  useEffect(() => {
+    if (!maxOrderWorning) return;
 
+    const handleScroll = () => setMaxOrderWorning(false);
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [maxOrderWorning]);
+ useEffect(()=>{
+     
+    date1.setDate(date1.getDate() + 5);
+    date2.setDate(date2.getDate() + 7);
+
+    setShippingInfo(prev => ({
+      ...prev,
+      date1: date1.toDateString(),
+      date2: date2.toDateString(),
+      
+    }));
+    
+      
+ },[])
 
 
   return (
@@ -73,7 +82,10 @@ function SideCart(props) {
           </div>
 
           <div className="center-align flex-end">
-            <Flag code={country} height={12} />
+            {country && (
+  <Flag code={country} height={12} />
+)}
+           
 
             <div>
               <select
@@ -93,7 +105,7 @@ function SideCart(props) {
                 {countriesData?.map((item, index) => {
                   return (
                     <option key={index} value={item.value}>
-                      <span>{item.label}</span>
+                      {item.label}
                     </option>
                   );
                 })}
@@ -102,44 +114,44 @@ function SideCart(props) {
           </div>
         </div>
         <div className="shipping">
-            <div className="center-align" >
-              <LocalShippingOutlinedIcon className="Shipping-icon" />
-              {productData[1]?.available_shipping?.length > 0 ? (
-                <span className="header"> {Number(productData[1]?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData[1]?.available_shipping[shippingMethodIndex]?.methodName}</span>
-              ) :
-                <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
-
-              }
-            </div>
-            <div>
-              <ArrowForwardIosOutlinedIcon className="arrow-icon" onClick={() => setIsPopUpShippingOpen(!isPopUpShippingOpen)} />
-            </div>
-          </div>
-          
-          
-          <div className="delivrey-time center-align">
-            <DeliveryDiningIcon className="Shipping-icon" />
-            <span className="header"> {t("sideCard.Delivrey")} :</span>
-            {productData[1]?.available_shipping?.length > 0 ? (
-              <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
-
+          <div className="center-align" >
+            <LocalShippingOutlinedIcon className="Shipping-icon" />
+            {productData?.available_shipping?.length > 0 ? (
+              <span className="header"> {Number(productData?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData?.available_shipping[shippingMethodIndex]?.methodName}</span>
             ) :
-              <span style={{ margin: "0 4px 0 4px", fontSize: "14px" }}>  {shippingInfo.date1?.slice(3, -4)} /  {shippingInfo.date2?.slice(3, -4)}</span>
+              <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
 
             }
           </div>
-         
+          <div>
+            <ArrowForwardIosOutlinedIcon className="arrow-icon" onClick={() => setIsPopUpShippingOpen(!isPopUpShippingOpen)} />
+          </div>
+        </div>
 
-          <div style={{ display: "flex", alignItems: "center" , marginBottom:"10px"}}>
-            <VerifiedUserOutlinedIcon className="security-icon" />
-            <span className="header">{t("sideCard.Security_&_Privacy.header")}</span>
-          </div>
-          <div className="security-privacy-text">
-            <span>
-              {t("sideCard.Security_&_Privacy.text")}
-            </span>
-          </div>
-        
+
+        <div className="delivrey-time center-align">
+          <DeliveryDiningIcon className="Shipping-icon" />
+          <span className="header"> {t("sideCard.Delivrey")} :</span>
+          {productData?.available_shipping?.length > 0 ? (
+            <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
+
+          ) :
+            <span style={{ margin: "0 4px 0 4px", fontSize: "14px" }}>  {shippingInfo.date1?.slice(3, -4)} /  {shippingInfo.date2?.slice(3, -4)}</span>
+
+          }
+        </div>
+
+
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+          <VerifiedUserOutlinedIcon className="security-icon" />
+          <span className="header">{t("sideCard.Security_&_Privacy.header")}</span>
+        </div>
+        <div className="security-privacy-text">
+          <span>
+            {t("sideCard.Security_&_Privacy.text")}
+          </span>
+        </div>
+
         <div className="center-align">
           <AutoAwesomeMotionOutlinedIcon className="security-icon" />
           <span className="header"> {t("sideCard.Quantity")} </span>
@@ -151,17 +163,17 @@ function SideCart(props) {
             <button onClick={addQuantity}>+</button>
           </div>
           <div>
-            <span>{productData[1]?.quantity - quantity} {t("sideCard.available")}</span>
+            <span>{currentSku?.available_stock - quantity} {t("sideCard.available")}</span>
           </div>
 
           <ClickAwayListener
             mouseEvent="onMouseDown"
-            touchEvent="onScroll"
+            touchEvent="onTouchEnd"
             onClickAway={() => setMaxOrderWorning(false)}
-
           >
+
             <span className={maxOrderWorning ? "max-order-warning" : "not-show"}>
-            {t("sideCard.max-order-warning")} 
+              {t("sideCard.max-order-warning")}
             </span>
           </ClickAwayListener>
 
@@ -169,13 +181,13 @@ function SideCart(props) {
 
         <div>
           <div className="button-container">
-            <button className="buy-button" onClick={() => buy_Now_item(productData[1])}>{t("common.buyNow")}</button>
+            <button className="buy-button" onClick={() => buy_Now_item(currentSku , productData.id, shippingInfo, productData.name)}>{t("common.buyNow")}</button>
             <button
               className="add-button"
-              onClick={() => add_item_to_cart(productData[1])}
+              onClick={() => add_item_to_cart(currentSku, productData.id, shippingInfo, productData.name)}
             >
               {" "}
-              { t("common.addToCart")}
+              {t("common.addToCart")}
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import DisplayCategory from './DisplayCategory';
 import DisplayCategoryMain from './DisplayCategoryMain';
@@ -13,212 +13,233 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDisplayInfo } from "../../../features/DisplaySlice"
 import { display } from '@mui/system';
 import HeadeSeo from "../../../../common/HeadeSeo"
+import ApiInstance from '../../../../common/baseUrl';
 export default function DisplayLyout() {
 
-    const [loading, setLoading] = useState(false);
-    
-    const dispatch = useDispatch();
-    const displayInfo = useSelector(state=> state.display)
-    const [formData, setFormData] = useState(displayInfo.display);
+  const [loading, setLoading] = useState(false);
 
-    
-    useEffect(() => {
-
-      setFormData(displayInfo.display)
-     
-    },[displayInfo])
-    const addNew = (event) => {
-        event.preventDefault();
-        setLoading(true)
-        const data = new FormData();
-
-        data.append("main_category", JSON.stringify(formData.main_category));
-        data.append("category", JSON.stringify(formData.category));
-        data.append("header", JSON.stringify(formData.header));
-        data.append("banners", JSON.stringify(formData.banners));
-        data.append("pop_up", JSON.stringify(formData.pop_up));
-        data.append("slider", JSON.stringify(formData.slider));
-        data.append("logo", formData.logo);
-       
-        data.append("count_Down", formData.count_Down);
-        
-    
-        fetch("/display", {
-          method: "POST",
-          body: data,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            setLoading(false)
-              setFormData({
-                  id:data.id,
-                  logo : data.logo,
-                  header : {
-
-                  title: "",
-                  banner: "",
-                },
-                  main_category : data.main_category,
-                  category  : data.category,
-                  banners : data.banners,
-                  slider  : data.slider,
-                  pop_up : data.pop_up,
-                  count_Down : false
-
-            })
-              toast.success("added succesfully.")
-
-            })
-            .catch((err) => {
-                console.log(err)
-                setLoading(false)
-
-            });
-        };
+  const dispatch = useDispatch();
+  const display = useSelector(state => state.display);
+  const [formData, setFormData] = useState({});
+  useEffect(() => {
+    console.log(formData);
+  }, [formData])
 
 
- 
-      
-    const save = (event) =>{
-            
-      event.preventDefault();
-      setLoading(true)
-      const data = new FormData();
-      formData.slider.forEach((item) => {
-        data.append("slider", item);
-      });
-    
-      data.append("main_category", JSON.stringify(formData.main_category));
-      data.append("category", JSON.stringify(formData.category));
-      data.append("header", JSON.stringify(formData.header));
-      data.append("banners", JSON.stringify(formData.banners));
-      data.append("pop_up", JSON.stringify(formData.pop_up));
-    
+  useEffect(() => {
+    setFormData(display.displayData);
+  }, [display.displayData])
+
+  const buildFormData = (formData) => {
+    const data = new FormData();
+
+    // ID for update
+
+    // Header
+    data.append("header", JSON.stringify(formData.header || {}));
+
+    // Category & pop_up
+    data.append("category", JSON.stringify(formData.category || []));
+    data.append("pop_up", JSON.stringify(formData.pop_up || []));
+
+    // Count Down
+    data.append("count_Down", formData.count_Down);
+
+    // Logo
+    if (formData.logo instanceof File) {
       data.append("logo", formData.logo);
-     
-      data.append("count_Down", formData.count_Down);
-      
-  
-      fetch(`/update-display-setting/${formData.id}`, {
-        method: 'PUT',
-        body: data
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          setFormData(result);
-          dispatch(setDisplayInfo(result))
-          setLoading(false)
-          toast.success("SAVED")
-
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          setLoading(false)
-          toast.error("an error accourd")
-        });
+    } else if (typeof formData.logo === "string") {
+      data.append("logo", formData.logo);
     }
-   
+
+    // Main Category
+    formData.main_category?.forEach((cat, index) => {
+      data.append(`main_category[${index}][categoryName]`, cat.categoryName || "");
+      if (cat.img instanceof File) {
+        data.append(`main_category[${index}][img]`, cat.img);
+      } else if (typeof cat.img === "string") {
+        data.append(`main_category[${index}][img]`, cat.img);
+      }
+    });
+
+    // Banners
+    formData.banners?.forEach((file) => {
+      if (file instanceof File) {
+        data.append("banners", file);
+      }
+    });
+
+    // Slider — only append new File objects, keep URLs as JSON
+    const sliderFiles = formData.slider?.filter((f) => f instanceof File) || [];
+    sliderFiles.forEach((file) => {
+      data.append("slider", file);
+    });
+
+    // Already uploaded slider URLs (existing)
+    const sliderUrls = formData.slider?.filter((f) => typeof f === "string") || [];
+    if (sliderUrls.length > 0) {
+      data.append("slider_urls", JSON.stringify(sliderUrls));
+    }
+
+    return data;
+  };
+
+
+
+
+  const addNew = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    try {
+      const data = buildFormData();
+      const res = await ApiInstance.post("displayInfo/", data);
+
+      setFormData(res.data);
+      toast.success("Added successfully");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to add");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const save = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      // Send PUT request
+      const data = buildFormData(formData);
+      const response = await ApiInstance.put(`displayInfo/${formData.id}/`, data);
+
+      // Extract only serializable data
+      const updatedData = response.data;
+
+      // Update local state
+      setFormData(updatedData);
+
+      // Dispatch to Redux safely
+      dispatch(setDisplayInfo(updatedData));
+
+      // Notify user
+      toast.success("Saved successfully!");
+    } catch (error) {
+      console.error("Error saving display info:", error);
+
+      // Optional: show backend error if available
+      const message =
+        error.response?.data?.detail ||
+        error.message ||
+        "An error occurred while saving.";
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-      <>
-      <HeadeSeo title = "Dashboard / display settings"/>
-      {displayInfo.isLoaded  === false ? (
+    <>
+      <HeadeSeo title="Dashboard / display settings" />
+      {display.isLoaded === false ? (
 
-      
-      <Container>
-         <ToastContainer
-                  position="top-right"
-                  autoClose={3000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  className = 'foo-bar'
-                />
-        <div className='button-container'>
-            <button onClick = {formData.id === null ? addNew :  save }  disabled = {loading ? true : false}> 
-            {loading && (
-                 <span className='loader'>
-                 <CircularProgress
-                   size={20}
-                   thickness={6}
-                 />
+
+        <Container>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            className='foo-bar'
+          />
+          <div className='button-container'>
+            <button onClick={formData.id === null ? addNew : save} disabled={loading ? true : false}>
+              {loading && (
+                <span className='loader'>
+                  <CircularProgress
+                    size={20}
+                    thickness={6}
+                  />
                 </span>
-            )} <span>save</span>
-                
-                </button>
-        </div>
-           <DisplayHeader 
-              formData = {formData}
-              setFormData = {setFormData}
-           />
-           <DisplayLogo 
-               formData = {formData}
-               setFormData = {setFormData}
-           />
+              )} <span>{formData.id === null ? "Add New" : "Save"}</span>
 
-           <DisplaySlider 
-                 formData = {formData}
-                 setFormData = {setFormData}
-           />
-           <DisplayBanners 
-               formData = {formData}
-               setFormData = {setFormData}
-           
-           />
+            </button>
+          </div>
+          <DisplayHeader
+            formData={formData}
+            setFormData={setFormData}
+          />
+          <DisplayLogo
+            formData={formData}
+            setFormData={setFormData}
+          />
 
-           <DisplayCategoryMain 
-                formData = {formData}
-                setFormData = {setFormData}
-           
-           />
+          <DisplaySlider
+            formData={formData}
+            setFormData={setFormData}
+          />
+          <DisplayBanners
+            formData={formData}
+            setFormData={setFormData}
 
-           <DisplayCategory 
-                formData = {formData}
-                setFormData = {setFormData}
-           />
-            
-           <div className='count-down-input'>
+          />
+
+          <DisplayCategoryMain
+            formData={formData}
+            setFormData={setFormData}
+
+          />
+
+          <DisplayCategory
+            formData={formData}
+            setFormData={setFormData}
+          />
+
+          <div className='count-down-input'>
             <label htmlFor='input'> Count Down </label>
-           <TextField
-                    className="text_input"
-                    id="filled-select-category"
-                    select
-                    label="input"
-                    /*helperText="Please select your currency"*/
-                    value={formData.count_Down}
-                    onChange={(event) =>
-                        setFormData({
-                            ...formData,
-                            count_Down: event.target.value,
-                        })
-                    }
-                >
-                   
-                        <MenuItem  value={true}>
-                            True 
-                        </MenuItem>
-                        <MenuItem  value={false}>
-                            False
-                        </MenuItem>
-                   
-                </TextField>
-           </div>
-           
-          
-          
-         
+            <TextField
+              className="text_input"
+              id="filled-select-category"
+              select
+              label="input"
+              /*helperText="Please select your currency"*/
+              value={formData.count_Down}
+              onChange={(event) =>
+                setFormData({
+                  ...formData,
+                  count_Down: event.target.value,
+                })
+              }
+            >
+
+              <MenuItem value={true}>
+                True
+              </MenuItem>
+              <MenuItem value={false}>
+                False
+              </MenuItem>
+
+            </TextField>
+          </div>
+
+
+
+
         </Container>
       ) :
         <LoadingContainer>
           <CircularProgress
             size={30}
-            thickness={6} 
+            thickness={6}
           />
         </LoadingContainer>
-    }
+      }
     </>
 
   )

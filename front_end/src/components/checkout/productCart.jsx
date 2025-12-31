@@ -49,7 +49,8 @@ function ProductCart(props) {
                 <div className="child-container" key = {index}>
                   
                     <div className='img-container'>
-                      <img src={item.color} alt="" />
+                      <img src={item.selectedSku.attributes[item.selectedSku.colorKey].image} alt={item.selectedSku.colorKey} />
+
                       <div className="quantity">
                       <span>{item.quantity}</span>
                     </div>
@@ -115,7 +116,7 @@ const Container = styled.div`
     background: linear-gradient(90deg, rgba(63,231,251,0.4) 0%, rgba(68,55,251,0.5) 100%);
     display:flex;
     flex-direction:column;
-
+    
     .checkout{
       letter-spacing:2px;
       font-weight:600;
@@ -178,6 +179,8 @@ const Wrraper = styled.div`
         border-radius:6px;
         box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
         padding:5px 10px;
+        overflow-y: auto;
+        max-height:255px;
     }
 
 
@@ -232,7 +235,7 @@ const Wrraper = styled.div`
 
     .discount input{
       height:40px;
-      width:87%;
+      width:85%;
       padding-left:5px;
       border-radius:4px;
       border:1px solid lightgray;
@@ -247,7 +250,7 @@ const Wrraper = styled.div`
     }
     
     .discount button{
-      height:40px;
+      height:44px;
       background:#000;
       color:#ffff;
       border-radius:4px;

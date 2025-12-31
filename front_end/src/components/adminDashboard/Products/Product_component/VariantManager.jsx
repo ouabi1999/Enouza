@@ -65,7 +65,7 @@ export default function VariantManager({ formData, setFormData}) {
             <TH>Compare</TH>
             <TH>Shipping</TH>
             <TH>Profit</TH>
-            <TH>SKU</TH>
+            <TH>Stock</TH>
             <TH>Delete</TH>
           </tr>
         </thead>
@@ -85,8 +85,8 @@ export default function VariantManager({ formData, setFormData}) {
               <TD><Input type="number" value={v.sellingPrice} onChange={e => updateVariant(v.sku_attr, 'sellingPrice', e.target.value)} /></TD>
               <TD><Input type="number" value={v.comparePrice} onChange={e => updateVariant(v.sku_attr, 'comparePrice', e.target.value)} /></TD>
               <TD><Input type="number" value={v.profitPrice} onChange={e => updateVariant(v.sku_attr, 'profitPrice', e.target.value)} /></TD>
-              <TD><Input value={v.sku_attr} onChange={e => updateVariant(v.sku_attr, 'sku', e.target.value)} /></TD>
               <TD><Input value={v.shipping} onChange={e => updateVariant(v.sku_attr, 'shipping', e.target.value)} /></TD>
+              <TD><Input value={v.available_stock} onChange={e => updateVariant(v.sku_attr, 'available_stock', e.target.value)} /></TD>
               <TD><DeleteButton onClick={() => deleteVariant(v.sku_attr)}>Delete</DeleteButton></TD>
             </tr>
           ))}

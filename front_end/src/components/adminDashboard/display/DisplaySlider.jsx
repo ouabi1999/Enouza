@@ -1,43 +1,32 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import styled from 'styled-components';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-export default function DisplaySlider({formData, setFormData}) {
-    const RefInput =  useRef()
+export default function DisplaySlider({ formData, setFormData }) {
+    const RefInput = useRef()
     const [slider, setSlider] = useState([]);
+const handleImageChange = (e) => {
+  const files = e.target.files;
+  if (!files || files.length === 0) return;
 
-    const  handleImageChange = (e) => {
-        e.preventDefault();
-        if(e.target.files){
-            const reader = new FileReader();
-            reader.onload = () =>{
-                if(reader.readyState === 2){
-                    setFormData(
-                        {
-                            ...formData,
-                            slider : [...formData.slider, reader.result]
-
-                        })
-                    
-                }
-               
-            };
-            reader.readAsDataURL(e.target.files[0]);
-            
-        }
+  setFormData(prev => ({
+    ...prev,
+    slider: [...prev.slider, files[0]],
+  }));
+};
 
 
-    }
-
-    const handleImageInput = () =>{
+    const handleImageInput = () => {
         RefInput.current.click();
 
     }
-    const removeImg = (index)=>{
+    const removeImg = (index) => {
+        if (formData.slider[index] instanceof File) URL.revokeObjectURL(formData.slider[index]);
+
         setFormData({
             ...formData,
-            slider:  formData.slider.filter(x => x !== index)
+            slider: formData.slider.filter(x => x !== index)
         })
 
     }
@@ -49,9 +38,9 @@ export default function DisplaySlider({formData, setFormData}) {
             <label htmlFor='slider' > Main slider</label>
             <input
                 type="file"
-              
+
                 ref={RefInput}
-                
+
                 style={{ display: "none" }}
                 accept="image/*"
                 onChange={handleImageChange}
@@ -62,24 +51,38 @@ export default function DisplaySlider({formData, setFormData}) {
                     name="imageinput"
                     id="imageinput"
                     onClick={handleImageInput}
-                   
-                 >
+
+                >
                     <AddPhotoAlternateIcon className="add_photo_icon" />
                 </button>
             </div>
-          
 
-                {formData.slider?.map((img, index ) => {
-                    return(
-                        <div className="img-slider-container" key={index}>
-                            <img src={img}  alt="slider img" />
-                            <CancelIcon onClick={() => removeImg(img)} className="delete-icon" />
-                        </div>
-                    )
 
-                })}  
-                
-            
+            {formData.slider?.map((img, index) => {
+                let src;
+        try {
+          src = (img instanceof File || img instanceof Blob)
+            ? URL.createObjectURL(img)
+            : img;
+        } catch (error) {
+          console.error("Failed to create image preview:", error, img);
+          src = ""; // fallback
+        }
+
+        if (!src) return null;
+
+                return (
+                    <div className="img-slider-container" key={index}>
+                      
+                      
+                        <img src={src} alt="slider img" />
+                        <CancelIcon onClick={() => removeImg(img)} className="delete-icon" />
+                    </div>
+                )
+
+            })}
+
+
         </Container>
     )
 }

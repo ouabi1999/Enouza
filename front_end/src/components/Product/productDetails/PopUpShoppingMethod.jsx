@@ -18,7 +18,7 @@ function PopUpShoppingMethod(props) {
   const {
     checkboxChange,
     shippingMethodIndex,
-    shippingInfo = { shippingInfo },
+    shippingInfo ,
     setIsPopUpShippingOpen,
     isPopUpShippingOpen,
   } = props;
@@ -37,7 +37,7 @@ function PopUpShoppingMethod(props) {
                  
       <ClickAwayListener
     mouseEvent="onMouseDown"
-    touchEvent="onScroll"
+    touchEvent="onTouchStart"
     onClickAway={()=> setIsPopUpShippingOpen(!isPopUpShippingOpen)}
     >
       <ShippingMethods role="presentation">
@@ -45,8 +45,8 @@ function PopUpShoppingMethod(props) {
           <h5>{t("sideCard.available_shipping_methods")}</h5>
           <InfoIcon className="info-icon" />
         </div>
-        {productData[0]?.available_shipping?.length > 0 ? (
-          productData[0]?.available_shipping?.map((item, index) => {
+        {productData?.available_shipping?.length > 0 ? (
+          productData?.available_shipping?.map((item, index) => {
             return (
               <div className="methods_container" key={index}>
                 <div className="shipping-type">

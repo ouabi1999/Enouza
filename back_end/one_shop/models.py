@@ -171,3 +171,20 @@ class Newsletter(models.Model):
     def __str__(self):
         return self.email
 
+
+class Display(models.Model):
+    id = models.BigAutoField(primary_key=True, unique=True)
+    logo = models.BinaryField(blank=True, null=True)
+    header = models.JSONField(default=dict)
+    main_category = models.JSONField(default=list)
+    category = models.JSONField(default=list)
+    banners = models.JSONField(default=list)
+    slider = models.JSONField(default=list)
+    pop_up = models.JSONField(default=dict)
+    count_Down = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Display Settings {self.id}"
+

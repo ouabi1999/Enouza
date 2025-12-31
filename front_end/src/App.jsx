@@ -10,7 +10,7 @@ import Auth from "./pages/Auth";
 import NavBar from "./components/Navbar/NavBar";
 import ShoppingCart from "./components/Cart/ShoppingCart";
 import "./App.css";
-import HomePage from "./pages/HomePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Footer from "./components/Footer/Footer";
 import { getUser } from "./features/authSlice";
 import UserProfile from "./pages/UserProfile";
@@ -35,7 +35,6 @@ import AboutUs from "./pages/aboutUs";
 import ContactUs from "./pages/ContactUs";
 import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
 import ShippingPolicy from "./components/polices/ShippingPolicy";
-import SearchPage from "./pages/SearchPage";
 import OrderSuccess from "./components/checkout/OrderSuccsess";
 import "../public/i18n/index.jsx"
 import { useRef } from "react";
@@ -43,6 +42,10 @@ import { useTranslation } from "react-i18next";
 import ResetPassword from "./components/auth/ResetPassword";
 import Spinner from "../common/Spinner.jsx";
 import AliExpressProductFetcher from "./components/adminDashboard/AliDropship/AliExpressProductFetcher.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AdvertiseMain from "./components/Advertise/AdvertiseMain.jsX";
+import { getDisplayInfo } from "./features/DisplaySlice.js";
+import FillterPage from "./pages/FillterPage.jsx";
 
 export const OrderContext = createContext();
 function App() {
@@ -52,16 +55,20 @@ function App() {
   const [retry, setRetry] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userId: "",
-    email: "",
-    city: "",
-    address2: "",
-    zip: "",
-    state: "",
-    country: "",
-    address1: "",
+
+    logistics_address: {
+      firstName: "",
+      lastName: "",
+      userId: "",
+      email: "",
+      city: "",
+      address2: "",
+      zip: "",
+      state: "",
+      country: "",
+      address1: "",
+
+    },
     shippingMethod: null,
     shippingPrice: 0.0,
     deliveryTime: "",
@@ -73,6 +80,7 @@ function App() {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getProduct());
+    dispatch(getDisplayInfo());
   }, [retry]);
 
 
@@ -100,12 +108,19 @@ function App() {
                   path="/"
                   element={
                     <>
-                      <HomePage setRetry={setRetry} retry={retry} />
+                      <HomePage />
                       <BuyerTrustServices />
+
                     </>
                   }
                 />
-                <Route path="/search" element={<SearchPage value={searchValue} />} />
+                <Route path="product/:id" element={<>
+                  <ProductDetailsPage setRetry={setRetry} retry={retry} />
+
+
+
+                </>} />
+                <Route path="/search" element={<FillterPage value={searchValue} />} />
                 <Route path="/shopping-cart" element={<ShoppingCart />} />
                 <Route path="contact-us" element={<ContactUs />} />
                 <Route path="about-us" element={<AboutUs />} />
@@ -137,7 +152,7 @@ function App() {
                 <Route path="dashboard-orders" element={<Orders />} />
                 <Route path="emails" element={<Email />} />
                 <Route path="customers" element={<Customers />} />
-                <Route path ="aliexpress-product-fetcher"  element={<AliExpressProductFetcher />} />
+                <Route path="aliexpress-product-fetcher" element={<AliExpressProductFetcher />} />
               </Route>
               <Route path="*" element={<PageNoteFound />} />
             </Routes>

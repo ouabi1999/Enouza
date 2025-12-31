@@ -21,22 +21,15 @@ function DisplayLogo({formData, setFormData}) {
   
       /// handel image change
       const handleImageChange = (e) => {
-        e.preventDefault();
-        if (e.target.files) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            if (reader.readyState === 2) {
-              setFormData({
-                ...formData,
-                logo:reader.result
-              })
-              
-            }
-          };
-          reader.readAsDataURL(e.target.files[0]);
-        }
-      };
-  
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  setFormData(prev => ({
+    ...prev,
+    logo: file,
+  }));
+};
+    
     
   return (
     <Container>

@@ -8,7 +8,7 @@ function SearchPage({value}) {
     <Container>
         <span>
             
-         {t("filters.search_did_not_match")}
+         {}
         </span>
         
         </Container>

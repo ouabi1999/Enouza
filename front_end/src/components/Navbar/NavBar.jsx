@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SideBar from "./SideBar";
 import { ClickAwayListener, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { setSearch } from "../../features/filterSlice";
 
 function NavBar({ outlet, setSearchValue, value }) {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -50,7 +51,7 @@ function NavBar({ outlet, setSearchValue, value }) {
   };
 
   const handleSearchInput = (e) => {
-    setSearchValue(e.target.value)
+    dispatch(setSearch(value))
     navigate("/search")
   }
 
@@ -64,7 +65,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="100" style={{
+              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="100" style={{
                 borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
               }} />
             </div>
@@ -88,7 +89,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <div className="search-bar">
               <input placeholder={t("common.search")} style={{
                 borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
-              }} value={value} onChange={(e) => setSearchValue(e.target.value)} maxlength="50" />
+              }} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="50" />
             </div>
 
             <div className="search-icon-container" style={{
@@ -227,7 +228,7 @@ const Container = styled.div`
   background: #141414;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 99;
 
   a {
     color: #000000;

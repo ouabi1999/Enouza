@@ -36,45 +36,35 @@ function DisplayHeader({formData, setFormData}) {
     });
     
   } 
-  const handelImageChange = (e) =>{
-    e.preventDefault();
-    if(e.target.files){
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setFormData({
-            ...formData,
-             header: {
-                  ...formData.header,
-                   banner:reader.result
-              
-                
-                  }
-          });
-          console.log(formData)
-        }
-      };
+  const handleImageChange = (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
 
-      reader.readAsDataURL(e.target.files[0])
+  setFormData(prev => ({
+    ...prev,
+    header: {
+      ...prev.header,
+      banner: file,
+    },
+  }));
+};
 
-    }
-      
 
-  }
     
   return (
 
     <Container>
       <div className="text-input-container">
-        <input value={formData.header.title}  onChange={handelChange} type="text" placeholder='header title' />
+        <input value={formData?.header?.title ||""}  onChange={handelChange} type="text" placeholder='header title' />
       </div>
 
       <div className='img-input-container'>
         <input
           accept="image/*"
           ref={RefInput}
+          value={formData?.header?.banner || ""}
           type="file"
-          onChange={handelImageChange}
+          onChange={handleImageChange}
           style={{ display: "none" }}
           
         />
@@ -87,9 +77,9 @@ function DisplayHeader({formData, setFormData}) {
       </div>
     
           <div className="banner-preview">
-          {formData.header.banner !== "" && (
+          {formData.header?.banner !== "" && (
           <>
-            <img src={formData.header.banner} />
+            <img src={formData?.header?.banner} alt='banner'/>
             <CancelIcon className="delete-icon"  onClick = {remove_banner}/>
           </>
             )} 

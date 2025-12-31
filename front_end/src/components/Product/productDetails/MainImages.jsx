@@ -4,51 +4,53 @@ import { AnimatePresence } from "motion/react"
 import * as motion from "motion/react-client"
 
 function MainImages(props) {
-    const {colorIndex, productData , picsDetailsIndex, selectPicsDetails, isPicsDetailsActive , deselectPicsDetails, isColorActive } = props; 
-  
+
+  const { colorIndex, currentSku,
+ productData, picsDetailsIndex, selectPicsDetails, isPicsDetailsActive,  isColorActive } = props;
   const images = productData?.multimediaInfo.image_urls.split(";").filter(Boolean)
+  const skuInfo = productData?.skuInfo
 
   return (
     <Container>
-    <ImageDetailsContainer>
-      {images?.map((img, index) => {
-        return (
+      <ImageDetailsContainer>
+        {images?.map((img, index) => {
+          return (
             <img
-              onMouseOver={()=> selectPicsDetails(index)}
+              onMouseOver={() => selectPicsDetails(index)}
               key={index}
               src={img}
               alt={productData?.name}
-              id = {picsDetailsIndex === index && isPicsDetailsActive  && "activate"}
+              id={picsDetailsIndex === index && isPicsDetailsActive ? "activate":  undefined}
             />
-        );
-      })}
-    </ImageDetailsContainer>
-    <ProductImg>
-    <AnimatePresence mode="wait">
+          );
+        })}
+      </ImageDetailsContainer>
+      <ProductImg>
+        <AnimatePresence mode="wait">
 
-    <motion.div
-    initial={{ y: 10, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -10, opacity: 0 }}
-    transition={{ duration: 0.2 }}
-    >
-    
-     
-        <img  
-        src={isColorActive ? images[colorIndex]
-          : 
-          isPicsDetailsActive? images[colorIndex][picsDetailsIndex]
-          : 
-          images[0]
-        }  alt=''
-           />
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
 
- 
-</motion.div>
-</AnimatePresence>
-    </ProductImg>
 
-  </Container>
+            <img
+              src={isColorActive ? currentSku?.attributes[currentSku.colorKey].image
+                :
+                isPicsDetailsActive ? images[picsDetailsIndex]
+                  :
+                  ""
+              } alt=''
+            />
+
+
+          </motion.div>
+        </AnimatePresence>
+      </ProductImg>
+
+    </Container>
   )
 }
 

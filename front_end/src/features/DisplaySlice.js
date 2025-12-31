@@ -1,35 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-export const getDisplayInfo = createAsyncThunk("displayInfo/getDisplayInfo", () => {
-    return fetch("/displayInfo")
-    .then((response) => {
-    if (!response.ok){
-  
-      throw Error(response.statusText);
+import ApiInstance from '../../common/baseUrl';
+// Redux thunk with proper error handling
+export const getDisplayInfo = createAsyncThunk(
+    "displayInfo/getDisplayInfo",
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await ApiInstance.get("/displayInfo");
+            // Django returns data directly, no need for response.data.data
+            return response.data;
+        } catch (error) {
+            // Handle error properly
+            console.error("Error fetching display info:", error);
+            
+            // Return error to Redux state
+            return rejectWithValue({
+                message: error.response?.data?.error || "Failed to fetch display info",
+                status: error.response?.status,
+            });
+        }
     }
-     return response.json();
-    })
-    .then((data) => data);
-    });
+);
 
     export const getDisplayInfoSlice = createSlice({
         name:"display",
         initialState:{
-            display: {
-                id: null,
-                logo: "",
-                header: {
-
-                    title: "",
-                    banner: "",
-
-                },
-                main_category: [],
-                category: [],
-                banners: [],
-                slider: [],
-                pop_up: [],
-                count_Down: false,
-            },
+            displayData: {},
+                
             isLoaded : false,
             hasError : false
             
@@ -51,11 +47,11 @@ export const getDisplayInfo = createAsyncThunk("displayInfo/getDisplayInfo", () 
                 state.hasError = action.error.message;
           })
           .addCase(getDisplayInfo.fulfilled, (state, action) => {
-             
-            if(payload !== null){
-                state.display = payload;
+
+            if(action.payload !== null){
+                state.displayData = action.payload[0];
             }
-         state.isLoaded = false;
+               state.isLoaded = false;
           });
           
         }
