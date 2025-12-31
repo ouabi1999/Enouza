@@ -7,7 +7,7 @@ import { CircularProgress } from '@mui/material'
 import Products from '../components/Product/home/Products'
 import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
-import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsX'
+import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
 
 function HomePage() {
   const dispatch = useDispatch()
