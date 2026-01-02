@@ -197,7 +197,7 @@ const ParentContainer = styled.div`
     }
     .search-icon-container {
       height: 100%;
-      background: #f37421;
+      background: #a00991ff;
       display: flex;
       align-items: center;
     }
@@ -353,7 +353,7 @@ const SearchContainer = styled.div`
   }
   .search-icon-container {
     height: 100%;
-    background: #f37421;
+    background: #a00991ff;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;

@@ -65,13 +65,13 @@ function SideBar(props) {
             country={props.country}
           />
         </div>
-        <h4>{t("policies.title")}</h4>
+        <h4>{t("footer.policies.title")}:</h4>
         <Wrapper>
           <Wrapp>
-            <Link onClick={props.hideSideBarMenu} to="terms-of-services">{t("policies.termsOfService.title")}</Link>
-            <Link onClick={props.hideSideBarMenu} to="about-us"> {t("policies.aboutUs.title")} </Link>
+            <Link onClick={props.hideSideBarMenu} to="terms-of-services">{t("footer.policies.termsOfService")}</Link>
+            <Link onClick={props.hideSideBarMenu} to="about-us"> {t("footer.help.aboutUs")} </Link>
             <Link onClick={props.hideSideBarMenu} to="contact-us"> {t("footer.help.contactUs")} </Link>
-            <Link onClick={props.hideSideBarMenu} to="privacy-policy"> {t("policies.privacyPolicy.title")} </Link>
+            <Link onClick={props.hideSideBarMenu} to="privacy-policy"> {t("footer.policies.privacyPolicy")} </Link>
           </Wrapp>
         </Wrapper>
         <h4>{t("footer.followUs.title")}</h4>
@@ -118,16 +118,17 @@ export default SideBar;
 
 const Container = styled.div`
   position: fixed;
-  z-index: 40;
+  z-index: 400;
   top: 0;
   right: 0;
-  padding: 2px 5px;
+  padding: 2px 15px;
   width: 300px;
-  background: #d9d9d9;
+  background: #ebdadaff;
   height: 100%;
   transition: ease-in-out;
   animation-duration: 1s;
   animation-name: hideShowMenu;
+  
 
   @keyframes hideShowMenu {
     from {
@@ -147,34 +148,29 @@ const Container = styled.div`
     align-items: center;
   }
   .user span {
-    margin-right: 10px;
     font-size: 13px;
     white-space: nowrap;
   }
-  h4,
-  .lang {
-    margin-left: 15px;
-  }
+  
 `;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1.2ch;
   width: 100%;
-  align-items: center;
-
+  
   a {
     color: #000;
     font-size: 13px;
-    margin-right: 8px;
     margin-bottom: 15px;
   }
 `;
 const SocialMedia = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
   .social-icon {
-    color: orange;
+    color: #a00991ff;
   }
 `;
 const Wrapp = styled.div`
@@ -182,7 +178,6 @@ const Wrapp = styled.div`
   flex-direction: column;
 `;
 const User_container = styled.div`
-  margin-right: 6px;
   margin-top: 10px;
   margin-bottom: 10px;
 

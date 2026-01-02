@@ -11,6 +11,7 @@ import { toggleCategory, setSort, resetFilters } from "../features/filterSlice";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import { Grid2 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 
 export default function FilterPageStyled() {
@@ -22,7 +23,7 @@ export default function FilterPageStyled() {
   const sort = useSelector(state => state.filter.sort);
   const categories = useSelector(state => state.filter.categories);
   const search = useSelector(state => state.filter.search);
-
+  const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
 
   const fetchProducts = () => {
@@ -55,7 +56,7 @@ export default function FilterPageStyled() {
       <Page>
         <Filters initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <div>
-            <Title>Category</Title>
+            <Title>{t("common.category")}</Title>
             {categoryList.map(cat => (
               <CheckboxRow key={cat.value}>
                 <input
@@ -69,31 +70,35 @@ export default function FilterPageStyled() {
           </div>
 
           <Button onClick={() => dispatch(resetFilters())}>
-            Reset filters
+            {t("common.reset")}
           </Button>
         </Filters>
 
         
           <SortWrapper>
-            <span>Sort by:</span>
+            <span>{t("common.sortBy")}</span>
             <SortBarContainer>
-              <button
+              <button style={{
+                borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" :   "4px 0 0 4px"
+              }} 
                 onClick={() => dispatch(setSort("best_match"))}
                 className={sort === "best_match" ? "active" : ""}
               >
-                Best Match
+                {t("common.bestMatch")}
               </button>
               <button
                 onClick={() => dispatch(setSort("orders"))}
                 className={sort === "orders" ? "active" : ""}
               >
-                Orders
+                {t("common.orders")}
               </button>
-              <button
+              <button style={{
+                borderRadius: i18n.dir() === "rtl" ? "4px 0 0 4px" :  "0 4px 4px 0"
+              }} 
                 onClick={() => dispatch(setSort(sort === "price_asc" ? "price_desc" : "price_asc"))}
                 className={sort === "price_asc" || sort === "price_desc" ? "active" : ""}
               >
-                Price <span>⇅</span>
+                {t("common.price")} <span>⇅</span>
               </button>
             </SortBarContainer>
           </SortWrapper>
@@ -148,7 +153,7 @@ export const SortWrapper = styled.div`
   font-size: 0.9rem;
   color: #6b7280;
   padding: 1rem 0;
-  margin-right: 2rem;
+  margin: 0 2rem;
 `;
 
 export const SortBarContainer = styled.div`
@@ -165,17 +170,9 @@ export const SortBarContainer = styled.div`
     white-space: nowrap;
   }
 
-  button:not(:first-child) {
-    border-left: none;
-  }
+ 
 
-  button:first-child {
-    border-radius: 4px 0 0 4px;
-  }
-
-  button:last-child {
-    border-radius: 0 4px 4px 0;
-  }
+  
 
   button:hover {
     color: #111;

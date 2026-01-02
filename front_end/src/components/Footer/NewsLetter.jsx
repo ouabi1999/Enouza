@@ -3,7 +3,6 @@ import styled  from "styled-components"
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { CircularProgress } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
-import { Grid, TextField, Button, IconButton, InputAdornment } from '@mui/material';
 import { useFormik } from 'formik';
 import * as Yup from "yup"
 import ApiInstance from "../../../common/baseUrl"
@@ -21,6 +20,7 @@ function NewsLetter(){
     
      
     const handleSubscribe = (values)=>{
+        
       
         setIsLoading(true)
         ApiInstance.post("subscribe-newsletter/", 
@@ -89,6 +89,7 @@ function NewsLetter(){
                             id="email"
                             name="email"
                             type="email"
+                            
                             placeholder={t("footer.newsletter.placeholder")}
                             onChange={formik.handleChange}
                             value={formik.values.email}
@@ -190,8 +191,8 @@ const Wrapp = styled.div`
         background-color:rgb(0, 26, 51);
         color:#fff;
         border:1px solid lightgray;
-        border-left:none;
         display:flex;
+        
         align-items:center;
         padding: 0 6px;
       

@@ -13,10 +13,10 @@ function AboutProductLayout() {
    
   return (
     <Container>
-      <div className="buttons-container">
+      <div className="buttons-container" style={{position:"sticky", top:"60px", backgroundColor:"#ffff", padding:"20px 0", }}>
         <button onClick={() => setIsOpen(1)} id={isOpen == 1 ? "selected" : undefined}>
           
-          {t("productInfo.reviews")}
+          {t("productInfo.CostumerReviews")}
         </button>
         {/*
         <button onClick={() => setIsOpen(2)} id={isOpen == 2 && "selected"}>
@@ -44,10 +44,13 @@ function AboutProductLayout() {
 
 export default AboutProductLayout
 const Container = styled.div`
+   width:90%;
+   padding:0 10px;
   #selected {
     border-bottom: 2px solid green;
     animation-name: border-movement;
     animation-duration: 0.1s;
+    
   }
   @keyframes border-movement {
     0% {
@@ -74,11 +77,12 @@ const Container = styled.div`
   .buttons-container button {
     border: none;
     background: none;
-    font-size: 1rem;
-    font-weight: 550;
+    font-size: 0.9rem;
+    font-weight: 500;
     white-space:nowrap;
     margin-bottom:2px;
     cursor: pointer;
+    padding:4px 0;
   }
   .buttons-container button:hover {
      color:gray;

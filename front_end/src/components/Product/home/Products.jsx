@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Products({ products, scrollTo, columsNumber, placeItems}) {
+  const {t}  = useTranslation();
   return (
-    <ProductContainer columsNumber={columsNumber} placeItems={placeItems}>
+    <ProductContainer colums_number={columsNumber} place_items={placeItems}>
       <div className="grid-container">
         {products?.map((item) => {
           const mainSku = item.skuInfo?.[0];
@@ -28,25 +30,29 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
                 </FirstSection>
 
                 <SecondSection>
-                  <div className="orders">Orders({ordersCount})</div>
+                  <div className="orders">{t("common.orders")}({ordersCount})</div>
 
                   {avgRating && (
                     <div className="reviews-container">
+                      <span>
                       <StarIcon className="star-icon" />
-                      <div className="reviews">{avgRating}</div>
+                      </span>
+                      <span className="reviews">{avgRating}</span>
                     </div>
                   )}
                 </SecondSection>
 
                 <ThirdSection>
-                  <span className="product-price">US ${mainSku?.sellingPrice}</span>
+                  <span className="product-price">${mainSku?.sellingPrice}
+        
+                  </span>
                 </ThirdSection>
 
                 {item.available_shipping?.map(
                   (ship, index) =>
                     ship.type === 'Free' && (
                       <span key={index} className="shipping">
-                        Free Shipping
+                        {t("common.free_shipping")}
                       </span>
                     )
                 )}
@@ -73,14 +79,13 @@ const ProductContainer = styled.div`
   .grid-container {
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(${(props) => props.columsNumber}, auto);
+    grid-template-columns: repeat(${(props) => props.colums_number}, auto);
     gap: 20px;
-    place-items: ${(props) => props.placeItems || 'center'} ;
+    place-items: ${(props) => props.place_items || 'center'} ;
 
     img {
       width: 100%;
       height: 100%;
-      border-radius: 6px 6px 0 0;
       object-fit: cover;
       background-color: #fff;
     }
@@ -89,10 +94,8 @@ const ProductContainer = styled.div`
   .product-container {
     padding-bottom: 12px;
     background-color: #fafafa;
-    border-radius: 8px;
     width: 100%;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+   
   }
 
   @media (max-width: 1200px) {
@@ -169,21 +172,19 @@ const SecondSection = styled.div`
 
   .reviews-container {
     display: flex;
-    align-items: center;
+    
     justify-content: center;
-    margin-right: 8px;
+    margin:0 8px;
   }
 
   .reviews {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .star-icon {
-    color: #1f1f2e;
-    font-size: 14px;
-    margin-top: 2.5px;
-    margin-right: 2px;
-    background: orange;
+    color: #ffae00ff;
+    font-size: 16px;
+    margin: 0 2px;
   }
 `;
 
@@ -196,8 +197,7 @@ const ThirdSection = styled.div`
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 2px;
-    margin-right: 30px;
+    
     white-space: nowrap;  
     padding: 0 5px;
 

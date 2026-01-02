@@ -36,7 +36,8 @@
     "money_Back": "ضمان استرجاع المال",
     "secure_Payment": "دفع آمن",
     "easy_Returns": "إرجاع سهل",
-    "safe_reliable_payments": "دفع موثوق"
+    "safe_reliable_payments": "دفع موثوق",
+    "More_to_love":"المزيد مما تحب"
   },
   "productPage": {
     "addToCart": "أضف للسلة",
@@ -140,6 +141,7 @@
     "description": "الوصف",
     "specifications": "المواصفات",
     "reviews": "التقييمات",
+    "CostumerReviews": "تقييمات العملاء",
     "noReviews": "لا توجد تقييمات بعد",
     "writeReview": "اكتب تقييم",
     "submitReview": "إرسال التقييم",
@@ -187,7 +189,7 @@
     },
     "worldwide_shipping": {
       "title": "شحن عالمي",
-      "description": "نقدم الشحن إلى أكثر من 100 دولة حول العالم."
+      "description": "توصيل سريع وموثوق إلى باب منزلك، في أي مكان في العالم."
     },
     "help_center": {
       "title": "مركز المساعدة",
@@ -281,7 +283,10 @@
     "view": "عرض",
     "search": "بحث",
     "filter": "تصفية",
-    "sortBy": "ترتيب",
+    "sortBy": "ترتيب حسب:",
+    "resetFilters": "إعادة تعيين الفلاتر",
+    "category": "التصنيف",
+    "bestMatch": "الأفضل تطابقاً",
     "priceLowToHigh": "السعر: من الأقل للأعلى",
     "priceHighToLow": "السعر: من الأعلى للأقل",
     "newestFirst": "الأحدث أولاً",
@@ -404,6 +409,7 @@
     "viewAll": "عرض الكل",
     "noNewNotifications": "! لا إشعارات جديدة",
     "new": "جديد",
+    "view_more": "عرض المزيد",
     "read": "مقروء",
     "unread": "غير مقروء",
     "profile": "الملف الشخصي",
@@ -443,6 +449,7 @@
     "new_password": "كلمة المرور الجديدة",
     "old_password": "كلمة المرور القديمة",
     "confirm_password": "تأكيد كلمة المرور",
+    "free_shipping": "الشحن المجاني",
     
     "select_country": "اختر الدولة",
     "text": "نص",

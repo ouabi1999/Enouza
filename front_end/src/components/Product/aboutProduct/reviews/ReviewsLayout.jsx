@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 
 function ReviewsLayout() {
-  const productData = useSelector(state => state.products.productData)
+  const productData = useSelector(state => state.product.productData)
   const user = useSelector(state=> state.auth.user)
   const [comment, setComment] = useState({ images:[], text:""})
   const [isLoading, setIsLoading] = useState(false)
@@ -23,7 +23,7 @@ function ReviewsLayout() {
 
   const [star_rating, set_star_rating] = useState(1);
 
-  let ratings = productData[1]?.ratings?.concat(productData[1]?.aliexpress_ratings);
+  let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
 
     const fiveStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 5).reduce((total, value) => {
       return total += value.stars
@@ -56,7 +56,7 @@ function ReviewsLayout() {
         ApiInstance.post("set-rating/", 
             
             {
-                product: productData[1].id,
+                product: productData.id,
                 user: user.id,
                 stars: star_rating,
                 review: comment,

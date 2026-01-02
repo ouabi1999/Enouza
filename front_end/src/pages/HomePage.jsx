@@ -8,6 +8,7 @@ import Products from '../components/Product/home/Products'
 import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
 import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
+import { useTranslation } from 'react-i18next'
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -18,7 +19,8 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [totalProducts, setTotalProducts] = useState(0)
   const [homeProducts, setHomeProducts] = useState([]);
-
+  const { t, i18n } = useTranslation();
+  
   const scrolTo = useRef()
   // show more products
 
@@ -67,7 +69,7 @@ function HomePage() {
       <UserServices />
       <AdvertiseMain />
       <div className="product-header">
-        <strong>More to love</strong>
+        <strong> {t("homePage.More_to_love")}</strong>
       </div>
 
 
@@ -91,7 +93,7 @@ function HomePage() {
           <button onClick={viewMore}
             className=""
             style={nextStart >= totalProducts ? { opacity: "0.5", cursor: "not-allowed" } : {}}
-            disabled={nextStart >= totalProducts ? true : false}> view more</button>
+            disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
 
@@ -135,10 +137,8 @@ const Container = styled.div`
     align-items: center;
     border-radius: 8px;
     margin:auto;
-    background: #fc4a1a;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: #000000; 
+    
     color:white;
     font-weight: bold;
     margin-bottom: 8px;

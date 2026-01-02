@@ -162,10 +162,8 @@ function Ratings(props) {
 export default Ratings
 
 const Container = styled.div`
-  width:90%;
-  margin:auto;
   padding:10px;
-  border-bottom: 1px solid lightgray;
+  width:90%;
 
   .user-name {
     font-size: 15px;
@@ -202,7 +200,7 @@ const Container = styled.div`
 
   .border-linear-container,
   .sum-ratings {
-      background: #ececec;
+      background: #f1f1f1ff;
 
     border-radius: 8px;
     padding: 5px 15px;

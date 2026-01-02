@@ -115,7 +115,7 @@ function SideCart(props) {
         </div>
         <div className="shipping">
           <div className="center-align" >
-            <LocalShippingOutlinedIcon className="Shipping-icon" />
+            <LocalShippingOutlinedIcon className="shipping-icon" />
             {productData?.available_shipping?.length > 0 ? (
               <span className="header"> {Number(productData?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData?.available_shipping[shippingMethodIndex]?.methodName}</span>
             ) :
@@ -130,7 +130,7 @@ function SideCart(props) {
 
 
         <div className="delivrey-time center-align">
-          <DeliveryDiningIcon className="Shipping-icon" />
+          <DeliveryDiningIcon className="shipping-icon" />
           <span className="header"> {t("sideCard.Delivrey")} :</span>
           {productData?.available_shipping?.length > 0 ? (
             <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
@@ -147,9 +147,9 @@ function SideCart(props) {
           <span className="header">{t("sideCard.Security_&_Privacy.header")}</span>
         </div>
         <div className="security-privacy-text">
-          <span>
+          <p style={{marginRight:"10px"}}>
             {t("sideCard.Security_&_Privacy.text")}
-          </span>
+          </p>
         </div>
 
         <div className="center-align">
@@ -240,9 +240,11 @@ const Container = styled.div`
   }
 
   .location-icon,
+  .shipping-icon,
+  
   .security-icon {
     font-size: 16px;
-    color: #4d4c4c;
+    color: #3bc74eff;
     margin-right: 3px;
   }
 

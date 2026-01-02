@@ -4,15 +4,17 @@ import { useSelector } from 'react-redux'
 import styled from "styled-components"
 
 function Description() {
-  const productData = useSelector(state => state.products.productData)
-  const { i18n } = useTranslation()
+  const productData = useSelector(state => state.product.productData)
+  const { i18n, t } = useTranslation()
+  const language = productData?.description[i18n.language]
   return (
     <Container>
+          <h2>{t("productInfo.description")}</h2>
 
-<div>
+    <div>
       <div
-        dangerouslySetInnerHTML={{ __html: productData[0]?.description[i18n.language || 'en']  }}
-        style={{ border: '1px solid #ddd', padding: '10px' }}
+        dangerouslySetInnerHTML={{ __html: language? language: productData?.description["en"] }}
+        style={{  padding: '10px' }}
       />
     </div>
 
@@ -25,7 +27,7 @@ export default Description
 const Container = styled.div`
   font-size:0.8rem;
   img{
-    width:99%;
+    width:85%;
   }
   ul,
 li {

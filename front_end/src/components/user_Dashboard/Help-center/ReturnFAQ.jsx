@@ -118,7 +118,6 @@ export const Container = styled.div`
   }
 
   .content {
-    border-bottom: 1px solid lightgray;
     padding: 15px 0;
     background: #fff;
     margin-bottom: 8px;

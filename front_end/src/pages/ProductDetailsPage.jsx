@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import NavBar from "../components/Navbar/NavBar";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
 import UserServices from "../components/Services/UserServices";
@@ -9,7 +8,7 @@ import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShopp
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, buyNowItem } from "../features/cartSlice";
 import { v4 as uuidv4 } from "uuid";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -258,6 +257,7 @@ const PrentContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom:50px;
 `;
 
 const Container = styled.div`

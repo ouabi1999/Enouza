@@ -1,35 +1,31 @@
 export const categoryList = [
   {
-    "id": 1,
-    "label": "Windproof Lighters",
-    "value": "windproof lighters"
+    id: 1,
+    label: "LED & Ambient Lighting",
+    value: "led-ambient-lighting",
   },
   {
-    "id": 2,
-    "label": "Torch / Jet Flame Lighters",
-    "value": "torch jet lighters"
+    id: 2,
+    label: "Phone Mounts & Holders",
+    value: "phone-mounts-holders",
   },
   {
-    "id": 3,
-    "label": "Electric / Plasma Lighters",
-    "value": "electric plasma lighters"
+    id: 3,
+    label: "Organizers & Storage",
+    value: "organizers-storage",
   },
   {
-    "id": 4,
-    "label": "Refillable Lighters",
-    "value": "refillable lighters"
+    id: 4,
+    label: "Comfort & Accessories",
+    value: "comfort-accessories",
   },
   {
-    "id": 5,
-    "label": "Vintage & Classic Lighters",
-    "value": "vintage classic lighters"
+    id: 5,
+    label: "Air Fresheners & Scents",
+    value: "air-fresheners-scents",
   },
-  {
-    "id": 6,
-    "label": "Luxury & Gift Lighters",
-    "value": "luxury gift lighters"
-  }
-]
+];
+
   
   export const series = [
     "Naruto",

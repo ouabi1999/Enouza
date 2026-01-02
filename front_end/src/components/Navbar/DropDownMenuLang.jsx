@@ -34,12 +34,13 @@ function DropDownMenuLang(props) {
     console.log(props)
   }, []);
 
-
+ 
   const switchLanguage = (e) => {
    
-    setSelectedLang(e.target.value);
-    window.localStorage.setItem("selectedLang", e.target.value)
-    i18n.changeLanguage(e.target.value);
+    
+    window.localStorage.setItem("selectedLang", selectedLang);
+    i18n.changeLanguage(selectedLang);
+    window.location.reload()
   };
 
   return (
@@ -81,7 +82,7 @@ function DropDownMenuLang(props) {
             </div>
             <div>
               <label> {t("sideCard.Language")} </label>
-              <select onChange={ switchLanguage} value={i18n.language}>
+              <select onChange={ (e)=> setSelectedLang(e.target.value)} value={i18n.language}>
 
                 {languages.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>
@@ -96,7 +97,7 @@ function DropDownMenuLang(props) {
               </select>
             </div>
             <div className="save-button">
-              <button onClick={() => props.setIsLangMenuOpen(!props.isLangMenuOpen)} type="button">
+              <button onClick={switchLanguage} type="button">
                 {t('common.save')}
               </button>
             </div>

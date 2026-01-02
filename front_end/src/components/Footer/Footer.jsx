@@ -110,7 +110,7 @@ const Footer = () => {
         }}
       >
         <div className="payment-methods-image">
-          <img src="./payment-methods.png" alt="secure payment" />
+          <img src="../payment-methods.png" alt="secure payment" />
         </div>
         <div className="CopyRight">
           <span>{t("footer.newsletter.all_rights_reserved")} </span>

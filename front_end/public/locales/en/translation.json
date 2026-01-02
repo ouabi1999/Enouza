@@ -36,7 +36,8 @@
     "money_Back": "Money Back",
     "secure_Payment": "Secure Pay",
     "easy_Returns": "Easy Returns",
-    "safe_reliable_payments": "Safe Payments"
+    "safe_reliable_payments": "Safe Payments",
+    "More_to_love": "More to Love"
   },
   "productPage": {
     "addToCart": "Add to Cart",
@@ -136,6 +137,7 @@
     "description": "Description",
     "specifications": "Specifications",
     "reviews": "Reviews",
+    "CostumerReviews": "Customer Reviews",
     "noReviews": "No reviews yet",
     "writeReview": "Write a Review",
     "submitReview": "Submit Review",
@@ -284,9 +286,14 @@
     "delete": "Delete",
     "update": "Update",
     "view": "View",
+    "free_shipping": "Free Shipping",
     "search": "Search",
     "filter": "Filter",
-    "sortBy": "Sort",
+    "sortBy": "Sort by:",
+    "view_more": "View More",
+    "bestMatch": "Best Match",
+    "resetFilters": "Reset Filters",
+    "category": "Category",
     "priceLowToHigh": "Price: Low to High",
     "priceHighToLow": "Price: High to Low",
     "newestFirst": "Newest",

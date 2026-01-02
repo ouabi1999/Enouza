@@ -45,45 +45,35 @@ const MainSlider = () => {
           {displayData?.slider?.[0] && (
        
              <SwiperSlide>
-              <Link to={`/super_deals/${uuidv4()}`} onClick ={()=> handleSelect(0)}>
                   <img src={displayData?.slider[0]} alt="slider" />
-               </Link>
             </SwiperSlide>
               
             )}
              {displayData?.slider?.[1] && (
        
        <SwiperSlide>
-        <Link to={`/super_deals/${uuidv4()}`} onClick ={()=> handleSelect(1)}>
             <img src={displayData?.slider[1]} alt="slider" />
-         </Link>
       </SwiperSlide>
         
       )}
        {displayData?.slider?.[2] && (
        
        <SwiperSlide>
-        <Link to={`/super_deals/${uuidv4()}`} onClick ={()=> handleSelect(2)}>
             <img src={displayData?.slider[2]} alt="slider" />
-         </Link>
       </SwiperSlide>
         
       )}
         {displayData?.slider?.[3] && (
        
        <SwiperSlide>
-        <Link to={`/super_deals/${uuidv4()}`} onClick ={()=> handleSelect(3)}>
             <img src={displayData?.slider[4]} alt="slider" />
-         </Link>
       </SwiperSlide>
         
       )}   
        {displayData?.slider?.[4] && (
        
        <SwiperSlide>
-        <Link to={`/super_deals/${uuidv4()}`} onClick ={()=> handleSelect(4)}>
             <img src={displayData?.slider[4]} alt="slider" />
-         </Link>
       </SwiperSlide>
         
       )}
@@ -145,6 +135,13 @@ const Container = styled.div`
    
 }
 
+@media only screen and (max-width:420px){
+      &{
+        height:100%;
+        width:100%;
+        min-width:290px;
+      }
+      
 
 
 

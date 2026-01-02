@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import Ratings from "./Ratings";
 import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import Flag from "react-world-flags";
-import ClearIcon from "@mui/icons-material/Clear";
-import { ClickAwayListener } from "@mui/base";
-import Feedback from "./FeedBack";
+import PersonIcon from '@mui/icons-material/Person';
 import ReviewImagePopup from "./ReviewImagePopup";
 function CustomerReviews(props) {
   const [selected, setSelected] = useState({ index: null, id: null });
@@ -28,6 +24,7 @@ function CustomerReviews(props) {
   const stars = Array(5).fill(0);
   return (
     <Container>
+      <h2>{t("productInfo.reviews")}</h2>
       <Ratings
         t = {t}
         i18n = {i18n}
@@ -47,9 +44,9 @@ function CustomerReviews(props) {
           return (
             <div  className="ratings-container">
               <div>
-                <AccountCircleOutlinedIcon className="person-icon" />
+                <PersonIcon className="person-icon" />
               </div>
-              <div>
+              <div className="ratings-info-container">
                 <div>
                   <div className="stars">
                     {stars.map((_, index) => {
@@ -65,9 +62,9 @@ function CustomerReviews(props) {
                     })}
                   </div>
                   <div>
-                    <span style={{ marginLeft: "4px" , fontSize:"16px"}}> {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)}</span>
+                    <span style={{ marginLeft: "4px" ,color:"gray", fontSize:"16px"}}> {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)}</span>
                   </div>
-                  <div style={{ marginLeft: "4px" , fontSize:"14px"}}>
+                  <div className="review-text">
                     <p>{rate.review.text}</p>
                   </div>
                   <div className="img-container">
@@ -94,6 +91,7 @@ function CustomerReviews(props) {
                       fontSize: "13px",
                       display: "flex",
                       justifyContent: "flex-end",
+                      
                     }}
                   >
                     {rate.created_at}
@@ -183,18 +181,28 @@ const Container = styled.div`
 const ChildContainer = styled.div`
     display: grid;
     grid-template-columns: auto;
+    
     gap: 10px;
     margin-top: 15px;
 
 
   .ratings-container{
-    border: 1px solid lightgray;
     padding: 10px;
-    border-radius: 8px;
     display:flex;
   }
   
-    
+  .ratings-info-container{
+     border-bottom:1px solid lightgray;
+     width:100%;
+  }
+
+   .review-text p{
+      width:80%;
+  }
+  .review-text p{
+      margin-left: 4px ;
+      font-size: 14px;
+  }
   
 
   @media (max-width: 690px) {
@@ -205,17 +213,4 @@ const ChildContainer = styled.div`
   }
 
 `
-const PupUpSelectedImage = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 90%;
-    width: 90%;
-    margin: auto;
-    background-color: rgba(200, 255, 255);
-    
-      @media (max-width: 690px) {
-    
-  }
 
-`;
