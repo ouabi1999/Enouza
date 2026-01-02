@@ -3,7 +3,7 @@ import ApiInstance from "../../../../common/baseUrl"; // your existing Axios ins
 import styled from "styled-components";
 
 const APP_KEY = import.meta.env.VITE_API_ALIEXPRESS_APPKEY;
-const REDIRECT_URI = "https://enouza.com/admin-dashboard/aliexpress-product-fetcher";
+const REDIRECT_URI = meta.env.VITE_ALIEXPRESS_REDERECT_URL;
 
 export default function AliExpressAuth() {
   const [loading, setLoading] = useState(false);
