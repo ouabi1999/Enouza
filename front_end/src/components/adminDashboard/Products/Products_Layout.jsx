@@ -58,7 +58,7 @@ export default function ProductsLayout(){
     
     const deleteProduct =  (id)=>{
        
-        ApiInstance.delete(`product-details/${id}/`).then(response => {
+        ApiInstance.delete(`product/${id}/`).then(response => {
             setProducts(products.filter((x) => x.id !== id))
             return response.json()
          }
