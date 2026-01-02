@@ -15,7 +15,7 @@ export default function AliExpressProductFetcher() {
     setError(null);
 
     ApiInstance.get(
-      `http://localhost:8000/api/aliexpress/product/${productId}`,
+      `aliexpress/product/${productId}`,
       {
         params: {
           aliexpress_access_token: localStorage.getItem("aliexpress_access_token"),
