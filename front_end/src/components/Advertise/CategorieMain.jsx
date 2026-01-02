@@ -16,10 +16,7 @@ function CategorieMain() {
     dispatch(toggleCategory(itemCategory))
       
   }
-  useEffect(() => {
-    console.log(displayData.main_category);
   
-  }, [displayData])
   
   return (
     <Container data ={displayData?.main_category}>
