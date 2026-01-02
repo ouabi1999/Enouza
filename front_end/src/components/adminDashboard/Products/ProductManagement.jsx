@@ -144,7 +144,7 @@ function ProductManagement(props) {
 
     // Append all data from formData to FormData
     setLoading(true);
-    isAddProductOn && ApiInstance.post("product/", data)
+    isAddProductOn && ApiInstance.post("product-api/", data)
 
       .then((response) => {
         setLoading(false);
