@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function Products({ products, scrollTo, columsNumber, placeItems}) {
-  const {t}  = useTranslation();
+  const {t, i18n}  = useTranslation();
   return (
     <ProductContainer colums_number={columsNumber} place_items={placeItems}>
       <div className="grid-container">
@@ -26,7 +26,7 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
 
               <ProductInfo>
                 <FirstSection>
-                  <p className="product-title">{item.name?.en}</p>
+                  <p className="product-title">{item.name[i18n.language]?item.name[i18n.language]: item.name["en"]}</p>
                 </FirstSection>
 
                 <SecondSection>
