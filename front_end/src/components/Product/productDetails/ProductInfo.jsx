@@ -70,7 +70,7 @@ function ProductInfo({ productData,
       {/* Price */}
       <div className="prices-container">
         <div className="product-price">
-          <span>€{currentSku?.cost || productData?.price}</span>
+          <span>€{currentSku?.sellingPrice || productData?.price}</span>
         </div>
         <div className="product-discount">
           <span>€ {currentSku?.comparePrice || productData?.discount}</span>
@@ -78,7 +78,7 @@ function ProductInfo({ productData,
         <div className="product-discount-percent">
           <span>
             {((
-              (currentSku?.comparePrice - currentSku?.cost) /
+              (currentSku?.comparePrice - currentSku?.sellingPrice) /
               currentSku?.comparePrice) *
               100
             ).toFixed(0)}
