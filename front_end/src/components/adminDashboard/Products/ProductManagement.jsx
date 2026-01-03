@@ -15,6 +15,10 @@ import { useSelector } from "react-redux";
 
 function ProductManagement(props) {
   const productData = useSelector((state) => state.aliExpressProduct.product);
+  const [sellingMarkUp, setSellingMarkUp] = useState(0.60)
+  const [compareMarkUp, setCompareMarkUp] = useState(0.80)
+  const { close_Modal, isEditProductOn, EditProduct, isAddProductOn } = props;
+
    const [formData, setFormData] = useState({
   product_id: "",
   name: { en:"", fr:"", es:"", ar:"" },
@@ -55,9 +59,9 @@ function ProductManagement(props) {
         cost: sku.offer_sale_price || 0,
         attributes,
         colorKey,
-        sellingPrice: "",
+        sellingPrice: (sku.offer_sale_price*(1 + sellingMarkUp)).toFixed(2) || 0,
         profitPrice: "",
-        comparePrice: "",
+        comparePrice: ((sku.offer_sale_price*(1 + sellingMarkUp))  * (1 + compareMarkUp)).toFixed(2),
         sku_attr: sku.sku_attr || "",
         available_stock: sku.sku_available_stock || 0,
       };
@@ -73,6 +77,8 @@ function ProductManagement(props) {
       description: {
         ...prev.description,
         en: productData.ae_item_base_info_dto?.detail || "",
+        ar:productData.ae_item_base_info_dto?.detail || "",
+        es:productData.ae_item_base_info_dto?.detail || "",
       },
       skuInfo: sku_info_slice || [],
       multimediaInfo: productData.ae_multimedia_info_dto || [],
@@ -87,7 +93,6 @@ function ProductManagement(props) {
 
   const [loading, setLoading] = useState(false);
 
-  const { close_Modal, isEditProductOn, EditProduct, isAddProductOn } = props;
 
 
   useEffect(() => {
