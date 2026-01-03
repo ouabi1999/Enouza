@@ -138,13 +138,13 @@ function ProductInfo({ productData,
               }
 
               return image ? (
-                <div key={value} className={`attribute-item ${selectedAttributes[attrKey] === value ? "active" : ""}`} style={{ opacity: skuWithValue ? 1 : 0.4 }}>
-                  <img
-                    onClick={() => {
+                <div key={value} onClick={() => {
                       skuWithValue && selectAttribute(attrKey, value)
                       selectColor()
 
-                    }}
+                    }} className={`attribute-item ${selectedAttributes[attrKey] === value ? "active" : ""}`} style={{ opacity: skuWithValue ? 1 : 0.4 }}>
+                  <img
+                    
                     src={image}
                     alt={value}
                   />
@@ -250,7 +250,7 @@ const Container = styled.div`
   padding: 8px 10px;
   background: #fff;
   min-width: 60px;
-  transition: all 0.25s ease;
+  transition: all 0.2ms;
 }
 
 .attribute-item:hover {

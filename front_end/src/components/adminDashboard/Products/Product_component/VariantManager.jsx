@@ -1,51 +1,77 @@
-import React, { useState , useEffect, useRef} from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 
-export default function VariantManager({ formData, setFormData}) {
+export default function VariantManager({ formData, setFormData }) {
   const [variants, setVariants] = useState([]);
-  const ref = useRef()
- 
- 
+  const ref = useRef();
+  const [marginPrice, setMarginPrice] = useState(0.6);
+
   const addVariant = () => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      skuInfo: [...prev.skuInfo, {
-      color: '',
-      size: '',
-      image: "",
-      cost: 0,
-      sellingPrice: 0,
-      profitPrice: 0,
-      comparePrice: 0,
-      sku_attr: '',
-      shipping: ''
-    }]
-    }))
+      skuInfo: [
+        ...prev.skuInfo,
+        {
+          color: "",
+          size: "",
+          image: "",
+          cost: 0,
+          sellingPrice: 0,
+          profitPrice: 0,
+          comparePrice: 0,
+          sku_attr: "",
+          shipping: "",
+        },
+      ],
+    }));
   };
 
- const updateVariant = (id, keyName, value) => {
-  setFormData(prev =>({
+  const updateVariant = (id, keyName, value) => {
+    setFormData((prev) => ({
       ...prev,
-      skuInfo: prev.skuInfo.map(v => 
-        v.sku_attr === id ? {...v, [keyName]: value} : v
-      
-      )
+      skuInfo: prev.skuInfo.map((v) =>
+        v.sku_attr === id ? { ...v, [keyName]: value } : v
+      ),
+    }));
+  };
 
- }));
-};
-
+  const handleAttributeChange = (variantId, attrKey, value, image = null) => {
+    setFormData((prev) => ({
+      ...prev,
+      skuInfo: prev.skuInfo.map((v) => {
+        if (v.sku_attr === variantId) {
+          return {
+            ...v,
+            attributes: {
+              ...v.attributes,
+              [attrKey]: {
+                value,
+                image: image || v.attributes[attrKey]?.image || null,
+              },
+            },
+            // auto-update color and main image if this is color
+            color: attrKey.toLowerCase().includes("color") ? value : v.color,
+            image:
+              attrKey.toLowerCase().includes("color") && image
+                ? image
+                : v.image,
+          };
+        }
+        return v;
+      }),
+    }));
+  };
 
   const handleImageUpload = (id, files) => {
-    const urls = Array.from(files).map(f => URL.createObjectURL(f));
-    updateVariant(id, 'image', urls[0]);
-   
+    const urls = Array.from(files).map((f) => URL.createObjectURL(f));
+    updateVariant(id, "image", urls[0]);
   };
 
   const deleteVariant = (id) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      skuInfo: prev.skuInfo.filter(v => v.sku_attr !== id)
-    }))
+      skuInfo: prev.skuInfo.filter((v) => v.sku_attr !== id),
+    }));
   };
 
   return (
@@ -63,31 +89,100 @@ export default function VariantManager({ formData, setFormData}) {
             <TH>Cost</TH>
             <TH>Selling</TH>
             <TH>Compare</TH>
-            <TH>Shipping</TH>
             <TH>Profit</TH>
             <TH>Stock</TH>
             <TH>Delete</TH>
           </tr>
         </thead>
         <tbody>
-          {formData.skuInfo?.map((v, key)=> (
-            
+          {formData.skuInfo?.map((v, key) => (
             <tr key={key}>
               <TD>
-                <Input  id={`file-${v.sku_attr}`} style={{display:"none"}} type="file" multiple onChange={e => handleImageUpload(v.sku_attr, e.target.files)} />
-                <ImagePreviewContainer  onClick={() => document.getElementById(`file-${v.sku_attr}`).click()} >
-                  <ImagePreview alt="" src={v.image} />
+                <Input
+                  id={`file-${v.sku_attr}`}
+                  style={{ display: "none" }}
+                  type="file"
+                  multiple
+                  onChange={(e) =>
+                    handleImageUpload(v.sku_attr, e.target.files)
+                  }
+                />
+                <ImagePreviewContainer
+                  onClick={() =>
+                    document.getElementById(`file-${v.sku_attr}`).click()
+                  }
+                >
+                  <ImagePreview alt="" src={v.attributes[v.colorKey].image} />
                 </ImagePreviewContainer>
               </TD>
-              <TD><Input value={v.color} type='text' onChange={e => updateVariant(v.sku_attr, 'color', e.target.value)} /></TD>
-              <TD><Input value={v.size} type ="text" onChange={e => updateVariant(v.sku_attr, 'size', e.target.value)} /></TD>
-              <TD><Input type="number" value={v.cost} onChange={e => updateVariant(v.sku_attr, 'cost', e.target.value)} /></TD>
-              <TD><Input type="number" value={v.sellingPrice} onChange={e => updateVariant(v.sku_attr, 'sellingPrice', e.target.value)} /></TD>
-              <TD><Input type="number" value={v.comparePrice} onChange={e => updateVariant(v.sku_attr, 'comparePrice', e.target.value)} /></TD>
-              <TD><Input type="number" value={v.profitPrice} onChange={e => updateVariant(v.sku_attr, 'profitPrice', e.target.value)} /></TD>
-              <TD><Input value={v.shipping} onChange={e => updateVariant(v.sku_attr, 'shipping', e.target.value)} /></TD>
-              <TD><Input value={v.available_stock} onChange={e => updateVariant(v.sku_attr, 'available_stock', e.target.value)} /></TD>
-              <TD><DeleteButton onClick={() => deleteVariant(v.sku_attr)}>Delete</DeleteButton></TD>
+              <TD>
+                <Input
+                  value={v.attributes[v.colorKey].value}
+                  type="text"
+                  onChange={(e) =>
+                    handleAttributeChange(
+                      v.sku_attr,
+                      v.colorKey,
+                      e.target.value
+                    )
+                  }
+                />
+              </TD>
+              <TD>
+                <Input
+                  value={v.size}
+                  type="text"
+                  onChange={(e) =>
+                    updateVariant(v.sku_attr, "size", e.target.value)
+                  }
+                />
+              </TD>
+              <TD>
+                <Input
+                  type="number"
+                  value={v.cost}
+                  onChange={(e) =>
+                    updateVariant(v.sku_attr, "cost", e.target.value)
+                  }
+                />
+              </TD>
+              <TD>
+                <Input
+                  type="number"
+                  value={(v.cost * (1 + marginPrice)).toFixed(2)}
+                  onChange={(e) =>
+                    updateVariant(v.sku_attr, "sellingPrice", e.target.value)
+                  }
+                />
+              </TD>
+              <TD>
+                <Input
+                  type="number"
+                  value={(1.5 * (v.cost * (1 + marginPrice))).toFixed(2)}
+                  onChange={(e) =>
+                    updateVariant(v.sku_attr, "comparePrice", e.target.value)
+                  }
+                />
+              </TD>
+              <TD>
+                <span style={{ color: "#169c04ff" }}>
+                  {" "}
+                  ${(v.cost * (1 + marginPrice) - v.cost).toFixed(2)}
+                </span>
+              </TD>
+              <TD>
+                <Input
+                  value={v.available_stock}
+                  onChange={(e) =>
+                    updateVariant(v.sku_attr, "available_stock", e.target.value)
+                  }
+                />
+              </TD>
+              <TD>
+                <DeleteButton onClick={() => deleteVariant(v.sku_attr)}>
+                  Delete
+                </DeleteButton>
+              </TD>
             </tr>
           ))}
         </tbody>
@@ -98,10 +193,10 @@ export default function VariantManager({ formData, setFormData}) {
 
 const Wrapper = styled.div`
   padding: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #f9fafb;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 `;
 
 const Header = styled.div`
@@ -126,7 +221,9 @@ const AddButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
-  &:hover { background-color: #059669; }
+  &:hover {
+    background-color: #059669;
+  }
 `;
 
 const Table = styled.table`
@@ -165,7 +262,9 @@ const DeleteButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
-  &:hover { background-color: #dc2626; }
+  &:hover {
+    background-color: #dc2626;
+  }
 `;
 
 const ImagePreviewContainer = styled.div`
@@ -180,4 +279,4 @@ const ImagePreview = styled.img`
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  `
+`;

@@ -78,6 +78,7 @@ function ProductManagement(props) {
       multimediaInfo: productData.ae_multimedia_info_dto || [],
     }));
   }
+  console.log(formData)
 }, [productData]);
 
 
