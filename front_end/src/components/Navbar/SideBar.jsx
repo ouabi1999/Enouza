@@ -25,7 +25,6 @@ function SideBar(props) {
   return (
     <ClickAwayListener
       mouseEvent="onMouseDown"
-      touchEvent="onScroll"
       onClickAway={props.hideSideBarMenu}
 
     >

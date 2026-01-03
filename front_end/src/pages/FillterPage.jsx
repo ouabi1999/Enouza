@@ -120,7 +120,7 @@ export default function FilterPageStyled() {
               <div style={{ height: "100vh" }}>{"no result found"}</div>
             )}
 
-          <Stack spacing={2} style={{ margin: "1rem 0", alignItems: 'center' }}>
+          <Stack spacing={2} style={{ margin: "1rem 0", alignItems: 'center', direction:"ltr" }}>
             {totalPages >= 1 && (
               <Pagination
                 count={totalPages}

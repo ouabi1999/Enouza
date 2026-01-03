@@ -39,6 +39,7 @@ function DropDownMenuLang(props) {
    
     
     window.localStorage.setItem("selectedLang", selectedLang);
+  
     i18n.changeLanguage(selectedLang);
     window.location.reload()
   };
@@ -82,7 +83,7 @@ function DropDownMenuLang(props) {
             </div>
             <div>
               <label> {t("sideCard.Language")} </label>
-              <select onChange={ (e)=> setSelectedLang(e.target.value)} value={i18n.language}>
+              <select onChange={ (e)=> setSelectedLang(e.target.value)} value={selectedLang}>
 
                 {languages.map((lang, index  )=> {
                   return <option  key = {index} value={lang.code}> {lang.label}</option>

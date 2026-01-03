@@ -83,7 +83,7 @@ function App() {
 
 
   return (
-    <div style={{ direction: i18n.dir(), unicodeBidi: "plaintext" }} >
+    <div style={{ direction: i18n.dir()}} >
       <Suspense fallback={<Spinner />}>
         <OrderContext.Provider value={{ formData, setFormData }}>
           <BrowserRouter>
