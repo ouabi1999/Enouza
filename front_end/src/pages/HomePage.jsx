@@ -35,7 +35,7 @@ function HomePage() {
 
 
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     ApiInstance.get('product-api/', { params: { currentPage: nextStart, per_page: 10 } })
       .then(response => {
@@ -50,7 +50,6 @@ function HomePage() {
         dispatch(setProducts(response.data.products));
       })
       .catch(error => {
-        
         setIsLoading(false);
         console.error(error);
       });
