@@ -50,6 +50,7 @@ function HomePage() {
         dispatch(setProducts(response.data.products));
       })
       .catch(error => {
+        
         setIsLoading(false);
         console.error(error);
       });

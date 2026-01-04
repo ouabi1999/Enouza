@@ -74,7 +74,7 @@ export default Products;
 const ProductContainer = styled.div`
   width:100%;
   min-width: 300px;
-  max-width:300px;
+
   font-family: 'Arial Narrow', Arial, sans-serif;
 
   .grid-container {

@@ -55,7 +55,7 @@ export const products_Slice = createSlice({
             state.hasError = true;
       })
       .addCase(getProduct.fulfilled, (state, action) => {
-        state.productData = action.payload;
+        state.productData = [...state.product , ...action.payload];
         state.isLoading = false;
         state.hasError = false;
 

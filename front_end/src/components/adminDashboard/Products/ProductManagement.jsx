@@ -47,7 +47,7 @@ function ProductManagement(props) {
       const attributes = {};  // ✅ new object per SKU
       let colorKey = null;    // ✅ new colorKey per SKU
 
-      sku.ae_sku_property_dtos.forEach(attr => {
+      sku.ae_sku_property_dtos?.forEach(attr => {
         attributes[attr.sku_property_name] = {
           value: attr.sku_property_value,
           image: attr.sku_image || null
