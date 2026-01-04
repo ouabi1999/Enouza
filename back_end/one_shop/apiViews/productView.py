@@ -20,8 +20,6 @@ from django.db.models import Q, Case, When, IntegerField, Count, Min, Max, Float
 from django.db.models.functions import Cast
 
 
-
-
 import cloudinary.uploader
 
 
@@ -39,27 +37,29 @@ class ProductView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request):
-        current_page = int(request.GET.get("currentPage", 1))
+        start = int(request.GET.get("start", 0))
         per_page = int(request.GET.get("per_page", 10))
 
-        products_qs = Products.objects.all()
-        paginator = Paginator(products_qs, per_page)
-        page_obj = paginator.get_page(current_page)
-        serializer = ProductSerializer(page_obj.object_list, many=True)
+        products_qs = Products.objects.order_by("release_date")
+
+        total_products = products_qs.count()
+
+        products = products_qs[start : start + per_page]
+
+        serializer = ProductSerializer(products, many=True)
 
         return JsonResponse(
             {
                 "products": serializer.data,
-                "currentPage": current_page,
-                "per_page": per_page,
-                "total_pages": paginator.num_pages,
-                "total_products": paginator.count,
+                "total_products": total_products,
+                "has_more": start + per_page < total_products,
             }
         )
 
 
 class ProductDetailsView(APIView):
     parser_classes = (MultiPartParser, FormParser)
+
     def get(self, request, pk=None):
         product = get_object_or_404(Products, id=pk)
         serializer = ProductSerializer(product)
@@ -285,8 +285,7 @@ class ProductFilterView(APIView):
             search = search.strip()
             if search:
                 queryset = queryset.filter(
-                    Q(name__en__icontains=search) |
-                    Q(description__en__icontains=search)
+                    Q(name__en__icontains=search) | Q(description__en__icontains=search)
                 )
 
         # 🟢 CATEGORY FILTER
@@ -297,13 +296,13 @@ class ProductFilterView(APIView):
         queryset = queryset.annotate(
             min_price=Min(Cast("skuInfo__sellingPrice", FloatField())),
             max_price=Max(Cast("skuInfo__sellingPrice", FloatField())),
-            orders_count=Count("orders")
+            orders_count=Count("orders"),
         )
 
         # 💰 PRICE FILTER
-        if min_price and min_price.replace('.', '', 1).isdigit():
+        if min_price and min_price.replace(".", "", 1).isdigit():
             queryset = queryset.filter(min_price__gte=float(min_price))
-        if max_price and max_price.replace('.', '', 1).isdigit():
+        if max_price and max_price.replace(".", "", 1).isdigit():
             queryset = queryset.filter(max_price__lte=float(max_price))
 
         # 🔵 SORTING
@@ -319,7 +318,7 @@ class ProductFilterView(APIView):
                     When(name__en__icontains=search, then=3),
                     When(description__en__icontains=search, then=2),
                     default=0,
-                    output_field=IntegerField()
+                    output_field=IntegerField(),
                 )
             ).order_by("-relevance", "-orders_count")
         elif search:
@@ -329,7 +328,7 @@ class ProductFilterView(APIView):
                     When(name__en__icontains=search, then=3),
                     When(description__en__icontains=search, then=2),
                     default=0,
-                    output_field=IntegerField()
+                    output_field=IntegerField(),
                 )
             ).order_by("-relevance", "-orders_count")
         else:
@@ -349,5 +348,5 @@ class ProductFilterView(APIView):
                 "current_page": page,
                 "results": serializer.data,
             },
-            status=status.HTTP_200_OK
+            status=status.HTTP_200_OK,
         )
