@@ -112,7 +112,9 @@ export default function DisplayLyout() {
     try {
       // Send PUT request
       const data = buildFormData(formData);
-      const response = await ApiInstance.put(`displayInfo/${formData.id}/`, data);
+      const response = await ApiInstance.put(`displayInfo/`, data, {
+        params: { id: formData.id }
+      });
 
       // Extract only serializable data
       const updatedData = response.data;

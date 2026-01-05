@@ -246,9 +246,6 @@ class NewsLetterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-from rest_framework import serializers
-from .models import Display
-import cloudinary.uploader
 
 
 class DisplaySerializer(serializers.ModelSerializer):
@@ -259,83 +256,11 @@ class DisplaySerializer(serializers.ModelSerializer):
     pop_up = serializers.JSONField(required=False)
     slider = serializers.ListField(required=False)
 
+    
+
     class Meta:
         model = Display
         fields = "__all__"
 
-    # ---------- HELPERS ----------
-    def upload_image(self, image):
-        result = cloudinary.uploader.upload(image)
-        return result["secure_url"]
 
-    def _parse_json_fields(self, data):
-        json_fields = [
-            "header",
-            "main_category",
-            "category",
-            "banners",
-            "pop_up",
-        ]
 
-        for field in json_fields:
-            value = data.get(field)
-            if isinstance(value, str):
-                try:
-                    data[field] = json.loads(value)
-                except json.JSONDecodeError:
-                    raise serializers.ValidationError({field: "Invalid JSON"})
-        return data
-
-    # ---------- UPDATE ----------
-    def update(self, instance, validated_data):
-        request = self.context.get("request")
-
-        # ❗ remove slider so DRF doesn't try to JSON-serialize files
-        validated_data.pop("slider", None)
-
-        validated_data = self._parse_json_fields(validated_data)
-
-        # ================= SLIDER =================
-        slider_raw = request.data.get("slider")
-
-        if slider_raw is not None:
-            # slider MUST be JSON string from frontend
-            try:
-                slider_list = json.loads(slider_raw)
-                if not isinstance(slider_list, list):
-                    raise ValueError
-                instance.slider = slider_list
-            except Exception:
-                raise serializers.ValidationError({
-                    "slider": "Slider must be a JSON array of image URLs"
-                })
-
-        # ================= LOGO =================
-        logo = validated_data.pop("logo", None)
-        if hasattr(logo, "read"):
-            instance.logo = self.upload_image(logo)
-
-        # ================= MAIN CATEGORY =================
-        main_categories = validated_data.pop("main_category", None)
-        if main_categories is not None:
-            cleaned = []
-            for category in main_categories:
-                img = category.get("img")
-
-                if hasattr(img, "read"):
-                    category["img"] = self.upload_image(img)
-                elif isinstance(img, str) and img.strip():
-                    category["img"] = img
-                else:
-                    category["img"] = None
-
-                cleaned.append(category)
-
-            instance.main_category = cleaned
-
-        # ================= OTHER FIELDS =================
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-
-        instance.save()
-        return instance

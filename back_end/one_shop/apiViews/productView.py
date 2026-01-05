@@ -161,7 +161,7 @@ class OrderCreateView(APIView):
                 if serializer.is_valid():
                     order = serializer.save()
                     return Response(
-                        {"message": "Order created successfully", "order_id": order.id},
+                        {"message": "Order created successfully", "order_id": order},
                         status=status.HTTP_201_CREATED,
                     )
 

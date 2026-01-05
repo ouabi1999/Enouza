@@ -30,10 +30,10 @@ class AliExpressTokenView(APIView):
             "sign_method": "sha256",
             "timestamp": str(int(time.time() * 1000)),
         }
-
-        base_string = api_path + ''.join(f"{k}{params[k]}" for k in sorted(params))
-        params["sign"] = hmac.new(APP_SECRET.encode(), base_string.encode(), hashlib.sha256).hexdigest().upper()
-
+        if APP_SECRET is not None:
+            base_string = api_path + ''.join(f"{k}{params[k]}" for k in sorted(params))
+            params["sign"] = hmac.new(APP_SECRET.encode(), base_string.encode(), hashlib.sha256).hexdigest().upper()
+    
         try:
             res = requests.post(f"{BASE_URL}{api_path}", data=params, timeout=10)
             data = res.json()
@@ -62,7 +62,8 @@ class AliExpressRefreshTokenView(APIView):
             "timestamp": str(int(time.time() * 1000)),
             "method": "auth.token.refresh",
         }
-
+        if APP_SECRET is None:
+            raise ValueError("value required")
         base_string = api_path + ''.join(f"{k}{params[k]}" for k in sorted(params))
         params["sign"] = hmac.new(APP_SECRET.encode(), base_string.encode(), hashlib.sha256).hexdigest().upper()
 
@@ -99,6 +100,9 @@ class AliExpressProductView(APIView):
             "currency_code": "USD",
         }
 
+        
+        if APP_SECRET is None:
+            raise ValueError("value required")
         base_string = self.PRODUCT_METHOD + ''.join(f"{k}{params[k]}" for k in sorted(params))
         params["sign"] = hmac.new(APP_SECRET.encode(), base_string.encode(), hashlib.sha256).hexdigest().upper()
 
