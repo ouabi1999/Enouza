@@ -62,7 +62,7 @@ export const getDisplayInfoSlice = createSlice({
             })
             .addCase(getDisplayInfo.fulfilled, (state, action) => {
 
-                if (action.payload !== null) {
+                if (Object.keys(obj).length !== 0 ) {
                     state.displayData = action.payload[0];
                 }
                 state.isLoaded = false;
