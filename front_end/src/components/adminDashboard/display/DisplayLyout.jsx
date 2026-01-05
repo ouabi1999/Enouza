@@ -30,7 +30,7 @@ export default function DisplayLyout() {
     setFormData(display.displayData);
   }, [display.displayData])
 
-  const buildFormData = (formData) => {
+  const buildFormData = () => {
     const data = new FormData();
 
     // ID for update
@@ -92,7 +92,7 @@ export default function DisplayLyout() {
     setLoading(true);
 
     try {
-      const data = buildFormData();
+      const data = buildFormData(formData);
       const res = await ApiInstance.post("displayInfo/", data);
 
       setFormData(res.data);

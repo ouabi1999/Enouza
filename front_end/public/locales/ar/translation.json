@@ -161,7 +161,12 @@
     "star": "نجمة",
     "one_star": "نجمة واحدة",
     "two_stars": "نجمتان",
-    "give_us_your_feedback": "أعطنا رأيك"
+    "give_us_your_feedback": "أعطنا رأيك",
+    "led_ambient_lighting": "إضاءة LED والإضاءة المحيطية",
+  "phone_mounts_holders": "حوامل الهواتف ومساند التثبيت",
+  "organizers_storage": "منظمات التخزين والتخزين",
+  "comfort_accessories": "الراحة والإكسسوارات",
+  "air_fresheners_scents": "معطرات الهواء والروائح"
   },
   "buyerTrustServices": {
     "freeShipping": {

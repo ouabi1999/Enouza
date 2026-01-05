@@ -157,7 +157,13 @@
     "star": "Estrella",
     "one_star": "Estrella",
     "two_stars": "Estrellas",
-    "give_us_your_feedback": "Danos tu opinión"
+    "give_us_your_feedback": "Danos tu opinión",
+    "led_ambient_lighting": "Iluminación LED y ambiental",
+  "phone_mounts_holders": "Soportes y monturas para teléfonos",
+  "organizers_storage": "Organizadores y almacenamiento",
+  "comfort_accessories": "Comodidad y accesorios",
+  "air_fresheners_scents": "Ambientadores y fragancias"
+    
   },
   "buyerTrustServices": {
     "freeShipping": {
@@ -272,7 +278,7 @@
     "search": "Buscar",
     "filter": "Filtrar",
     "sortBy": "Ordenar por:",
-    "bestMatch": "Mejor coincidencia",
+    "bestMatch": "Relevancia",
     "priceLowToHigh": "Precio: menor a mayor",
     "priceHighToLow": "Precio: mayor a menor",
     "resetFilters": "Restablecer filtros",
@@ -557,7 +563,7 @@
     "availability": "Disponibilidad",
     "inStock": "En stock",
     "outOfStock": "Agotado",
-    "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto. Por favor, inténtalo de nuevo."
+    "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto."
   }
 
 }

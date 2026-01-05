@@ -2,29 +2,30 @@ export const categoryList = [
   {
     id: 1,
     label: "LED & Ambient Lighting",
-    value: "led-ambient-lighting",
+    value: "led_ambient_lighting",
   },
   {
     id: 2,
     label: "Phone Mounts & Holders",
-    value: "phone-mounts-holders",
+    value: "phone_mounts_holders",
   },
   {
     id: 3,
     label: "Organizers & Storage",
-    value: "organizers-storage",
+    value: "organizers_storage",
   },
   {
     id: 4,
     label: "Comfort & Accessories",
-    value: "comfort-accessories",
+    value: "comfort_accessories",
   },
   {
     id: 5,
     label: "Air Fresheners & Scents",
-    value: "air-fresheners-scents",
+    value: "air_fresheners_scents",
   },
 ];
+
 
   
   export const series = [

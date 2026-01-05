@@ -64,7 +64,7 @@ export default function FilterPageStyled() {
                   checked={categories.includes(cat.value)}
                   onChange={() => dispatch(toggleCategory(cat.value))}
                 />
-                {cat.label}
+                {t(`productInfo.${cat.value}`)}
               </CheckboxRow>
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function FilterPageStyled() {
             ) : productsList.length > 0 ? (
               <Products columsNumber={5} products={productsList} placeItems="center" />
             ) : (
-              <div style={{ height: "100vh" }}>{"no result found"}</div>
+              <div style={{ height: "30vh" , display:"flex", justifyContent:"center", alignItems:"center"}}>{t("filters.search_did_not_match")}</div>
             )}
 
           <Stack spacing={2} style={{ margin: "1rem 0", alignItems: 'center', direction:"ltr" }}>

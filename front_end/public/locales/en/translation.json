@@ -157,7 +157,12 @@
     "stars": "stars",
     "one_star": "star",
     "two_stars": "stars",
-    "give_us_your_feedback": "Give us your feedback"
+    "give_us_your_feedback": "Give us your feedback",
+    "led_ambient_lighting": "LED & Ambient Lighting",
+    "phone_mounts_holders": "Phone Mounts & Holders",
+    "organizers_storage": "Organizers & Storage",
+    "comfort_accessories": "Comfort & Accessories",
+    "air_fresheners_scents": "Air Fresheners & Scents"
   },
   "buyerTrustServices": {
     "freeShipping": {
@@ -592,6 +597,6 @@
     "rating": "Rating",
     "applyFilters": "Apply Filters",
     "clearFilters": "Clear Filters",
-    "search_did_not_match":"Sorry, your search did not match any products. Please try again."
+    "search_did_not_match":"Sorry, your search did not match any products."
   }
 }

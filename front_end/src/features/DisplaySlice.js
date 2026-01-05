@@ -28,11 +28,9 @@ export const getDisplayInfoSlice = createSlice({
             banners: [],
             category: [],
             count_Down: false,
-
             header: {},
-            id: "",
+            id: null,
             logo: null,
-
             main_category: [],
             pop_up: [],
             slider: [],
