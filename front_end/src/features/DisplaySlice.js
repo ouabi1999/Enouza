@@ -11,7 +11,7 @@ export const getDisplayInfo = createAsyncThunk(
         } catch (error) {
             // Handle error properly
             console.error("Error fetching display info:", error);
-            
+
             // Return error to Redux state
             return rejectWithValue({
                 message: error.response?.data?.error || "Failed to fetch display info",
@@ -21,40 +21,54 @@ export const getDisplayInfo = createAsyncThunk(
     }
 );
 
-    export const getDisplayInfoSlice = createSlice({
-        name:"display",
-        initialState:{
-            displayData: {},
-                
-            isLoaded : false,
-            hasError : false
-            
+export const getDisplayInfoSlice = createSlice({
+    name: "display",
+    initialState: {
+        displayData: {
+            banners: [],
+            category: [],
+            count_Down: false,
+
+            header: {},
+            id: "",
+            logo: null,
+
+            main_category: [],
+            pop_up: [],
+            slider: [],
+            updated_at: "",
+            created_at:""
         },
-        reducers:{
-            setDisplayInfo(state, action){
-                state.display = action.payload
-               
-            }
-        },
-        
-         extraReducers: (builder) => {
-            builder
+
+        isLoaded: false,
+        hasError: false
+
+    },
+    reducers: {
+        setDisplayInfo(state, action) {
+            state.display = action.payload
+
+        }
+    },
+
+    extraReducers: (builder) => {
+        builder
             .addCase(getDisplayInfo.pending, (state, action) => {
                 state.isLoaded = true;
             })
             .addCase(getDisplayInfo.rejected, (state, action) => {
                 state.isLoaded = false;
                 state.hasError = action.error.message;
-          })
-          .addCase(getDisplayInfo.fulfilled, (state, action) => {
+            })
+            .addCase(getDisplayInfo.fulfilled, (state, action) => {
 
-            if(action.payload !== null){
-                state.displayData = action.payload[0];
-            }
-               state.isLoaded = false;
-          });
-          
-        }
-     })
-     export const { setDisplayInfo } = getDisplayInfoSlice.actions
-     export default getDisplayInfoSlice.reducer
+                if (action.payload !== null) {
+                    state.displayData = action.payload[0];
+                }
+                state.isLoaded = false;
+            });
+
+    }
+})
+export const { setDisplayInfo } = getDisplayInfoSlice.actions
+export default getDisplayInfoSlice.reducer
