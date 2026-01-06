@@ -21,10 +21,7 @@ function Product({currentSku, setCurrentSku}) {
          return total += value.stars
       }, 0):""
       
-   useEffect(()=>{
-    console.log(productData)
-
-   },[])
+   
     const [selectedAttributes, setSelectedAttributes] = useState({});
     const [availableAttributes, setAvailableAttributes] = useState({});
     const [isColorActive, setIsColorActive] = useState(true);

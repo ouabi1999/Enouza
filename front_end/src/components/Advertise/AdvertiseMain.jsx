@@ -33,7 +33,7 @@ const Container = styled.div`
    
 
     display:grid;
-    grid-gap:10px;
+    grid-gap:15px;
   
   
     grid-template-columns: 55%  44%;
@@ -71,15 +71,7 @@ const Container = styled.div`
     
     }
 
-    @media only screen and (max-width:560px) {
-      &{
-        
-        
-        padding:10px 5px;
-      
-      }
     
-    }
 
     
 

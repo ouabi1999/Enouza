@@ -197,7 +197,7 @@ const ParentContainer = styled.div`
     }
     .search-icon-container {
       height: 100%;
-      background: #a00991ff;
+      background: #f36a0fff;
       display: flex;
       align-items: center;
     }
@@ -324,6 +324,7 @@ const Wrapper = styled.div`
   }
 `;
 const Logo = styled.div`
+ margin-left: 10px;
    @media only screen and (max-width: 650px) {
     /* For mobile phones: */
     &{
@@ -353,7 +354,7 @@ const SearchContainer = styled.div`
   }
   .search-icon-container {
     height: 100%;
-    background: #a00991ff;
+    background: #f36a0fff;;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;

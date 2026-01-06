@@ -65,9 +65,7 @@ const Container =  styled.div`
       background-repeat:no-repeat;
       background-position: center;
 
-      border-radius: 4px;
       background-color:#e3e3e3;
-      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
      
   }
   div{
@@ -96,7 +94,7 @@ const Container =  styled.div`
     .item0{
         grid-column: 1 / span 1; 
         grid-row: 1 /span 2;
-        ;
+        
       
     }
 

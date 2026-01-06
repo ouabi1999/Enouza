@@ -89,8 +89,6 @@ const Container = styled.div`
     
    
    min-width:200px;
-   border-radius: 4px;
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
    min-height:120px;
   
    height:50vh;
@@ -101,7 +99,6 @@ const Container = styled.div`
   .skeleton {
       
       animation: skeleton-loading 1s linear infinite alternate;
-      border-radius: 4px;
       height:100%;
       
 }
@@ -126,8 +123,7 @@ const Container = styled.div`
    
 
  img{
-    border-radius: 4px;
-    object-fit: fill;
+    object-fit: cover;
     min-width:200px;
     height:100%;
     width:100%;

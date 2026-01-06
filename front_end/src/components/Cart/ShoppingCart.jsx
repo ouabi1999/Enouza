@@ -86,7 +86,7 @@ function ShoppingCart() {
                           <div className="first-child" >
                           
                             <span>
-                                {item?.name}
+                                { item?.name[i18n.language]? item?.name[i18n.language]:item?.name["en"] }
                             </span>
                             
 

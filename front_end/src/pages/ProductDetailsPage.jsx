@@ -111,7 +111,7 @@ function ProductDetailsPage({ setRetry, retry }) {
           
           id: id,
           selectedSku: selectedSku,
-          name: name[i18n.language] || name["en"],
+          name: name,
           available_shipping: shippingInfo,
           quantity: quantity,
           price: parseFloat(selectedSku.sellingPrice),
@@ -135,7 +135,7 @@ function ProductDetailsPage({ setRetry, retry }) {
       buyNowItem({
           id: id,
           selectedSku: selectedSku,
-          name: name[i18n.language] || name["en"],
+          name: name,
           available_shipping: shippingInfo,
           quantity: quantity,
           price: parseFloat(selectedSku.sellingPrice),
