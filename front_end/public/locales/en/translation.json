@@ -158,11 +158,11 @@
     "one_star": "star",
     "two_stars": "stars",
     "give_us_your_feedback": "Give us your feedback",
-    "led_ambient_lighting": "LED & Ambient Lighting",
-    "phone_mounts_holders": "Phone Mounts & Holders",
-    "organizers_storage": "Organizers & Storage",
+    "led_ambient_lighting": "Ambient Lighting",
+    "phone_mounts_holders": "Phone  Holders",
+    "organizers_storage": "Organizers Storage",
     "comfort_accessories": "Comfort & Accessories",
-    "air_fresheners_scents": "Air Fresheners & Scents"
+    "air_fresheners_scents": "Air Fresheners"
   },
   "buyerTrustServices": {
     "freeShipping": {

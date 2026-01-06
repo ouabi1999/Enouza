@@ -1,7 +1,7 @@
 export const categoryList = [
   {
     id: 1,
-    label: "LED & Ambient Lighting",
+    label: "Ambient Lighting",
     value: "led_ambient_lighting",
   },
   {
