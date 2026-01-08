@@ -12,9 +12,9 @@ function AdvertiseMain() {
         <MainSlider />
         </div>
       
-      <div className="categorie-main">
+      {/*<div className="categorie-main">
         <CategorieMain />
-      </div>
+      </div>*/}
 
     </Container>
   )
@@ -25,7 +25,7 @@ const Container = styled.div`
     
     
     height:100%;
-    width:95%;
+    width:100%;
     /* fallback for old browsers */
     background: rgb(241,145,49);
     background: #ffff;
@@ -36,7 +36,7 @@ const Container = styled.div`
     grid-gap:15px;
   
   
-    grid-template-columns: 55%  44%;
+    grid-template-columns: 100%;
     
      .main-slider{
        

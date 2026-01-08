@@ -91,7 +91,6 @@ const Container = styled.div`
    min-width:200px;
    min-height:120px;
   
-   height:50vh;
 
   
    

@@ -42,7 +42,7 @@ export default function StripeContanier({t, i18n}) {
       zipcode: formData.logistics_address.zip,
       state: formData.logistics_address.state,
       country: formData.logistics_address.country,
-      email: formData.email,
+      email: formData.logistics_address.email,
       shipping_method: formData.shippingMethod,
       payment_method: "Credit Card",
       shipping_price: formData.shippingPrice,
