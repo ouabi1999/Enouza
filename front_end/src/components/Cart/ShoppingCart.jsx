@@ -238,8 +238,7 @@ const Wrapper = styled.div`
     .product-container{
         display:flex;
         padding:10px;
-        border-radius:4px;
-        border-bottom:1px solid lightgray;
+       
        
     }
 
@@ -266,8 +265,7 @@ const Wrapper = styled.div`
 .product-img img{
   width:100px;
   height:120px;
-  box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px, rgba(60, 64, 67, 0.40) 0px 2px 6px 2px;
-  margin-right:10px;
+  margin:0 5px;
   object-fit:cover;
   animation: skeleton-loading 1s linear infinite alternate;
 }
