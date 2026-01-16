@@ -29,7 +29,6 @@ const Container = styled.div`
     /* fallback for old browsers */
     background: rgb(241,145,49);
     background: #ffff;
-    margin: 15px auto;
    
 
     display:grid;

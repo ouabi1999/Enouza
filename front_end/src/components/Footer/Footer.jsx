@@ -5,7 +5,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import {useTranslation} from 'react-i18next'
 import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
 import NewsLetter from './NewsLetter'
+import {
 
+Typography,
+Box,
+Divider,
+} from "@mui/material";
 
 const Footer = () => {
   //const navigate = useNavigate()
@@ -112,14 +117,10 @@ const Footer = () => {
         <div className="payment-methods-image">
           <img src="../payment-methods.png" alt="secure payment" />
         </div>
-        <div className="CopyRight">
-          <span>{t("footer.newsletter.all_rights_reserved")} </span>
-           
-          <span>{t("footer.newsletter.copyright")} </span>
-          <CopyrightOutlinedIcon className="copy-icon" />
-
-          <span>{new Date().getFullYear()}</span>
-        </div>
+        <Box sx={{textAlign: "center" }}>
+       
+        <Typography variant="caption">© {new Date().getFullYear()} Enouza inc, {t("footer.newsletter.all_rights_reserved")} </Typography>
+      </Box>
       </div>
     </Container>
   );
@@ -129,7 +130,7 @@ export default Footer
 
 const Container = styled.div`
   width: calc(100% - 20px);
-  background: #e3e3e4;
+   background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
   padding: 0px 10px;
   position: relative;
 

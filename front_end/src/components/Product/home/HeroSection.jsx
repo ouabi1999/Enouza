@@ -1,0 +1,251 @@
+import React from "react";
+import { Container, Grid2, Typography, Button, Box } from "@mui/material";
+import { styled, keyframes } from "@mui/material/styles";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+// Animations
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const floatAnimation = keyframes`
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+`;
+
+// Styled Components
+const HeroBox = styled("section")(({ theme }) => ({
+  padding: theme.spacing(15, 0, 10),
+  position: "relative",
+  overflow: "hidden",
+  background: "linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%)",
+  color: "#1a1a1a",
+  minHeight: "100vh",
+  display: "flex",
+  alignItems: "center",
+}));
+
+const HeroImageContainer = styled(Box)(({ theme }) => ({
+  position: "relative",
+  borderRadius: "32px",
+  overflow: "hidden",
+  boxShadow: "0 40px 80px rgba(58, 50, 50, 0.15)",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    background: "linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(216, 196, 182, 0.1))",
+    zIndex: 1,
+    borderRadius: "32px",
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: -2,
+    background: "linear-gradient(45deg, #D4AF37, #B87333)",
+    borderRadius: "34px",
+    zIndex: 0,
+    opacity: 0.3,
+    filter: "blur(15px)",
+  },
+}));
+
+const HeroImage = styled("img")({
+  width: "100%",
+  height: "600px",
+  objectFit: "cover",
+  borderRadius: "32px",
+  position: "relative",
+  zIndex: 2,
+  transition: "transform 0.6s ease",
+  "&:hover": {
+    transform: "scale(1.02)",
+  },
+});
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  borderRadius: "999px",
+  padding: theme.spacing(1.5, 4),
+  fontSize: "1rem",
+  fontWeight: 600,
+  textTransform: "none",
+  background: "#3C2F2F",
+  color: "#F5F3EF",
+  transition: "all 0.3s ease",
+  position: "relative",
+  overflow: "hidden",
+  "&:hover": {
+    background: "#1a1a1a",
+    transform: "translateY(-2px)",
+    boxShadow: "0 10px 30px rgba(60, 47, 47, 0.3)",
+  },
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: -100,
+    width: "100%",
+    height: "100%",
+    background: "linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent)",
+    transition: "left 0.6s",
+  },
+  "&:hover::before": {
+    left: "100%",
+  },
+}));
+
+const LuxuryBadge = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: 24,
+  left: 24,
+  zIndex: 3,
+  background: "rgba(212, 175, 55, 0.1)",
+  backdropFilter: "blur(10px)",
+  borderRadius: "20px",
+  padding: theme.spacing(1, 2),
+  border: "1px solid rgba(212, 175, 55, 0.3)",
+}));
+
+const MaterialChip = styled(Box)(({ theme }) => ({
+  display: "inline-flex",
+  alignItems: "center",
+  padding: theme.spacing(0.5, 1.5),
+  background: "rgba(216, 196, 182, 0.2)",
+  borderRadius: "20px",
+  border: "1px solid rgba(216, 196, 182, 0.3)",
+  marginRight: theme.spacing(1),
+  marginBottom: theme.spacing(1),
+}));
+
+export default function HeroSection() {
+  const heroSection = {
+    title: "Artisanal lighting,\ncrafted for modern\nsanctuaries",
+    description: "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
+    image: "https://sc04.alicdn.com/kf/H36e0ccd693504a1da1984ba5130e798el.jpg",
+    ctaLabel: "Discover Collection",
+    ctaLink: "/collection",
+    materials: ["Travertine", "Brass Accents", "LED Technology", "Hand-Finished"]
+  };
+
+  return (
+    <HeroBox>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Grid2 container spacing={6} alignItems="center">
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out` }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontWeight: 300,
+                  lineHeight: 1.1,
+                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                  mb: 3,
+                  whiteSpace: "pre-line",
+                  color: "#1a1a1a",
+                  fontFamily: "'Playfair Display', serif",
+                }}
+              >
+                {heroSection.title}
+              </Typography>
+              
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: '1rem', md: '1.25rem' },
+                  mb: 5,
+                  color: "#666666",
+                  lineHeight: 1.8,
+                  maxWidth: "90%",
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                {heroSection.description}
+              </Typography>
+
+              {/* Materials */}
+              <Box sx={{ mb: 5 }}>
+                <Typography variant="overline" sx={{ color: "#B87333", mb: 2, display: "block", fontWeight: 600 }}>
+                  Premium Materials
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {heroSection.materials.map((material, index) => (
+                    <MaterialChip key={index}>
+                      <Typography variant="caption" sx={{ color: "#3C2F2F", fontWeight: 500 }}>
+                        {material}
+                      </Typography>
+                    </MaterialChip>
+                  ))}
+                </Box>
+              </Box>
+
+              <StyledButton
+                variant="contained"
+                size="large"
+                href={heroSection.ctaLinks}
+                endIcon={<ArrowForwardIcon />}
+                sx={{ mb: 4 }}
+              >
+                {heroSection.ctaLabel}
+              </StyledButton>
+              
+              {/* Stats */}
+              <Box sx={{ display: "flex", gap: 4 }}>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    24
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Craft Hours
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    98%
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Satisfaction
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    5★
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Rated
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Grid2>
+          
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
+              <HeroImageContainer sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}>
+                <HeroImage 
+                  src={heroSection.image} 
+                  alt="Luxury Wall Lamp" 
+                />
+                <LuxuryBadge>
+                  <Typography variant="caption" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    ✦ Artisanal Collection
+                  </Typography>
+                </LuxuryBadge>
+              </HeroImageContainer>
+            </Box>
+          </Grid2>
+        </Grid2>
+      </Container>
+    </HeroBox>
+  );
+}

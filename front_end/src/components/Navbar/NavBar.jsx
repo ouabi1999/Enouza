@@ -354,7 +354,7 @@ const SearchContainer = styled.div`
   }
   .search-icon-container {
     height: 100%;
-    background: #f36a0fff;;
+    background: #f36a0fff;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;

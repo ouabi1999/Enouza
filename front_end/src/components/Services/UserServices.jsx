@@ -35,25 +35,10 @@ const Container = styled.div`
   width:100%; 
   padding: 10px 0;
   color: rgba(60, 60, 60, 0.9);
-  border-bottom: 2px solid lightgray;
-  background: #ffff;
-  overflow:hidden;
-  -webkit-overflow:hidden;
-  margin-bottom:10px;
-  animation: lightning-glow 1.2s linear infinite;
-  transition: all 0.3s ease-in-out;
+  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
+
+ 
   
-@keyframes lightning-glow {
-  0% {
-   border-bottom: 1px solid rgb(87, 0, 58);
-  }
-  50% {
-    border-bottom: 1px solid rgb(4, 170, 17)
-  }
-  100% {
-    border-bottom:  1px solid rgb(255, 60, 0);
-  }
-}
 
  
 
@@ -81,7 +66,7 @@ const MinWrap = styled.div`
     color: #000;
   }
   .icon {
-    color:rgb(129, 1, 119);
+    color:#8C3D2C;
     margin-right: 3px;
   }
   @media only screen and (max-width: 815px) {

@@ -9,6 +9,10 @@ import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
 import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
 import { useTranslation } from 'react-i18next'
+import HeroSection from '../components/Product/home/HeroSection.jsx'
+import DesignSection from '../components/Product/home/DesignSection.jsx'
+import CTASection from '../components/Product/home/CTASection.jsx'
+import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -68,6 +72,9 @@ function HomePage() {
     <Container>
       <UserServices />
       <AdvertiseMain />
+      <HeroSection/>
+      <MatricsSection/>
+      <DesignSection/>
       <div className="product-header">
         <strong> {t("homePage.More_to_love")}</strong>
       </div>
@@ -76,7 +83,7 @@ function HomePage() {
 
       <Products isLoading={isLoading} products={homeProducts} columsNumber={5} placeItems="center" scrolTo={scrolTo} />
 
-
+      
 
       {isLoading && (
 
@@ -97,6 +104,7 @@ function HomePage() {
         </div>
       )}
 
+              <CTASection/>
 
     </Container>
   )
@@ -104,7 +112,7 @@ function HomePage() {
 
 export default HomePage
 const Container = styled.div`
-    width:97%;
+    width:100%;
     margin:auto;
     min-height:80vh;
 .product-header{

@@ -47,15 +47,13 @@ export default BuyerTrustServices
 const Container = styled.div`
 
   width:100%;
-  padding:10px 0 ;
-  background-color:white;
+  padding:25px 0;
+  background-color:#E6DFD5;
   display:grid;
   grid-template-columns: repeat(4, auto) ;
   grid-gap:10px;
   position:relative;
-  margin-top:45px;
 
-  border-top:1px solid lightgray;
   
   div{
     display:flex;
@@ -73,14 +71,14 @@ const Container = styled.div`
      word-break: keep-all;
      text-align:center;
      font-size:12px;
-     border-right: 1px solid lightgrey;
-     border-left: 1px solid lightgrey;
+     border-right: 1px solid #1A1A1A;
+     border-left: 1px solid #1a1a1aff;
      padding:0 10px;
   }
   
   .icon{
       font-size:40px;
-      color: rgb(194, 193, 193);
+      color:#8C3D2C;
   }
   @media only screen and (max-width: 1000px) {
   &{
