@@ -6,6 +6,8 @@ from django.http.response import JsonResponse
 import json
 from rest_framework.views import APIView
 from ..models import Products, Address, Users, Orders, AliExpressRatings, Ratings
+from django.db.models import Count
+
 from ..serializer import (
     ProductSerializer,
     OrderSerializer,
@@ -350,3 +352,25 @@ class ProductFilterView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
+
+
+
+
+class HeroProductView(APIView):
+    def get(self, request):
+        # 1️⃣ Try manual hero product
+        hero = (
+            Products.objects
+            .annotate(orders_count=Count("orders"))
+            .order_by("-orders_count")
+            .first()
+        )
+        if not hero:
+            return Response(
+                {"detail": "No hero product available"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        serializer = ProductSerializer(hero)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -14,7 +14,7 @@ from .apiViews import (
     chatView,
     aliExpressView,
     displayView,
-    aliBabaView
+    aliBabaView,
 )
 
 router = DefaultRouter()
@@ -85,7 +85,6 @@ urlpatterns = [
         aliExpressView.AliExpressProductView.as_view(),
         name="aliexpress_product",
     ),
-
     path(
         "aliexpress/token/",
         aliExpressView.AliExpressTokenView.as_view(),
@@ -96,20 +95,18 @@ urlpatterns = [
         aliExpressView.AliExpressRefreshTokenView.as_view(),
         name="aliexpress-token-refresh",
     ),
-     path(
+    path(
         "alibaba/token/",
         aliBabaView.AlibabaAuthView.as_view(),
         name="aliebaba-token",
     ),
     path(
         "alibaba/token/refresh/",
-        aliBabaView.AlibabaAuthView.as_view(), name ="alibab-refresh"
+        aliBabaView.AlibabaAuthView.as_view(),
+        name="alibab-refresh",
     ),
-    
-    
-    
-    
-
+    # urls.py
+    path("products/hero/", productView.HeroProductView.as_view(), name="product-hero"),
     path(
         "product-search/",
         productView.ProductFilterView.as_view(),

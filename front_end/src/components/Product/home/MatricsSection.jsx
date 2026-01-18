@@ -6,113 +6,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import GroupsIcon from '@mui/icons-material/Groups';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
-// Luxury color palette
-const COLORS = {
-  cream: '#F8F5F2',
-  taupe: '#E8E2D9',
-  charcoal: '#2A2A2A',
-  bronze: '#8C7A5E',
-  lightBronze: '#B8A88C',
-  stone: '#7D7D7D',
-};
 
-// Animations
-const drawCircle = keyframes`
-  to {
-    stroke-dashoffset: 0;
-  }
-`;
-
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-// Styled Components
-const MetricsContainer = styled(Container)`
-  padding: 6rem 2rem !important;
-  background: ${COLORS.cream};
-  position: relative;
-  overflow: hidden;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, ${COLORS.taupe}, transparent);
-  }
-`;
-
-const MetricCircle = styled(Box)`
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 2rem;
-  animation: ${fadeInUp} 0.8s ease-out;
-`;
-
-const CircleBackground = styled.circle`
-  fill: none;
-  stroke: ${COLORS.taupe};
-  stroke-width: 6;
-`;
-
-const CircleProgress = styled.circle`
-  fill: none;
-  stroke: ${COLORS.bronze};
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-dasharray: 565;
-  stroke-dashoffset: 565;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  animation: ${drawCircle} 2s ease-out forwards;
-  animation-delay: ${props => props.delay || '0s'};
-`;
-
-const CircleContent = styled(Box)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-`;
-
-const MetricIcon = styled(Box)`
-  color: ${COLORS.bronze};
-  margin-bottom: 0.5rem;
-  
-  svg {
-    font-size: 2rem !important;
-  }
-`;
-
-const MetricTitle = styled(Typography)`
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 1rem !important;
-  position: relative;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 1px;
-    background: ${COLORS.taupe};
-  }
-`;
 
 const MetricsSection = () => {
   const metrics = [
@@ -225,3 +119,110 @@ const MetricsSection = () => {
 };
 
 export default MetricsSection;
+// Luxury color palette
+const COLORS = {
+  cream: '#F8F5F2',
+  taupe: '#E8E2D9',
+  charcoal: '#2A2A2A',
+  bronze: '#8C7A5E',
+  lightBronze: '#B8A88C',
+  stone: '#7D7D7D',
+};
+
+// Animations
+const drawCircle = keyframes`
+  to {
+    stroke-dashoffset: 0;
+  }
+`;
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+// Styled Components
+const MetricsContainer = styled(Container)`
+  padding: 6rem 2rem !important;
+  background: ${COLORS.cream};
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${COLORS.taupe}, transparent);
+  }
+`;
+
+const MetricCircle = styled(Box)`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  animation: ${fadeInUp} 0.8s ease-out;
+`;
+
+const CircleBackground = styled.circle`
+  fill: none;
+  stroke: ${COLORS.taupe};
+  stroke-width: 6;
+`;
+
+const CircleProgress = styled.circle`
+  fill: none;
+  stroke: ${COLORS.bronze};
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 565;
+  stroke-dashoffset: 565;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  animation: ${drawCircle} 2s ease-out forwards;
+  animation-delay: ${props => props.delay || '0s'};
+`;
+
+const CircleContent = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+`;
+
+const MetricIcon = styled(Box)`
+  color: ${COLORS.bronze};
+  margin-bottom: 0.5rem;
+  
+  svg {
+    font-size: 2rem !important;
+  }
+`;
+
+const MetricTitle = styled(Typography)`
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1rem !important;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 1px;
+    background: ${COLORS.taupe};
+  }
+`;

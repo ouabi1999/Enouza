@@ -1,8 +1,150 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Container, Grid2, Typography, Button, Box } from "@mui/material";
 import { styled, keyframes } from "@mui/material/styles";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import axios from "axios";
+import ApiInstance from "../../../../common/baseUrl";
 
+
+export default function HeroSection() {
+    const [product, setProduct] = useState(null);
+ 
+  const heroSection = {
+    title: "Artisanal lighting,\ncrafted for modern\nsanctuaries",
+    description: "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
+    image: "https://sc04.alicdn.com/kf/H36e0ccd693504a1da1984ba5130e798el.jpg",
+    ctaLabel: "Shop Now",
+    ctaLink: `/product/${product?.id}`,
+    materials: ["Travertine", "Brass Accents", "LED Technology", "Hand-Finished"]
+  };
+const getHeroProduct = async () => {
+  ApiInstance.get("/products/hero").
+  then(res =>  {
+    setProduct(res.data);
+    console.log(res.data);
+  })
+  .catch(err => {
+    setProduct(null)
+    console.log(err)
+  } 
+)};
+
+  useEffect(() => {
+    getHeroProduct()
+  }, []);
+
+  if (!product) return null;
+  return (
+    <HeroBox>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Grid2 container spacing={6} alignItems="center">
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out` }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontWeight: 300,
+                  lineHeight: 1.1,
+                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                  mb: 3,
+                  whiteSpace: "pre-line",
+                  color: "#1a1a1a",
+                  fontFamily: "'Playfair Display', serif",
+                }}
+              >
+                {heroSection.title}
+              </Typography>
+              
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: '1rem', md: '1.25rem' },
+                  mb: 5,
+                  color: "#666666",
+                  lineHeight: 1.8,
+                  maxWidth: "90%",
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                {heroSection.description}
+              </Typography>
+
+              {/* Materials */}
+              <Box sx={{ mb: 5 }}>
+                <Typography variant="overline" sx={{ color: "#B87333", mb: 2, display: "block", fontWeight: 600 }}>
+                  Premium Materials
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {heroSection.materials.map((material, index) => (
+                    <MaterialChip key={index}>
+                      <Typography variant="caption" sx={{ color: "#3C2F2F", fontWeight: 500 }}>
+                        {material}
+                      </Typography>
+                    </MaterialChip>
+                  ))}
+                </Box>
+              </Box>
+
+              <StyledButton
+                variant="contained"
+                size="large"
+                href={heroSection.ctaLink}
+                endIcon={<ArrowForwardIcon />}
+                sx={{ mb: 4 }}
+              >
+                {heroSection.ctaLabel}
+              </StyledButton>
+              
+              {/* Stats */}
+              <Box sx={{ display: "flex", gap: 4 }}>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    24
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Craft Hours
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    98%
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Satisfaction
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    5★
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
+                    Rated
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Grid2>
+          
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
+              <HeroImageContainer sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}>
+                <HeroImage 
+                  src={product?.multimediaInfo.image_urls.split(";")[0]} 
+                  alt="Luxury Wall Lamp" 
+                />
+                <LuxuryBadge>
+                  <Typography variant="caption" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                    ✦ Artisanal Collection
+                  </Typography>
+                </LuxuryBadge>
+              </HeroImageContainer>
+            </Box>
+          </Grid2>
+        </Grid2>
+      </Container>
+    </HeroBox>
+  );
+}
 // Animations
 const fadeInUp = keyframes`
   from {
@@ -127,125 +269,3 @@ const MaterialChip = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(1),
   marginBottom: theme.spacing(1),
 }));
-
-export default function HeroSection() {
-  const heroSection = {
-    title: "Artisanal lighting,\ncrafted for modern\nsanctuaries",
-    description: "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
-    image: "https://sc04.alicdn.com/kf/H36e0ccd693504a1da1984ba5130e798el.jpg",
-    ctaLabel: "Discover Collection",
-    ctaLink: "/collection",
-    materials: ["Travertine", "Brass Accents", "LED Technology", "Hand-Finished"]
-  };
-
-  return (
-    <HeroBox>
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid2 container spacing={6} alignItems="center">
-          <Grid2 size={{ xs: 12, md: 6 }}>
-            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out` }}>
-              <Typography
-                variant="h1"
-                sx={{
-                  fontWeight: 300,
-                  lineHeight: 1.1,
-                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                  mb: 3,
-                  whiteSpace: "pre-line",
-                  color: "#1a1a1a",
-                  fontFamily: "'Playfair Display', serif",
-                }}
-              >
-                {heroSection.title}
-              </Typography>
-              
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: '1rem', md: '1.25rem' },
-                  mb: 5,
-                  color: "#666666",
-                  lineHeight: 1.8,
-                  maxWidth: "90%",
-                  fontFamily: "'Inter', sans-serif",
-                }}
-              >
-                {heroSection.description}
-              </Typography>
-
-              {/* Materials */}
-              <Box sx={{ mb: 5 }}>
-                <Typography variant="overline" sx={{ color: "#B87333", mb: 2, display: "block", fontWeight: 600 }}>
-                  Premium Materials
-                </Typography>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  {heroSection.materials.map((material, index) => (
-                    <MaterialChip key={index}>
-                      <Typography variant="caption" sx={{ color: "#3C2F2F", fontWeight: 500 }}>
-                        {material}
-                      </Typography>
-                    </MaterialChip>
-                  ))}
-                </Box>
-              </Box>
-
-              <StyledButton
-                variant="contained"
-                size="large"
-                href={heroSection.ctaLinks}
-                endIcon={<ArrowForwardIcon />}
-                sx={{ mb: 4 }}
-              >
-                {heroSection.ctaLabel}
-              </StyledButton>
-              
-              {/* Stats */}
-              <Box sx={{ display: "flex", gap: 4 }}>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
-                    24
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Craft Hours
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
-                    98%
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Satisfaction
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
-                    5★
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Rated
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Grid2>
-          
-          <Grid2 size={{ xs: 12, md: 6 }}>
-            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
-              <HeroImageContainer sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}>
-                <HeroImage 
-                  src={heroSection.image} 
-                  alt="Luxury Wall Lamp" 
-                />
-                <LuxuryBadge>
-                  <Typography variant="caption" sx={{ color: "#D4AF37", fontWeight: 600 }}>
-                    ✦ Artisanal Collection
-                  </Typography>
-                </LuxuryBadge>
-              </HeroImageContainer>
-            </Box>
-          </Grid2>
-        </Grid2>
-      </Container>
-    </HeroBox>
-  );
-}
