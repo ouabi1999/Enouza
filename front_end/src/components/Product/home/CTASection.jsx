@@ -7,6 +7,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import PlaceIcon from '@mui/icons-material/Place';
 import { useTranslation } from 'react-i18next';
 import { rt } from 'framer-motion/client';
+import { Link } from 'react-router-dom';
 // Luxury color palette for Enouza
 const COLORS = {
   charcoal: '#1A1A1A',
@@ -188,10 +189,11 @@ const CTASection = () => {
                 {t("ctaSection.description")}
 
             </Typography>
-            
-            <CTAButton endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg', margin:"0 3px" }} />} >
-                    {t("ctaSection.button")}
+             <Link to="/contact-us">
+            <CTAButton  endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg', margin:"0 3px" }} />} >
+                  {t("ctaSection.button")}
             </CTAButton>
+          </Link>
           </LeftPanel>
         </Grid>
         
