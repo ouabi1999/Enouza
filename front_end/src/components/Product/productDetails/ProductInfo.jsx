@@ -117,7 +117,7 @@ function ProductInfo({ productData,
       {/* Attribute Selection (Color, Size, etc) */}
       {Object.entries(availableAttributes).map(([attrKey, values]) => (
         <div key={attrKey} className="product-attribute">
-          <span className="attribute-title">{attrKey.toLowerCase().includes("color") ?  t(`productInfo.${attrKey}`):"" }</span>
+          <span className="attribute-title">{attrKey.toLowerCase().includes("color") ?  t(`productInfo.${attrKey}`):"" } :</span>
           <div className={`attribute-values attribute`}>
             {values.map((value) => {
               const skuWithValue = skuInfo.some(

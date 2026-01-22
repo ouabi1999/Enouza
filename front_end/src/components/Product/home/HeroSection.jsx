@@ -4,18 +4,20 @@ import { styled, keyframes } from "@mui/material/styles";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import axios from "axios";
 import ApiInstance from "../../../../common/baseUrl";
+import { useTranslation } from "react-i18next";
 
 
 export default function HeroSection() {
     const [product, setProduct] = useState(null);
+    const {t}  = useTranslation()
  
   const heroSection = {
-    title: "Artisanal lighting,\ncrafted for modern\nsanctuaries",
-    description: "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
+    title: t("heroSection.title"),
+    description: t("heroSection.description"),
     image: "https://sc04.alicdn.com/kf/H36e0ccd693504a1da1984ba5130e798el.jpg",
-    ctaLabel: "Shop Now",
+    ctaLabel: t("heroSection.ctaLabel"),
     ctaLink: `/product/${product?.id}`,
-    materials: ["Travertine", "Brass Accents", "LED Technology", "Hand-Finished"]
+    materials: t("heroSection.materials", { returnObjects: true })
   };
 const getHeroProduct = async () => {
   ApiInstance.get("/products/hero").
@@ -102,7 +104,8 @@ const getHeroProduct = async () => {
                     24
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Craft Hours
+                    
+                    {t("heroSection.stats.craftHours")}
                   </Typography>
                 </Box>
                 <Box>
@@ -110,7 +113,7 @@ const getHeroProduct = async () => {
                     98%
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Satisfaction
+                    {t("heroSection.stats.satisfaction")}
                   </Typography>
                 </Box>
                 <Box>
@@ -118,7 +121,7 @@ const getHeroProduct = async () => {
                     5★
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    Rated
+                    {t("heroSection.stats.rated")}
                   </Typography>
                 </Box>
               </Box>

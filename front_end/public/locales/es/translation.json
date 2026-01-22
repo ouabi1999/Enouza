@@ -76,7 +76,19 @@
       "text": "No compartimos tus datos con terceros sin tu consentimiento. Protegemos tu privacidad y mantenemos tus datos seguros."
     }
   },
+  "heroSection": {
+  "title": "Iluminación artesanal,\nelaborada para\nespacios modernos",
+  "description": "Aplique de pared de travertino hecho a mano que combina materiales naturales con diseño contemporáneo, iluminando los espacios con calidez y elegancia.",
+  "ctaLabel": "Comprar ahora",
+  "materials": ["Travertino", "Detalles en latón", "Tecnología LED", "Acabado artesanal"],
+  "craftHours": "Horas de fabricación artesanal",
+    "satisfaction": "Satisfacción",
+    "rated": "Valorado"
+},
+
   "productInfo": {
+    "Lampshade Color":"Color de la pantalla",
+    "Body Color":"Color del cuerpo",
     "Color": "Color",
     "Color Name": "Color",
     "Colour": "Color",
