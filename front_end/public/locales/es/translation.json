@@ -86,6 +86,26 @@
     "rated": "Valorado"
 },
 
+  "designSection": {
+    "title": "El espíritu de Enouza",
+    "principles": {
+      "minimalism": {
+        "title": "Filosofía minimalista",
+        "description": "Creemos en la sustracción. Cada línea, curva y ángulo es esencial, creando piezas que expresan tanto a través de la ausencia como de la presencia."
+      },
+      "materials": {
+        "title": "Integridad de los materiales",
+        "description": "Solo materiales nobles que envejecen con elegancia: vidrio de Murano soplado a mano, latón forjado, mármoles selectos y maderas sostenibles."
+      },
+      "ambient": {
+        "title": "Alquimia ambiental",
+        "description": "La luz no solo se emite, se diseña. Nuestras creaciones transforman la iluminación en atmósfera y la sombra en escultura."
+      }
+    }
+  },
+
+
+
   "productInfo": {
     "Lampshade Color":"Color de la pantalla",
     "Body Color":"Color del cuerpo",

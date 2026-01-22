@@ -76,6 +76,7 @@
       "text": "We do not share your personal details with any third parties without your consent. We protect your privacy and keep your personal details safe and secure."
     }
   },
+
   "heroSection": {
     "title": "Artisanal lighting,\ncrafted for modern\nsanctuaries",
     "description": "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
@@ -95,6 +96,26 @@
 
 
   },
+  
+  "designSection": {
+    "title": "The Enouza Ethos",
+    "principles": {
+      "minimalism": {
+        "title": "Minimalist Philosophy",
+        "description": "We believe in subtraction. Each line, curve, and angle is essential, creating pieces that speak through absence as much as presence."
+      },
+      "materials": {
+        "title": "Material Integrity",
+        "description": "Only noble materials that age with grace: hand-blown Murano glass, forged brass, rare marbles, and sustainable hardwoods."
+      },
+      "ambient": {
+        "title": "Ambient Alchemy",
+        "description": "Light is not merely emitted—it's curated. Our designs transform illumination into atmosphere, shadow into sculpture."
+      }
+    }
+  },
+
+
   "productInfo": {
     "Lampshade Color": "Lampshade Color",
     "Body Color": "Body Color",

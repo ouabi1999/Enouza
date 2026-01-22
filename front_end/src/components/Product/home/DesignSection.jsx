@@ -108,23 +108,26 @@ const PrincipleIcon = styled(Box)`
 const PrincipleContent = styled(Box)``;
 
 const DesignSection = () => {
-  const principles = [
-    {
-      icon: <DesignServicesIcon />,
-      title: "Minimalist Philosophy",
-      description: "We believe in subtraction. Each line, curve, and angle is essential, creating pieces that speak through absence as much as presence."
-    },
-    {
-      icon: <StarIcon />,
-      title: "Material Integrity",
-      description: "Only noble materials that age with grace: hand-blown Murano glass, forged brass, rare marbles, and sustainable hardwoods."
-    },
-    {
-      icon: <SpaIcon />,
-      title: "Ambient Alchemy",
-      description: "Light is not merely emitted—it's curated. Our designs transform illumination into atmosphere, shadow into sculpture."
-    }
-  ];
+ const { t } = useTranslation();
+
+const principles = [
+  {
+    icon: <DesignServicesIcon />,
+    title: t("designSection.principles.minimalism.title"),
+    description: t("designSection.principles.minimalism.description")
+  },
+  {
+    icon: <StarIcon />,
+    title: t("designSection.principles.materials.title"),
+    description: t("designSection.principles.materials.description")
+  },
+  {
+    icon: <SpaIcon />,
+    title: t("designSection.principles.ambient.title"),
+    description: t("designSection.principles.ambient.description")
+  }
+];
+
 
   return (
     <DesignContainer maxWidth="xl">
@@ -144,7 +147,8 @@ const DesignSection = () => {
               fontWeight: 400
             }}
           >
-            The Enouza Ethos
+  {t("designSection.title")}
+
           </Typography>
           
           {principles.map((principle, index) => (
