@@ -4,6 +4,7 @@ import { Container, Typography, Grid, Box } from '@mui/material';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import StarIcon from '@mui/icons-material/Star';
 import SpaIcon from '@mui/icons-material/Spa';
+import { useTranslation } from 'react-i18next';
 
 // Warm & Earthy Natural Color Palette
 const COLORS = {
