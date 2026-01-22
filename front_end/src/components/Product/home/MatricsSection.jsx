@@ -5,36 +5,38 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import GroupsIcon from '@mui/icons-material/Groups';
 import TimelineIcon from '@mui/icons-material/Timeline';
-
+import { useTranslation } from 'react-i18next';
 
 
 const MetricsSection = () => {
+  const { t } = useTranslation();
   const metrics = [
     { 
       icon: <AutoAwesomeIcon />,
       number: '200', 
-      title: 'Exclusive Designs', 
+      title: t("common.exclusiveDesigns"),
+
       percentage: 100,
       delay: '0.1s'
     },
     { 
       icon: <WorkspacePremiumIcon />,
       number: '47', 
-      title: 'International Awards', 
+      title: t("common.internationalAwards"),
       percentage: 90,
       delay: '0.3s'
     },
     { 
       icon: <GroupsIcon />,
       number: '98', 
-      title: 'Artisan Partners', 
+      title: t("common.artisanPartners"),
       percentage: 85,
       delay: '0.5s'
     },
     { 
       icon: <TimelineIcon />,
       number: '15', 
-      title: 'Years of Excellence', 
+      title: t("common.yearsOfExcellence"),
       percentage: 95,
       delay: '0.7s'
     },

@@ -117,9 +117,9 @@ const Footer = () => {
         <div className="payment-methods-image">
           <img src="../payment-methods.png" alt="secure payment" />
         </div>
-        <Box sx={{textAlign: "center" }}>
+        <Box sx={{textAlign: "center" }} style={{ direction: "ltr" }} >
        
-        <Typography variant="caption">© {new Date().getFullYear()} Enouza inc, {t("footer.newsletter.all_rights_reserved")} </Typography>
+        <Typography variant="caption">© {new Date().getFullYear()} Enouza, {t("footer.newsletter.all_rights_reserved")} </Typography>
       </Box>
       </div>
     </Container>

@@ -109,7 +109,7 @@ const PrincipleIcon = styled(Box)`
 const PrincipleContent = styled(Box)``;
 
 const DesignSection = () => {
- const { t } = useTranslation();
+ const { t, i18n } = useTranslation();
 
 const principles = [
   {
@@ -132,7 +132,7 @@ const principles = [
 
   return (
     <DesignContainer maxWidth="xl">
-      <DesignGrid container spacing={8}>
+      <DesignGrid container spacing={8} >
         <Grid item xs={12} md={6}>
           <DesignImage />
         </Grid>
@@ -153,7 +153,7 @@ const principles = [
           </Typography>
           
           {principles.map((principle, index) => (
-            <DesignPrinciple key={index}>
+            <DesignPrinciple key={index} style={{ direction:'ltr'}}>
               <PrincipleIcon>
                 {principle.icon}
               </PrincipleIcon>

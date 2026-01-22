@@ -97,6 +97,29 @@
 
   },
   
+  "ctaSection": {
+    "titleLeft": "Connect With Us",
+    "description": "Each Enouza piece begins with a conversation. Share your vision, and together we'll discover the perfect illumination for your space.",
+    "button": "Start Conversation",
+    "titleRight": "Contact Details",
+    "contact": {
+      "email": {
+        "title": "Email",
+        "description": "We respond within 24 hours"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "Mon–Fri, 10am–6pm EST"
+      },
+      "studio": {
+        "title": "Studio",
+        "description": "New York, NY 10001"
+      }
+    }
+  },
+
+
+  
   "designSection": {
     "title": "The Enouza Ethos",
     "principles": {
@@ -530,7 +553,11 @@
     "chat": "Chat",
     "helpCenter": "Help Center",
     "member_since": "Member since",
-    "from": "From"
+    "from": "From",
+    "exclusiveDesigns": "Exclusive Designs",
+    "internationalAwards": "International Awards",
+    "artisanPartners": "Artisan Partners",
+    "yearsOfExcellence": "Years of Excellence"
   },
   "success": {
     "subscribed_to_newsletter": "Thank you for subscribing to our newsletter!",

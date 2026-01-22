@@ -5,7 +5,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PlaceIcon from '@mui/icons-material/Place';
-
+import { useTranslation } from 'react-i18next';
+import { rt } from 'framer-motion/client';
 // Luxury color palette for Enouza
 const COLORS = {
   charcoal: '#1A1A1A',
@@ -142,26 +143,27 @@ const Divider = styled.div`
 `;
 
 const CTASection = () => {
-  const contactInfo = [
-    {
-      icon: <EmailIcon />,
-      title: "Email",
-      details: "contact@enouza.com",
-      description: "We respond within 24 hours"
-    },
-    {
-      icon: <PhoneIcon />,
-      title: "Phone",
-      details: "+1 (555) 123-4567",
-      description: "Mon–Fri, 10am–6pm EST"
-    },
-    {
-      icon: <PlaceIcon />,
-      title: "Studio",
-      details: "123 Design District",
-      description: "New York, NY 10001"
-    }
-  ];
+  const { t, i18n } = useTranslation();
+ const contactInfo = [
+  {
+    icon: <EmailIcon />,
+    title: t("ctaSection.contact.email.title"),
+    details: "contact@enouza.com",
+    description: t("ctaSection.contact.email.description")
+  },
+  {
+    icon: <PhoneIcon />,
+    title: t("ctaSection.contact.phone.title"),
+    details: "+1 (555) 123-4567",
+    description: t("ctaSection.contact.phone.description")
+  },
+  {
+    icon: <PlaceIcon />,
+    title: t("ctaSection.contact.studio.title"),
+    details: "123 Design District",
+    description: t("ctaSection.contact.studio.description")
+  }
+];
 
   return (
     <CTAContainer maxWidth="xlg">
@@ -172,7 +174,7 @@ const CTASection = () => {
               variant="h4" 
               sx={{ color: COLORS.charcoal }}
             >
-              Connect With Us
+  {t("ctaSection.titleLeft")}
             </SectionTitle>
             
             <Typography 
@@ -183,12 +185,12 @@ const CTASection = () => {
                 mb: 3
               }}
             >
-              Each Enouza piece begins with a conversation. Share your vision, 
-              and together we'll discover the perfect illumination for your space.
+                {t("ctaSection.description")}
+
             </Typography>
             
-            <CTAButton endIcon={<ArrowForwardIcon />}>
-              Start Conversation
+            <CTAButton endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg', margin:"0 3px" }} />} >
+                    {t("ctaSection.button")}
             </CTAButton>
           </LeftPanel>
         </Grid>
@@ -199,7 +201,8 @@ const CTASection = () => {
               variant="h4" 
               sx={{ color: COLORS.charcoal }}
             >
-              Contact Details
+  {t("ctaSection.titleRight")}
+
             </SectionTitle>
             
             {contactInfo.map((item, index) => (

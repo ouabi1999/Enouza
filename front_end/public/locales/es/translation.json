@@ -86,6 +86,28 @@
     "rated": "Valorado"
 },
 
+  "ctaSection": {
+    "titleLeft": "Conecta con nosotros",
+    "description": "Cada pieza de Enouza comienza con una conversación. Comparte tu visión y juntos encontraremos la iluminación perfecta para tu espacio.",
+    "button": "Iniciar conversación",
+    "titleRight": "Datos de contacto",
+    "contact": {
+      "email": {
+        "title": "Correo electrónico",
+        "description": "Respondemos en un plazo de 24 horas"
+      },
+      "phone": {
+        "title": "Teléfono",
+        "description": "Lun–Vie, 10:00–18:00"
+      },
+      "studio": {
+        "title": "Estudio",
+        "description": "Nueva York, NY 10001"
+      }
+    }
+  },
+
+
   "designSection": {
     "title": "El espíritu de Enouza",
     "principles": {
@@ -504,7 +526,11 @@
     "please_enter_your_country": "Selecciona país",
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento"
+    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
+    "exclusiveDesigns": "Diseños exclusivos",
+    "internationalAwards": "Premios internacionales",
+    "artisanPartners": "Socios artesanos",
+    "yearsOfExcellence": "Años de excelencia"
     
   },
   "success": {

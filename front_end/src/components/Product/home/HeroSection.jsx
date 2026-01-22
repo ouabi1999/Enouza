@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
     const [product, setProduct] = useState(null);
-    const {t}  = useTranslation()
+    const {t, i18n}  = useTranslation()
  
   const heroSection = {
     title: t("heroSection.title"),
@@ -91,7 +91,7 @@ const getHeroProduct = async () => {
                 variant="contained"
                 size="large"
                 href={heroSection.ctaLink}
-                endIcon={<ArrowForwardIcon />}
+                endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg' , margin:"0 3px"}} />}
                 sx={{ mb: 4 }}
               >
                 {heroSection.ctaLabel}
@@ -136,7 +136,7 @@ const getHeroProduct = async () => {
                   alt="Luxury Wall Lamp" 
                 />
                 <LuxuryBadge>
-                  <Typography variant="caption" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                  <Typography variant="caption" sx={{ color: "#6b5304", fontWeight: 600 }}>
                     ✦ Artisanal Collection
                   </Typography>
                 </LuxuryBadge>
