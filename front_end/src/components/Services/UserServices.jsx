@@ -35,7 +35,7 @@ const Container = styled.div`
   width:100%; 
   padding: 10px 0;
   color: rgba(60, 60, 60, 0.9);
-  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
+  background: #ffffff;
 
  
   
@@ -66,7 +66,7 @@ const MinWrap = styled.div`
     color: #000;
   }
   .icon {
-    color:#8C3D2C;
+    color: #870e0e;
     margin-right: 3px;
   }
   @media only screen and (max-width: 815px) {
@@ -75,7 +75,7 @@ const MinWrap = styled.div`
       font-size:12px;
     }
     .icon{
-      color:#e65c00;
+      color: #C4A96A;
       margin-right:3px;
       font-size:99%;
     }
@@ -88,7 +88,7 @@ const MinWrap = styled.div`
       font-weight:bolder;
     }
     .icon{
-      color:#e65c00;
+      color:  #C4A96A;
       margin-right:3px;
       font-size:99%;
     }

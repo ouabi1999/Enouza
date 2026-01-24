@@ -161,7 +161,7 @@ const Wrapp = styled.div`
         
     }
     .title{
-        color:orange;
+        color:#C4A96A;
         font-size:20px;
         font-weight:600;
     }

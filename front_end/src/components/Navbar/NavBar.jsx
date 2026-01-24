@@ -194,10 +194,13 @@ const ParentContainer = styled.div`
     }
     .search-bar {
       height: 100%;
+      cursor: pointer;
+
     }
     .search-icon-container {
       height: 100%;
-      background: #f36a0fff;
+      width: 45px;
+    background:  #fba701;
       display: flex;
       align-items: center;
     }
@@ -354,10 +357,12 @@ const SearchContainer = styled.div`
   }
   .search-icon-container {
     height: 100%;
-    background: #f36a0fff;
+    width: 45px;
+    background:  #fba701;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   .search-icon {
     padding: 8px;

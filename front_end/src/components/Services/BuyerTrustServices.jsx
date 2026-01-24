@@ -48,7 +48,7 @@ const Container = styled.div`
 
   width:100%;
   padding:25px 0;
-  background-color:#E6DFD5;
+  background-color: #ffffff;
   display:grid;
   grid-template-columns: repeat(4, auto) ;
   grid-gap:10px;
@@ -78,7 +78,7 @@ const Container = styled.div`
   
   .icon{
       font-size:40px;
-      color:#8C3D2C;
+      color: #C4A96A;
   }
   @media only screen and (max-width: 1000px) {
   &{

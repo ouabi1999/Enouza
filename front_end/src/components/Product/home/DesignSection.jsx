@@ -58,8 +58,8 @@ const DesignImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://s.alicdn.com/@sc04/kf/H332f081d7fb640ce841bf37afe947513w.jpg_480x480.jpg');
-    background-size: fill;
+    background-image: url('./imagelamp.png');
+    background-size: cover;
     background-position: center;
     opacity: 0.9;
     mix-blend-mode: multiply;

@@ -13,7 +13,7 @@ const MetricsSection = () => {
   const metrics = [
     { 
       icon: <AutoAwesomeIcon />,
-      number: '200', 
+      number: '20', 
       title: t("common.exclusiveDesigns"),
 
       percentage: 100,
@@ -21,21 +21,21 @@ const MetricsSection = () => {
     },
     { 
       icon: <WorkspacePremiumIcon />,
-      number: '47', 
+      number: '10', 
       title: t("common.internationalAwards"),
       percentage: 90,
       delay: '0.3s'
     },
     { 
       icon: <GroupsIcon />,
-      number: '98', 
+      number: '41', 
       title: t("common.artisanPartners"),
       percentage: 85,
       delay: '0.5s'
     },
     { 
       icon: <TimelineIcon />,
-      number: '15', 
+      number: '5', 
       title: t("common.yearsOfExcellence"),
       percentage: 95,
       delay: '0.7s'
@@ -126,7 +126,7 @@ const COLORS = {
   cream: '#F8F5F2',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
-  bronze: '#8C7A5E',
+  bronze: '#b57102',
   lightBronze: '#B8A88C',
   stone: '#7D7D7D',
 };

@@ -76,7 +76,7 @@ function HomePage() {
       <MatricsSection/>
       <DesignSection/>
       <div className="product-header">
-        <strong> {t("homePage.More_to_love")}</strong>
+        <strong> {t("homePage.more_products")}</strong>
       </div>
 
 
@@ -118,22 +118,23 @@ const Container = styled.div`
 .product-header{
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid rgb(194, 193, 193);
-    border-top: 1px solid rgb(194, 193, 193);
+    border-bottom: 2px solid rgb(194, 193, 193);
     margin:15px 5px;
-    margin-top:25px;
+    margin-top:15px;
     background-color:white;  
     }
 
 .product-header strong{
     padding:15px;
     letter-spacing: 2px;
-    font-size:1rem;
+    font-size:1.5rem;
     font-weight:490;
     font-family:'Arial Narrow', Arial, sans-serif
 } 
 
-
+.veiw-more{
+    margin:20px 0;
+}
 
 .veiw-more > button{
     outline-style: none;
@@ -144,12 +145,11 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    margin:auto;
+    margin: auto ;
     background-color: #000000; 
     
     color:white;
     font-weight: bold;
-    margin-bottom: 8px;
     letter-spacing: 2px;
 }
 
