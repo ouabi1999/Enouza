@@ -1,11 +1,17 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
 import uuid
 from django.utils import timezone
 from django.conf import settings
 
+
 def get_uuid():
     return str(uuid.uuid4())
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -18,9 +24,10 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
         return self.create_user(email, password, **extra_fields)
+
 
 class Users(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=get_uuid, editable=False)
@@ -38,21 +45,22 @@ class Users(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     objects = UserManager()
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.lastName
 
+
 class Products(models.Model):
-    id = models.BigAutoField(primary_key=True, unique=True)
+    id = models.BigAutoField(primary_key=True, default=get_uuid, unique=True)
     product_id = models.CharField(max_length=100, unique=True)
     name = models.JSONField()
-    description =  models.JSONField()
+    description = models.JSONField()
     brand = models.CharField(max_length=100, blank=True, null=True)
     skuInfo = models.JSONField()
     specifications = models.JSONField(blank=True, null=True)
-    multimediaInfo= models.JSONField(blank=True, null=True)
+    multimediaInfo = models.JSONField(blank=True, null=True)
     in_stock = models.BooleanField(default=True)
     category = models.CharField(max_length=255, blank=True, null=True)
     tags = models.JSONField(blank=True, null=True)
@@ -64,13 +72,16 @@ class Products(models.Model):
     return_policy = models.TextField(blank=True, null=True)
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
-    orders = models.ManyToManyField('Orders', related_name='products', blank=True)
+    orders = models.ManyToManyField("Orders", related_name="products", blank=True)
+
     def __str__(self):
         if isinstance(self.name, dict):
-        # If name is a dictionary, try to extract a readable field
-            return self.name.get("en", next(iter(self.name.values()), "Unnamed Product"))
+            # If name is a dictionary, try to extract a readable field
+            return self.name.get(
+                "en", next(iter(self.name.values()), "Unnamed Product")
+            )
         elif isinstance(self.name, list):
-        # If name is a list, join elements
+            # If name is a list, join elements
             return ", ".join(map(str, self.name))
         return str(self.name or "Unnamed Product")
 
@@ -78,10 +89,18 @@ class Products(models.Model):
 class GlobalCoupon(models.Model):
     id = models.UUIDField(primary_key=True, default=get_uuid, editable=False)
     global_coupon_code = models.CharField(max_length=30, blank=True, null=True)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='global_coupons', blank=True, null=True)
+    product = models.ForeignKey(
+        "Products",
+        on_delete=models.CASCADE,
+        related_name="global_coupons",
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return f"{self.global_coupon_code}"
+
+
 class Address(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     first_name = models.CharField(max_length=100)
@@ -96,7 +115,8 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.address1}, {self.city}, {self.country}"
-    
+
+
 class Orders(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
@@ -108,13 +128,16 @@ class Orders(models.Model):
     payment_method = models.CharField(max_length=50)
     ordered_at = models.DateField(auto_now_add=True)
     # Association to User
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders", blank=True, null=True)
-
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="orders",
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return f"Order {self.id} by {self.payment_method}"
-    
-    
 
 
 class Ratings(models.Model):
@@ -122,24 +145,28 @@ class Ratings(models.Model):
     stars = models.IntegerField()
     review = models.JSONField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='rating')
+    product = models.ForeignKey(
+        "Products", on_delete=models.CASCADE, related_name="rating"
+    )
     created_at = models.DateField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
-        
+
+
 class AliExpressRatings(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
 
     user = models.JSONField()
-    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='aliratings')
+    product = models.ForeignKey(
+        "Products", on_delete=models.CASCADE, related_name="aliratings"
+    )
     created_at = models.DateField(auto_now_add=True)
+
     def __str__(self):
         return str(self.id)
-
-
-
 
 
 class ShoppingCart(models.Model):
@@ -149,7 +176,9 @@ class ShoppingCart(models.Model):
     selected_quantity = models.IntegerField(blank=True, null=True)
     selected_size = models.CharField(max_length=50, blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    subtotal = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True
+    )
 
     def __str__(self):
         return f"Cart {self.id} with subtotal {self.subtotal}"
@@ -162,8 +191,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"Contact from {self.email}"
-    
-    
+
+
 class Newsletter(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     email = models.EmailField(max_length=200, unique=True)
@@ -184,7 +213,6 @@ class Display(models.Model):
     count_Down = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return f"Display Settings {self.id}"
-
