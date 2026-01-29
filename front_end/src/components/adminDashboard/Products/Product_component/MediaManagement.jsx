@@ -15,18 +15,25 @@ function MediaManagement({ setFormData, formData }) {
     }));
   };
 
-  const remove_additional_Image = (index) => {
-    const additional_images = formData.images.additional_images.slice();
-    setFormData((prev)=>({
-      ...prev,
-      images: {
-        ...prev.images,
-        additional_images: additional_images.filter((x) => x !== index),
-      },
-    }));
+ const remove_additional_Image = (index) => {
+  setFormData((prev) => {
+    const images = prev.multimediaInfo.image_urls
+      ?.split(";")
+      .filter(Boolean);
 
-    
-  };
+    const updatedImages = images
+      .filter((_, i) => i !== index)
+      .join(";");
+
+    return {
+      ...prev,
+      multimediaInfo: {
+        ...prev.multimediaInfo,
+        image_urls: updatedImages,
+      },
+    };
+  });
+};
 
   // handle image input
   const handle_main_imageInput = (e) => {
@@ -90,7 +97,7 @@ function MediaManagement({ setFormData, formData }) {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-  const images = formData.multimediaInfo.image_urls?.split(";").filter(Boolean)
+  let images = formData.multimediaInfo.image_urls?.split(";").filter(Boolean)
   return (
     <>
       <Container>
@@ -166,16 +173,16 @@ function MediaManagement({ setFormData, formData }) {
             </button>
           </div>
 
-          {images?.map((img) => {
+          {images?.map((img, index) => {
             return (
-              <div key={img.index}>
+              <div key={index}>
                 <img
                   src={img}
                   alt="img"
                   className="imgprview"
                   onClick={handle_additional_image_input}
                 />
-                <span className="remove_image" onClick={() => remove_additional_Image(img)}>
+                <span className="remove_image" onClick={() => remove_additional_Image(index)}>
                   x
                 </span>
               </div>

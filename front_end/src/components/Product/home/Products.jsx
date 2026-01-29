@@ -74,7 +74,8 @@ export default Products;
 const ProductContainer = styled.div`
   width:100%;
   min-width: 300px;
-
+  max-height: 400px;
+  max-width: 400px;
   font-family: 'Arial Narrow', Arial, sans-serif;
 
   .grid-container {
@@ -85,8 +86,8 @@ const ProductContainer = styled.div`
     place-items: ${(props) => props.place_items || 'center'} ;
 
     img {
-      width: 100%;
-     
+      max-height: 400px;
+      max-width: 400px;
       object-fit: cover;
       background-color: #fff;
     }
