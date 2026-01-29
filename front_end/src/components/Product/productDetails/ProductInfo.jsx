@@ -70,21 +70,22 @@ function ProductInfo({ productData,
       {/* Price */}
       <div className="prices-container">
         <div className="product-price">
-          <span>€{currentSku?.sellingPrice || productData?.price}</span>
-        </div>
-        <div className="product-discount">
-          <span>€ {currentSku?.comparePrice || productData?.discount}</span>
+          <span>{currentSku?.sellingPrice > 0 ? `€${currentSku?.sellingPrice}` : productData?.price}</span>
         </div>
         <div className="product-discount-percent">
           <span>
-            {((
-              (currentSku?.comparePrice - currentSku?.sellingPrice) /
+            {currentSku?.comparePrice>0 && ((
+              (currentSku?.comparePrice - currentSku?.sellingPrice  ) /
               currentSku?.comparePrice) *
               100
-            ).toFixed(0)}
-            %
+            ).toFixed(0) + "%"}
+            
           </span>
         </div>
+        <div className="product-discount">
+          <span> {currentSku?.comparePrice > 0 ? `€${currentSku?.comparePrice}` : productData?.discount}</span>
+        </div>
+        
       </div>
 
       {/* Product Title */}
