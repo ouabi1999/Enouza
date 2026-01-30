@@ -80,14 +80,13 @@ const ProductContainer = styled.div`
   .grid-container {
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(${(props) => props.colums_number}, auto);
+    grid-template-columns: repeat(${(props) => props.colums_number}, 50%);
     gap: 20px;
     place-items: ${(props) => props.place_items || 'center'} ;
 
     img {
       width: 100%;
       height: 100%;
-     
       object-fit: cover;
       background-color: #fff;
     }
