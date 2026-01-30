@@ -81,7 +81,7 @@ function ProductInfo({ productData,
             ).toFixed(0) + "%"}
             
           </span>
-        </div>
+        </div> 
         <div className="product-discount">
           <span> {currentSku?.comparePrice > 0 ? `€${currentSku?.comparePrice}` : productData?.discount}</span>
         </div>
