@@ -85,7 +85,7 @@ const ProductContainer = styled.div`
     place-items: ${(props) => props.place_items || 'center'} ;
 
     img {
-     
+     width: 100%;
       object-fit: cover;
       background-color: #fff;
     }
