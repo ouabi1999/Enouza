@@ -112,8 +112,7 @@ const ImageDetailsContainer = styled.div`
 const ProductImg = styled.div`
      width:100%;
      min-width:200px;
-     border:1px solid lightgray;
-     border-radius:6px;
+     
     
      img{
       width:450px;

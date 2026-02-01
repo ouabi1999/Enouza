@@ -90,7 +90,7 @@ function ProductInfo({ productData,
 
       {/* Product Title */}
       <div className="product-title">
-        <p>{productData?.name[i18n.language] || productData?.name["en"]} nbnn nnnn nnn mm</p>
+        <p>{productData?.name[i18n.language] || productData?.name["en"]}</p>
       </div>
      
       {/* Ratings */}
