@@ -72,7 +72,6 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0px 8px;
-    margin-right: 10px;
     background: #ffffff;
     color: #000000;
     border-radius: 5px 5px 0px 0;

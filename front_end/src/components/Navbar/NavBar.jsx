@@ -65,14 +65,11 @@ function NavBar({ outlet, setSearchValue, value }) {
         >
           <div className="search-container">
             <div className="responsive-input">
-              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="100" style={{
-                borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
-              }} />
+              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="100" 
+              />
             </div>
 
-            <div className="search-icon-container" style={{
-              borderRadius: i18n.dir() === "rtl" ? "4px 0 0 4px" : "0 4px 4px 0"
-            }}>
+            <div className="search-icon-container" >
               <SearchIcon className="search-icon" onClick={handleSearchInput} />
             </div>
           </div>
@@ -178,6 +175,7 @@ const ParentContainer = styled.div`
       height: 100%;
       width: 100%;
       font-size: 16px;
+
     }
 
     .responsive-input input {
@@ -186,8 +184,9 @@ const ParentContainer = styled.div`
       width: 100%;
       border: none;
       padding: 0 4px 0 4px;
+      border-radius:0;
       outline: none;
-      background: lightgray;
+      background: #feecb5;
     }
     .responsive-input:focus {
       outline: 0.5px solid orange;
@@ -215,8 +214,8 @@ const ParentContainer = styled.div`
     .search-container {
       display: flex;
       position: fixed;
-      top: 60px;
-      z-index: 1;
+      top: 50px;
+      z-index: 9999;
       left: 0;
     }
   }
@@ -225,14 +224,14 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 10px;
+  padding: 10px 0;
   max-width: 1920px;
   min-width: 320px;
   background: #141414;
   position: sticky;
   top: 0;
   z-index: 99;
-
+  
   a {
     color: #000000;
   }
@@ -267,6 +266,12 @@ const Container = styled.div`
       display: none;
     }
   }
+      @media only screen and (max-width: 650px) {
+      
+      &{
+        padding:5px 0;}
+    }
+
 `;
 const ChildContainer = styled.div`
   display: flex;
