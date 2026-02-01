@@ -207,6 +207,8 @@ const Wrapper = styled.div`
 @media only screen and (max-width: 850px) {
   &{ 
     flex-direction:column;
+    gap:10px;
+
   }
   
      
