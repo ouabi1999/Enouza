@@ -7,107 +7,112 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { useTranslation } from 'react-i18next';
 
-
+/* =======================
+   COMPONENT
+======================= */
 const MetricsSection = () => {
   const { t } = useTranslation();
-  const metrics = [
-    { 
-      icon: <AutoAwesomeIcon />,
-      number: '20', 
-      title: t("common.exclusiveDesigns"),
-
-      percentage: 100,
-      delay: '0.1s'
-    },
-    { 
-      icon: <WorkspacePremiumIcon />,
-      number: '10', 
-      title: t("common.internationalAwards"),
-      percentage: 90,
-      delay: '0.3s'
-    },
-    { 
-      icon: <GroupsIcon />,
-      number: '41', 
-      title: t("common.artisanPartners"),
-      percentage: 85,
-      delay: '0.5s'
-    },
-    { 
-      icon: <TimelineIcon />,
-      number: '5', 
-      title: t("common.yearsOfExcellence"),
-      percentage: 95,
-      delay: '0.7s'
-    },
-  ];
-
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
     setAnimated(true);
   }, []);
 
+  const metrics = [
+    {
+      icon: <AutoAwesomeIcon />,
+      number: '20',
+      title: t('common.exclusiveDesigns'),
+      percentage: 100,
+      delay: '0.1s',
+    },
+    {
+      icon: <WorkspacePremiumIcon />,
+      number: '10',
+      title: t('common.internationalAwards'),
+      percentage: 90,
+      delay: '0.3s',
+    },
+    {
+      icon: <GroupsIcon />,
+      number: '41',
+      title: t('common.artisanPartners'),
+      percentage: 85,
+      delay: '0.5s',
+    },
+    {
+      icon: <TimelineIcon />,
+      number: '5',
+      title: t('common.yearsOfExcellence'),
+      percentage: 95,
+      delay: '0.7s',
+    },
+  ];
+
   return (
     <MetricsContainer maxWidth="xl">
-      <Grid container spacing={8}>
+      <Grid container spacing={{ xs: 4, md: 8 }}>
         {metrics.map((metric, index) => {
-          const circumference = 2 * Math.PI * 45;
+          const radius = 45;
+          const circumference = 2 * Math.PI * radius;
           const progress = (metric.percentage / 100) * circumference;
-          
+
           return (
             <Grid item xs={6} md={3} key={index}>
               <MetricCircle>
-                <svg width="200" height="200" viewBox="0 0 100 100">
-                  <CircleBackground cx="50" cy="50" r="45" />
+                <CircleSvg viewBox="0 0 100 100">
+                  <CircleBackground cx="50" cy="50" r={radius} />
                   {animated && (
-                    <CircleProgress 
-                      cx="50" 
-                      cy="50" 
-                      r="45" 
+                    <CircleProgress
+                      cx="50"
+                      cy="50"
+                      r={radius}
                       strokeDasharray={circumference}
                       strokeDashoffset={circumference - progress}
                       delay={metric.delay}
                     />
                   )}
-                </svg>
-                
+                </CircleSvg>
+
                 <CircleContent>
-                  <MetricIcon>
-                    {metric.icon}
-                  </MetricIcon>
-                  <Typography 
-                    variant="h2" 
-                    sx={{ 
-                      color: COLORS.charcoal,
+                  <MetricIcon>{metric.icon}</MetricIcon>
+
+                  <Typography
+                    sx={{
                       fontFamily: "'Playfair Display', serif",
                       fontWeight: 400,
-                      fontSize: { xs: '2.5rem', md: '3rem' },
-                      lineHeight: 1
+                      color: COLORS.charcoal,
+                      fontSize: {
+                        xs: '1.9rem',
+                        sm: '2.3rem',
+                        md: '3rem',
+                      },
+                      lineHeight: 1,
                     }}
                   >
                     {metric.number}
                   </Typography>
-                  <Typography 
-                    variant="caption" 
-                    sx={{ 
+
+                  <Typography
+                    sx={{
                       color: COLORS.bronze,
                       fontSize: '1rem',
-                      fontWeight: 500
+                      fontWeight: 500,
                     }}
                   >
                     +
                   </Typography>
                 </CircleContent>
               </MetricCircle>
-              
-              <MetricTitle 
-                variant="h6" 
+
+              <MetricTitle
                 align="center"
-                sx={{ 
-                  color: COLORS.charcoal,
-                  fontWeight: 500,
-                  fontSize: '0.9rem'
+                sx={{
+                  fontSize: {
+                    xs: '0.75rem',
+                    sm: '0.85rem',
+                    md: '0.9rem',
+                  },
                 }}
               >
                 {metric.title}
@@ -121,17 +126,20 @@ const MetricsSection = () => {
 };
 
 export default MetricsSection;
-// Luxury color palette
+
+/* =======================
+   COLORS
+======================= */
 const COLORS = {
   cream: '#F8F5F2',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
   bronze: '#b57102',
-  lightBronze: '#B8A88C',
-  stone: '#7D7D7D',
 };
 
-// Animations
+/* =======================
+   ANIMATIONS
+======================= */
 const drawCircle = keyframes`
   to {
     stroke-dashoffset: 0;
@@ -149,13 +157,19 @@ const fadeInUp = keyframes`
   }
 `;
 
-// Styled Components
+/* =======================
+   STYLES
+======================= */
 const MetricsContainer = styled(Container)`
-  padding: 6rem 2rem !important;
   background: ${COLORS.cream};
+  padding: 4rem 1.5rem !important;
   position: relative;
   overflow: hidden;
-  
+
+  @media (min-width: 900px) {
+    padding: 6rem 2rem !important;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -163,16 +177,37 @@ const MetricsContainer = styled(Container)`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, ${COLORS.taupe}, transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      ${COLORS.taupe},
+      transparent
+    );
   }
 `;
 
 const MetricCircle = styled(Box)`
   position: relative;
-  width: 200px;
-  height: 200px;
   margin: 0 auto 2rem;
+  width: 200px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   animation: ${fadeInUp} 0.8s ease-out;
+
+  @media (max-width: 900px) {
+    width: 160px;
+  }
+
+  @media (max-width: 600px) {
+    width: 140px;
+  }
+`;
+
+const CircleSvg = styled.svg`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const CircleBackground = styled.circle`
@@ -186,28 +221,33 @@ const CircleProgress = styled.circle`
   stroke: ${COLORS.bronze};
   stroke-width: 6;
   stroke-linecap: round;
-  stroke-dasharray: 565;
-  stroke-dashoffset: 565;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
   animation: ${drawCircle} 2s ease-out forwards;
-  animation-delay: ${props => props.delay || '0s'};
+  animation-delay: ${({ delay }) => delay || '0s'};
 `;
 
 const CircleContent = styled(Box)`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  pointer-events: none;
 `;
 
 const MetricIcon = styled(Box)`
   color: ${COLORS.bronze};
-  margin-bottom: 0.5rem;
-  
+  margin-bottom: 0.4rem;
+
   svg {
     font-size: 2rem !important;
+
+    @media (max-width: 600px) {
+      font-size: 1.6rem !important;
+    }
   }
 `;
 
@@ -215,8 +255,10 @@ const MetricTitle = styled(Typography)`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 1rem !important;
+  color: ${COLORS.charcoal};
+  font-weight: 500;
   position: relative;
-  
+
   &:after {
     content: '';
     position: absolute;

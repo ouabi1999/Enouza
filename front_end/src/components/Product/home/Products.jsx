@@ -73,8 +73,7 @@ export default Products;
 
 const ProductContainer = styled.div`
   width:100%;
-  min-width: 300px;
-
+  
   font-family: 'Arial Narrow', Arial, sans-serif;
 
   .grid-container {
@@ -82,12 +81,12 @@ const ProductContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(${(props) => props.colums_number}, auto);
     gap: 20px;
-    place-items: ${(props) => props.place_items || 'center'} ;
-
+    place-content: ${(props) => props.place_items || 'center'} ;
+    align-items: center;
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       background-color: #fff;
     }
   }
@@ -120,12 +119,12 @@ const ProductContainer = styled.div`
   @media (max-width: 490px) {
     .grid-container {
       grid-template-columns: repeat(2, 50%);
-      gap: 8px;
-    }
-    img {
-      height: auto;
-      object-fit: contain;
-    }
+      gap: 5px;
+      padding: 6px;
+
+
+
+    
     .product-container {
       padding-bottom: 5px;
       height: auto;

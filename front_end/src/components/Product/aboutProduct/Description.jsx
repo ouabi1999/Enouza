@@ -25,6 +25,7 @@ function Description() {
 export default Description
 
 const Container = styled.div`
+  width:100%;
   font-size:0.8rem;
   img{
     width:85%;

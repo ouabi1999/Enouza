@@ -133,13 +133,14 @@ function NewsLetter(){
 export default NewsLetter
 const Container = styled.form`
     min-width:300px;
-    margin-top:20px;
-    height:110%;
+   
     
 `
 const Wrapp = styled.div`
     height:90%;
     width:100%;
+    height:160px;
+  
     display:flex;
     justify-content:center;
     align-items:center;

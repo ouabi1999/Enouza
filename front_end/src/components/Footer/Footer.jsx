@@ -2,22 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link, NavLink, useNavigate } from "react-router-dom"
 //import {setCategory } from '../../features/categories/categorySlice'
-import {useTranslation} from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
 import NewsLetter from './NewsLetter'
 import {
 
-Typography,
-Box,
-Divider,
+  Typography,
+  Box,
+  Divider,
 } from "@mui/material";
 
 const Footer = () => {
   //const navigate = useNavigate()
   //const dispatch = useDispatch()
   //const SelectedCategory = (value)=>{
-   // dispatch(setCategory(value))
-    const {t, i18n} = useTranslation()
+  // dispatch(setCategory(value))
+  const { t, i18n } = useTranslation()
 
   //}
   return (
@@ -34,7 +34,7 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=61571681156358"
               >
                 {" "}
-               {t("footer.followUs.facebook")}
+                {t("footer.followUs.facebook")}
               </a>
             </li>
             <li>
@@ -100,8 +100,11 @@ const Footer = () => {
             </li>
           </ul>
 
-          <NewsLetter />
+
         </Wrapp>
+        <div className='news-letter-container'>
+          <NewsLetter />
+        </div>
       </Wrapper>
       <div
         style={{
@@ -110,17 +113,16 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "center",
           flexWrap: "wrap",
-          marginTop: "35px",
-          marginBottom: "0",
+         
         }}
       >
         <div className="payment-methods-image">
           <img src="../payment-methods.png" alt="secure payment" />
         </div>
-        <Box sx={{textAlign: "center" }} style={{ direction: "ltr" }} >
-       
-        <Typography variant="caption">© {new Date().getFullYear()} Enouza, {t("footer.newsletter.all_rights_reserved")} </Typography>
-      </Box>
+        <Box sx={{ textAlign: "center" }} style={{ direction: "ltr" }} className="CopyRight">
+
+          <Typography variant="caption">© {new Date().getFullYear()} Enouza, {t("footer.newsletter.all_rights_reserved")} </Typography>
+        </Box>
       </div>
     </Container>
   );
@@ -129,20 +131,19 @@ export default Footer
 
 
 const Container = styled.div`
-  width: calc(100% - 20px);
-   background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
-  padding: 0px 10px;
+  width: calc(100% - 30px);
+  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
+  padding: 20px 15px 0 15px;
   position: relative;
 
   .payment-methods-image {
-    margin-left: 35px;
     width: 50vw;
     max-width: 360px;
     min-width: 320px;
 
     img {
       width: 100%;
-      height: auto;
+      height: auto ;
       object-fit: contain;
     }
   }
@@ -166,51 +167,54 @@ const Container = styled.div`
     color: #000000;
   }
 
-  @media only screen and (max-width: 700px) {
+  
+    
+  
+  @media only screen and (max-width: 600px) {
     .CopyRight {
-      margin-bottom: 10px;
-    }
-    .payment-methods-image {
-      margin-left: 0;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    .CopyRight {
-      margin-bottom: 10px;
       font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
+      .payment-methods-image{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:auto;
+      
+      }
   }
+      ul{
+      margin:0;
+      padding:0;
+}
 `;
 const Wrapp = styled.div`
-     display:grid;
-     grid-template-columns: repeat(4, auto);
-    
-     
-     @media only screen and (max-width: 870px) {
-  &{
-     
-    grid-template-columns: repeat(2,auto);
-
-  }
-}
-@media only screen and (max-width: 700px) {
-  &{ 
-    grid-template-columns: repeat(1, auto);
-  }
-  .CopyRight{
-        margin-bottom:8px;
-        
-      }
-      .payment-methods-image{
-      margin-left:4px;
-      
-
-      
-    }
-
-}
+display:flex;
+justify-content:space-between;
+    flex:1;
 `
 const Wrapper = styled.div`
+ display:flex;
+ justify-content:space-between;
+ width:100%;
+ gap:10rem;
+
+
+    
+@media only screen and (max-width: 850px) {
+  &{ 
+    flex-direction:column;
+  }
+  
+     
+
+}
+      .news-letter-container {
+      flex:1;
+  }
 
   a{
       color:#4d4a4a;
@@ -229,8 +233,7 @@ const Wrapper = styled.div`
       color:black;
     
     }
-    
-    
+   
    
 
 `

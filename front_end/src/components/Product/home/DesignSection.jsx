@@ -24,6 +24,7 @@ const DesignContainer = styled(Container)`
   background: ${COLORS.sand};
   position: relative;
   overflow: hidden;
+
   
   &:before {
     content: '';
@@ -37,6 +38,10 @@ const DesignContainer = styled(Container)`
       radial-gradient(circle at 90% 80%, ${COLORS.lightClay} 0%, transparent 20%);
     opacity: 0.3;
   }
+    @media (max-width: 600px) {
+    
+    
+    padding: 1rem 0.3rem !important;}
 `;
 
 const DesignGrid = styled(Grid)`
@@ -58,7 +63,7 @@ const DesignImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('./imagelamp.png');
+    background-image: url('/imagelamp.png');
     background-size: cover;
     background-position: center;
     opacity: 0.9;

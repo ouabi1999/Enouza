@@ -43,7 +43,7 @@ const getHeroProduct = async () => {
           <Grid2 size={{ xs: 12, md: 6 }}>
             <Box sx={{ animation: `${fadeInUp} 0.8s ease-out` }}>
               <Typography
-                variant="h1"
+                variant="h2"
                 sx={{
                   fontWeight: 300,
                   lineHeight: 1.1,
@@ -87,15 +87,7 @@ const getHeroProduct = async () => {
                 </Box>
               </Box>
 
-              <StyledButton
-                variant="contained"
-                size="large"
-                href={heroSection.ctaLink}
-                endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg' , margin:"0 3px"}} />}
-                sx={{ mb: 4 }}
-              >
-                {heroSection.ctaLabel}
-              </StyledButton>
+              
               
               {/* Stats */}
               <Box sx={{ display: "flex", gap: 4 }}>
@@ -129,20 +121,40 @@ const getHeroProduct = async () => {
           </Grid2>
           
           <Grid2 size={{ xs: 12, md: 6 }}>
-            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
-              <HeroImageContainer sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}>
-                <HeroImage 
-                  src={product?.multimediaInfo.image_urls.split(";")[0]} 
-                  alt="Luxury Wall Lamp" 
-                />
-                <LuxuryBadge>
-                  <Typography variant="caption" sx={{ color: "#6b5304", fontWeight: 600 }}>
-                    ✦ Artisanal Collection
-                  </Typography>
-                </LuxuryBadge>
-              </HeroImageContainer>
-            </Box>
-          </Grid2>
+  <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
+    <HeroImageContainer
+      sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}
+    >
+      <HeroImage
+        src={product?.multimediaInfo.image_urls.split(";")[0]}
+        alt="Luxury Wall Lamp"
+      />
+      <ShopButtonContainer>
+        {/* SHOP NOW BUTTON BELOW IMAGE */}
+    <Box sx={{ mt: 4, textAlign: "center" }}>
+      <StyledButton
+        variant="contained"
+        size="large"
+        href={heroSection.ctaLink}
+        endIcon={
+          <ArrowForwardIcon
+            style={{
+              rotate: i18n.dir() === "ltr" ? "0deg" : "180deg",
+              margin: "0 3px",
+            }}
+          />
+        }
+      >
+        {heroSection.ctaLabel}
+      </StyledButton>
+    </Box>
+      </ShopButtonContainer>
+    </HeroImageContainer>
+
+    
+  </Box>
+</Grid2>
+
         </Grid2>
       </Container>
     </HeroBox>
@@ -179,11 +191,12 @@ const HeroBox = styled("section")(({ theme }) => ({
   minHeight: "100vh",
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
 }));
 
 const HeroImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
-  borderRadius: "32px",
+  borderRadius: "8px",
   overflow: "hidden",
   boxShadow: "0 40px 80px rgba(58, 50, 50, 0.15)",
   "&::before": {
@@ -192,14 +205,14 @@ const HeroImageContainer = styled(Box)(({ theme }) => ({
     inset: 0,
     background: "linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(216, 196, 182, 0.1))",
     zIndex: 1,
-    borderRadius: "32px",
+    borderRadius: "8px",
   },
   "&::after": {
     content: '""',
     position: "absolute",
     inset: -2,
     background: "linear-gradient(45deg, #D4AF37, #B87333)",
-    borderRadius: "34px",
+    borderRadius: "8px",
     zIndex: 0,
     opacity: 0.3,
     filter: "blur(15px)",
@@ -208,9 +221,9 @@ const HeroImageContainer = styled(Box)(({ theme }) => ({
 
 const HeroImage = styled("img")({
   width: "100%",
-  height: "600px",
+  height: "550px",
   objectFit: "cover",
-  borderRadius: "32px",
+  borderRadius: "8px",
   position: "relative",
   zIndex: 2,
   transition: "transform 0.6s ease",
@@ -220,7 +233,7 @@ const HeroImage = styled("img")({
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  borderRadius: "999px",
+  borderRadius: "8px",
   padding: theme.spacing(1.5, 4),
   fontSize: "1rem",
   fontWeight: 600,
@@ -230,6 +243,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   transition: "all 0.3s ease",
   position: "relative",
   overflow: "hidden",
+  textWrap: "nowrap",
   "&:hover": {
     background: "#1a1a1a",
     transform: "translateY(-2px)",
@@ -250,16 +264,13 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const LuxuryBadge = styled(Box)(({ theme }) => ({
+const ShopButtonContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
-  top: 24,
-  left: 24,
+  bottom: 10,
+  left: "25%",
+  right: "25%",
   zIndex: 3,
-  background: "rgba(212, 175, 55, 0.1)",
-  backdropFilter: "blur(10px)",
-  borderRadius: "20px",
-  padding: theme.spacing(1, 2),
-  border: "1px solid rgba(212, 175, 55, 0.3)",
+  
 }));
 
 const MaterialChip = styled(Box)(({ theme }) => ({
@@ -267,7 +278,7 @@ const MaterialChip = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: theme.spacing(0.5, 1.5),
   background: "rgba(216, 196, 182, 0.2)",
-  borderRadius: "20px",
+  borderRadius: "8px",
   border: "1px solid rgba(216, 196, 182, 0.3)",
   marginRight: theme.spacing(1),
   marginBottom: theme.spacing(1),
