@@ -66,7 +66,7 @@ const MinWrap = styled.div`
     color: #000;
   }
   .icon {
-    color: #870e0e;
+    color: #C4A96A;
     margin-right: 3px;
   }
   @media only screen and (max-width: 815px) {
