@@ -269,7 +269,7 @@ const Container = styled.div`
       @media only screen and (max-width: 650px) {
       
       &{
-        padding:5px 0;}
+        padding:10px 5px;}
     }
 
 `;
