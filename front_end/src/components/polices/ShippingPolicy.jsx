@@ -47,8 +47,7 @@ const Container = styled.div`
   min-height: 100vh;
   margin: 10px auto;
   padding: 10px 15px;
-  background: linear-gradient(to right, #e9e4f0, #d3cce3);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+ 
 `;
 
 const Title = styled.h2`

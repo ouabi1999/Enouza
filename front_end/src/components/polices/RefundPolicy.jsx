@@ -63,7 +63,6 @@ const Container = styled.div`
   min-height: 100vh;
   margin: 10px auto;
   padding: 10px 15px;
-  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
 `;
 
 const Title = styled.h2`

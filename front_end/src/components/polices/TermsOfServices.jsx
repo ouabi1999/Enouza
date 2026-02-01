@@ -56,7 +56,6 @@ const Container = styled.div`
   min-height: 100vh;
   margin: 10px auto;
   padding: 10px 15px;
-  background: linear-gradient(to right, #e9e4f0, #d3cce3);
 
   p {
     font-size: 1rem;
