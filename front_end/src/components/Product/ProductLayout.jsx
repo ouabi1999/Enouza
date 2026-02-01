@@ -8,6 +8,7 @@ import ProductInfo from './productDetails/ProductInfo';
 import PopUpShoppingMethod from './productDetails/PopUpShoppingMethod';
 import { buyNowItem, addToCart } from '../../features/cartSlice';
 import { useTranslation } from 'react-i18next';
+import HeadeSeo from '../../../common/HeadeSeo';
 
 function Product({currentSku, setCurrentSku}) {
 
@@ -27,6 +28,7 @@ function Product({currentSku, setCurrentSku}) {
     const [isColorActive, setIsColorActive] = useState(true);
     const [isPicsDetailsActive, setIsPicsDetailsActive] = useState(false);
     const [picsDetailsIndex, setPicsDetailsIndex] = useState(0)
+    const { t, i18n } = useTranslation();
 
    const selectColor = () => {
     setIsColorActive(true);
@@ -45,6 +47,8 @@ function Product({currentSku, setCurrentSku}) {
    
   return (
     <ParentContainer>
+                <HeadeSeo title={productData?.name[i18n.language] || productData?.name["en"]} description={productData?.description[i18n.language] } />
+
       <Container>
         <FirstSection>
           <MainImages
