@@ -172,7 +172,7 @@ const Container = styled.div`
   
   @media only screen and (max-width: 600px) {
     .CopyRight {
-      font-size: 12px;
+      font-size: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -194,6 +194,7 @@ const Container = styled.div`
 const Wrapp = styled.div`
 display:flex;
 justify-content:space-between;
+padding-bottom:20px;
     flex:1;
 `
 const Wrapper = styled.div`
@@ -220,7 +221,6 @@ const Wrapper = styled.div`
 
   a{
       color:#4d4a4a;
-      font-weight: bold;
       font-size: 0.75rem;
       line-height: 1;
     
