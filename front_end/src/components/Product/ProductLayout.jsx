@@ -10,27 +10,27 @@ import { buyNowItem, addToCart } from '../../features/cartSlice';
 import { useTranslation } from 'react-i18next';
 import HeadeSeo from '../../../common/HeadeSeo';
 
-function Product({currentSku, setCurrentSku}) {
+function Product({ currentSku, setCurrentSku }) {
 
-    // select thumb img to render specific image
-    const date = new Date()
-    const productData = useSelector(state => state.product.productData)
+  // select thumb img to render specific image
+  const date = new Date()
+  const productData = useSelector(state => state.product.productData)
 
-    let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
+  let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
 
-    let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
-         return total += value.stars
-      }, 0):""
-      
-   
-    const [selectedAttributes, setSelectedAttributes] = useState({});
-    const [availableAttributes, setAvailableAttributes] = useState({});
-    const [isColorActive, setIsColorActive] = useState(true);
-    const [isPicsDetailsActive, setIsPicsDetailsActive] = useState(false);
-    const [picsDetailsIndex, setPicsDetailsIndex] = useState(0)
-    const { t, i18n } = useTranslation();
+  let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
+    return total += value.stars
+  }, 0) : ""
 
-   const selectColor = () => {
+
+  const [selectedAttributes, setSelectedAttributes] = useState({});
+  const [availableAttributes, setAvailableAttributes] = useState({});
+  const [isColorActive, setIsColorActive] = useState(true);
+  const [isPicsDetailsActive, setIsPicsDetailsActive] = useState(false);
+  const [picsDetailsIndex, setPicsDetailsIndex] = useState(0)
+  const { t, i18n } = useTranslation();
+
+  const selectColor = () => {
     setIsColorActive(true);
     setIsPicsDetailsActive(false);
   };
@@ -40,53 +40,53 @@ function Product({currentSku, setCurrentSku}) {
     setIsColorActive(false);
     setIsPicsDetailsActive(true);
   };
-  
-  
-    
-    
-   
+
+
+
+
+
   return (
     <ParentContainer>
-      <HeadeSeo title={productData?.name[i18n.language] || productData?.name["en"]} description={productData?.description[i18n.language] 
-        
-        
-      || productData?.description["en"]
-       } />
+      <HeadeSeo 
+      title={productData?.name[i18n.language] === "" ? productData?.name["en"] : productData?.name[i18n.language]} 
+      description={productData?.description[i18n.language] === "" ? productData?.description["en"] : productData?.description[i18n.language]}
+
+      />
 
       <Container>
         <FirstSection>
           <MainImages
-            productData = {productData}
+            productData={productData}
             picsDetailsIndex={picsDetailsIndex}
             selectPicsDetails={selectPicsDetails}
             isColorActive={isColorActive}
             isPicsDetailsActive={isPicsDetailsActive}
-            currentSku= {currentSku}
-            
+            currentSku={currentSku}
+
 
           />
         </FirstSection>
 
         <SecondSection>
           <ProductInfo
-            
 
-            productData = {productData}
-            ratings = {ratings}
-            sum_stars = {sum_stars}
+
+            productData={productData}
+            ratings={ratings}
+            sum_stars={sum_stars}
             selectedAttributes={selectedAttributes}
-            setSelectedAttributes=            {setSelectedAttributes}
-            availableAttributes=            {availableAttributes}
-            setAvailableAttributes=            {setAvailableAttributes}
-            currentSku=            {currentSku}
-            setCurrentSku=            {setCurrentSku}
-            selectColor = {selectColor}
+            setSelectedAttributes={setSelectedAttributes}
+            availableAttributes={availableAttributes}
+            setAvailableAttributes={setAvailableAttributes}
+            currentSku={currentSku}
+            setCurrentSku={setCurrentSku}
+            selectColor={selectColor}
 
 
           />
-        </SecondSection>  
+        </SecondSection>
       </Container>
-      
+
     </ParentContainer>
   );
 }
@@ -138,7 +138,7 @@ const Container = styled.div`
   
 `
 const FirstSection = styled.div`
-`  
+`
 
 const SecondSection = styled.div`
 
