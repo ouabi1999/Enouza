@@ -12,10 +12,13 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
         {products?.map((item) => {
           const mainSku = item.skuInfo?.[0];
           const image = item.multimediaInfo?.image_urls?.split(';')[0] || '';
+          const sumRatings = [...(item.ratings), ...(item.aliexpress_ratings )]
+
           const avgRating =
-            item.ratings?.length > 0
-              ? (item.ratings.reduce((total, r) => total + r.stars, 0) / item.ratings.length).toFixed(1)
+            sumRatings?.length > 0
+              ? (sumRatings.reduce((total, r) => total + r.stars, 0) / sumRatings.length).toFixed(1)
               : null;
+
           const ordersCount = item.orders?.length || 0;
 
           return (
