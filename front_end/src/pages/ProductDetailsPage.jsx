@@ -52,7 +52,7 @@ function ProductDetailsPage({ setRetry, retry }) {
   const dispatch = useDispatch();
   const index = uuidv4();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
 
       dispatch(getProductDetails(params.id))
       //window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
