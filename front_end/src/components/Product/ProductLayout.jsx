@@ -47,7 +47,11 @@ function Product({currentSku, setCurrentSku}) {
    
   return (
     <ParentContainer>
-                <HeadeSeo title={productData?.name[i18n.language] || productData?.name["en"]} description={productData?.description[i18n.language] } />
+      <HeadeSeo title={productData?.name[i18n.language] || productData?.name["en"]} description={productData?.description[i18n.language] 
+        
+        
+      || productData?.description["en"]
+       } />
 
       <Container>
         <FirstSection>
