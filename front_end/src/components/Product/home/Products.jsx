@@ -19,7 +19,8 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
               ? (sumRatings.reduce((total, r) => total + r.stars, 0) / sumRatings.length).toFixed(1)
               : null;
 
-          const ordersCount = item.orders?.length || 0;
+          const ordersCount = item?.orders?.length + item?.aliexpress_ratings?.length || 0;
+
 
           return (
             <div key={item.id} className="product-container">
