@@ -63,7 +63,7 @@ const DesignImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/imagelamp.png');
+    background-image: url('/designimage.png');
     background-size: cover;
     background-position: center;
     opacity: 0.9;
