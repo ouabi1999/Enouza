@@ -38,7 +38,7 @@ const MainSlider = () => {
           clickable: true,
           }}
 
-          className="mySwiper skeleton"
+          className="mySwiper"
         >
           
           

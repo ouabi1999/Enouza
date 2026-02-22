@@ -42,7 +42,7 @@ const MetricsSection = () => {
     },
     {
       icon: <TimelineIcon />,
-      number: '5',
+      number: '8',
       title: t('common.yearsOfExcellence'),
       percentage: 95,
       delay: '0.7s',

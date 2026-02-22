@@ -52,7 +52,7 @@ function DropDownMenuLang(props) {
           <Flag className="flag-icon" code={props.country} />
           <span>{t(`languages.${selectedLang}`)} </span>
           <span style={{margin:"0 4px"}}> / </span>
-          <span> EUR </span>
+          <span> USD </span>
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
       </div>
@@ -94,7 +94,7 @@ function DropDownMenuLang(props) {
             <div>
               <label> {t('sideCard.Currency')} </label>
               <select>
-                <option value="Japan">EUR</option>
+                <option value="Japan">USD</option>
               </select>
             </div>
             <div className="save-button">

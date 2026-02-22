@@ -78,25 +78,22 @@
     }
   },
 
-  "heroSection": {
-    "title": "Artisanal lighting,\ncrafted for modern\nsanctuaries",
-    "description": "Handcrafted travertine wall lamp that blends natural materials with contemporary design — illuminating spaces with warmth and elegance.",
-    "ctaLabel": "Shop Now",
-    "materials": [
-      "Travertine",
-      "Brass Accents",
-      "LED Technology",
-      "Hand-Finished"
-    ],
-    
+ "heroSection": {
+  "title": "Lighting that\ntransforms\nspaces",
+  "description": "Enouza curates refined designer lighting created to elevate interiors with warmth, sophistication, and timeless elegance.",
+  "ctaLabel": "Explore Collection",
+  "materials": [
+    "Curated Designs",
+    "Premium Materials",
+    "Modern Aesthetics",
+    "Refined Craftsmanship"
+  ],
   "stats": {
-    "craftHours": "Craft Hours",
-    "satisfaction": "Satisfaction",
-    "rated": "Rated"
+    "craftHours": "Exclusive Pieces",
+    "satisfaction": "Satisfaction Guarantee",
+    "rated": "Trusted by Customers"
   }
-
-
-  },
+},
   
   "ctaSection": {
     "titleLeft": "Connect With Us",
@@ -286,7 +283,7 @@
   },
   "footer": {
     "followUs": {
-      "title": "Follow Us",
+      "title": "Follow us",
       "facebook": "Facebook",
       "instagram": "Instagram",
       "twitter": "Twitter",
@@ -303,7 +300,7 @@
       "title": "Help",
       "faq": "FAQ",
       "contactUs": "Contact us",
-      "aboutUs": "About Us",
+      "aboutUs": "About us",
       "shipping": "Shipping",
       "returns": "Returns",
       "contact_note": "We're here to assist you. Reach out with any questions or concerns."

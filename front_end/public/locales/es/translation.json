@@ -78,15 +78,21 @@
     }
   },
   "heroSection": {
-  "title": "Iluminación artesanal,\nelaborada para\nespacios modernos",
-  "description": "Aplique de pared de travertino hecho a mano que combina materiales naturales con diseño contemporáneo, iluminando los espacios con calidez y elegancia.",
-  "ctaLabel": "Comprar ahora",
-  "materials": ["Travertino", "Detalles en latón", "Tecnología LED", "Acabado artesanal"],
-  "craftHours": "Horas de fabricación artesanal",
-    "satisfaction": "Satisfacción",
-    "rated": "Valorado"
+  "title": "Iluminación que\ntransforma\nespacios",
+  "description": "Enouza selecciona cuidadosamente lámparas de diseño para elevar los interiores con calidez, sofisticación y elegancia atemporal.",
+  "ctaLabel": "Explorar colección",
+  "materials": [
+    "Diseños seleccionados",
+    "Materiales premium",
+    "Estética contemporánea",
+    "Detalles refinados"
+  ],
+  "stats": {
+    "craftHours": "Piezas exclusivas",
+    "satisfaction": "Garantía de satisfacción",
+    "rated": "Valorado por nuestros clientes"
+  }
 },
-
   "ctaSection": {
     "titleLeft": "Conecta con nosotros",
     "description": "Cada pieza de Enouza comienza con una conversación. Comparte tu visión y juntos encontraremos la iluminación perfecta para tu espacio.",

@@ -257,6 +257,7 @@ const PrentContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom:50px;
+  overflow: hidden;
 `;
 
 const Container = styled.div`

@@ -93,7 +93,7 @@ const getHeroProduct = async () => {
               <Box sx={{ display: "flex", gap: 4 }}>
                 <Box>
                   <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
-                    24
+                    24H
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
                     
@@ -238,7 +238,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: 600,
   textTransform: "none",
-  background: "#661f1f",
+  background: "#0093dc",
   color: "#F5F3EF",
   transition: "all 0.3s ease",
   position: "relative",

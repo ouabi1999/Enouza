@@ -233,10 +233,13 @@ const Container = styled.div`
   .header {
     font-size: 0.9rem;
     font-weight: bold;
+        margin: 0 3px;
+
   }
   .security-privacy-text {
     font-size: 0.7rem;
     color: #868385;
+
   }
 
   .location-icon,
@@ -244,8 +247,7 @@ const Container = styled.div`
   
   .security-icon {
     font-size: 16px;
-    color: #3bc74eff;
-    margin-right: 3px;
+    color: #a8a8a8;
   }
 
   .button-container {
@@ -257,7 +259,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background:rgb(211, 17, 4);
+    background:rgba(196, 31, 20, 0.89);
     color: #fff;
     font-weight: bold;
     min-width: 80px;
@@ -267,7 +269,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background:rgb(34, 167, 1);
+    background:rgb(0, 0, 0);
     color: #fff;
     font-weight: bold;
     min-width: 100px;

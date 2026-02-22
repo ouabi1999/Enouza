@@ -67,7 +67,6 @@ const DesignImage = styled.div`
     background-size: cover;
     background-position: center;
     opacity: 0.9;
-    mix-blend-mode: multiply;
   }
   
   &:after {
