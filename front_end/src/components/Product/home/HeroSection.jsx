@@ -74,7 +74,7 @@ const getHeroProduct = async () => {
               {/* Materials */}
               <Box sx={{ mb: 5 }}>
                 <Typography variant="overline" sx={{ color: "#B87333", mb: 2, display: "block", fontWeight: 600 }}>
-                  Premium Materials
+                  {t("heroSection.whereQualityMeetsDesign")}
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                   {heroSection.materials.map((material, index) => (
@@ -238,7 +238,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: 600,
   textTransform: "none",
-  background: "#0093dc",
+  background: "#000000",
   color: "#F5F3EF",
   transition: "all 0.3s ease",
   position: "relative",

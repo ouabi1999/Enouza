@@ -122,7 +122,7 @@ const Container = styled.div`
   right: 0;
   padding: 2px 15px;
   width: 300px;
-  background: #ebdadaff;
+  background: #E1D4B7;
   height: 100%;
   transition: ease-in-out;
   animation-duration: 1s;
@@ -169,7 +169,7 @@ const SocialMedia = styled.div`
   align-items: center;
   justify-content: space-between;
   .social-icon {
-    color: #a00991ff;
+    color: #db8700;
   }
 `;
 const Wrapp = styled.div`

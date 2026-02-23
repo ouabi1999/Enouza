@@ -187,6 +187,7 @@ const ParentContainer = styled.div`
       border-radius:0;
       outline: none;
       background: #feecb5;
+      z-index: 999;
     }
     .responsive-input:focus {
       outline: 0.5px solid orange;

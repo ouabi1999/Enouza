@@ -130,7 +130,7 @@ const Container = styled.div`
 
 @media only screen and (max-width:420px){
       &{
-        height:100%;
+        height:200px;
         width:100%;
         min-width:290px;
       }

@@ -80,7 +80,9 @@
   "heroSection": {
   "title": "Iluminación que\ntransforma\nespacios",
   "description": "Enouza selecciona cuidadosamente lámparas de diseño para elevar los interiores con calidez, sofisticación y elegancia atemporal.",
-  "ctaLabel": "Explorar colección",
+  "ctaLabel": "Explorar",
+   "whereQualityMeetsDesign": "Donde la calidad se une al diseño",
+
   "materials": [
     "Diseños seleccionados",
     "Materiales premium",
@@ -88,9 +90,9 @@
     "Detalles refinados"
   ],
   "stats": {
-    "craftHours": "Piezas exclusivas",
-    "satisfaction": "Garantía de satisfacción",
-    "rated": "Valorado por nuestros clientes"
+    "craftHours": "fabricación",
+    "satisfaction": "Satisfacción",
+    "rated": "Valorado"
   }
 },
   "ctaSection": {
