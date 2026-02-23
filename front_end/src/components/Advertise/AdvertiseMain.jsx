@@ -8,9 +8,7 @@ function AdvertiseMain() {
   return (
     <Container>
        
-        <div className="main-slider">
         <MainSlider />
-        </div>
       
       {/*<div className="categorie-main">
         <CategorieMain />
@@ -24,15 +22,9 @@ export default AdvertiseMain
 const Container = styled.div`
     margin:0;
     padding:0;
-    
-    width:100%;
-    /* fallback for old browsers */
    
 
-    display:grid;
-  
-  
-    grid-template-columns: 100%;
+    
     
      .main-slider{
        

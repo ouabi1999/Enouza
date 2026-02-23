@@ -39,6 +39,7 @@ const MainSlider = () => {
           }}
 
           className="mySwiper"
+          
         >
           
           
@@ -89,9 +90,11 @@ const Container = styled.div`
     
    
    min-width:200px;
+
      
 
-  
+  .mySwiper{
+}
    
  
   .skeleton {
@@ -124,13 +127,15 @@ const Container = styled.div`
     object-fit: cover;
     min-width:200px;
     width:100%;
+         display:flex;
+
     
    
 }
 
 @media only screen and (max-width:420px){
       &{
-        height:200px;
+        height:100%;
         width:100%;
         min-width:290px;
       }
