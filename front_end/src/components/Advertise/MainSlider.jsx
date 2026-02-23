@@ -127,7 +127,7 @@ const Container = styled.div`
     object-fit: cover;
     min-width:200px;
     width:100%;
-         display:flex;
+    display:flex;
 
     
    
@@ -135,10 +135,16 @@ const Container = styled.div`
 
 @media only screen and (max-width:420px){
       &{
-        height:100%;
         width:100%;
         min-width:290px;
+        object-fit: cover;
       }
+        img{
+        object-fit: fill;
+        width:100%;
+        height:220px;
+
+        }
       
 
 
