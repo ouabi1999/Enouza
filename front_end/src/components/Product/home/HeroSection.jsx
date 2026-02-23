@@ -182,18 +182,27 @@ const floatAnimation = keyframes`
 `;
 
 // Styled Components
-const HeroBox = styled("section")(({ theme }) => ({
-  padding: theme.spacing(15, 0, 10),
-  position: "relative",
-  overflow: "hidden",
-  background: "linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%)",
-  color: "#1a1a1a",
-  minHeight: "100vh",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+const HeroBox = styled("section")`
+  padding: 20px 10px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+
+  @media only screen and (max-width:420px){
+    &{
+    
+      padding: 40px 0px;}
+  }
+  
+
+  
+`
 const HeroImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   borderRadius: "8px",
