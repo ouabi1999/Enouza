@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Rating, MenuItem, TextField } from '@mui/material';
+import { Rating, MenuItem, TextField, Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import countriesData from "../../../../common/countryData.json";
 import ApiInstance from '../../../../common/baseUrl';
 
 export const AliExpressRating= ({ product }) => {
+  const [imageUrl, setImageUrl] = useState('');
   const [formData, setFormData] = useState({
     stars: 0,
     product:product?.id,
@@ -46,7 +47,17 @@ export const AliExpressRating= ({ product }) => {
       }
     }));
   };
+  const addImageUrl = (e) => {
 
+    const { value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      review: {
+        ...prev.review,
+        images: [...prev.review.images, value]
+      }
+    }));
+  };
   const handleReviewInput = (e) => {
     const { value } = e.target;
     setFormData(prev => ({
@@ -167,6 +178,19 @@ export const AliExpressRating= ({ product }) => {
                     );
                   })}
                 </TextField>
+                <TextField
+                  label="image URL"
+                  type="text"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  fullWidth
+                  variant="filled"
+                  size="small"
+                  sx={{ mt: 2 }}
+                />
+                <Button  size = "small" onClick={addImageUrl} variant="contained" sx={{ mt: 1 }}>
+                  Add URL
+                </Button>
 
         <FormGroup>
           <Label>Review</Label>
