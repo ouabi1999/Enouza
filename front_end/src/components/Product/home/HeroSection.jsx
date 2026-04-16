@@ -247,7 +247,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: 600,
   textTransform: "none",
-  background: "#000000",
+  background: "#1074e6",
   color: "#F5F3EF",
   transition: "all 0.3s ease",
   position: "relative",
