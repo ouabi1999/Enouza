@@ -7,6 +7,9 @@ import json
 from rest_framework.views import APIView
 from ..models import Products, Address, Users, Orders, AliExpressRatings, Ratings
 from django.db.models import Count
+from django.http import JsonResponse
+from django.db.models import Avg, Count, Value
+from django.db.models.functions import Coalesce
 
 from ..serializer import (
     ProductSerializer,
@@ -14,9 +17,7 @@ from ..serializer import (
     AliExpressRatingSerializer,
     RatingSerializer,
 )
-from rest_framework.exceptions import ValidationError
 from django.db import transaction
-from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from django.db.models import Q, Case, When, IntegerField, Count, Min, Max, FloatField
 from django.db.models.functions import Cast
@@ -32,6 +33,7 @@ class ProductView(APIView):
         data = request.data.copy()  # Make a copy to modify
 
         serializer = ProductSerializer(data=data)
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -42,7 +44,14 @@ class ProductView(APIView):
         start = int(request.GET.get("start", 0))
         per_page = int(request.GET.get("per_page", 10))
 
-        products_qs = Products.objects.order_by("release_date")
+        products_qs = Products.objects.annotate(
+              ratings_count=Count("aliratings", distinct=True),
+              orders_count=Count("orders", distinct=True)
+              ).order_by("orders_count", "-ratings_count", "-release_date")
+
+
+
+
 
         total_products = products_qs.count()
 
@@ -354,15 +363,11 @@ class ProductFilterView(APIView):
         )
 
 
-
-
-
 class HeroProductView(APIView):
     def get(self, request):
         # 1️⃣ Try manual hero product
         hero = (
-            Products.objects
-            .annotate(orders_count=Count("orders"))
+            Products.objects.annotate(orders_count=Count("orders"))
             .order_by("-orders_count")
             .first()
         )
