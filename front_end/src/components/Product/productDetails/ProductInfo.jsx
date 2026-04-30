@@ -110,7 +110,7 @@ function ProductInfo({ productData,
         </div>
         <div>
           <span>
-            {productData?.orders?.length + productData?.aliexpress_ratings?.length  + 120 || 0}{" "}
+            {productData?.orders?.length + productData?.aliexpress_ratings?.length || 0}{" "}
             {t("productInfo.order")}
           </span>
         </div>
@@ -189,9 +189,8 @@ const Container = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 12px;
-  background: linear-gradient(135deg, #ffddddff, #ffffff );
+    background: linear-gradient(135deg, #ffddddff, #ffffff );
   padding: 8px;
-  width:95%;
 }
 
 .product-price {
@@ -309,7 +308,7 @@ const Container = styled.div`
 /* ---------- Mobile ---------- */
 @media only screen and (max-width: 420px) {
   & {
-    width: calc(100% - 10px);
+    width: calc(100vw - 20px);
   }
 
   .product-title {
