@@ -47,14 +47,13 @@ export const AliExpressRating= ({ product }) => {
       }
     }));
   };
-  const addImageUrl = (e) => {
+  const addImageUrl = () => {
 
-    const { value } = e.target;
     setFormData(prev => ({
       ...prev,
       review: {
         ...prev.review,
-        images: [...prev.review.images, value]
+        images: [...prev.review.images, imageUrl]
       }
     }));
   };
