@@ -56,6 +56,7 @@ export const AliExpressRating= ({ product }) => {
         images: [...prev.review.images, imageUrl]
       }
     }));
+    setImageUrl('');
   };
   const handleReviewInput = (e) => {
     const { value } = e.target;
