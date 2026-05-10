@@ -34,7 +34,7 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
                 </FirstSection>
 
                 <SecondSection>
-                  <div className="orders">{t("common.orders")}({ordersCount})</div>
+                 {/* <div className="orders">{t("common.orders")}({ordersCount})</div>*/}
 
                   {avgRating && (
                     <div className="reviews-container">

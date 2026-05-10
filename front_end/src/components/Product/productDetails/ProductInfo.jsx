@@ -110,8 +110,8 @@ function ProductInfo({ productData,
         </div>
         <div>
           <span>
-            {productData?.orders?.length + productData?.aliexpress_ratings?.length || 0}{" "}
-            {t("productInfo.order")}
+            {/*{productData?.orders?.length + productData?.aliexpress_ratings?.length || 0}{" "}
+            {t("productInfo.order")}|*/}
           </span>
         </div>
       </div>
