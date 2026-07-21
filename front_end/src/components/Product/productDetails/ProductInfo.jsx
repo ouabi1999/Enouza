@@ -163,9 +163,12 @@ function ProductInfo({ productData,
               );
             })}
           </div>
+          
         </div>
       ))}
-
+      <div className="secure-checkout"> 
+            <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1784674102/ChatGPT_Image_Jul_22_2026_12_43_51_AM_hyfdlx.png" alt="secure checkout" />
+            </div>
     </Container>
   );
 }
@@ -329,4 +332,16 @@ const Container = styled.div`
     font-size: 0.72rem;
   }
 }
+
+.secure-checkout { 
+margin:auto;
+width: 100%;
+
+
+}
+.secure-checkout img{
+width: 100%;
+margin-top: 10px;}
+
+
 `;
