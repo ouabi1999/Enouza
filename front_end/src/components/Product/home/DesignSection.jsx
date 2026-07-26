@@ -63,7 +63,7 @@ const DesignImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/designimage.png');
+    background-image: url('https://res.cloudinary.com/dzpzy1o1y/image/upload/v1785096929/Gemini_Generated_Image_7u3ih37u3ih37u3i_wbshol.png');
     background-size: cover;
     background-position: center;
     opacity: 0.9;
