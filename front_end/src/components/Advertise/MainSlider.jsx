@@ -4,10 +4,6 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
 import styled from "styled-components";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/css';
 import { useSelector } from "react-redux";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { v4 as uuidv4 } from 'uuid';
