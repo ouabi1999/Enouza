@@ -1,32 +1,45 @@
 export const categoryList = [
   {
     id: 1,
-    label: "Ambient Lighting",
-    value: "led_ambient_lighting",
+    label: "Table Lamps",
+    value: "table_lamps",
   },
   {
     id: 2,
-    label: "Phone Mounts & Holders",
-    value: "phone_mounts_holders",
+    label: "Floor Lamps",
+    value: "floor_lamps",
   },
   {
     id: 3,
-    label: "Organizers & Storage",
-    value: "organizers_storage",
+    label: "Wall Lamps",
+    value: "wall_lamps",
   },
   {
     id: 4,
-    label: "Comfort & Accessories",
-    value: "comfort_accessories",
+    label: "Pendant Lights",
+    value: "pendant_lights",
   },
   {
     id: 5,
-    label: "Air Fresheners & Scents",
-    value: "air_fresheners_scents",
+    label: "Ceiling Lights",
+    value: "ceiling_lights",
+  },
+  {
+    id: 6,
+    label: "Bedside Lamps",
+    value: "bedside_lamps",
+  },
+  {
+    id: 7,
+    label: "Desk & Office Lamps",
+    value: "desk_office_lamps",
+  },
+  {
+    id: 8,
+    label: "Outdoor Lighting",
+    value: "outdoor_lighting",
   },
 ];
-
-
   
   export const series = [
     "Naruto",

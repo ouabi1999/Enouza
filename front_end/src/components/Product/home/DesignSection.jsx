@@ -5,7 +5,10 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import StarIcon from '@mui/icons-material/Star';
 import SpaIcon from '@mui/icons-material/Spa';
 import { useTranslation } from 'react-i18next';
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { useSelector } from 'react-redux';
 // Warm & Earthy Natural Color Palette
 const COLORS = {
   sand: '#E6DFD5',
@@ -48,41 +51,7 @@ const DesignGrid = styled(Grid)`
   align-items: center;
 `;
 
-const DesignImage = styled.div`
-  width: 100%;
-  height: 500px;
-  background: linear-gradient(135deg, ${COLORS.clay}, ${COLORS.sand});
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://res.cloudinary.com/dzpzy1o1y/image/upload/v1785096929/Gemini_Generated_Image_7u3ih37u3ih37u3i_wbshol.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.9;
-  }
-  
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      rgba(179, 84, 60, 0.1) 0%,
-      transparent 100%
-    );
-  }
-`;
+
 
 const DesignPrinciple = styled(Box)`
   display: flex;
@@ -114,8 +83,8 @@ const PrincipleContent = styled(Box)``;
 
 const DesignSection = () => {
  const { t, i18n } = useTranslation();
-
-const principles = [
+ const products = useSelector((state) => state.products.productData);
+ const principles = [
   {
     icon: <DesignServicesIcon />,
     title: t("designSection.principles.minimalism.title"),
@@ -133,13 +102,36 @@ const principles = [
   }
 ];
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    infinite: true,
+    waitForAnimate: false,
 
+  };
   return (
     <DesignContainer maxWidth="xl">
       <DesignGrid container spacing={8} >
+        
         <Grid item xs={12} md={6}>
-          <DesignImage />
+          <Slider settings = {settings}>
+          {products[0]?.products?.slice(0, 3)?.map((item) => {
+          const mainSku = item.skuInfo?.[0];
+          const image = item.multimediaInfo?.image_urls?.split(';')[0] || '';
+          
+          return (
+          <div>
+          <img src={image}  style={{ width: '100%', height: '500px', objectFit: 'cover', borderRadius: '6px' }} />
+          
+          </div>)
+        })}
+          </Slider>
         </Grid>
+        
         
         <Grid item xs={12} md={6}>
           <Typography 
@@ -152,11 +144,11 @@ const principles = [
               fontWeight: 400
             }}
           >
-  {t("designSection.title")}
+             {t("designSection.title")}
 
           </Typography>
           
-          {principles.map((principle, index) => (
+          {principles?.map((principle, index) => (
             <DesignPrinciple key={index} style={{ direction:'ltr'}}>
               <PrincipleIcon>
                 {principle.icon}

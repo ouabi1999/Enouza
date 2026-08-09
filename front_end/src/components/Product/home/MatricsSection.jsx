@@ -131,10 +131,10 @@ export default MetricsSection;
    COLORS
 ======================= */
 const COLORS = {
-  cream: '#F8F5F2',
+  cream: '#ffffff',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
-  bronze: '#b57102',
+  bronze: '#c763005e',
 };
 
 /* =======================

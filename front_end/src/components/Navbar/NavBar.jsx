@@ -79,7 +79,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         <ChildContainer>
           <Logo>
             <Link to="/">
-              <img width="90vw" src="../Asset 10.svg" alt="" />
+              <span style={{"margin":"0 5px", "letterSpacing": "2px", "color": "#000000", "fontSize": "25px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
             </Link>
           </Logo>
           <SearchContainer>
@@ -186,7 +186,7 @@ const ParentContainer = styled.div`
       padding: 0 4px 0 4px;
       border-radius:0;
       outline: none;
-      background: #feecb5;
+      background: #fcfcfc;
       z-index: 999;
     }
     .responsive-input:focus {
@@ -200,7 +200,7 @@ const ParentContainer = styled.div`
     .search-icon-container {
       height: 100%;
       width: 45px;
-    background:  #fba701;
+    background:  #ffc197;
       display: flex;
       align-items: center;
     }
@@ -228,7 +228,7 @@ const Container = styled.div`
   padding: 10px 0;
   max-width: 1920px;
   min-width: 320px;
-  background: #141414;
+  background: #dfd9d9;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -305,7 +305,7 @@ const Wrapper = styled.div`
     position: absolute;
     right: -10px;
     top: -10px;
-    background: #fff;
+    background: #ffffff;
     color: #000000;
     border-radius: 50%;
     width: 18px;
@@ -317,7 +317,7 @@ const Wrapper = styled.div`
     display: none;
   }
   .search-icon-responsive {
-    color: #ffff;
+    color: #000000;
     cursor: pointer;
     font-size: 30px;
   }
@@ -364,7 +364,7 @@ const SearchContainer = styled.div`
   .search-icon-container {
     height: 100%;
     width: 45px;
-    background:  #fba701;
+    background:  #ffc197;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;
@@ -372,7 +372,7 @@ const SearchContainer = styled.div`
   }
   .search-icon {
     padding: 8px;
-    color: #fff;
+    color: #050505;
   }
 
   @media only screen and (max-width: 650px) {

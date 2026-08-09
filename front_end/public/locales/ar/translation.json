@@ -234,7 +234,15 @@
   "phone_mounts_holders":"حوامل الهواتف",
   "organizers_storage": "منظمات التخزين ",
   "comfort_accessories": "الراحة والإكسسوارات",
-  "air_fresheners_scents": "معطرات الهواء "
+  "air_fresheners_scents": "معطرات الهواء ",
+   "table_lamps": "مصابيح الطاولة",
+    "floor_lamps": "مصابيح الأرضية",
+    "wall_lamps": "مصابيح الجدران",
+    "pendant_lights": "المصابيح المعلقة",
+    "ceiling_lights": "مصابيح السقف",
+    "bedside_lamps": "مصابيح بجانب السرير",
+    "desk_office_lamps": "مصابيح المكتب والعمل",
+    "outdoor_lighting": "الإضاءة الخارجية"
   },
   "buyerTrustServices": {
     "freeShipping": {

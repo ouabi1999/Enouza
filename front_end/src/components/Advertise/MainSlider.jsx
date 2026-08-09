@@ -21,68 +21,50 @@ const MainSlider = () => {
   
 
   return (
-    <Container>
+    <Container style={{ position: "relative", width: "100%" }}>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{
+      width: "100%",
+      height: "550px",
+      objectFit: "cover",
+      display: "block",
+    }}
+  >
+    <source
+      src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
 
+  <div
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      zIndex: 10,
+      color: "#fff",
+      textAlign: "center",
+      width: "90%",
+    }}
+  >
+    <h1>
+      Celebrating Eight Years of Enouza
+    </h1>
+    
+    <span>
+      From one home in MIAMI to 50,000+ worldwide.
+    </span>
 
-      
-        <Swiper
-
-          loop={true}
-          modules={[Pagination, Navigation, Autoplay]} 
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-
-          pagination={{
-          clickable: true,
-          }}
-
-          className="mySwiper"
-          
-        >
-          
-          
-          {displayData?.slider?.[0] && (
-       
-             <SwiperSlide>
-                  <img src={displayData?.slider[0]} alt="slider" />
-            </SwiperSlide>
-              
-            )}
-             {displayData?.slider?.[1] && (
-       
-       <SwiperSlide>
-            <img src={displayData?.slider[1]} alt="slider" />
-      </SwiperSlide>
-        
-      )}
-       {displayData?.slider?.[2] && (
-       
-       <SwiperSlide>
-            <img src={displayData?.slider[2]} alt="slider" />
-      </SwiperSlide>
-        
-      )}
-        {displayData?.slider?.[3] && (
-       
-       <SwiperSlide>
-            <img src={displayData?.slider[4]} alt="slider" />
-      </SwiperSlide>
-        
-      )}   
-       {displayData?.slider?.[4] && (
-       
-       <SwiperSlide>
-            <img src={displayData?.slider[4]} alt="slider" />
-      </SwiperSlide>
-        
-      )}
-           
-        </Swiper>
-    </Container>
-  )
-}
+    
+  </div>
+</Container>
+  )}
 
 export default MainSlider;
 
@@ -126,7 +108,6 @@ const Container = styled.div`
  img{
     object-fit: cover;
     min-width:200px;
-    max-height: 520px;
     width:100%;
     display:flex;
 
@@ -158,7 +139,6 @@ const Container = styled.div`
         img{
         object-fit: cover;
         width:100%;
-        height:220px;
 
         }
       

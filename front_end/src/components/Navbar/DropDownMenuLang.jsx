@@ -124,7 +124,7 @@ const Container = styled.div`
         align-items:center;
         justify-content:space-between;
         padding:2px 10px;
-        background:#fff;
+        background: #ffffff;
         height:38px;
         border-radius:5px 5px 0px 0;
         z-index: 1;

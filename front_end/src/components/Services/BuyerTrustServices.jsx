@@ -78,7 +78,7 @@ const Container = styled.div`
   
   .icon{
       font-size:40px;
-      color: #C4A96A;
+      color: #ffc197;
   }
   @media only screen and (max-width: 1000px) {
   &{

@@ -32,11 +32,12 @@
     "specialOffers": "Ofertas",
     "buyerTrustServices": "Nuestros servicios",
     "freeShipping_offer": "Envío gratis desde $50",
-    "support_24_7": "Soporte 24/7",
-    "money_Back": "Garantía",
+     "money_Back": "Garantía de devolución",
+    "safe_reliable_payments": "Pagos seguros y fiables",
+    "support_24_7": "Atención al cliente 24/7",
     "secure_Payment": "Pago seguro",
     "easy_Returns": "Devoluciones fáciles",
-    "safe_reliable_payments": "Pagos seguros",
+    
     "More_to_love": "Seguro que te gusta",
     "more_products": "Más productos"
   },
@@ -80,7 +81,7 @@
   "heroSection": {
   "title": "Iluminación que\ntransforma\nespacios",
   "description": "Enouza selecciona cuidadosamente lámparas de diseño para elevar los interiores con calidez, sofisticación y elegancia atemporal.",
-  "ctaLabel": "Comprar ahora",
+  "ctaLabel": "Comprar Ahora",
    "whereQualityMeetsDesign": "Donde la calidad se une al diseño",
 
   "materials": [
@@ -225,7 +226,15 @@
   "phone_mounts_holders": "Monturas para teléfonos",
   "organizers_storage": "Organizadores ",
   "comfort_accessories": "Comodidad y accesorios",
-  "air_fresheners_scents": "Ambientadores y fragancias"
+  "air_fresheners_scents": "Ambientadores y fragancias",
+    "table_lamps": "Lámparas de Mesa",
+    "floor_lamps": "Lámparas de Pie",
+    "wall_lamps": "Apliques de Pared",
+    "pendant_lights": "Lámparas Colgantes",
+    "ceiling_lights": "Lámparas de Techo",
+    "bedside_lamps": "Lámparas de Mesita de Noche",
+    "desk_office_lamps": "Lámparas de Escritorio y Oficina",
+    "outdoor_lighting": "Iluminación Exterior"
     
   },
   "buyerTrustServices": {

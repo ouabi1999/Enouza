@@ -81,7 +81,7 @@
  "heroSection": {
   "title": "Lighting that transforms\nspaces",
   "description": "Enouza curates refined designer lighting created to elevate interiors with warmth, sophistication, and timeless elegance.",
-  "ctaLabel": "Shop now",
+  "ctaLabel": "Shop Now",
   "whereQualityMeetsDesign": "Where Quality Meets Design",
 
   "materials": [
@@ -121,7 +121,7 @@
 
   
   "designSection": {
-    "title": "The Enouza Ethos",
+    "title": "Enouza Ethos",
     "principles": {
       "minimalism": {
         "title": "Minimalist Philosophy",
@@ -220,7 +220,15 @@
     "phone_mounts_holders": "Phone  Holders",
     "organizers_storage": "Organizers Storage",
     "comfort_accessories": "Comfort & Accessories",
-    "air_fresheners_scents": "Air Fresheners"
+    "air_fresheners_scents": "Air Fresheners",
+     "table_lamps": "Table Lamps",
+    "floor_lamps": "Floor Lamps",
+    "wall_lamps": "Wall Lamps",
+    "pendant_lights": "Pendant Lights",
+    "ceiling_lights": "Ceiling Lights",
+    "bedside_lamps": "Bedside Lamps",
+    "desk_office_lamps": "Desk & Office Lamps",
+    "outdoor_lighting": "Outdoor Lighting"
   },
   "buyerTrustServices": {
     "freeShipping": {

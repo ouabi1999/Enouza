@@ -74,8 +74,9 @@ function HomePage() {
       <UserServices />
       <AdvertiseMain />
       <HeroSection/>
-      <MatricsSection/>
       <DesignSection/>
+      <MatricsSection/>
+
       <div className="product-header">
         <strong> {t("homePage.more_products")}</strong>
       </div>
