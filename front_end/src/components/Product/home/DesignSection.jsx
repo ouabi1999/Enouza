@@ -154,7 +154,6 @@ const DesignSection = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
