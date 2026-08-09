@@ -83,9 +83,9 @@ const MetricsSection = () => {
                       fontWeight: 400,
                       color: COLORS.charcoal,
                       fontSize: {
-                        xs: '1.9rem',
-                        sm: '2.3rem',
-                        md: '3rem',
+                        xs: '1rem',
+                        sm: '1rem',
+                        md: '1.5rem',
                       },
                       lineHeight: 1,
                     }}
@@ -134,7 +134,7 @@ const COLORS = {
   cream: '#ffffff',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
-  bronze: '#c763005e',
+  bronze: '#591c0a9a',
 };
 
 /* =======================
@@ -189,7 +189,7 @@ const MetricsContainer = styled(Container)`
 const MetricCircle = styled(Box)`
   position: relative;
   margin: 0 auto 2rem;
-  width: 200px;
+  width: 150px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   animation: ${fadeInUp} 0.8s ease-out;
