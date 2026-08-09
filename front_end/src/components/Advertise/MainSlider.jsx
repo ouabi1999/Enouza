@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
 const MainSlider = () => {
