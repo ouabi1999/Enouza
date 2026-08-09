@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 const MainSlider = () => {
 
   const displayData = useSelector(state => state.display.displayData)
+  
   const handleSelect = (value)=>{
       window.localStorage.setItem("selectedImageSlider", value)
   }
