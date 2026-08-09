@@ -89,7 +89,15 @@ const DesignPrinciple = styled(Box)`
 
   border-left: 2px solid ${COLORS.terracotta};
 
-  
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(212, 201, 184, 0.2);
+
+    padding: 1rem 1rem 1rem 1.5rem;
+
+    border-left: 3px solid ${COLORS.darkTerracotta};
+  }
 `;
 
 const PrincipleIcon = styled(Box)`
@@ -154,14 +162,15 @@ const DesignSection = () => {
 
   const settings = {
     dots: false,
+    infinite: true,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
-    waitForAnimate: false,
     autoplay: true,
     autoplaySpeed: 2500,
     arrows: false,
+    pauseOnHover: true,
   };
 
   // ========================================
@@ -291,6 +300,7 @@ const DesignSection = () => {
             </DesignPrinciple>
           ))}
         </Grid>
+
       </DesignGrid>
     </DesignContainer>
   );
