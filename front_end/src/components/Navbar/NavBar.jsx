@@ -186,7 +186,7 @@ const ParentContainer = styled.div`
       padding: 0 4px 0 4px;
       border-radius:0;
       outline: none;
-      background: #fcfcfc;
+      background: #c5c5c5;
       z-index: 999;
     }
     .responsive-input:focus {
@@ -317,7 +317,7 @@ const Wrapper = styled.div`
     display: none;
   }
   .search-icon-responsive {
-    color: #000000;
+    color: #ffffff;
     cursor: pointer;
     font-size: 30px;
   }
