@@ -227,7 +227,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 10px 0;
+  padding: 10px 4px;
   max-width: 1920px;
   min-width: 320px;
   background: #dbd0a2;
@@ -295,7 +295,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
-    margin:0 10px;
   }
   .shopping-cart-icon {
     color: #000000;
@@ -336,7 +335,7 @@ const Wrapper = styled.div`
   }
 `;
 const Logo = styled.div`
-   margin-left: 10px;
+   margin-left: 0px;
    @media only screen and (max-width: 650px) {
     /* For mobile phones: */
     &{
