@@ -47,9 +47,8 @@ const getHeroProduct = async () => {
                 sx={{
                   fontWeight: 300,
                   lineHeight: 1.1,
-                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                  fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
                   mb: 3,
-                  whiteSpace: "pre-line",
                   color: "#1a1a1a",
                   fontFamily: "'Playfair Display', serif",
                 }}
@@ -72,8 +71,8 @@ const getHeroProduct = async () => {
               </Typography>
 
               {/* Materials */}
-              <Box sx={{ mb: 5 }}>
-                <Typography variant="overline" sx={{ color: "#B87333", mb: 2, display: "block", fontWeight: 600 }}>
+              <Box sx={{ mb: 5  }}>
+                <Typography variant="overline" sx={{ color: "#bf8c00", mb: 2, display: "block", fontWeight: 600 , fontSize: { xs: '1.2rem', md: '1.4rem', lg: '1.5rem' } }}>
                   {t("heroSection.whereQualityMeetsDesign")}
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
@@ -90,9 +89,9 @@ const getHeroProduct = async () => {
               
               
               {/* Stats */}
-              <Box sx={{ display: "flex", gap: 4 }}>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+              <Box sx={{ display: "flex", gap: 4, justifyContent: "space-between",  }}>
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
                     24H
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
@@ -100,16 +99,16 @@ const getHeroProduct = async () => {
                     {t("heroSection.stats.craftHours")}
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
                     98%
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
                     {t("heroSection.stats.satisfaction")}
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography variant="h4" sx={{ color: "#D4AF37", fontWeight: 600 }}>
+               <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
                     5★
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>

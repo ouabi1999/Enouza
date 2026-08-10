@@ -34,8 +34,8 @@ function UserServices() {
         animate={{ x:i18n.dir() === "ltr" ? ["0%", "-50%"] : ["0%", "50%"] }}
         transition={{
           duration: 25,
-          ease: "linear",
-          repeat: Infinity,
+         ease: "linear",
+         repeat: Infinity,
         }}
       >
         {/* FIRST GROUP */}
@@ -75,33 +75,26 @@ const Container = styled.div`
 
 const Track = styled(motion.div)`
   display: flex;
-
+  justify-content: center;
   width: 200vw;
 `;
 
 const Group = styled.div`
   width: 100vw;
-  flex-shrink: 0;
-
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
-  padding: 0 15px;
-
-  box-sizing: border-box;
+  
 `;
 
 const MinWrap = styled.div`
-  width: 35.3333%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 2px 15px;
 
-  box-sizing: border-box;
 
   font-family:
     "Franklin Gothic Medium",
@@ -146,9 +139,9 @@ const MinWrap = styled.div`
     }
 
     .icon {
-      color: #c4a96a;
+      color: #000000;
       margin-right: 3px;
-      font-size: 99%;
+      font-size: 97%;
     }
   }
 `;

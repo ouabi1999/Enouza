@@ -185,8 +185,8 @@ const DesignSection = () => {
   // ========================================
 
   return (
-    <DesignContainer maxWidth={false}>
-      <DesignGrid container spacing={6}>
+    <DesignContainer maxWidth={false} >
+      <DesignGrid container spacing={6}wrap = "wrap-reverse">
 
         {/* ==================================
             PRODUCT IMAGE SLIDER
