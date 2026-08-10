@@ -78,7 +78,7 @@ function HomePage() {
       <MatricsSection/>
 
       <div className="product-header">
-        <strong> {t("homePage.more_products")}</strong>
+        <strong> {t("homePage.best_sellers")}</strong>
       </div>
 
 
@@ -124,14 +124,16 @@ const Container = styled.div`
     margin:15px 5px;
     margin-top:15px;
     background-color:white;  
+    f
     }
 
 .product-header strong{
     padding:15px;
+
     letter-spacing: 2px;
     font-size:1.5rem;
     font-weight:490;
-    font-family:'Arial Narrow', Arial, sans-serif
+    font-family: "Playfair Display", serif;
 } 
 
 .veiw-more{

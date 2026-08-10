@@ -122,7 +122,7 @@ const Container = styled.div`
   right: 0;
   padding: 2px 15px;
   width: 300px;
-  background: #E1D4B7;
+  background: #ffebd7;
   height: 100%;
   transition: ease-in-out;
   animation-duration: 1s;
@@ -169,7 +169,7 @@ const SocialMedia = styled.div`
   align-items: center;
   justify-content: space-between;
   .social-icon {
-    color: #db8700;
+    color: #000000;
   }
 `;
 const Wrapp = styled.div`
@@ -183,7 +183,7 @@ const User_container = styled.div`
   .sign_in_button {
     display: flex;
     align-items: center;
-    background: #007cff;
+    background: #000000;
     border-radius: 6px;
     color: #ffff;
     padding: 3px 8px;

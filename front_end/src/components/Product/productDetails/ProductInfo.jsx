@@ -327,11 +327,15 @@ const Container = styled.div`
 }
 
 /* ---------- Mobile ---------- */
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 500px) {
+  
   & {
     width: calc(100vw - 20px);
   }
-
+   .prices-container {
+   padding: 0px 5px;
+  width: 90%;
+}
   .product-title {
     font-size: 0.8rem;
   }

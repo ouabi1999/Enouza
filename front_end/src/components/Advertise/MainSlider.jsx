@@ -42,6 +42,7 @@ const MainSlider = () => {
       color: "#fff",
       textAlign: "center",
       width: "90%",
+      fontFamily: '"Playfair Display", serif'
     }}
   >
     <h1>
@@ -64,12 +65,12 @@ const Container = styled.div`
    
    min-width:200px;
 
-     video{
-        width: 100%,
-        height: 550px,
-          object-fit: cover,
-          display: block,
-
+     video {
+        width: 100%;
+        height: 550px;
+          object-fit: cover;
+          display: block;
+}
 
  
   .skeleton {

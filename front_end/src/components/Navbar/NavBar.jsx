@@ -319,7 +319,7 @@ const Wrapper = styled.div`
     display: none;
   }
   .search-icon-responsive {
-    color: #ffffff;
+    color: #000000;
     cursor: pointer;
     font-size: 30px;
   }
