@@ -134,7 +134,7 @@ const COLORS = {
   cream: '#ffffff',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
-  bronze: '#591c0a9a',
+  bronze: '#dbd0a2;',
 };
 
 /* =======================

@@ -93,7 +93,7 @@ const Group = styled.div`
 `;
 
 const MinWrap = styled.div`
-  width: 33.3333%;
+  width: 35.3333%;
 
   display: flex;
   align-items: center;
@@ -131,9 +131,9 @@ const MinWrap = styled.div`
     }
 
     .icon {
-      color: #c4a96a;
+      color: #000000;
       margin-right: 3px;
-      font-size: 99%;
+      font-size: 97%;
     }
   }
 
@@ -141,7 +141,7 @@ const MinWrap = styled.div`
     padding: 2px 5px;
 
     span {
-      font-size: 9px;
+      font-size: 8px;
       font-weight: bolder;
     }
 

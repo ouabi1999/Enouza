@@ -79,7 +79,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         <ChildContainer>
           <Logo>
             <Link to="/">
-              <span style={{"margin":"0 5px", "letterSpacing": "2px", "color": "#000000", "fontSize": "20px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
+              <span style={{"margin":"0 5px", "letterSpacing": "3px", "color": "#000000", "fontSize": "25px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
             </Link>
           </Logo>
           <SearchContainer>
@@ -230,7 +230,7 @@ const Container = styled.div`
   padding: 10px 0;
   max-width: 1920px;
   min-width: 320px;
-  background: #dfd9d9;
+  background: #dbd0a2;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -306,13 +306,14 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 4px;
-    top: -12px;
+    right: -10px;
+    top: -10px;
     color: #000000;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+    background: #ffffff;
   }
 
   .search-icon-container-responsive {
@@ -335,7 +336,7 @@ const Wrapper = styled.div`
   }
 `;
 const Logo = styled.div`
- margin-left: 10px;
+   margin-left: 10px;
    @media only screen and (max-width: 650px) {
     /* For mobile phones: */
     &{
