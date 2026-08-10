@@ -31,7 +31,7 @@ function ProductInfo({ productData,
         if (!attributes[key]) attributes[key] = new Set();
         attributes[key].add(attr.value);
       });
-    },[]);
+    }, []);
 
     const normalized = {};
     Object.entries(attributes).forEach(([k, v]) => {
@@ -62,7 +62,7 @@ function ProductInfo({ productData,
   // Handler for selecting an attribute
   const selectAttribute = (attrKey, value) => {
     setSelectedAttributes((prev) => ({ ...prev, [attrKey]: value }));
-    
+
   };
 
   return (
@@ -70,29 +70,42 @@ function ProductInfo({ productData,
       {/* Price */}
       <div className="prices-container">
         <div className="product-price">
-          <span>{currentSku?.sellingPrice > 0 ? `€${currentSku?.sellingPrice}` : productData?.price}</span>
+          <span>{currentSku?.sellingPrice > 0 ? `€${currentSku?.sellingPrice} EUR` : productData?.price}</span>
         </div>
-        <div className="product-discount-percent">
-          <span>
-            {currentSku?.comparePrice>0 && ((
-              (currentSku?.comparePrice - currentSku?.sellingPrice  ) /
-              currentSku?.comparePrice) *
-              100
-            ).toFixed(0) + "%"}
-            
-          </span>
-        </div> 
+
         <div className="product-discount">
-          <span> {currentSku?.comparePrice > 0 ? `€${currentSku?.comparePrice}` : productData?.discount}</span>
+          <span> {currentSku?.comparePrice > 0 ? `€${currentSku?.comparePrice} EUR` : productData?.discount}</span>
         </div>
         
+            
+
+            {currentSku?.comparePrice > 0 && (
+
+              (<div className="product-discount-percent">
+          <span >
+                  {t("productInfo.save")} {" "}
+
+                {((currentSku?.comparePrice - currentSku?.sellingPrice)
+                  /
+                  (currentSku?.comparePrice) *
+                  100
+                ).toFixed(0) + "%"}
+                </span>
+              </div>)
+
+            )}
+
+          
+
+        
+
       </div>
 
       {/* Product Title */}
       <div className="product-title">
         <p>{productData?.name[i18n.language] || productData?.name["en"]}</p>
       </div>
-     
+
       {/* Ratings */}
       <div className="product-rating">
         <div className="stars-icons-container">
@@ -118,7 +131,7 @@ function ProductInfo({ productData,
       {/* Attribute Selection (Color, Size, etc) */}
       {Object.entries(availableAttributes).map(([attrKey, values]) => (
         <div key={attrKey} className="product-attribute">
-          <span className="attribute-title">{ t(`productInfo.${attrKey}`) } :</span>
+          <span className="attribute-title">{t(`productInfo.${attrKey}`)} :</span>
           <div className={`attribute-values attribute`}>
             {values.map((value) => {
               const skuWithValue = skuInfo.some(
@@ -140,12 +153,12 @@ function ProductInfo({ productData,
 
               return image ? (
                 <div key={value} onClick={() => {
-                      skuWithValue && selectAttribute(attrKey, value)
-                      selectColor()
+                  skuWithValue && selectAttribute(attrKey, value)
+                  selectColor()
 
-                    }} className={`attribute-item ${selectedAttributes[attrKey] === value ? "active" : ""}`} style={{ opacity: skuWithValue ? 1 : 0.4 }}>
+                }} className={`attribute-item ${selectedAttributes[attrKey] === value ? "active" : ""}`} style={{ opacity: skuWithValue ? 1 : 0.4 }}>
                   <img
-                    
+
                     src={image}
                     alt={value}
                   />
@@ -163,12 +176,12 @@ function ProductInfo({ productData,
               );
             })}
           </div>
-          
+
         </div>
       ))}
-      <div className="secure-checkout"> 
-            <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1784674102/ChatGPT_Image_Jul_22_2026_12_43_51_AM_hyfdlx.png" alt="secure checkout" />
-            </div>
+      <div className="secure-checkout">
+        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1784674102/ChatGPT_Image_Jul_22_2026_12_43_51_AM_hyfdlx.png" alt="secure checkout" />
+      </div>
     </Container>
   );
 }
@@ -191,27 +204,33 @@ const Container = styled.div`
 .prices-container {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  width:70%;
   gap: 12px;
-    background: linear-gradient(135deg, #ffddddff, #ffffff );
   padding: 8px;
 }
 
 .product-price {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 700;
 
 }
 
 .product-discount {
   text-decoration: line-through;
-  font-size: 1.2rem;
-  color: #8a8a8a;
+  font-size: 1.1rem;
+  color: #000000;
 }
 
 .product-discount-percent {
-  font-size: 1.3rem;
-  color: #d40000;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-family: arial, sans-serif;
+  color: #ffffff;
+  background: #b59771;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
 /* ---------- Title ---------- */
@@ -288,7 +307,6 @@ const Container = styled.div`
   gap: 18px;
   border-bottom: 1px solid #eee;
   padding: 12px 0;
-  background: linear-gradient(135deg, #f6f7f9, #ffffff);
 
 }
 

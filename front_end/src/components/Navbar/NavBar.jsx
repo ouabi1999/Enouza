@@ -79,7 +79,7 @@ function NavBar({ outlet, setSearchValue, value }) {
         <ChildContainer>
           <Logo>
             <Link to="/">
-              <span style={{"margin":"0 5px", "letterSpacing": "2px", "color": "#000000", "fontSize": "25px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
+              <span style={{"margin":"0 5px", "letterSpacing": "2px", "color": "#000000", "fontSize": "20px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
             </Link>
           </Logo>
           <SearchContainer>
@@ -103,14 +103,7 @@ function NavBar({ outlet, setSearchValue, value }) {
               className="search-icon-responsive"
             />
           </div>
-          <Link to="/shopping-cart">
-            <div className="shopping-cart">
-              <ShoppingCartIcon className="shopping-cart-icon" />
-              <div className="cart-number-container">
-                <span>{cartItems?.length || 0}</span>
-              </div>
-            </div>
-          </Link>
+         
           <div className="drop-down-lang-container">
             <DropDownMenuLang
               isLangMenuOpen={isLangMenuOpen}
@@ -134,6 +127,14 @@ function NavBar({ outlet, setSearchValue, value }) {
               i18n={i18n}
             />
           </div>
+           <Link to="/shopping-cart">
+            <div className="shopping-cart">
+              <ShoppingCartIcon className="shopping-cart-icon" />
+              <div className="cart-number-container">
+                <span>{cartItems?.length || 0}</span>
+              </div>
+            </div>
+          </Link>
           <MenuIcon className="menu-icon" onClick={hideSideBarMenu} />
         </Wrapper>
       </Container>
@@ -200,7 +201,8 @@ const ParentContainer = styled.div`
     .search-icon-container {
       height: 100%;
       width: 45px;
-    background:  #ffc197;
+      background:  #000000;
+      color:#ffffff;
       display: flex;
       align-items: center;
     }
@@ -237,7 +239,7 @@ const Container = styled.div`
     color: #000000;
   }
   .menu-icon {
-    color: #ffff;
+    color: #000000;
     cursor: pointer;
     font-size: 30px;
     display: none;
@@ -293,9 +295,10 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
+    margin:0 10px;
   }
   .shopping-cart-icon {
-    color: #ffffff;
+    color: #000000;
     font-size: 25px;
   }
   .cart-number-container {
@@ -303,14 +306,13 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: -10px;
-    top: -10px;
-    background: #ffffff;
+    right: 4px;
+    top: -12px;
     color: #000000;
     border-radius: 50%;
     width: 18px;
     height: 18px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .search-icon-container-responsive {
@@ -364,7 +366,7 @@ const SearchContainer = styled.div`
   .search-icon-container {
     height: 100%;
     width: 45px;
-    background:  #ffc197;
+    background:  #000000;
     border-radius: 0 4px 4px 0;
     display: flex;
     align-items: center;
@@ -372,7 +374,7 @@ const SearchContainer = styled.div`
   }
   .search-icon {
     padding: 8px;
-    color: #050505;
+    color: #ffffff;
   }
 
   @media only screen and (max-width: 650px) {

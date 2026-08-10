@@ -23,12 +23,7 @@ const MainSlider = () => {
     muted
     loop
     playsInline
-    style={{
-      width: "100%",
-      height: "550px",
-      objectFit: "cover",
-      display: "block",
-    }}
+    
   >
     <source
       src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4"
@@ -69,11 +64,13 @@ const Container = styled.div`
    
    min-width:200px;
 
-     
+     video{
+        width: 100%,
+        height: 550px,
+          object-fit: cover,
+          display: block,
 
-  .mySwiper{
-}
-   
+
  
   .skeleton {
       
@@ -117,12 +114,7 @@ const Container = styled.div`
         min-width:315px;
         object-fit: cover;
       }
-        img{
-        object-fit: cover;
-        width:100%;
-        height:315px;
-
-        }
+       
 
 
 }
@@ -132,11 +124,7 @@ const Container = styled.div`
         min-width:290px;
         object-fit: cover;
       }
-        img{
-        object-fit: cover;
-        width:100%;
-
-        }
+        
       
 
 

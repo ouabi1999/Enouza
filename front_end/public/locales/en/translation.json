@@ -140,6 +140,7 @@
 
 
   "productInfo": {
+    "save":"save",
     "Lampshade Color": "Lampshade Color",
     "Body Color": "Body Color",
     "Color": "Color",

@@ -60,9 +60,10 @@ const Container = styled.div`
    span{
      font-size: 14px;
      font-weight: 500;
+     
    }
   .person-icon {
-    color: #ffff;
+    color: #000000;
     font-size: 30px;
     cursor: pointer;
   }
@@ -72,11 +73,12 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0px 8px;
-    background: #ffffff;
-    color: #000000;
+    color: #ffffff;
     border-radius: 5px 5px 0px 0;
     height: 38px;
     font-size: 14px;
+    a{
+    color: #000000;}
   }
 
   .logout-button button {
@@ -104,7 +106,6 @@ position: fixed;
   button {
     display: flex;
     align-items: center;
-    
     font-weight: 500;
   }
   button {

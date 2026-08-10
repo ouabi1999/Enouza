@@ -162,7 +162,7 @@ const Wrapp = styled.div`
         
     }
     .title{
-        color:#C4A96A;
+        color: #ffffff;
         font-size:20px;
         font-weight:600;
     }
@@ -189,7 +189,7 @@ const Wrapp = styled.div`
     }
     .subscribe button{
         height:30px;
-        background-color:rgb(0, 26, 51);
+        background-color:rgb(0, 0, 0);
         color:#fff;
         border:1px solid lightgray;
         display:flex;
@@ -202,7 +202,7 @@ const Wrapp = styled.div`
     
     
     .mail-icon{
-        background:rgb(0, 26, 51);
+        background:rgb(0, 0, 0);
         color:#fff;
         font-weight:600;
         padding:0;

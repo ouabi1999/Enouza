@@ -67,7 +67,7 @@ export default UserServices;
 const Container = styled.div`
   width: 100%;
   padding: 10px 0;
-
+  max-width: 100vw;
   background: #ffffff;
 
   overflow: hidden;

@@ -124,10 +124,11 @@ const Container = styled.div`
         align-items:center;
         justify-content:space-between;
         padding:2px 10px;
-        background: #ffffff;
         height:38px;
         border-radius:5px 5px 0px 0;
-        z-index: 1;
+        z-index: 4;
+        color: #000000;
+        background: none;
         
       }
       .Lang_currency span:nth-child(3){
@@ -152,7 +153,6 @@ const Container = styled.div`
         padding:10px;
         border:1px solid lightgrey;
         color:black;
-        background-image:linear-gradient(45deg, transparent 84%, rgb(240, 240, 240, 0.7) 20%);
         cursor:pointer; 
     }
     
@@ -162,7 +162,7 @@ const Wrapper = styled.div`
     padding:10px;
     right:10px;
     top:60px;
-    background:#ffff;
+    background:#ffffff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     width:255px;
   
@@ -172,10 +172,10 @@ const Wrapper = styled.div`
     justify-content: center;
   }
   .save-button button {
-    background: orange;
+    background: #000000;
     border-radius: 4px;
     margin-top: 10px;
-    color: #fff;
+    color: #ffffff;
     padding: 8px 15px;
     font-size: 15px;
     width: 100%;
