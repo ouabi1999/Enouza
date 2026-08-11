@@ -57,8 +57,12 @@ function MainImages(props) {
 export default MainImages
 const Container = styled.div`
     display:flex;
+    flex-direction:column-reverse;
+    justify-content:center;
+    align-items:center;
     padding:5px;
     margin-bottom:10px;
+    
   
 
     #activate {
@@ -78,13 +82,11 @@ const Container = styled.div`
 `
 const ImageDetailsContainer = styled.div`
     display:flex;
-    flex-direction:column;
     justify-content:space-between;
     margin:0 15px;
     min-width:40px;
    
     width:100%;
-    max-width:50px;
     
      img{
       width:50px;
@@ -115,9 +117,9 @@ const ProductImg = styled.div`
      
     
      img{
-      width:450px;
+      width:540px;
       
-      height:450px;
+      height:540px;
       border-radius:4px;
       object-fit:contain;
 

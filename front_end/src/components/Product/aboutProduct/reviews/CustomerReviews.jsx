@@ -24,7 +24,6 @@ function CustomerReviews(props) {
   const stars = Array(5).fill(0);
   return (
     <Container>
-      <h2>{t("productInfo.reviews")}</h2>
       <Ratings
         t = {t}
         i18n = {i18n}

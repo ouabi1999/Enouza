@@ -9,7 +9,6 @@ function Description() {
   const language = productData?.description[i18n.language]
   return (
     <Container>
-          <h2>{t("productInfo.description")}</h2>
 
     <div>
       <div

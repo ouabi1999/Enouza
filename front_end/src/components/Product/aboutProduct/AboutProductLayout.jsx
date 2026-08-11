@@ -4,6 +4,7 @@ import Description from './Description'
 import Specifications from './Specifications'
 import ReviewsLayout from './reviews/ReviewsLayout'
 import { useTranslation } from 'react-i18next'
+import zIndex from '@mui/material/styles/zIndex'
 
 
 
@@ -13,7 +14,7 @@ function AboutProductLayout() {
    
   return (
     <Container>
-      <div className="buttons-container" style={{position:"sticky", top:"60px", backgroundColor:"#ffff", padding:"20px 0", }}>
+      <div className="buttons-container" style={{position:"sticky", top:"60px", backgroundColor:"#ffff", padding:"20px 0",zIndex:1 }}>
         <button onClick={() => setIsOpen(1)} id={isOpen == 1 ? "selected" : undefined}>
           
           {t("productInfo.CostumerReviews")}
@@ -45,9 +46,10 @@ function AboutProductLayout() {
 export default AboutProductLayout
 const Container = styled.div`
    width:90%;
-   padding:0 10px;
+   padding:0 25px;
+   
   #selected {
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid #fece8b;
     animation-name: border-movement;
     animation-duration: 0.1s;
     
@@ -77,12 +79,14 @@ const Container = styled.div`
   .buttons-container button {
     border: none;
     background: none;
-    font-size: 0.9rem;
+    font-family:roboto sant serif;
+    font-size: 1.5rem;
     font-weight: 500;
     white-space:nowrap;
     margin-bottom:2px;
     cursor: pointer;
     padding:4px 0;
+
   }
   .buttons-container button:hover {
      color:gray;

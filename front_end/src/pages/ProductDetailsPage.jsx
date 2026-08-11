@@ -251,13 +251,12 @@ function ProductDetailsPage({ setRetry, retry }) {
 
 export default ProductDetailsPage;
 const PrentContainer = styled.div`
-  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-bottom:50px;
-  overflow: hidden;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  
 `;
 
 const Container = styled.div`
@@ -283,13 +282,12 @@ const Container = styled.div`
   }
   .item4 {
     grid-area: sideCart;
-    width: 310px;
+    width: 340px;
     height: 400px;
     min-width: 300px;
     position: sticky;
-    top: 75px;
+    top: 70px;
     margin: 0 20px;
-    margin-top: 5px;
   }
   .item5 {
     grid-area: aboutProduct;

@@ -202,10 +202,12 @@ export default SideCart
 
 
 const Container = styled.div`
+
   padding: 10px;
+  margin-right:15px;
   background: #fff;
   border: 1px solid lightgray;
-  border-radius: 6px;
+  border-radius: 4px;
  .center-align{
   display:flex;
   align-items:center;

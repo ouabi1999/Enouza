@@ -66,15 +66,19 @@ function ProductInfo({ productData,
   };
 
   return (
-    <Container>
+    <Container >
+      {/* Product Title */}
+      <div className="product-title">
+        <p>{productData?.name[i18n.language] || productData?.name["en"]}</p>
+      </div>
       {/* Price */}
       <div className="prices-container">
         <div className="product-price">
-          <span>{currentSku?.sellingPrice > 0 ? `€${currentSku?.sellingPrice} EUR` : productData?.price}</span>
+          <span>{currentSku?.sellingPrice > 0 ? `$${currentSku?.sellingPrice} USD` : productData?.price}</span>
         </div>
 
         <div className="product-discount">
-          <span> {currentSku?.comparePrice > 0 ? `€${currentSku?.comparePrice} EUR` : productData?.discount}</span>
+          <span> {currentSku?.comparePrice > 0 ? `$${currentSku?.comparePrice} USD` : productData?.discount}</span>
         </div>
         
             
@@ -101,10 +105,7 @@ function ProductInfo({ productData,
 
       </div>
 
-      {/* Product Title */}
-      <div className="product-title">
-        <p>{productData?.name[i18n.language] || productData?.name["en"]}</p>
-      </div>
+      
 
       {/* Ratings */}
       <div className="product-rating">
@@ -191,7 +192,7 @@ export default ProductInfo;
 const Container = styled.div`
   padding: 5px;
   margin-bottom: 8px;
-
+  margin-left:15px;
  /* ---------- Active / Selected ---------- */
 #activate,
 .attribute-item.active {
@@ -207,7 +208,7 @@ const Container = styled.div`
   justify-content: space-between;
   width:70%;
   gap: 12px;
-  padding: 8px;
+  font-family: "Playfair Display", serif;
 }
 
 .product-price {
@@ -237,7 +238,7 @@ const Container = styled.div`
 .product-title {
   font-size: 0.95rem;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 2;
   word-wrap: break-word;
   width: 95%;
   color: #1f1f1f;
@@ -331,9 +332,10 @@ const Container = styled.div`
   
   & {
     width: calc(100vw - 20px);
+    margin-left:0px;
   }
    .prices-container {
-   padding: 0px 5px;
+   padding: 0px 0px;
   width: 90%;
 }
   .product-title {
@@ -353,6 +355,22 @@ const Container = styled.div`
   .attribute-label {
     font-size: 0.72rem;
   }
+
+  
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+
+}
+
+.product-discount {
+  font-size: 1rem;
+}
+
+.product-discount-percent {
+  font-size: 0.8rem;
+}
 }
 
 .secure-checkout { 
@@ -363,7 +381,10 @@ width: 100%;
 }
 .secure-checkout img{
 width: 100%;
-margin-top: 10px;}
+margin-top: 10px;
+margin:auto;
+
+}
 
 
 `;

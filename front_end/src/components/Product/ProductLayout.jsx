@@ -46,7 +46,7 @@ function Product({ currentSku, setCurrentSku }) {
 
 
   return (
-    <ParentContainer>
+    <ParentContainer >
       <HeadeSeo 
       title={productData?.name[i18n.language] ? productData?.name[i18n.language] : productData?.name["en"] || "Product"} 
       description={productData?.description[i18n.language] ? productData?.description[i18n.language] : productData?.description["en"] || "Product"}
@@ -94,11 +94,12 @@ function Product({ currentSku, setCurrentSku }) {
 export default Product
 const ParentContainer = styled.div`
       display:flex;
-      justify-content:center;
       max-width:1920px;
       min-width:320px;
       margin-bottom:20px;
       padding:0 10px;
+      padding-left:25px;
+      
       @media (max-width: 480px) {
 
 &{
