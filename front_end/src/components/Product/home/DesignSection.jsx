@@ -68,9 +68,15 @@ const DesignContainer = styled(Container)`
     pointer-events: none;
   }
 
-  @media (max-width: 600px) {
-    padding: 1rem 0.3rem !important;
+ @media only screen and (max-width:420px){
+    &{
+        padding: 4rem 0.5rem !important;
+
+      }
   }
+  
+   
+  
 `;
 
 const DesignGrid = styled(Grid)`

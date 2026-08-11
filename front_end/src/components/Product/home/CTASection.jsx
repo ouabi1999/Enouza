@@ -155,7 +155,7 @@ const CTASection = () => {
   {
     icon: <PhoneIcon />,
     title: t("ctaSection.contact.phone.title"),
-    details: "+34 624727601",
+    details: "+34 624 727601",
     description: t("ctaSection.contact.phone.description")
   },
   {

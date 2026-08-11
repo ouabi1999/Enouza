@@ -1,170 +1,130 @@
-import React, {useState, useEffect} from "react";
-import { Container, Grid2, Typography, Button, Box } from "@mui/material";
-import { styled, keyframes } from "@mui/material/styles";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 
-
 export default function HeroSection() {
-    const [product, setProduct] = useState(null);
-    const {t, i18n}  = useTranslation()
- 
-  const heroSection = {
-    title: t("heroSection.title"),
-    description: t("heroSection.description"),
-    image: "https://sc04.alicdn.com/kf/H36e0ccd693504a1da1984ba5130e798el.jpg",
-    ctaLabel: t("heroSection.ctaLabel"),
-    ctaLink: `/product/${product?.id}`,
-    materials: t("heroSection.materials", { returnObjects: true })
-  };
-const getHeroProduct = async () => {
-  ApiInstance.get("/products/hero").
-  then(res =>  {
-    setProduct(res.data);
-    console.log(res.data);
-  })
-  .catch(err => {
-    setProduct(null)
-    console.log(err)
-  } 
-)};
+  const [product, setProduct] = useState(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    getHeroProduct()
+    const getHeroProduct = async () => {
+      try {
+        const res = await ApiInstance.get("/products/hero");
+        setProduct(res.data);
+      } catch (error) {
+        setProduct(null);
+        console.error(error);
+      }
+    };
+
+    getHeroProduct();
   }, []);
 
   if (!product) return null;
+
+  const materials = t("heroSection.materials", {
+    returnObjects: true,
+  });
+
+  const imageUrl = product?.multimediaInfo?.image_urls
+    ?.split(";")
+    ?.filter(Boolean)?.[0];
+
+  if (!imageUrl) return null;
+
   return (
     <HeroBox>
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid2 container spacing={6} alignItems="center">
-          <Grid2 size={{ xs: 12, md: 6 }}>
-            <Box sx={{ animation: `${fadeInUp} 0.8s ease-out` }}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: 300,
-                  lineHeight: 1.1,
-                  fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
-                  mb: 3,
-                  color: "#1a1a1a",
-                  fontFamily: "'Playfair Display', serif",
-                }}
-              >
-                {heroSection.title}
-              </Typography>
-              
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: '1rem', md: '1.25rem' },
-                  mb: 5,
-                  color: "#666666",
-                  lineHeight: 1.8,
-                  maxWidth: "90%",
-                  fontFamily: "'Inter', sans-serif",
-                }}
-              >
-                {heroSection.description}
-              </Typography>
+      <HeroContainer>
 
-              {/* Materials */}
-              <Box sx={{ mb: 5  }}>
-                <Typography variant="overline" sx={{ color: "#bf8c00", mb: 2, display: "block", fontWeight: 600 , fontSize: { xs: '1.2rem', md: '1.4rem', lg: '1.5rem' } }}>
-                  {t("heroSection.whereQualityMeetsDesign")}
-                </Typography>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  {heroSection.materials.map((material, index) => (
-                    <MaterialChip key={index}>
-                      <Typography variant="caption" sx={{ color: "#3C2F2F", fontWeight: 500 }}>
-                        {material}
-                      </Typography>
-                    </MaterialChip>
-                  ))}
-                </Box>
-              </Box>
+        {/* LEFT SIDE */}
+        <Content>
+          <Title>
+            {t("heroSection.title")}
+          </Title>
 
-              
-              
-              {/* Stats */}
-              <Box sx={{ display: "flex", gap: 4, justifyContent: "space-between",  }}>
-                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
-                    24H
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    
-                    {t("heroSection.stats.craftHours")}
-                  </Typography>
-                </Box>
-                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
-                    98%
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    {t("heroSection.stats.satisfaction")}
-                  </Typography>
-                </Box>
-               <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <Typography variant="h4" sx={{ color: "#000000", fontWeight: 600 }}>
-                    5★
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: "#666666", textTransform: "uppercase" }}>
-                    {t("heroSection.stats.rated")}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Grid2>
-          
-          <Grid2 size={{ xs: 12, md: 6 }}>
-  <Box sx={{ animation: `${fadeInUp} 0.8s ease-out 0.3s` }}>
-    <HeroImageContainer
-      sx={{ animation: `${floatAnimation} 6s ease-in-out infinite` }}
-    >
-      <HeroImage
-        src={product?.multimediaInfo.image_urls.split(";")[0]}
-        alt="Luxury Wall Lamp"
-      />
-      <ShopButtonContainer>
-        {/* SHOP NOW BUTTON BELOW IMAGE */}
-    <Box sx={{ mt: 4, textAlign: "center" }}>
-      <StyledButton
-        variant="contained"
-        size="large"
-        href={heroSection.ctaLink}
-        endIcon={
-          <ArrowForwardIcon
-            style={{
-              rotate: i18n.dir() === "ltr" ? "0deg" : "180deg",
-              margin: "0 3px",
-            }}
-          />
-        }
-      >
-        {heroSection.ctaLabel}
-      </StyledButton>
-    </Box>
-      </ShopButtonContainer>
-    </HeroImageContainer>
+          <Description>
+            {t("heroSection.description")}
+          </Description>
 
-    
-  </Box>
-</Grid2>
+          <QualityTitle>
+            {t("heroSection.whereQualityMeetsDesign")}
+          </QualityTitle>
 
-        </Grid2>
-      </Container>
+          <Materials>
+            {Array.isArray(materials) &&
+              materials.map((material, index) => (
+                <MaterialChip key={index}>
+                  {material}
+                </MaterialChip>
+              ))}
+          </Materials>
+
+          {/* STATS */}
+          <Stats>
+            <Stat>
+              <StatNumber>24H</StatNumber>
+              <StatLabel>
+                {t("heroSection.stats.craftHours")}
+              </StatLabel>
+            </Stat>
+
+            <Stat>
+              <StatNumber>98%</StatNumber>
+              <StatLabel>
+                {t("heroSection.stats.satisfaction")}
+              </StatLabel>
+            </Stat>
+
+            <Stat>
+              <StatNumber>5★</StatNumber>
+              <StatLabel>
+                {t("heroSection.stats.rated")}
+              </StatLabel>
+            </Stat>
+          </Stats>
+        </Content>
+
+        {/* RIGHT SIDE */}
+        <ImageSide>
+          <ImageContainer>
+            <HeroImage
+              src={imageUrl}
+              alt={t("heroSection.title")}
+            />
+
+            {/* SHOP BUTTON INSIDE IMAGE */}
+            <ShopButton
+              to={`/product/${product.id}`}
+              $rtl={i18n.dir() === "rtl"}
+            >
+              <span>
+                {t("heroSection.ctaLabel")}
+              </span>
+
+              <Arrow $rtl={i18n.dir() === "rtl"}>
+                →
+              </Arrow>
+            </ShopButton>
+          </ImageContainer>
+        </ImageSide>
+
+      </HeroContainer>
     </HeroBox>
   );
 }
-// Animations
+
+/* =========================
+   ANIMATIONS
+========================= */
+
 const fadeInUp = keyframes`
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -172,122 +132,356 @@ const fadeInUp = keyframes`
 `;
 
 const floatAnimation = keyframes`
-  0%, 100% {
-    transform: translateY(0px);
+  0%,
+  100% {
+    transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
 `;
 
-// Styled Components
-const HeroBox = styled("section")`
+/* =========================
+   HERO
+========================= */
+
+const HeroBox = styled.section`
+  min-height: 100vh;
   padding: 20px 10px;
+
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
-  color: #1a1a1a;
-  min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
+  background: linear-gradient(
+    135deg,
+    #f5f3ef 0%,
+    #e8e4d9 100%
+  );
 
-  @media only screen and (max-width:420px){
-    &{
-    
-      padding: 40px 0px;}
+  color: #1a1a1a;
+
+  @media (max-width: 420px) {
+    padding: 40px 10px;
   }
-  
+`;
 
-  
-`
-const HeroImageContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
-  borderRadius: "8px",
-  overflow: "hidden",
-  boxShadow: "0 40px 80px rgba(58, 50, 50, 0.15)",
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: 0,
-    background: "linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(216, 196, 182, 0.1))",
-    zIndex: 1,
-    borderRadius: "8px",
-  },
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    inset: -2,
-    background: "linear-gradient(45deg, #D4AF37, #B87333)",
-    borderRadius: "8px",
-    zIndex: 0,
-    opacity: 0.3,
-    filter: "blur(15px)",
-  },
-}));
+const HeroContainer = styled.div`
+  width: 100%;
+  max-width: 1200px;
 
-const HeroImage = styled("img")({
-  width: "100%",
-  height: "550px",
-  objectFit: "cover",
-  borderRadius: "8px",
-  position: "relative",
-  zIndex: 2,
-  transition: "transform 0.6s ease",
-  "&:hover": {
-    transform: "scale(1.02)",
-  },
-});
+  margin: 0 auto;
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  borderRadius: "8px",
-  padding: theme.spacing(1.5, 4),
-  fontSize: "1rem",
-  fontWeight: 600,
-  textTransform: "none",
-  background: "#000306",
-  color: "#F5F3EF",
-  transition: "all 0.3s ease",
-  position: "relative",
-  overflow: "hidden",
-  textWrap: "nowrap",
-  "&:hover": {
-    background: "#1a1a1a",
-    transform: "translateY(-2px)",
-    boxShadow: "0 10px 30px rgba(60, 47, 47, 0.3)",
-  },
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: -100,
-    width: "100%",
-    height: "100%",
-    background: "linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent)",
-    transition: "left 0.6s",
-  },
-  "&:hover::before": {
-    left: "100%",
-  },
-}));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-const ShopButtonContainer = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  bottom: 10,
-  left: "25%",
-  right: "25%",
-  zIndex: 3,
-  
-}));
+  gap: 48px;
 
-const MaterialChip = styled(Box)(({ theme }) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  padding: theme.spacing(0.5, 1.5),
-  background: "rgba(216, 196, 182, 0.2)",
-  borderRadius: "8px",
-  border: "1px solid rgba(216, 196, 182, 0.3)",
-  marginRight: theme.spacing(1),
-  marginBottom: theme.spacing(1),
-}));
+  align-items: center;
+
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+`;
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+const Content = styled.div`
+  animation: ${fadeInUp} 0.8s ease-out;
+`;
+
+const Title = styled.h1`
+  margin: 0 0 24px;
+
+  color: #1a1a1a;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 3rem;
+  font-weight: 300;
+
+  line-height: 1.1;
+
+  @media (max-width: 1100px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+  }
+`;
+
+const Description = styled.p`
+  max-width: 90%;
+
+  margin: 0 0 18px;
+
+  color: #666666;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 1.25rem;
+
+  line-height: 1.8;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
+`;
+
+const QualityTitle = styled.p`
+  margin: 0 0 18px;
+
+  color: #000000;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    font-size: 0.75rem;
+  }
+`;
+
+/* =========================
+   MATERIALS
+========================= */
+
+const Materials = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 30px;
+`;
+
+const MaterialChip = styled.span`
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 14px;
+
+  background: #ffffff;
+
+  color: #3c2f2f;
+
+  border: 1px solid rgba(216, 196, 182, 0.3);
+
+  border-radius: 4px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+`;
+
+/* =========================
+   STATS
+========================= */
+
+const Stats = styled.div`
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  max-width: 450px;
+`;
+
+const Stat = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+`;
+
+const StatNumber = styled.span`
+  color: #000000;
+
+  font-size: 1.8rem;
+
+  font-weight: 600;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const StatLabel = styled.span`
+  margin-top: 4px;
+
+  color: #666666;
+
+  font-size: 0.65rem;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+`;
+
+/* =========================
+   IMAGE
+========================= */
+
+const ImageSide = styled.div`
+  animation: ${fadeInUp} 0.8s ease-out 0.3s both;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 40px 80px
+    rgba(58, 50, 50, 0.15);
+
+  animation:
+    ${floatAnimation}
+    6s ease-in-out infinite;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      45deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(216, 196, 182, 0.1)
+    );
+
+    border-radius: 4px;
+
+    z-index: 1;
+
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    background: linear-gradient(
+      45deg,
+      #d4af37,
+      #b87333
+    );
+
+    border-radius: 8px;
+
+    opacity: 0.3;
+
+    filter: blur(15px);
+
+    z-index: -1;
+
+    pointer-events: none;
+  }
+`;
+
+const HeroImage = styled.img`
+  display: block;
+
+  width: 100%;
+  height: 550px;
+
+  object-fit: cover;
+
+  border-radius: 6px;
+
+  position: relative;
+
+  z-index: 2;
+
+  @media (max-width: 600px) {
+    height: 400px;
+  }
+
+  @media (max-width: 420px) {
+    height: 350px;
+  }
+`;
+
+/* =========================
+   SHOP BUTTON
+   BOTTOM RIGHT OF IMAGE
+========================= */
+
+const ShopButton = styled(Link)`
+  position: absolute;
+
+  right: 25px;
+  bottom: 20px;
+
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 8px 0;
+
+  color: #ffffff;
+
+  background: transparent;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #cccccc;
+  }
+
+  @media (max-width: 600px) {
+    right: 18px;
+    bottom: 15px;
+
+    font-size: 0.9rem;
+  }
+`;
+
+const Arrow = styled.span`
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 20px;
+  line-height: 1;
+
+  transform: ${({ $rtl }) =>
+    $rtl ? "rotate(180deg)" : "none"};
+`;
