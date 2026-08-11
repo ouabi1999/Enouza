@@ -206,7 +206,7 @@ const Container = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  width:70%;
+  width:80%;
   gap: 12px;
   font-family: "Playfair Display", serif;
 }
@@ -336,7 +336,7 @@ const Container = styled.div`
   }
    .prices-container {
    padding: 0px 0px;
-  width: 90%;
+   width: 80%;
 }
   .product-title {
     font-size: 0.8rem;
