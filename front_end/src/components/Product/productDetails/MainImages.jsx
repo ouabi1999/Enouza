@@ -61,7 +61,6 @@ const Container = styled.div`
     justify-content:center;
     align-items:center;
     padding:5px;
-    margin-bottom:10px;
     
   
 
@@ -74,7 +73,7 @@ const Container = styled.div`
       &{
         flex-wrap:wrap-reverse;
         margin-right:0;
-        margin:auto;
+        padding:15px;
 
       }
   }

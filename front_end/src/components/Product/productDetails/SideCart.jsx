@@ -214,7 +214,12 @@ const Container = styled.div`
   margin-bottom:10px;
  }
  
-
+ @media only screen and (max-width: 500px) {
+    &{
+     margin-right:0;
+    }
+  }
+  
   
   .ship-to-select {
     -webkit-appearance: none;

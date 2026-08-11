@@ -179,6 +179,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
+    place-content:center;
   }
   @media (max-width: 715px) {
     .ratings-container {

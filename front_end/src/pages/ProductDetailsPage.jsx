@@ -256,7 +256,7 @@ const PrentContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding-bottom: 20px;
-  
+ 
 `;
 
 const Container = styled.div`

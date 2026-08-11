@@ -75,7 +75,7 @@ function HomePage() {
       <AdvertiseMain />
       <HeroSection/>
       <DesignSection/>
-      <MatricsSection/>
+      
 
       <div className="product-header">
         <strong> {t("homePage.best_sellers")}</strong>
@@ -105,8 +105,8 @@ function HomePage() {
             disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
-
-              <CTASection/>
+        <MatricsSection/>
+      <CTASection/>
 
     </Container>
   )

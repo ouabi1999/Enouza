@@ -192,7 +192,6 @@ export default ProductInfo;
 const Container = styled.div`
   padding: 5px;
   margin-bottom: 8px;
-  margin-left:15px;
  /* ---------- Active / Selected ---------- */
 #activate,
 .attribute-item.active {
@@ -331,15 +330,16 @@ const Container = styled.div`
 @media only screen and (max-width: 500px) {
   
   & {
-    width: calc(100vw - 20px);
-    margin-left:0px;
+    padding:0 20px;
+    
   }
    .prices-container {
    padding: 0px 0px;
-   width: 80%;
+   width:auto;
 }
   .product-title {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    width:auto;
   }
 
   .attribute-item {

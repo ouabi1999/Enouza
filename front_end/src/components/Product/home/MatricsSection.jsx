@@ -51,6 +51,9 @@ const MetricsSection = () => {
 
   return (
     <MetricsContainer maxWidth="xl">
+      <div style={{ marginBottom:"15px", display:"flex", justifyContent:"center", alignItems:"center", width:"100vw"}}>
+      <span style={{ fontFamily: "Playfair Display", fontSize:"1.5rem", fontWeight:"490"}}>Why Us</span>
+      </div>
       <Grid container spacing={{ xs: 4, md: 8 }}>
         {metrics.map((metric, index) => {
           const radius = 45;
@@ -170,20 +173,7 @@ const MetricsContainer = styled(Container)`
     padding: 6rem 2rem !important;
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      ${COLORS.taupe},
-      transparent
-    );
-  }
+ 
 `;
 
 const MetricCircle = styled(Box)`

@@ -46,8 +46,7 @@ function AboutProductLayout() {
 export default AboutProductLayout
 const Container = styled.div`
    width:90%;
-   padding:0 25px;
-   
+   padding:0 20px;
   #selected {
     border-bottom: 2px solid #fece8b;
     animation-name: border-movement;
@@ -94,7 +93,7 @@ const Container = styled.div`
   @media only screen and (max-width: 550px) {
 
       .buttons-container button {
-      font-size: 0.8rem;
+      font-size: 1.2rem;
      
     }
     &{
@@ -105,7 +104,7 @@ const Container = styled.div`
   @media only screen and (max-width: 400px) {
 
 .buttons-container button {
-font-size: 0.7rem;
+font-size: 1rem;
 
 }
 }
