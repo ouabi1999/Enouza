@@ -367,8 +367,8 @@ class HeroProductView(APIView):
     def get(self, request):
         # 1️⃣ Try manual hero product
         hero = (
-            Products.objects.annotate(orders_count=Count("orders"))
-            .order_by("-orders_count")
+            Products.objects.filter(isHero=True)
+           
             .first()
         )
         if not hero:

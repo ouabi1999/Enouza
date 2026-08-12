@@ -64,6 +64,7 @@ class Products(models.Model):
     in_stock = models.BooleanField(default=True)
     category = models.CharField(max_length=255, blank=True, null=True)
     tags = models.JSONField(blank=True, null=True)
+    isHero = models.BooleanField(default=False)
     warranty = models.CharField(max_length=100, blank=True, null=True)
     care_instructions = models.TextField(blank=True, null=True)
     release_date = models.DateTimeField(default=timezone.now, blank=True, null=True)
