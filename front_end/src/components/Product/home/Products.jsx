@@ -50,6 +50,21 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
                   <span className="product-price">${mainSku?.sellingPrice}
         
                   </span>
+                  {mainSku?.comparePrice > 0 && (
+
+              (<div className="product-discount-percent">
+          <span >
+                  {t("productInfo.save")} {" "}
+
+                {((mainSku?.comparePrice - mainSku?.sellingPrice)
+                  /
+                  (mainSku?.comparePrice) *
+                  100
+                ).toFixed(0) + "%"}
+                </span>
+              </div>)
+
+            )}
                 </ThirdSection>
 
                 {item.available_shipping?.map(
@@ -157,10 +172,9 @@ const FirstSection = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     max-width: 245px;
     margin-top: 3px;
-    font-weight: smaller;
     padding: 0 5px;
 
   }
@@ -198,7 +212,7 @@ const SecondSection = styled.div`
 const ThirdSection = styled.div`
   margin-top: 10px;
   display: flex;
-
+  justify-content:space-between;
   .product-price {
     color: #000;
     font-family: 'Trebuchet MS', sans-serif;
@@ -209,6 +223,16 @@ const ThirdSection = styled.div`
     padding: 0 5px;
 
   }
+    .product-discount-percent span{
+    
+       background:  #dfbf7a;
+       padding:4px;
+       text-transform:uppercase;
+       font-family:robot sant serif;
+       font-size:0.9rem;
+
+       color: #ffffff;
+    }
 
   @media (max-width: 360px) {
     .product-price {

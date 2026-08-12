@@ -78,9 +78,9 @@ export default function HeroSection() {
             </Stat>
 
             <Stat>
-              <StatNumber>5★</StatNumber>
+              <StatNumber>4.9</StatNumber>
               <StatLabel>
-                {t("heroSection.stats.rated")}
+                {t("heroSection.stats.rated")} ★
               </StatLabel>
             </Stat>
           </Stats>
@@ -407,8 +407,9 @@ const HeroImage = styled.img`
   display: block;
 
   width: 100%;
-  height: 550px;
-
+  hight:100%;
+  max-height: 600px;
+  max-width:600px;
   object-fit: cover;
 
   border-radius: 6px;

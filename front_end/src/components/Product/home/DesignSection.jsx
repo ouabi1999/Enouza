@@ -222,7 +222,9 @@ const DesignSection = () => {
                       }
                       style={{
                         width: "100%",
-                        height: "500px",
+                  hight: "100%",
+                  maxHeight: "580px",
+                  maxWidth: "600px",
                         objectFit: "cover",
                         borderRadius: "6px",
                         display: "block",
@@ -234,13 +236,15 @@ const DesignSection = () => {
             </Slider>
           ) : (
             <div
-              style={{
-                width: "100%",
-                height: "500px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+                style={{
+                  width: "100%",
+                  hight: "100%",
+                  maxHeight: "600px",
+                  maxWidth: "600px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
             >
               <Typography
                 sx={{
