@@ -83,7 +83,7 @@
   "title": "Lighting that transforms\nspaces",
   "description": "Enouza curates refined designer lighting created to elevate interiors with warmth, sophistication, and timeless elegance.",
   "ctaLabel": "Shop Now",
-  "whereQualityMeetsDesign": "Where Quality Meets Design",
+  "whereQualityMeetsDesign": "Where Quality Meets Design:",
 
   "materials": [
     "Curated Designs",
@@ -119,7 +119,13 @@
     }
   },
 
-
+   "matricsSection":{
+    "why_us":"Why us?",
+    "exclusiveDesigns": "Exclusive Designs",
+    "internationalAwards": "International Awards",
+    "artisanPartners": "Artisan Partners",
+    "yearsOfExcellence": "Years of Excellence"
+  },
   
   "designSection": {
     "title": "Enouza Ethos",
@@ -564,11 +570,8 @@
     "chat": "Chat",
     "helpCenter": "Help Center",
     "member_since": "Member since",
-    "from": "From",
-    "exclusiveDesigns": "Exclusive Designs",
-    "internationalAwards": "International Awards",
-    "artisanPartners": "Artisan Partners",
-    "yearsOfExcellence": "Years of Excellence"
+    "from": "From"
+
   },
   "success": {
     "subscribed_to_newsletter": "Thank you for subscribing to our newsletter!",

@@ -162,9 +162,7 @@ function Ratings(props) {
 export default Ratings
 
 const Container = styled.div`
-  padding:10px;
-  width:90%;
-
+ 
   .user-name {
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
@@ -242,7 +240,6 @@ const Container = styled.div`
     justify-content: center;
     padding: 0px 8px;
     border: 1px solid lightgray;
-    width: 35px;
     border-radius: 4px;
   }
 

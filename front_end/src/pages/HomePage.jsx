@@ -75,7 +75,8 @@ function HomePage() {
       <AdvertiseMain />
       <HeroSection/>
       <DesignSection/>
-      
+      <MatricsSection/>
+
 
       <div className="product-header">
         <strong> {t("homePage.best_sellers")}</strong>
@@ -105,7 +106,6 @@ function HomePage() {
             disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
-        <MatricsSection/>
       <CTASection/>
 
     </Container>
@@ -124,15 +124,14 @@ const Container = styled.div`
     margin:15px 5px;
     margin-top:15px;
     background-color:white;  
-    f
+    text-transform:uppercase;
     }
 
 .product-header strong{
     padding:15px;
 
-    letter-spacing: 2px;
-    font-size:1.5rem;
-    font-weight:490;
+    font-size:1.8rem;
+    font-weight:500;
     font-family: "Playfair Display", serif;
 } 
 

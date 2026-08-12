@@ -83,7 +83,7 @@
   "title": "إضاءة تُحوّل المساحات\nبأناقة",
   "description": "تقدم إنوزا تصاميم إضاءة مختارة بعناية لرفع مستوى المساحات بأجواء دافئة ولمسة راقية وأناقة خالدة.",
   "ctaLabel": "تسوق الآن",
-  "whereQualityMeetsDesign": "حيث تلتقي الجودة بالتصميم",
+  "whereQualityMeetsDesign": "حيث تلتقي الجودة بالتصميم:",
 
 
 
@@ -99,6 +99,14 @@
     "rated": "موثوق من عملائنا"
   }
 },
+ "matricsSection":{
+    "why_us": "لماذا نحن؟",
+    "exclusiveDesigns": "تصاميم حصرية",
+    "internationalAwards": "جوائز دولية",
+    "artisanPartners": "شركاء من الحرفيين",
+    "yearsOfExcellence": "سنوات من التميّز"
+   
+  },
 
   "ctaSection": {
     "titleLeft": "تواصل معنا",
@@ -559,11 +567,8 @@
     "please_enter_your_country": "أدخل الدولة",
     "please_enter_your_zip_code": "أدخل الرمز البريدي",
     "please_enter_your_phone": "أدخل الهاتف",
-    "please_enter_your_birthdate": "أدخل تاريخ الميلاد",
-    "exclusiveDesigns": "تصاميم حصرية",
-    "internationalAwards": "جوائز دولية",
-    "artisanPartners": "شركاء من الحرفيين",
-    "yearsOfExcellence": "سنوات من التميّز"
+    "please_enter_your_birthdate": "أدخل تاريخ الميلاد"
+    
   },
   "success": {
     "subscribed_to_newsletter": "شكرًا لاشتراكك في النشرة الإخبارية!",

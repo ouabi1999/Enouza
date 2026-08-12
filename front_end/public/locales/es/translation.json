@@ -83,7 +83,7 @@
   "title": "Iluminación que\ntransforma\nespacios",
   "description": "Enouza selecciona cuidadosamente lámparas de diseño para elevar los interiores con calidez, sofisticación y elegancia atemporal.",
   "ctaLabel": "Comprar Ahora",
-   "whereQualityMeetsDesign": "Donde la calidad se une al diseño",
+   "whereQualityMeetsDesign": "Donde la calidad se une al diseño:",
 
   "materials": [
     "Diseños seleccionados",
@@ -118,7 +118,14 @@
     }
   },
 
+  "matricsSection":{
+      "why_us": "¿Por qué elegirnos?",
+       "exclusiveDesigns": "Diseños exclusivos",
+       "internationalAwards": "Premios internacionales",
+       "artisanPartners": "Socios artesanos",
+       "yearsOfExcellence": "Años de excelencia"
 
+  },
   "designSection": {
     "title": "El espíritu de Enouza",
     "principles": {
@@ -546,11 +553,8 @@
     "please_enter_your_country": "Selecciona país",
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
-    "exclusiveDesigns": "Diseños exclusivos",
-    "internationalAwards": "Premios internacionales",
-    "artisanPartners": "Socios artesanos",
-    "yearsOfExcellence": "Años de excelencia"
+    "please_enter_your_birthdate": "Ingresa fecha de nacimiento"
+    
     
   },
   "success": {

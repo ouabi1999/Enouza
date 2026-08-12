@@ -136,12 +136,13 @@ function Feedback(props) {
 export default Feedback
 const Conatiner = styled.div`
   h3{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing:2px;
-    border-bottom:6px solid lightgray;
-    width:fit-content;
-    margin-bottom:2px;
+    font-family:roboto sant serif;
+    text-transform:uppercase;
+    margin-bottom:8px;
   }
+    .Stars{
+      margin-bottom:10px;
+    }
 .on{
     color: #FFBA5A;
     cursor:pointer;
@@ -207,8 +208,8 @@ const Wrap = styled.div`
     
 `
 const Wraper = styled.div`
-      width:40vw;
       min-width:300px;
+      max-width:650px;
 
 `
 const Add_image_container = styled.div`

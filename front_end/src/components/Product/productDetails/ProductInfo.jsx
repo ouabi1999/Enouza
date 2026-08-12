@@ -190,7 +190,7 @@ function ProductInfo({ productData,
 
 export default ProductInfo;
 const Container = styled.div`
-  padding: 5px;
+  padding: 0 15px;
   margin-bottom: 8px;
  /* ---------- Active / Selected ---------- */
 #activate,

@@ -22,28 +22,28 @@ const MetricsSection = () => {
     {
       icon: <AutoAwesomeIcon />,
       number: '20',
-      title: t('common.exclusiveDesigns'),
+      title: t('matricsSection.exclusiveDesigns'),
       percentage: 100,
       delay: '0.1s',
     },
     {
       icon: <WorkspacePremiumIcon />,
       number: '10',
-      title: t('common.internationalAwards'),
+      title: t('matricsSection.internationalAwards'),
       percentage: 90,
       delay: '0.3s',
     },
     {
       icon: <GroupsIcon />,
       number: '41',
-      title: t('common.artisanPartners'),
+      title: t('matricsSection.artisanPartners'),
       percentage: 85,
       delay: '0.5s',
     },
     {
       icon: <TimelineIcon />,
       number: '8',
-      title: t('common.yearsOfExcellence'),
+      title: t('matricsSection.yearsOfExcellence'),
       percentage: 95,
       delay: '0.7s',
     },
@@ -51,8 +51,8 @@ const MetricsSection = () => {
 
   return (
     <MetricsContainer maxWidth="xl">
-      <div style={{ marginBottom:"15px", display:"flex", justifyContent:"center", alignItems:"center", width:"100vw"}}>
-      <span style={{ fontFamily: "Playfair Display", fontSize:"1.5rem", fontWeight:"490"}}>Why Us</span>
+      <div style={{ marginBottom:"80px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+      <span style={{ fontFamily: "Playfair Display", fontSize:"1.8rem", fontWeight:"490", textTransform:"uppercase"}}>{t("matricsSection.why_us")}</span>
       </div>
       <Grid container spacing={{ xs: 4, md: 8 }}>
         {metrics.map((metric, index) => {
@@ -137,13 +137,16 @@ const COLORS = {
   cream: '#ffffff',
   taupe: '#E8E2D9',
   charcoal: '#2A2A2A',
-  bronze: '#dbd0a2;',
+  bronze: '#986904;',
 };
 
 /* =======================
    ANIMATIONS
 ======================= */
 const drawCircle = keyframes`
+   from{
+      stroke-dashoffset: 50;
+   }
   to {
     stroke-dashoffset: 0;
   }
@@ -183,6 +186,8 @@ const MetricCircle = styled(Box)`
   aspect-ratio: 1 / 1;
   overflow: hidden;
   animation: ${fadeInUp} 0.8s ease-out;
+  
+        
 
   @media (max-width: 900px) {
     width: 160px;

@@ -242,7 +242,7 @@ const Description = styled.p`
 const QualityTitle = styled.p`
   margin: 0 0 18px;
 
-  color: #000000;
+  color: #986904;
 
   font-family: "Inter", sans-serif;
 
@@ -250,7 +250,6 @@ const QualityTitle = styled.p`
 
   font-weight: 600;
 
-  text-transform: uppercase;
 
   @media (max-width: 600px) {
     font-size: 0.75rem;
@@ -274,11 +273,12 @@ const MaterialChip = styled.span`
   display: inline-flex;
   align-items: center;
 
-  padding: 6px 14px;
+  padding: 6px 12px;
 
-  background: #ffffff;
+  background: #986904;
 
-  color: #3c2f2f;
+
+  color: #ffffff;
 
   border: 1px solid rgba(216, 196, 182, 0.3);
 
@@ -313,9 +313,9 @@ const Stat = styled.div`
 `;
 
 const StatNumber = styled.span`
-  color: #000000;
+  color: #4b3e3e;
 
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 
   font-weight: 600;
 

@@ -33,8 +33,8 @@ function UserServices() {
       <Track
         animate={{ x:i18n.dir() === "ltr" ? ["0%", "-50%"] : ["0%", "50%"] }}
         transition={{
-          duration: 25,
-         ease: "linear",
+          duration: 20,
+          ease: "linear",
          repeat: Infinity,
         }}
       >

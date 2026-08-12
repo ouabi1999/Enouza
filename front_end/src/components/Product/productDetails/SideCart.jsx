@@ -266,7 +266,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background:rgba(196, 31, 20, 0.89);
+    background: #b59771;
     color: #fff;
     font-weight: bold;
     min-width: 80px;
@@ -276,7 +276,7 @@ const Container = styled.div`
     cursor: pointer;
     padding: 10px 5px;
     border-radius: 4px;
-    background:rgb(0, 0, 0);
+    background:rgb(27, 25, 25);
     color: #fff;
     font-weight: bold;
     min-width: 100px;

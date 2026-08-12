@@ -221,7 +221,7 @@ const Wrapper = styled.div`
 
   a{
       color:#4d4a4a;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       line-height: 1;
     
     }
@@ -231,7 +231,7 @@ const Wrapper = styled.div`
     
     .text-info{
       font-weight: bold;
-      font-size:15px;
+      font-size:1.2rem;
       color:black;
     
     }
