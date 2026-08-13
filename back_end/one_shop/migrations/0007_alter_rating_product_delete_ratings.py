@@ -7,16 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('one_shop', '0006_rename_aliexpressratings_rating'),
+        ("one_shop", "0006_rename_aliexpressratings_rating"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='rating',
-            name='product',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_ratings', to='one_shop.products'),
+            model_name="rating",
+            name="product",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="user_ratings",
+                to="one_shop.products",
+            ),
         ),
         migrations.DeleteModel(
-            name='Ratings',
+            name="Ratings",
         ),
     ]
