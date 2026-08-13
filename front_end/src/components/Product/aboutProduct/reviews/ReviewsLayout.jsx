@@ -23,7 +23,7 @@ function ReviewsLayout() {
 
   const [star_rating, set_star_rating] = useState(1);
 
-  let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
+  let ratings = productData?.ratings;
 
     const fiveStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 5).reduce((total, value) => {
       return total += value.stars

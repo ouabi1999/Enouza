@@ -1,37 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import Slider from "react-slick";
+
+import ApiInstance from "../../../../common/baseUrl";
 
 const CustomersFeedback = () => {
+  const [reviews, setReviews] = useState([]);
   const { t } = useTranslation();
 
-  const reviews = [
-    {
-      name: "Sofia M.",
-      rating: 5,
-      product: "Orbis Wood LED Table Lamp",
-      text: "Beautiful lamp and even better in person. It completely changed the atmosphere of our bedroom.",
-      image: "/images/customer-1.jpg",
-    },
-    {
-      name: "Daniel R.",
-      rating: 5,
-      product: "Modern Marble Wall Lamp",
-      text: "The quality is exceptional. The design looks elegant and premium in our living room.",
-      image: "/images/customer-2.jpg",
-    },
-    {
-      name: "Emma L.",
-      rating: 5,
-      product: "Luxury Pendant Light",
-      text: "A beautiful addition to our home. The finish and attention to detail are excellent.",
-      image: "/images/customer-3.jpg",
-    },
-  ];
+  useEffect(() => {
+    ApiInstance.get("ratings/")
+      .then((res) => {
+        setReviews(res.data);
+      })
+      .catch((err) => {
+        console.log("Ratings error:", err);
+      });
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <Section>
       <Container>
+
+        {/* HEADER */}
         <Header>
           <Eyebrow>
             {t("customersFeedback.eyebrow")}
@@ -60,59 +83,94 @@ const CustomersFeedback = () => {
           </Rating>
         </Header>
 
-        <Reviews>
-          {reviews.map((review) => (
-            <ReviewCard key={review.name}>
-              <ImageWrapper>
-                <ReviewImage
-                  src={review.image}
-                  alt={review.product}
-                  loading="lazy"
-                />
-              </ImageWrapper>
+        {/* REVIEWS */}
+        {reviews.length > 0 && (
+          <Reviews>
+            <Slider {...settings}>
+              {reviews.map((item) => (
+                <ReviewSlide key={item.id}>
+                  <ReviewCard>
 
-              <ReviewContent>
-                <Stars aria-label={`${review.rating} out of 5 stars`}>
-                  {"★".repeat(review.rating)}
-                </Stars>
+                    {/* IMAGE */}
+                    {item.review?.images?.length > 0 && (
+                      <ImageWrapper>
+                        <ReviewImage
+                          src={item.review.images[0]}
+                          alt="Customer review"
+                          loading="lazy"
+                        />
+                      </ImageWrapper>
+                    )}
 
-                <ReviewText>
-                  “{review.text}”
-                </ReviewText>
+                    {/* CONTENT */}
+                    <ReviewContent>
 
-                <Customer>
-                  <CustomerName>
-                    {review.name}
-                  </CustomerName>
+                      <Stars
+                        aria-label={`${item.stars} out of 5 stars`}
+                      >
+                        {"★".repeat(item.stars || 0)}
+                      </Stars>
 
-                  <Verified>
-                    <Check>✓</Check>
-                    {t("customersFeedback.verifiedPurchase")}
-                  </Verified>
-                </Customer>
+                      <ReviewText>
+                        “{item.review?.text || ""}”
+                      </ReviewText>
 
-                <Product>
-                  {review.product}
-                </Product>
-              </ReviewContent>
-            </ReviewCard>
-          ))}
-        </Reviews>
+                      <Customer>
+                        <CustomerName>
+                          {item.user?.firstName ||
+                            item.user?.firstname ||
+                            "Customer"}
+                        </CustomerName>
+
+                        <Verified>
+                          <Check>✓</Check>
+
+                          {t(
+                            "customersFeedback.verifiedPurchase"
+                          )}
+                        </Verified>
+                      </Customer>
+
+                    </ReviewContent>
+                  </ReviewCard>
+                </ReviewSlide>
+              ))}
+            </Slider>
+          </Reviews>
+        )}
+
       </Container>
     </Section>
   );
 };
 
 export default CustomersFeedback;
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
 const Section = styled.section`
-  padding: 110px 20px;
+  padding: 110px 20px 120px;
   background: #faf9f7;
 `;
 
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
 const Container = styled.div`
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
 `;
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 const Header = styled.div`
   max-width: 700px;
@@ -123,28 +181,40 @@ const Header = styled.div`
 const Eyebrow = styled.span`
   display: block;
   margin-bottom: 18px;
+
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
+
+  color: #777;
 `;
 
 const Title = styled.h2`
   margin: 0;
+
   font-family: Georgia, serif;
   font-size: clamp(36px, 5vw, 58px);
   font-weight: 400;
   line-height: 1.1;
+
   color: #1d1d1b;
 `;
 
 const Description = styled.p`
   max-width: 560px;
   margin: 24px auto 32px;
+
   font-size: 16px;
   line-height: 1.7;
+
   color: #666;
 `;
+
+
+/* =====================================================
+   RATING
+===================================================== */
 
 const Rating = styled.div`
   display: flex;
@@ -157,18 +227,25 @@ const RatingNumber = styled.strong`
   font-family: Georgia, serif;
   font-size: 32px;
   font-weight: 400;
+
+  color: #1d1d1b;
 `;
 
 const RatingContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 4px;
 `;
 
 const Stars = styled.span`
+  display: block;
+  color: #ffc852;
   font-size: 15px;
+  line-height: 1;
   letter-spacing: 3px;
+
+  
 `;
 
 const RatingText = styled.span`
@@ -176,59 +253,152 @@ const RatingText = styled.span`
   color: #777;
 `;
 
-const Reviews = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    max-width: 650px;
-    margin: 0 auto;
+/* =====================================================
+   REVIEWS SLIDER
+===================================================== */
+
+const Reviews = styled.div`
+  width: 100%;
+
+  .slick-list {
+    margin: 0 -10px;
+    padding: 10px 0 25px;
+  }
+
+  .slick-slide {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .slick-track {
+    display: flex;
+  }
+
+  .slick-slide > div {
+    height: 100%;
+  }
+
+  .slick-dots {
+    bottom: -15px;
+  }
+
+  .slick-dots li {
+    margin: 0 2px;
+  }
+
+  .slick-dots li button:before {
+    font-size: 7px;
+    color: #1d1d1b;
+    opacity: 0.25;
+  }
+
+  .slick-dots li.slick-active button:before {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 550px) {
+    .slick-list {
+      margin: 0;
+    }
+
+    .slick-slide {
+      padding: 0 5px;
+    }
   }
 `;
+
+
+/* =====================================================
+   SLIDE
+===================================================== */
+
+const ReviewSlide = styled.div`
+  height: 100%;
+`;
+
+
+/* =====================================================
+   REVIEW CARD
+===================================================== */
 
 const ReviewCard = styled.article`
+  height: 100%;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
   background: #fff;
+
   border: 1px solid #e8e6e2;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  transition: box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
   }
 `;
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
 
 const ImageWrapper = styled.div`
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+
   overflow: hidden;
+
+  background: #f2f1ee;
 `;
 
 const ReviewImage = styled.img`
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
+
   transition: transform 0.6s ease;
 
   ${ReviewCard}:hover & {
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 `;
 
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
 const ReviewContent = styled.div`
-  padding: 28px;
+  min-height: 225px;
+
+  padding: 28px 30px 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
 `;
 
 const ReviewText = styled.p`
-  margin: 22px 0 28px;
+  margin: 22px 0 30px;
+
   font-family: Georgia, serif;
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.7;
+
   color: #292929;
 `;
+
+
+/* =====================================================
+   CUSTOMER
+===================================================== */
 
 const Customer = styled.div`
   margin-top: auto;
@@ -236,28 +406,39 @@ const Customer = styled.div`
 
 const CustomerName = styled.span`
   display: block;
-  margin-bottom: 7px;
-  font-size: 14px;
+
+  margin-bottom: 6px;
+
+  font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.2px;
+
+  color: #1d1d1b;
 `;
 
 const Verified = styled.span`
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+
+  font-size: 11px;
+  letter-spacing: 0.2px;
+
   color: #777;
 `;
 
 const Check = styled.span`
-  font-size: 11px;
-`;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-const Product = styled.span`
-  display: block;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-  font-size: 12px;
-  color: #888;
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  font-size: 9px;
+
+  background: #1d1d1b;
+  color: #fff;
 `;

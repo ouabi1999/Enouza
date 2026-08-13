@@ -1,241 +1,361 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link, NavLink, useNavigate } from "react-router-dom"
-//import {setCategory } from '../../features/categories/categorySlice'
-import { useTranslation } from 'react-i18next'
-import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
-import NewsLetter from './NewsLetter'
-import {
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-  Typography,
-  Box,
-  Divider,
-} from "@mui/material";
+import NewsLetter from "./NewsLetter";
 
 const Footer = () => {
-  //const navigate = useNavigate()
-  //const dispatch = useDispatch()
-  //const SelectedCategory = (value)=>{
-  // dispatch(setCategory(value))
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation();
 
-  //}
   return (
-    <Container>
-      <Wrapper>
-        <Wrapp>
-          <ul className="social-categorie">
-            <li className="text-info">{t("footer.followUs.title")}</li>
-            <li>
-              <i className="fab fa-facebook-f" />
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.facebook.com/profile.php?id=61571681156358"
-              >
-                {" "}
-                {t("footer.followUs.facebook")}
-              </a>
-            </li>
-            <li>
-              <i className="fab fa-instagram" />
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.instagram.com/en.ouza"
-              >
-                {t("footer.followUs.instagram")}
-              </a>
-            </li>
-            <li>
-              <i className="fab fa-twitter" />
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://twitter.com/en_ouza"
-              >
-                {t("footer.followUs.twitter")}
-              </a>
-            </li>
-            <li>
-              <i className="fab fa-tiktok" />
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.tiktok.com/@en.ouza"
-              >
-                {t("footer.followUs.tiktok")}
-              </a>
-            </li>
-          </ul>
-          <ul className="policy">
-            <li className="text-info">{t("footer.policies.title")}</li>
-            <li>
-              <Link to="terms-of-services">{t("footer.policies.termsOfService")}</Link>
-            </li>
+    <FooterContainer>
+      <MainFooter>
+        <LinksSection>
+          {/* HELP */}
+          <FooterColumn>
+            <ColumnTitle>
+              {t("footer.help.title")}
+            </ColumnTitle>
 
-            <li>
-              <Link to="privacy-policy">{t("footer.policies.privacyPolicy")} </Link>
-            </li>
-            <li>
-              <Link to="shipping-policy"> {t("footer.policies.shippingPolicy")} </Link>
-            </li>
-            <li>
-              <Link to="return-policy"> {t("footer.policies.refundPolicy")} </Link>
-            </li>
-          </ul>
-          <ul className="social-categorie">
-            <li className="text-info">{t("footer.help.title")}</li>
-            <li>
-              <i className="fab fa-facebook-f" />
-              <Link to="contact-us">{t("footer.help.contactUs")}</Link>
-            </li>
-            <li>
-              <i className="fab fa-instagram" />
-              <Link to="about-us">{t("footer.help.aboutUs")}</Link>
-            </li>
-            <li>
-              <i className="fab fa-twitter" />
-              <Link to="help-center"> {t("footer.help.faq")}</Link>
-            </li>
-          </ul>
+            <FooterLink to="contact-us">
+              {t("footer.help.contactUs")}
+            </FooterLink>
 
+            <FooterLink to="about-us">
+              {t("footer.help.aboutUs")}
+            </FooterLink>
 
-        </Wrapp>
-        <div className='news-letter-container'>
+            <FooterLink to="help-center">
+              {t("footer.help.faq")}
+            </FooterLink>
+          </FooterColumn>
+
+          {/* FOLLOW US */}
+          <FooterColumn>
+            <ColumnTitle>
+              {t("footer.followUs.title")}
+            </ColumnTitle>
+
+            <SocialLink
+              href="https://www.facebook.com/profile.php?id=61571681156358"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <SocialIcon>f</SocialIcon>
+              {t("footer.followUs.facebook")}
+            </SocialLink>
+
+            <SocialLink
+              href="https://www.instagram.com/en.ouza"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <SocialIcon>◎</SocialIcon>
+              {t("footer.followUs.instagram")}
+            </SocialLink>
+
+            <SocialLink
+              href="https://www.tiktok.com/@en.ouza"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <SocialIcon>♪</SocialIcon>
+              {t("footer.followUs.tiktok")}
+            </SocialLink>
+          </FooterColumn>
+
+          {/* POLICIES */}
+          <FooterColumn>
+            <ColumnTitle>
+              {t("footer.policies.title")}
+            </ColumnTitle>
+
+            <FooterLink to="terms-of-services">
+              {t("footer.policies.termsOfService")}
+            </FooterLink>
+
+            <FooterLink to="privacy-policy">
+              {t("footer.policies.privacyPolicy")}
+            </FooterLink>
+
+            <FooterLink to="shipping-policy">
+              {t("footer.policies.shippingPolicy")}
+            </FooterLink>
+
+            <FooterLink to="return-policy">
+              {t("footer.policies.refundPolicy")}
+            </FooterLink>
+          </FooterColumn>
+        </LinksSection>
+
+        {/* NEWSLETTER */}
+        <NewsletterSection>
           <NewsLetter />
-        </div>
-      </Wrapper>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-         
-        }}
-      >
-        <div className="payment-methods-image">
-          <img src="../payment-methods.png" alt="secure payment" />
-        </div>
-        <Box sx={{ textAlign: "center" }} style={{ direction: "ltr" }} className="CopyRight">
+        </NewsletterSection>
+      </MainFooter>
 
-          <Typography variant="caption">© {new Date().getFullYear()} Enouza, {t("footer.newsletter.all_rights_reserved")} </Typography>
-        </Box>
-      </div>
-    </Container>
+      {/* BOTTOM FOOTER */}
+      <BottomFooter>
+        <PaymentMethods>
+          <img
+            src="/payment-methods.png"
+            alt="Secure payment methods"
+          />
+        </PaymentMethods>
+
+        <Copyright>
+          © {new Date().getFullYear()} Enouza,{" "}
+          {t("footer.newsletter.all_rights_reserved")}
+        </Copyright>
+      </BottomFooter>
+    </FooterContainer>
   );
-}
-export default Footer
+};
+
+export default Footer;
 
 
-const Container = styled.div`
-  width: calc(100% - 30px);
-  background: linear-gradient(135deg, #F5F3EF 0%, #E8E4D9 100%);
-  padding: 20px 15px 0 15px;
+/* =====================================================
+   FOOTER
+===================================================== */
+
+const FooterContainer = styled.footer`
+  width: 100%;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    135deg,
+    #f5f3ef 0%,
+    #e8e4d9 100%
+  );
+
+  font-family: "Jost", system-ui, -apple-system, sans-serif;
+
+  color: #1d1d1b;
+`;
+
+
+/* =====================================================
+   MAIN FOOTER
+===================================================== */
+
+const MainFooter = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+
+  padding: 70px 30px 55px;
+
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 55px 22px 40px;
+    gap: 40px;
+  }
+`;
+
+
+/* =====================================================
+   LINKS SECTION
+===================================================== */
+
+const LinksSection = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+
+  @media (max-width: 700px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 25px;
+  }
+`;
+
+
+/* =====================================================
+   FOOTER COLUMN
+===================================================== */
+
+const FooterColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+
+/* =====================================================
+   COLUMN TITLE
+===================================================== */
+
+const ColumnTitle = styled.h3`
+  margin: 0 0 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: #1d1d1b;
+`;
+
+
+/* =====================================================
+   FOOTER LINKS
+===================================================== */
+
+const FooterLink = styled(Link)`
   position: relative;
 
-  .payment-methods-image {
-    width: 50vw;
-    max-width: 360px;
-    min-width: 320px;
+  margin-bottom: 11px;
 
-    img {
-      width: 100%;
-      height: auto ;
-      object-fit: contain;
-    }
-  }
+  font-size: 14px;
+  line-height: 1.6;
 
-  .CopyRight {
-    display: flex;
-    align-items: center;
-    span {
-      font-size: 14px;
-      color: #000000;
-      margin-left: 4px;
-    }
-  }
+  color: #66615a;
 
-  .copy-icon {
-    font-size: 15px;
-    margin-top: 2px;
-    margin-left: 4px;
-  }
-  .CopyRight div {
-    color: #000000;
-  }
+  text-decoration: none;
 
-  
-    
-  
-  @media only screen and (max-width: 600px) {
-    .CopyRight {
-      font-size: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-      .payment-methods-image{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin:auto;
-      
-      }
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+
+  &:hover {
+    color: #1d1d1b;
+    transform: translateX(3px);
   }
-      ul{
-      margin:0;
-      padding:0;
-}
 `;
-const Wrapp = styled.div`
-display:flex;
-justify-content:space-between;
-padding-bottom:20px;
-    flex:1;
-`
-const Wrapper = styled.div`
- display:flex;
- justify-content:space-between;
- width:100%;
- gap:10rem;
 
 
-    
-@media only screen and (max-width: 850px) {
-  &{ 
-    flex-direction:column;
-    gap:10px;
+/* =====================================================
+   SOCIAL LINKS
+===================================================== */
 
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 11px;
+
+  font-size: 14px;
+
+  color: #66615a;
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: #1d1d1b;
   }
-  
-     
+`;
 
-}
-      .news-letter-container {
-      flex:1;
+
+/* =====================================================
+   SOCIAL ICON
+===================================================== */
+
+const SocialIcon = styled.span`
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #1d1d1b;
+`;
+
+
+/* =====================================================
+   NEWSLETTER
+===================================================== */
+
+const NewsletterSection = styled.div`
+  
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+`;
+
+
+/* =====================================================
+   BOTTOM FOOTER
+===================================================== */
+
+const BottomFooter = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+
+  padding: 22px 30px;
+
+  border-top: 1px solid rgba(29, 29, 27, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  @media (max-width: 600px) {
+    padding: 20px 22px;
+
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 15px;
+  }
+`;
+
+
+/* =====================================================
+   PAYMENT METHODS
+===================================================== */
+
+const PaymentMethods = styled.div`
+  width: 260px;
+
+  img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
   }
 
-  a{
-      color:#4d4a4a;
-      font-size: 0.8rem;
-      line-height: 1;
-    
-    }
+  @media (max-width: 600px) {
+    width: 240px;
+  }
+`;
 
-  
 
-    
-    .text-info{
-      font-weight: bold;
-      font-size:1.2rem;
-      color:black;
-    
-    }
-   
-   
+/* =====================================================
+   COPYRIGHT
+===================================================== */
 
-`
+const Copyright = styled.span`
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: #777;
+
+  text-align: right;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
+`;

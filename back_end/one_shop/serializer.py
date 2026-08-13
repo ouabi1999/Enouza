@@ -186,25 +186,18 @@ class UserRatingsSerializer(serializers.ModelSerializer):
         fields = ("firstName", "lastName", "country", "countryCode")
 
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ratings
-        fields = ["id", "stars", "review", "user", "product", "created_at"]
-        read_only_fields = ["id", "created_at"]
-
-
 class getRatingSerializer(serializers.ModelSerializer):
     user = UserRatingsSerializer(read_only=True)
 
     class Meta:
-        model = Ratings
+        model = Rating
         fields = ["id", "stars", "review", "user", "product", "created_at"]
         read_only_fields = ["id", "created_at"]
 
 
-class AliExpressRatingSerializer(serializers.ModelSerializer):
+class RatingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AliExpressRatings
+        model = Rating
         fields = ["id", "stars", "review", "user", "product", "created_at"]
         read_only_fields = ["id", "created_at"]
 
@@ -217,11 +210,9 @@ class ProductSerializer(serializers.ModelSerializer):
     skuInfo = serializers.JSONField()
     multimediaInfo = serializers.JSONField()
     read_only_fields = ["id", "release_date"]
-    aliexpress_ratings = AliExpressRatingSerializer(
-        source="aliratings", many=True, read_only=True
-    )
+
     ratings = getRatingSerializer(
-        source="rating", many=True, read_only=True, default=[]
+        source="user_ratings", many=True, read_only=True, default=[]
     )
 
     def validate_price(self, value):
@@ -246,8 +237,6 @@ class NewsLetterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
 class DisplaySerializer(serializers.ModelSerializer):
     header = serializers.JSONField(required=False)
     main_category = serializers.JSONField(required=False)
@@ -256,11 +245,6 @@ class DisplaySerializer(serializers.ModelSerializer):
     pop_up = serializers.JSONField(required=False)
     slider = serializers.ListField(required=False)
 
-    
-
     class Meta:
         model = Display
         fields = "__all__"
-
-
-

@@ -16,7 +16,7 @@ function Product({ currentSku, setCurrentSku }) {
   const date = new Date()
   const productData = useSelector(state => state.product.productData)
 
-  let ratings = productData?.ratings?.concat(productData?.aliexpress_ratings);
+  let ratings = productData?.ratings
 
   let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
     return total += value.stars

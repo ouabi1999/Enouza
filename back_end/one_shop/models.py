@@ -53,7 +53,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 
 class Products(models.Model):
-    id = models.BigAutoField(primary_key=True, unique=True) # type: ignore
+    id = models.BigAutoField(primary_key=True, unique=True)  # type: ignore
     product_id = models.CharField(max_length=100, unique=True)
     name = models.JSONField()
     description = models.JSONField()
@@ -145,7 +145,7 @@ class Ratings(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.JSONField()
     product = models.ForeignKey(
         "Products", on_delete=models.CASCADE, related_name="rating"
     )
@@ -155,14 +155,13 @@ class Ratings(models.Model):
         return f"{self.stars} stars by {self.review}"
 
 
-class AliExpressRatings(models.Model):
+class Rating(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
-
     user = models.JSONField()
     product = models.ForeignKey(
-        "Products", on_delete=models.CASCADE, related_name="aliratings"
+        "Products", on_delete=models.CASCADE, related_name="user_ratings"
     )
     created_at = models.DateField(auto_now_add=True)
 

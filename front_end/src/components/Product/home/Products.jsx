@@ -12,14 +12,14 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
         {products?.map((item) => {
           const mainSku = item.skuInfo?.[0];
           const image = item.multimediaInfo?.image_urls?.split(';')[0] || '';
-          const sumRatings = [...(item.ratings), ...(item.aliexpress_ratings )]
+          const sumRatings = item.ratings
 
           const avgRating =
             sumRatings?.length > 0
               ? (sumRatings.reduce((total, r) => total + r.stars, 0) / sumRatings.length).toFixed(1)
               : null;
 
-          const ordersCount = item?.orders?.length + item?.aliexpress_ratings?.length|| 0; 
+          const ordersCount = item?.orders?.length + item?.ratings?.length|| 0; 
 
 
           return (
@@ -203,7 +203,7 @@ const SecondSection = styled.div`
   }
 
   .star-icon {
-    color: #ffae00ff;
+    color: #dfbf7a;
     font-size: 16px;
     margin: 0 2px;
   }

@@ -9,7 +9,7 @@ import ApiInstance from '../../../../common/baseUrl';
 export const AliExpressRating= ({ product }) => {
   const [imageUrl, setImageUrl] = useState('');
   const [formData, setFormData] = useState({
-    stars: 0,
+    stars: 1,
     product:product?.id,
     review: {
       text: '',
@@ -93,7 +93,7 @@ export const AliExpressRating= ({ product }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await ApiInstance.post('aliexpress-ratings/', {
+      await ApiInstance.post('ratings/', {
         ...formData,
       });
       
@@ -117,7 +117,8 @@ export const AliExpressRating= ({ product }) => {
         <FormGroup>
           <Label>Rating</Label>
           <Rating
-            value={formData.stars}
+            value={Math.max(1, formData.stars || 1)}
+            
             onChange={handleStarChange}
             size="large"
           />

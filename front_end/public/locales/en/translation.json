@@ -322,10 +322,10 @@
     },
     "policies": {
       "title": "Policies",
-      "privacyPolicy": "Privacy Policy",
-      "termsOfService": "Terms of Service",
-      "refundPolicy": "Refunds Policy",
-      "shippingPolicy": "Shipping Policy"
+      "privacyPolicy": "Privacy policy",
+      "termsOfService": "Terms of service",
+      "refundPolicy": "Refunds policy",
+      "shippingPolicy": "Shipping policy"
     },
     "help": {
       "title": "Help",

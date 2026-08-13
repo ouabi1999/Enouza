@@ -33,6 +33,6 @@ admin.site.register(Products)
 admin.site.register(Display)
 
 admin.site.register(Orders)
-admin.site.register(Ratings)
-admin.site.register(AliExpressRatings, AliExpressRatingsAdmin)
+#admin.site.register(Ratings)
+admin.site.register(Rating, AliExpressRatingsAdmin)
 admin.site.register(Users, TodoAdmin)

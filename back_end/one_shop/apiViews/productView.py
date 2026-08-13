@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from django.http.response import JsonResponse
 import json
 from rest_framework.views import APIView
-from ..models import Products, Address, Users, Orders, AliExpressRatings, Ratings
+from ..models import Products, Address, Users, Orders, Rating, Ratings
 from django.db.models import Count
 from django.http import JsonResponse
 from django.db.models import Avg, Count, Value
@@ -14,8 +14,8 @@ from django.db.models.functions import Coalesce
 from ..serializer import (
     ProductSerializer,
     OrderSerializer,
-    AliExpressRatingSerializer,
     RatingSerializer,
+    
 )
 from django.db import transaction
 from django.shortcuts import get_object_or_404
@@ -45,7 +45,7 @@ class ProductView(APIView):
         per_page = int(request.GET.get("per_page", 10))
 
         products_qs = Products.objects.annotate(
-              ratings_count=Count("aliratings", distinct=True),
+              ratings_count=Count("user_ratings", distinct=True),
               orders_count=Count("orders", distinct=True)
               ).order_by("orders_count", "-ratings_count", "-release_date")
 
@@ -190,50 +190,10 @@ class OrderCreateView(APIView):
         return Response(serializer.data)
 
 
-class AliExpressRatingView(APIView):
-    serializer_class = AliExpressRatingSerializer
-
-    def post(self, request):
-        data = request.data.copy()
-        product_id = request.data.get("product")
-        # Check if the product exists
-        product = Products.objects.get(id=product_id)
-        if not product:
-            return Response(
-                {"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND
-            )
-        images_urls = []
-        review = data.get("review")
-        if isinstance(review, str):
-            try:
-                review = json.loads(review)  # Parse string to dictionary
-            except json.JSONDecodeError as e:
-                return Response(
-                    {"error": "Invalid JSON format for review."}, status=400
-                )
-
-        for img in review["images"]:
-            if img:  # Ensure the file is not empty
-                upload_result = cloudinary.uploader.upload(img)
-                images_urls.append(upload_result["secure_url"])
-                print(upload_result["secure_url"])
-
-        review["images"] = images_urls
-        data["review"] = review
-
-        serializer = AliExpressRatingSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                {"message": "Rating submitted successfully", "data": serializer.data},
-                status=status.HTTP_201_CREATED,
-            )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class RatingView(APIView):
     def get(self, requst):
-        ratings = Ratings.objects.all()
+        ratings = Rating.objects.all()
 
         serializer = RatingSerializer(ratings, many=True)
 

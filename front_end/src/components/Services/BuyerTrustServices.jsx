@@ -53,8 +53,10 @@ const Container = styled.div`
   grid-template-columns: repeat(4, auto) ;
   grid-gap:10px;
   position:relative;
-
   
+  p ,span{
+     color: #383333;
+  }
   div{
     display:flex;
     flex-direction:column;
@@ -78,7 +80,7 @@ const Container = styled.div`
   
   .icon{
       font-size:40px;
-      color: #d8d8d8;
+      color: #dfbf7a;
   }
   @media only screen and (max-width: 1000px) {
   &{

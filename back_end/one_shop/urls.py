@@ -53,12 +53,8 @@ urlpatterns = [
         name="get_dashboard_products",
     ),
     path("create-order/", productView.OrderCreateView.as_view(), name="create-order"),
-    path(
-        "aliexpress-ratings/",
-        productView.AliExpressRatingView.as_view(),
-        name="ali-express-ratings",
-    ),
-    path("set-rating/", productView.RatingView.as_view(), name="set-ratings"),
+    
+    path("ratings/", productView.RatingView.as_view(), name="set-ratings"),
     path(
         "get_user_orders/<str:pk>/",
         ordersView.OrdersView.as_view(),
