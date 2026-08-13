@@ -139,9 +139,17 @@ class Orders(models.Model):
 
     def __str__(self):
         return f"Order {self.id} by {self.payment_method}"
+class Ratings(models.Model):
+    id = models.BigAutoField(primary_key=True, unique=True)
+    stars = models.IntegerField()
+    review = models.JSONField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='rating')
+    created_at = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.stars} stars by {self.review}"
 
-
-class Rating(models.Model):
+class AliExpressRatings(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()

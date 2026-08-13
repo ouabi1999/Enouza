@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from django.http.response import JsonResponse
 import json
 from rest_framework.views import APIView
-from ..models import Products, Address, Users, Orders, Rating
+from ..models import Products, Address, Users, Orders, AliExpressRatings
 from django.db.models import Count
 from django.http import JsonResponse
 from django.db.models import Avg, Count, Value
