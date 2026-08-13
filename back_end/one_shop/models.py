@@ -145,11 +145,13 @@ class Rating(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
+
     user = models.JSONField()
-    product = models.ForeignKey(
-        "Products", on_delete=models.CASCADE, related_name="user_ratings"
-    )
+    product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='user_ratings')
     created_at = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return str(self.id)
+
 
     def __str__(self):
         return str(self.id)
