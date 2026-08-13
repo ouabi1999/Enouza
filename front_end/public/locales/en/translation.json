@@ -41,6 +41,10 @@
     "more_products": "More Products",
     "best_sellers": "Bestsellers"
   },
+  "mainSlider":{
+    "title": "Celebrating Eight Years of Enouza",
+  "description": "From one home in Miami to 50,000+ homes worldwide."
+  },
   "productPage": {
     "addToCart": "Add to Cart",
     "buyNow": "Buy Now",
@@ -119,13 +123,15 @@
     }
   },
 
-   "matricsSection":{
-    "why_us":"Why us?",
-    "exclusiveDesigns": "Exclusive Designs",
-    "internationalAwards": "International Awards",
-    "artisanPartners": "Artisan Partners",
-    "yearsOfExcellence": "Years of Excellence"
-  },
+  "matricsSection": {
+  "why_us": "Why choose us?",
+  "exclusiveDesigns": "Exclusive designs",
+  "internationalAwards": "International awards",
+  "artisanPartners": "Artisan partners",
+  "yearsOfExcellence": "Years of excellence",
+  "title": "Every piece, made properly.",
+  "description": "From table lamps to pendant lights, every Enouza piece is thoughtfully designed, handcrafted, and made to order."
+},
   
   "designSection": {
     "title": "Enouza Ethos",
@@ -144,6 +150,13 @@
       }
     }
   },
+  "customersFeedback": {
+  "eyebrow": "THE ENOUZA EXPERIENCE",
+  "title": "Loved by homeowners worldwide.",
+  "description": "Real homes. Real experiences.",
+  "ratingText": "Based on customer reviews",
+  "verifiedPurchase": "Verified Purchase"
+},
 
 
   "productInfo": {

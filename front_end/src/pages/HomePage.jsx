@@ -14,6 +14,7 @@ import DesignSection from '../components/Product/home/DesignSection.jsx'
 import CTASection from '../components/Product/home/CTASection.jsx'
 import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import HeadeSeo from '../../common/HeadeSeo.jsx'
+import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -106,6 +107,7 @@ function HomePage() {
             disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
+      <CustomersFeedback/>
       <CTASection/>
 
     </Container>

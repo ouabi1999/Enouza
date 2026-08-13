@@ -53,14 +53,14 @@ function Products({ products, scrollTo, columsNumber, placeItems}) {
                   {mainSku?.comparePrice > 0 && (
 
               (<div className="product-discount-percent">
-          <span >
+          <span>
                   {t("productInfo.save")} {" "}
 
-                {((mainSku?.comparePrice - mainSku?.sellingPrice)
+                <bdi>{((mainSku?.comparePrice - mainSku?.sellingPrice)
                   /
                   (mainSku?.comparePrice) *
                   100
-                ).toFixed(0) + "%"}
+                ).toFixed(0)}%</bdi>
                 </span>
               </div>)
 

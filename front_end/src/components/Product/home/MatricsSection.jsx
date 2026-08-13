@@ -6,6 +6,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import GroupsIcon from '@mui/icons-material/Groups';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 /* =======================
    COMPONENT
@@ -50,81 +51,151 @@ const MetricsSection = () => {
   ];
 
   return (
-    <MetricsContainer maxWidth="xl">
-      <div style={{ marginBottom:"80px", display:"flex", justifyContent:"center", alignItems:"center"}}>
-      <span style={{ fontFamily: "Playfair Display", fontSize:"1.8rem", fontWeight:"490", textTransform:"uppercase"}}>{t("matricsSection.why_us")}</span>
+    <ParentContainer>
+      <MetricsContainer maxWidth="xl">
+        <div style={{ marginBottom: "80px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <span style={{ fontFamily: "Playfair Display", fontSize: "1.8rem", fontWeight: "490", textTransform: "uppercase" }}>{t("matricsSection.why_us")}</span>
+        </div>
+        <Grid container spacing={{ xs: 4, md: 8 }}>
+          {metrics.map((metric, index) => {
+            const radius = 45;
+            const circumference = 2 * Math.PI * radius;
+            const progress = (metric.percentage / 100) * circumference;
+
+            return (
+              <Grid item xs={6} md={3} key={index}>
+                <MetricCircle>
+                  <CircleSvg viewBox="0 0 100 100">
+                    <CircleBackground cx="50" cy="50" r={radius} />
+                    {animated && (
+                      <CircleProgress
+                        cx="50"
+                        cy="50"
+                        r={radius}
+                        strokeDasharray={circumference}
+                        strokeDashoffset={circumference - progress}
+                        delay={metric.delay}
+                      />
+                    )}
+                  </CircleSvg>
+
+                  <CircleContent>
+                    <MetricIcon>{metric.icon}</MetricIcon>
+
+                    <Typography
+                      sx={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontWeight: 400,
+                        color: COLORS.charcoal,
+                        fontSize: {
+                          xs: '1rem',
+                          sm: '1rem',
+                          md: '1.5rem',
+                        },
+                        lineHeight: 1,
+                      }}
+                    >
+                      {metric.number}
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        color: COLORS.bronze,
+                        fontSize: '1rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      +
+                    </Typography>
+                  </CircleContent>
+                </MetricCircle>
+
+                <MetricTitle
+                  align="center"
+                  sx={{
+                    fontSize: {
+                      xs: '0.75rem',
+                      sm: '0.85rem',
+                      md: '0.9rem',
+                    },
+                  }}
+                >
+                  {metric.title}
+                </MetricTitle>
+              </Grid>
+            );
+          })}
+        </Grid>
+
+
+
+      </MetricsContainer>
+      <div style={{ position: "relative" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+
+        >
+          <source
+            src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 10,
+            color: "#fff",
+            textAlign: "center",
+            width: "90%",
+            fontFamily: '"Playfair Display", serif'
+          }}
+        >
+          <div className='text-video-container'>
+            <h1>
+              {t("matricsSection.title")}
+            </h1>
+
+            
+            
+              <span>{t("matricsSection.description")}</span>
+            
+          </div>
+
+        </div>
+         <div
+          style={{
+            position: "absolute",
+            top: "90%",
+            left: "95%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 10,
+            color: "#fff",
+            textAlign: "center",
+            width: "90%",
+            fontFamily: '"Playfair Display", serif'
+          }}
+        >
+          <div className='text-video-container'>
+            <Link to="/product/29">
+              {t("common.buyNow")}
+            </Link>
+
+            
+            
+           
+            
+          </div>
+
+        </div>
       </div>
-      <Grid container spacing={{ xs: 4, md: 8 }}>
-        {metrics.map((metric, index) => {
-          const radius = 45;
-          const circumference = 2 * Math.PI * radius;
-          const progress = (metric.percentage / 100) * circumference;
-
-          return (
-            <Grid item xs={6} md={3} key={index}>
-              <MetricCircle>
-                <CircleSvg viewBox="0 0 100 100">
-                  <CircleBackground cx="50" cy="50" r={radius} />
-                  {animated && (
-                    <CircleProgress
-                      cx="50"
-                      cy="50"
-                      r={radius}
-                      strokeDasharray={circumference}
-                      strokeDashoffset={circumference - progress}
-                      delay={metric.delay}
-                    />
-                  )}
-                </CircleSvg>
-
-                <CircleContent>
-                  <MetricIcon>{metric.icon}</MetricIcon>
-
-                  <Typography
-                    sx={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontWeight: 400,
-                      color: COLORS.charcoal,
-                      fontSize: {
-                        xs: '1rem',
-                        sm: '1rem',
-                        md: '1.5rem',
-                      },
-                      lineHeight: 1,
-                    }}
-                  >
-                    {metric.number}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      color: COLORS.bronze,
-                      fontSize: '1rem',
-                      fontWeight: 500,
-                    }}
-                  >
-                    +
-                  </Typography>
-                </CircleContent>
-              </MetricCircle>
-
-              <MetricTitle
-                align="center"
-                sx={{
-                  fontSize: {
-                    xs: '0.75rem',
-                    sm: '0.85rem',
-                    md: '0.9rem',
-                  },
-                }}
-              >
-                {metric.title}
-              </MetricTitle>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </MetricsContainer>
+    </ParentContainer>
   );
 };
 
@@ -166,6 +237,44 @@ const fadeInUp = keyframes`
 /* =======================
    STYLES
 ======================= */
+const ParentContainer = styled.div`
+
+      video {
+        width: 100%;
+        max-height:600px;
+        object-fit: cover;
+        display: block;
+        margin-top:20px;
+      }
+        .text-video-container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        width:100%;
+        a{
+         color: #fffffF;
+         font-size:1.1rem;
+        
+        }
+        
+        }
+      @media (max-width: 600px) {
+            .text-video-container h1{
+            font-size:1.4rem;
+            }
+
+            .text-video-container span{
+               
+               font-size:0.8rem;
+               width:80%;
+               
+            }
+   
+       }
+        
+
+`
 const MetricsContainer = styled(Container)`
   background: ${COLORS.cream};
   padding: 4rem 1.5rem !important;
@@ -176,7 +285,7 @@ const MetricsContainer = styled(Container)`
     padding: 6rem 2rem !important;
   }
 
- 
+  
 `;
 
 const MetricCircle = styled(Box)`

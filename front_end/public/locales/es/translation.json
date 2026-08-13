@@ -42,6 +42,10 @@
     "more_products": "Más productos",
     "best_sellers": "Más vendidos"
   },
+  "mainSlider":{
+    "title": "Celebramos ocho años de Enouza",
+  "description": "De un hogar en Miami a más de 50.000 hogares en todo el mundo."
+  },
   "productPage": {
     "addToCart": "Añadir al carrito",
     "buyNow": "Comprar ahora",
@@ -117,15 +121,15 @@
       }
     }
   },
-
-  "matricsSection":{
-      "why_us": "¿Por qué elegirnos?",
-       "exclusiveDesigns": "Diseños exclusivos",
-       "internationalAwards": "Premios internacionales",
-       "artisanPartners": "Socios artesanos",
-       "yearsOfExcellence": "Años de excelencia"
-
-  },
+"matricsSection": {
+  "why_us": "¿Por qué elegirnos?",
+  "exclusiveDesigns": "Diseños exclusivos",
+  "internationalAwards": "Premios internacionales",
+  "artisanPartners": "Socios artesanos",
+  "yearsOfExcellence": "Años de excelencia",
+  "title": "Cada pieza, hecha como debe ser.",
+  "description": "Desde lámparas de mesa hasta lámparas colgantes, cada pieza de Enouza está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
+},
   "designSection": {
     "title": "El espíritu de Enouza",
     "principles": {
@@ -144,7 +148,13 @@
     }
   },
 
-
+"customersFeedback": {
+  "eyebrow": "LA EXPERIENCIA ENOUZA",
+  "title": "Elegido por hogares de todo el mundo.",
+  "description": "Hogares reales. Experiencias reales.",
+  "ratingText": "Basado en opiniones de clientes",
+  "verifiedPurchase": "Compra verificada"
+},
 
   "productInfo": {
     "save": "ahorrar",

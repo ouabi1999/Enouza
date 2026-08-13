@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const MainSlider = () => {
 
   const displayData = useSelector(state => state.display.displayData)
@@ -14,7 +15,7 @@ const MainSlider = () => {
   const handleSelect = (value)=>{
       window.localStorage.setItem("selectedImageSlider", value)
   }
-  
+   const {t} = useTranslation()
 
   return (
     <Container style={{ position: "relative", width: "100%" }}>
@@ -46,11 +47,11 @@ const MainSlider = () => {
     }}
   >
     <h1>
-      Celebrating Eight Years of Enouza
+      {t("mainSlider.title")}
     </h1>
     
     <span>
-      From one home in MIAMI to 50,000+ worldwide.
+      {t("mainSlider.description")}
     </span>
 
     

@@ -41,6 +41,10 @@
     "more_products":"المزيد من المنتجات",
     "best_sellers":"الأكثر مبيعاً"
   },
+  "mainSlider":{
+    "title": "نحتفل بثماني سنوات من Enouza",
+  "description": "من منزل واحد في ميامي إلى أكثر من 50,000 منزل حول العالم."
+  },
   "productPage": {
     "addToCart": "أضف للسلة",
     "buyNow": "اشتري الآن",
@@ -99,15 +103,15 @@
     "rated": "موثوق من عملائنا"
   }
 },
- "matricsSection":{
-    "why_us": "لماذا نحن؟",
-    "exclusiveDesigns": "تصاميم حصرية",
-    "internationalAwards": "جوائز دولية",
-    "artisanPartners": "شركاء من الحرفيين",
-    "yearsOfExcellence": "سنوات من التميّز"
-   
-  },
-
+"matricsSection": {
+  "why_us": "لماذا تختارنا؟",
+  "exclusiveDesigns": "تصاميم حصرية",
+  "internationalAwards": "جوائز دولية",
+  "artisanPartners": "شركاء من الحرفيين",
+  "yearsOfExcellence": "سنوات من التميز",
+  "title": "كل قطعة، مصنوعة بإتقان.",
+  "description": "من مصابيح الطاولة إلى المصابيح المعلقة، كل قطعة من  Enouza  مصممة بعناية، ومصنوعة بحرفية، ويتم تصنيعها حسب الطلب."
+},
   "ctaSection": {
     "titleLeft": "تواصل معنا",
     "description": "كل قطعة من إينوزا تبدأ بحوار. شاركنا رؤيتك، ودعنا نبتكر معًا الإضاءة المثالية لمساحتك.",
@@ -150,7 +154,13 @@
     }
   },
 
-
+"customersFeedback": {
+  "eyebrow": "تجربة ENOUZA",
+  "title": "محبوب من أصحاب المنازل حول العالم.",
+  "description": "منازل حقيقية. تجارب حقيقية.",
+  "ratingText": "استنادًا إلى تقييمات العملاء",
+  "verifiedPurchase": "شراء موثّق"
+},
 
   "productInfo": {
     "save": "وفّر",

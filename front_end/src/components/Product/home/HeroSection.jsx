@@ -308,6 +308,7 @@ const Stat = styled.div`
   flex-direction: column;
 
   align-items: center;
+  justify-conent:center;
 
   text-align: center;
 `;
@@ -329,7 +330,7 @@ const StatLabel = styled.span`
 
   color: #666666;
 
-  font-size: 0.65rem;
+  font-size: 0.7rem;
 
   text-transform: uppercase;
 
