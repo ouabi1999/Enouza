@@ -15,18 +15,20 @@ const CustomersFeedback = () => {
         setReviews(res.data);
       })
       .catch((err) => {
-        console.log("Ratings error:", err);
+        console.error("Ratings error:", err);
       });
   }, []);
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: reviews.length > 4,
     autoplay: true,
-    speed: 500,
+    autoplaySpeed: 4500,
+    speed: 600,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    pauseOnHover: true,
 
     responsive: [
       {
@@ -55,6 +57,7 @@ const CustomersFeedback = () => {
       <Container>
 
         {/* HEADER */}
+
         <Header>
           <Eyebrow>
             {t("customersFeedback.eyebrow")}
@@ -84,57 +87,72 @@ const CustomersFeedback = () => {
         </Header>
 
         {/* REVIEWS */}
+
         {reviews.length > 0 && (
           <Reviews>
             <Slider {...settings}>
-              {reviews.map((item) => (
-                <ReviewSlide key={item.id}>
-                  <ReviewCard>
+              {reviews.map((item) => {
+                const hasImage =
+                  item.review?.images?.length > 0;
 
-                    {/* IMAGE */}
-                    {item.review?.images?.length > 0 && (
-                      <ImageWrapper>
-                        <ReviewImage
-                          src={item.review.images[0]}
-                          alt="Customer review"
-                          loading="lazy"
-                        />
-                      </ImageWrapper>
-                    )}
+                return (
+                  <ReviewSlide key={item.id} hasImage={item.review?.images?.length > 0}>
+                    <ReviewCard>
 
-                    {/* CONTENT */}
-                    <ReviewContent>
+                      {/* IMAGE */}
 
-                      <Stars
-                        aria-label={`${item.stars} out of 5 stars`}
-                      >
-                        {"★".repeat(item.stars || 0)}
-                      </Stars>
+                      {hasImage ? (
+                        <ImageWrapper>
+                          <ReviewImage
+                            src={item.review.images[0]}
+                            alt="Customer review"
+                            loading="lazy"
+                          />
+                        </ImageWrapper>
+                      ):<ImageWrapper>
+                          <ReviewImage
+                            src="https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto/q_auto/fhyeq5in8rsm4xklsc7y"
+                            alt="Customer review"
+                            loading="lazy"
+                          />
+                        </ImageWrapper> }
 
-                      <ReviewText>
-                        “{item.review?.text || ""}”
-                      </ReviewText>
+                      {/* CONTENT */}
 
-                      <Customer>
-                        <CustomerName>
-                          {item.user?.firstName ||
-                            item.user?.firstname ||
-                            "Customer"}
-                        </CustomerName>
+                      <ReviewContent hasImage={hasImage}>
 
-                        <Verified>
-                          <Check>✓</Check>
+                        <Stars
+                          aria-label={`${item.stars} out of 5 stars`}
+                        >
+                          {"★".repeat(item.stars || 0)}
+                        </Stars>
 
-                          {t(
-                            "customersFeedback.verifiedPurchase"
-                          )}
-                        </Verified>
-                      </Customer>
+                        <ReviewText>
+                         {item.review?.text || ""}
+                        </ReviewText>
 
-                    </ReviewContent>
-                  </ReviewCard>
-                </ReviewSlide>
-              ))}
+                        <Customer>
+                          <CustomerName>
+                            {item.user?.firstName ||
+                              item.user?.firstname ||
+                              "Customer"}
+                          </CustomerName>
+
+                          <Verified>
+                            <Check>✓</Check>
+
+                            {t(
+                              "customersFeedback.verifiedPurchase"
+                            )}
+                          </Verified>
+                        </Customer>
+
+                      </ReviewContent>
+
+                    </ReviewCard>
+                  </ReviewSlide>
+                );
+              })}
             </Slider>
           </Reviews>
         )}
@@ -154,6 +172,10 @@ export default CustomersFeedback;
 const Section = styled.section`
   padding: 110px 20px 120px;
   background: #faf9f7;
+
+  @media (max-width: 550px) {
+    padding: 80px 18px 90px;
+  }
 `;
 
 
@@ -180,6 +202,7 @@ const Header = styled.div`
 
 const Eyebrow = styled.span`
   display: block;
+
   margin-bottom: 18px;
 
   font-size: 11px;
@@ -203,6 +226,7 @@ const Title = styled.h2`
 
 const Description = styled.p`
   max-width: 560px;
+
   margin: 24px auto 32px;
 
   font-size: 16px;
@@ -225,6 +249,7 @@ const Rating = styled.div`
 
 const RatingNumber = styled.strong`
   font-family: Georgia, serif;
+
   font-size: 32px;
   font-weight: 400;
 
@@ -235,17 +260,19 @@ const RatingContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   gap: 4px;
 `;
 
 const Stars = styled.span`
   display: block;
-  color: #ffc852;
+
+  color: #c9a35c;
+
   font-size: 15px;
   line-height: 1;
-  letter-spacing: 3px;
 
-  
+  letter-spacing: 3px;
 `;
 
 const RatingText = styled.span`
@@ -263,16 +290,16 @@ const Reviews = styled.div`
 
   .slick-list {
     margin: 0 -10px;
-    padding: 10px 0 25px;
+
+    padding: 10px 0 35px;
   }
+
+  
 
   .slick-slide {
     padding: 0 10px;
-    box-sizing: border-box;
-  }
 
-  .slick-track {
-    display: flex;
+    box-sizing: border-box;
   }
 
   .slick-slide > div {
@@ -289,6 +316,7 @@ const Reviews = styled.div`
 
   .slick-dots li button:before {
     font-size: 7px;
+
     color: #1d1d1b;
     opacity: 0.25;
   }
@@ -323,7 +351,8 @@ const ReviewSlide = styled.div`
 ===================================================== */
 
 const ReviewCard = styled.article`
-  height: 100%;
+  height: 510px;
+
   overflow: hidden;
 
   display: flex;
@@ -333,10 +362,19 @@ const ReviewCard = styled.article`
 
   border: 1px solid #e8e6e2;
 
-  transition: box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 550px) {
+    height: 500px;
   }
 `;
 
@@ -347,7 +385,10 @@ const ReviewCard = styled.article`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  aspect-ratio: 16 / 10;
+
+  height: 250px;
+
+  flex-shrink: 0;
 
   overflow: hidden;
 
@@ -375,7 +416,9 @@ const ReviewImage = styled.img`
 ===================================================== */
 
 const ReviewContent = styled.div`
-  min-height: 225px;
+  flex: 1;
+
+  min-height: 0;
 
   padding: 28px 30px 30px;
 
@@ -383,16 +426,31 @@ const ReviewContent = styled.div`
   flex-direction: column;
 
   box-sizing: border-box;
+
+  justify-content: flex-start;
 `;
+
+
+/* =====================================================
+   REVIEW TEXT
+===================================================== */
 
 const ReviewText = styled.p`
   margin: 22px 0 30px;
 
   font-family: Georgia, serif;
+
   font-size: 17px;
   line-height: 1.7;
 
   color: #292929;
+
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+
+  overflow: hidden;
 `;
 
 
@@ -411,6 +469,7 @@ const CustomerName = styled.span`
 
   font-size: 13px;
   font-weight: 600;
+
   letter-spacing: 0.2px;
 
   color: #1d1d1b;
@@ -419,9 +478,11 @@ const CustomerName = styled.span`
 const Verified = styled.span`
   display: flex;
   align-items: center;
+
   gap: 6px;
 
   font-size: 11px;
+
   letter-spacing: 0.2px;
 
   color: #777;
@@ -429,6 +490,7 @@ const Verified = styled.span`
 
 const Check = styled.span`
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
