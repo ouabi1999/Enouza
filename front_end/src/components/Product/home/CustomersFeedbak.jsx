@@ -5,51 +5,51 @@ import Slider from "react-slick";
 
 import ApiInstance from "../../../../common/baseUrl";
 
+
 const CustomersFeedback = () => {
   const [reviews, setReviews] = useState([]);
   const { t } = useTranslation();
 
+  // 1. Helper function to determine slides based on width
+  const getSlidesToShow = () => {
+    if (window.innerWidth < 550) return 1;
+    if (window.innerWidth < 800) return 2;
+    if (window.innerWidth < 1100) return 3;
+    return 4;
+  };
+
+  // 2. State to hold the current number
+  const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow());
+
+  // 3. Update state on resize
   useEffect(() => {
-    ApiInstance.get("ratings/")
-      .then((res) => {
-        setReviews(res.data);
-      })
-      .catch((err) => {
-        console.error("Ratings error:", err);
-      });
+    const handleResize = () => {
+      setSlidesToShow(getSlidesToShow());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // 4. Fetch data (unchanged)
+  useEffect(() => {
+    ApiInstance.get("ratings/")
+      .then((res) => setReviews(res.data))
+      .catch((err) => console.error("Ratings error:", err));
+  }, []);
+
+  // 5. Settings - REMOVE the 'responsive' array entirely
   const settings = {
     dots: true,
-    infinite: reviews.length > 4,
+    infinite: reviews.length > slidesToShow, // Use dynamic variable
     autoplay: true,
-    autoplaySpeed: 4500,
+    autoplaySpeed: 2500,
     speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: slidesToShow, // 👈 Dynamic
+    slidesToScroll: 1, // Keep this 1 so it doesn't skip slides
     arrows: false,
     pauseOnHover: true,
-
-    responsive: [
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+    // responsive: []  // ❌ DELETE THIS LINE
   };
 
   return (
@@ -92,16 +92,15 @@ const CustomersFeedback = () => {
           <Reviews>
             <Slider {...settings}>
               {reviews.map((item) => {
-                const hasImage =
-                  item.review?.images?.length > 0;
+
 
                 return (
-                  <ReviewSlide key={item.id} hasImage={item.review?.images?.length > 0}>
+                  <ReviewSlide key={item.id}>
                     <ReviewCard>
 
                       {/* IMAGE */}
 
-                      {hasImage ? (
+                      {item.review?.images?.length > 0 ? (
                         <ImageWrapper>
                           <ReviewImage
                             src={item.review.images[0]}
@@ -109,17 +108,17 @@ const CustomersFeedback = () => {
                             loading="lazy"
                           />
                         </ImageWrapper>
-                      ):<ImageWrapper>
-                          <ReviewImage
-                            src="https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto/q_auto/fhyeq5in8rsm4xklsc7y"
-                            alt="Customer review"
-                            loading="lazy"
-                          />
-                        </ImageWrapper> }
+                      ) : <ImageWrapper>
+                        <ReviewImage
+                          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png"
+                          alt="Customer review"
+
+                        />
+                      </ImageWrapper>}
 
                       {/* CONTENT */}
 
-                      <ReviewContent hasImage={hasImage}>
+                      <ReviewContent>
 
                         <Stars
                           aria-label={`${item.stars} out of 5 stars`}
@@ -128,14 +127,16 @@ const CustomersFeedback = () => {
                         </Stars>
 
                         <ReviewText>
-                         {item.review?.text || ""}
+                          {item.review?.text || ""} 
+                        
                         </ReviewText>
+          
 
                         <Customer>
                           <CustomerName>
-                            {item.user?.firstName ||
-                              item.user?.firstname ||
-                              "Customer"}
+                            {item.user?.firstName
+                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) || ""}`
+                              : "Customer"}
                           </CustomerName>
 
                           <Verified>
@@ -290,20 +291,12 @@ const Reviews = styled.div`
 
   .slick-list {
     margin: 0 -10px;
-
     padding: 10px 0 35px;
   }
 
-  
-
   .slick-slide {
     padding: 0 10px;
-
     box-sizing: border-box;
-  }
-
-  .slick-slide > div {
-    height: 100%;
   }
 
   .slick-dots {
@@ -316,7 +309,6 @@ const Reviews = styled.div`
 
   .slick-dots li button:before {
     font-size: 7px;
-
     color: #1d1d1b;
     opacity: 0.25;
   }
@@ -342,7 +334,7 @@ const Reviews = styled.div`
 ===================================================== */
 
 const ReviewSlide = styled.div`
-  height: 100%;
+  width: 100%;
 `;
 
 
@@ -464,7 +456,7 @@ const Customer = styled.div`
 
 const CustomerName = styled.span`
   display: block;
-
+  text-transform:capitalize;
   margin-bottom: 6px;
 
   font-size: 13px;
