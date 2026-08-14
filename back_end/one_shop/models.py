@@ -149,7 +149,7 @@ class Ratings(models.Model):
     def __str__(self):
         return f"{self.stars} stars by {self.review}"
 
-class AliExpressRatings(models.Model):
+class Rating(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()

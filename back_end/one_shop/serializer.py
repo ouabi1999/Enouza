@@ -190,14 +190,14 @@ class getRatingSerializer(serializers.ModelSerializer):
     user = UserRatingsSerializer(read_only=True)
 
     class Meta:
-        model = AliExpressRatings
+        model = Rating
         fields = ["id", "stars", "review", "user", "product", "created_at"]
         read_only_fields = ["id", "created_at"]
 
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AliExpressRatings
+        model = Rating
         fields = ["id", "stars", "review", "user", "product", "created_at"]
         read_only_fields = ["id", "created_at"]
 
