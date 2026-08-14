@@ -135,7 +135,7 @@ const CustomersFeedback = () => {
                         <Customer>
                           <CustomerName>
                             {item.user?.firstName
-                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) || ""}`
+                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) +"." || ""}`
                               : "Customer"}
                           </CustomerName>
 
@@ -287,7 +287,8 @@ const RatingText = styled.span`
 ===================================================== */
 
 const Reviews = styled.div`
-  width: 100%;
+  width: 90%;
+  margin:auto;
 
   .slick-list {
     margin: 0 -10px;
@@ -318,6 +319,10 @@ const Reviews = styled.div`
   }
 
   @media (max-width: 550px) {
+  &{
+
+  width:100%;
+  }
     .slick-list {
       margin: 0;
     }
