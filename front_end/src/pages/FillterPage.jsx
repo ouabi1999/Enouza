@@ -648,7 +648,7 @@ const ResetButton = styled.button`
 
   background: transparent;
 
-  color: #99958d;
+  color: #121212;
 
   font-family: Arial, sans-serif;
   font-size: 0.6rem;
