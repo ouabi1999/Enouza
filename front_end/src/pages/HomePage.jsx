@@ -85,7 +85,7 @@ function HomePage() {
 
 
 
-      <Products isLoading={isLoading} products={homeProducts} columsNumber={5} placeItems="center" scrolTo={scrolTo} />
+      <Products isLoading={isLoading} products={homeProducts} columsNumber={4} placeItems="center" scrolTo={scrolTo} />
 
       
 
@@ -103,7 +103,7 @@ function HomePage() {
         <div className="veiw-more"  >
           <button onClick={viewMore}
             className=""
-            style={nextStart >= totalProducts ? { opacity: "0.5", cursor: "not-allowed" } : {}}
+            style={nextStart >= totalProducts ? { opacity: "0.7", cursor: "not-allowed" } : {}}
             disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
@@ -126,7 +126,6 @@ const Container = styled.div`
     margin:15px 5px;
     margin-top:15px;
     background-color:white;  
-    text-transform:uppercase;
     }
 
 .product-header strong{
@@ -139,23 +138,37 @@ const Container = styled.div`
 
 .veiw-more{
     margin:20px 0;
+    display:flex;
+    justify-content:center;
 }
 
 .veiw-more > button{
-    outline-style: none;
-    width:115px;
-    height: 40px;
-    outline-style: none;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    margin: auto ;
-    background-color: #000000; 
-    
-    color:white;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
+   
 
-`
+  color: black;
+ 
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.8rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid rgba(26, 25, 25, 0.8);
+  background:none;
+  transition: 0.25s ease;
+
+  &:hover {
+    color: #ab9161;
+
+    border-color: #ab9161;
+  }
+
+ 
+`;
+

@@ -1,376 +1,564 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Container, Typography, Grid, Box } from '@mui/material';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import GroupsIcon from '@mui/icons-material/Groups';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import {
+  AutoAwesome,
+  WorkspacePremium,
+  Groups,
+  Timeline,
+  ArrowForward,
+} from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-/* =======================
-   COMPONENT
-======================= */
 const MetricsSection = () => {
-  const { t } = useTranslation();
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => {
-    setAnimated(true);
-  }, []);
+  const { t, i18n } = useTranslation();
 
   const metrics = [
     {
-      icon: <AutoAwesomeIcon />,
-      number: '20',
-      title: t('matricsSection.exclusiveDesigns'),
-      percentage: 100,
-      delay: '0.1s',
+      icon: <AutoAwesome />,
+      number: "20",
+      title: t("matricsSection.exclusiveDesigns"),
+      progress: 100,
     },
     {
-      icon: <WorkspacePremiumIcon />,
-      number: '10',
-      title: t('matricsSection.internationalAwards'),
-      percentage: 90,
-      delay: '0.3s',
+      icon: <WorkspacePremium />,
+      number: "10",
+      title: t("matricsSection.internationalAwards"),
+      progress: 90,
     },
     {
-      icon: <GroupsIcon />,
-      number: '41',
-      title: t('matricsSection.artisanPartners'),
-      percentage: 85,
-      delay: '0.5s',
+      icon: <Groups />,
+      number: "41",
+      title: t("matricsSection.artisanPartners"),
+      progress: 85,
     },
     {
-      icon: <TimelineIcon />,
-      number: '8',
-      title: t('matricsSection.yearsOfExcellence'),
-      percentage: 95,
-      delay: '0.7s',
+      icon: <Timeline />,
+      number: "8",
+      title: t("matricsSection.yearsOfExcellence"),
+      progress: 95,
     },
   ];
 
   return (
-    <ParentContainer>
-      <MetricsContainer maxWidth="xl">
-        <div style={{ marginBottom: "80px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <span style={{ fontFamily: "Playfair Display", fontSize: "1.8rem", fontWeight: "490", textTransform: "uppercase" }}>{t("matricsSection.why_us")}</span>
-        </div>
-        <Grid container spacing={{ xs: 4, md: 8 }}>
-          {metrics.map((metric, index) => {
-            const radius = 45;
-            const circumference = 2 * Math.PI * radius;
-            const progress = (metric.percentage / 100) * circumference;
+    <Section>
 
-            return (
-              <Grid item xs={6} md={3} key={index}>
-                <MetricCircle>
-                  <CircleSvg viewBox="0 0 100 100">
-                    <CircleBackground cx="50" cy="50" r={radius} />
-                    {animated && (
-                      <CircleProgress
-                        cx="50"
-                        cy="50"
-                        r={radius}
-                        strokeDasharray={circumference}
-                        strokeDashoffset={circumference - progress}
-                        delay={metric.delay}
-                      />
-                    )}
-                  </CircleSvg>
+      {/* =========================
+          METRICS
+      ========================= */}
 
-                  <CircleContent>
-                    <MetricIcon>{metric.icon}</MetricIcon>
+      <MetricsContainer>
 
-                    <Typography
-                      sx={{
-                        fontFamily: "'Playfair Display', serif",
-                        fontWeight: 400,
-                        color: COLORS.charcoal,
-                        fontSize: {
-                          xs: '1rem',
-                          sm: '1rem',
-                          md: '1.5rem',
-                        },
-                        lineHeight: 1,
-                      }}
-                    >
-                      {metric.number}
-                    </Typography>
+        <SectionTitle>
+          {t("matricsSection.why_us")}
+        </SectionTitle>
 
-                    <Typography
-                      sx={{
-                        color: COLORS.bronze,
-                        fontSize: '1rem',
-                        fontWeight: 500,
-                      }}
-                    >
-                      +
-                    </Typography>
-                  </CircleContent>
-                </MetricCircle>
+        <MetricsGrid>
+          {metrics.map((metric, index) => (
+            <Metric key={index}>
 
-                <MetricTitle
-                  align="center"
-                  sx={{
-                    fontSize: {
-                      xs: '0.75rem',
-                      sm: '0.85rem',
-                      md: '0.9rem',
-                    },
-                  }}
-                >
-                  {metric.title}
-                </MetricTitle>
-              </Grid>
-            );
-          })}
-        </Grid>
+              <Circle>
+                <CircleSvg viewBox="0 0 100 100">
 
+                  <BackgroundCircle
+                    cx="50"
+                    cy="50"
+                    r="44"
+                  />
 
+                  <ProgressCircle
+                    cx="50"
+                    cy="50"
+                    r="44"
+                    $progress={metric.progress}
+                  />
+
+                </CircleSvg>
+
+                <CircleContent>
+
+                  <Icon>
+                    {metric.icon}
+                  </Icon>
+
+                  <Number>
+                    {metric.number}
+                    <Plus>+</Plus>
+                  </Number>
+
+                </CircleContent>
+              </Circle>
+
+              <MetricTitle>
+                {metric.title}
+              </MetricTitle>
+
+            </Metric>
+          ))}
+        </MetricsGrid>
 
       </MetricsContainer>
-      <div style={{ position: "relative" }}>
-        <video
+
+
+      {/* =========================
+          VIDEO
+      ========================= */}
+
+      <VideoSection>
+
+        <Video
           autoPlay
           muted
           loop
           playsInline
-
         >
           <source
             src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
             type="video/mp4"
           />
-          Your browser does not support the video tag.
-        </video>
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 10,
-            color: "#fff",
-            textAlign: "center",
-            width: "90%",
-            fontFamily: '"Playfair Display", serif'
-          }}
+        </Video>
+
+        <VideoOverlay />
+
+        <VideoContent>
+
+          <VideoTitle>
+            {t("matricsSection.title")}
+          </VideoTitle>
+
+          <VideoDescription>
+            {t("matricsSection.description")}
+          </VideoDescription>
+
+        </VideoContent>
+
+        <ShopButton
+          to="/product/29"
         >
-          <div className='text-video-container'>
-            <h1>
-              {t("matricsSection.title")}
-            </h1>
+          {t("common.buyNow")}
 
-            
-            
-              <span>{t("matricsSection.description")}</span>
-            
-          </div>
+          <Arrow
+            $rtl={i18n.dir() === "rtl"}
+          >
+            <ArrowForward />
+          </Arrow>
+        </ShopButton>
 
-        </div>
-         <div
-          style={{
-            position: "absolute",
-            top: "90%",
-            left: "95%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 10,
-            color: "#fff",
-            textAlign: "center",
-            width: "90%",
-            fontFamily: '"Playfair Display", serif'
-          }}
-        >
-          <div className='text-video-container'>
-            <Link to="/product/29">
-              {t("common.buyNow")}
-            </Link>
+      </VideoSection>
 
-            
-            
-           
-            
-          </div>
-
-        </div>
-      </div>
-    </ParentContainer>
+    </Section>
   );
 };
 
 export default MetricsSection;
 
-/* =======================
+
+/* =========================
    COLORS
-======================= */
+========================= */
+
 const COLORS = {
-  cream: '#ffffff',
-  taupe: '#E8E2D9',
-  charcoal: '#2A2A2A',
-  bronze: '#986904;',
+  background: "#FFFFFF",
+  text: "#292929",
+  bronze: "#9A7743",
+  light: "#E5E0D8",
 };
 
-/* =======================
-   ANIMATIONS
-======================= */
-const drawCircle = keyframes`
-   from{
-      stroke-dashoffset: 50;
-   }
-  to {
-    stroke-dashoffset: 0;
+
+/* =========================
+   SECTION
+========================= */
+
+const Section = styled.section`
+  width: 100%;
+  background: ${COLORS.background};
+`;
+
+
+/* =========================
+   METRICS
+========================= */
+
+const MetricsContainer = styled.div`
+  width: min(1100px, calc(100% - 40px));
+  margin: auto;
+
+  padding: 80px 0 90px;
+
+  @media (max-width: 700px) {
+    padding: 60px 0 70px;
   }
 `;
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
-/* =======================
-   STYLES
-======================= */
-const ParentContainer = styled.div`
+const SectionTitle = styled.h2`
+  margin: 0 0 65px;
 
-      video {
-        width: 100%;
-        max-height:600px;
-        object-fit: cover;
-        display: block;
-        margin-top:20px;
-      }
-        .text-video-container{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        width:100%;
-        a{
-         color: #fffffF;
-         font-size:1.1rem;
-        
-        }
-        
-        }
-      @media (max-width: 600px) {
-            .text-video-container h1{
-            font-size:1.4rem;
-            }
+  text-align: center;
 
-            .text-video-container span{
-               
-               font-size:0.8rem;
-               width:80%;
-               
-            }
-   
-       }
-        
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  font-weight: 400;
 
-`
-const MetricsContainer = styled(Container)`
-  background: ${COLORS.cream};
-  padding: 4rem 1.5rem !important;
-  position: relative;
-  overflow: hidden;
+  color: ${COLORS.text};
 
-  @media (min-width: 900px) {
-    padding: 6rem 2rem !important;
-  }
-
-  
-`;
-
-const MetricCircle = styled(Box)`
-  position: relative;
-  margin: 0 auto 2rem;
-  width: 150px;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  animation: ${fadeInUp} 0.8s ease-out;
-  
-        
-
-  @media (max-width: 900px) {
-    width: 160px;
-  }
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 
   @media (max-width: 600px) {
-    width: 140px;
+    font-size: 1.25rem;
+    margin-bottom: 50px;
   }
 `;
+
+
+const MetricsGrid = styled.div`
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 40px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 55px 25px;
+  }
+
+  @media (max-width: 420px) {
+    gap: 45px 10px;
+  }
+`;
+
+
+const Metric = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+`;
+
+
+/* =========================
+   CIRCLE
+========================= */
+
+const Circle = styled.div`
+  position: relative;
+
+  width: 145px;
+  height: 145px;
+
+  @media (max-width: 600px) {
+    width: 125px;
+    height: 125px;
+  }
+
+  @media (max-width: 400px) {
+    width: 115px;
+    height: 115px;
+  }
+`;
+
 
 const CircleSvg = styled.svg`
   position: absolute;
+
   inset: 0;
+
   width: 100%;
   height: 100%;
-`;
 
-const CircleBackground = styled.circle`
-  fill: none;
-  stroke: ${COLORS.taupe};
-  stroke-width: 6;
-`;
-
-const CircleProgress = styled.circle`
-  fill: none;
-  stroke: ${COLORS.bronze};
-  stroke-width: 6;
-  stroke-linecap: round;
   transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  animation: ${drawCircle} 2s ease-out forwards;
-  animation-delay: ${({ delay }) => delay || '0s'};
 `;
 
-const CircleContent = styled(Box)`
+
+const BackgroundCircle = styled.circle`
+  fill: none;
+
+  stroke: ${COLORS.light};
+
+  stroke-width: 2;
+`;
+
+
+const ProgressCircle = styled.circle`
+  fill: none;
+
+  stroke: ${COLORS.bronze};
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 276.46;
+
+  stroke-dashoffset: ${({ $progress }) =>
+    276.46 - (276.46 * $progress) / 100};
+
+  transition: stroke-dashoffset 1.4s ease;
+`;
+
+
+/* =========================
+   CIRCLE CONTENT
+========================= */
+
+const CircleContent = styled.div`
   position: absolute;
+
   inset: 0;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
-  text-align: center;
-  pointer-events: none;
 `;
 
-const MetricIcon = styled(Box)`
+
+const Icon = styled.div`
+  display: flex;
+
   color: ${COLORS.bronze};
-  margin-bottom: 0.4rem;
+
+  margin-bottom: 7px;
 
   svg {
-    font-size: 2rem !important;
+    font-size: 27px;
 
-    @media (max-width: 600px) {
-      font-size: 1.6rem !important;
+    font-weight: 300;
+  }
+
+  @media (max-width: 600px) {
+    svg {
+      font-size: 22px;
     }
   }
 `;
 
-const MetricTitle = styled(Typography)`
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 1rem !important;
-  color: ${COLORS.charcoal};
+
+const Number = styled.div`
+  display: flex;
+
+  align-items: baseline;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1.8rem;
+
+  font-weight: 400;
+
+  color: ${COLORS.text};
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+`;
+
+
+const Plus = styled.span`
+  color: ${COLORS.bronze};
+
+  font-size: 1rem;
+
+  margin-left: 2px;
+`;
+
+
+const MetricTitle = styled.p`
+  margin: 18px 0 0;
+
+  max-width: 180px;
+
+  color: ${COLORS.text};
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.72rem;
+
   font-weight: 500;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    max-width: 140px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.06em;
+  }
+`;
+
+
+/* =========================
+   VIDEO
+========================= */
+
+const VideoSection = styled.div`
   position: relative;
 
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 1px;
-    background: ${COLORS.taupe};
+  width: 100%;
+
+  height: 580px;
+
+  overflow: hidden;
+
+  @media (max-width: 700px) {
+    height: 500px;
+  }
+
+  @media (max-width: 500px) {
+    height: 450px;
+  }
+`;
+
+
+const Video = styled.video`
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+`;
+
+
+const VideoOverlay = styled.div`
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.28);
+`;
+
+
+/* =========================
+   VIDEO TEXT
+========================= */
+
+const VideoContent = styled.div`
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: min(700px, 85%);
+
+  text-align: center;
+
+  color: white;
+`;
+
+
+const VideoTitle = styled.h2`
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2rem, 4vw, 3.8rem);
+
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
+  }
+`;
+
+
+const VideoDescription = styled.p`
+  margin: 20px auto 0;
+
+  max-width: 580px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.9rem;
+
+  line-height: 1.7;
+
+  opacity: 0.92;
+
+  @media (max-width: 500px) {
+    font-size: 0.75rem;
+
+    margin-top: 15px;
+  }
+`;
+
+
+/* =========================
+   BUTTON
+========================= */
+
+const ShopButton = styled(Link)`
+  position: absolute;
+
+  right: 7%;
+  bottom: 45px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.8rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+
+  transition: 0.25s ease;
+
+  &:hover {
+    color: #d4bd91;
+
+    border-color: #d4bd91;
+  }
+
+  @media (max-width: 700px) {
+    right: 50%;
+
+    transform: translateX(50%);
+
+    bottom: 30px;
+
+    font-size: 0.7rem;
+  }
+`;
+
+
+const Arrow = styled.span`
+  display: flex;
+
+  transform: ${({ $rtl }) =>
+    $rtl ? "rotate(180deg)" : "none"};
+
+  svg {
+    font-size: 17px;
   }
 `;

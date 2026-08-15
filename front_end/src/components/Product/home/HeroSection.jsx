@@ -406,7 +406,6 @@ const ImageContainer = styled.div`
 
 const HeroImage = styled.img`
   display: block;
-
   width: 100%;
   hight:100%;
   max-height: 600px;
@@ -417,7 +416,6 @@ const HeroImage = styled.img`
 
   position: relative;
 
-  z-index: 2;
 
   @media (max-width: 600px) {
     height: 400px;
@@ -436,54 +434,57 @@ const HeroImage = styled.img`
 const ShopButton = styled(Link)`
   position: absolute;
 
-  right: 25px;
-  bottom: 20px;
-
-  z-index: 5;
+  right: 7%;
+  bottom: 45px;
 
   display: inline-flex;
+
   align-items: center;
+  gap: 8px;
 
-  gap: 6px;
-
-  padding: 8px 0;
-
-  color: #ffffff;
-
-  background: transparent;
-
-  font-family: "Inter", sans-serif;
-
-  font-size: 1rem;
-  font-weight: 600;
+  color: white;
 
   text-decoration: none;
 
-  white-space: nowrap;
+  font-family: Arial, sans-serif;
 
-  cursor: pointer;
+  font-size: 0.8rem;
 
-  transition: color 0.3s ease;
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+
+  transition: 0.25s ease;
 
   &:hover {
-    color: #cccccc;
+    color: #d4bd91;
+
+    border-color: #d4bd91;
   }
 
-  @media (max-width: 600px) {
-    right: 18px;
-    bottom: 15px;
+  @media (max-width: 700px) {
+    right: 50%;
 
-    font-size: 0.9rem;
+    transform: translateX(50%);
+
+    bottom: 30px;
+
+    font-size: 0.7rem;
   }
 `;
 
-const Arrow = styled.span`
-  display: inline-flex;
-  align-items: center;
 
-  font-size: 20px;
-  line-height: 1;
+const Arrow = styled.span`
+  display: flex;
 
   transform: ${({ $rtl }) =>
     $rtl ? "rotate(180deg)" : "none"};
+
+  svg {
+    font-size: 17px;
+  }
 `;

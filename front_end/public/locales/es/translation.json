@@ -155,7 +155,21 @@
   "ratingText": "Basado en opiniones de clientes",
   "verifiedPurchase": "Compra verificada"
 },
-
+"filterPage":{
+   "clearAll": "Limpiar todo",
+    "applyFilters": "Aplicar filtros",
+    "priceRange": "Rango de precios",
+    "brand": "Marca",
+    "category": "Categoría",
+    "rating": "Valoración",
+    "availability": "Disponibilidad",
+    "inStock": "En stock",
+    "outOfStock": "Agotado",
+    "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto.",
+    "collection_description": "Descubre una iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio." ,
+     "collection": "COLECCIÓN ENOUZA",
+"discover": "DESCUBRE"
+  },
   "productInfo": {
     "save": "ahorrar",
     "Lampshade Color":"Color de la pantalla",
@@ -377,6 +391,7 @@
     "newestFirst": "Más nuevos",
     "oldestFirst": "Más antiguos",
     "buyNow": "Comprar ahora",
+    "discover": "Descubrir",
     "addToCart": "Añadir al carrito",
     "addToWishlist": "Añadir a la lista",
     "removeFromWishlist": "Quitar de la lista",
@@ -644,18 +659,6 @@
     "ru": "Ruso",
     "ar": "Árabe",
     "hi": "Hindi"
-  },
-  "filters": {
-    "clearAll": "Limpiar todo",
-    "applyFilters": "Aplicar filtros",
-    "priceRange": "Rango de precios",
-    "brand": "Marca",
-    "category": "Categoría",
-    "rating": "Valoración",
-    "availability": "Disponibilidad",
-    "inStock": "En stock",
-    "outOfStock": "Agotado",
-    "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto."
   }
 
 }

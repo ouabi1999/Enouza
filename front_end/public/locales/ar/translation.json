@@ -161,6 +161,21 @@
   "ratingText": "استنادًا إلى تقييمات العملاء",
   "verifiedPurchase": "شراء موثّق"
 },
+"filterPage":{
+  "clear_all": "مسح الكل",
+    "apply_filters": "تطبيق الفلاتر",
+    "price_range": "نطاق السعر",
+    "brand": "العلامة",
+    "category": "القسم",
+    "rating": "التقييم",
+    "availability": "التوفر",
+    "sort_by": "ترتيب حسب",
+    "reset_filters": "إعادة تعيين الفلاتر",
+    "search_did_not_match": "عذراً، بحثك لم يطابق أي منتجات. حاول مرة أخرى.",
+   "collection_description": "اكتشف إضاءة راقية صُممت لتضفي الدفء والشخصية والأناقة الخالدة على كل مساحة.",
+   "collection": "مجموعة ENOUZA",
+   "discover": "اكتشف"
+ },
 
   "productInfo": {
     "save": "وفّر",
@@ -511,6 +526,7 @@
     "viewAll": "عرض الكل",
     "noNewNotifications": "! لا إشعارات جديدة",
     "new": "جديد",
+    "discover": "اكتشف",
     "view_more": "عرض المزيد",
     "read": "مقروء",
     "unread": "غير مقروء",
@@ -673,17 +689,6 @@
     "ja": "اليابانية",
     "ko": "الكورية",
     "hi": "الهندية"
-  },
-  "filters": {
-    "clear_all": "مسح الكل",
-    "apply_filters": "تطبيق الفلاتر",
-    "price_range": "نطاق السعر",
-    "brand": "العلامة",
-    "category": "القسم",
-    "rating": "التقييم",
-    "availability": "التوفر",
-    "sort_by": "ترتيب حسب",
-    "reset_filters": "إعادة تعيين الفلاتر",
-    "search_did_not_match": "عذراً، بحثك لم يطابق أي منتجات. حاول مرة أخرى."
   }
+ 
 }
