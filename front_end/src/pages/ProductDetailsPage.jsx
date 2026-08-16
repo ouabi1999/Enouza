@@ -1,324 +1,527 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useTranslation } from "react-i18next";
+
 import UserServices from "../components/Services/UserServices";
 import ProductLayout from "../components/Product/ProductLayout";
-import SideCart from "../components/Product/productDetails/SideCart";
+import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
 import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
-import { useDispatch, useSelector } from "react-redux";
+
 import { addToCart, buyNowItem } from "../features/cartSlice";
-import { v4 as uuidv4 } from "uuid";
-import {  toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate, useParams } from "react-router-dom";
-import CircularProgress from "@mui/material/CircularProgress";
-import HeadeSeo from "../../common/HeadeSeo";
-import { useTranslation } from "react-i18next";
 import { getProductDetails } from "../features/productDetails_slice";
-import { useLayoutEffect } from "react";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function ProductDetailsPage({ setRetry, retry }) {
-  const isAuth = window.localStorage.getItem("access_token");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { t } = useTranslation();
+
   const [quantity, setQuantity] = useState(1);
-  const [isPopUpShippingOpen, setIsPopUpShippingOpen] = useState(false);
-  const [shippingMethodIndex, setShippingMethodIndex] = useState(0);
-  const [countryCode, setCountryCode] = useState(window.localStorage.getItem("country") || "us");
- 
   const [currentSku, setCurrentSku] = useState(null);
+
   const [maxOrderWorning, setMaxOrderWorning] = useState(false);
-  const isLoading = useSelector((state) => state.products.isLoading);
-  const productData = useSelector((state) => state.product.productData);
-  const hasError = useSelector((state) => state.products.hasError);
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const { t , i18n} = useTranslation()
-  const params = useParams()
-  
+
+  const [isPopUpShippingOpen, setIsPopUpShippingOpen] =
+    useState(false);
+
+  const [shippingMethodIndex, setShippingMethodIndex] =
+    useState(0);
+
+  /* =========================
+     SHIPPING DEFAULTS
+  ========================= */
+
   const today = new Date();
-  let date1 = new Date(today);
-  let date2 = new Date(today);
+
+  const defaultDate1 = new Date(today);
+  const defaultDate2 = new Date(today);
+
+  defaultDate1.setDate(defaultDate1.getDate() + 5);
+  defaultDate2.setDate(defaultDate2.getDate() + 7);
+
   const [shippingInfo, setShippingInfo] = useState({
-    date1: date1.toDateString(),
-    date2: date2.toDateString(),
+    date1: defaultDate1.toDateString(),
+    date2: defaultDate2.toDateString(),
     from: 5,
     to: 7,
-    cost: 0.0,
+    cost: 0,
     methodName: t("sideCard.free_Shipping"),
   });
 
+  /* =========================
+     REDUX
+  ========================= */
 
+  const cartItems = useSelector(
+    (state) => state.cart.cartItems
+  );
 
-  const navigate = useNavigate();
-  // constant
-  const dispatch = useDispatch();
-  const index = uuidv4();
+  const isLoading = useSelector(
+    (state) => state.products.isLoading
+  );
+
+  const hasError = useSelector(
+    (state) => state.products.hasError
+  );
+
+  /* =========================
+     LOAD PRODUCT
+  ========================= */
 
   useEffect(() => {
+    if (!id) return;
 
-      dispatch(getProductDetails(params.id))
-      //window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    
-      
-    }, [params.id])
+    dispatch(getProductDetails(id));
+  }, [dispatch, id]);
 
-  
+  /* =========================
+     RESET SCROLL
+  ========================= */
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  }, [id]);
+
+  /* =========================
+     QUANTITY
+  ========================= */
 
   const addQuantity = () => {
-    if (quantity < currentSku?.available_stock && quantity < 5) {
-      setQuantity(quantity + 1);
-    } else {
-      setMaxOrderWorning(true);
+    const stock = Number(
+      currentSku?.available_stock || 0
+    );
+
+    if (quantity < stock && quantity < 5) {
+      setQuantity((prev) => prev + 1);
+      setMaxOrderWorning(false);
+      return;
     }
 
+    setMaxOrderWorning(true);
   };
 
   const subtractQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      setMaxOrderWorning(false);
-    }
+    if (quantity <= 1) return;
+
+    setQuantity((prev) => prev - 1);
+    setMaxOrderWorning(false);
   };
 
+  /* =========================
+     SHIPPING
+  ========================= */
+
   const checkboxChange = (item, index) => {
-    date1.setDate(date1.getDate() + Number(item.from));
-    date2.setDate(date2.getDate() + Number(item.to));
+    const from = Number(item?.from || 5);
+    const to = Number(item?.to || 7);
+
+    const start = new Date();
+
+    const deliveryFrom = new Date(start);
+    const deliveryTo = new Date(start);
+
+    deliveryFrom.setDate(
+      deliveryFrom.getDate() + from
+    );
+
+    deliveryTo.setDate(
+      deliveryTo.getDate() + to
+    );
 
     setShippingInfo({
-      date1: date1.toDateString(),
-      date2: date2.toDateString(),
-      from: item.from,
-      to: item.to,
-      cost: item.cost,
-      methodName: item.methodName,
+      date1: deliveryFrom.toDateString(),
+      date2: deliveryTo.toDateString(),
+      from,
+      to,
+      cost: Number(item?.cost || 0),
+      methodName:
+        item?.methodName ||
+        t("sideCard.free_Shipping"),
     });
 
     setShippingMethodIndex(index);
+    setIsPopUpShippingOpen(false);
   };
 
+  /* =========================
+     ADD TO CART
+  ========================= */
 
+  const add_item_to_cart = (
+    selectedSku,
+    productId,
+    shipping,
+    name
+  ) => {
+    if (!selectedSku) return;
 
+    const alreadyExists = cartItems?.some(
+      (item) =>
+        item?.selectedSku?.sku_attr ===
+        selectedSku?.sku_attr
+    );
 
-  const add_item_to_cart = (selectedSku, id, shippingInfo, name) => {
-    console.log("selectedSku", selectedSku);
-    if (cartItems.find(item => item.selectedSku.sku_attr === selectedSku.sku_attr)) 
-      {
+    if (alreadyExists) {
+      toast.success(
+        t("sideCard.item_already_in_cart")
+      );
 
-      toast.success(t("sideCard.item_already_in_cart"))
-
-    }
-    else {
-      dispatch(addToCart(
-        {
-          
-          id: id,
-          selectedSku: selectedSku,
-          name: name,
-          available_shipping: shippingInfo,
-          quantity: quantity,
-          price: parseFloat(selectedSku.sellingPrice),
-          subtotal: parseFloat(selectedSku.sellingPrice) * quantity,
-          
-        })
-      )
-      toast.success(t("sideCard.item_has_been_added"))
-
+      return;
     }
 
-  };
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [])
+    const price = Number(
+      selectedSku.sellingPrice
+    );
 
-  const buy_Now_item = (selectedSku, id, shippingInfo, name) => {
-
-    navigate("/checkout");
     dispatch(
-      buyNowItem({
-          id: id,
-          selectedSku: selectedSku,
-          name: name,
-          available_shipping: shippingInfo,
-          quantity: quantity,
-          price: parseFloat(selectedSku.sellingPrice),
-          subtotal: parseFloat(selectedSku.sellingPrice) * quantity,
+      addToCart({
+        id: productId,
+        selectedSku,
+        name,
+        available_shipping: shipping,
+        quantity,
+        price,
+        subtotal: price * quantity,
       })
     );
 
+    toast.success(
+      t("sideCard.item_has_been_added")
+    );
   };
 
-  return (
-    <>
-      {hasError ? (
-        <div
-          style={{
-            height: "70vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: "10px",
-          }}
-        >
-          <span style={{ color: "gray" }}>{t("common.error")}</span>
+  /* =========================
+     BUY NOW
+  ========================= */
 
-          <button
-            style={{
-              fontWeight: "bolder",
-              background: "lightgray",
-              padding: "10px 20px",
-              borderRadius: "4px",
-            }}
+  const buy_Now_item = (
+    selectedSku,
+    productId,
+    shipping,
+    name
+  ) => {
+    if (!selectedSku) return;
+
+    const price = Number(
+      selectedSku.sellingPrice
+    );
+
+    dispatch(
+      buyNowItem({
+        id: productId,
+        selectedSku,
+        name,
+        available_shipping: shipping,
+        quantity,
+        price,
+        subtotal: price * quantity,
+      })
+    );
+
+    navigate("/checkout");
+  };
+
+  /* =========================
+     ERROR
+  ========================= */
+
+  if (hasError) {
+    return (
+      <ErrorPage>
+        <ErrorCard>
+          <ErrorTitle>
+            {t("common.error")}
+          </ErrorTitle>
+
+          <RetryButton
             onClick={() => setRetry(!retry)}
           >
             {t("common.tryAgain")}
-          </button>
-        </div>
+          </RetryButton>
+        </ErrorCard>
+      </ErrorPage>
+    );
+  }
+
+  /* =========================
+     PAGE
+  ========================= */
+
+  return (
+    <Page>
+      {isLoading ? (
+        <Loading>
+          <LoadingSpinner>
+            <CircularProgress size={28} />
+          </LoadingSpinner>
+        </Loading>
       ) : (
         <>
-          <PrentContainer>
-            {isLoading ? (
-              <div
-                style={{
-                  height: "70vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress
-                  size={30}
+          {/* =========================
+              SERVICES
+          ========================= */}
 
-                />
-              </div>
-            ) : (
-              <Container>
-                <div className="item2">
-                  <UserServices />
-                </div>
+          <ServicesSection>
+            <UserServices />
+          </ServicesSection>
 
-                <div className="item3">
-                  <ProductLayout
-                    quantity={quantity}
-                    shippingInfo={shippingInfo}
-                    checkboxChange={checkboxChange}
-                    currentSku = {currentSku}
-                    setCurrentSku = {setCurrentSku}
-                  />
-                </div>
+          {/* =========================
+              PRODUCT
+          ========================= */}
 
-                <div className="item4">
-                  <SideCart
-                    quantity={quantity}
-                    setQuantity={setQuantity}
-                    addQuantity={addQuantity}
-                    subtractQuantity={subtractQuantity}
-                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                    isPopUpShippingOpen={isPopUpShippingOpen}
-                    maxOrderWorning={maxOrderWorning}
-                    setMaxOrderWorning={setMaxOrderWorning}
-                    countryCode={countryCode}
-                    shippingInfo={shippingInfo}
-                    setCountryCode={setCountryCode}
-                    add_item_to_cart={add_item_to_cart}
-                    buy_Now_item={buy_Now_item}
-                    shippingMethodIndex={shippingMethodIndex}
-                    currentSku = {currentSku}
-                    setShippingInfo={setShippingInfo}
+          <ProductSection>
+            <ProductLayout
+              quantity={quantity}
+              shippingInfo={shippingInfo}
 
-                  />
-                </div>
-                <div className="item5">
-                  <AboutProductLayout />
-                </div>
+              checkboxChange={checkboxChange}
 
-                {isPopUpShippingOpen && (
-                  <PopUpShoppingMethod
-                    setIsPopUpShippingOpen={setIsPopUpShippingOpen}
-                    isPopUpShippingOpen={isPopUpShippingOpen}
-                    checkboxChange={checkboxChange}
-                    shippingMethodIndex={shippingMethodIndex}
-                    shippingInfo={shippingInfo}
-                    
-                  />
-                )}
-              </Container>
-            )}
-          </PrentContainer>
+              currentSku={currentSku}
+              setCurrentSku={setCurrentSku}
+
+              setShippingInfo={
+                setShippingInfo
+              }
+
+              addQuantity={addQuantity}
+              subtractQuantity={
+                subtractQuantity
+              }
+
+              maxOrderWorning={
+                maxOrderWorning
+              }
+
+              setMaxOrderWorning={
+                setMaxOrderWorning
+              }
+
+              add_item_to_cart={
+                add_item_to_cart
+              }
+
+              buy_Now_item={
+                buy_Now_item
+              }
+
+              setIsPopUpShoppingOpen={
+                setIsPopUpShippingOpen
+              }
+
+              isPopUpShippingOpen={
+                isPopUpShippingOpen
+              }
+
+              shippingMethodIndex={
+                shippingMethodIndex
+              }
+            />
+          </ProductSection>
+
+          {/* =========================
+              ABOUT PRODUCT
+          ========================= */}
+
+          <AboutSection>
+            <AboutProductLayout />
+          </AboutSection>
+
+          {/* =========================
+              SHIPPING POPUP
+          ========================= */}
+
+          {isPopUpShippingOpen && (
+            <PopUpShoppingMethod
+              setIsPopUpShippingOpen={
+                setIsPopUpShippingOpen
+              }
+
+              isPopUpShippingOpen={
+                isPopUpShippingOpen
+              }
+
+              checkboxChange={
+                checkboxChange
+              }
+
+              shippingMethodIndex={
+                shippingMethodIndex
+              }
+
+              shippingInfo={
+                shippingInfo
+              }
+            />
+          )}
         </>
       )}
-    </>
+    </Page>
   );
 }
 
 export default ProductDetailsPage;
-const PrentContainer = styled.div`
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+const Page = styled.main`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-bottom: 20px;
- 
+  min-height: 100vh;
+
+  background: #ffffff;
+
+  padding-bottom: 100px;
+
+  overflow-x: clip;
 `;
 
-const Container = styled.div`
-  height: 100%;
+/* =====================================================
+   SERVICES
+===================================================== */
+
+const ServicesSection = styled.section`
   width: 100%;
+
   position: relative;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  grid-template-areas:
-    "userServices userServices userServices userServices userServices userServices"
-    "product product product product product  sideCart"
-    "aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct sideCart"
-    "buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices buyerTrustServices sideCart";
+  z-index: 2;
+`;
 
-  .item2 {
-    grid-area: userServices;
-    padding: 0;
-    margin: 0;
+/* =====================================================
+   PRODUCT
+===================================================== */
+
+const ProductSection = styled.section`
+  width: 100%;
+
+  padding: 36px 0 70px;
+
+  @media (max-width: 1100px) {
+    padding: 28px 0 55px;
   }
-  .item3 {
-    grid-area: product;
+
+  @media (max-width: 600px) {
+    padding: 18px 0 45px;
   }
-  .item4 {
-    grid-area: sideCart;
-    width: 340px;
-    height: 400px;
-    min-width: 300px;
-    position: sticky;
-    top: 70px;
-    margin: 0 20px;
+`;
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+const AboutSection = styled.section`
+  width: min(100% - 48px, 1640px);
+
+  margin: 30px auto 0;
+
+  @media (max-width: 1100px) {
+    width: min(100% - 32px, 900px);
   }
-  .item5 {
-    grid-area: aboutProduct;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 24px);
+
     margin-top: 15px;
-    padding: 0 10px;
   }
+`;
 
-  /* Mobile Devices */
-  @media (max-width: 480px) {
-    /* Your mobile styles here */
-  }
+/* =====================================================
+   LOADING
+===================================================== */
 
-  /* Tablets/iPads */
-  @media (max-width: 924px) {
-    /* Your tablet styles here */
-  }
+const Loading = styled.div`
+  width: 100%;
 
-  /* Desktops/Large Screens */
-  @media (max-width: 1200px) {
-    /* Your desktop/large screen styles here */
-    grid-template-areas:
-      "userServices userServices userServices userServices userServices userServices"
-      "product product product product product  product"
-      "sideCart sideCart sideCart sideCart sideCart sideCart"
-      "aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct aboutProduct";
-    .item4 {
-      margin: auto;
-      position: static;
-      width: 90%;
-      min-width: 300px;
-      max-width: 924px;
-    }
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoadingSpinner = styled.div`
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f7f4ef;
+`;
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+const ErrorPage = styled.div`
+  width: 100%;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+`;
+
+const ErrorCard = styled.div`
+  width: min(100%, 420px);
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border: 1px solid #e8e2d9;
+
+  background: #faf9f7;
+`;
+
+const ErrorTitle = styled.div`
+  margin-bottom: 20px;
+
+  font-size: 15px;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #555;
+`;
+
+const RetryButton = styled.button`
+  border: 1px solid #1c1c1c;
+
+  background: #1c1c1c;
+
+  color: #ffffff;
+
+  padding: 12px 25px;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background: transparent;
+    color: #1c1c1c;
   }
 `;

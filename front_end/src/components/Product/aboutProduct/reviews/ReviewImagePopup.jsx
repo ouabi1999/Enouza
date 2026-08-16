@@ -79,7 +79,7 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
                 <Stars>★★★★★</Stars>
                 <SmallText>{rate.review.color ? "Color:" + " " + rate.review.color : ""}</SmallText>
                 <SmallText>
-                  {rate.user?.firstName.slice(0, 2) + "***" + rate.user?.firstName.slice(4, 6)} | {rate.created_at}
+                  {rate.user?.firstName + " " + rate.user?.firstName.slice(0, 1)}. | {rate.created_at}
 
                 </SmallText>
                 <ReviewText>{rate.review.text}</ReviewText>
@@ -205,10 +205,10 @@ export const Thumb = styled.img`
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  border: ${({ active }) => (active ? "2px solid #ff4747" : "1px solid #ddd")};
+  border: ${({ active }) => (active ? "2px solid #eea16d" : "1px solid #ddd")};
   transition: all 0.2s ease;
   &:hover {
-    border-color: #ff4747;
+    border-color: #a88a62;
   }
 
   @media (max-width: 600px) {
@@ -307,7 +307,7 @@ export const ReviewInfo = styled.div`
 `;
 
 export const Stars = styled.div`
-  color: #ffb400;
+  color: #a88a62;
   font-size: 18px;
   margin-bottom: 8px;
 `;
@@ -316,6 +316,7 @@ export const SmallText = styled.div`
   font-size: 13px;
   color: #777;
   margin-bottom: 4px;
+  text-transform:capitalize;
 `;
 
 export const ReviewText = styled.p`

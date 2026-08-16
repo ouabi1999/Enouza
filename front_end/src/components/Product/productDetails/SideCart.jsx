@@ -1,34 +1,37 @@
-import React, { useEffect, useState, useRef } from 'react'
-import styled from 'styled-components'
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { ClickAwayListener } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import Flag from 'react-world-flags';
-import PopUpShoppingMethod from './PopUpShoppingMethod';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { ClickAwayListener } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import Flag from "react-world-flags";
+import { useDispatch, useSelector } from "react-redux";
 
-import countriesData from "../../../../common/countryData.json"
-import { addToCart } from '../../../features/cartSlice';
-import { setLocation } from '../../../features/locationSlice';
+import countriesData from "../../../../common/countryData.json";
+import { setLocation } from "../../../features/locationSlice";
+import secureCheckoutSvg from "../../../assets/secure-checkout.svg";
 
 function SideCart(props) {
-  const { isOpen, setIsOpen } = useState(false)
-  const dispatch = useDispatch()
-  
-  const [fromDate, setFromDate] = useState("")
-  const [toDate, setToDate] = useState("")
-  let country = useSelector(state => state.location.country)
-  const { t, i18n } = useTranslation()
-  const productData = useSelector(state => state.product.productData)
+  const dispatch = useDispatch();
+
+  const [fromDate, setFromDate] = React.useState("");
+  const [toDate, setToDate] = React.useState("");
+
+  const country = useSelector((state) => state.location.country);
+  const productData = useSelector((state) => state.product.productData);
+
+  const { t } = useTranslation();
+
   const today = new Date();
   let date1 = new Date(today);
   let date2 = new Date(today);
+
   const {
     shippingInfo,
     addQuantity,
@@ -42,333 +45,895 @@ function SideCart(props) {
     isPopUpShippingOpen,
     shippingMethodIndex,
     currentSku,
-    setShippingInfo
+    setShippingInfo,
   } = props;
 
-  
-
   const intervalRef = useRef(0);
+
+  /*
+   * Keep your original warning behavior
+   */
   useEffect(() => {
     if (!maxOrderWorning) return;
 
-    const handleScroll = () => setMaxOrderWorning(false);
+    const handleScroll = () => {
+      setMaxOrderWorning(false);
+    };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [maxOrderWorning]);
- useEffect(()=>{
-     
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [maxOrderWorning, setMaxOrderWorning]);
+
+  /*
+   * Keep your original default delivery logic
+   */
+  useEffect(() => {
     date1.setDate(date1.getDate() + 5);
     date2.setDate(date2.getDate() + 7);
 
-    setShippingInfo(prev => ({
+    setShippingInfo((prev) => ({
       ...prev,
       date1: date1.toDateString(),
       date2: date2.toDateString(),
-      
     }));
-    
-      
- },[])
-
+  }, [setShippingInfo]);
 
   return (
     <Container>
-      <div>
-        <div className="shipping-to">
-          <div className="center-align">
-            <LocationOnOutlinedIcon className="location-icon" />
-            <span className="header"> {t("sideCard.Ship_to")}</span>
-          </div>
+      {/* =====================================================
+          SHIPPING / DELIVERY
+      ===================================================== */}
 
-          <div className="center-align flex-end">
-            {country && (
-  <Flag code={country} height={12} />
-)}
-           
+      <Section>
+        
 
-            <div>
-              <select
-                value={country}
-                className="ship-to-select"
-                style={{
-                  border: "none",
-                  width: "75px",
-                  outline: "none",
-                  cursor: "pointer",
-                }}
-                onChange={(e) => {
-                  dispatch(setLocation(e.target.value));
+        {/* SHIPPING METHOD */}
 
-                }}
-              >
-                {countriesData?.map((item, index) => {
-                  return (
-                    <option key={index} value={item.value}>
-                      {item.label}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="shipping">
-          <div className="center-align" >
-            <LocalShippingOutlinedIcon className="shipping-icon" />
-            {productData?.available_shipping?.length > 0 ? (
-              <span className="header"> {Number(productData?.available_shipping[shippingMethodIndex]?.cost) === 0 ? t("sideCard.free_Shipping") : productData?.available_shipping[shippingMethodIndex]?.methodName}</span>
-            ) :
-              <span className="header"> {shippingInfo.cost <= 0 ? t("sideCard.free_Shipping") : shippingInfo.methodName} </span>
+        <ShippingRow>
+          <ShippingLeft>
+            <IconBox>
+              <LocalShippingOutlinedIcon />
+            </IconBox>
 
+            <ShippingContent>
+              
+
+              <ShippingValue>
+                {productData?.available_shipping?.length > 0 ? (
+                  Number(
+                    productData?.available_shipping[
+                      shippingMethodIndex
+                    ]?.cost
+                  ) === 0
+                    ? t("purchaseOptions.free_Shipping")
+                    : productData?.available_shipping[
+                        shippingMethodIndex
+                      ]?.methodName
+                ) : shippingInfo?.cost <= 0 ? (
+                  t("purchaseOptions.free_Shipping")
+                ) : (
+                  shippingInfo?.methodName
+                )}
+              </ShippingValue>
+            </ShippingContent>
+          </ShippingLeft>
+
+          <ShippingChangeButton
+            type="button"
+            onClick={() =>
+              setIsPopUpShippingOpen(!isPopUpShippingOpen)
             }
-          </div>
-          <div>
-            <ArrowForwardIosOutlinedIcon className="arrow-icon" onClick={() => setIsPopUpShippingOpen(!isPopUpShippingOpen)} />
-          </div>
-        </div>
+            aria-label="Change shipping method"
+          >
+            <ArrowForwardIosOutlinedIcon />
+          </ShippingChangeButton>
+        </ShippingRow>
 
+        {/* DELIVERY DATE */}
 
-        <div className="delivrey-time center-align">
-          <DeliveryDiningIcon className="shipping-icon" />
-          <span className="header"> {t("sideCard.Delivrey")} :</span>
-          {productData?.available_shipping?.length > 0 ? (
-            <span style={{ margin: "0 4px 0 4px", fontSize: "15px" }} > {fromDate.slice(3, -4)} / {toDate.slice(3, -4)}</span>
+        <ShippingRow>
+          <ShippingLeft>
+            <IconBox>
+              <DeliveryDiningIcon />
+            </IconBox>
 
-          ) :
-            <span style={{ margin: "0 4px 0 4px", fontSize: "14px" }}>  {shippingInfo.date1?.slice(3, -4)} /  {shippingInfo.date2?.slice(3, -4)}</span>
+            <ShippingContent>
+              <SmallLabel>
+                {t("purchaseOptions.Delivrey")}
+              </SmallLabel>
 
-          }
-        </div>
+              <ShippingValue>
+                   5-7 {t("purchaseOptions.business_days")}
+              </ShippingValue>
+            </ShippingContent>
+          </ShippingLeft>
 
+          
+        </ShippingRow>
+      </Section>
 
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-          <VerifiedUserOutlinedIcon className="security-icon" />
-          <span className="header">{t("sideCard.Security_&_Privacy.header")}</span>
-        </div>
-        <div className="security-privacy-text">
-          <p style={{marginRight:"10px"}}>
-            {t("sideCard.Security_&_Privacy.text")}
-          </p>
-        </div>
+      {/* =====================================================
+          SECURITY
+      ===================================================== */}
 
-        <div className="center-align">
-          <AutoAwesomeMotionOutlinedIcon className="security-icon" />
-          <span className="header"> {t("sideCard.Quantity")} </span>
-        </div>
-        <div className="quantity-container">
-          <div className="quantity-button-container">
-            <button onClick={subtractQuantity}> -</button>
-            <span> {quantity} </span>
-            <button onClick={addQuantity}>+</button>
-          </div>
-          <div>
-            <span>{currentSku?.available_stock - quantity} {t("sideCard.available")}</span>
-          </div>
+      <SecuritySection>
+        <SecurityIcon>
+          <VerifiedUserOutlinedIcon />
+        </SecurityIcon>
+
+        <SecurityContent>
+          <SecurityTitle>
+            {t("purchaseOptions.Security_&_Privacy.header")}
+          </SecurityTitle>
+
+          <SecurityText>
+            {t("purchaseOptions.Security_&_Privacy.text")}
+          </SecurityText>
+        </SecurityContent>
+      </SecuritySection>
+
+      {/* =====================================================
+          QUANTITY
+      ===================================================== */}
+
+      <QuantitySection>
+        <QuantityHeader>
+          <QuantityTitle>
+            <AutoAwesomeMotionOutlinedIcon />
+
+            <span>{t("purchaseOptions.Quantity")}</span>
+          </QuantityTitle>
+
+          <AvailableStock>
+            {Math.max(
+              0,
+              (currentSku?.available_stock || 0) - quantity
+            )}{" "}
+            {t("purchaseOptions.available")}
+          </AvailableStock>
+        </QuantityHeader>
+
+        <QuantityArea>
+          <QuantityControls>
+            <QuantityButton
+              type="button"
+              onClick={subtractQuantity}
+              disabled={quantity <= 1}
+            >
+              −
+            </QuantityButton>
+
+            <QuantityValue>
+              {quantity}
+            </QuantityValue>
+
+            <QuantityButton
+              type="button"
+              onClick={addQuantity}
+            >
+              +
+            </QuantityButton>
+          </QuantityControls>
 
           <ClickAwayListener
             mouseEvent="onMouseDown"
             touchEvent="onTouchEnd"
-            onClickAway={() => setMaxOrderWorning(false)}
+            onClickAway={() =>
+              setMaxOrderWorning(false)
+            }
           >
-
-            <span className={maxOrderWorning ? "max-order-warning" : "not-show"}>
-              {t("sideCard.max-order-warning")}
-            </span>
-          </ClickAwayListener>
-
-        </div>
-
-        <div>
-          <div className="button-container">
-            <button className="buy-button" onClick={() => buy_Now_item(currentSku , productData.id, shippingInfo, productData.name)}>{t("common.buyNow")}</button>
-            <button
-              className="add-button"
-              onClick={() => add_item_to_cart(currentSku, productData.id, shippingInfo, productData.name)}
+            <Warning
+              className={
+                maxOrderWorning
+                  ? "max-order-warning"
+                  : "not-show"
+              }
             >
-              {" "}
-              {t("common.addToCart")}
-            </button>
-          </div>
-        </div>
-      </div>
+              {t("purchaseOptions.max-order-warning")}
+            </Warning>
+          </ClickAwayListener>
+        </QuantityArea>
+      </QuantitySection>
+
+      {/* =====================================================
+          PURCHASE BUTTONS
+      ===================================================== */}
+
+      <PurchaseSection>
+        <BuyButton
+          type="button"
+          onClick={() =>
+            buy_Now_item(
+              currentSku,
+              productData?.id,
+              shippingInfo,
+              productData?.name
+            )
+          }
+        >
+          <span>{t("common.buyNow")}</span>
+          <ArrowForwardIosOutlinedIcon />
+        </BuyButton>
+
+        <AddButton
+          type="button"
+          onClick={() =>
+            add_item_to_cart(
+              currentSku,
+              productData?.id,
+              shippingInfo,
+              productData?.name
+            )
+          }
+        >
+          {t("common.addToCart")}
+        </AddButton>
+      </PurchaseSection>
+
+      {/* =====================================================
+          TRUST FOOTER
+      ===================================================== */}
+
+      <SecureCheckout>
+
+       
+
+        <SecureImage
+          src={secureCheckoutSvg}
+          alt="Secure checkout"
+        />
+
+      </SecureCheckout>
     </Container>
   );
 }
 
-export default SideCart
+export default SideCart;
+const SecureCheckout = styled.div`
+  margin-top: 18px;
 
+  padding-top: 15px;
 
+  border-top: 1px solid #eee9e2;
 
+  text-align: center;
+`;
+
+const SecureImage = styled.img`
+  display: block;
+
+  width: 100%;
+
+  max-width: 600px;
+
+  height: auto;
+
+  margin: 0 auto;
+
+  opacity: 0.9;
+`;
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
 const Container = styled.div`
+  width: 100%;
+  box-sizing: border-box;
 
-  padding: 10px;
-  margin-right:15px;
-  background: #fff;
-  border: 1px solid lightgray;
-  border-radius: 4px;
- .center-align{
-  display:flex;
-  align-items:center;
-  margin-bottom:10px;
- }
- 
- @media only screen and (max-width: 500px) {
-    &{
-     margin-right:0;
-    }
+  padding: 22px 0 4px;
+
+  color: #1c1c1c;
+
+  font-family: inherit;
+`;
+
+/* =========================================================
+   SHIPPING SECTION
+========================================================= */
+
+const Section = styled.div`
+  width: 100%;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #e9e4dc;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 16px;
+`;
+
+const SectionTitle = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  color: #252525;
+
+  .section-icon {
+    font-size: 18px;
+    color: #9b815f;
   }
-  
-  
-  .ship-to-select {
-    -webkit-appearance: none;
+`;
+
+const CountrySelector = styled.div`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  select {
     appearance: none;
-    padding: 5px;
-    background:none;
+    -webkit-appearance: none;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    padding: 3px 18px 3px 2px;
+
+    max-width: 100px;
+
+    font-size: 0.78rem;
+    color: #333;
+
+    cursor: pointer;
   }
+`;
 
-  .shipping-to {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+const ArrowDown = styled.span`
+  position: absolute;
+
+  right: 2px;
+
+  pointer-events: none;
+
+  font-size: 14px;
+
+  color: #777;
+
+  transform: translateY(-2px);
+`;
+
+/* =========================================================
+   SHIPPING ROW
+========================================================= */
+
+const ShippingRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 44px;
+
+  gap: 12px;
+
+  & + & {
+    margin-top: 4px;
   }
+`;
 
-  .security-privacy {
-  }
+const ShippingLeft = styled.div`
+  display: flex;
+  align-items: center;
 
-  .header {
-    font-size: 0.9rem;
-    font-weight: bold;
-        margin: 0 3px;
+  min-width: 0;
 
-  }
-  .security-privacy-text {
-    font-size: 0.7rem;
-    color: #868385;
+  gap: 11px;
+`;
 
-  }
+const IconBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .location-icon,
-  .shipping-icon,
-  
-  .security-icon {
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid #e6dfd6;
+
+  border-radius: 50%;
+
+  background: #faf8f5;
+
+  color: #9b815f;
+
+  svg {
     font-size: 16px;
-    color: #a8a8a8;
+  }
+`;
+
+const ShippingContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  gap: 2px;
+`;
+
+const SmallLabel = styled.span`
+  font-size: 0.66rem;
+
+  color: #96918a;
+
+  letter-spacing: 0.02em;
+`;
+
+const ShippingValue = styled.span`
+  overflow: hidden;
+
+  max-width: 260px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 0.81rem;
+
+  font-weight: 600;
+
+  color: #2b2b2b;
+`;
+
+const ShippingChangeButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #777;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+
+  svg {
+    font-size: 15px;
   }
 
-  .button-container {
-    display: flex;
-    justify-content: space-evenly;
+  &:hover {
+    color: #9b815f;
+
+    transform: translateX(2px);
   }
-  .buy-button {
-    border: none;
-    cursor: pointer;
-    padding: 10px 5px;
-    border-radius: 4px;
-    background: #b59771;
-    color: #fff;
-    font-weight: bold;
-    min-width: 80px;
-  }
-  .add-button {
-    border: none;
-    cursor: pointer;
-    padding: 10px 5px;
-    border-radius: 4px;
-    background:rgb(27, 25, 25);
-    color: #fff;
-    font-weight: bold;
-    min-width: 100px;
-  }
-  .shipping-method {
-  }
-  .shipping {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .arrow-icon {
-    
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom:5px;
-  }
-  .Shipping-icon {
-    font-size: 16px;
-    color: #4d4c4c;
-    margin-right: 3px;
-  }
-  .delivrey-time {
-  }
-  .delivrey-time span:first-child {
-    color: gray;
-    margin-left: 19px;
-    font-size: 0.99rem;
-  }
-  .security-privacy-text {
-    width: 100%;
-    margin-left: 10px;
-    white-space: wrap;
-    border-bottom: 1px solid lightgray;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-   
+`;
+
+const DeliveryBadge = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  padding: 5px 8px;
+
+  border: 1px solid #e5ded4;
+
+  border-radius: 20px;
+
+  background: #faf8f5;
+
+  color: #777;
+
+  font-size: 0.62rem;
+
+  white-space: nowrap;
+
+  span {
+    color: #9b815f;
+
+    font-weight: 700;
   }
 
-  .quantity-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
-  }
-  .quantity-button-container {
-    display: flex;
-
-    align-items: center;
-  }
-  .quantity-button-container button {
-    border: none;
-    border-radius: 50%;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
-    cursor: pointer;
-  }
-  .quantity-container span:nth-child(1) {
-    font-size: 0.8rem;
-    color: #5e5c5c;
-  }
-  @media only screen and (max-width: 500px) {
-    .add-button, .buy-button {
-      font-size:12px;
-      padding: 8px 4px;
-      width:76px;
-                
-      }
-  }
-  .not-show {
+  @media (max-width: 480px) {
     display: none;
   }
-  .max-order-warning {
-    display: block;
-    color: #f73939;
-    font-size: 0.8rem;
-    animation-name: warning;
-    animation-duration: 250ms;  
-    transition:all 250ms ease-in;   
-  
+`;
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+const SecuritySection = styled.div`
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid #e9e4dc;
+`;
+
+const SecurityIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: #faf8f5;
+
+  color: #9b815f;
+
+  svg {
+    font-size: 17px;
+  }
+`;
+
+const SecurityContent = styled.div`
+  min-width: 0;
+`;
+
+const SecurityTitle = styled.div`
+  margin-bottom: 5px;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  color: #292929;
+`;
+
+const SecurityText = styled.p`
+  margin: 0;
+
+  max-width: 600px;
+
+  font-size: 0.7rem;
+
+  line-height: 1.6;
+
+  color: #88827b;
+`;
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+const QuantitySection = styled.div`
+  padding: 18px 0 20px;
+`;
+
+const QuantityHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 12px;
+`;
+
+const QuantityTitle = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 0.81rem;
+
+  font-weight: 600;
+
+  color: #292929;
+
+  svg {
+    font-size: 18px;
+
+    color: #9b815f;
+  }
+`;
+
+const AvailableStock = styled.span`
+  font-size: 0.68rem;
+
+  color: #8c8780;
+
+  white-space: nowrap;
+`;
+
+const QuantityArea = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  min-height: 48px;
+`;
+
+const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+
+  height: 38px;
+
+  border: 1px solid #ddd7ce;
+
+  border-radius: 3px;
+
+  overflow: hidden;
+
+  background: #fff;
+`;
+
+const QuantityButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: #faf9f7;
+
+  color: #2b2b2b;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+
+  &:hover:not(:disabled) {
+    background: #f1ede7;
+
+    color: #9b815f;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+  }
+`;
+
+const QuantityValue = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 38px;
+
+  border-left: 1px solid #ddd7ce;
+  border-right: 1px solid #ddd7ce;
+
+  font-size: 0.82rem;
+
+  color: #292929;
+`;
+
+const Warning = styled.span`
+  min-height: 16px;
+
+  margin-top: 6px;
+
+  font-size: 0.68rem;
+
+  color: #c84c4c;
+
+  &.not-show {
+    visibility: hidden;
+  }
+
+  &.max-order-warning {
+    visibility: visible;
+
+    animation: warning 220ms ease;
+  }
+
   @keyframes warning {
     from {
-      font-size: 0.1rem;
+      opacity: 0;
+      transform: translateY(-3px);
     }
+
     to {
-      font-size: 0.8rem;
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-}
+`;
+
+/* =========================================================
+   PURCHASE BUTTONS
+========================================================= */
+
+const PurchaseSection = styled.div`
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 2px;
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const BuyButton = styled.button`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 50px;
+
+  border: 1px solid #9b815f;
+
+  border-radius: 3px;
+
+  background: #9b815f;
+
+  color: #fff;
+
+  font-size: 0.79rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+
+  svg {
+    font-size: 14px;
+
+    transition: transform 180ms ease;
+  }
+
+  &:hover {
+    background: #876e50;
+
+    border-color: #876e50;
+
+    svg {
+      transform: translateX(2px);
+    }
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+`;
+
+const AddButton = styled.button`
+  min-height: 50px;
+
+  border: 1px solid #252525;
+
+  border-radius: 3px;
+
+  background: #252525;
+
+  color: #fff;
+
+  font-size: 0.79rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+
+  &:hover {
+    background: #111;
+
+    border-color: #111;
+  }
+`;
+
+/* =========================================================
+   TRUST FOOTER
+========================================================= */
+
+const TrustFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 15px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid #eeeae4;
+
+  color: #8b867f;
+
+  font-size: 0.64rem;
+
+  line-height: 1.5;
+
+  text-align: center;
+`;
+
+const TrustItem = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+`;
+
+const TrustCheck = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  border: 1px solid #b09a7c;
+
+  border-radius: 50%;
+
+  color: #9b815f;
+
+  font-size: 9px;
+`;
+
+const TrustDivider = styled.span`
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #cfc8bf;
 `;

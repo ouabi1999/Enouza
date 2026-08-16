@@ -88,7 +88,9 @@ export default function FilterPageStyled() {
         setIsLoading(false);
       });
   };
-
+  useEffect(()=>{
+      window.scrollTo({top:0, left:0, behavior:"auto"})
+  },[])
   useEffect(() => {
     fetchProducts();
   }, [search, categories, sort, count]);
@@ -205,6 +207,7 @@ export default function FilterPageStyled() {
                   sort === "price_desc"
                 }
                 onClick={() =>
+                 
                   dispatch(
                     setSort(
                       sort === "price_asc"
@@ -219,9 +222,9 @@ export default function FilterPageStyled() {
                 <SortArrow
                   $direction={
                     sort === "price_asc"
-                      ? "asc"
+                      ? "price_asc"
                       : sort === "price_desc"
-                      ? "desc"
+                      ? "price_desc"
                       : "idle"
                   }
                 >
@@ -287,7 +290,7 @@ export default function FilterPageStyled() {
             <EmptyLogo>ENOUZA</EmptyLogo>
 
             <EmptyTitle>
-              {t("filters.search_did_not_match")}
+              {t("filterPage.search_did_not_match")}
             </EmptyTitle>
 
             <EmptyLine />

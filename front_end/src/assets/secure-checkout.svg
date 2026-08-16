@@ -1,0 +1,95 @@
+<svg width="1600" height="360" viewBox="0 0 1600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C7A36A"/>
+      <stop offset="0.5" stop-color="#A98452"/>
+      <stop offset="1" stop-color="#D4B47A"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#171717"/>
+      <stop offset="1" stop-color="#34302A"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity=".08"/>
+    </filter>
+  </defs>
+
+  <!-- Luxury card -->
+  <rect x="20" y="20" width="1560" height="320" rx="28" fill="#FCFBF8" stroke="#E6DED2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="38" y="38" width="1524" height="284" rx="20" stroke="#C9A873" stroke-opacity=".35"/>
+
+  <!-- Header -->
+  <circle cx="105" cy="100" r="38" fill="url(#gold)"/>
+  <path d="M87 99L99 111L124 84" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="165" y="92" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#1B1B1B" letter-spacing=".5">
+    Secure &amp; Trusted Checkout
+  </text>
+  <text x="166" y="122" font-family="Arial, sans-serif" font-size="15" fill="#8A837A" letter-spacing="1.8">
+    YOUR PAYMENT IS PROTECTED
+  </text>
+
+  <!-- Divider -->
+  <line x1="70" y1="154" x2="1530" y2="154" stroke="#E4DDD3"/>
+
+  <!-- Payment methods -->
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <!-- VISA -->
+    <g transform="translate(95 205)">
+      <text x="0" y="38" font-size="36" fill="#1D3557" font-style="italic">VISA</text>
+    </g>
+
+    <line x1="300" y1="184" x2="300" y2="270" stroke="#E2DBD1"/>
+
+    <!-- Mastercard-inspired circles -->
+    <g transform="translate(355 197)">
+      <circle cx="28" cy="30" r="28" fill="#1D1D1D"/>
+      <circle cx="62" cy="30" r="28" fill="#A98452" fill-opacity=".9"/>
+      <text x="45" y="78" text-anchor="middle" font-size="12" fill="#55504A" font-weight="500">MASTERCARD</text>
+    </g>
+
+    <line x1="500" y1="184" x2="500" y2="270" stroke="#E2DBD1"/>
+
+    <!-- AMEX -->
+    <g transform="translate(550 201)">
+      <rect width="150" height="62" rx="7" fill="#24364B"/>
+      <text x="75" y="28" text-anchor="middle" font-size="18" fill="white" letter-spacing="1">AMERICAN</text>
+      <text x="75" y="48" text-anchor="middle" font-size="18" fill="white" letter-spacing="1">EXPRESS</text>
+    </g>
+
+    <line x1="745" y1="184" x2="745" y2="270" stroke="#E2DBD1"/>
+
+    <!-- Stripe -->
+    <g transform="translate(800 197)">
+      <rect width="145" height="70" rx="8" fill="#F4F0E9" stroke="#DDD3C5"/>
+      <text x="72" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#242424">stripe</text>
+      <text x="72" y="51" text-anchor="middle" font-size="10" fill="#9B815F" letter-spacing="2">SECURE PAYMENTS</text>
+    </g>
+
+    <line x1="990" y1="184" x2="990" y2="270" stroke="#E2DBD1"/>
+
+    <!-- PAYPAL -->
+    <g transform="translate(1040 198)">
+      <text x="0" y="42" font-size="31" fill="#273B57" font-style="italic">PayPal</text>
+    </g>
+
+    <line x1="1205" y1="184" x2="1205" y2="270" stroke="#E2DBD1"/>
+
+    <!-- Security -->
+    <g transform="translate(1250 191)">
+      <circle cx="32" cy="38" r="31" fill="#F2ECE2" stroke="#C9A873" stroke-width="2"/>
+      <rect x="19" y="35" width="26" height="23" rx="4" fill="url(#gold)"/>
+      <path d="M24 35V28C24 18 40 18 40 28V35" stroke="#8B6A40" stroke-width="4" fill="none"/>
+      <circle cx="32" cy="46" r="3" fill="white"/>
+      <text x="78" y="32" font-family="Georgia, serif" font-size="20" fill="#242424">Encrypted</text>
+      <text x="78" y="54" font-family="Arial, sans-serif" font-size="11" fill="#8A837A" letter-spacing="1.4">SECURE PAYMENT</text>
+    </g>
+  </g>
+
+  <!-- Bottom trust message -->
+  <g transform="translate(90 300)">
+    <circle cx="8" cy="0" r="5" fill="#B08B55"/>
+    <text x="23" y="5" font-family="Arial, sans-serif" font-size="12" fill="#777067" letter-spacing=".7">
+      Your payment details are handled securely and protected during checkout.
+    </text>
+  </g>
+</svg>

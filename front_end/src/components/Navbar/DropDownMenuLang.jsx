@@ -65,7 +65,7 @@ function DropDownMenuLang(props) {
 
           <Wrapper style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }} >
             <div>
-              <label> {t('sideCard.Ship_to')} </label>
+              <label> {t('purchaseOptions.Ship_to')} </label>
               <select
                 value={props.country}
                 onChange={(e) => {
@@ -82,7 +82,7 @@ function DropDownMenuLang(props) {
               </select>
             </div>
             <div>
-              <label> {t("sideCard.Language")} </label>
+              <label> {t("purchaseOptions.Language")} </label>
               <select onChange={ (e)=> setSelectedLang(e.target.value)} value={selectedLang}>
 
                 {languages.map((lang, index  )=> {
@@ -92,7 +92,7 @@ function DropDownMenuLang(props) {
               </select>
             </div>
             <div>
-              <label> {t('sideCard.Currency')} </label>
+              <label> {t('purchaseOptions.Currency')} </label>
               <select>
                 <option value="Japan">USD</option>
               </select>

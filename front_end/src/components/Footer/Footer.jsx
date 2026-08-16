@@ -2,113 +2,212 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
 import NewsLetter from "./NewsLetter";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const isRTL = i18n.dir() === "rtl";
 
   return (
-    <FooterContainer>
+    <FooterContainer dir={isRTL ? "rtl" : "ltr"}>
+
+      {/* =====================================================
+          NEWSLETTER
+      ===================================================== */}
+
+      <NewsletterSection>
+        <NewsletterInner>
+
+          <NewsletterText>
+            <NewsletterEyebrow>
+              {t("footer.newsletter.eyebrow")}
+            </NewsletterEyebrow>
+
+            <NewsletterTitle>
+              {t("footer.newsletter.title")}
+            </NewsletterTitle>
+
+            <NewsletterDescription>
+              {t("footer.newsletter.description")}
+            </NewsletterDescription>
+          </NewsletterText>
+
+          <NewsletterForm>
+            <NewsLetter />
+          </NewsletterForm>
+
+        </NewsletterInner>
+      </NewsletterSection>
+
+
+      {/* =====================================================
+          MAIN FOOTER
+      ===================================================== */}
+
       <MainFooter>
-        <LinksSection>
+
+        <FooterGrid>
+
+          {/* BRAND */}
+          <BrandSection>
+
+            <BrandLogo>
+              ENOUZA
+            </BrandLogo>
+
+            <BrandDescription>
+              {t("footer.brand.description")}
+            </BrandDescription>
+
+            <BrandAccent />
+
+          </BrandSection>
+
+
           {/* HELP */}
           <FooterColumn>
+
             <ColumnTitle>
               {t("footer.help.title")}
             </ColumnTitle>
 
-            <FooterLink to="contact-us">
-              {t("footer.help.contactUs")}
-            </FooterLink>
+            <Links>
 
-            <FooterLink to="about-us">
-              {t("footer.help.aboutUs")}
-            </FooterLink>
+              <FooterLink to="/contact-us">
+                {t("footer.help.contactUs")}
+              </FooterLink>
 
-            <FooterLink to="help-center">
-              {t("footer.help.faq")}
-            </FooterLink>
+              <FooterLink to="/about-us">
+                {t("footer.help.aboutUs")}
+              </FooterLink>
+
+              <FooterLink to="/help-center">
+                {t("footer.help.faq")}
+              </FooterLink>
+
+            </Links>
+
           </FooterColumn>
 
-          {/* FOLLOW US */}
+
+          {/* FOLLOW */}
           <FooterColumn>
+
             <ColumnTitle>
               {t("footer.followUs.title")}
             </ColumnTitle>
 
-            <SocialLink
-              href="https://www.facebook.com/profile.php?id=61571681156358"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <SocialIcon>f</SocialIcon>
-              {t("footer.followUs.facebook")}
-            </SocialLink>
+            <Links>
 
-            <SocialLink
-              href="https://www.instagram.com/en.ouza"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <SocialIcon>◎</SocialIcon>
-              {t("footer.followUs.instagram")}
-            </SocialLink>
+              <SocialLink
+                href="https://www.facebook.com/profile.php?id=61571681156358"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SocialMark>
+                  f
+                </SocialMark>
 
-            <SocialLink
-              href="https://www.tiktok.com/@en.ouza"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <SocialIcon>♪</SocialIcon>
-              {t("footer.followUs.tiktok")}
-            </SocialLink>
+                <span>
+                  {t("footer.followUs.facebook")}
+                </span>
+              </SocialLink>
+
+              <SocialLink
+                href="https://www.instagram.com/en.ouza"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SocialMark>
+                  ◎
+                </SocialMark>
+
+                <span>
+                  {t("footer.followUs.instagram")}
+                </span>
+              </SocialLink>
+
+              <SocialLink
+                href="https://www.tiktok.com/@en.ouza"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SocialMark>
+                  ♪
+                </SocialMark>
+
+                <span>
+                  {t("footer.followUs.tiktok")}
+                </span>
+              </SocialLink>
+
+            </Links>
+
           </FooterColumn>
+
 
           {/* POLICIES */}
           <FooterColumn>
+
             <ColumnTitle>
               {t("footer.policies.title")}
             </ColumnTitle>
 
-            <FooterLink to="terms-of-services">
-              {t("footer.policies.termsOfService")}
-            </FooterLink>
+            <Links>
 
-            <FooterLink to="privacy-policy">
-              {t("footer.policies.privacyPolicy")}
-            </FooterLink>
+              <FooterLink to="/terms-of-services">
+                {t("footer.policies.termsOfService")}
+              </FooterLink>
 
-            <FooterLink to="shipping-policy">
-              {t("footer.policies.shippingPolicy")}
-            </FooterLink>
+              <FooterLink to="/privacy-policy">
+                {t("footer.policies.privacyPolicy")}
+              </FooterLink>
 
-            <FooterLink to="return-policy">
-              {t("footer.policies.refundPolicy")}
-            </FooterLink>
+              <FooterLink to="/shipping-policy">
+                {t("footer.policies.shippingPolicy")}
+              </FooterLink>
+
+              <FooterLink to="/return-policy">
+                {t("footer.policies.refundPolicy")}
+              </FooterLink>
+
+            </Links>
+
           </FooterColumn>
-        </LinksSection>
 
-        {/* NEWSLETTER */}
-        <NewsletterSection>
-          <NewsLetter />
-        </NewsletterSection>
+        </FooterGrid>
+
+
+        {/* =====================================================
+            BOTTOM BAR
+        ===================================================== */}
+
+        <BottomBar>
+
+          <Copyright>
+            © {new Date().getFullYear()} Enouza.{" "}
+            {t("footer.newsletter.all_rights_reserved")}
+          </Copyright>
+
+
+          <PaymentMethods>
+            <PaymentImage
+              src="/payment-methods.png"
+              alt={t("footer.payment.secure")}
+            />
+          </PaymentMethods>
+
+
+          <SecureText>
+            <SecureDot />
+            {t("footer.payment.secure")}
+          </SecureText>
+
+        </BottomBar>
+
       </MainFooter>
 
-      {/* BOTTOM FOOTER */}
-      <BottomFooter>
-        <PaymentMethods>
-          <img
-            src="/payment-methods.png"
-            alt="Secure payment methods"
-          />
-        </PaymentMethods>
-
-        <Copyright>
-          © {new Date().getFullYear()} Enouza,{" "}
-          {t("footer.newsletter.all_rights_reserved")}
-        </Copyright>
-      </BottomFooter>
     </FooterContainer>
   );
 };
@@ -116,246 +215,546 @@ const Footer = () => {
 export default Footer;
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 const FooterContainer = styled.footer`
   width: 100%;
+
+  background: #f8f6f1;
+
+  color: #22211f;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
   box-sizing: border-box;
 
-  background: linear-gradient(
-    135deg,
-    #f5f3ef 0%,
-    #e8e4d9 100%
-  );
-
-  font-family: "Jost", system-ui, -apple-system, sans-serif;
-
-  color: #1d1d1b;
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 
-/* =====================================================
-   MAIN FOOTER
-===================================================== */
+/* =========================================================
+   NEWSLETTER SECTION
+========================================================= */
 
-const MainFooter = styled.div`
-  max-width: 1280px;
+const NewsletterSection = styled.section`
+  width: 100%;
+
+  padding: 0 30px 70px;
+
+  background: #f8f6f1;
+
+  @media (max-width: 600px) {
+    padding: 0 16px 50px;
+  }
+`;
+
+const NewsletterInner = styled.div`
+  max-width: 1240px;
+
+  min-height: 220px;
+
   margin: 0 auto;
 
-  padding: 70px 30px 55px;
+  padding: 42px 50px;
 
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 80px;
+
+  grid-template-columns:
+    minmax(280px, 0.85fr)
+    minmax(400px, 1.15fr);
+
+  align-items: center;
+
+  gap: 70px;
+
+  background: #ebe7dd;
+
+  border: 1px solid rgba(35, 33, 29, 0.08);
+
+  position: relative;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+
+    border: 1px solid rgba(35, 33, 29, 0.045);
+
+    pointer-events: none;
+  }
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 50px;
+
+    gap: 28px;
+
+    padding: 40px;
   }
 
   @media (max-width: 600px) {
-    padding: 55px 22px 40px;
-    gap: 40px;
+    padding: 34px 25px;
+
+    gap: 24px;
+
+    &::before {
+      top: 10px;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+    }
   }
 `;
 
 
-/* =====================================================
-   LINKS SECTION
-===================================================== */
+/* =========================================================
+   NEWSLETTER TEXT
+========================================================= */
 
-const LinksSection = styled.div`
+const NewsletterText = styled.div`
+  position: relative;
+
+  z-index: 1;
+`;
+
+const NewsletterEyebrow = styled.span`
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #9b7b45;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+`;
+
+const NewsletterTitle = styled.h2`
+  margin: 0;
+
+  color: #24221f;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(27px, 3vw, 37px);
+
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.02em;
+`;
+
+const NewsletterDescription = styled.p`
+  max-width: 440px;
+
+  margin: 13px 0 0;
+
+  color: #777168;
+
+  font-size: 12px;
+
+  line-height: 1.75;
+`;
+
+
+/* =========================================================
+   NEWSLETTER FORM
+========================================================= */
+
+const NewsletterForm = styled.div`
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  /*
+    Neutralize the old newsletter card so
+    the newsletter becomes part of this design.
+  */
+
+  form {
+    width: 100%;
+  }
+`;
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+const MainFooter = styled.div`
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  padding: 0 30px;
+
+  @media (max-width: 600px) {
+    padding: 0 22px;
+  }
+`;
+
+
+/* =========================================================
+   FOOTER GRID
+========================================================= */
+
+const FooterGrid = styled.div`
+  padding: 0 0 62px;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 45px;
 
-  @media (max-width: 700px) {
-    gap: 30px;
+  grid-template-columns:
+    1.55fr
+    1fr
+    1fr
+    1.15fr;
+
+  gap: 55px;
+
+  border-bottom: 1px solid
+    rgba(35, 33, 29, 0.11);
+
+  @media (max-width: 900px) {
+    grid-template-columns:
+      1.4fr 1fr 1fr;
+
+    gap: 45px;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 650px) {
     grid-template-columns: 1fr 1fr;
-    gap: 35px 25px;
+
+    gap: 45px 30px;
+
+    padding-bottom: 45px;
+  }
+
+  @media (max-width: 430px) {
+    gap: 40px 20px;
   }
 `;
 
 
-/* =====================================================
-   FOOTER COLUMN
-===================================================== */
+/* =========================================================
+   BRAND
+========================================================= */
+
+const BrandSection = styled.div`
+  max-width: 270px;
+
+  @media (max-width: 650px) {
+    grid-column: 1 / -1;
+
+    max-width: 100%;
+
+    padding-bottom: 5px;
+  }
+`;
+
+const BrandLogo = styled.div`
+  color: #20201d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 27px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.17em;
+
+  line-height: 1;
+`;
+
+const BrandDescription = styled.p`
+  max-width: 250px;
+
+  margin: 20px 0 0;
+
+  color: #77736b;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 12px;
+
+  font-style: italic;
+
+  line-height: 1.75;
+`;
+
+const BrandAccent = styled.div`
+  width: 32px;
+
+  height: 1px;
+
+  margin-top: 20px;
+
+  background: #b8955b;
+`;
+
+
+/* =========================================================
+   COLUMN
+========================================================= */
 
 const FooterColumn = styled.div`
+  min-width: 0;
+
   display: flex;
+
   flex-direction: column;
+
+  align-items: flex-start;
+`;
+
+const ColumnTitle = styled.h3`
+  margin: 0 0 21px;
+
+  color: #25231f;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+`;
+
+const Links = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
   align-items: flex-start;
 `;
 
 
-/* =====================================================
-   COLUMN TITLE
-===================================================== */
-
-const ColumnTitle = styled.h3`
-  margin: 0 0 20px;
-
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  color: #1d1d1b;
-`;
-
-
-/* =====================================================
-   FOOTER LINKS
-===================================================== */
+/* =========================================================
+   LINKS
+========================================================= */
 
 const FooterLink = styled(Link)`
-  position: relative;
+  margin-bottom: 12px;
 
-  margin-bottom: 11px;
+  color: #77736b;
 
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
 
-  color: #66615a;
+  line-height: 1.5;
 
   text-decoration: none;
 
   transition:
     color 0.25s ease,
-    transform 0.25s ease;
+    padding 0.25s ease;
 
   &:hover {
-    color: #1d1d1b;
-    transform: translateX(3px);
+    color: #1e1d1a;
+
+    padding-inline-start: 4px;
   }
 `;
 
 
-/* =====================================================
-   SOCIAL LINKS
-===================================================== */
+/* =========================================================
+   SOCIAL
+========================================================= */
 
 const SocialLink = styled.a`
   display: flex;
+
   align-items: center;
+
   gap: 10px;
 
-  margin-bottom: 11px;
+  margin-bottom: 12px;
 
-  font-size: 14px;
+  color: #77736b;
 
-  color: #66615a;
+  font-size: 13px;
 
   text-decoration: none;
 
   transition: color 0.25s ease;
 
   &:hover {
-    color: #1d1d1b;
+    color: #1e1d1a;
   }
 `;
 
+const SocialMark = styled.span`
+  width: 21px;
+  height: 21px;
 
-/* =====================================================
-   SOCIAL ICON
-===================================================== */
-
-const SocialIcon = styled.span`
-  width: 20px;
-  height: 20px;
+  flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  font-size: 13px;
-  font-weight: 500;
+  border: 1px solid
+    rgba(35, 33, 29, 0.18);
 
-  color: #1d1d1b;
-`;
+  color: #5f5b54;
 
+  font-size: 10px;
 
-/* =====================================================
-   NEWSLETTER
-===================================================== */
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease;
 
-const NewsletterSection = styled.div`
-  
-  @media (max-width: 900px) {
-    width: 100%;
+  ${SocialLink}:hover & {
+    border-color: #b8955b;
+
+    color: #9b7b45;
   }
 `;
 
 
-/* =====================================================
-   BOTTOM FOOTER
-===================================================== */
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
 
-const BottomFooter = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
+const BottomBar = styled.div`
+  min-height: 82px;
 
-  padding: 22px 30px;
+  display: grid;
 
-  border-top: 1px solid rgba(29, 29, 27, 0.12);
+  grid-template-columns:
+    1fr auto 1fr;
 
-  display: flex;
   align-items: center;
-  justify-content: space-between;
 
   gap: 30px;
 
-  @media (max-width: 600px) {
-    padding: 20px 22px;
+  @media (max-width: 750px) {
+    min-height: auto;
 
-    flex-direction: column;
-    justify-content: center;
+    padding: 25px 0;
 
-    gap: 15px;
+    grid-template-columns: 1fr;
+
+    justify-items: center;
+
+    gap: 18px;
   }
 `;
 
 
-/* =====================================================
-   PAYMENT METHODS
-===================================================== */
-
-const PaymentMethods = styled.div`
-  width: 260px;
-
-  img {
-    width: 100%;
-    height: auto;
-
-    display: block;
-
-    object-fit: contain;
-  }
-
-  @media (max-width: 600px) {
-    width: 240px;
-  }
-`;
-
-
-/* =====================================================
+/* =========================================================
    COPYRIGHT
-===================================================== */
+========================================================= */
 
 const Copyright = styled.span`
-  font-size: 12px;
+  color: #99948b;
+
+  font-size: 10px;
+
   line-height: 1.5;
 
-  color: #777;
+  text-align: start;
 
-  text-align: right;
-
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     text-align: center;
   }
+`;
+
+
+/* =========================================================
+   PAYMENTS
+========================================================= */
+
+const PaymentMethods = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+`;
+
+const PaymentImage = styled.img`
+  width: 205px;
+
+  height: auto;
+
+  display: block;
+
+  opacity: 0.7;
+
+  object-fit: contain;
+
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 500px) {
+    width: 190px;
+  }
+`;
+
+
+/* =========================================================
+   SECURE
+========================================================= */
+
+const SecureText = styled.div`
+  justify-self: end;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #99948b;
+
+  font-size: 9px;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  @media (max-width: 750px) {
+    justify-self: center;
+  }
+`;
+
+const SecureDot = styled.span`
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #b8955b;
 `;

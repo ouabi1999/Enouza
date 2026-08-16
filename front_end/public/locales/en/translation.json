@@ -58,7 +58,8 @@
     "outOfStock": "Out of Stock",
     "inStock": "In Stock"
   },
-  "sideCard": {
+  "purchaseOptions": {
+    "business_days": "Business Days",
     "Ship_to": "Ship to",
     "Language": "Language",
     "Currency": "Currency",
@@ -170,8 +171,26 @@
     "collection": "ENOUZA COLLECTION",
     "discover": "DISCOVER"
   },
-
+  "customer_reviews": {
+      "title": "Customer Reviews",
+      "verified_purchase": "Verified Purchase",
+      "no_reviews": "No reviews yet",
+      "image_unavailable": "Image unavailable",
+      "customer": "Customer",
+      "review_image": "Review image",
+      "previous_image": "Previous image",
+      "next_image": "Next image",
+      "close": "Close",
+      "view_image": "View image",
+      "rating": "Rating",
+      "reviews": "Reviews",
+      "enouza_review": "ENOUZA REVIEW",
+      "description": "Product Description",
+      "customer_rating": "Customer Rating",
+      "customer_reviews": "Customer Reviews"
+    },
   "productInfo": {
+    "secure_purchase_premium_quality": "Secure purchase & premium quality",
     "save":"save",
     "Lampshade Color": "Lampshade Color",
     "Body Color": "Body Color",
@@ -325,6 +344,10 @@
     "total": "Total"
   },
   "footer": {
+    "brand": {
+      "description": "Thoughtfully selected pieces designed to bring warmth, elegance and character to your space."
+    },
+    "payment": { "secure": "Secure payments" },
     "followUs": {
       "title": "Follow us",
       "facebook": "Facebook",
@@ -356,7 +379,8 @@
       "successMessage": "Subscribed successfully",
       "errorMessage": "Subscription failed",
       "copyright": "copyright",
-      "all_rights_reserved": "All rights reserved."
+      "all_rights_reserved": "All rights reserved.",
+      "eyebrow": "ENOUZA COLLECTION"
     }
   },
   "policies": {

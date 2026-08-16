@@ -59,7 +59,8 @@
     "outOfStock": "Agotado",
     "inStock": "En stock"
   },
-  "sideCard": {
+  "purchaseOptions": {
+    "business_days":"Días hábiles",
     "Ship_to": "Enviar a",
     "Language": "Idioma",
     "Currency": "Moneda",
@@ -168,9 +169,28 @@
     "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto.",
     "collection_description": "Descubre una iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio." ,
      "collection": "COLECCIÓN ENOUZA",
-"discover": "DESCUBRE"
+      "discover": "DESCUBRE"
   },
+  "customer_reviews": {
+      "title": "Opiniones de clientes",
+      "verified_purchase": "Compra verificada",
+      "no_reviews": "Aún no hay opiniones",
+      "image_unavailable": "Imagen no disponible",
+      "customer": "Cliente",
+      "review_image": "Imagen de la reseña",
+      "previous_image": "Imagen anterior",
+      "next_image": "Imagen siguiente",
+      "close": "Cerrar",
+      "view_image": "Ver imagen",
+      "rating": "Valoración",
+      "reviews": "Opiniones",
+      "enouza_review": "Reseña de ENOUZA",
+      "description": "Descripción del producto",
+      "customer_rating": "Valoración de los clientes",
+      "customer_reviews": "Opiniones de los clientes"
+    },
   "productInfo": {
+    "secure_purchase_premium_quality": "Compra segura y calidad premium",
     "save": "ahorrar",
     "Lampshade Color":"Color de la pantalla",
     "Body Color":"Color del cuerpo",
@@ -332,6 +352,10 @@
     "total": "Total"
   },
   "footer": {
+     "brand": {
+      "description": "Piezas cuidadosamente seleccionadas para aportar calidez, elegancia y personalidad a tu espacio."
+    },
+    "payment": { "secure": "Pagos seguros" },
     "followUs": {
       "title": "Síguenos",
       "facebook": "Facebook",
@@ -356,6 +380,7 @@
       "contact_note": "¿Tienes preguntas? Estamos aquí para ayudarte."
     },
     "newsletter": {
+      "eyebrow": "COLECCIÓN ENOUZA",
       "title": "Boletín",
       "description": "Suscríbete para recibir ofertas y novedades.",
       "placeholder": "Tu correo",

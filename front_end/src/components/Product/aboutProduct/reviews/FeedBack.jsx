@@ -144,7 +144,7 @@ const Conatiner = styled.div`
       margin-bottom:10px;
     }
 .on{
-    color: #FFBA5A;
+    color: #a88a62;
     cursor:pointer;
 }
 .off{

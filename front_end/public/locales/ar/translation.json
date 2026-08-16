@@ -58,7 +58,9 @@
     "outOfStock": "غير متوفر",
     "inStock": "متوفر"
   },
-  "sideCard": {
+  "purchaseOptions": {
+      "business_days": "أيام العمل",
+
     "Ship_to": "الشحن إلى",
     "Language": "اللغة",
     "Currency": "العملة",
@@ -176,8 +178,26 @@
    "collection": "مجموعة ENOUZA",
    "discover": "اكتشف"
  },
-
+"customer_reviews": {
+      "enouza_review": "تقييم ENOUZA",
+      "title": "آراء العملاء",
+      "verified_purchase": "شراء موثّق",
+      "no_reviews": "لا توجد تقييمات بعد",
+      "image_unavailable": "الصورة غير متاحة",
+      "customer": "عميل",
+      "review_image": "صورة التقييم",
+      "previous_image": "الصورة السابقة",
+      "next_image": "الصورة التالية",
+      "close": "إغلاق",
+      "view_image": "عرض الصورة",
+      "rating": "التقييم",
+      "reviews": "التقييمات",
+      "description": "وصف المنتج",
+      "customer_rating": "تقييم العملاء",
+  "customer_reviews": "آراء العملاء"
+    },
   "productInfo": {
+    "secure_purchase_premium_quality": "شراء آمن وجودة فاخرة",
     "save": "وفّر",
     "Lampshade Color":"لون غطاء المصباح",
     "Body Color" : "لون الهيكل",
@@ -345,6 +365,7 @@
     "total": "الإجمالي"
   },
   "footer": {
+    "payment": { "secure": "دفع آمن" },
     "newsletter": {
       "title": "النشرة الإخبارية",
       "description": "اشترك للحصول على آخر التحديثات والعروض الخاصة.",
@@ -353,7 +374,11 @@
       "all_rights_reserved": "جميع الحقوق محفوظة",
       "copyright": ".حقوق النشر",
       "successMessage": "تم الاشتراك بنجاح!",
-      "errorMessage": "حدث خطأ أثناء الاشتراك. حاول مرة أخرى."
+      "errorMessage": "حدث خطأ أثناء الاشتراك. حاول مرة أخرى.",
+      "eyebrow": "مجموعة ENOUZA"
+    },
+    "brand": {
+      "description": "قطع مختارة بعناية لتضفي الدفء والأناقة والطابع المميز على مساحتك."
     },
     "followUs": {
       "title": "تابعنا",
