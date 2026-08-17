@@ -404,15 +404,7 @@ const ServicesSection = styled.section`
 const ProductSection = styled.section`
   width: 100%;
 
-  padding: 36px 0 70px;
-
-  @media (max-width: 1100px) {
-    padding: 28px 0 55px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 18px 0 45px;
-  }
+ 
 `;
 
 /* =====================================================

@@ -194,9 +194,13 @@
       "reviews": "التقييمات",
       "description": "وصف المنتج",
       "customer_rating": "تقييم العملاء",
-  "customer_reviews": "آراء العملاء"
+  "customer_reviews": "آراء العملاء",
+  "customer_review": "تقييم العميل"
+
     },
   "productInfo": {
+    "view_full_image": "عرض الصورة كاملة",
+    "purchase_information": "معلومات الشراء",
     "secure_purchase_premium_quality": "شراء آمن وجودة فاخرة",
     "save": "وفّر",
     "Lampshade Color":"لون غطاء المصباح",
@@ -389,10 +393,10 @@
     },
     "policies": {
       "title": "السياسات",
-      "privacyPolicy": "سياسةالخصوصية",
+      "privacyPolicy": "سياسة الخصوصية",
       "termsOfService": "شروط الخدمة",
       "refundPolicy": "سياسة الاسترجاع",
-      "shippingPolicy": "سياسةالشحن"
+      "shippingPolicy": "سياسة الشحن"
     },
     "help": {
       "title": "المساعدة",

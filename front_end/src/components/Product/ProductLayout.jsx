@@ -33,13 +33,12 @@ function ProductLayout({
     (state) => state.product.productData
   );
 
-  const ratings = useSelector(
-    (state) => state.product.ratings || []
-  );
+   let ratings = productData?.ratings;
 
-  const sum_stars = useSelector(
-    (state) => state.product.sum_stars || 0
-  );
+
+   let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
+         return total += value.stars
+      }, 0):""
 
   const [selectedAttributes, setSelectedAttributes] =
     useState({});
@@ -76,7 +75,7 @@ function ProductLayout({
     return null;
   }
   const isRTL = i18n.dir() === "rtl";
-
+ 
   return (
     <Section>
       <ProductGrid>
@@ -174,16 +173,16 @@ export default ProductLayout;
 const Section = styled.section`
   width: 100%;
 
-  padding: 0px 24px;
-
+  padding:20px 20px 75px;
+  
   box-sizing: border-box;
 
   @media (max-width: 900px) {
-    padding: 25px 20px 55px;
+   padding: 20px 20px 0;
   }
 
   @media (max-width: 600px) {
-    padding: 15px 12px 40px;
+    padding: 20px 20px 0;
   }
 `;
 

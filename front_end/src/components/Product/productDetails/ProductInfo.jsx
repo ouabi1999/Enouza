@@ -4,6 +4,7 @@ import StarIcon from "@mui/icons-material/Star";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import { useTranslation } from "react-i18next";
 import SideCart from "./SideCart";
+
 function ProductInfo({
   productData,
   ratings,
@@ -33,7 +34,7 @@ function ProductInfo({
 
   const stars = Array(5).fill(0);
   const skuInfo = productData?.skuInfo || [];
-
+ 
   /*
    * =========================================================
    * INITIALIZE ATTRIBUTES
@@ -102,7 +103,7 @@ function ProductInfo({
   /*
    * =========================================================
    * ATTRIBUTE SELECTION
-   * =========================================================
+   * =========================================================F
    */
 
   const selectAttribute = (attrKey, value) => {
@@ -123,10 +124,16 @@ function ProductInfo({
     productData?.name?.en ||
     "Product";
 
-  const averageRating =
-    ratings?.length > 0
-      ? (sum_stars / ratings.length).toFixed(1)
-      : "0.0";
+  const ratingList = Array.isArray(ratings) ? ratings : [];
+
+const ratingCount = ratingList.length;
+
+const averageRating =
+  ratingCount > 0
+    ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
+    : "0.0";
+
+const roundedRating = Math.round(Number(averageRating));
 
   const sellingPrice =
     currentSku?.sellingPrice > 0
@@ -140,7 +147,7 @@ function ProductInfo({
 
   const savePercentage =
     currentSku?.comparePrice > 0 &&
-    currentSku?.sellingPrice >= 0
+    currentSku?.sellingPrice > 0
       ? (
           ((currentSku.comparePrice -
             currentSku.sellingPrice) /
@@ -150,7 +157,7 @@ function ProductInfo({
       : null;
 
   return (
-    <Container>
+    <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
 
       {/* =====================================================
           PRODUCT HEADER
@@ -159,7 +166,9 @@ function ProductInfo({
       <ProductHeader>
 
         <Eyebrow>
-          {productData?.category?  t(`productInfo.${productData?.category}`) : t("footer.newsletter.eyebrow")}
+          {productData?.category
+            ? t(`productInfo.${productData.category}`)
+            : t("footer.newsletter.eyebrow")}
         </Eyebrow>
 
         <ProductTitle>
@@ -167,37 +176,41 @@ function ProductInfo({
         </ProductTitle>
 
         <RatingRow>
+  <Stars aria-label={`${averageRating} out of 5 stars`}>
+    {stars.map((_, index) => (
+      <StarIcon
+        key={index}
+        className={
+          index < roundedRating ? "active" : ""
+        }
+      />
+    ))}
+  </Stars>
 
-          <Stars>
-            {stars.map((_, index) => (
-              <StarIcon
-                key={index}
-                className={
-                  index < Math.round(Number(averageRating))
-                    ? "active"
-                    : ""
-                }
-              />
-            ))}
-          </Stars>
+  <RatingNumber>
+    {averageRating}
+  </RatingNumber>
 
-          <RatingNumber>
-            {averageRating}
-          </RatingNumber>
+  {ratingCount > 0 && (
+    <>
+      <RatingDivider />
 
-          {ratings?.length > 0 && (
-            <>
-              <RatingDivider />
-              <RatingCount>
-                {ratings.length}{" "}
-                {ratings.length === 1
-                  ? "review"
-                  : "reviews"}
-              </RatingCount>
-            </>
-          )}
-
-        </RatingRow>
+      <RatingCount>
+       
+        {ratingCount === 1
+          ? t(
+              "customer_reviews.customer_review",
+              "Customer Review"
+            )
+          : t(
+              "customer_reviews.customer_reviews",
+              "Customer Reviews"
+            )}
+             {" "}{`(${ratingCount})`} {" "}
+      </RatingCount>
+    </>
+  )}
+</RatingRow>
 
       </ProductHeader>
 
@@ -221,9 +234,8 @@ function ProductInfo({
           )}
 
           {savePercentage && (
-            <SaveBadge >
-              {t("productInfo.save")}{" "}
-              {savePercentage}%
+            <SaveBadge>
+              {t("productInfo.save")} {savePercentage}%
             </SaveBadge>
           )}
 
@@ -231,8 +243,11 @@ function ProductInfo({
 
         <PriceNote>
           <VerifiedOutlinedIcon />
+
           <span>
-            {t("productInfo.secure_purchase_premium_quality")}
+            {t(
+              "productInfo.secure_purchase_premium_quality"
+            )}
           </span>
         </PriceNote>
 
@@ -302,7 +317,9 @@ function ProductInfo({
                   }
 
                   /*
+                   * =================================================
                    * COLOR ATTRIBUTE
+                   * =================================================
                    */
 
                   if (image) {
@@ -339,16 +356,16 @@ function ProductInfo({
                           />
                         </ColorImageWrapper>
 
-                        <ColorLabel>
-                          {value}
-                        </ColorLabel>
+                       
 
                       </ColorItem>
                     );
                   }
 
                   /*
+                   * =================================================
                    * NORMAL ATTRIBUTE
+                   * =================================================
                    */
 
                   return (
@@ -390,7 +407,12 @@ function ProductInfo({
       <PurchaseInformation>
 
         <PurchaseHeading>
-          <span>Purchase information</span>
+          <span>
+            {t(
+              "productInfo.purchase_information",
+              "Purchase Information"
+            )}
+          </span>
         </PurchaseHeading>
 
         <SideCart
@@ -416,11 +438,6 @@ function ProductInfo({
         />
 
       </PurchaseInformation>
-
-
-     
-
-      
 
     </Container>
   );
@@ -460,14 +477,18 @@ const ProductHeader = styled.div`
 const Eyebrow = styled.div`
   margin-bottom: 9px;
 
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 600;
 
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
 
   color: #9b815f;
 
   text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    font-size: 0.66rem;
+  }
 `;
 
 const ProductTitle = styled.h1`
@@ -511,21 +532,31 @@ const RatingRow = styled.div`
   margin-top: 13px;
 `;
 
-const Stars = styled.div`
-  display: flex;
+
+ const Stars = styled.div`
+  display: inline-flex;
   align-items: center;
 
-  gap: 1px;
+  gap: 2px;
 
   svg {
+    display: block;
     width: 16px;
     height: 16px;
-
     color: #d8d2ca;
   }
 
   svg.active {
     color: #b59771;
+  }
+
+  @media (max-width: 600px) {
+    gap: 1px;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
   }
 `;
 
@@ -534,11 +565,17 @@ const RatingNumber = styled.span`
   font-weight: 600;
 
   color: #333;
+
+  @media (max-width: 600px) {
+    font-size: 0.72rem;
+  }
 `;
 
 const RatingDivider = styled.span`
   width: 1px;
   height: 13px;
+
+  flex: 0 0 1px;
 
   background: #d8d2ca;
 `;
@@ -546,7 +583,13 @@ const RatingDivider = styled.span`
 const RatingCount = styled.span`
   font-size: 0.72rem;
 
+  line-height: 1.4;
+
   color: #817c75;
+
+  @media (max-width: 600px) {
+    font-size: 0.7rem;
+  }
 `;
 
 
@@ -594,6 +637,10 @@ const ComparePrice = styled.span`
   color: #99928a;
 
   text-decoration: line-through;
+
+  @media (max-width: 600px) {
+    font-size: 0.82rem;
+  }
 `;
 
 const SaveBadge = styled.span`
@@ -606,12 +653,16 @@ const SaveBadge = styled.span`
 
   color: white;
 
-  font-size: 0.61rem;
+  font-size: 0.63rem;
   font-weight: 600;
+
+  line-height: 1.3;
 
   letter-spacing: 0.04em;
 
   text-transform: uppercase;
+
+  white-space: nowrap;
 `;
 
 const PriceNote = styled.div`
@@ -624,13 +675,21 @@ const PriceNote = styled.div`
 
   color: #888178;
 
-  font-size: 0.65rem;
+  font-size: 0.68rem;
+
+  line-height: 1.45;
 
   svg {
     width: 14px;
     height: 14px;
 
+    flex: 0 0 14px;
+
     color: #9b815f;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.67rem;
   }
 `;
 
@@ -646,13 +705,13 @@ const AttributesWrapper = styled.div`
 const ProductAttribute = styled.div`
   padding: 18px 0;
 
-  border-bottom: 1px solid #eee9e2;
+  
 `;
 
 const AttributeHeader = styled.div`
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  
 
   gap: 10px;
 
@@ -664,11 +723,17 @@ const AttributeTitle = styled.span`
 
   font-weight: 600;
 
+  line-height: 1.4;
+
   color: #282828;
 
   letter-spacing: 0.03em;
 
   text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    font-size: 0.72rem;
+  }
 `;
 
 const SelectedValue = styled.span`
@@ -682,7 +747,13 @@ const SelectedValue = styled.span`
 
   font-size: 0.7rem;
 
+  line-height: 1.4;
+
   color: #918980;
+
+  @media (max-width: 600px) {
+    font-size: 0.68rem;
+  }
 `;
 
 const AttributeValues = styled.div`
@@ -724,6 +795,8 @@ const AttributeButton = styled.button`
 
   font-size: 0.72rem;
 
+  line-height: 1.3;
+
   cursor:
     ${({ disabled }) =>
       disabled ? "not-allowed" : "pointer"};
@@ -739,6 +812,11 @@ const AttributeButton = styled.button`
 
   &:hover:not(:disabled) {
     border-color: #9b815f;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #9b815f;
+    outline-offset: 3px;
   }
 `;
 
@@ -772,6 +850,11 @@ const ColorItem = styled.button`
 
   transition:
     opacity 180ms ease;
+
+  &:focus-visible {
+    outline: 1px solid #9b815f;
+    outline-offset: 3px;
+  }
 `;
 
 const ColorImageWrapper = styled.div`
@@ -808,6 +891,8 @@ const ColorImageWrapper = styled.div`
         $active
           ? "1px solid #9b815f"
           : "1px solid transparent"};
+
+    pointer-events: none;
   }
 `;
 
@@ -829,9 +914,15 @@ const ColorLabel = styled.span`
 
   white-space: nowrap;
 
-  font-size: 0.63rem;
+  font-size: 0.66rem;
+
+  line-height: 1.35;
 
   color: #5d5852;
+
+  @media (max-width: 600px) {
+    font-size: 0.64rem;
+  }
 `;
 
 
@@ -856,11 +947,13 @@ const PurchaseHeading = styled.div`
 
   color: #262626;
 
-  font-size: 0.69rem;
+  font-size: 0.72rem;
 
   font-weight: 600;
 
-  letter-spacing: 0.15em;
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
 
   text-transform: uppercase;
 
@@ -873,50 +966,10 @@ const PurchaseHeading = styled.div`
 
     background: #e8e1d8;
   }
-`;
 
+  @media (max-width: 600px) {
+    font-size: 0.68rem;
 
-/* =========================================================
-   SECURE CHECKOUT
-========================================================= */
-
-
-const SecureHeader = styled.div`
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 5px;
-
-  margin-bottom: 9px;
-
-  color: #858078;
-
-  font-size: 0.63rem;
-
-  letter-spacing: 0.05em;
-
-  text-transform: uppercase;
-
-  svg {
-    width: 14px;
-    height: 14px;
-
-    color: #9b815f;
+    letter-spacing: 0.11em;
   }
-`;
-
-const SecureImage = styled.img`
-  display: block;
-
-  width: 100%;
-
-  max-width: 400px;
-
-  height: auto;
-
-  margin: 0 auto;
-
-  opacity: 0.9;
 `;

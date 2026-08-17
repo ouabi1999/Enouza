@@ -183,7 +183,7 @@ const Footer = () => {
             BOTTOM BAR
         ===================================================== */}
 
-        <BottomBar>
+        <BottomBar dir="ltr">
 
           <Copyright>
             © {new Date().getFullYear()} Enouza.{" "}
@@ -739,7 +739,7 @@ const SecureText = styled.div`
 
   color: #99948b;
 
-  font-size: 9px;
+  font-size: 11px;
 
   letter-spacing: 0.08em;
 

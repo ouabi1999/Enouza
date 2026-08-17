@@ -1,111 +1,161 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Description from './Description'
-import Specifications from './Specifications'
-import ReviewsLayout from './reviews/ReviewsLayout'
-import { useTranslation } from 'react-i18next'
-import zIndex from '@mui/material/styles/zIndex'
-
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import Description from "./Description";
+import ReviewsLayout from "./reviews/ReviewsLayout";
+import { useTranslation } from "react-i18next";
 
 function AboutProductLayout() {
-   const [isOpen, setIsOpen] = useState(1)
-   const {t, i18n} = useTranslation();
-   
+  const [isOpen, setIsOpen] = useState(1);
+  const { t, i18n } = useTranslation();
+
   return (
-    <Container>
-      <div className="buttons-container" style={{position:"sticky", top:"60px", backgroundColor:"#ffff", padding:"20px 0",zIndex:1 }}>
-        <button onClick={() => setIsOpen(1)} id={isOpen == 1 ? "selected" : undefined}>
-          
-          {t("productInfo.CostumerReviews")}
-        </button>
-        {/*
-        <button onClick={() => setIsOpen(2)} id={isOpen == 2 && "selected"}>
-         
-           {t("productInfo.specifications")}
-        </button>
-        
-        */}
+    <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+      <TabsWrapper>
+        <Tabs>
+          <Tab
+            type="button"
+            $active={isOpen === 1}
+            onClick={() => setIsOpen(1)}
+          >
+            {t("productInfo.CostumerReviews")}
+          </Tab>
 
-        <button onClick={() => setIsOpen(3)} id={isOpen == 3 ? "selected": undefined}>
-          
-          {t("productInfo.description")}
-        </button>
-      </div>
-      <div>
+          <Tab
+            type="button"
+            $active={isOpen === 3}
+            onClick={() => setIsOpen(3)}
+          >
+            {t("productInfo.description")}
+          </Tab>
+        </Tabs>
+      </TabsWrapper>
 
-        {isOpen == 1 && <ReviewsLayout />}
-        {/*{isOpen == 2 && <Specifications />}*/}
-        {isOpen == 3 &&<Description />}
-      
-      </div>
+      <Content>
+        {isOpen === 1 && <ReviewsLayout />}
+        {isOpen === 3 && <Description />}
+      </Content>
     </Container>
   );
 }
 
-export default AboutProductLayout
-const Container = styled.div`
-   width:90%;
-   padding:0 20px;
-  #selected {
-    border-bottom: 2px solid #fece8b;
-    animation-name: border-movement;
-    animation-duration: 0.1s;
-    
-  }
-  @keyframes border-movement {
-    0% {
-      border-width: 0;
-      border-color:green;
-    }
-    25% {
-      border-width: 1px;
-      border-color:greenyellow;
-    }
+export default AboutProductLayout;
 
-    
-    100% {
-      border-width: 2px;
-      border-color:orangered;
-    }
-  }
-  .buttons-container {
-    margin-bottom: 20px;
-    display:flex;
-    flex-wrap:nowrap;
-    gap:30px;
-  }
-  .buttons-container button {
-    border: none;
-    background: none;
-    font-family:roboto sant serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    white-space:nowrap;
-    margin-bottom:2px;
-    cursor: pointer;
-    padding:4px 0;
+const Container = styled.section`
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+`;
 
-  }
-  .buttons-container button:hover {
-     color:gray;
-  }
-  @media only screen and (max-width: 550px) {
+const TabsWrapper = styled.div`
+  position: sticky;
+  top: 60px;
+  z-index: 50;
 
-      .buttons-container button {
-      font-size: 1.2rem;
-     
-    }
-    &{
-      margin:auto;
-       width:90%;
-    }
+  width: 100%;
+
+  padding: 20px 0;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid #eee9e2;
+
+  @media (max-width: 700px) {
+    top: 55px;
+    padding: 16px 0;
   }
-  @media only screen and (max-width: 400px) {
+`;
 
-.buttons-container button {
-font-size: 1rem;
+const Tabs = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-}
-}
+  gap: clamp(28px, 5vw, 70px);
+
+  width: 100%;
+
+  @media (max-width: 500px) {
+    gap: 24px;
+  }
+`;
+
+const Tab = styled.button`
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 0;
+
+  border: none;
+  background: transparent;
+
+  color: ${({ $active }) =>
+    $active ? "#211e1a" : "#8b8278"};
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: ${({ $active }) => ($active ? 500 : 400)};
+
+  line-height: 1.2;
+
+  letter-spacing: 0.015em;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 220ms ease,
+    opacity 220ms ease;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 1px;
+
+    background: #a88a62;
+
+    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
+    transform-origin: center;
+
+    transition: transform 280ms
+      cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover {
+    color: #211e1a;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #a88a62;
+    outline-offset: 6px;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 17px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 15px;
+  }
+`;
+
+const Content = styled.div`
+  width: 100%;
+  padding-top: 10px;
 `;

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import { createPortal } from "react-dom";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 function MainImages({
   colorIndex,
@@ -15,6 +17,8 @@ function MainImages({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const images =
     productData?.multimediaInfo?.image_urls
@@ -67,13 +71,13 @@ function MainImages({
   ========================================================= */
 
   const handleImageSelect = (index) => {
-    if (isColorActive) return;
+  setImageLoaded(false);
+  setImageError(false);
 
-    setImageLoaded(false);
-    setImageError(false);
-
-    selectPicsDetails(index);
-  };
+  // Selecting a product image should take priority
+  // over the currently selected color image.
+  selectPicsDetails(index);
+};
 
   /* =========================================================
      NEXT IMAGE
@@ -83,7 +87,9 @@ function MainImages({
     if (isColorActive || images.length <= 1) return;
 
     const nextIndex =
-      currentIndex >= images.length - 1 ? 0 : currentIndex + 1;
+      currentIndex >= images.length - 1
+        ? 0
+        : currentIndex + 1;
 
     handleImageSelect(nextIndex);
   };
@@ -96,7 +102,9 @@ function MainImages({
     if (isColorActive || images.length <= 1) return;
 
     const previousIndex =
-      currentIndex <= 0 ? images.length - 1 : currentIndex - 1;
+      currentIndex <= 0
+        ? images.length - 1
+        : currentIndex - 1;
 
     handleImageSelect(previousIndex);
   };
@@ -109,6 +117,7 @@ function MainImages({
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setIsFullscreen(false);
+        return;
       }
 
       if (!isFullscreen) return;
@@ -127,7 +136,12 @@ function MainImages({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isFullscreen, currentIndex, isColorActive]);
+  }, [
+    isFullscreen,
+    currentIndex,
+    isColorActive,
+    images.length,
+  ]);
 
   /* =========================================================
      BODY SCROLL LOCK
@@ -153,7 +167,9 @@ function MainImages({
     <ImageFallback>
       <FallbackBrand>ENOUZA</FallbackBrand>
 
-      <FallbackText>Image unavailable</FallbackText>
+      <FallbackText>
+        Image unavailable
+      </FallbackText>
     </ImageFallback>
   );
 
@@ -167,29 +183,44 @@ function MainImages({
           ================================================= */}
 
           <EditorialSide>
-            <VerticalBrand>ENOUZA</VerticalBrand>
+            <VerticalBrand>
+              ENOUZA
+            </VerticalBrand>
 
             {images.length > 1 && (
               <ImageDetailsContainer>
                 {images.map((img, index) => {
                   const isActive =
-                    !isColorActive && currentIndex === index;
+                    !isColorActive &&
+                    currentIndex === index;
 
                   return (
                     <ThumbnailButton
                       key={`${img}-${index}`}
                       type="button"
                       $active={isActive}
-                      onClick={() => handleImageSelect(index)}
-                      aria-label={`View product image ${index + 1}`}
+                      onClick={() =>
+                        handleImageSelect(index)
+                      }
+                      aria-label={`View product image ${
+                        index + 1
+                      }`}
                       aria-current={
-                        isActive ? "true" : undefined
+                        isActive
+                          ? "true"
+                          : undefined
                       }
                     >
                       <Thumbnail
                         src={img}
-                        alt={`${productName} ${index + 1}`}
-                        loading={index === 0 ? "eager" : "lazy"}
+                        alt={`${productName} ${
+                          index + 1
+                        }`}
+                        loading={
+                          index === 0
+                            ? "eager"
+                            : "lazy"
+                        }
                       />
                     </ThumbnailButton>
                   );
@@ -206,18 +237,19 @@ function MainImages({
 
             <ImageHeader>
               <CollectionLabel>
-                ENOUZA COLLECTION
+                {t("footer.newsletter.eyebrow")}
               </CollectionLabel>
 
               <ImageNumber>
-                {String(currentIndex + 1).padStart(2, "0")}
+                {String(
+                  currentIndex + 1
+                ).padStart(2, "0")}
 
                 <NumberDivider />
 
-                {String(Math.max(images.length, 1)).padStart(
-                  2,
-                  "0"
-                )}
+                {String(
+                  Math.max(images.length, 1)
+                ).padStart(2, "0")}
               </ImageNumber>
             </ImageHeader>
 
@@ -241,7 +273,12 @@ function MainImages({
                     }}
                     transition={{
                       duration: 0.5,
-                      ease: [0.22, 1, 0.36, 1],
+                      ease: [
+                        0.22,
+                        1,
+                        0.36,
+                        1,
+                      ],
                     }}
                     style={{
                       width: "100%",
@@ -251,15 +288,21 @@ function MainImages({
                       justifyContent: "center",
                     }}
                   >
-                    {!imageLoaded && <ImageLoading />}
+                    {!imageLoaded && (
+                      <ImageLoading />
+                    )}
 
                     <MainImage
                       src={selectedImage}
                       alt={productName}
                       draggable={false}
                       $loaded={imageLoaded}
-                      onLoad={() => setImageLoaded(true)}
-                      onError={() => setImageError(true)}
+                      onLoad={() =>
+                        setImageLoaded(true)
+                      }
+                      onError={() =>
+                        setImageError(true)
+                      }
                     />
                   </motion.div>
                 ) : (
@@ -271,42 +314,56 @@ function MainImages({
                   DESKTOP NAVIGATION
               ================================================= */}
 
-              {images.length > 1 && !isColorActive && (
-                <>
-                  <NavigationButton
-                    $position="left"
-                    type="button"
-                    onClick={handlePrevious}
-                    aria-label="Previous product image"
-                  >
-                    <ArrowIcon>←</ArrowIcon>
-                  </NavigationButton>
+              {images.length > 1 &&
+                !isColorActive && (
+                  <>
+                    <NavigationButton
+                      $position="left"
+                      type="button"
+                      onClick={handlePrevious}
+                      aria-label="Previous product image"
+                    >
+                      <ArrowIcon>
+                        ←
+                      </ArrowIcon>
+                    </NavigationButton>
 
-                  <NavigationButton
-                    $position="right"
-                    type="button"
-                    onClick={handleNext}
-                    aria-label="Next product image"
-                  >
-                    <ArrowIcon>→</ArrowIcon>
-                  </NavigationButton>
-                </>
-              )}
+                    <NavigationButton
+                      $position="right"
+                      type="button"
+                      onClick={handleNext}
+                      aria-label="Next product image"
+                    >
+                      <ArrowIcon>
+                        →
+                      </ArrowIcon>
+                    </NavigationButton>
+                  </>
+                )}
 
               {/* =================================================
-                  FULLSCREEN
+                  FULLSCREEN BUTTON
               ================================================= */}
 
               {selectedImage && !imageError && (
                 <FullscreenButton
                   type="button"
-                  onClick={() => setIsFullscreen(true)}
+                  onClick={() =>
+                    setIsFullscreen(true)
+                  }
                   aria-label="View image fullscreen"
                 >
-                  <FullscreenIcon>↗</FullscreenIcon>
+                  <FullscreenIcon>
+                    ↗
+                  </FullscreenIcon>
 
                   <FullscreenText>
-                    VIEW FULL IMAGE
+                    <span>
+                      {t(
+                        "productInfo.view_full_image",
+                        "VIEW FULL IMAGE"
+                      )}
+                    </span>
                   </FullscreenText>
                 </FullscreenButton>
               )}
@@ -318,114 +375,155 @@ function MainImages({
               {images.length > 1 && (
                 <ProgressWrapper>
                   <ProgressNumber>
-                    {String(currentIndex + 1).padStart(2, "0")}
+                    {String(
+                      currentIndex + 1
+                    ).padStart(2, "0")}
                   </ProgressNumber>
 
                   <ProgressTrack>
                     <ProgressBar
                       $progress={
-                        ((currentIndex + 1) / images.length) * 100
+                        ((currentIndex + 1) /
+                          images.length) *
+                        100
                       }
                     />
                   </ProgressTrack>
 
                   <ProgressNumber>
-                    {String(images.length).padStart(2, "0")}
+                    {String(
+                      images.length
+                    ).padStart(2, "0")}
                   </ProgressNumber>
                 </ProgressWrapper>
               )}
-            </ImageStage>
 
+            </ImageStage>
           </ProductImg>
         </Gallery>
       </Container>
 
       {/* =====================================================
           FULLSCREEN GALLERY
+          RENDERED DIRECTLY INTO BODY
       ===================================================== */}
 
-      <AnimatePresence>
-        {isFullscreen && selectedImage && (
-          <FullscreenOverlay
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.35,
-            }}
-          >
-
-            <FullscreenTop>
-              <FullscreenCollection>
-                ENOUZA COLLECTION
-              </FullscreenCollection>
-
-              <CloseButton
-                type="button"
-                onClick={() => setIsFullscreen(false)}
-                aria-label="Close fullscreen gallery"
+      {createPortal(
+        <AnimatePresence>
+          {isFullscreen &&
+            selectedImage && (
+              <FullscreenOverlay
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.35,
+                }}
               >
-                ×
-              </CloseButton>
-            </FullscreenTop>
 
-            <FullscreenContent>
+                {/* =================================================
+                    FULLSCREEN TOP
+                ================================================= */}
 
-              {!imageError ? (
-                <FullscreenImage
-                  src={selectedImage}
-                  alt={productName}
-                  draggable={false}
-                />
-              ) : (
-                <FullscreenFallback>
-                  {renderFallback()}
-                </FullscreenFallback>
-              )}
+                <FullscreenTop>
+                  <FullscreenCollection>
+                    {t(
+                      "footer.newsletter.eyebrow"
+                    )}
+                  </FullscreenCollection>
 
-              {images.length > 1 && !isColorActive && (
-                <>
-                  <FullscreenNavigation
-                    $position="left"
+                  <CloseButton
                     type="button"
-                    onClick={handlePrevious}
-                    aria-label="Previous image"
+                    onClick={() =>
+                      setIsFullscreen(false)
+                    }
+                    aria-label="Close fullscreen gallery"
                   >
-                    ←
-                  </FullscreenNavigation>
+                    ×
+                  </CloseButton>
+                </FullscreenTop>
 
-                  <FullscreenNavigation
-                    $position="right"
-                    type="button"
-                    onClick={handleNext}
-                    aria-label="Next image"
-                  >
-                    →
-                  </FullscreenNavigation>
-                </>
-              )}
-            </FullscreenContent>
+                {/* =================================================
+                    FULLSCREEN CONTENT
+                ================================================= */}
 
-            <FullscreenBottom>
-              <FullscreenCounter>
-                {String(currentIndex + 1).padStart(2, "0")}
+                <FullscreenContent>
 
-                <span>/</span>
+                  {!imageError ? (
+                    <FullscreenImage
+                      src={selectedImage}
+                      alt={productName}
+                      draggable={false}
+                    />
+                  ) : (
+                    <FullscreenFallback>
+                      {renderFallback()}
+                    </FullscreenFallback>
+                  )}
 
-                {String(Math.max(images.length, 1)).padStart(
-                  2,
-                  "0"
-                )}
-              </FullscreenCounter>
+                  {images.length > 1 &&
+                    !isColorActive && (
+                      <>
+                        <FullscreenNavigation
+                          $position="left"
+                          type="button"
+                          onClick={
+                            handlePrevious
+                          }
+                          aria-label="Previous image"
+                        >
+                          ←
+                        </FullscreenNavigation>
 
-              <FullscreenHint>
-                USE ← → TO NAVIGATE
-              </FullscreenHint>
-            </FullscreenBottom>
+                        <FullscreenNavigation
+                          $position="right"
+                          type="button"
+                          onClick={handleNext}
+                          aria-label="Next image"
+                        >
+                          →
+                        </FullscreenNavigation>
+                      </>
+                    )}
 
-          </FullscreenOverlay>
-        )}
-      </AnimatePresence>
+                </FullscreenContent>
+
+                {/* =================================================
+                    FULLSCREEN BOTTOM
+                ================================================= */}
+
+                <FullscreenBottom>
+                  <FullscreenCounter>
+                    {String(
+                      currentIndex + 1
+                    ).padStart(2, "0")}
+
+                    <span>/</span>
+
+                    {String(
+                      Math.max(
+                        images.length,
+                        1
+                      )
+                    ).padStart(2, "0")}
+                  </FullscreenCounter>
+
+                  <FullscreenHint>
+                    USE ← → TO NAVIGATE
+                  </FullscreenHint>
+                </FullscreenBottom>
+
+              </FullscreenOverlay>
+            )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }
@@ -448,19 +546,14 @@ const Container = styled.div`
 
 const Gallery = styled.div`
   width: 100%;
-
   display: grid;
-
   grid-template-columns: 78px minmax(0, 1fr);
-
   gap: 22px;
-
   align-items: start;
 
   @media (max-width: 700px) {
     display: flex;
     flex-direction: column;
-
     gap: 18px;
   }
 `;
@@ -471,25 +564,17 @@ const Gallery = styled.div`
 
 const EditorialSide = styled.div`
   width: 78px;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   gap: 26px;
 
   @media (max-width: 700px) {
     width: 100%;
-
     flex-direction: row;
-
     align-items: center;
-
     gap: 16px;
-
     padding: 0 2px;
-
     box-sizing: border-box;
   }
 `;
@@ -500,32 +585,22 @@ const EditorialSide = styled.div`
 
 const VerticalBrand = styled.div`
   writing-mode: vertical-rl;
-
   transform: rotate(180deg);
 
   color: #9c815f;
-
   font-size: 8px;
-
   font-weight: 500;
-
   letter-spacing: 0.38em;
-
   line-height: 1;
 
   user-select: none;
 
   @media (max-width: 700px) {
     writing-mode: initial;
-
     transform: none;
-
     flex: 0 0 auto;
-
     font-size: 8px;
-
     letter-spacing: 0.28em;
-
     padding-left: 2px;
   }
 `;
@@ -538,9 +613,7 @@ const ImageDetailsContainer = styled.div`
   width: 100%;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 
   gap: 12px;
@@ -548,11 +621,9 @@ const ImageDetailsContainer = styled.div`
   max-height: 590px;
 
   overflow-y: auto;
-
   overflow-x: hidden;
 
   padding: 3px;
-
   box-sizing: border-box;
 
   scrollbar-width: none;
@@ -563,23 +634,17 @@ const ImageDetailsContainer = styled.div`
 
   @media (max-width: 700px) {
     width: auto;
-
     flex: 1;
-
     min-width: 0;
-
     max-width: calc(100vw - 68px);
 
     flex-direction: row;
-
     align-items: center;
-
     justify-content: flex-start;
 
     gap: 9px;
 
     overflow-x: auto;
-
     overflow-y: hidden;
 
     padding: 3px 3px 8px;
@@ -624,28 +689,23 @@ const ThumbnailButton = styled.button`
 
   &:hover {
     opacity: 1;
-
     border-color: #9c815f;
-
     transform: translateY(-2px);
   }
 
   &:focus-visible {
     outline: 1px solid #9c815f;
-
     outline-offset: 3px;
   }
 
   @media (max-width: 700px) {
     flex: 0 0 58px;
-
     width: 58px;
     height: 58px;
   }
 
   @media (max-width: 380px) {
     flex-basis: 54px;
-
     width: 54px;
     height: 54px;
   }
@@ -674,7 +734,6 @@ const ProductImg = styled.div`
   position: relative;
 
   width: 100%;
-
   min-width: 0;
 `;
 
@@ -686,30 +745,25 @@ const ImageHeader = styled.div`
   position: absolute;
 
   top: 18px;
-
   left: 24px;
   right: 24px;
 
   z-index: 5;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   pointer-events: none;
 
   @media (max-width: 700px) {
     top: 18px;
-
     left: 20px;
     right: 20px;
   }
 
   @media (max-width: 480px) {
     top: 17px;
-
     left: 18px;
     right: 18px;
   }
@@ -721,18 +775,13 @@ const ImageHeader = styled.div`
 
 const CollectionLabel = styled.span`
   font-size: 8px;
-
   font-weight: 500;
-
   letter-spacing: 0.22em;
-
   color: #81786f;
-
   text-transform: uppercase;
 
   @media (max-width: 480px) {
     font-size: 7px;
-
     letter-spacing: 0.18em;
   }
 `;
@@ -743,20 +792,16 @@ const CollectionLabel = styled.span`
 
 const ImageNumber = styled.span`
   display: flex;
-
   align-items: center;
 
   gap: 7px;
 
   font-size: 8px;
-
   letter-spacing: 0.12em;
-
   color: #81786f;
 
   @media (max-width: 480px) {
     font-size: 7px;
-
     gap: 6px;
   }
 `;
@@ -767,7 +812,6 @@ const ImageNumber = styled.span`
 
 const NumberDivider = styled.span`
   width: 18px;
-
   height: 1px;
 
   background: #c8c0b6;
@@ -789,9 +833,7 @@ const ImageStage = styled.div`
   aspect-ratio: 1 / 1.04;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   overflow: hidden;
@@ -807,31 +849,22 @@ const ImageStage = styled.div`
     );
 
   @media (max-width: 700px) {
-    /*
-      More vertical breathing room on mobile.
-      This prevents the UI text from visually
-      touching the product.
-    */
     aspect-ratio: 0.94 / 1;
-
     min-height: 360px;
   }
 
   @media (max-width: 600px) {
     aspect-ratio: 0.92 / 1;
-
     min-height: 340px;
   }
 
   @media (max-width: 480px) {
     aspect-ratio: 0.9 / 1;
-
     min-height: 325px;
   }
 
   @media (max-width: 380px) {
     aspect-ratio: 0.88 / 1;
-
     min-height: 310px;
   }
 `;
@@ -860,7 +893,6 @@ const MainImage = styled.img`
   box-sizing: border-box;
 
   user-select: none;
-
   -webkit-user-drag: none;
 
   opacity: ${({ $loaded }) =>
@@ -881,10 +913,6 @@ const MainImage = styled.img`
   }
 
   @media (max-width: 700px) {
-    /*
-      Increased padding keeps the actual product
-      comfortably away from all UI elements.
-    */
     padding: 54px 38px 62px;
   }
 
@@ -957,7 +985,6 @@ const NavigationButton = styled.button`
   height: 42px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -1003,9 +1030,7 @@ const NavigationButton = styled.button`
 
 const ArrowIcon = styled.span`
   font-size: 16px;
-
   font-weight: 300;
-
   line-height: 1;
 `;
 
@@ -1017,13 +1042,11 @@ const FullscreenButton = styled.button`
   position: absolute;
 
   left: 20px;
-
   bottom: 20px;
 
   z-index: 4;
 
   display: flex;
-
   align-items: center;
 
   gap: 8px;
@@ -1049,7 +1072,6 @@ const FullscreenButton = styled.button`
 
   ${ImageStage}:hover & {
     opacity: 1;
-
     transform: translateY(0);
   }
 
@@ -1059,11 +1081,9 @@ const FullscreenButton = styled.button`
 
   @media (max-width: 700px) {
     left: 18px;
-
     bottom: 20px;
 
     opacity: 1;
-
     transform: none;
 
     padding: 9px 0;
@@ -1071,7 +1091,6 @@ const FullscreenButton = styled.button`
 
   @media (max-width: 480px) {
     left: 16px;
-
     bottom: 19px;
   }
 `;
@@ -1082,7 +1101,6 @@ const FullscreenButton = styled.button`
 
 const FullscreenIcon = styled.span`
   font-size: 14px;
-
   line-height: 1;
 
   @media (max-width: 480px) {
@@ -1096,14 +1114,11 @@ const FullscreenIcon = styled.span`
 
 const FullscreenText = styled.span`
   font-size: 8px;
-
   font-weight: 500;
-
   letter-spacing: 0.16em;
 
   @media (max-width: 480px) {
     font-size: 7px;
-
     letter-spacing: 0.13em;
   }
 `;
@@ -1116,30 +1131,24 @@ const ProgressWrapper = styled.div`
   position: absolute;
 
   right: 20px;
-
   bottom: 22px;
 
   z-index: 4;
 
   display: flex;
-
   align-items: center;
 
   gap: 8px;
 
   @media (max-width: 700px) {
     right: 18px;
-
     bottom: 21px;
-
     gap: 7px;
   }
 
   @media (max-width: 480px) {
     right: 16px;
-
     bottom: 20px;
-
     gap: 6px;
   }
 `;
@@ -1168,7 +1177,6 @@ const ProgressTrack = styled.div`
   position: relative;
 
   width: 46px;
-
   height: 1px;
 
   background: #d4cec5;
@@ -1216,7 +1224,6 @@ const ImageFallback = styled.div`
   height: 100%;
 
   display: flex;
-
   flex-direction: column;
 
   align-items: center;
@@ -1255,17 +1262,17 @@ const FallbackText = styled.span`
    FULLSCREEN OVERLAY
 ========================================================= */
 
-const FullscreenOverlay = styled(
-  motion.div
-)`
+const FullscreenOverlay = styled(motion.div)`
   position: fixed;
 
   inset: 0;
 
-  z-index: 9999;
+  z-index: 2147483647;
+
+  width: 100vw;
+  height: 100vh;
 
   display: flex;
-
   flex-direction: column;
 
   background: #171614;
@@ -1302,13 +1309,11 @@ const FullscreenTop = styled.div`
 
   @media (max-width: 700px) {
     height: 70px;
-
     padding: 0 22px;
   }
 
   @media (max-width: 480px) {
     height: 64px;
-
     padding: 0 18px;
   }
 `;
@@ -1326,7 +1331,6 @@ const FullscreenCollection = styled.span`
 
   @media (max-width: 480px) {
     font-size: 7px;
-
     letter-spacing: 0.22em;
   }
 `;
@@ -1352,7 +1356,6 @@ const CloseButton = styled.button`
   color: #f4f0e9;
 
   font-size: 24px;
-
   font-weight: 200;
 
   cursor: pointer;
@@ -1372,7 +1375,6 @@ const CloseButton = styled.button`
   @media (max-width: 480px) {
     width: 36px;
     height: 36px;
-
     font-size: 22px;
   }
 `;
@@ -1429,7 +1431,6 @@ const FullscreenImage = styled.img`
 
 const FullscreenFallback = styled.div`
   width: min(800px, 90vw);
-
   height: min(800px, 80vh);
 `;
 
@@ -1526,13 +1527,11 @@ const FullscreenBottom = styled.div`
 
   @media (max-width: 700px) {
     height: 64px;
-
     padding: 0 22px;
   }
 
   @media (max-width: 480px) {
     height: 56px;
-
     padding: 0 18px;
   }
 `;
@@ -1560,7 +1559,6 @@ const FullscreenCounter = styled.span`
 
   @media (max-width: 480px) {
     font-size: 8px;
-
     gap: 6px;
   }
 `;

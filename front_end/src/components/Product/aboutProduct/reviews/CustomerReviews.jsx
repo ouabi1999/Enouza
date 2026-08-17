@@ -89,19 +89,6 @@ function CustomerReviews(props) {
 
   return (
     <Container>
-      <Ratings
-        t={t}
-        i18n={i18n}
-        fiveStars={fiveStars}
-        twoStars={twoStars}
-        fourStars={fourStars}
-        threeStars={threeStars}
-        oneStar={oneStar}
-        productData={productData}
-        sum_stars={sum_stars}
-        ratings={ratings}
-        newRatings={newRatings}
-      />
 
       <ReviewsHeader>
         <HeaderRule />
@@ -136,7 +123,7 @@ function CustomerReviews(props) {
 
                   <IdentityInfo>
                     <CustomerName>
-                      {rate.user?.firstName + " " + rate.user?.firstName.slice(0, 1)}.
+                      {rate.user?.firstName + " " + rate.user?.lastName.slice(0, 1)}.
                     </CustomerName>
 
                     <VerifiedLabel>

@@ -187,9 +187,12 @@
       "enouza_review": "ENOUZA REVIEW",
       "description": "Product Description",
       "customer_rating": "Customer Rating",
-      "customer_reviews": "Customer Reviews"
+      "customer_reviews": "Customer Reviews",
+       "customer_review": "Customer Review"
     },
   "productInfo": {
+    "view_full_image": "VIEW FULL IMAGE",
+    "purchase_information": "Purchase information",
     "secure_purchase_premium_quality": "Secure purchase & premium quality",
     "save":"save",
     "Lampshade Color": "Lampshade Color",

@@ -1,71 +1,144 @@
-import React, { Component } from 'react'
-import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/react";
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
+const Spinner = () => {
+  return (
+    <SpinnerOverlay>
+      <LuxurySpinner>
+        <SpinnerRing />
+        <SpinnerInner />
+        <SpinnerDot />
+      </LuxurySpinner>
+    </SpinnerOverlay>
+  );
+};
 
-export class Spinner extends Component {
-  render() {
-    return (
-    <SpinnerWrapp >
-        <div className='lds-ring'>
-        <div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-        </div>
-      
-    </SpinnerWrapp>
-    )
-  }
-}
+export default Spinner;
 
-export default Spinner
+/* =========================================================
+   FULL PAGE LOADER
+========================================================= */
 
+const SpinnerOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
 
-const SpinnerWrapp = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100%;
-    
-.lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 45px;
-    height: 45px;
-  }
-  .lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    margin: 8px;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: blue transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
-    0% {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(250, 248, 244, 0.96);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  box-sizing: border-box;
+`;
+
+/* =========================================================
+   LUXURY SPINNER
+========================================================= */
+
+const LuxurySpinner = styled.div`
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+/* =========================================================
+   OUTER RING
+========================================================= */
+
+const SpinnerRing = styled.div`
+  position: absolute;
+  inset: 0;
+
+  border-radius: 50%;
+
+  border: 1px solid #ded7ce;
+
+  border-top-color: #9b815f;
+  border-right-color: #9b815f;
+
+  animation: luxurySpin 1.15s
+    cubic-bezier(0.65, 0, 0.35, 1)
+    infinite;
+
+  @keyframes luxurySpin {
+    from {
       transform: rotate(0deg);
     }
-    100% {
+
+    to {
       transform: rotate(360deg);
     }
   }
-  
+`;
 
-`
+/* =========================================================
+   INNER RING
+========================================================= */
+
+const SpinnerInner = styled.div`
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  border: 1px solid #e8e2da;
+
+  border-bottom-color: #b59771;
+
+  animation: luxuryReverseSpin 1.8s
+    cubic-bezier(0.65, 0, 0.35, 1)
+    infinite;
+
+  @keyframes luxuryReverseSpin {
+    from {
+      transform: rotate(360deg);
+    }
+
+    to {
+      transform: rotate(0deg);
+    }
+  }
+`;
+
+/* =========================================================
+   CENTER DETAIL
+========================================================= */
+
+const SpinnerDot = styled.div`
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #9b815f;
+
+  animation: luxuryPulse 1.4s ease-in-out infinite;
+
+  @keyframes luxuryPulse {
+    0%,
+    100% {
+      transform: scale(0.7);
+      opacity: 0.45;
+    }
+
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;

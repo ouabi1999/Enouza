@@ -187,9 +187,12 @@
       "enouza_review": "Reseña de ENOUZA",
       "description": "Descripción del producto",
       "customer_rating": "Valoración de los clientes",
-      "customer_reviews": "Opiniones de los clientes"
+      "customer_reviews": "Opiniones de los clientes",
+      "customer_review": "Reseña del cliente"
     },
   "productInfo": {
+    "view_full_image": "VER IMAGEN COMPLETA",
+    "purchase_information": "Información de compra",
     "secure_purchase_premium_quality": "Compra segura y calidad premium",
     "save": "ahorrar",
     "Lampshade Color":"Color de la pantalla",

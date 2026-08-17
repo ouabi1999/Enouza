@@ -4,7 +4,8 @@ import Feedback from './FeedBack'
 import { useSelector } from 'react-redux'
 import ApiInstance from '../../../../../common/baseUrl'
 import { useTranslation } from 'react-i18next'
-
+import styled from 'styled-components'
+import Ratings from './Ratings'
 
 function ReviewsLayout() {
   const productData = useSelector(state => state.product.productData)
@@ -53,11 +54,17 @@ function ReviewsLayout() {
         
         event.preventDefault()
         setIsLoading(true)
-        ApiInstance.post("set-rating/", 
+        ApiInstance.post("ratings/", 
             
             {
                 product: productData.id,
-                user: user.id,
+                user: {
+                      "id":user.id,
+                     "firstName": user.firstName, 
+                     "lastName": user.lastName,
+                      "country": user.country,
+                      "countryCode": user.countryCode
+                },
                 stars: star_rating,
                 review: comment,
   
@@ -83,7 +90,18 @@ function ReviewsLayout() {
   
     
   return (
-    <div>
+    <Container>
+      <Ratings fiveStars={fiveStars}
+             twoStars={twoStars}
+             fourStars={fourStars}
+             threeStars={threeStars}
+             oneStar={oneStar}
+             productData={productData}
+             sum_stars={sum_stars}
+             ratings= {ratings}
+             newRatings = {newRatings}
+             t = {t}
+             i18n = {i18n}/>
         <CustomerReviews 
              fiveStars={fiveStars}
              twoStars={twoStars}
@@ -113,8 +131,24 @@ function ReviewsLayout() {
              t = {t}
              i18n = {i18n}
         />
-    </div>
+    </Container>
   )
 }
 
 export default ReviewsLayout
+const Container = styled.div`
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 28px 80px;
+  box-sizing: border-box;
+  color: #29251f;
+
+  @media (max-width: 768px) {
+    padding: 52px 20px 60px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 42px 16px 50px;
+  }
+`

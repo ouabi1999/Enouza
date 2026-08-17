@@ -70,8 +70,7 @@ function Ratings({
           <ReviewCount>
             {totalReviews}{" "}
             {t(
-              "productInfo.customer_reviews",
-              totalReviews === 1 ? "customer review" : "customer reviews"
+             totalReviews === 1 ? "customer_reviews.customer_review" :  "customer_reviews.customer_reviews"
             )}
           </ReviewCount>
 
@@ -240,18 +239,23 @@ const Breakdown = styled.div`
 
 const RatingRow = styled.div`
   display: grid;
-  grid-template-columns: 72px minmax(100px, 1fr) 44px;
+  grid-template-columns: max-content minmax(120px, 1fr) 36px;
   align-items: center;
-  gap: 16px;
-  min-height: 32px;
+  gap: 12px;
+  min-height: 30px;
 
   &:not(:last-child) {
-    margin-bottom: 7px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: max-content minmax(100px, 1fr) 36px;
+    gap: 10px;
   }
 
   @media (max-width: 420px) {
-    grid-template-columns: 62px minmax(70px, 1fr) 40px;
-    gap: 10px;
+    grid-template-columns: max-content minmax(70px, 1fr) 36px;
+    gap: 8px;
   }
 `;
 
@@ -288,6 +292,7 @@ const Percentage = styled.span`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-align: right;
+  white-space: nowrap;
 `;
