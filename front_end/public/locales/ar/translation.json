@@ -705,7 +705,12 @@
     "please_enter_your_country": "أدخل الدولة",
     "please_enter_your_zip_code": "أدخل الرمز البريدي",
     "please_enter_your_phone": "أدخل الهاتف",
-    "please_enter_your_birthdate": "أدخل تاريخ الميلاد"
+    "please_enter_your_birthdate": "أدخل تاريخ الميلاد",
+    
+  "page_not_found": "الصفحة غير موجودة",
+  "page_not_found_description": "الصفحة التي تبحث عنها غير موجودة."
+
+
   },
   
   "languages": {

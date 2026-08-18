@@ -15,8 +15,10 @@ import { addToCart, buyNowItem } from "../features/cartSlice";
 import { getProductDetails } from "../features/productDetails_slice";
 
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../../common/Spinner";
+import PageNoteFound from "../../common/PageNoteFound";
 
-function ProductDetailsPage({ setRetry, retry }) {
+function ProductDetailsPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -44,14 +46,14 @@ function ProductDetailsPage({ setRetry, retry }) {
 
   defaultDate1.setDate(defaultDate1.getDate() + 5);
   defaultDate2.setDate(defaultDate2.getDate() + 7);
-
+  const [tryAgain, setTryAgain] = useState(false)
   const [shippingInfo, setShippingInfo] = useState({
     date1: defaultDate1.toDateString(),
     date2: defaultDate2.toDateString(),
     from: 5,
     to: 7,
     cost: 0,
-    methodName: t("sideCard.free_Shipping"),
+    methodName: t("purchaseOptions.free_Shipping"),
   });
 
   /* =========================
@@ -63,11 +65,14 @@ function ProductDetailsPage({ setRetry, retry }) {
   );
 
   const isLoading = useSelector(
-    (state) => state.products.isLoading
+    (state) => state.product.isLoading
   );
 
   const hasError = useSelector(
-    (state) => state.products.hasError
+    (state) => state.product.hasError
+  );
+   const isNotFound = useSelector(
+    (state) => state.product.isNotFound
   );
 
   /* =========================
@@ -78,7 +83,7 @@ function ProductDetailsPage({ setRetry, retry }) {
     if (!id) return;
 
     dispatch(getProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, tryAgain]);
 
   /* =========================
      RESET SCROLL
@@ -146,7 +151,7 @@ function ProductDetailsPage({ setRetry, retry }) {
       cost: Number(item?.cost || 0),
       methodName:
         item?.methodName ||
-        t("sideCard.free_Shipping"),
+        t("purchaseOptions.free_Shipping"),
     });
 
     setShippingMethodIndex(index);
@@ -173,7 +178,7 @@ function ProductDetailsPage({ setRetry, retry }) {
 
     if (alreadyExists) {
       toast.success(
-        t("sideCard.item_already_in_cart")
+        t("purchaseOptions.item_already_in_cart")
       );
 
       return;
@@ -196,7 +201,7 @@ function ProductDetailsPage({ setRetry, retry }) {
     );
 
     toast.success(
-      t("sideCard.item_has_been_added")
+      t("purchaseOptions.item_has_been_added")
     );
   };
 
@@ -231,141 +236,97 @@ function ProductDetailsPage({ setRetry, retry }) {
     navigate("/checkout");
   };
 
-  /* =========================
-     ERROR
-  ========================= */
+ /* =========================
+   PAGE STATES
+========================= */
 
-  if (hasError) {
-    return (
-      <ErrorPage>
-        <ErrorCard>
-          <ErrorTitle>
-            {t("common.error")}
-          </ErrorTitle>
-
-          <RetryButton
-            onClick={() => setRetry(!retry)}
-          >
-            {t("common.tryAgain")}
-          </RetryButton>
-        </ErrorCard>
-      </ErrorPage>
-    );
-  }
-
-  /* =========================
-     PAGE
-  ========================= */
-
+if (isLoading) {
   return (
-    <Page>
-      {isLoading ? (
-        <Loading>
-          <LoadingSpinner>
-            <CircularProgress size={28} />
-          </LoadingSpinner>
-        </Loading>
-      ) : (
-        <>
-          {/* =========================
-              SERVICES
-          ========================= */}
+    <Loading>
+      <Spinner />
+    </Loading>
+  );
+}
 
-          <ServicesSection>
-            <UserServices />
-          </ServicesSection>
+if (isNotFound) {
+  return <PageNoteFound/>
+}
 
-          {/* =========================
-              PRODUCT
-          ========================= */}
+if (hasError) {
+  return (
+    <ErrorPage>
+      <ErrorCard>
+        <ErrorTitle>
+          {t("common.error")}
+        </ErrorTitle>
 
-          <ProductSection>
-            <ProductLayout
-              quantity={quantity}
-              shippingInfo={shippingInfo}
+        <RetryButton
+          onClick={() => setTryAgain(!tryAgain)}
+        >
+          {t("common.tryAgain")}
+        </RetryButton>
+      </ErrorCard>
+    </ErrorPage>
+  );
+}
 
-              checkboxChange={checkboxChange}
+/* =========================
+   SUCCESS
+========================= */
 
-              currentSku={currentSku}
-              setCurrentSku={setCurrentSku}
+return (
+  <Page>
+    <ServicesSection>
+      <UserServices />
+    </ServicesSection>
 
-              setShippingInfo={
-                setShippingInfo
-              }
+    <ProductSection>
+      <ProductLayout
+        quantity={quantity}
+        shippingInfo={shippingInfo}
+        checkboxChange={checkboxChange}
+        currentSku={currentSku}
+        setCurrentSku={setCurrentSku}
+        setShippingInfo={setShippingInfo}
+        addQuantity={addQuantity}
+        subtractQuantity={subtractQuantity}
+        maxOrderWorning={maxOrderWorning}
+        setMaxOrderWorning={setMaxOrderWorning}
+        add_item_to_cart={add_item_to_cart}
+        buy_Now_item={buy_Now_item}
+        setIsPopUpShoppingOpen={
+          setIsPopUpShippingOpen
+        }
+        isPopUpShippingOpen={
+          isPopUpShippingOpen
+        }
+        shippingMethodIndex={
+          shippingMethodIndex
+        }
+      />
+    </ProductSection>
 
-              addQuantity={addQuantity}
-              subtractQuantity={
-                subtractQuantity
-              }
+    <AboutSection>
+      <AboutProductLayout />
+    </AboutSection>
 
-              maxOrderWorning={
-                maxOrderWorning
-              }
-
-              setMaxOrderWorning={
-                setMaxOrderWorning
-              }
-
-              add_item_to_cart={
-                add_item_to_cart
-              }
-
-              buy_Now_item={
-                buy_Now_item
-              }
-
-              setIsPopUpShoppingOpen={
-                setIsPopUpShippingOpen
-              }
-
-              isPopUpShippingOpen={
-                isPopUpShippingOpen
-              }
-
-              shippingMethodIndex={
-                shippingMethodIndex
-              }
-            />
-          </ProductSection>
-
-          {/* =========================
-              ABOUT PRODUCT
-          ========================= */}
-
-          <AboutSection>
-            <AboutProductLayout />
-          </AboutSection>
-
-          {/* =========================
-              SHIPPING POPUP
-          ========================= */}
-
-          {isPopUpShippingOpen && (
-            <PopUpShoppingMethod
-              setIsPopUpShippingOpen={
-                setIsPopUpShippingOpen
-              }
-
-              isPopUpShippingOpen={
-                isPopUpShippingOpen
-              }
-
-              checkboxChange={
-                checkboxChange
-              }
-
-              shippingMethodIndex={
-                shippingMethodIndex
-              }
-
-              shippingInfo={
-                shippingInfo
-              }
-            />
-          )}
-        </>
-      )}
-    </Page>
+    {isPopUpShippingOpen && (
+      <PopUpShoppingMethod
+        setIsPopUpShippingOpen={
+          setIsPopUpShippingOpen
+        }
+        isPopUpShippingOpen={
+          isPopUpShippingOpen
+        }
+        checkboxChange={checkboxChange}
+        shippingMethodIndex={
+          shippingMethodIndex
+        }
+        shippingInfo={shippingInfo}
+      />
+    )}
+  </Page>
+    
   );
 }
 
@@ -394,7 +355,6 @@ const ServicesSection = styled.section`
   width: 100%;
 
   position: relative;
-  z-index: 2;
 `;
 
 /* =====================================================
@@ -466,11 +426,10 @@ const ErrorPage = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 30px;
 `;
 
 const ErrorCard = styled.div`
-  width: min(100%, 420px);
+  width: min(100%, 280px);
 
   padding: 45px 30px;
 

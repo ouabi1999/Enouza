@@ -176,7 +176,7 @@ export default DropDownMenuLang;
 
 const Container = styled.div`
   position: relative;
-
+ 
   .Lang_currency button {
     display: flex;
     align-items: center;
@@ -283,6 +283,11 @@ const Container = styled.div`
       background: #f7f5f1;
     }
   }
+     .dropDownArrow-icon , .Lang_currency button:hover{
+  
+  color: #B39A76 !important;
+  
+}
 
   @media (max-width: 600px) {
     .Lang_currency span {

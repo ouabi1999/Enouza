@@ -418,7 +418,7 @@ const ParentContainer = styled.div`
   top: 0;
   inset-inline: 0;
 
-  z-index: 9999;
+  z-index: 3;
 
   height: 58px;
 
@@ -518,6 +518,9 @@ const ParentContainer = styled.div`
   .search-container {
     display: none;
   }
+    .responsive-input input{
+    font-size:16px;
+    }
 }
 `;
 
@@ -529,7 +532,7 @@ const ParentContainer = styled.div`
 const Container = styled.div`
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 2;
   min-width: 320px;
   height: 68px;
   display: flex;
@@ -692,9 +695,13 @@ const Logo = styled.div`
   }
 
 
-  &:hover span {
-    color: ${COLORS.gold} !important;
+  
+    @media (hover: hover) and (pointer: fine) {
+  span:hover {
+        color: ${COLORS.gold} !important;
+
   }
+}
 
 
   @media only screen and (max-width: 650px) {
@@ -731,7 +738,7 @@ const SearchContainer = styled.div`
     height: 38px;
     display: flex;
   }
-
+   
   input {
     box-sizing: border-box;
 
@@ -785,9 +792,9 @@ const SearchContainer = styled.div`
   }
 
   .search-icon-container:hover {
-    background: #302e2a;
+    background: ${COLORS.gold} !important;
   }
-
+  
   .search-icon {
     display: block;
 
@@ -940,7 +947,7 @@ const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 420px) {
-    gap: 18px;
+    gap: 50px;
 
     .shopping-cart-icon,
     .search-icon-responsive {

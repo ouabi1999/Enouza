@@ -48,8 +48,8 @@ const Container = styled.section`
 
 const TabsWrapper = styled.div`
   position: sticky;
-  top: 60px;
-  z-index: 50;
+  top: 69px;
+  z-index:1;
 
   width: 100%;
 

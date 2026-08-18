@@ -111,7 +111,6 @@ const Side_Bar = styled.div`
         display:flex;
         width:calc(100% - 10px);
         justify-content:space-between;
-        z-index: 1;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
       }
    

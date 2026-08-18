@@ -127,25 +127,22 @@ function NewsLetter() {
             {formik.errors.email}
           </ErrorMessage>
         )}
-
+<div className="Toastify__toast-container">
+  <ToastContainer
+    position={isRTL ? "top-left" : "top-right"}
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop
+    closeOnClick
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    rtl={isRTL}
+  />
+</div>
       </Container>
 
-
-      <ToastContainer
-        position={
-          isRTL
-            ? "top-left"
-            : "top-right"
-        }
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        rtl={isRTL}
-      />
+ 
     </>
   );
 }
@@ -161,6 +158,9 @@ const Container = styled.form`
   width: 100%;
 
   margin-top: 0;
+  .Toastify__toast-container {
+  z-index: 300 !important;
+}
 `;
 
 

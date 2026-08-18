@@ -15,6 +15,7 @@ import CTASection from '../components/Product/home/CTASection.jsx'
 import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import HeadeSeo from '../../common/HeadeSeo.jsx'
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
+import Spinner from '../../common/Spinner.jsx'
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -91,12 +92,7 @@ function HomePage() {
 
       {isLoading && (
 
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", margin: "10px" }}>
-          <CircularProgress
-            size={25}
-            thickness={4}
-          />
-        </div>
+        <Spinner/>
       )
       }
       {!isLoading && (

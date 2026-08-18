@@ -43,6 +43,7 @@ import AliExpressProductFetcher from "./components/adminDashboard/AliDropship/Al
 import HomePage from "./pages/HomePage.jsx";
 import { getDisplayInfo } from "./features/DisplaySlice.js";
 import FillterPage from "./pages/FillterPage.jsx";
+import { getProductDetails } from "./features/productDetails_slice.js";
 
 export const OrderContext = createContext();
 function App() {
@@ -78,6 +79,7 @@ function App() {
     dispatch(getUser());
     dispatch(getProduct());
     dispatch(getDisplayInfo());
+   
   }, [retry]);
 
 
@@ -112,7 +114,7 @@ function App() {
                   }
                 />
                 <Route path="product/:id" element={<>
-                  <ProductDetailsPage setRetry={setRetry} retry={retry} />
+                  <ProductDetailsPage/>
 
 
 

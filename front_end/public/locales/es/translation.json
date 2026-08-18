@@ -677,7 +677,11 @@
     "please_enter_your_country": "Selecciona país",
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento"
+    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
+
+  "page_not_found": "Página no encontrada",
+  "page_not_found_description": "La página que buscas no existe."
+
   },
   "languages": {
     "en": "Inglés",

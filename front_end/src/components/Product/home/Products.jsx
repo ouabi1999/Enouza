@@ -47,7 +47,7 @@ function Products({
             >
               {/* PRODUCT IMAGE */}
 
-              <Link
+              <Link reloadDocument
                 to={`/product/${item.id}`}
                 className="image-container"
               >

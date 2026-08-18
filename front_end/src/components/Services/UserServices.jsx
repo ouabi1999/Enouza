@@ -29,19 +29,22 @@ function UserServices() {
     },
   ];
 
+  const isRTL = i18n.dir() === "rtl";
+
   return (
     <Container>
       <Track
+        $rtl={isRTL}
         animate={{
-          x: i18n.dir() === "ltr" ? ["0%", "-50%"] : ["0%", "50%"],
+          x: isRTL ? ["0%", "50%"] : ["0%", "-50%"],
         }}
         transition={{
-          duration: 20,
+          duration:12,
           ease: "linear",
           repeat: Infinity,
+          repeatType: "loop",
         }}
       >
-        {/* FIRST GROUP */}
         <Group>
           {services.map((service, index) => (
             <MinWrap key={`one-${index}`}>
@@ -51,7 +54,6 @@ function UserServices() {
           ))}
         </Group>
 
-        {/* SECOND GROUP */}
         <Group>
           {services.map((service, index) => (
             <MinWrap key={`two-${index}`}>
@@ -76,16 +78,31 @@ const Container = styled.div`
 
   border-top: 1px solid #f1efec;
   border-bottom: 1px solid #f1efec;
+
+  position: relative;
 `;
 
 const Track = styled(motion.div)`
   display: flex;
-  justify-content: center;
+
   width: 200vw;
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  transform: translate3d(0, 0, 0);
+
+  @media only screen and (max-width: 815px) {
+    will-change: transform;
+  }
 `;
 
 const Group = styled.div`
+  flex: 0 0 100vw;
   width: 100vw;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -128,9 +145,9 @@ const MinWrap = styled.div`
     flex-shrink: 0;
   }
 
-  /* Small luxury separator */
   &::after {
     content: "";
+
     position: absolute;
 
     right: -1px;
@@ -159,8 +176,6 @@ const MinWrap = styled.div`
       width: 16px;
       height: 16px;
 
-      color: #81766b;
-
       margin-right: 4px;
       margin-left: 4px;
     }
@@ -184,8 +199,6 @@ const MinWrap = styled.div`
     .icon {
       width: 13px;
       height: 13px;
-
-      color: #81766b;
 
       margin-right: 3px;
       margin-left: 3px;

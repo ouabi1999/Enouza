@@ -7,48 +7,84 @@ export const getProductDetails = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await ApiInstance.get(`/product/${id}`);
-      return response.data; // Axios returns parsed JSON here
+
+      return {
+        data: response.data,
+        notFound: false,
+      };
     } catch (error) {
-      // Axios throws for non-2xx status, so handle here
-      return rejectWithValue(error.response?.data || error.message);
+      console.log("PRODUCT REQUEST ERROR:", error);
+      console.log("HTTP STATUS:", error.response?.status);
+
+      if (error.response?.status === 404) {
+        return rejectWithValue({
+          notFound: true,
+        });
+      }
+
+      return rejectWithValue({
+        notFound: false,
+        status: error.response?.status || null,
+        message: error.message,
+      });
     }
   }
 );
 
 
+
 export const productDetails_Slice = createSlice({
-   name:"product",
-   initialState:{
-       productData: null,
-       isLoaded : false,
-       hasError : false
-       
-   },
-   reducers:{
-       setProductDetails(state, action){
-           state.product = action.payload
-          
-       }
-   },
+  name: "product",
 
-   extraReducers:(builder) =>{
+
+
+
+  initialState: {
+    productData: null,
+    isLoading: true,
+    hasError: false,
+    isNotFound: false,
+
+
+  },
+  reducers: {
+    setProductDetails(state, action) {
+      state.product = action.payload
+
+    }
+  },
+
+  extraReducers: (builder) => {
     builder.addCase(getProductDetails.pending, (state) => {
-    state.isLoaded = true;
+      state.isLoading = true;
+      
     }),
-    builder.addCase(getProductDetails.rejected, (state, action) => {
-    state.isLoaded = false;
-    state.hasError = action.error.message;
-    }),
-    builder.addCase(getProductDetails.fulfilled, (state, action) => {
-    state.productData = action.payload;
-    state.isLoaded = false;
-    
+      builder.addCase(getProductDetails.rejected, (state, action) => {
+      
+        if (action.payload?.notFound === true) {
+          state.isNotFound = true;
+          state.hasError = false;
+          state.isLoading =false
+        } else {
+          state.isNotFound = false;
+          state.hasError = true;
+          state.isLoading =false
+        }
 
-    })
+      }),
+      builder.addCase(getProductDetails.fulfilled, (state, action) => {
+        state.productData = action.payload.data;
+        state.isLoading = false;
+        state.isNotFound = false;
+        state.hasError = false;
 
 
-   }
+
+      })
+
+
+  }
 })
 
-export const {setProductDetails } = productDetails_Slice.actions
+export const { setProductDetails } = productDetails_Slice.actions
 export default productDetails_Slice.reducer

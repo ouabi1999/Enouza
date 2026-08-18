@@ -21,15 +21,15 @@ export default Spinner;
 
 const SpinnerOverlay = styled.div`
   position: fixed;
-  inset: 0;
+  right:50%;
+  top:50%;
   z-index: 999999;
-
+   width: 54px;
+  height: 54px
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 100vw;
-  height: 100vh;
+  border-radius:50%;
 
   background: rgba(250, 248, 244, 0.96);
 
