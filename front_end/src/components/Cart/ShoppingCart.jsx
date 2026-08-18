@@ -210,24 +210,35 @@ export default ShoppingCart;
 /* ============================================================
    CONTAINER
 ============================================================ */
+/* ============================================================
+   CONTAINER
+============================================================ */
 
 const Container = styled.main`
+  width: 100%;
   min-height: 90vh;
 
-  width: 100%;
-
   background: #faf9f7;
+  color: #1b1b1b;
 
   padding: 55px 0 100px;
 
-  color: #1b1b1b;
+  box-sizing: border-box;
+
+  @media (max-width: 1000px) {
+    padding: 48px 0 80px;
+  }
 
   @media (max-width: 700px) {
     padding: 38px 0 70px;
   }
 
-  @media (max-width: 460px) {
-    padding: 28px 0 55px;
+  @media (max-width: 500px) {
+    padding: 30px 0 55px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 26px 0 45px;
   }
 `;
 
@@ -237,29 +248,56 @@ const Container = styled.main`
 ============================================================ */
 
 const Header = styled.header`
+  width: 100%;
+  box-sizing: border-box;
+
   text-align: center;
 
   margin: 0 auto 55px;
-
   padding: 0 20px;
 
+  @media (max-width: 1000px) {
+    margin-bottom: 45px;
+  }
+
   @media (max-width: 700px) {
-    margin-bottom: 40px;
+    margin-bottom: 38px;
+    padding: 0 16px;
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 32px;
+    padding: 0 12px;
   }
 `;
+
+
+/* ============================================================
+   EYEBROW
+============================================================ */
 
 const Eyebrow = styled.div`
   margin-bottom: 12px;
 
   font-size: 10px;
   font-weight: 600;
-
   letter-spacing: 4px;
-
   text-transform: uppercase;
 
   color: #9a9288;
+
+  @media (max-width: 500px) {
+    margin-bottom: 9px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
 `;
+
+
+/* ============================================================
+   TITLE
+============================================================ */
 
 const Title = styled.h1`
   margin: 0;
@@ -269,22 +307,20 @@ const Title = styled.h1`
     "Times New Roman",
     serif;
 
-  font-size: 38px;
+  font-size: clamp(27px, 4vw, 38px);
 
   font-weight: 400;
-
   line-height: 1.2;
 
   color: #181818;
 
-  @media (max-width: 700px) {
-    font-size: 31px;
-  }
-
-  @media (max-width: 460px) {
-    font-size: 27px;
-  }
+  word-break: break-word;
 `;
+
+
+/* ============================================================
+   CART COUNT
+============================================================ */
 
 const CartCount = styled.div`
   margin-top: 10px;
@@ -292,18 +328,34 @@ const CartCount = styled.div`
   color: #8b847b;
 
   font-size: 12px;
-
+  line-height: 1.5;
   letter-spacing: 0.8px;
+
+  @media (max-width: 500px) {
+    margin-top: 8px;
+
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
 `;
+
+
+/* ============================================================
+   HEADER LINE
+============================================================ */
 
 const HeaderLine = styled.div`
   width: 40px;
-
   height: 1px;
 
   margin: 20px auto 0;
 
   background: #aaa298;
+
+  @media (max-width: 500px) {
+    width: 32px;
+    margin-top: 16px;
+  }
 `;
 
 
@@ -318,20 +370,44 @@ const Wrap = styled.div`
 
   display: grid;
 
-  grid-template-columns: minmax(0, 1fr) 350px;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(300px, 350px);
 
   align-items: start;
 
   gap: 45px;
 
-  @media (max-width: 1000px) {
-    grid-template-columns: 1fr;
+  box-sizing: border-box;
+
+  @media (max-width: 1100px) {
+    width: min(100% - 32px, 900px);
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(280px, 330px);
 
     gap: 30px;
   }
 
+  @media (max-width: 900px) {
+    width: min(100% - 32px, 720px);
+
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
   @media (max-width: 500px) {
     width: calc(100% - 24px);
+
+    gap: 22px;
+  }
+
+  @media (max-width: 360px) {
+    width: calc(100% - 18px);
+
+    gap: 18px;
   }
 `;
 
@@ -341,9 +417,15 @@ const Wrap = styled.div`
 ============================================================ */
 
 const Wrapper = styled.div`
+  width: 100%;
+
   background: #fff;
 
   border: 1px solid #ebe7e1;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
 `;
 
 
@@ -352,11 +434,16 @@ const Wrapper = styled.div`
 ============================================================ */
 
 const ProductContainer = styled.article`
+  width: 100%;
+
   display: flex;
+  align-items: stretch;
 
   gap: 24px;
 
   padding: 24px;
+
+  box-sizing: border-box;
 
   border-bottom: 1px solid #ebe7e1;
 
@@ -364,16 +451,28 @@ const ProductContainer = styled.article`
     border-bottom: none;
   }
 
-  @media (max-width: 600px) {
-    gap: 16px;
+  @media (max-width: 700px) {
+    gap: 18px;
 
-    padding: 18px;
+    padding: 20px;
+  }
+
+  @media (max-width: 550px) {
+    gap: 15px;
+
+    padding: 16px;
   }
 
   @media (max-width: 420px) {
-    gap: 13px;
+    gap: 12px;
 
     padding: 14px;
+  }
+
+  @media (max-width: 350px) {
+    gap: 10px;
+
+    padding: 12px;
   }
 `;
 
@@ -386,35 +485,47 @@ const ProductImage = styled.div`
   flex: 0 0 125px;
 
   width: 125px;
-
   height: 150px;
 
   overflow: hidden;
 
   background: #f3f1ed;
 
-  @media (max-width: 600px) {
-    flex-basis: 100px;
+  box-sizing: border-box;
 
-    width: 100px;
+  @media (max-width: 700px) {
+    flex-basis: 105px;
 
-    height: 120px;
+    width: 105px;
+    height: 125px;
+  }
+
+  @media (max-width: 550px) {
+    flex-basis: 92px;
+
+    width: 92px;
+    height: 112px;
   }
 
   @media (max-width: 420px) {
-    flex-basis: 82px;
+    flex-basis: 80px;
 
-    width: 82px;
+    width: 80px;
+    height: 100px;
+  }
 
-    height: 102px;
+  @media (max-width: 350px) {
+    flex-basis: 72px;
+
+    width: 72px;
+    height: 90px;
   }
 
   img {
-    width: 100%;
-
-    height: 100%;
-
     display: block;
+
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
@@ -432,24 +543,32 @@ const ProductImage = styled.div`
 ============================================================ */
 
 const ProductInfo = styled.div`
-  flex: 1;
+  flex: 1 1 auto;
 
   min-width: 0;
+  min-height: 150px;
 
   display: flex;
-
   flex-direction: column;
 
   justify-content: space-between;
 
-  min-height: 150px;
+  box-sizing: border-box;
 
-  @media (max-width: 600px) {
-    min-height: 120px;
+  @media (max-width: 700px) {
+    min-height: 125px;
+  }
+
+  @media (max-width: 550px) {
+    min-height: 112px;
   }
 
   @media (max-width: 420px) {
-    min-height: 102px;
+    min-height: 100px;
+  }
+
+  @media (max-width: 350px) {
+    min-height: 90px;
   }
 `;
 
@@ -459,13 +578,15 @@ const ProductInfo = styled.div`
 ============================================================ */
 
 const ProductTop = styled.div`
+  width: 100%;
+
   display: flex;
-
   align-items: flex-start;
-
   justify-content: space-between;
 
-  gap: 15px;
+  gap: 10px;
+
+  min-width: 0;
 `;
 
 
@@ -474,10 +595,11 @@ const ProductTop = styled.div`
 ============================================================ */
 
 const ProductName = styled.h2`
-  margin: 0;
+  flex: 1 1 auto;
 
-  width: 100%;
-  max-width: 480px;
+  min-width: 0;
+
+  margin: 0;
 
   font-family:
     Georgia,
@@ -497,18 +619,21 @@ const ProductName = styled.h2`
 
   @media (max-width: 700px) {
     font-size: 15px;
-    max-width: 320px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     font-size: 14px;
-    max-width: 220px;
   }
 
-  @media (max-width: 380px) {
-    max-width: 170px;
+  @media (max-width: 420px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 12px;
   }
 `;
+
 
 /* ============================================================
    DELETE
@@ -516,15 +641,12 @@ const ProductName = styled.h2`
 
 const DeleteButton = styled.button`
   width: 32px;
-
   height: 32px;
 
-  flex-shrink: 0;
+  flex: 0 0 32px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   padding: 0;
@@ -541,14 +663,41 @@ const DeleteButton = styled.button`
     color 0.25s ease,
     transform 0.25s ease;
 
+  -webkit-tap-highlight-color: transparent;
+
   svg {
     font-size: 20px;
   }
 
   &:hover {
     color: #1b1b1b;
-
     transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  @media (max-width: 550px) {
+    width: 28px;
+    height: 28px;
+
+    flex-basis: 28px;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    width: 25px;
+    height: 25px;
+
+    flex-basis: 25px;
+
+    svg {
+      font-size: 17px;
+    }
   }
 `;
 
@@ -558,17 +707,31 @@ const DeleteButton = styled.button`
 ============================================================ */
 
 const ProductVariant = styled.div`
-  margin-top: 8px;
+  margin-top: 7px;
 
   font-size: 10px;
-
   font-weight: 600;
 
   letter-spacing: 1.5px;
-
   text-transform: uppercase;
 
   color: #9a9288;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: 550px) {
+    margin-top: 5px;
+
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
 `;
 
 
@@ -577,18 +740,26 @@ const ProductVariant = styled.div`
 ============================================================ */
 
 const ProductBottom = styled.div`
+  width: 100%;
+
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
-  gap: 20px;
+  gap: 12px;
 
-  margin-top: 20px;
+  margin-top: 14px;
 
-  @media (max-width: 420px) {
-    margin-top: 12px;
+  min-width: 0;
+
+  @media (max-width: 550px) {
+    gap: 8px;
+
+    margin-top: 10px;
+  }
+
+  @media (max-width: 350px) {
+    margin-top: 8px;
   }
 `;
 
@@ -598,6 +769,10 @@ const ProductBottom = styled.div`
 ============================================================ */
 
 const Price = styled.span`
+  flex: 0 1 auto;
+
+  min-width: 0;
+
   font-family:
     Georgia,
     "Times New Roman",
@@ -609,8 +784,16 @@ const Price = styled.span`
 
   white-space: nowrap;
 
-  @media (max-width: 420px) {
+  @media (max-width: 550px) {
     font-size: 14px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 12px;
   }
 `;
 
@@ -620,8 +803,9 @@ const Price = styled.span`
 ============================================================ */
 
 const Quantity = styled.div`
-  display: flex;
+  flex: 0 0 auto;
 
+  display: flex;
   align-items: center;
 
   height: 34px;
@@ -629,6 +813,20 @@ const Quantity = styled.div`
   border: 1px solid #dcd7d0;
 
   background: #fff;
+
+  box-sizing: border-box;
+
+  @media (max-width: 550px) {
+    height: 31px;
+  }
+
+  @media (max-width: 420px) {
+    height: 29px;
+  }
+
+  @media (max-width: 350px) {
+    height: 27px;
+  }
 `;
 
 
@@ -638,7 +836,6 @@ const Quantity = styled.div`
 
 const QuantityButton = styled.button`
   width: 32px;
-
   height: 100%;
 
   padding: 0;
@@ -650,7 +847,6 @@ const QuantityButton = styled.button`
   color: #333;
 
   font-size: 17px;
-
   font-weight: 300;
 
   cursor: pointer;
@@ -659,14 +855,33 @@ const QuantityButton = styled.button`
     background 0.2s ease,
     color 0.2s ease;
 
+  -webkit-tap-highlight-color: transparent;
+
   &:hover {
     background: #f4f1ed;
-
     color: #000;
   }
 
+  &:active {
+    background: #eeeae4;
+  }
+
+  @media (max-width: 550px) {
+    width: 29px;
+
+    font-size: 16px;
+  }
+
   @media (max-width: 420px) {
-    width: 28px;
+    width: 26px;
+
+    font-size: 15px;
+  }
+
+  @media (max-width: 350px) {
+    width: 24px;
+
+    font-size: 14px;
   }
 `;
 
@@ -678,11 +893,27 @@ const QuantityButton = styled.button`
 const QuantityValue = styled.span`
   min-width: 28px;
 
+  padding: 0 2px;
+
   text-align: center;
 
   font-size: 12px;
 
   color: #292929;
+
+  box-sizing: border-box;
+
+  @media (max-width: 550px) {
+    min-width: 25px;
+
+    font-size: 11px;
+  }
+
+  @media (max-width: 420px) {
+    min-width: 23px;
+
+    font-size: 10px;
+  }
 `;
 
 
@@ -691,11 +922,15 @@ const QuantityValue = styled.span`
 ============================================================ */
 
 const SubtotalWrapper = styled.aside`
+  width: 100%;
+
   position: sticky;
 
   top: 25px;
 
-  @media (max-width: 1000px) {
+  min-width: 0;
+
+  @media (max-width: 900px) {
     position: static;
   }
 `;
@@ -716,9 +951,23 @@ const EmptyWrapper = styled.div`
 
   padding: 50px 30px;
 
+  box-sizing: border-box;
+
+  @media (max-width: 700px) {
+    width: calc(100% - 32px);
+
+    padding: 42px 24px;
+  }
+
   @media (max-width: 500px) {
     width: calc(100% - 24px);
 
     padding: 35px 18px;
+  }
+
+  @media (max-width: 360px) {
+    width: calc(100% - 18px);
+
+    padding: 30px 14px;
   }
 `;

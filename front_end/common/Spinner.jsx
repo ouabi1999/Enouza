@@ -21,15 +21,14 @@ export default Spinner;
 
 const SpinnerOverlay = styled.div`
   position: fixed;
-  right:50%;
-  top:50%;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
   z-index: 999999;
-   width: 54px;
-  height: 54px
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius:50%;
 
   background: rgba(250, 248, 244, 0.96);
 
@@ -37,6 +36,8 @@ const SpinnerOverlay = styled.div`
   -webkit-backdrop-filter: blur(5px);
 
   box-sizing: border-box;
+
+  overflow: hidden;
 `;
 
 /* =========================================================
@@ -44,14 +45,21 @@ const SpinnerOverlay = styled.div`
 ========================================================= */
 
 const LuxurySpinner = styled.div`
-  position: relative;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
 
   width: 54px;
   height: 54px;
 
+  transform: translate(-50%, -50%);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
 `;
 
 /* =========================================================
@@ -60,7 +68,11 @@ const LuxurySpinner = styled.div`
 
 const SpinnerRing = styled.div`
   position: absolute;
+
   inset: 0;
+
+  width: 100%;
+  height: 100%;
 
   border-radius: 50%;
 
@@ -69,7 +81,10 @@ const SpinnerRing = styled.div`
   border-top-color: #9b815f;
   border-right-color: #9b815f;
 
-  animation: luxurySpin 1.15s
+  box-sizing: border-box;
+
+  animation:
+    luxurySpin 1.15s
     cubic-bezier(0.65, 0, 0.35, 1)
     infinite;
 
@@ -98,7 +113,10 @@ const SpinnerInner = styled.div`
 
   border-bottom-color: #b59771;
 
-  animation: luxuryReverseSpin 1.8s
+  box-sizing: border-box;
+
+  animation:
+    luxuryReverseSpin 1.8s
     cubic-bezier(0.65, 0, 0.35, 1)
     infinite;
 
@@ -127,7 +145,10 @@ const SpinnerDot = styled.div`
 
   background: #9b815f;
 
-  animation: luxuryPulse 1.4s ease-in-out infinite;
+  animation:
+    luxuryPulse 1.4s
+    ease-in-out
+    infinite;
 
   @keyframes luxuryPulse {
     0%,
