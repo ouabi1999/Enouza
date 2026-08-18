@@ -45,6 +45,8 @@ function NewsLetter() {
         t("errors.error_email_already_exists");
 
       toast.error(t`errors.${message}`);
+
+      
     } finally {
       setIsLoading(false);
     }
@@ -158,7 +160,7 @@ export default NewsLetter;
 const Container = styled.form`
   width: 100%;
 
-  margin: 0;
+  margin-top: 0;
 `;
 
 

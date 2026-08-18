@@ -3,18 +3,23 @@ import styled from "styled-components";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LiveHelpIcon from "@mui/icons-material/LiveHelp";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { Link } from "react-router-dom";
 import { ClickAwayListener } from "@mui/material";
 import { useSelector } from "react-redux";
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { useTranslation } from "react-i18next";
 
 function DropDownMenu(props) {
   const { t, i18n } = useTranslation();
-  
-  const user = useSelector((state) => state.auth.user);
+
+  const user = useSelector(
+    (state) => state.auth.user
+  );
+
+  const isRTL = i18n.dir() === "rtl";
+
   return (
-    <Container>
+    <Container $rtl={isRTL}>
       {props.isAuth !== null ? (
         <div>
           <PersonOutlineOutlinedIcon
@@ -24,28 +29,55 @@ function DropDownMenu(props) {
         </div>
       ) : (
         <div className="sign-in-button">
-          <Link to="auth"> {t("common.register")} </Link>
+          <Link to="auth">
+            {t("common.register")}
+          </Link>
         </div>
       )}
+
       {props.isProfileOpen && (
         <ClickAwayListener
           mouseEvent="onMouseDown"
           touchEvent="onScroll"
           onClickAway={props.openProfileMenu}
         >
-          <Wrapper style={{ position:"fixed", left: i18n.language === "ar" ? "10px" :  "" }}>
-            <Link onClick={props.openProfileMenu} to={user?.is_staff ? "admin-dashboard" : "/profile"}>
+          <Wrapper>
+            {/* PROFILE */}
+            <MenuLink
+              onClick={props.openProfileMenu}
+              to={
+                user?.is_staff
+                  ? "admin-dashboard"
+                  : "/profile"
+              }
+            >
               <AccountBoxIcon className="icon" />
-              <span> {t("common.profile") }</span>
-            </Link>
-            <Link onClick={props.openProfileMenu} to="/help-center">
+
+              <span>
+                {t("common.profile")}
+              </span>
+            </MenuLink>
+
+            {/* FAQ */}
+            <MenuLink
+              onClick={props.openProfileMenu}
+              to="/help-center"
+            >
               <LiveHelpIcon className="icon" />
-              <span>{t("common.faq")}</span>
-            </Link>
-            <button onClick={props.logout}>
+
+              <span>
+                {t("common.faq")}
+              </span>
+            </MenuLink>
+
+            {/* LOGOUT */}
+            <LogoutButton onClick={props.logout}>
               <ExitToAppOutlinedIcon className="icon" />
-              <span>{t("common.logout")}</span>
-            </button>
+
+              <span>
+                {t("common.logout")}
+              </span>
+            </LogoutButton>
           </Wrapper>
         </ClickAwayListener>
       )}
@@ -55,65 +87,221 @@ function DropDownMenu(props) {
 
 export default DropDownMenu;
 
+/* =========================
+   CONTAINER
+========================= */
+
 const Container = styled.div`
-  
-   span{
-     font-size: 14px;
-     font-weight: 500;
-     
-   }
-  .person-icon {
-    color: #000000;
-    font-size: 30px;
-    cursor: pointer;
+  position: relative;
+
+  direction: ${({ $rtl }) =>
+    $rtl ? "rtl" : "ltr"};
+
+  span {
+    font-size: 12px;
+    font-weight: 500;
   }
+
+  .person-icon {
+    display: block;
+
+    color: #171615;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+
+    &:hover {
+      color: #806b45;
+
+      transform: translateY(-1px);
+    }
+  }
+
   .sign-in-button {
     display: flex;
 
-    justify-content: center;
     align-items: center;
-    padding: 0px 8px;
-    color: #ffffff;
-    border-radius: 5px 5px 0px 0;
-    height: 38px;
-    font-size: 14px;
-    a{
-    color: #000000;}
-  }
+    justify-content: center;
 
-  .logout-button button {
-    border: none;
-    cursor: pointer;
-    padding: 10px 5px;
-    border-radius: 4px;
-    background: #f32334;
-    color: #fff;
-    font-weight: bold;
-    width: 65px;
+    height: 38px;
+
+    padding-inline: 8px;
+
+    font-family:
+      "Inter",
+      Arial,
+      sans-serif;
+
+    font-size: 14px;
+
+    a {
+      color: #171615;
+
+      text-decoration: none;
+
+      transition:
+        color 0.25s ease;
+
+      &:hover {
+        color: #806b45;
+      }
+    }
   }
 `;
+
+/* =========================
+   PROFILE MENU
+========================= */
+
 const Wrapper = styled.div`
+  position: fixed;
 
-position: fixed;
-  padding: 10px;
-  right: 10px;
-  top: 60px;
-  width: 150px;
-  background: #ffff;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  a,
-  button {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
+  inset-inline-end: 10px;
+
+  top: 68px;
+
+  z-index: 9999;
+
+  width: 165px;
+
+  padding: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6e1d9;
+
+  box-shadow:
+    0 18px 45px
+    rgba(30, 27, 24, 0.12);
+
+  @media (max-width: 420px) {
+    inset-inline-end: 10px;
+
+    width: 150px;
   }
-  button {
-    background: none;
+`;
+
+/* =========================
+   MENU LINK
+========================= */
+
+const MenuLink = styled(Link)`
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px 9px;
+
+  color: #302d29;
+
+  background: transparent;
+
+  text-decoration: none;
+
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    color: #806b45;
+
+    background: #f7f5f1;
   }
+
   .icon {
-    font-size: 20px;
-    color: gray;
+    flex-shrink: 0;
+
+    color: #4b4741;
+
+    font-size: 18px;
+
+    transition:
+      color 0.2s ease;
   }
 
+  &:hover .icon {
+    color: #806b45;
+  }
+`;
+
+/* =========================
+   LOGOUT
+========================= */
+
+const LogoutButton = styled.button`
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px 9px;
+
+  border: none;
+
+  color: #302d29;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  text-align: start;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    color: #806b45;
+
+    background: #f7f5f1;
+  }
+
+  .icon {
+    flex-shrink: 0;
+
+    color: #4b4741;
+
+    font-size: 18px;
+
+    transition:
+      color 0.2s ease;
+  }
+
+  &:hover .icon {
+    color: #806b45;
+  }
 `;

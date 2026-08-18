@@ -117,7 +117,7 @@ function App() {
 
 
                 </>} />
-                <Route path="/search" element={<FillterPage value={searchValue} />} />
+                <Route path="/collections" element={<FillterPage value={searchValue} />} />
                 <Route path="/shopping-cart" element={<ShoppingCart />} />
                 <Route path="contact-us" element={<ContactUs />} />
                 <Route path="about-us" element={<AboutUs />} />

@@ -103,26 +103,28 @@
   }
 },
   
+  
   "ctaSection": {
-    "titleLeft": "Connect With Us",
-    "description": "Each Enouza piece begins with a conversation. Share your vision, and together we'll discover the perfect illumination for your space.",
-    "button": "Start Conversation",
-    "titleRight": "Contact Details",
+    "eyebrow": "ENOUZA CUSTOMER CARE",
+    "titleLeft": "We are here to help.",
+    "description": "Have a question about a product, your order, or delivery? Our customer care team is here to assist you.",
+    "button": "Contact us",
+    "supportEyebrow": "CUSTOMER SUPPORT",
+    "titleRight": "A little help, when you need it.",
+    "supportDescription": "For questions about your order or our collection, contact us and our team will be happy to assist.",
     "contact": {
       "email": {
         "title": "Email",
-        "description": "We respond within 24 hours"
+        "description": "For general questions and enquiries."
       },
-      "phone": {
-        "title": "Phone",
-        "description": "Mon–Fri, 10am–6pm EST"
-      },
-      "studio": {
-        "title": "Studio",
-        "description": "New York, NY 10001"
+      "support": {
+        "title": "Online Customer Care",
+        "details": "Customer Support",
+        "description": "We're here to help with your shopping experience."
       }
     }
-  },
+  
+},
 
   "matricsSection": {
   "why_us": "Why choose us?",
@@ -366,6 +368,7 @@
       "shippingPolicy": "Shipping policy"
     },
     "help": {
+      "enouza_faq_description": "Find answers to the questions we receive most often.",
       "title": "Help",
       "faq": "FAQ",
       "contactUs": "Contact us",
@@ -619,6 +622,7 @@
     "send": "Send",
     "enter_message": "Enter message",
     "message_sent": "Message sent",
+    "message":"Message",
     "myProfile": "My Profile",
     "chat": "Chat",
     "helpCenter": "Help Center",

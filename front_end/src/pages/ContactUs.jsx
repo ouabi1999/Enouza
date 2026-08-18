@@ -1,161 +1,479 @@
-import React, {useLayoutEffect, useState } from 'react'
-import styled from "styled-components"
-import { toast, ToastContainer } from 'react-toastify'
-import { CircularProgress } from '@mui/material'
-import HeadeSeo from '../../common/HeadeSeo'
-import ApiInstance from '../../common/baseUrl'
-import { useTranslation } from 'react-i18next'
+import React, { useLayoutEffect, useState } from "react";
+import styled from "styled-components";
+import { toast, ToastContainer } from "react-toastify";
+import { CircularProgress } from "@mui/material";
+import HeadeSeo from "../../common/HeadeSeo";
+import ApiInstance from "../../common/baseUrl";
+import { useTranslation } from "react-i18next";
 
-function ContactUs(){
-    const [email, setEmail] = useState("")
-    const [message, setMessage] = useState("")
-    const [loading, setIsLoading] = useState(false)
-    const [messageRequired, setMessageRequired] = useState(false)
-    const [emailRequired,  setEmailRequired] = useState(false)
-    const { t } = useTranslation()
-    useLayoutEffect(() => {
-        window.scrollTo({top: 0, left: 0,});
-      }, [])
+function ContactUs() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setIsLoading] = useState(false);
 
-      const handldSendEmail = (event)=>{
-        event.preventDefault()
-        if (message !== "" && email !== ""){
-         
-        setIsLoading(true)
- 
-        ApiInstance.post("contact-us/", 
-      
-        {
-            email :email,
-            message : message
-        },
-         )
+  const { t, i18n } = useTranslation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, []);
+
+  const handldSendEmail = (event) => {
+    event.preventDefault();
+
+    if (message !== "" && email !== "") {
+      setIsLoading(true);
+
+      ApiInstance.post("contact-us/", {
+        email: email,
+        message: message,
+      })
         .then(() => {
-            setIsLoading(false)
-            toast.success(t("success.message_sent_successfully"))
-            setEmail("")
-            setMessage("")
-            
-        })
-        .catch(message => {
-            console.log(message)
-            toast.error(t("errors.server_error"))
-            setIsLoading(false)  
-        })
-    }
-    }
-     
-        return (
-            <Container>
-                <HeadeSeo title = {`Enouza - ${t("footer.help.contactUs")}`}/>
-                
-                
-            <div className="contact_container">
-                <form onSubmit={handldSendEmail}>
-                    <div className="contact_sections">
-                        <label for="email">{t("footer.help.contact_note")}</label>
-                        <input type="email" 
-                                value={email} 
-                                onChange={(e)=> setEmail(e.target.value)}
-                                placeholder={t("common.please_enter_your_email")} required/>
-                        
-                        <textarea type="text" max="105" 
-                            value={message} 
-                            required 
-                            placeholder={t("common.enter_message")}
-                            onChange={(e)=> setMessage(e.target.value)}
-                        >
-                        </textarea>
-                        <button type="submit" disabled={loading}> 
-                          
-                        {loading && (
-                
-                <span>
-              
-                <CircularProgress 
-                    style={{marginLeft:"3px" , marginRight:"3px", color:"#fff"}}
-                    size={18} 
-                    thickness={4} 
-                    value={100}
-                 />
-                 </span>
-                )}         
-                <span>{t("common.send")}</span>
-                </button>
-                    </div>
-                </form>
-            </div>
+          setIsLoading(false);
 
-            </Container>
-        )
-    
+          toast.success(
+            t("success.message_sent_successfully")
+          );
+
+          setEmail("");
+          setMessage("");
+        })
+        .catch((error) => {
+          console.log(error);
+
+          toast.error(
+            t("errors.server_error")
+          );
+
+          setIsLoading(false);
+        });
+    }
+  };
+
+  return (
+    <Container dir={i18n.dir()}>
+      <HeadeSeo
+        title={`Enouza - ${t("footer.help.contactUs")}`}
+      />
+
+      <ContactWrapper>
+        <ContactHeader>
+          
+
+          <Title>
+            {t("footer.help.contactUs")}
+          </Title>
+
+          <Description>
+            {t("footer.help.contact_note")}
+          </Description>
+        </ContactHeader>
+
+        <Form onSubmit={handldSendEmail}>
+          <Field>
+            <Label htmlFor="email">
+              {t("common.email")}
+            </Label>
+
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              placeholder={t(
+                "common.please_enter_your_email"
+              )}
+              required
+            />
+          </Field>
+
+          <Field>
+            <Label htmlFor="message">
+              {t("common.message")}
+            </Label>
+
+            <Textarea
+              id="message"
+              value={message}
+              maxLength={105}
+              required
+              placeholder={t(
+                "common.enter_message"
+              )}
+              onChange={(e) =>
+                setMessage(e.target.value)
+              }
+            />
+          </Field>
+
+          <SubmitButton
+            type="submit"
+            disabled={loading}
+          >
+            {loading && (
+              <CircularProgress
+                size={17}
+                thickness={3}
+                sx={{
+                  color: "#ffffff",
+                }}
+              />
+            )}
+
+            <span>
+              {t("common.send")}
+            </span>
+          </SubmitButton>
+        </Form>
+      </ContactWrapper>
+
+      <ToastContainer
+        position={
+          i18n.dir() === "rtl"
+            ? "top-left"
+            : "top-right"
+        }
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        rtl={i18n.dir() === "rtl"}
+      />
+    </Container>
+  );
 }
 
-export default ContactUs
+export default ContactUs;
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 const Container = styled.div`
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 20px;
+
+  box-sizing: border-box;
+
+  background: #f7f4ee;
+
+  color: #292723;
+`;
 
 
-.contact_container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.contact_sections{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:50vw;
-}
-.contact_sections input[type="email"]{
-    border:none;
-    border-radius: 4px;
-    padding:10px 6px;
-    margin:10px  0px;
-    outline: none;
-    width:40vw;
-    background-color: rgba(100, 148, 237, 0.623);
-    color:rgb(0, 0, 0);
-    min-width:300px;
-}
-.contact_sections label[for="email"]{
-    
-    padding-top: 20px;
-    color:rgb(1, 39, 1);
-    min-width:300px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:0.9rem;
-    
-}
-.contact_sections textarea{
-    width:50vw;
-    border-radius: 4px;
-    border: 1px solid rgba(100, 148, 237, 0.623);
-    outline: none;
-    padding:2px 5px;
-    min-width:300px;
-    height: 100vh;
-    min-height:150px;
-    max-height:300px;
-    font-weight: bold;
-}
-.contact_sections button{
-    margin-top: 5px;
-    margin-bottom: 10px;
-    background: #0052D4; 
-    border-radius: 6px;
-    padding:5px  15px;
-    color:rgb(255, 255, 255);
-    border:none;
-    font-weight: bold;
-    height:35px;
-    display:flex;
-    align-items:center;
-    
+/* =========================================================
+   CONTACT WRAPPER
+========================================================= */
 
-}
+const ContactWrapper = styled.div`
+  width: 100%;
+
+  max-width: 620px;
+
+  margin: 0 auto;
+`;
 
 
+/* =========================================================
+   HEADER
+========================================================= */
 
-`
+const ContactHeader = styled.div`
+  margin-bottom: 38px;
+
+  text-align: center;
+`;
+
+
+const Eyebrow = styled.span`
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #b8955b;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+`;
+
+
+const Title = styled.h1`
+  margin: 0;
+
+  color: #292723;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 42px;
+
+  font-weight: 400;
+
+  line-height: 1.15;
+`;
+
+
+const Description = styled.p`
+  max-width: 500px;
+
+  margin: 16px auto 0;
+
+  color: #777168;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+`;
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+const Form = styled.form`
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+`;
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+const Field = styled.div`
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+`;
+
+
+const Label = styled.label`
+  color: #4b463f;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+`;
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+const Input = styled.input`
+  width: 100%;
+
+  height: 54px;
+
+  box-sizing: border-box;
+
+  padding: 0 16px;
+
+  border: 1px solid
+    rgba(41, 39, 35, 0.18);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: #faf8f4;
+
+  color: #292723;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &::placeholder {
+    color: #aaa49b;
+  }
+
+  &:focus {
+    border-color: #b8955b;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(184, 149, 91, 0.08);
+  }
+`;
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+const Textarea = styled.textarea`
+  width: 100%;
+
+  min-height: 160px;
+
+  box-sizing: border-box;
+
+  resize: vertical;
+
+  padding: 15px 16px;
+
+  border: 1px solid
+    rgba(41, 39, 35, 0.18);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: #faf8f4;
+
+  color: #292723;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &::placeholder {
+    color: #aaa49b;
+  }
+
+  &:focus {
+    border-color: #b8955b;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(184, 149, 91, 0.08);
+  }
+`;
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+const SubmitButton = styled.button`
+  width: 100%;
+
+  height: 54px;
+
+  margin-top: 4px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid #292723;
+
+  border-radius: 0;
+
+  background: #292723;
+
+  color: #ffffff;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover:not(:disabled) {
+    background: #b8955b;
+
+    border-color: #b8955b;
+  }
+
+  &:disabled {
+    cursor: wait;
+
+    opacity: 0.65;
+  }
+`;
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+

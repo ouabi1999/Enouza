@@ -4,14 +4,13 @@ import styled from "styled-components";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { Link } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import PersonIcon from "@mui/icons-material/Person";
 import DropDownMenuLang from "./DropDownMenuLang";
 import { useSelector } from "react-redux";
 import { ClickAwayListener } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 function SideBar(props) {
   const user = useSelector(state => state.auth.user)
@@ -84,11 +83,11 @@ function SideBar(props) {
           </a>
 
           <a
-            href="https://www.youtube.com/@enouza"
+            href="https://www.tiktok.com/@en.ouza"
             target="_blank"
             rel="noreferrer"
           >
-            <YouTubeIcon className="social-icon" />
+            <MusicNoteIcon className="social-icon" />
           </a>
 
           <a
@@ -99,13 +98,7 @@ function SideBar(props) {
             <InstagramIcon className="social-icon" />
           </a>
 
-          <a
-            href="https://twitter.com/en_ouza"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <TwitterIcon className="social-icon" />
-          </a>
+          
 
         </SocialMedia>
       </Container>
@@ -122,7 +115,7 @@ const Container = styled.div`
   right: 0;
   padding: 2px 15px;
   width: 300px;
-  background: #ffebd7;
+  background: #ffffff;
   height: 100%;
   transition: ease-in-out;
   animation-duration: 1s;

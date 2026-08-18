@@ -3,150 +3,340 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const AboutUs = () => {
-  const { t, i18n } = useTranslation("aboutus", { returnObjects: true });
+  const { t, i18n } = useTranslation("aboutus", {
+    returnObjects: true,
+  });
 
   return (
     <Container
       className="about-us"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
-      <div className="container">
-        <h1>{t("about.title")}</h1>
+      <Content>
 
-        <p className="lead">{t("about.intro")}</p>
+        <Header>
+          <Eyebrow>
+            ENOUZA
+          </Eyebrow>
 
-        <p>{t("about.passion")}</p>
+          <Title>
+            {t("about.title")}
+          </Title>
 
-        <h2>{t("about.visionTitle")}</h2>
-        <p>{t("about.visionText")}</p>
+          <Lead>
+            {t("about.intro")}
+          </Lead>
+        </Header>
 
-        <h2>{t("about.qualityTitle")}</h2>
-        <p>{t("about.qualityText")}</p>
+        <Text>
+          {t("about.passion")}
+        </Text>
 
-        <h2>{t("about.whyTitle")}</h2>
-        <ul className="why-list">
-          <li>{t("about.why.items.0")}</li>
-          <li>{t("about.why.items.1")}</li>
-          <li>{t("about.why.items.2")}</li>
-          <li>{t("about.why.items.3")}</li>
-          <li>{t("about.why.items.4")}</li>
-        </ul>
+        <Section>
+          <SectionTitle>
+            {t("about.visionTitle")}
+          </SectionTitle>
 
-        <h2>{t("about.modernTitle")}</h2>
-        <p>{t("about.modernText")}</p>
+          <Text>
+            {t("about.visionText")}
+          </Text>
+        </Section>
 
-        <p className="closing">{t("about.closing")}</p>
-      </div>
+        <Section>
+          <SectionTitle>
+            {t("about.qualityTitle")}
+          </SectionTitle>
+
+          <Text>
+            {t("about.qualityText")}
+          </Text>
+        </Section>
+
+        <Section>
+          <SectionTitle>
+            {t("about.whyTitle")}
+          </SectionTitle>
+
+          <WhyList>
+            <li>{t("about.why.items.0")}</li>
+            <li>{t("about.why.items.1")}</li>
+            <li>{t("about.why.items.2")}</li>
+            <li>{t("about.why.items.3")}</li>
+            <li>{t("about.why.items.4")}</li>
+          </WhyList>
+        </Section>
+
+        <Section>
+          <SectionTitle>
+            {t("about.modernTitle")}
+          </SectionTitle>
+
+          <Text>
+            {t("about.modernText")}
+          </Text>
+        </Section>
+
+        <Closing>
+          {t("about.closing")}
+        </Closing>
+
+      </Content>
     </Container>
   );
 };
 
 export default AboutUs;
-const Container = styled.div`
-padding: 40px 20px;
-.about-us {
-  padding: 80px 20px;
-  background-color: #fafafa;
-  color: #1a1a1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-}
 
-.about-us .container {
-  max-width: 900px;
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+const Container = styled.main`
+  width: 100%;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding: 90px 24px;
+
+  background: #f7f4ee;
+
+  color: #292723;
+
+  font-family:
+    "Jost",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 65px 20px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 50px 16px;
+  }
+`;
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+const Content = styled.div`
+  width: 100%;
+
+  max-width: 780px;
+
   margin: 0 auto;
-}
+`;
 
-/* Titles */
-.about-us h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  margin-bottom: 24px;
-  letter-spacing: -0.5px;
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+const Header = styled.header`
+  margin-bottom: 45px;
+
   text-align: center;
-  width:100%;
-}
+`;
 
-.about-us h2 {
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  letter-spacing: -0.3px;
-}
 
-/* Text */
-.about-us p {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  margin-bottom: 20px;
-  color: #333;
-}
+const Eyebrow = styled.span`
+  display: block;
 
-.about-us .lead {
-  font-size: 1.25rem;
+  margin-bottom: 14px;
+
+  color: #b8955b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.25em;
+
+  text-transform: uppercase;
+`;
+
+
+const Title = styled.h1`
+  margin: 0 0 24px;
+
+  color: #292723;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 48px;
+
   font-weight: 400;
-  color: #111;
-  margin-bottom: 28px;
-}
 
-/* Why list */
-.why-list {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
-}
+  line-height: 1.15;
 
-.why-list li {
-  font-size: 1rem;
-  padding: 12px 0;
-  border-bottom: 1px solid #e5e5e5;
-  display: flex;
-  align-items: center;
-}
+  letter-spacing: -0.02em;
 
-.why-list li::before {
-  content: "✦";
-  margin-right: 12px;
-  color: #b89b5e; /* luxury gold accent */
-  font-size: 0.9rem;
-}
+  @media (max-width: 768px) {
+    font-size: 38px;
+  }
 
-/* Closing line */
-.about-us .closing {
+  @media (max-width: 420px) {
+    font-size: 32px;
+  }
+`;
+
+
+const Lead = styled.p`
+  max-width: 680px;
+
+  margin: 0 auto;
+
+  color: #5f5a52;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  @media (max-width: 420px) {
+    font-size: 14px;
+  }
+`;
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+const Text = styled.p`
+  margin: 0;
+
+  color: #656057;
+
+  font-size: 15px;
+
+  line-height: 1.95;
+
+  font-weight: 400;
+`;
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+const Section = styled.section`
   margin-top: 48px;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #000;
-}
 
-/* RTL support (Arabic) */
-.about-us[dir="rtl"] {
-  text-align: right;
-}
+  padding-top: 32px;
 
-.about-us[dir="rtl"] .why-list li::before {
-  margin-right: 0;
-  margin-left: 12px;
-}
+  border-top: 1px solid
+    rgba(41, 39, 35, 0.12);
+`;
 
-/* Responsive */
-@media (max-width: 768px) {
-  .about-us {
-    padding: 60px 16px;
+
+const SectionTitle = styled.h2`
+  margin: 0 0 17px;
+
+  color: #292723;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 25px;
+
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  @media (max-width: 420px) {
+    font-size: 22px;
   }
+`;
 
-  .about-us h1 {
-    font-size: 2.2rem;
+
+/* =========================================================
+   WHY ENOUZA
+========================================================= */
+
+const WhyList = styled.ul`
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+
+  border-top: 1px solid
+    rgba(41, 39, 35, 0.1);
+
+  li {
+    position: relative;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid
+      rgba(41, 39, 35, 0.1);
+
+    color: #5f5a52;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    &::before {
+      content: "✦";
+
+      flex-shrink: 0;
+
+      color: #b8955b;
+
+      font-size: 10px;
+
+      line-height: 1.8;
+    }
   }
+`;
 
-  .about-us h2 {
-    font-size: 1.4rem;
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+const Closing = styled.p`
+  margin: 55px 0 0;
+
+  padding-top: 35px;
+
+  border-top: 1px solid
+    rgba(41, 39, 35, 0.15);
+
+  color: #292723;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 19px;
+
+  font-weight: 400;
+
+  line-height: 1.8;
+
+  text-align: center;
+
+  @media (max-width: 420px) {
+    font-size: 17px;
   }
-
-  .about-us .lead {
-    font-size: 1.15rem;
-  }
-}
-
-
-`
+`;

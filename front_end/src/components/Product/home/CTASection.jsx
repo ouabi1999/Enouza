@@ -1,259 +1,317 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Container, Typography, Button, Box, Grid } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import PlaceIcon from '@mui/icons-material/Place';
-import { useTranslation } from 'react-i18next';
-import { rt } from 'framer-motion/client';
-import { Link } from 'react-router-dom';
-// Luxury color palette for Enouza
+import React from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 const COLORS = {
-  charcoal: '#1A1A1A',
-  slate: '#2D3439',
-  cream: '#F7F5F0',
-  gold: '#C4A96A',
-  lightGold: '#E1D4B7',
-  stone: '#8C8C8C',
+  cream: "#F6F3ED",
+  white: "#FFFFFF",
+  ink: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  border: "#E4DED4",
 };
-
-// Animations
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const slideInRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-// Styled Components
-const CTAContainer = styled(Container)`
-  padding: 6rem 2rem !important;
-  background: ${COLORS.cream};
-  position: relative;
-  width:"100%"
-`;
-
-const LeftPanel = styled(Box)`
-  padding-right: 3rem;
-  animation: ${slideInLeft} 0.8s ease-out;
-  border-right: 1px solid ${COLORS.lightGold};
-  
-  @media (max-width: 900px) {
-    border-right: none;
-    border-bottom: 1px solid ${COLORS.lightGold};
-    padding-right: 0;
-    padding-bottom: 3rem;
-    margin-bottom: 3rem;
-  }
-`;
-
-const RightPanel = styled(Box)`
-  padding-left: 3rem;
-  animation: ${slideInRight} 0.8s ease-out;
-  
-  @media (max-width: 900px) {
-    padding-left: 0;
-  }
-`;
-
-const SectionTitle = styled(Typography)`
-  font-family: 'Playfair Display', serif !important;
-  position: relative;
-  display: inline-block;
-  margin-bottom: 3rem !important;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: ${COLORS.gold};
-  }
-`;
-
-const CTAButton = styled(Button)`
-  padding: 0.75rem 2rem !important;
-  border-radius: 0 !important;
-  background: ${COLORS.gold} !important;
-  color: ${COLORS.cream} !important;
-  font-weight: 300 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  font-size: 0.8rem !important;
-  transition: all 0.3s ease !important;
-  margin-top: 1rem !important;
-  
-  &:hover {
-    background: transparent !important;
-    color: ${COLORS.gold} !important;
-    border: 1px solid ${COLORS.gold} !important;
-    transform: translateY(-2px);
-  }
-`;
-
-const ContactItem = styled(Box)`
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateX(5px);
-    
-    .contact-icon {
-      color: ${COLORS.gold};
-    }
-  }
-`;
-
-const ContactIcon = styled(Box)`
-  color: ${COLORS.charcoal};
-  margin-right: 1rem;
-  transition: color 0.3s ease;
-  
-  svg {
-    font-size: 1.2rem !important;
-  }
-`;
-
-const ContactText = styled(Box)``;
-
-const Divider = styled.div`
-  height: 1px;
-  width: 100%;
-  background: ${COLORS.lightGold};
-  margin: 2rem 0;
-`;
 
 const CTASection = () => {
   const { t, i18n } = useTranslation();
- const contactInfo = [
-  {
-    icon: <EmailIcon />,
-    title: t("ctaSection.contact.email.title"),
-    details: "contact@enouza.com",
-    description: t("ctaSection.contact.email.description")
-  },
-  {
-    icon: <PhoneIcon />,
-    title: t("ctaSection.contact.phone.title"),
-    details: "+34 624 727601",
-    description: t("ctaSection.contact.phone.description")
-  },
-  {
-    icon: <PlaceIcon />,
-    title: t("ctaSection.contact.studio.title"),
-    details: "123 Design District",
-    description: t("ctaSection.contact.studio.description")
-  }
-];
+
+  const isRTL = i18n.dir() === "rtl";
 
   return (
-    <CTAContainer maxWidth="xlg">
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <LeftPanel>
-            <SectionTitle 
-              variant="h4" 
-              sx={{ color: COLORS.charcoal }}
-            >
-  {t("ctaSection.titleLeft")}
-            </SectionTitle>
-            
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: COLORS.stone,
-                lineHeight: 1.8,
-                mb: 3
-              }}
-            >
-                {t("ctaSection.description")}
+    <Section dir={isRTL ? "rtl" : "ltr"}>
+      <Container>
+        <CTA>
 
-            </Typography>
-             <Link to="/contact-us">
-            <CTAButton  endIcon={<ArrowForwardIcon style={{ rotate: i18n.dir() === 'ltr' ? '0deg' : '180deg', margin:"0 3px" }} />} >
-                  {t("ctaSection.button")}
-            </CTAButton>
-          </Link>
-          </LeftPanel>
-        </Grid>
-        
-        <Grid item xs={12} md={6}>
-          <RightPanel>
-            <SectionTitle 
-              variant="h4" 
-              sx={{ color: COLORS.charcoal }}
-            >
-  {t("ctaSection.titleRight")}
+          <Eyebrow>
+            <EyebrowLine />
+            <span>{t("ctaSection.eyebrow")}</span>
+            <EyebrowLine />
+          </Eyebrow>
 
-            </SectionTitle>
-            
-            {contactInfo.map((item, index) => (
-              <React.Fragment key={index}>
-                <ContactItem>
-                  <ContactIcon className="contact-icon">
-                    {item.icon}
-                  </ContactIcon>
-                  <ContactText>
-                    <Typography 
-                      variant="body1" 
-                      sx={{ 
-                        color: COLORS.charcoal,
-                        fontWeight: 500,
-                        mb: 0.5
-                      }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography 
-                      variant="body2" 
-                      sx={{ 
-                        color: COLORS.gold,
-                        fontWeight: 400
-                      }}
-                    >
-                      {item.details}
-                    </Typography>
-                    <Typography 
-                      variant="caption" 
-                      sx={{ 
-                        color: COLORS.stone,
-                        display: 'block',
-                        mt: 0.5,
-                        fontSize: '0.75rem'
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-                  </ContactText>
-                </ContactItem>
-                {index < contactInfo.length - 1 && <Divider />}
-              </React.Fragment>
-            ))}
-          </RightPanel>
-        </Grid>
-      </Grid>
-    </CTAContainer>
+          <Title>
+            {t("ctaSection.titleLeft")}
+          </Title>
+
+          <Description>
+            {t("ctaSection.description")}
+          </Description>
+
+          <Button
+            as={Link}
+            to="/contact-us"
+          >
+            <ButtonText>
+              {t("ctaSection.button")}
+            </ButtonText>
+
+            <ButtonIcon>
+              <ArrowForwardIcon
+                sx={{
+                  transform: isRTL
+                    ? "rotate(180deg)"
+                    : "none",
+                }}
+              />
+            </ButtonIcon>
+          </Button>
+
+        </CTA>
+      </Container>
+    </Section>
   );
 };
 
 export default CTASection;
+
+
+/* ============================================================
+   SECTION
+============================================================ */
+
+const Section = styled.section`
+  width: 100%;
+
+  padding: 90px 0;
+
+  background: ${COLORS.cream};
+
+  @media (max-width: 700px) {
+    padding: 65px 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 50px 0;
+  }
+`;
+
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+const Container = styled.div`
+  width: min(1180px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 28px);
+  }
+`;
+
+
+/* ============================================================
+   CTA
+============================================================ */
+
+const CTA = styled.div`
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 430px;
+
+  padding: 70px 40px;
+
+  text-align: center;
+
+  background: ${COLORS.white};
+
+  border: 1px solid ${COLORS.border};
+
+  overflow: hidden;
+
+  @media (max-width: 700px) {
+    min-height: 380px;
+
+    padding: 55px 25px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 350px;
+
+    padding: 45px 20px;
+  }
+`;
+
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+const Eyebrow = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+
+  color: ${COLORS.gold};
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+`;
+
+const EyebrowLine = styled.span`
+  width: 28px;
+
+  height: 1px;
+
+  background: ${COLORS.gold};
+
+  opacity: 0.7;
+
+  @media (max-width: 480px) {
+    width: 18px;
+  }
+`;
+
+
+/* ============================================================
+   TITLE
+============================================================ */
+
+const Title = styled.h2`
+  max-width: 720px;
+
+  margin: 0;
+
+  color: ${COLORS.ink};
+
+  font-family:
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size: clamp(40px, 5vw, 62px);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+
+  @media (max-width: 600px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 35px;
+  }
+`;
+
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+
+const Description = styled.p`
+  max-width: 510px;
+
+  margin: 22px auto 32px;
+
+  color: ${COLORS.muted};
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  @media (max-width: 480px) {
+    margin-top: 18px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+`;
+
+
+/* ============================================================
+   BUTTON
+============================================================ */
+
+const Button = styled(Link)`
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 6px 7px 6px 22px;
+
+  border-radius: 999px;
+
+  background: ${COLORS.ink};
+
+  color: ${COLORS.white};
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    gap 0.25s ease;
+
+  &:hover {
+    background: #2B2926;
+
+    transform: translateY(-2px);
+
+    gap: 21px;
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 18px;
+
+    gap: 13px;
+  }
+`;
+
+const ButtonText = styled.span`
+  white-space: nowrap;
+`;
+
+const ButtonIcon = styled.span`
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: ${COLORS.gold};
+
+  svg {
+    width: 17px;
+    height: 17px;
+  }
+`;

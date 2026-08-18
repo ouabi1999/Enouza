@@ -102,26 +102,28 @@
     "rated": "Valorado"
   }
 },
+  
   "ctaSection": {
-    "titleLeft": "Conecta con nosotros",
-    "description": "Cada pieza de Enouza comienza con una conversación. Comparte tu visión y juntos encontraremos la iluminación perfecta para tu espacio.",
-    "button": "Iniciar conversación",
-    "titleRight": "Datos de contacto",
+    "eyebrow": "ATENCIÓN AL CLIENTE ENOUZA",
+    "titleLeft": "Estamos aquí para ayudarte.",
+    "description": "¿Tienes alguna pregunta sobre un producto, tu pedido o la entrega? Nuestro equipo de atención al cliente está aquí para ayudarte.",
+    "button": "Contáctanos",
+    "supportEyebrow": "ATENCIÓN AL CLIENTE",
+    "titleRight": "Un poco de ayuda, cuando la necesites.",
+    "supportDescription": "Si tienes alguna pregunta sobre tu pedido o nuestra colección, ponte en contacto con nosotros y estaremos encantados de ayudarte.",
     "contact": {
       "email": {
         "title": "Correo electrónico",
-        "description": "Respondemos en un plazo de 24 horas"
+        "description": "Para preguntas generales y consultas."
       },
-      "phone": {
-        "title": "Teléfono",
-        "description": "Lun–Vie, 10:00–18:00"
-      },
-      "studio": {
-        "title": "Estudio",
-        "description": "Nueva York, NY 10001"
+      "support": {
+        "title": "Atención al cliente online",
+        "details": "Servicio de atención al cliente",
+        "description": "Estamos aquí para ayudarte con tu experiencia de compra."
       }
     }
   },
+
 "matricsSection": {
   "why_us": "¿Por qué elegirnos?",
   "exclusiveDesigns": "Diseños exclusivos",
@@ -380,7 +382,8 @@
       "aboutUs": "Acerca",
       "shipping": "Envío",
       "returns": "Devoluciones",
-      "contact_note": "¿Tienes preguntas? Estamos aquí para ayudarte."
+      "contact_note": "¿Tienes preguntas? Estamos aquí para ayudarte.",
+      "enouza_faq_description": "Encuentra respuestas a las preguntas que recibimos con más frecuencia."
     },
     "newsletter": {
       "eyebrow": "COLECCIÓN ENOUZA",
@@ -589,6 +592,8 @@
     "send": "Enviar",
     "enter_message": "Escribe tu mensaje",
     "message_sent": "Mensaje enviado",
+    "message":"Mensage",
+
     "myProfile": "Mi perfil",
     "chat": "Chat",
     "helpCenter": "Ayuda",

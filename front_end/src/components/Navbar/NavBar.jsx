@@ -1,384 +1,950 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+
+import { ClickAwayListener } from "@mui/material";
+
 import { setLogout } from "../../features/authSlice";
-import ApiInstance from "../../../common/baseUrl";
-import DropDownMenu from "./DropDownMenu";
-import DropDownMenuLang from "./DropDownMenuLang";
-import MenuIcon from "@mui/icons-material/Menu";
-import SideBar from "./SideBar";
-import { ClickAwayListener, TextField } from "@mui/material";
-import { useTranslation } from "react-i18next";
 import { setSearch } from "../../features/filterSlice";
 
+import ApiInstance from "../../../common/baseUrl";
+
+import DropDownMenu from "./DropDownMenu";
+import DropDownMenuLang from "./DropDownMenuLang";
+import SideBar from "./SideBar";
+
+import { useTranslation } from "react-i18next";
+
+
+// ============================================================
+// ENOUZA — LUXURY COLORS
+// ============================================================
+
+const COLORS = {
+  cream: "#F7F5F0",
+  white: "#FFFFFF",
+  ink: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  softGold: "#DED4C4",
+  border: "#E4DED4",
+};
+
+
+// ============================================================
+// COMPONENT
+// ============================================================
+
 function NavBar({ outlet, setSearchValue, value }) {
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const isAuth = window.localStorage.getItem("refresh_token");
-  const refresh_token = window.localStorage.getItem("refresh_token");
+  // ----------------------------------------------------------
+  // REDUX
+  // ----------------------------------------------------------
+
+  const cartItems = useSelector(
+    (state) => state.cart.cartItems
+  );
+
+  const country = useSelector(
+    (state) => state.location.country
+  );
+
+
+  // ----------------------------------------------------------
+  // AUTH
+  // ----------------------------------------------------------
+
+  const isAuth =
+    window.localStorage.getItem("refresh_token");
+
+  const refresh_token =
+    window.localStorage.getItem("refresh_token");
+
+
+  // ----------------------------------------------------------
+  // STATE
+  // ----------------------------------------------------------
+
   const [language, setLanguage] = useState("");
   const [currency, setCureency] = useState("");
-  const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
+
+  const [isSearchInputOpen, setIsSearchInputOpen] =
+    useState(false);
+
+  const [isProfileOpen, setIsProfileOpen] =
+    useState(false);
+
+  const [isSideBarOpen, setIsSideBarOpen] =
+    useState(false);
+
+  const [isLangMenuOpen, setIsLangMenuOpen] =
+    useState(false);
+
+
+  // ----------------------------------------------------------
+  // HOOKS
+  // ----------------------------------------------------------
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+
   const { t, i18n } = useTranslation();
-  const country = useSelector((state) => state.location.country);
+
+
+  // ==========================================================
+  // LOGOUT
+  // ==========================================================
 
   const logout = () => {
-    ApiInstance.post("logout/", { refresh_token: refresh_token })
+    ApiInstance.post("logout/", {
+      refresh_token: refresh_token,
+    })
       .then((response) => {
         dispatch(setLogout(response.data));
+
         navigate("/");
+
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+
+  // ==========================================================
+  // PROFILE
+  // ==========================================================
+
   const openProfileMenu = () => {
     setIsProfileOpen(!isProfileOpen);
   };
+
+
+  // ==========================================================
+  // SIDEBAR
+  // ==========================================================
 
   const hideSideBarMenu = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
 
-  const handleSearchInput = (e) => {
-    dispatch(setSearch(value))
-    navigate("/search")
-  }
+
+  // ==========================================================
+  // SEARCH
+  // ==========================================================
+
+  const handleSearchInput = () => {
+    dispatch(setSearch(value));
+
+    navigate("/collections/?search");
+  };
+
+
+  // ==========================================================
+  // RETURN
+  // ==========================================================
 
   return (
     <ParentContainer>
+
+      {/* ======================================================
+          MOBILE SEARCH
+      ====================================================== */}
+
       {isSearchInputOpen && (
         <ClickAwayListener
-          mouseEvent="onMouseDown"
-          touchEvent="onScroll"
-          onClickAway={() => setIsSearchInputOpen(false)}
-        >
-          <div className="search-container">
+  mouseEvent="onMouseDown"
+  touchEvent="onTouchEnd"
+  onClickAway={() => setIsSearchInputOpen(false)}
+>
+          <div className="search-container" >
+
             <div className="responsive-input">
-              <input placeholder={t("common.search")} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="100" 
+              <input
+                placeholder={t("common.search")}
+                value={value}
+                onChange={(e) =>
+                  setSearchValue(e.target.value)
+                }
+                maxLength="100"
               />
             </div>
 
-            <div className="search-icon-container" >
-              <SearchIcon className="search-icon" onClick={handleSearchInput} />
+            <div className="search-icon-container"  style={{
+                borderRadius:
+                  i18n.dir() === "rtl"
+                    ? "2px 0 0 2px"
+                    : "0 2px 2px 0",
+              }}
+            >
+              <SearchIcon
+                className="search-icon"
+                onClick={handleSearchInput}
+              />
             </div>
+
           </div>
         </ClickAwayListener>
       )}
+
+
+      {/* ======================================================
+          MAIN NAVBAR
+      ====================================================== */}
+
       <Container>
+
+        {/* ====================================================
+            LEFT
+        ==================================================== */}
+
         <ChildContainer>
+
+          {/* LOGO */}
+
           <Logo>
             <Link to="/">
-              <span style={{"margin":"0 5px", "letterSpacing": "3px", "color": "#000000", "fontSize": "25px", "fontFamily": "Playfair Display Cormorant Garamond, serif", "fontWeight": "bold" }}>ENOUZA</span>
+              <span>ENOUZA</span>
             </Link>
           </Logo>
+
+           
+          {/* DESKTOP SEARCH */}
+
           <SearchContainer>
+
             <div className="search-bar">
-              <input placeholder={t("common.search")} style={{
-                borderRadius: i18n.dir() === "rtl" ? "0 4px 4px 0" : "4px 0 0 4px"
-              }} value={value} onChange={(e) => setSearchValue(e.target.value)} maxLength="50" />
+
+              <input
+                placeholder={t("common.search")}
+                value={value}
+                onChange={(e) =>
+                  setSearchValue(e.target.value)
+                }
+                maxLength="50"
+
+                style={{
+                  borderRadius:
+                    i18n.dir() === "rtl"
+                      ? "0 2px 2px 0"
+                      : "2px 0 0 2px",
+                }}
+              />
+
             </div>
 
-            <div className="search-icon-container" style={{
-              borderRadius: i18n.dir() === "rtl" ? "4px 0 0 4px" : "0 4px 4px 0"
-            }}>
-              <SearchIcon className="search-icon" onClick={handleSearchInput} />
+
+            <div
+              className="search-icon-container"
+
+              style={{
+                borderRadius:
+                  i18n.dir() === "rtl"
+                    ? "2px 0 0 2px"
+                    : "0 2px 2px 0",
+              }}
+            >
+              <SearchIcon
+                className="search-icon"
+                onClick={handleSearchInput}
+              />
             </div>
+
           </SearchContainer>
+
         </ChildContainer>
+
+
+        {/* ====================================================
+            RIGHT SIDE
+        ==================================================== */}
+
         <Wrapper>
+
+          {/* MOBILE SEARCH */}
+
           <div className="search-icon-container-responsive">
+
             <SearchIcon
-              onClick={() => setIsSearchInputOpen(true)}
+              onClick={() =>
+                setIsSearchInputOpen(true)
+              }
+
               className="search-icon-responsive"
             />
+
           </div>
-         
+
+
+          {/* LANGUAGE */}
+
           <div className="drop-down-lang-container">
+
             <DropDownMenuLang
               isLangMenuOpen={isLangMenuOpen}
               setIsLangMenuOpen={setIsLangMenuOpen}
               country={country}
               topPosition="60px"
               righPosition="20px"
-              t = {t}
+              t={t}
               i18n={i18n}
-
             />
+
           </div>
+
+
+          {/* PROFILE */}
+
           <div className="drop-down-menu-container">
+
             <DropDownMenu
               logout={logout}
               isAuth={isAuth}
               isProfileOpen={isProfileOpen}
               openProfileMenu={openProfileMenu}
               setIsProfileOpen={setIsProfileOpen}
-              t = {t}
+              t={t}
               i18n={i18n}
             />
+
           </div>
-           <Link to="/shopping-cart">
+
+
+          {/* =================================================
+              SHOPPING CART
+          ================================================= */}
+
+          <Link to="/shopping-cart">
+
             <div className="shopping-cart">
-              <ShoppingCartIcon className="shopping-cart-icon" />
+
+              <ShoppingCartIcon
+                className="shopping-cart-icon"
+              />
+
               <div className="cart-number-container">
-                <span>{cartItems?.length || 0}</span>
+
+                <span>
+                  {cartItems?.length || 0}
+                </span>
+
               </div>
+
             </div>
+
           </Link>
-          <MenuIcon className="menu-icon" onClick={hideSideBarMenu} />
+
+
+          {/* MOBILE MENU */}
+
+          <MenuIcon
+            className="menu-icon"
+            onClick={hideSideBarMenu}
+          />
+
         </Wrapper>
+
       </Container>
+
+
+      {/* ======================================================
+          SIDEBAR
+      ====================================================== */}
+
       {isSideBarOpen && (
         <SideBar
-          t = {t}
+          t={t}
           isAuth={isAuth}
+
           isLangMenuOpen={isLangMenuOpen}
           setIsLangMenuOpen={setIsLangMenuOpen}
+
           country={country}
+
           hideSideBarMenu={hideSideBarMenu}
+
           logout={logout}
+
           isProfileOpen={isProfileOpen}
           openProfileMenu={openProfileMenu}
           setIsProfileOpen={setIsProfileOpen}
         />
       )}
+
+
+      {/* ======================================================
+          OUTLET
+      ====================================================== */}
+
       {outlet}
+
     </ParentContainer>
   );
 }
 
 export default NavBar;
+
+
+// ============================================================
+// PARENT
+// ============================================================
+
 const ParentContainer = styled.div`
   position: relative;
-  width:100%;
+
+  width: 100%;
+
+  color: ${COLORS.ink};
+
+
+  /* ==========================================================
+     MOBILE SEARCH
+  ========================================================== */
+
+ .search-container {
+  display: flex;
+
+  align-items: center;
+
+  position: fixed;
+
+  top: 0;
+  inset-inline: 0;
+
+  z-index: 9999;
+
+  height: 58px;
+
+  padding: 8px 14px;
+
+  box-sizing: border-box;
+
+  background: ${COLORS.cream};
+
+  border-bottom: 1px solid ${COLORS.border};
+
+  box-shadow:
+    0 8px 25px rgba(29, 28, 26, 0.06);
+
+
+  .responsive-input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 40px;
+
+    display: flex;
+  }
+
+
+  .responsive-input input {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 40px;
+
+    padding: 0 14px;
+
+    border: 1px solid ${COLORS.border};
+
+    border-radius: 2px 0 0 2px;
+
+    outline: none;
+
+    background: ${COLORS.white};
+    color: ${COLORS.ink};
+
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1;
+
+    transition:
+      border-color 0.2s ease;
+
+    &::placeholder {
+      color: ${COLORS.muted};
+    }
+
+    &:focus {
+      border-color: ${COLORS.gold};
+    }
+  }
+
+
+  .search-icon-container {
+    width: 42px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: ${COLORS.ink};
+
+    color: ${COLORS.white};
+
+    cursor: pointer;
+
+    border-radius: 0 2px 2px 0;
+    
+  }
+
+
+  .search-icon {
+    display: block;
+
+    padding: 0;
+
+    color: ${COLORS.white};
+
+    font-size: 20px;
+  }
+}
+  @media only screen and (min-width: 861px) {
   .search-container {
     display: none;
-    align-items: center;
-    height: 40px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    min-width: 300px;
-    max-width: 1920px;
-    background-color: blue;
-
-    .responsive-input {
-      height: 100%;
-      width: 100%;
-      font-size: 16px;
-
-    }
-
-    .responsive-input input {
-      font-size: 16px;
-      height: 100%;
-      width: 100%;
-      border: none;
-      padding: 0 4px 0 4px;
-      border-radius:0;
-      outline: none;
-      background: #c5c5c5;
-      z-index: 999;
-    }
-    .responsive-input:focus {
-      outline: 0.5px solid orange;
-    }
-    .search-bar {
-      height: 100%;
-      cursor: pointer;
-
-    }
-    .search-icon-container {
-      height: 100%;
-      width: 45px;
-      background:  #000000;
-      color:#ffffff;
-      display: flex;
-      align-items: center;
-    }
-    .search-icon {
-      padding: 8px;
-      color: #fff;
-    }
   }
-
-  @media only screen and (max-width: 650px) {
-    /* For mobile phones: */
-    .search-container {
-      display: flex;
-      position: fixed;
-      top: 50px;
-      z-index: 9999;
-      left: 0;
-    }
-  }
+}
 `;
+
+
+// ============================================================
+// MAIN NAVBAR
+// ============================================================
+
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding: 10px 4px;
-  max-width: 1920px;
-  min-width: 320px;
-  background: #dbd0a2;
   position: sticky;
   top: 0;
   z-index: 99;
-  
+  min-width: 320px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  background: rgba(247, 245, 240, 0.96);
+  color: ${COLORS.ink};
+
+  border-bottom: 1px solid ${COLORS.border};
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+
   a {
-    color: #000000;
+    color: ${COLORS.ink};
+
+    text-decoration: none;
   }
+
+
+  /* ========================================================
+     MOBILE MENU
+  ======================================================== */
+
   .menu-icon {
-    color: #000000;
-    cursor: pointer;
-    font-size: 30px;
     display: none;
-  }
-  @media only screen and (max-width: 615px) {
-    img {
-      width: 22vw;
-      max-width: 120px;
+
+    color: ${COLORS.ink};
+
+    cursor: pointer;
+
+    font-size: 27px;
+
+    transition:
+      color 0.2s ease;
+
+    &:hover {
+      color: ${COLORS.gold};
     }
   }
+
+
+  .drop-down-lang-container,
+  .drop-down-menu-container {
+    display: flex;
+
+    align-items: center;
+  }
+
+
+  @media only screen and (max-width: 1000px) {
+    padding: 0 24px;
+  }
+
+
   @media only screen and (max-width: 860px) {
-    /* For mobile phones: */
+
+
+    padding: 0 20px;
+
 
     .menu-icon {
-      display: inline;
+      display: flex;
     }
-    .drop-down-lang-container {
-      display: none;
-    }
+
+
+    .drop-down-lang-container,
     .drop-down-menu-container {
       display: none;
     }
-    .sign-in-button {
-      display: none;
-    }
-    .person-icon {
-      display: none;
-    }
-  }
-      @media only screen and (max-width: 650px) {
-      
-      &{
-        padding:10px 0px;}
-    }
-
-`;
-const ChildContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
-  gap: 15px;
-`;
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 39%;
-  gap: 30px;
-
-  .shopping-cart {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-  .shopping-cart-icon {
-    color: #000000;
-    font-size: 25px;
-  }
-  .cart-number-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    color: #000000;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    font-size: 12px;
-    background: #ffffff;
   }
 
-  .search-icon-container-responsive {
-    display: none;
-  }
-  .search-icon-responsive {
-    color: #000000;
-    cursor: pointer;
-    font-size: 30px;
-  }
+
   @media only screen and (max-width: 650px) {
-    .search-icon-container-responsive {
-      display: flex;
-    }
-    &{
-      width: 50%;
-      justify-content: space-between;
-      
-    }
+
+    height: 58px;
+
+    padding: 0 15px;
   }
 `;
+
+
+// ============================================================
+// LEFT SIDE
+// ============================================================
+
+const ChildContainer = styled.div`
+  width: 60%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 28px;
+
+  min-width: 0;
+
+
+  @media only screen and (max-width: 1000px) {
+    width: 58%;
+  }
+
+
+  @media only screen and (max-width: 860px) {
+    width: auto;
+
+    flex: 1;
+  }
+`;
+
+
+// ============================================================
+// LOGO
+// ============================================================
+
 const Logo = styled.div`
-   margin-left: 0px;
-   @media only screen and (max-width: 650px) {
-    /* For mobile phones: */
-    &{
-      margin-top:4px;
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  margin: 0;
+
+
+  a {
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+  }
+
+
+  span {
+    margin: 0 !important;
+
+    color: ${COLORS.ink} !important;
+
+    font-family:
+      "Playfair Display",
+      "Cormorant Garamond",
+      Georgia,
+      serif !important;
+
+    font-size: 28px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0.18em !important;
+
+    transition:
+      color 0.25s ease;
+  }
+
+
+  &:hover span {
+    color: ${COLORS.gold} !important;
+  }
+
+
+  @media only screen and (max-width: 650px) {
+
+    span {
+      font-size: 20px !important;
+
+      letter-spacing: 0.15em !important;
+    }
+  }
+
+
+  @media only screen and (max-width: 380px) {
+
+    span {
+      font-size: 18px !important;
     }
   }
 `;
+
+
+// ============================================================
+// SEARCH
+// ============================================================
+
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 15px;
-  height: 40px;
-  input {
-    height: 100%;
-    width: 30vw;
-    min-width: 100px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    padding: 0 4px 0 4px;
-    outline: none;
-  }
-  input:focus {
-    outline: 0.5px solid orange;
-  }
+
+  width: auto;
+  height: 38px;
+
   .search-bar {
-    height: 100%;
+    height: 38px;
+    display: flex;
   }
+
+  input {
+    box-sizing: border-box;
+
+    width: clamp(170px, 30vw, 420px);
+    height: 38px;
+
+    padding: 0 13px;
+
+    border: 1px solid ${COLORS.border};
+
+    outline: none;
+
+    background: ${COLORS.white};
+    color: ${COLORS.ink};
+
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1;
+
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease;
+
+    &::placeholder {
+      color: ${COLORS.muted};
+    }
+
+    &:focus {
+      border-color: ${COLORS.gold};
+      background: ${COLORS.white};
+    }
+  }
+
   .search-icon-container {
-    height: 100%;
-    width: 45px;
-    background:  #000000;
-    border-radius: 0 4px 4px 0;
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 38px;
+
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    background: ${COLORS.ink};
+
     cursor: pointer;
+
+    transition: background 0.25s ease;
   }
+
+  .search-icon-container:hover {
+    background: #302e2a;
+  }
+
   .search-icon {
-    padding: 8px;
-    color: #ffffff;
+    display: block;
+
+    padding: 0;
+
+    color: ${COLORS.white};
+
+    font-size: 19px;
+  }
+
+  
+
+  @media only screen and (max-width: 860px) {
+    display: none;
+  }
+`;
+
+
+// ============================================================
+// RIGHT SIDE
+// ============================================================
+
+const Wrapper = styled.div`
+  width: 39%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+
+  padding-right: 0;
+
+  /* =========================
+     SHOPPING CART
+  ========================= */
+
+  .shopping-cart {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    direction: ltr;
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease;
+  }
+
+  .shopping-cart:hover {
+    transform: translateY(-1px);
+  }
+
+  .shopping-cart-icon {
+    display: block;
+
+    color: ${COLORS.ink};
+
+    font-size: 22px;
+
+    transition: color 0.25s ease;
+  }
+
+  .shopping-cart:hover .shopping-cart-icon {
+    color: ${COLORS.gold};
+  }
+
+  /* =========================
+     CART NUMBER
+  ========================= */
+
+  .cart-number-container {
+    position: absolute;
+
+    top: -8px;
+    inset-inline-end: -8px;
+
+    width: 15px;
+    height: 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: ${COLORS.gold};
+
+    color: ${COLORS.white};
+
+    font-size: 8px;
+    font-weight: 700;
+
+    line-height: 1;
+  }
+
+  /* =========================
+     MOBILE SEARCH
+  ========================= */
+
+  .search-icon-container-responsive {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-icon-responsive {
+    display: block;
+
+    color: ${COLORS.ink};
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .search-icon-responsive:hover {
+    color: ${COLORS.gold};
+
+    transform: translateY(-1px);
+  }
+
+  /* =========================
+     RESPONSIVE
+  ========================= */
+
+  @media only screen and (max-width: 860px) {
+    .search-icon-container-responsive {
+      display: flex;
+    }
   }
 
   @media only screen and (max-width: 650px) {
-    /* For mobile phones: */
-    display: none;
+    width: auto;
+
+    gap: 24px;
+  }
+
+  @media only screen and (max-width: 420px) {
+    gap: 18px;
+
+    .shopping-cart-icon,
+    .search-icon-responsive {
+      font-size: 21px;
+    }
   }
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import NewsLetter from "./NewsLetter";
+import PaymentMethods from "../../../common/PaymentMethods";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -191,12 +192,9 @@ const Footer = () => {
           </Copyright>
 
 
-          <PaymentMethods>
-            <PaymentImage
-              src="/payment-methods.png"
-              alt={t("footer.payment.secure")}
-            />
-          </PaymentMethods>
+          <PaymentMethodsContainer>
+              <PaymentMethods/>
+          </PaymentMethodsContainer>
 
 
           <SecureText>
@@ -247,12 +245,12 @@ const FooterContainer = styled.footer`
 const NewsletterSection = styled.section`
   width: 100%;
 
-  padding: 0 30px 70px;
+  padding: 40px 30px 70px;
 
   background: #f8f6f1;
 
   @media (max-width: 600px) {
-    padding: 0 16px 50px;
+    padding: 16px 16px 50px;
   }
 `;
 
@@ -693,7 +691,7 @@ const Copyright = styled.span`
    PAYMENTS
 ========================================================= */
 
-const PaymentMethods = styled.div`
+const PaymentMethodsContainer = styled.div`
   display: flex;
 
   align-items: center;

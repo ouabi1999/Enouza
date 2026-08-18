@@ -5,8 +5,10 @@ import { Container, Typography, Grid, Box } from "@mui/material";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import StarIcon from "@mui/icons-material/Star";
 import SpaIcon from "@mui/icons-material/Spa";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,108 +21,418 @@ import { useSelector } from "react-redux";
 // ==========================================
 
 const COLORS = {
-  sand: "#E6DFD5",
-  clay: "#D4C9B8",
-  terracotta: "#B3543C",
-  darkTerracotta: "#8C3D2C",
-  earth: "#3A332D",
-  warmGray: "#5A534A",
-  lightClay: "#EAE4DC",
-  taupe: "#7A6E64",
+  cream: "#F7F5F0",
+  white: "#FFFFFF",
+  ink: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  softGold: "#DED4C4",
+  border: "#E4DED4",
 };
 
+
 // ==========================================
-// STYLED COMPONENTS
+// MAIN CONTAINER
 // ==========================================
 
 const DesignContainer = styled(Container)`
-  padding: 8rem 2rem !important;
-
-  background: ${COLORS.sand};
+  width: 100%;
 
   position: relative;
+
+  padding: 7rem 2rem !important;
+
+  background: ${COLORS.cream};
+
+  color: ${COLORS.ink};
+
   overflow: hidden;
 
+  /* very subtle luxury texture */
   &:before {
     content: "";
 
     position: absolute;
 
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
 
-    background-image:
+    background:
       radial-gradient(
-        circle at 10% 20%,
-        ${COLORS.clay} 0%,
-        transparent 20%
+        circle at 8% 15%,
+        rgba(222, 212, 196, 0.32),
+        transparent 24%
       ),
       radial-gradient(
-        circle at 90% 80%,
-        ${COLORS.lightClay} 0%,
-        transparent 20%
+        circle at 92% 85%,
+        rgba(222, 212, 196, 0.22),
+        transparent 24%
       );
-
-    opacity: 0.3;
 
     pointer-events: none;
   }
 
- @media only screen and (max-width:420px){
-    &{
-        padding: 4rem 0.5rem !important;
-
-      }
+  @media (max-width: 900px) {
+    padding: 6rem 1.5rem !important;
   }
-  
-   
-  
+
+  @media (max-width: 600px) {
+    padding: 5rem 1rem !important;
+  }
+
+  @media (max-width: 420px) {
+    padding: 4rem 0.75rem !important;
+  }
 `;
+
+
+// ==========================================
+// GRID
+// ==========================================
 
 const DesignGrid = styled(Grid)`
-  align-items: center;
-
   position: relative;
+
   z-index: 1;
+
+  align-items: center;
 `;
 
-const DesignPrinciple = styled(Box)`
+
+// ==========================================
+// IMAGE WRAPPER
+// ==========================================
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  background: ${COLORS.white};
+
+  .slick-slider {
+    width: 100%;
+  }
+
+  .slick-list {
+    overflow: hidden;
+  }
+
+  .slick-slide > div {
+    line-height: 0;
+  }
+
+  img {
+    width: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.015);
+  }
+`;
+
+
+// ==========================================
+// COLLECTION BUTTON
+// ==========================================
+const Arrow = styled.span`
   display: flex;
-  align-items: flex-start;
+  
+  svg{
+   font-size: 10px;
+  }
+  transform: ${({ $rtl }) =>
+    $rtl ? "rotate(180deg)" : "none"};
 
-  margin-bottom: 3rem;
-  padding-left: 1rem;
+  
+`;
+const CollectionButton = styled(Link)`
+ position: absolute;
 
-  border-left: 2px solid ${COLORS.terracotta};
+  left: 7%;
+  bottom: 20px;
 
-  transition: all 0.3s ease;
+  display: inline-flex;
+
+  align-items: center;
+  gap: 9px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+ text-wrap:nowrap;
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+
+  transition: 0.25s ease;
 
   &:hover {
-    background: rgba(212, 201, 184, 0.2);
+    color: #d4bd91;
 
-    padding: 1rem 1rem 1rem 1.5rem;
+    border-color: #d4bd91;
+  }
 
-    border-left: 3px solid ${COLORS.darkTerracotta};
+  @media (max-width: 700px) {
+    right: 50%;
+
+    transform: translateX(50%);
+
+    bottom: 30px;
+
+    font-size: 0.7rem;
   }
 `;
+
+
+// ==========================================
+// DESIGN PRINCIPLE
+// ==========================================
+
+const DesignPrinciple = styled(Box)`
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  margin-bottom: 2.4rem;
+
+  padding-inline-start: 1.15rem;
+
+  border-inline-start: 1px solid ${COLORS.border};
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    border-inline-start-color: ${COLORS.gold};
+
+    background: rgba(255, 255, 255, 0.42);
+
+    transform: translateX(3px);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  /* RTL movement */
+  [dir="rtl"] &:hover {
+    transform: translateX(-3px);
+  }
+
+  @media (max-width: 600px) {
+    margin-bottom: 2rem;
+
+    padding-inline-start: 0.9rem;
+  }
+`;
+
+
+// ==========================================
+// PRINCIPLE ICON
+// ==========================================
 
 const PrincipleIcon = styled(Box)`
-  color: ${COLORS.terracotta};
+  width: 44px;
 
-  margin-right: 1rem;
-  margin-top: 5px;
+  height: 44px;
 
-  transition: color 0.3s ease;
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-inline-end: 1rem;
+
+  margin-top: 1px;
+
+  background: ${COLORS.white};
+
+  color: ${COLORS.gold};
+
+  border: 1px solid ${COLORS.softGold};
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 3px 12px rgba(29, 28, 26, 0.045);
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   ${DesignPrinciple}:hover & {
-    color: ${COLORS.darkTerracotta};
+    color: ${COLORS.ink};
+
+    border-color: ${COLORS.gold};
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 6px 16px rgba(29, 28, 26, 0.07);
+  }
+
+  svg {
+    width: 19px;
+
+    height: 19px;
+  }
+
+  @media (max-width: 600px) {
+    width: 40px;
+
+    height: 40px;
+
+    margin-inline-end: 0.85rem;
+
+    svg {
+      width: 17px;
+
+      height: 17px;
+    }
   }
 `;
+
+
+// ==========================================
+// PRINCIPLE CONTENT
+// ==========================================
 
 const PrincipleContent = styled(Box)`
   flex: 1;
+
+  min-width: 0;
+`;
+
+
+// ==========================================
+// OPTIONAL: IMAGE SLIDE
+// ==========================================
+
+const Slide = styled.div`
+  width: 100%;
+
+  overflow: hidden;
+
+  background: ${COLORS.white};
+`;
+
+
+// ==========================================
+// OPTIONAL: IMAGE
+// ==========================================
+
+const ProductImage = styled.img`
+  width: 100%;
+
+  max-height: 580px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 3px;
+
+  transition: transform 0.8s ease;
+`;
+
+
+// ==========================================
+// MOBILE TYPOGRAPHY HELPERS
+// ==========================================
+
+const DesignTitle = styled(Typography)`
+  color: ${COLORS.ink};
+
+  font-family:
+    "Playfair Display",
+    "Times New Roman",
+    Georgia,
+    serif !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1.15 !important;
+
+  letter-spacing: -0.025em !important;
+
+  @media (max-width: 600px) {
+    font-size: 2rem !important;
+
+    margin-bottom: 3rem !important;
+  }
+`;
+
+
+// ==========================================
+// PRINCIPLE TITLE
+// ==========================================
+
+const PrincipleTitle = styled(Typography)`
+  color: ${COLORS.ink};
+
+  margin-bottom: 0.55rem !important;
+
+  font-size: 0.98rem !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1.35 !important;
+
+  letter-spacing: 0.01em;
+
+  @media (max-width: 600px) {
+    font-size: 0.92rem !important;
+  }
+`;
+
+
+// ==========================================
+// PRINCIPLE DESCRIPTION
+// ==========================================
+
+const PrincipleDescription = styled(Typography)`
+  color: ${COLORS.muted};
+
+  font-size: 0.84rem !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1.75 !important;
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem !important;
+
+    line-height: 1.7 !important;
+  }
 `;
 
 // ==========================================
@@ -128,7 +440,7 @@ const PrincipleContent = styled(Box)`
 // ==========================================
 
 const DesignSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const products = useSelector(
     (state) => state.products.productData
@@ -191,8 +503,12 @@ const DesignSection = () => {
   // ========================================
 
   return (
-    <DesignContainer maxWidth={false} >
-      <DesignGrid container spacing={6}wrap = "wrap-reverse">
+    <DesignContainer maxWidth={false}>
+      <DesignGrid
+        container
+        spacing={6}
+        wrap="wrap-reverse"
+      >
 
         {/* ==================================
             PRODUCT IMAGE SLIDER
@@ -200,51 +516,76 @@ const DesignSection = () => {
 
         <Grid item xs={12} md={6}>
           {productList.length > 0 ? (
-            <Slider {...settings}>
-              {productList.map((item, index) => {
-                const image =
-                  item?.multimediaInfo?.image_urls
-                    ?.split(";")[0]
-                    ?.trim() || "";
+            <ImageWrapper>
 
-                if (!image) {
-                  return null;
-                }
+              <Slider {...settings}>
+                {productList.map((item, index) => {
+                  const image =
+                    item?.multimediaInfo?.image_urls
+                      ?.split(";")[0]
+                      ?.trim() || "";
 
-                return (
-                  <div key={item?.id || index}>
-                    <img
-                      src={image}
-                      alt={
-                        item?.name ||
-                        item?.title ||
-                        "Luxury lamp"
-                      }
-                      style={{
-                        width: "100%",
-                  hight: "100%",
-                  maxHeight: "580px",
-                  maxWidth: "600px",
-                        objectFit: "cover",
-                        borderRadius: "6px",
-                        display: "block",
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </Slider>
+                  if (!image) {
+                    return null;
+                  }
+
+                  return (
+                    <div key={item?.id || index}>
+                      <img
+                        src={image}
+                        alt={
+                          item?.name ||
+                          item?.title ||
+                          "Luxury lamp"
+                        }
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          maxHeight: "580px",
+                          maxWidth: "600px",
+                          objectFit: "cover",
+                          borderRadius: "4px",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </Slider>
+
+              {/* ==================================
+                  DISCOVER COLLECTION
+              ================================== */}
+
+              <CollectionButton
+                as={Link}
+                to="/collections"
+              >
+                {t(
+                  "common.discover",
+                  {
+                    defaultValue: "Discover Collection",
+                  }
+                )}
+
+                <Arrow >
+                <ArrowForwardIcon $rtl={i18n.dir() === "rtl"}/>
+              </Arrow>
+              
+              </CollectionButton>
+
+            </ImageWrapper>
           ) : (
             <div
-                style={{
-                  width: "100%",
-                  hight: "100%",
-                  maxHeight: "600px",
-                  maxWidth: "600px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+              style={{
+                width: "100%",
+                height: "100%",
+                maxHeight: "600px",
+                maxWidth: "600px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
               <Typography
                 sx={{
@@ -262,6 +603,7 @@ const DesignSection = () => {
         ================================== */}
 
         <Grid item xs={12} md={6}>
+
           <Typography
             variant="h3"
             sx={{
@@ -273,6 +615,8 @@ const DesignSection = () => {
                 md: "2.5rem",
               },
               fontWeight: 400,
+              lineHeight: 1.15,
+              letterSpacing: "-0.025em",
             }}
           >
             {t("designSection.title")}
@@ -280,18 +624,25 @@ const DesignSection = () => {
 
           {principles.map((principle, index) => (
             <DesignPrinciple key={index}>
+
               <PrincipleIcon>
                 {principle.icon}
               </PrincipleIcon>
 
               <PrincipleContent>
+
                 <Typography
                   variant="h6"
                   sx={{
                     color: COLORS.earth,
-                    mb: 1,
-                    fontWeight: 500,
-                    transition: "color 0.3s ease",
+                    mb: 0.8,
+                    fontSize: {
+                      xs: "0.95rem",
+                      md: "1rem",
+                    },
+                    fontWeight: 600,
+                    letterSpacing: "0.01em",
+                    lineHeight: 1.35,
                   }}
                 >
                   {principle.title}
@@ -301,14 +652,21 @@ const DesignSection = () => {
                   variant="body1"
                   sx={{
                     color: COLORS.warmGray,
-                    lineHeight: 1.7,
+                    fontSize: {
+                      xs: "0.83rem",
+                      md: "0.86rem",
+                    },
+                    lineHeight: 1.75,
                   }}
                 >
                   {principle.description}
                 </Typography>
+
               </PrincipleContent>
+
             </DesignPrinciple>
           ))}
+
         </Grid>
 
       </DesignGrid>
