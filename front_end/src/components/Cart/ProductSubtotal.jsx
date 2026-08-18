@@ -1,137 +1,291 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link , useNavigate } from 'react-router-dom';
-
-
+import React from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 function ProductSubtotal(props) {
-    const navigate = useNavigate()
-    const auth = window.localStorage.getItem("access_token")
-    const location = window.locationbar
-    const navigateTo = ()=>{
-     
+  const navigate = useNavigate();
 
-            navigate("/checkout")
-        
-    }
+  const navigateTo = () => {
+    navigate("/checkout");
+  };
+
+  const subtotal =
+    props.cartItems?.reduce(
+      (total, item) =>
+        total + item.price * item.quantity,
+      0
+    ) || 0;
+
   return (
-        <Container>
-            <div className='container'>
-            <div className="total-section">
+    <Container>
+      <Summary>
 
-            <h2>{props.t("common.orderSummary")}</h2>
+        {/* HEADER */}
 
-              <div className="total">
-                  <h4>{props.t("common.subtotal")}</h4>
-                  {props.cartItems?.length !== 0 && (
 
-                      <span>
-                          {" "}
-                          €{props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
-                      </span>
+        <Title>
+          {props.t("common.orderSummary")}
+        </Title>
 
-                  )}
-              </div>
-              <div className="total">
-                  <h4>{props.t("common.total")}</h4>
-                  {props.cartItems?.length !== 0 && (
 
-                      <span>
-                          {" "}
-                          €{props.cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
-                      </span>
+        {/* TOTALS */}
 
-                  )}
+        <Totals>
 
-              </div>
+          <Row>
+            <Label>
+              {props.t("common.subtotal")}
+            </Label>
 
-            </div>
-            <div className='procces-button-container'>
-                <button  onClick={navigateTo} className="procces-button">
-                    {props.t("common.checkout")}
-                </button>
-            </div>
-            </div>
-        </Container>
-    )
+            <Value>
+              ${subtotal.toFixed(2)}
+            </Value>
+          </Row>
+
+
+          <Row>
+            <Label>
+              {props.t("common.total")}
+            </Label>
+
+            <TotalValue>
+              ${subtotal.toFixed(2)}
+            </TotalValue>
+          </Row>
+
+        </Totals>
+
+
+        {/* CHECKOUT */}
+
+        <CheckoutButton
+          type="button"
+          onClick={navigateTo}
+        >
+          {props.t("common.checkout")}
+        </CheckoutButton>
+
+        <SecureText>
+            {props.t("footer.payment.secure")}
+        </SecureText>
+
+      </Summary>
+    </Container>
+  );
 }
 
-export default ProductSubtotal
+export default ProductSubtotal;
+
+
+/* ============================================================
+   CONTAINER
+============================================================ */
 
 const Container = styled.div`
-    
-    font-family:Open Sans,Roboto,Arial,Helvetica,sans-serif,SimSun;
-    width:100%;
-   
-  .container{
-    border:2px solid rgb(255, 255, 255);
-    box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px, rgba(60, 64, 67, 0.12) 0px 2px 6px 2px;
-    padding: 5px 10px;
-    max-width:350px;
-    height:285px;
-    position:sticky;
-    top:15%;
-    background:#fff;
-    width:100%;
-    font-family: sans-serif;
-    min-width:185px;
+  width: 100%;
+`;
+
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+
+const Summary = styled.div`
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 32px;
+
+  background: #fff;
+
+  border: 1px solid #e8e3dc;
+
+  @media (max-width: 500px) {
+    padding: 25px 20px;
   }
-  .total{
-   
-    color:#000;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+`;
 
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+const Eyebrow = styled.div`
+  margin-bottom: 10px;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #9a9288;
+`;
+
+
+/* ============================================================
+   TITLE
+============================================================ */
+
+const Title = styled.h2`
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 23px;
+
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  color: #1c1c1c;
+`;
+
+
+/* ============================================================
+   TOTALS
+============================================================ */
+
+const Totals = styled.div`
+  margin-top: 30px;
+
+  padding: 20px 0;
+
+  border-top: 1px solid #ebe7e1;
+
+  border-bottom: 1px solid #ebe7e1;
+`;
+
+
+/* ============================================================
+   ROW
+============================================================ */
+
+const Row = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  &:first-child {
+    margin-bottom: 15px;
   }
-  
-  .procces-button-container{
-    display:flex;
-    justify-content:center;
+`;
+
+
+/* ============================================================
+   LABEL
+============================================================ */
+
+const Label = styled.span`
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+
+  color: #777169;
+`;
+
+
+/* ============================================================
+   VALUE
+============================================================ */
+
+const Value = styled.span`
+  font-size: 13px;
+
+  color: #333;
+
+  white-space: nowrap;
+`;
+
+
+/* ============================================================
+   TOTAL VALUE
+============================================================ */
+
+const TotalValue = styled.span`
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 18px;
+
+  color: #181818;
+
+  white-space: nowrap;
+`;
+
+
+/* ============================================================
+   CHECKOUT BUTTON
+============================================================ */
+
+const CheckoutButton = styled.button`
+  width: 100%;
+
+  height: 50px;
+
+  margin-top: 25px;
+
+  border: 1px solid #1b1b1b;
+
+  background: #1b1b1b;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    background: #fff;
+
+    color: #1b1b1b;
+
+    border-color: #1b1b1b;
   }
-  .procces-button {
-    margin-top:20px;
-    padding:10px 0;
-    border-radius: 20px; 
-    text-align:center;
-    background:#000;
-    color:#fff;
-    font-size:20px;
-    font-weight: normal;
-    width:100%;
-    letter-spacing:1px;
-    max-width:300px;
-    min-width:115px;
+
+  &:active {
+    transform: translateY(1px);
   }
+`;
 
-  .total-section{
-    border-bottom: 2px solid rgb(208, 209, 207);
-    
-    
-    }
-   
-    
 
-    @media only screen and (max-width: 1200px){
-        &{
-            position:none;
-            
-            margin-top:20px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        .container{
-            max-width:65%;
-        }
+/* ============================================================
+   SECURE TEXT
+============================================================ */
 
-    }
-    @media only screen and (max-width: 780px){
-        .container{
-            max-width:100%;
-        }
-          
+const SecureText = styled.div`
+  margin-top: 14px;
 
-    }
-    
-`
+  text-align: center;
+
+  font-size: 11px;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+
+  color: #a29a91;
+`;

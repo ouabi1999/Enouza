@@ -1,398 +1,724 @@
-import React, { useEffect } from 'react';
-import { removeFromCart, addQuantity, subtractQuantity, setCartItems } from "../../features/cartSlice"
-import DeleteIcon from '@mui/icons-material/Delete';
-import styled from 'styled-components';
-import EmptyCart from './EmptyCart';
-import ProductSubtotal from './ProductSubtotal';
-import { useLayoutEffect } from 'react';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useLayoutEffect } from "react";
+import {
+  removeFromCart,
+  addQuantity,
+  subtractQuantity,
+} from "../../features/cartSlice";
 
-import axios from 'axios';
-import HeadeSeo from '../../../common/HeadeSeo';
-import { useTranslation } from 'react-i18next';
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import styled from "styled-components";
+
+import EmptyCart from "./EmptyCart";
+import ProductSubtotal from "./ProductSubtotal";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
+import HeadeSeo from "../../../common/HeadeSeo";
 
 function ShoppingCart() {
-  const dispatch = useDispatch()
-  const [products, setProducts] = useState([])
-  const cartItems =  useSelector((state) => state.cart.cartItems)
-  const [isLoading, setIsLoading] = useState(false)
-  
-  const productData =  useSelector((state) => state.product.productData)
-  const {t, i18n} = useTranslation()
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector(
+    (state) => state.cart.cartItems
+  );
+
+  const { t, i18n } = useTranslation();
+
   useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, []);
 
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, [])
+  const isRTL = i18n.dir() === "rtl";
 
- 
-  
-  const updateCart = (products) => {
-      
-      const newCart = cartItems.filter((item) =>
-        productData.some((product) => product.id === item.id)
-      );
-      window.localStorage.setItem("cartItems", JSON.stringify(newCart))
-      dispatch(setCartItems(newCart))
-    };
-
-    
-  /*const getShoppingCart_product = ()=>{
-    setIsLoading(true)
-    axios.post('/api/get_shopping_cart_products', cartItems)
-      .then(response => {
-        setIsLoading(false)
-        //dispatch(setProducts(response.data.products))
-      
-         setProducts(response.data.products);
-         updateCart(response.data.products)
-         
-        
-        })
-      .catch(error => {
-        setIsLoading(false)
-        console.error(error);
-      });
-
-  } */   
-  
-
-  
   return (
-    <Container>
-      <HeadeSeo title = "Enouza - shopping cart"/>
-      
-      <h2 style={{ fontFamily: "sanc-serif" }} className="shopping-cart-h2">{t("common.shopping_cart")} ({cartItems?.length})</h2>
+    <Container dir={isRTL ? "rtl" : "ltr"}>
+      <HeadeSeo title="Enouza - Shopping Cart" />
+
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+
+      <Header>
+
+        <Title>
+          {t("common.shopping_cart")}
+        </Title>
+
+        <CartCount>
+          {cartItems?.length || 0}{" "}
+          {cartItems?.length === 1
+            ? t("common.item")
+            : t("common.items")}
+        </CartCount>
+
+        <HeaderLine />
+      </Header>
+
+
+      {/* =====================================================
+          EMPTY CART
+      ===================================================== */}
+
       {cartItems?.length === 0 ? (
-        <EmptyCart t ={t} />
-      )
-        :
-        (
-          <div>
+        <EmptyWrapper>
+          <EmptyCart t={t} />
+        </EmptyWrapper>
+      ) : (
+        <Wrap>
 
-          <Wrap>
-              <Wrapper>
-                  {cartItems?.map((item, index)=> {
-                    return (
+          {/* =================================================
+              PRODUCTS
+          ================================================= */}
 
-                      <div key={index} className="product-container">
-                        <div className="product-img">
-                          <img src={item.selectedSku.attributes[item.selectedSku.colorKey].image} alt={item.selectedSku.colorKey} />
+          <Wrapper>
+            {cartItems?.map((item, index) => {
+              const productName =
+                item?.name?.[i18n.language] ||
+                item?.name?.en ||
+                "";
 
-                        </div>
+              const image =
+                item?.selectedSku?.attributes?.[
+                  item?.selectedSku?.colorKey
+                ]?.image;
 
-                        <div className='flex-container'>
+              return (
+                <ProductContainer
+                  key={`${item.id}-${index}`}
+                >
 
-                          <div className="first-child" >
-                          
-                            <span>
-                                { item?.name[i18n.language]? item?.name[i18n.language]:item?.name["en"] }
-                            </span>
-                            
+                  {/* PRODUCT IMAGE */}
 
-                              <div className="delete-button">
-                                <button onClick={() => dispatch(removeFromCart(index))}>
-                                
-                                      <DeleteIcon />
-                                
-                                </button>
-                              </div>
-
-
-                            
-
-                          </div>
-                          <div className="selected-size">
-                            <span>
-
-                              {item.size}
-                            </span>
+                  <ProductImage>
+                    <img
+                      src={image}
+                      alt={
+                        item?.selectedSku?.colorKey ||
+                        productName
+                      }
+                    />
+                  </ProductImage>
 
 
-                          </div>
-                          <div className="thired-child">
-                            <span className="price"> US ${item.price}</span>
-                            <div className="Quantity">
-                              <button
-                                className="subtract-quantity-button"
-                                onClick={() => dispatch(subtractQuantity(index))}>
-                                -
-                              </button>
-                              <span>{item.quantity}</span>
-                              <button
-                                className="add-quantity-button"
-                                onClick={() => dispatch(addQuantity(index))}>
-                                +
-                              </button>
-                            </div>
+                  {/* PRODUCT INFORMATION */}
 
-                          </div>
+                  <ProductInfo>
 
+                    <ProductTop>
 
+                      <ProductName>
+                        {productName}
+                      </ProductName>
 
+                      <DeleteButton
+                        type="button"
+                        aria-label="Remove product"
+                        onClick={() =>
+                          dispatch(
+                            removeFromCart(index)
+                          )
+                        }
+                      >
+                        <DeleteOutlineIcon />
+                      </DeleteButton>
 
-
-                         
-
-                        </div>
-                      </div>
-
-                    )
-                  })}
+                    </ProductTop>
 
 
-              </Wrapper>
+                    {/* VARIANT */}
 
-              <ProductSubtotal
-                cartItems={cartItems}
-                t = {t}
-              />
-            </Wrap>
-          </div>
-        )}
+                    {item?.size && (
+                      <ProductVariant>
+                        {item.size}
+                      </ProductVariant>
+                    )}
+
+
+                    <ProductBottom>
+
+                      <Price>
+                        US ${item.price}
+                      </Price>
+
+
+                      {/* QUANTITY */}
+
+                      <Quantity>
+
+                        <QuantityButton
+                          type="button"
+                          onClick={() =>
+                            dispatch(
+                              subtractQuantity(index)
+                            )
+                          }
+                        >
+                          −
+                        </QuantityButton>
+
+                        <QuantityValue>
+                          {item.quantity}
+                        </QuantityValue>
+
+                        <QuantityButton
+                          type="button"
+                          onClick={() =>
+                            dispatch(
+                              addQuantity(index)
+                            )
+                          }
+                        >
+                          +
+                        </QuantityButton>
+
+                      </Quantity>
+
+                    </ProductBottom>
+
+                  </ProductInfo>
+
+                </ProductContainer>
+              );
+            })}
+          </Wrapper>
+
+
+          {/* =================================================
+              SUBTOTAL
+          ================================================= */}
+
+          <SubtotalWrapper>
+            <ProductSubtotal
+              cartItems={cartItems}
+              t={t}
+            />
+          </SubtotalWrapper>
+
+        </Wrap>
+      )}
     </Container>
-  )
+  );
 }
 
+export default ShoppingCart;
 
 
-export default ShoppingCart
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+const Container = styled.main`
+  min-height: 90vh;
+
+  width: 100%;
+
+  background: #faf9f7;
+
+  padding: 55px 0 100px;
+
+  color: #1b1b1b;
+
+  @media (max-width: 700px) {
+    padding: 38px 0 70px;
+  }
+
+  @media (max-width: 460px) {
+    padding: 28px 0 55px;
+  }
+`;
 
 
-const Container = styled.div`
-  background-color: #fff;
-  min-height:90vh;
-  min-width:320px;
-  padding-bottom:60px;
-  background-color:rgba(250, 250, 250, 0.4);
-  margin:auto;
-  
-  
-  .shopping-cart-h2{
-      font-weight:bold;
-      color:#000;
-      margin-top:0;
-      padding: 15px 20px;
-      background:#fff;
-      
-}
+/* ============================================================
+   HEADER
+============================================================ */
+
+const Header = styled.header`
+  text-align: center;
+
+  margin: 0 auto 55px;
+
+  padding: 0 20px;
+
+  @media (max-width: 700px) {
+    margin-bottom: 40px;
+  }
+`;
+
+const Eyebrow = styled.div`
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #9a9288;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 38px;
+
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  color: #181818;
+
+  @media (max-width: 700px) {
+    font-size: 31px;
+  }
+
+  @media (max-width: 460px) {
+    font-size: 27px;
+  }
+`;
+
+const CartCount = styled.div`
+  margin-top: 10px;
+
+  color: #8b847b;
+
+  font-size: 12px;
+
+  letter-spacing: 0.8px;
+`;
+
+const HeaderLine = styled.div`
+  width: 40px;
+
+  height: 1px;
+
+  margin: 20px auto 0;
+
+  background: #aaa298;
+`;
 
 
+/* ============================================================
+   MAIN WRAPPER
+============================================================ */
 
- 
-.cartnumber{
-  margin:20px 35px;
-  font-size: large;
-  font-weight: bold;
-  text-shadow: 10px 8px  4px rgb(85, 84, 84);
-  letter-spacing: 1px;
-}
-.cartnumber>span{
-  color:red
-}
-
-.delete-button>button{
-  
-  border:none;
-  color:#000;
-  background:none;
- 
-}
-
-.delete-button>button:hover{
-  color:tomato
-}
-
-
-
-
-
-`
 const Wrap = styled.div`
-   width:96vw;
-   margin:auto;
-  
-   display:flex;
-       gap:20px;
+  width: min(1180px, calc(100% - 40px));
 
-   @media only screen and (max-width: 1200px){
+  margin: 0 auto;
 
-  &{
-        flex-direction:column;
-        
-   }
-  
-  
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) 350px;
+
+  align-items: start;
+
+  gap: 45px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  @media (max-width: 500px) {
+    width: calc(100% - 24px);
+  }
+`;
 
 
-}   
+/* ============================================================
+   PRODUCT LIST
+============================================================ */
 
-`
 const Wrapper = styled.div`
-    position:relative;
-    box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px, rgba(60, 64, 67, 0.12) 0px 2px 6px 2px;
-    background:#ffff;
-    
-   
+  background: #fff;
 
-    .product-container{
-        display:flex;
-        padding:10px;
-       
-       
-    }
-
-    .flex-container{
-      display:flex;
-      flex-direction:column;
-      max-width:780px;
-      width:calc(95vw - 100px);
-      min-width:175px;
-      
-   
-    
-      
-     
-
-    }
-    
-.product-img{
-  display:flex;
-  align-items:center;
-  
-}
-
-.product-img img{
-  width:100px;
-  height:120px;
-  margin:0 5px;
-  object-fit:cover;
-  animation: skeleton-loading 1s linear infinite alternate;
-}
+  border: 1px solid #ebe7e1;
+`;
 
 
+/* ============================================================
+   PRODUCT
+============================================================ */
 
-.product-img div{
-       display:flex;
-       flex-direction:column;
- 
-  
+const ProductContainer = styled.article`
+  display: flex;
 
-      }
+  gap: 24px;
 
-    .first-child{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      width:100%;
-      
-      
-      
-      
-    }
-    .first-child span{
-      text-overflow:ellipsis;
-      white-space: nowrap; 
-      overflow: hidden;
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      opacity:0.6;
-      
+  padding: 24px;
 
-    }
+  border-bottom: 1px solid #ebe7e1;
 
-    .selected-size{
-      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      text-transform:uppercase;
-      color:rgb(20, 51, 102);
-    }
-
-    .price{
-      font-family:'Trebuchet MS', sans-serif;
-      margin-top:8px;
-    }
-
-    .thired-child{
-         display:flex;
-       
-         justify-content: space-between;
-         align-items:center;
-    }
-
-    .Quantity{
- 
-        border: 1px solid rgb(196, 193, 193);
-        display:flex;
-        justify-content: space-between;
-        border-radius: 4px;
-        align-items: center;
-        font-size: 20px;
-        font-weight: bold;
-        width:85px;
-        height:25px; 
-        margin-top:8px;
-      
-}
-    .subtract-quantity-button{
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-        border:none;
-        width:25px;
-        outline-style: none; 
-        height:100%;
-     
-  }
-  
-  .add-quantity-button{
-    border:none;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    width:25px;
-    outline-style: none;
-    height:100%;
-    
+  &:last-child {
+    border-bottom: none;
   }
 
-  .Quantity button:hover{
-    color:white;
-    background-color:rgb(199, 196, 196)
-   }
-   
-   .Quantity>span{
-    
-     text-align: center;
-     font-size: small;
-     color:blue
-   }
+  @media (max-width: 600px) {
+    gap: 16px;
 
-   .skeleton {
-        animation: skeleton-loading 1s linear infinite alternate;
-    }
+    padding: 18px;
+  }
 
-    @keyframes skeleton-loading {
-    0% {
-       background-color: #c2cfd6;
-      }
-      100% {
-        background-color: #f0f3f5;
-      }
-    }
-  
-    @media only screen and (max-width: 1200px){
+  @media (max-width: 420px) {
+    gap: 13px;
+
+    padding: 14px;
+  }
+`;
 
 
-    &{
-        margin-right:0;
-      }
+/* ============================================================
+   PRODUCT IMAGE
+============================================================ */
 
-    .flex-container{
-        max-width:995px;
+const ProductImage = styled.div`
+  flex: 0 0 125px;
 
-      }
+  width: 125px;
 
-    } 
-  
+  height: 150px;
 
-`
-  
+  overflow: hidden;
+
+  background: #f3f1ed;
+
+  @media (max-width: 600px) {
+    flex-basis: 100px;
+
+    width: 100px;
+
+    height: 120px;
+  }
+
+  @media (max-width: 420px) {
+    flex-basis: 82px;
+
+    width: 82px;
+
+    height: 102px;
+  }
+
+  img {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.035);
+  }
+`;
 
 
+/* ============================================================
+   PRODUCT INFO
+============================================================ */
+
+const ProductInfo = styled.div`
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height: 150px;
+
+  @media (max-width: 600px) {
+    min-height: 120px;
+  }
+
+  @media (max-width: 420px) {
+    min-height: 102px;
+  }
+`;
+
+
+/* ============================================================
+   PRODUCT TOP
+============================================================ */
+
+const ProductTop = styled.div`
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+`;
+
+
+/* ============================================================
+   PRODUCT NAME
+============================================================ */
+
+const ProductName = styled.h2`
+  margin: 0;
+
+  width: 100%;
+  max-width: 480px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #222;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: 700px) {
+    font-size: 15px;
+    max-width: 320px;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+    max-width: 220px;
+  }
+
+  @media (max-width: 380px) {
+    max-width: 170px;
+  }
+`;
+
+/* ============================================================
+   DELETE
+============================================================ */
+
+const DeleteButton = styled.button`
+  width: 32px;
+
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #969088;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+
+  svg {
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: #1b1b1b;
+
+    transform: translateY(-1px);
+  }
+`;
+
+
+/* ============================================================
+   VARIANT
+============================================================ */
+
+const ProductVariant = styled.div`
+  margin-top: 8px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #9a9288;
+`;
+
+
+/* ============================================================
+   PRODUCT BOTTOM
+============================================================ */
+
+const ProductBottom = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 20px;
+
+  @media (max-width: 420px) {
+    margin-top: 12px;
+  }
+`;
+
+
+/* ============================================================
+   PRICE
+============================================================ */
+
+const Price = styled.span`
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+
+  color: #242424;
+
+  white-space: nowrap;
+
+  @media (max-width: 420px) {
+    font-size: 14px;
+  }
+`;
+
+
+/* ============================================================
+   QUANTITY
+============================================================ */
+
+const Quantity = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  height: 34px;
+
+  border: 1px solid #dcd7d0;
+
+  background: #fff;
+`;
+
+
+/* ============================================================
+   QUANTITY BUTTON
+============================================================ */
+
+const QuantityButton = styled.button`
+  width: 32px;
+
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #333;
+
+  font-size: 17px;
+
+  font-weight: 300;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: #f4f1ed;
+
+    color: #000;
+  }
+
+  @media (max-width: 420px) {
+    width: 28px;
+  }
+`;
+
+
+/* ============================================================
+   QUANTITY VALUE
+============================================================ */
+
+const QuantityValue = styled.span`
+  min-width: 28px;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: #292929;
+`;
+
+
+/* ============================================================
+   SUBTOTAL
+============================================================ */
+
+const SubtotalWrapper = styled.aside`
+  position: sticky;
+
+  top: 25px;
+
+  @media (max-width: 1000px) {
+    position: static;
+  }
+`;
+
+
+/* ============================================================
+   EMPTY CART
+============================================================ */
+
+const EmptyWrapper = styled.div`
+  width: min(900px, calc(100% - 40px));
+
+  margin: 0 auto;
+
+  background: #fff;
+
+  border: 1px solid #ebe7e1;
+
+  padding: 50px 30px;
+
+  @media (max-width: 500px) {
+    width: calc(100% - 24px);
+
+    padding: 35px 18px;
+  }
+`;

@@ -11,10 +11,22 @@ function UserServices() {
   const { t, i18n } = useTranslation();
 
   const services = [
-    { icon: <MonetizationOnIcon className="icon" />, text: t("homePage.money_Back") },
-    { icon: <VerifiedUserIcon className="icon" />, text: t("homePage.safe_reliable_payments") },
-    { icon: <SupportAgentIcon className="icon" />, text: t("homePage.support_24_7") },
-    { icon: <LocalShippingIcon className="icon" />, text: t("common.free_shipping") },
+    {
+      icon: <MonetizationOnIcon className="icon" />,
+      text: t("homePage.money_Back"),
+    },
+    {
+      icon: <VerifiedUserIcon className="icon" />,
+      text: t("homePage.safe_reliable_payments"),
+    },
+    {
+      icon: <SupportAgentIcon className="icon" />,
+      text: t("homePage.support_24_7"),
+    },
+    {
+      icon: <LocalShippingIcon className="icon" />,
+      text: t("common.free_shipping"),
+    },
   ];
 
   return (
@@ -24,23 +36,26 @@ function UserServices() {
           x: i18n.dir() === "ltr" ? ["0%", "-50%"] : ["0%", "50%"],
         }}
         transition={{
-          duration: 30,
+          duration: 20,
           ease: "linear",
           repeat: Infinity,
         }}
       >
+        {/* FIRST GROUP */}
         <Group>
           {services.map((service, index) => (
             <MinWrap key={`one-${index}`}>
-              <IconWrap>{service.icon}</IconWrap>
+              {service.icon}
               <span>{service.text}</span>
             </MinWrap>
           ))}
         </Group>
+
+        {/* SECOND GROUP */}
         <Group>
           {services.map((service, index) => (
             <MinWrap key={`two-${index}`}>
-              <IconWrap>{service.icon}</IconWrap>
+              {service.icon}
               <span>{service.text}</span>
             </MinWrap>
           ))}
@@ -52,27 +67,25 @@ function UserServices() {
 
 export default UserServices;
 
-// ---------- Styled Components (Soft & Luminous Luxury) ----------
-
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-  padding: 8px 0;
-  background: #faf6f0; /* warm, soft cream - reflects light */
-  
+  padding: 13px 0;
+  background: #ffffff;
   overflow: hidden;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); /* barely-there soft shadow */
+
+  border-top: 1px solid #f1efec;
+  border-bottom: 1px solid #f1efec;
 `;
 
 const Track = styled(motion.div)`
   display: flex;
+  justify-content: center;
   width: 200vw;
-  will-change: transform;
 `;
 
 const Group = styled.div`
   width: 100vw;
-  min-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -80,101 +93,107 @@ const Group = styled.div`
 
 const MinWrap = styled.div`
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 24px;
-  font-family: "Playfair Display", "Georgia", serif; /* elegant, classic */
+
+  padding: 3px 18px;
+
+  font-family:
+    "Franklin Gothic Medium",
+    "Arial Narrow",
+    Arial,
+    sans-serif;
+
   white-space: nowrap;
-  transition: all 0.4s ease;
-  cursor: default;
 
   span {
-    font-size: 17px;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    color: #4a3b32; /* warm espresso, not harsh black */
-    transition: color 0.4s ease;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.25px;
+    color: #34312e;
   }
-
-  /* Soft, warm separator dot */
-  &:not(:last-child)::after {
-    content: "•";
-    position: absolute;
-    right: -2px;
-    color: #e2d6c6; /* muted warm beige */
-    font-size: 18px;
-    font-weight: 300;
-    opacity: 0.8;
-  }
-
-  /* Hover: gentle lift + warm glow like turning on a lamp */
-  &:hover {
-    transform: translateY(-2px);
-    span {
-      color: #b8956a; /* soft champagne bronze */
-    }
-    .icon {
-      filter: drop-shadow(0 0 12px rgba(196, 160, 122, 0.25));
-      color: #b8956a;
-    }
-  }
-
-  /* Responsive */
-  @media only screen and (max-width: 815px) {
-    padding: 6px 14px;
-    span {
-      font-size: 13px;
-      letter-spacing: 0.5px;
-    }
-    &:not(:last-child)::after {
-      right: 0px;
-      font-size: 14px;
-    }
-  }
-
-  @media only screen and (max-width: 420px) {
-    padding: 4px 8px;
-    span {
-      font-size: 9px;
-      letter-spacing: 0.3px;
-      font-weight: 500;
-    }
-    &:not(:last-child)::after {
-      right: 0px;
-      font-size: 10px;
-    }
-  }
-`;
-
-const IconWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
-  margin-left: 6px;
 
   .icon {
-    display: block;
-    color: #c4a07a; /* refined champagne bronze */
-    font-size: 20px;
-    transition: all 0.4s ease;
-    filter: drop-shadow(0 0 6px rgba(196, 160, 122, 0.1));
+    width: 19px;
+    height: 19px;
+
+    color: #81766b;
+
+    margin-right: 7px;
+    margin-left: 7px;
+
+    flex-shrink: 0;
+  }
+
+  /* Small luxury separator */
+  &::after {
+    content: "";
+    position: absolute;
+
+    right: -1px;
+    top: 50%;
+
+    width: 3px;
+    height: 3px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+    background: #b8afa7;
   }
 
   @media only screen and (max-width: 815px) {
-    margin-right: 8px;
-    margin-left: 4px;
+    padding: 3px 10px;
+
+    span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15px;
+      color: #383532;
+    }
+
     .icon {
-      font-size: 16px;
+      width: 16px;
+      height: 16px;
+
+      color: #81766b;
+
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+
+    &::after {
+      width: 2.5px;
+      height: 2.5px;
     }
   }
 
   @media only screen and (max-width: 420px) {
-    margin-right: 5px;
-    margin-left: 3px;
+    padding: 2px 6px;
+
+    span {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.05px;
+      color: #3b3835;
+    }
+
     .icon {
-      font-size: 12px;
+      width: 13px;
+      height: 13px;
+
+      color: #81766b;
+
+      margin-right: 3px;
+      margin-left: 3px;
+    }
+
+    &::after {
+      width: 2px;
+      height: 2px;
     }
   }
 `;
