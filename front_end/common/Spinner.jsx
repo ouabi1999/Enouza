@@ -47,9 +47,9 @@ const SpinnerOverlay = styled.div`
 const LuxurySpinner = styled.div`
   position: absolute;
 
-  top: 50%;
+  top: 40%;
   left: 50%;
-
+  
   width: 54px;
   height: 54px;
 
