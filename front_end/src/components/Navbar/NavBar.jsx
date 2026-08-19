@@ -682,9 +682,9 @@ const Logo = styled.div`
       Georgia,
       serif !important;
 
-    font-size: 28px !important;
+    font-size: 30px !important;
 
-    font-weight: 600 !important;
+    font-weight: 900 !important;
 
     line-height: 1 !important;
 
@@ -714,12 +714,7 @@ const Logo = styled.div`
   }
 
 
-  @media only screen and (max-width: 380px) {
-
-    span {
-      font-size: 18px !important;
-    }
-  }
+ 
 `;
 
 
@@ -947,7 +942,7 @@ const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 420px) {
-    gap: 50px;
+    gap: 45px;
 
     .shopping-cart-icon,
     .search-icon-responsive {
