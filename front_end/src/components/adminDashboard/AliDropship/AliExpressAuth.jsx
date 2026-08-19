@@ -7,7 +7,7 @@ const REDIRECT_URI = import.meta.env.VITE_ALIEXPRESS_REDERECT_URL;
 
 export default function AliExpressAuth() {
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+   const [connected, setConnected] = useState(false);
   const [product, setProduct] = useState(null);
 
   const handleLogin = () => {
@@ -15,46 +15,120 @@ export default function AliExpressAuth() {
     window.location.href = authUrl;
   };
 
-  
-useEffect(() => {
-  // 1️⃣ Check if we already have tokens in localStorage
-  const accessToken = localStorage.getItem("aliexpress_access_token");
-  if (accessToken) {
-    setStatus("✅");
-    return; // skip code exchange
-  }
+   // =========================================================
+  // CONNECT WITH ALIEXPRESS
+  // =========================================================
 
-  // 2️⃣ If no token, check URL for code
-  const code = new URLSearchParams(window.location.search).get("code");
-  if (!code) return;
+  const handleConnect = () => {
+    if (!APP_KEY || !REDIRECT_URI) {
+      console.error("AliExpress OAuth configuration is missing.");
+      return;
+    }
 
-  setLoading(true);
-  setStatus("🔄...");
+    const authUrl =
+      `https://auth.aliexpress.com/oauth/authorize` +
+      `?response_type=code` +
+      `&client_id=${encodeURIComponent(APP_KEY)}` +
+      `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
 
-  ApiInstance.post("aliexpress/token/", { code })
-    .then(res => {
-      if (res.data.access_token) {
-        localStorage.setItem("aliexpress_access_token", res.data.access_token);
-        localStorage.setItem("aliexpress_refresh_token", res.data.refresh_token);
-        setStatus("✅");
-      } else {
-        setStatus("⚠️ ");
+    window.location.assign(authUrl);
+  };
+
+  // =========================================================
+  // EXCHANGE OAUTH CODE FOR TOKENS
+  // =========================================================
+
+  const exchangeCode = async (code) => {
+    try {
+      setLoading(true);
+
+      const response = await ApiInstance.post(
+        "aliexpress/token/",
+        { code }
+      );
+
+      const { access_token, refresh_token } = response.data;
+
+      if (!access_token) {
+        throw new Error("AliExpress did not return an access token.");
       }
-    })
-    .catch(err => {
-      console.error(err);
-      setStatus("❌");
-    })
-    .finally(() => setLoading(false));
-}, []);
 
+      localStorage.setItem(
+        ACCESS_TOKEN_KEY,
+        access_token
+      );
+
+      if (refresh_token) {
+        localStorage.setItem(
+          REFRESH_TOKEN_KEY,
+          refresh_token
+        );
+      }
+
+      setConnected(true);
+
+      // Remove OAuth code from URL
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
+
+    } catch (error) {
+      console.error(
+        "AliExpress OAuth error:",
+        error?.response?.data || error
+      );
+
+      setConnected(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // =========================================================
+  // INITIALIZE
+  // =========================================================
+
+  useEffect(() => {
+    const initialize = async () => {
+      const params = new URLSearchParams(
+        window.location.search
+      );
+
+      const code = params.get("code");
+
+      // -----------------------------------------------
+      // Returned from AliExpress OAuth
+      // -----------------------------------------------
+
+      if (code) {
+        await exchangeCode(code);
+        return;
+      }
+
+      // -----------------------------------------------
+      // Existing connection
+      // -----------------------------------------------
+
+      const accessToken = localStorage.getItem(
+        ACCESS_TOKEN_KEY
+      );
+
+      if (accessToken) {
+        setConnected(true);
+      }
+    };
+
+    initialize();
+  }, []);
   
   return (
     <Container>
 
         <ButtonRow>
-          <Button color="#ff4747" onClick={handleLogin} disabled={loading}>
-            Connect with AliExpress  {status && status}
+          <Button color="#ffffff" onClick={handleLogin} disabled={loading}>
+            Connect with AliExpress  {connected ?  "✅": "❌"}
           </Button>
         </ButtonRow>
 
@@ -87,7 +161,7 @@ const ButtonRow = styled.div`
 `;
 
 const Button = styled.button`
-background-color: #f52727d5 !important;
+background-color: #27f2f5da !important;
   color: #fff !important;
   font-weight: 600 !important;
   padding: 10px 24px !important;

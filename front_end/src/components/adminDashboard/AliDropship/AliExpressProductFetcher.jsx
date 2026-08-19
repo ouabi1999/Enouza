@@ -23,7 +23,7 @@ export default function AliExpressProductFetcher() {
       }
     )
       .then((res) => {
-        console.log("Product data:", res.data.data.result);
+        console.log("Product data:", res.data);
         dispatch(setAliExpressProduct(res.data.data.result))
       })
       .catch((err) => {
