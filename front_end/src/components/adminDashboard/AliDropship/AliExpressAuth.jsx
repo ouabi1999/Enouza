@@ -38,7 +38,8 @@ useEffect(() => {
         localStorage.setItem("aliexpress_refresh_token", res.data.refresh_token);
         setStatus("✅");
       } else {
-        setStatus("⚠️ ");
+        setStatus("⚠️");
+        console.log(res.data)
       }
     })
     .catch(err => {
@@ -87,7 +88,7 @@ const ButtonRow = styled.div`
 `;
 
 const Button = styled.button`
-background-color: #ff8002d5 !important;
+background-color: #f52727d5 !important;
   color: #fff !important;
   font-weight: 600 !important;
   padding: 10px 24px !important;
