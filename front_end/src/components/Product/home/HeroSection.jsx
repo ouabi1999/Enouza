@@ -695,106 +695,76 @@ const HeroImage = styled.img`
 /* =========================
    SHOP BUTTON
 ========================= */
+const Arrow = styled.span`
+  display: flex;
+  
+  svg{
+   font-size: 10px;
+  }
+  transform: ${({ $rtl }) =>
+    $rtl ? "rotate(180deg)" : "none"};
 
+  
+`;
 const ShopButton = styled(Link)`
   position: absolute;
-
-  inset-inline-end: 7%;
-
-  bottom: 38px;
-
+  left: 7%;
+  bottom: 20px;
   display: inline-flex;
-
   align-items: center;
-
   gap: 9px;
-
-  color: #ffffff;
-
+  color: white;
   text-decoration: none;
-
   font-family:
-    "Inter",
-    Arial,
-    sans-serif;
+  "Times New Roman",
+  serif;
+  font-wieght:500;
+    font-size: 0.7rem;
 
-  font-size: 0.67rem;
-
-  font-weight: 500;
-
-  letter-spacing: 0.16em;
-
-  line-height: 1.2;
-
+  white-space: nowrap; /* ✅ fixed */
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-
-  padding-bottom: 9px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.78);
-
-  z-index: 3;
-
-  transition:
-    color 0.3s ease,
-    border-color 0.3s ease,
-    gap 0.3s ease,
-    opacity 0.3s ease;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 5; /* ✅ prevents hiding behind image */
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
-    color: #ded0b5;
-
-    border-color: #ded0b5;
-
-    gap: 13px;
-
-    opacity: 0.96;
+    color: #d4bd91;
+    border-color: #d4bd91;
+    gap: 12px; /* optional: makes arrow move on hover */
   }
 
   &:focus-visible {
-    outline: 1px solid #ffffff;
-    outline-offset: 6px;
+    outline: 1px solid white;
+    outline-offset: 5px;
+  }
+
+  /* RTL support */
+  [dir="rtl"] & {
+    left: auto;
+    right: 7%;
+
   }
 
   @media (max-width: 700px) {
-    inset-inline-end: 50%;
-
-    bottom: 27px;
-
+    left: auto; /* ✅ clear the desktop left value */
+    right: 50%;
     transform: translateX(50%);
+    bottom: 30px;
+    font-size: 0.7rem;
 
-    font-size: 0.64rem;
+    /* RTL fix for mobile */
+    [dir="rtl"] & {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%); /* mirror the centering */
+          font-size: 10rem;
 
-    letter-spacing: 0.14em;
-
-    padding-bottom: 8px;
-
-    &:hover {
-      gap: 11px;
     }
   }
 
   @media (max-width: 420px) {
-    bottom: 23px;
-
-    font-size: 0.6rem;
-  }
-`;
-
-const Arrow = styled.span`
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  transform: ${({ $rtl }) =>
-    $rtl ? "rotate(180deg)" : "none"};
-
-  transition: transform 0.3s ease;
-
-  svg {
-    display: block;
-
-    font-size: 13px;
+    bottom: 24px;
   }
 `;

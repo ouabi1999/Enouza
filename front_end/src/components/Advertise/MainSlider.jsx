@@ -39,7 +39,7 @@ const MainSlider = () => {
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-      zIndex: 10,
+      zIndex: 1,
       color: "#fff",
       textAlign: "center",
       width: "90%",

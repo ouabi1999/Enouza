@@ -158,47 +158,58 @@ const Arrow = styled.span`
   
 `;
 const CollectionButton = styled(Link)`
- position: absolute;
-
+  position: absolute;
   left: 7%;
   bottom: 20px;
-
   display: inline-flex;
-
   align-items: center;
   gap: 9px;
-
   color: white;
-
   text-decoration: none;
+  font-family:
+  "Times New Roman",
+  serif;
+  font-wieght:500;
+    font-size: 0.7rem;
 
-  font-family: Arial, sans-serif;
-
-  font-size: 10px;
- text-wrap:nowrap;
+  white-space: nowrap; /* ✅ fixed */
   letter-spacing: 0.12em;
-
   text-transform: uppercase;
-
   padding-bottom: 7px;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-
-  transition: 0.25s ease;
+  z-index: 5; /* ✅ prevents hiding behind image */
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
     color: #d4bd91;
-
     border-color: #d4bd91;
+    gap: 12px; /* optional: makes arrow move on hover */
   }
 
+  &:focus-visible {
+    outline: 1px solid white;
+    outline-offset: 5px;
+  }
+
+ 
+
   @media (max-width: 700px) {
+    left: auto; /* ✅ clear the desktop left value */
     right: 50%;
-
     transform: translateX(50%);
-
     bottom: 30px;
+    font-size: 0.7rem;
 
+    /* RTL fix for mobile */
+    [dir="rtl"] & {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%); /* mirror the centering */
+    }
+  }
+
+  @media (max-width: 420px) {
+    bottom: 24px;
     font-size: 0.7rem;
   }
 `;
@@ -568,8 +579,8 @@ const DesignSection = () => {
                   }
                 )}
 
-                <Arrow >
-                <ArrowForwardIcon $rtl={i18n.dir() === "rtl"}/>
+                <Arrow $rtl={i18n.dir() === "rtl"}>
+                <ArrowForwardIcon />
               </Arrow>
               
               </CollectionButton>
