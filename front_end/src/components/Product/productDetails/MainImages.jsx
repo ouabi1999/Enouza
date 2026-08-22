@@ -182,21 +182,7 @@ function MainImages(props) {
 
           <ProductImg>
 
-            {/* =================================================
-                TOP LEFT TEXT
-            ================================================= */}
-
-            <TopLeftLabel $rtl={isRTL}>
-              <Brand>
-                ENOUZA
-              </Brand>
-
-              <LabelLine />
-
-              <Details >
-                {t("productInfo.product_details")}
-              </Details>
-            </TopLeftLabel>
+           
 
             {/* =================================================
                 CENTER IMAGE
@@ -519,8 +505,8 @@ const ImageDetailsContainer = styled.div`
 const Thumbnail = styled.button`
   flex: 0 0 auto;
 
-  min-width: 55px;
-  min-height: 38px;
+  width: 58px;
+  height: 58px;
 
   padding: 2px;
 
@@ -655,12 +641,12 @@ const MainImage = styled.img`
    RTL SUPPORT ADDED HERE
 ========================================================= */
 
-const TopLeftLabel = styled.div`
+const ProgressContainer = styled.div`
   position: absolute;
 
-  top: 20px;
+  top: 15px;
 
-  left: 22px;
+  left: 15px;
 
   z-index: 10;
 
@@ -669,23 +655,13 @@ const TopLeftLabel = styled.div`
   align-items: center;
 
   gap: 10px;
-
+width:80px;
   pointer-events: none;
+  background: rgba(247, 245, 240, 0.78);
 
-  /*
-    Only the text composition changes direction.
-    The gallery itself remains LTR.
-  */
-  direction: ${({ $rtl }) =>
-    $rtl ? "ltr" : "ltr"};
+  padding:4px;
 
-  @media (max-width: 768px) {
-    top: 14px;
-
-    left: 14px;
-
-    gap: 7px;
-  }
+  
 `;
 
 
@@ -772,41 +748,6 @@ const Details = styled.span`
    PROGRESS
 ========================================================= */
 
-const ProgressContainer = styled.div`
-  position: absolute;
-
-  left: 22px;
-
-  bottom: 20px;
-
-  z-index: 10;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  padding: 7px 10px;
-
-  background: rgba(247, 245, 240, 0.78);
-
-  backdrop-filter: blur(10px);
-
-  -webkit-backdrop-filter: blur(10px);
-
-  pointer-events: none;
-
-  @media (max-width: 768px) {
-    left: 14px;
-
-    bottom: 14px;
-
-    gap: 7px;
-
-    padding: 6px 8px;
-  }
-`;
 
 
 /* =========================================================
@@ -877,9 +818,9 @@ const ProgressBar = styled.span`
 const FullscreenButton = styled.button`
   position: absolute;
 
-  right: 22px;
+  left: 15px;
 
-  bottom: 20px;
+  bottom: 15px;
 
   z-index: 10;
 
@@ -923,13 +864,11 @@ const FullscreenButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    right: 14px;
+\
 
-    bottom: 14px;
+    height: 20px;
 
-    height: 32px;
-
-    padding: 0 9px;
+    padding: 0 4px;
 
     gap: 6px;
 
@@ -1014,21 +953,16 @@ const NavigationButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    width: 34px;
+    width: 20px;
 
-    height: 34px;
+    height: 20px;
 
-    ${({ $left }) =>
-    $left
-      ? "left: 10px;"
-      : "right: 10px;"}
-
-    opacity: 1;
+   
 
     background: rgba(247, 245, 240, 0.85);
 
     svg {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 `;
@@ -1044,17 +978,21 @@ const FullscreenOverlay = styled(motion.div)`
 
   z-index: 2147483647;
 
-  width: 100vw;
-  height: 100vh;
-
+  width: 100%;
+  height: 100%;
+ 
   display: flex;
   flex-direction: column;
+  align-items:center;
+  justify-content:center;
 
   background: #171614;
 
   color: #f4f0e9;
 
   overscroll-behavior: contain;
+ 
+ 
 `;
 
 /* =========================================================
@@ -1103,7 +1041,7 @@ const FullscreenCollection = styled.span`
   letter-spacing: 0.3em;
 
   color: #b9aa9a;
-
+  direction:rtl;
   @media (max-width: 480px) {
     font-size: 7px;
     letter-spacing: 0.22em;
@@ -1159,26 +1097,21 @@ const CloseButton = styled.button`
 ========================================================= */
 
 const FullscreenContent = styled.div`
-  position: relative;
 
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  
 
 
-  box-sizing: border-box;
+
+
 
   @media (max-width: 700px) {
-    padding: 78px 48px 72px;
+    
+
   }
 
   @media (max-width: 480px) {
-    padding: 72px 38px 68px;
   }
+    
 `;
 
 /* =========================================================
@@ -1186,12 +1119,12 @@ const FullscreenContent = styled.div`
 ========================================================= */
 
 const FullscreenImage = styled.div`
-  width: 100%;
-  height: 100%;
+  
   display:flex;
   justify-content:center;
+  align-items:center;
+    
 
- 
 
  
 
@@ -1200,8 +1133,17 @@ const FullscreenImage = styled.div`
   -webkit-user-drag: none;
    img{
     object-fit: contain;
+    width: 80%;
+      height: 80%;
     
    }
+    @media (max-width: 700px) {
+      img{
+      width: 100%;
+      height: 100%;
+}
+  }
+ 
 `;
 
 /* =========================================================
