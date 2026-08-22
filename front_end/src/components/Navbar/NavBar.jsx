@@ -173,7 +173,7 @@ function NavBar({ outlet, setSearchValue, value }) {
                 onChange={(e) =>
                   setSearchValue(e.target.value)
                 }
-                maxLength="100"
+                 maxLength="100"
               />
             </div>
 
@@ -451,7 +451,7 @@ const ParentContainer = styled.div`
     width: 100%;
     height: 40px;
 
-    padding: 0 14px;
+    padding: 0 16px;
 
     border: 1px solid ${COLORS.border};
 
@@ -750,7 +750,7 @@ const SearchContainer = styled.div`
     color: ${COLORS.ink};
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1;
 
     transition:

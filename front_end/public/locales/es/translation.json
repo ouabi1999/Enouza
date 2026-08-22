@@ -193,6 +193,7 @@
       "customer_review": "Reseña del cliente"
     },
   "productInfo": {
+    "product_details":"Detalles del producto",
     "view_full_image": "VER IMAGEN COMPLETA",
     "purchase_information": "Información de compra",
     "secure_purchase_premium_quality": "Compra segura y calidad premium",

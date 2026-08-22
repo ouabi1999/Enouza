@@ -355,6 +355,13 @@ const Input = styled.input`
       0 0 0 3px
       rgba(184, 149, 91, 0.08);
   }
+
+   @media max-width(490px){
+       &{
+       font-size:16px;
+       }
+      
+      }
 `;
 
 
@@ -409,6 +416,12 @@ const Textarea = styled.textarea`
       0 0 0 3px
       rgba(184, 149, 91, 0.08);
   }
+      @media max-width(490px){
+       &{
+       font-size:16px;
+       }
+      
+      }
 `;
 
 

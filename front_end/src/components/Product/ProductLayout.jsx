@@ -173,7 +173,7 @@ export default ProductLayout;
 const Section = styled.section`
   width: 100%;
 
-  padding:20px 20px 75px;
+  padding:20px 50px 75px;
   
   box-sizing: border-box;
 
@@ -199,11 +199,9 @@ const ProductGrid = styled.div`
 
   display: grid;
 
-  grid-template-columns:
-    minmax(0, 1.20fr)
-    minmax(360px, 0.88fr);
+  grid-template-columns: 1.5fr 1fr;
 
-  align-items: start;
+  align-items: center;
 
   gap: 40px;
 
@@ -234,7 +232,7 @@ const ImageSide = styled.div`
 
   box-sizing: border-box;
   position: sticky;
-  top: 60px;
+  top: 75px;
 
   align-self: start;
 
