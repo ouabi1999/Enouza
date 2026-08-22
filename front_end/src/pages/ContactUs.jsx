@@ -60,8 +60,6 @@ function ContactUs() {
 
       <ContactWrapper>
         <ContactHeader>
-          
-
           <Title>
             {t("footer.help.contactUs")}
           </Title>
@@ -72,6 +70,10 @@ function ContactUs() {
         </ContactHeader>
 
         <Form onSubmit={handldSendEmail}>
+          {/* =================================================
+              EMAIL
+          ================================================= */}
+
           <Field>
             <Label htmlFor="email">
               {t("common.email")}
@@ -91,6 +93,10 @@ function ContactUs() {
             />
           </Field>
 
+          {/* =================================================
+              MESSAGE
+          ================================================= */}
+
           <Field>
             <Label htmlFor="message">
               {t("common.message")}
@@ -109,6 +115,10 @@ function ContactUs() {
               }
             />
           </Field>
+
+          {/* =================================================
+              SUBMIT
+          ================================================= */}
 
           <SubmitButton
             type="submit"
@@ -130,6 +140,10 @@ function ContactUs() {
           </SubmitButton>
         </Form>
       </ContactWrapper>
+
+      {/* =====================================================
+          TOAST
+      ===================================================== */}
 
       <ToastContainer
         position={
@@ -172,6 +186,18 @@ const Container = styled.div`
   background: #f7f4ee;
 
   color: #292723;
+
+  width: 100%;
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 70px);
+
+    padding: 50px 18px;
+  }
+
+  @media (max-width: 490px) {
+    padding: 42px 16px;
+  }
 `;
 
 
@@ -196,8 +222,20 @@ const ContactHeader = styled.div`
   margin-bottom: 38px;
 
   text-align: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 490px) {
+    margin-bottom: 28px;
+  }
 `;
 
+
+/* =========================================================
+   EYEBROW
+========================================================= */
 
 const Eyebrow = styled.span`
   display: block;
@@ -222,6 +260,10 @@ const Eyebrow = styled.span`
 `;
 
 
+/* =========================================================
+   TITLE
+========================================================= */
+
 const Title = styled.h1`
   margin: 0;
 
@@ -237,8 +279,20 @@ const Title = styled.h1`
   font-weight: 400;
 
   line-height: 1.15;
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 490px) {
+    font-size: 32px;
+  }
 `;
 
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 const Description = styled.p`
   max-width: 500px;
@@ -256,12 +310,18 @@ const Description = styled.p`
   font-size: 14px;
 
   line-height: 1.8;
-    @media max-width(490px){
-       
-       font-size:16px;
-       
-      
-      }
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+
+    line-height: 1.75;
+  }
+
+  @media (max-width: 490px) {
+    font-size: 16px;
+
+    line-height: 1.7;
+  }
 `;
 
 
@@ -277,6 +337,10 @@ const Form = styled.form`
   flex-direction: column;
 
   gap: 22px;
+
+  @media (max-width: 490px) {
+    gap: 20px;
+  }
 `;
 
 
@@ -295,6 +359,10 @@ const Field = styled.div`
 `;
 
 
+/* =========================================================
+   LABEL
+========================================================= */
+
 const Label = styled.label`
   color: #4b463f;
 
@@ -311,6 +379,10 @@ const Label = styled.label`
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
+
+  @media (max-width: 490px) {
+    font-size: 11px;
+  }
 `;
 
 
@@ -346,12 +418,20 @@ const Input = styled.input`
 
   font-size: 13px;
 
+  line-height: 1.4;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease;
 
   &::placeholder {
     color: #aaa49b;
+
+    opacity: 1;
   }
 
   &:focus {
@@ -362,12 +442,13 @@ const Input = styled.input`
       rgba(184, 149, 91, 0.08);
   }
 
-   @media max-width(490px){
-       &{
-       font-size:16px;
-       }
-      
-      }
+  /* =====================================================
+     MOBILE — PREVENT IOS INPUT ZOOM
+  ===================================================== */
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 
@@ -407,12 +488,18 @@ const Textarea = styled.textarea`
 
   line-height: 1.7;
 
+  appearance: none;
+
+  -webkit-appearance: none;
+
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease;
 
   &::placeholder {
     color: #aaa49b;
+
+    opacity: 1;
   }
 
   &:focus {
@@ -422,12 +509,14 @@ const Textarea = styled.textarea`
       0 0 0 3px
       rgba(184, 149, 91, 0.08);
   }
-      @media max-width(490px){
-       &{
-       font-size:16px;
-       }
-      
-      }
+
+  /* =====================================================
+     MOBILE — PREVENT IOS TEXTAREA ZOOM
+  ===================================================== */
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 
@@ -445,6 +534,7 @@ const SubmitButton = styled.button`
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   gap: 9px;
@@ -475,7 +565,8 @@ const SubmitButton = styled.button`
 
   transition:
     background 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    opacity 0.25s ease;
 
   &:hover:not(:disabled) {
     background: #b8955b;
@@ -483,16 +574,19 @@ const SubmitButton = styled.button`
     border-color: #b8955b;
   }
 
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
   &:disabled {
     cursor: wait;
 
     opacity: 0.65;
   }
+
+  @media (max-width: 490px) {
+    height: 54px;
+
+    font-size: 10px;
+  }
 `;
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-
