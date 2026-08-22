@@ -256,6 +256,12 @@ const Description = styled.p`
   font-size: 14px;
 
   line-height: 1.8;
+    @media max-width(490px){
+       
+       font-size:16px;
+       
+      
+      }
 `;
 
 

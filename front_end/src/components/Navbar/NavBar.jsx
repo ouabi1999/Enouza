@@ -803,7 +803,11 @@ const SearchContainer = styled.div`
   
 
   @media only screen and (max-width: 860px) {
-    display: none;
+    
+    &{
+     display: none;
+    font-size:16px;
+    }
   }
 `;
 
