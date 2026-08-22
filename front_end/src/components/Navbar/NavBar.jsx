@@ -402,19 +402,15 @@ const ParentContainer = styled.div`
   width: 100%;
 
   color: ${COLORS.ink};
-
-
   /* ==========================================================
-     MOBILE SEARCH
-  ========================================================== */
+   MOBILE SEARCH
+========================================================== */
 
- .search-container {
+.search-container {
   display: flex;
-
   align-items: center;
 
   position: fixed;
-
   top: 0;
   inset-inline: 0;
 
@@ -433,17 +429,14 @@ const ParentContainer = styled.div`
   box-shadow:
     0 8px 25px rgba(29, 28, 26, 0.06);
 
-
   .responsive-input {
     flex: 1;
-
     min-width: 0;
 
     height: 40px;
 
     display: flex;
   }
-
 
   .responsive-input input {
     box-sizing: border-box;
@@ -463,14 +456,20 @@ const ParentContainer = styled.div`
     color: ${COLORS.ink};
 
     font-family: inherit;
-    font-size: 13px;
+
+    /* IMPORTANT:
+       16px prevents automatic browser zoom on mobile */
+    font-size: 16px;
+
     line-height: 1;
 
-    transition:
-      border-color 0.2s ease;
+    -webkit-text-size-adjust: 100%;
+
+    transition: border-color 0.2s ease;
 
     &::placeholder {
       color: ${COLORS.muted};
+      font-size: 16px;
     }
 
     &:focus {
@@ -478,10 +477,8 @@ const ParentContainer = styled.div`
     }
   }
 
-
   .search-icon-container {
     width: 42px;
-
     height: 40px;
 
     flex-shrink: 0;
@@ -489,20 +486,16 @@ const ParentContainer = styled.div`
     box-sizing: border-box;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     background: ${COLORS.ink};
-
     color: ${COLORS.white};
 
     cursor: pointer;
 
     border-radius: 0 2px 2px 0;
-    
   }
-
 
   .search-icon {
     display: block;
@@ -514,15 +507,22 @@ const ParentContainer = styled.div`
     font-size: 20px;
   }
 }
-  @media only screen and (min-width: 861px) {
+
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media only screen and (min-width: 861px) {
   .search-container {
     display: none;
   }
-    .responsive-input input{
-    font-size:16px;
-    }
+
+  
 }
-`;
+
+
+  `
 
 
 // ============================================================
