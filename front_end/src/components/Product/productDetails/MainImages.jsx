@@ -657,7 +657,8 @@ const ProgressContainer = styled.div`
   gap: 10px;
 width:80px;
   pointer-events: none;
-  background: rgba(247, 245, 240, 0.78);
+  background: rgba(232, 241, 241, 0.13);
+
 
   padding:4px;
 
@@ -665,83 +666,6 @@ width:80px;
 `;
 
 
-/* =========================================================
-   BRAND
-   ALWAYS LTR
-========================================================= */
-
-const Brand = styled.span`
-  direction: ltr;
-
-  padding: 7px 9px;
-
-  background: rgba(247, 245, 240, 0.78);
-
-  backdrop-filter: blur(10px);
-
-  -webkit-backdrop-filter: blur(10px);
-
-  color: #1a1917;
-
-  font-size: 9px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.26em;
-
-  white-space: nowrap;
-`;
-
-
-/* =========================================================
-   LABEL LINE
-========================================================= */
-
-const LabelLine = styled.span`
-  width: 28px;
-
-  height: 1px;
-
-  background: #b59a72;
-
-  flex: 0 0 auto;
-
-  @media (max-width: 768px) {
-    width: 18px;
-  }
-`;
-
-
-/* =========================================================
-   PRODUCT DETAILS
-   RTL TEXT SUPPORT
-========================================================= */
-
-const Details = styled.span`
-  
-
-  
-
-  padding: 7px 9px;
-
-  background: rgba(247, 245, 240, 0.78);
-
-  backdrop-filter: blur(10px);
-
-  -webkit-backdrop-filter: blur(10px);
-
-  color: #1a1917;
-
-  font-size: 9px;
-
-  letter-spacing: 0.18em;
-
-  white-space: nowrap;
-
-  @media (max-width: 500px) {
-    display: none;
-  }
-`;
 
 
 /* =========================================================
@@ -805,7 +729,9 @@ const ProgressBar = styled.span`
   width: ${({ $progress }) =>
     `${$progress}%`};
 
-  background: #1a1917;
+       background: rgb(134, 108, 50);
+
+
 
   transition: width 0.35s ease;
 `;
@@ -836,7 +762,8 @@ const FullscreenButton = styled.button`
 
   border: 1px solid rgba(26, 25, 23, 0.12);
 
-  background: rgba(247, 245, 240, 0.78);
+    background: rgba(232, 241, 241, 0.13);
+
 
   backdrop-filter: blur(10px);
 
@@ -856,9 +783,9 @@ const FullscreenButton = styled.button`
   }
 
   &:hover {
-    background: #1a1917;
-
+    background: #aa8f5a;
     color: #ffffff;
+  
 
     transform: translateY(-1px);
   }
@@ -921,7 +848,7 @@ const NavigationButton = styled.button`
 
   border: 1px solid rgba(26, 25, 23, 0.1);
 
-  background: rgba(247, 245, 240, 0.75);
+  background: rgba(232, 241, 241, 0.13);
 
   backdrop-filter: blur(10px);
 
@@ -942,11 +869,12 @@ const NavigationButton = styled.button`
     opacity: 1;
   }
 
+  @media (hover: hover) and (pointer: fine) {
   &:hover {
-    background: #1a1917;
-
+    background: #aa8f5a;
     color: #ffffff;
   }
+}
 
   svg {
     font-size: 21px;
@@ -959,10 +887,9 @@ const NavigationButton = styled.button`
 
    
 
-    background: rgba(247, 245, 240, 0.85);
 
     svg {
-      font-size: 16px;
+      font-size: 22px;
     }
   }
 `;
@@ -1146,14 +1073,7 @@ const FullscreenImage = styled.div`
  
 `;
 
-/* =========================================================
-   FULLSCREEN FALLBACK
-========================================================= */
 
-const FullscreenFallback = styled.div`
-  width: min(800px, 90vw);
-  height: min(800px, 80vh);
-`;
 
 /* =========================================================
    FULLSCREEN NAVIGATION
