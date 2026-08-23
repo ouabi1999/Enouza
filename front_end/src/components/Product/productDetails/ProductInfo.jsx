@@ -1,81 +1,273 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
+
 import StarIcon from "@mui/icons-material/Star";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
+
 import { useTranslation } from "react-i18next";
+
 import SideCart from "./SideCart";
 
 function ProductInfo({
   productData,
   ratings,
   sum_stars,
+
   selectedAttributes,
   setSelectedAttributes,
+
   availableAttributes,
   setAvailableAttributes,
+
   currentSku,
   setCurrentSku,
+
   selectColor,
 
   quantity,
   addQuantity,
   subtractQuantity,
+
   maxOrderWorning,
   setMaxOrderWorning,
+
   shippingInfo,
   add_item_to_cart,
   buy_Now_item,
+
   setIsPopUpShippingOpen,
   isPopUpShippingOpen,
+
   shippingMethodIndex,
   setShippingInfo,
 }) {
   const { t, i18n } = useTranslation();
 
-  const stars = Array(5).fill(0);
-  const skuInfo = productData?.skuInfo || [];
- 
+  const skuInfo = Array.isArray(productData?.skuInfo)
+    ? productData.skuInfo
+    : [];
+
   /*
    * =========================================================
-   * INITIALIZE ATTRIBUTES
+   * HELPERS
    * =========================================================
+   *
+   * IMPORTANT:
+   *
+   * New AliExpress SKU:
+   *
+   * value: "green"
+   * definitionName: "White Jazz White"
+   * valueId: 175
+   *
+   * Old SKU:
+   *
+   * value: "Silver"
+   * image: "..."
+   *
+   * Therefore:
+   *
+   * - valueId = strongest identity
+   * - value = fallback identity
+   * - definitionName = display name
    */
 
-  useEffect(() => {
-    const attributes = {};
+  const getAttributeId = (attr) => {
+    if (!attr) return "";
+
+    if (
+      attr.valueId !== undefined &&
+      attr.valueId !== null &&
+      attr.valueId !== ""
+    ) {
+      return String(attr.valueId);
+    }
+
+    if (
+      attr.property_value_id !== undefined &&
+      attr.property_value_id !== null &&
+      attr.property_value_id !== ""
+    ) {
+      return String(attr.property_value_id);
+    }
+
+    return String(attr.value ?? "");
+  };
+
+  const getAttributeDisplayValue = (attr) => {
+    if (!attr) return "";
+
+    /*
+     * Prefer definitionName because this is the real
+     * AliExpress option name.
+     *
+     * Example:
+     *
+     * value = green
+     * definitionName = White Jazz White
+     *
+     * We display:
+     *
+     * White Jazz White
+     */
+
+    if (
+      attr.definitionName &&
+      String(attr.definitionName).trim()
+    ) {
+      return String(attr.definitionName).trim();
+    }
+
+    return String(attr.value ?? "");
+  };
+
+  const getAttributeRawValue = (attr) => {
+    return String(attr?.value ?? "");
+  };
+
+  /*
+   * =========================================================
+   * BUILD AVAILABLE ATTRIBUTES
+   * =========================================================
+   *
+   * We keep the complete option object instead of only
+   * storing strings.
+   *
+   * This allows us to preserve:
+   *
+   * value
+   * definitionName
+   * valueId
+   * image
+   */
+
+  const normalizedAttributes = useMemo(() => {
+    const result = {};
 
     skuInfo.forEach((sku) => {
-      Object.entries(sku.attributes || {}).forEach(
-        ([key, attr]) => {
-          if (!attributes[key]) {
-            attributes[key] = new Set();
+      Object.entries(sku?.attributes || {}).forEach(
+        ([attributeName, attr]) => {
+          if (!result[attributeName]) {
+            result[attributeName] = new Map();
           }
 
-          attributes[key].add(attr.value);
+          const id = getAttributeId(attr);
+
+          if (!id) return;
+
+          /*
+           * If multiple SKUs contain the same option,
+           * keep only one option object.
+           */
+
+          if (!result[attributeName].has(id)) {
+            result[attributeName].set(id, {
+              id,
+
+              value: getAttributeRawValue(attr),
+
+              displayValue:
+                getAttributeDisplayValue(attr),
+
+              definitionName:
+                attr?.definitionName || "",
+
+              image: attr?.image || null,
+
+              propertyId:
+                attr?.propertyId ?? null,
+
+              valueId:
+                attr?.valueId ?? null,
+            });
+          }
         }
       );
     });
 
-    const normalized = {};
+    const finalResult = {};
 
-    Object.entries(attributes).forEach(([key, values]) => {
-      normalized[key] = Array.from(values);
-    });
-
-    setAvailableAttributes(normalized);
-
-    const defaultSelected = {};
-
-    Object.entries(normalized).forEach(([key, values]) => {
-      if (values.length > 0) {
-        defaultSelected[key] = values[0];
+    Object.entries(result).forEach(
+      ([attributeName, options]) => {
+        finalResult[attributeName] =
+          Array.from(options.values());
       }
-    });
+    );
 
-    setSelectedAttributes(defaultSelected);
+    return finalResult;
+  }, [skuInfo]);
+
+  /*
+   * =========================================================
+   * INITIALIZE AVAILABLE ATTRIBUTES
+   * =========================================================
+   */
+
+  useEffect(() => {
+    setAvailableAttributes(normalizedAttributes);
   }, [
-    skuInfo,
+    normalizedAttributes,
     setAvailableAttributes,
+  ]);
+
+  /*
+   * =========================================================
+   * INITIAL DEFAULT SELECTION
+   * =========================================================
+   *
+   * selectedAttributes will contain:
+   *
+   * {
+   *   "Body Color": "193",
+   *   "Lampshade Color": "175"
+   * }
+   *
+   * The IDs are used internally.
+   */
+
+  useEffect(() => {
+    if (!Object.keys(normalizedAttributes).length) {
+      return;
+    }
+
+    setSelectedAttributes((previous) => {
+      const next = {};
+
+      Object.entries(normalizedAttributes).forEach(
+        ([attributeName, options]) => {
+          if (!options.length) return;
+
+          /*
+           * Keep an existing valid selection.
+           */
+
+          const currentSelection =
+            previous?.[attributeName];
+
+          const stillExists = options.some(
+            (option) =>
+              option.id === currentSelection
+          );
+
+          if (stillExists) {
+            next[attributeName] =
+              currentSelection;
+          } else {
+            /*
+             * Otherwise select the first available
+             * option.
+             */
+
+            next[attributeName] =
+              options[0].id;
+          }
+        }
+      );
+
+      return next;
+    });
+  }, [
+    normalizedAttributes,
     setSelectedAttributes,
   ]);
 
@@ -83,34 +275,244 @@ function ProductInfo({
    * =========================================================
    * FIND CURRENT SKU
    * =========================================================
+   *
+   * THIS IS THE IMPORTANT FIX.
+   *
+   * We compare valueId/value identity instead of
+   * comparing the random display value.
    */
 
   useEffect(() => {
-    const found = skuInfo.find((sku) =>
-      Object.entries(selectedAttributes).every(
-        ([key, value]) =>
-          sku.attributes?.[key]?.value === value
-      )
-    );
+    if (!skuInfo.length) {
+      setCurrentSku(null);
+      return;
+    }
 
-    setCurrentSku(found || null);
+    const selectedEntries =
+      Object.entries(selectedAttributes || {});
+
+    if (!selectedEntries.length) {
+      setCurrentSku(skuInfo[0] || null);
+      return;
+    }
+
+    const foundSku = skuInfo.find((sku) => {
+      return selectedEntries.every(
+        ([attributeName, selectedId]) => {
+          const attr =
+            sku?.attributes?.[attributeName];
+
+          if (!attr) {
+            return false;
+          }
+
+          return (
+            getAttributeId(attr) ===
+            String(selectedId)
+          );
+        }
+      );
+    });
+
+    setCurrentSku(foundSku || null);
   }, [
-    selectedAttributes,
     skuInfo,
+    selectedAttributes,
     setCurrentSku,
   ]);
 
   /*
    * =========================================================
-   * ATTRIBUTE SELECTION
-   * =========================================================F
+   * SELECT ATTRIBUTE
+   * =========================================================
    */
 
-  const selectAttribute = (attrKey, value) => {
-    setSelectedAttributes((prev) => ({
-      ...prev,
-      [attrKey]: value,
+  const selectAttribute = (
+    attributeName,
+    option
+  ) => {
+    if (!option) return;
+
+    setSelectedAttributes((previous) => ({
+      ...previous,
+      [attributeName]: option.id,
     }));
+  };
+
+  /*
+   * =========================================================
+   * CHECK WHETHER OPTION IS AVAILABLE
+   * =========================================================
+   *
+   * Example:
+   *
+   * Body Color = black
+   *
+   * We check whether there is a SKU containing:
+   *
+   * Body Color = black
+   *
+   * AND all the other currently selected options.
+   *
+   * This prevents invalid combinations.
+   */
+
+  const isOptionAvailable = (
+    attributeName,
+    option
+  ) => {
+    if (!option) return false;
+
+    return skuInfo.some((sku) => {
+      const currentAttr =
+        sku?.attributes?.[attributeName];
+
+      if (!currentAttr) {
+        return false;
+      }
+
+      /*
+       * First check the option itself.
+       */
+
+      if (
+        getAttributeId(currentAttr) !==
+        String(option.id)
+      ) {
+        return false;
+      }
+
+      /*
+       * Then check all other selected attributes.
+       */
+
+      return Object.entries(
+        selectedAttributes || {}
+      ).every(
+        ([otherAttributeName, selectedId]) => {
+          if (
+            otherAttributeName ===
+            attributeName
+          ) {
+            return true;
+          }
+
+          const otherAttr =
+            sku?.attributes?.[
+              otherAttributeName
+            ];
+
+          if (!otherAttr) {
+            return false;
+          }
+
+          return (
+            getAttributeId(otherAttr) ===
+            String(selectedId)
+          );
+        }
+      );
+    });
+  };
+
+  /*
+   * =========================================================
+   * FIND IMAGE FOR OPTION
+   * =========================================================
+   *
+   * IMPORTANT:
+   *
+   * We don't simply use .find() on the first matching
+   * color anymore.
+   *
+   * We respect the current selections.
+   */
+
+  const getOptionImage = (
+    attributeName,
+    option
+  ) => {
+    if (!option) return null;
+
+    /*
+     * First try the currently selected combination.
+     */
+
+    const matchingSku = skuInfo.find((sku) => {
+      const attr =
+        sku?.attributes?.[attributeName];
+
+      if (!attr) return false;
+
+      if (
+        getAttributeId(attr) !==
+        String(option.id)
+      ) {
+        return false;
+      }
+
+      return Object.entries(
+        selectedAttributes || {}
+      ).every(
+        ([otherAttributeName, selectedId]) => {
+          if (
+            otherAttributeName ===
+            attributeName
+          ) {
+            return true;
+          }
+
+          const otherAttr =
+            sku?.attributes?.[
+              otherAttributeName
+            ];
+
+          if (!otherAttr) {
+            return false;
+          }
+
+          return (
+            getAttributeId(otherAttr) ===
+            String(selectedId)
+          );
+        }
+      );
+    });
+
+    const exactImage =
+      matchingSku?.attributes?.[
+        attributeName
+      ]?.image;
+
+    if (exactImage) {
+      return exactImage;
+    }
+
+    /*
+     * Fallback:
+     *
+     * If there is no exact combination image,
+     * find the first SKU containing this option
+     * that has an image.
+     */
+
+    const fallbackSku = skuInfo.find((sku) => {
+      const attr =
+        sku?.attributes?.[attributeName];
+
+      return (
+        attr &&
+        getAttributeId(attr) ===
+          String(option.id) &&
+        attr.image
+      );
+    });
+
+    return (
+      fallbackSku?.attributes?.[
+        attributeName
+      ]?.image || null
+    );
   };
 
   /*
@@ -124,51 +526,113 @@ function ProductInfo({
     productData?.name?.en ||
     "Product";
 
-  const ratingList = Array.isArray(ratings) ? ratings : [];
+  /*
+   * =========================================================
+   * RATINGS
+   * =========================================================
+   */
 
-const ratingCount = ratingList.length;
+  const stars = Array(5).fill(0);
 
-const averageRating =
-  ratingCount > 0
-    ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
-    : "0.0";
+  const ratingList = Array.isArray(ratings)
+    ? ratings
+    : [];
 
-const roundedRating = Math.round(Number(averageRating));
+  const ratingCount =
+    ratingList.length;
+
+  const averageRating =
+    ratingCount > 0
+      ? (
+          Number(sum_stars || 0) /
+          ratingCount
+        ).toFixed(1)
+      : "0.0";
+
+  const roundedRating = Math.round(
+    Number(averageRating)
+  );
+
+  /*
+   * =========================================================
+   * PRICE
+   * =========================================================
+   */
 
   const sellingPrice =
-    currentSku?.sellingPrice > 0
+    Number(currentSku?.sellingPrice) > 0
       ? `$${currentSku.sellingPrice} USD`
       : productData?.price;
 
   const comparePrice =
-    currentSku?.comparePrice > 0
+    Number(currentSku?.comparePrice) > 0
       ? `$${currentSku.comparePrice} USD`
       : productData?.discount;
 
   const savePercentage =
-    currentSku?.comparePrice > 0 &&
-    currentSku?.sellingPrice > 0
+    Number(currentSku?.comparePrice) > 0 &&
+    Number(currentSku?.sellingPrice) > 0
       ? (
-          ((currentSku.comparePrice -
-            currentSku.sellingPrice) /
-            currentSku.comparePrice) *
+          ((Number(currentSku.comparePrice) -
+            Number(currentSku.sellingPrice)) /
+            Number(currentSku.comparePrice)) *
           100
         ).toFixed(0)
       : null;
 
-  return (
-    <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+  /*
+   * =========================================================
+   * CURRENT SELECTED DISPLAY VALUES
+   * =========================================================
+   */
 
+  const getSelectedDisplayValue = (
+    attributeName
+  ) => {
+    const selectedId =
+      selectedAttributes?.[attributeName];
+
+    const option =
+      normalizedAttributes?.[
+        attributeName
+      ]?.find(
+        (item) =>
+          item.id === String(selectedId)
+      );
+
+    return (
+      option?.displayValue ||
+      ""
+    );
+  };
+
+  /*
+   * =========================================================
+   * RENDER
+   * =========================================================
+   */
+
+  return (
+    <Container
+      dir={
+        i18n.language === "ar"
+          ? "rtl"
+          : "ltr"
+      }
+    >
       {/* =====================================================
           PRODUCT HEADER
       ===================================================== */}
 
       <ProductHeader>
-
         <Eyebrow>
           {productData?.category
-            ? t(`productInfo.${productData.category}`)
-            : t("footer.newsletter.eyebrow")}
+            ? t(
+                `productInfo.${productData.category}`
+              )
+            : t(
+                "footer.newsletter.eyebrow"
+              )}
         </Eyebrow>
 
         <ProductTitle>
@@ -176,53 +640,53 @@ const roundedRating = Math.round(Number(averageRating));
         </ProductTitle>
 
         <RatingRow>
-  <Stars aria-label={`${averageRating} out of 5 stars`}>
-    {stars.map((_, index) => (
-      <StarIcon
-        key={index}
-        className={
-          index < roundedRating ? "active" : ""
-        }
-      />
-    ))}
-  </Stars>
+          <Stars
+            aria-label={`${averageRating} out of 5 stars`}
+          >
+            {stars.map((_, index) => (
+              <StarIcon
+                key={index}
+                className={
+                  index < roundedRating
+                    ? "active"
+                    : ""
+                }
+              />
+            ))}
+          </Stars>
 
-  <RatingNumber>
-    {averageRating}
-  </RatingNumber>
+          <RatingNumber>
+            {averageRating}
+          </RatingNumber>
 
-  {ratingCount > 0 && (
-    <>
-      <RatingDivider />
+          {ratingCount > 0 && (
+            <>
+              <RatingDivider />
 
-      <RatingCount>
-       
-        {ratingCount === 1
-          ? t(
-              "customer_reviews.customer_review",
-              "Customer Review"
-            )
-          : t(
-              "customer_reviews.customer_reviews",
-              "Customer Reviews"
-            )}
-             {" "}{`(${ratingCount})`} {" "}
-      </RatingCount>
-    </>
-  )}
-</RatingRow>
+              <RatingCount>
+                {ratingCount === 1
+                  ? t(
+                      "customer_reviews.customer_review",
+                      "Customer Review"
+                    )
+                  : t(
+                      "customer_reviews.customer_reviews",
+                      "Customer Reviews"
+                    )}
 
+                {" "}({ratingCount})
+              </RatingCount>
+            </>
+          )}
+        </RatingRow>
       </ProductHeader>
-
 
       {/* =====================================================
           PRICE
       ===================================================== */}
 
       <PriceBlock>
-
         <PriceLine>
-
           <ProductPrice>
             {sellingPrice}
           </ProductPrice>
@@ -235,10 +699,10 @@ const roundedRating = Math.round(Number(averageRating));
 
           {savePercentage && (
             <SaveBadge>
-              {t("productInfo.save")} {savePercentage}%
+              {t("productInfo.save")}{" "}
+              {savePercentage}%
             </SaveBadge>
           )}
-
         </PriceLine>
 
         <PriceNote>
@@ -250,162 +714,191 @@ const roundedRating = Math.round(Number(averageRating));
             )}
           </span>
         </PriceNote>
-
       </PriceBlock>
-
 
       {/* =====================================================
           ATTRIBUTES
       ===================================================== */}
 
       <AttributesWrapper>
+        {Object.entries(
+          normalizedAttributes
+        ).map(
+          ([
+            attributeName,
+            options,
+          ]) => {
+            const selectedId =
+              selectedAttributes?.[
+                attributeName
+              ];
 
-        {Object.entries(availableAttributes).map(
-          ([attrKey, values]) => (
+            return (
+              <ProductAttribute
+                key={attributeName}
+              >
+                <AttributeHeader>
+                  <AttributeTitle>
+                    {t(
+                      `productInfo.${attributeName}`,
+                      attributeName
+                    )}
+                  </AttributeTitle>
 
-            <ProductAttribute key={attrKey}>
+                  <SelectedValue>
+                    {getSelectedDisplayValue(
+                      attributeName
+                    )}
+                  </SelectedValue>
+                </AttributeHeader>
 
-              <AttributeHeader>
+                <AttributeValues>
+                  {options.map(
+                    (option) => {
+                      const available =
+                        isOptionAvailable(
+                          attributeName,
+                          option
+                        );
 
-                <AttributeTitle>
-                  {t(`productInfo.${attrKey}`)}
-                </AttributeTitle>
+                      const active =
+                        String(
+                          selectedId
+                        ) ===
+                        String(
+                          option.id
+                        );
 
-                <SelectedValue>
-                  {selectedAttributes[attrKey]}
-                </SelectedValue>
+                      /*
+                       * Find image for this option.
+                       */
 
-              </AttributeHeader>
+                      const image =
+                        getOptionImage(
+                          attributeName,
+                          option
+                        );
 
-              <AttributeValues>
+                      /*
+                       * COLOR ATTRIBUTE
+                       */
 
-                {values.map((value) => {
-
-                  const skuWithValue =
-                    skuInfo.some(
-                      (sku) =>
-                        sku.attributes?.[attrKey]
-                          ?.value === value &&
-                        Object.entries(
-                          selectedAttributes
-                        ).every(
-                          ([key, selectedValue]) =>
-                            key === attrKey ||
-                            sku.attributes?.[key]
-                              ?.value === selectedValue
-                        )
-                    );
-
-                  let image = null;
-
-                  if (
-                    attrKey
-                      .toLowerCase()
-                      .includes("color")
-                  ) {
-                    const skuWithColor =
-                      skuInfo.find(
-                        (sku) =>
-                          sku.attributes?.[attrKey]
-                            ?.value === value
-                      );
-
-                    image =
-                      skuWithColor?.attributes?.[
-                        attrKey
-                      ]?.image;
-                  }
-
-                  /*
-                   * =================================================
-                   * COLOR ATTRIBUTE
-                   * =================================================
-                   */
-
-                  if (image) {
-                    return (
-                      <ColorItem
-                        key={value}
-                        type="button"
-                        $active={
-                          selectedAttributes[attrKey] ===
-                          value
-                        }
-                        $available={skuWithValue}
-                        onClick={() => {
-                          if (!skuWithValue) return;
-
-                          selectAttribute(
-                            attrKey,
-                            value
+                      const isColor =
+                        attributeName
+                          .toLowerCase()
+                          .includes(
+                            "color"
                           );
 
-                          selectColor();
-                        }}
-                      >
+                      if (
+                        isColor &&
+                        image
+                      ) {
+                        return (
+                          <ColorItem
+                            key={
+                              option.id
+                            }
+                            type="button"
+                            $active={
+                              active
+                            }
+                            $available={
+                              available
+                            }
+                            disabled={
+                              !available
+                            }
+                            onClick={() => {
+                              if (
+                                !available
+                              ) {
+                                return;
+                              }
 
-                        <ColorImageWrapper
-                          $active={
-                            selectedAttributes[attrKey] ===
-                            value
-                          }
-                        >
-                          <ColorImage
-                            src={image}
-                            alt={value}
-                          />
-                        </ColorImageWrapper>
+                              selectAttribute(
+                                attributeName,
+                                option
+                              );
 
-                       
+                              /*
+                               * Keep your existing
+                               * MainImages behavior.
+                               */
 
-                      </ColorItem>
-                    );
-                  }
-
-                  /*
-                   * =================================================
-                   * NORMAL ATTRIBUTE
-                   * =================================================
-                   */
-
-                  return (
-                    <AttributeButton
-                      key={value}
-                      type="button"
-                      $active={
-                        selectedAttributes[attrKey] ===
-                        value
+                              if (
+                                selectColor
+                              ) {
+                                selectColor();
+                              }
+                            }}
+                          >
+                            <ColorImageWrapper
+                              $active={
+                                active
+                              }
+                            >
+                              <ColorImage
+                                src={
+                                  image
+                                }
+                                alt={
+                                  option.displayValue
+                                }
+                              />
+                            </ColorImageWrapper>
+                          </ColorItem>
+                        );
                       }
-                      disabled={!skuWithValue}
-                      onClick={() => {
-                        if (skuWithValue) {
-                          selectAttribute(
-                            attrKey,
-                            value
-                          );
-                        }
-                      }}
-                    >
-                      {value}
-                    </AttributeButton>
-                  );
-                })}
 
-              </AttributeValues>
+                      /*
+                       * NORMAL ATTRIBUTE
+                       */
 
-            </ProductAttribute>
-          )
+                      return (
+                        <AttributeButton
+                          key={
+                            option.id
+                          }
+                          type="button"
+                          $active={
+                            active
+                          }
+                          disabled={
+                            !available
+                          }
+                          onClick={() => {
+                            if (
+                              !available
+                            ) {
+                              return;
+                            }
+
+                            selectAttribute(
+                              attributeName,
+                              option
+                            );
+                          }}
+                        >
+                          {
+                            option.displayValue
+                          }
+                        </AttributeButton>
+                      );
+                    }
+                  )}
+                </AttributeValues>
+              </ProductAttribute>
+            );
+          }
         )}
-
       </AttributesWrapper>
-
 
       {/* =====================================================
           PURCHASE INFORMATION
       ===================================================== */}
 
       <PurchaseInformation>
-
         <PurchaseHeading>
           <span>
             {t(
@@ -418,12 +911,22 @@ const roundedRating = Math.round(Number(averageRating));
         <SideCart
           shippingInfo={shippingInfo}
           addQuantity={addQuantity}
-          maxOrderWorning={maxOrderWorning}
-          setMaxOrderWorning={setMaxOrderWorning}
-          subtractQuantity={subtractQuantity}
+          maxOrderWorning={
+            maxOrderWorning
+          }
+          setMaxOrderWorning={
+            setMaxOrderWorning
+          }
+          subtractQuantity={
+            subtractQuantity
+          }
           quantity={quantity}
-          add_item_to_cart={add_item_to_cart}
-          buy_Now_item={buy_Now_item}
+          add_item_to_cart={
+            add_item_to_cart
+          }
+          buy_Now_item={
+            buy_Now_item
+          }
           setIsPopUpShippingOpen={
             setIsPopUpShippingOpen
           }
@@ -434,11 +937,11 @@ const roundedRating = Math.round(Number(averageRating));
             shippingMethodIndex
           }
           currentSku={currentSku}
-          setShippingInfo={setShippingInfo}
+          setShippingInfo={
+            setShippingInfo
+          }
         />
-
       </PurchaseInformation>
-
     </Container>
   );
 }
@@ -532,8 +1035,7 @@ const RatingRow = styled.div`
   margin-top: 13px;
 `;
 
-
- const Stars = styled.div`
+const Stars = styled.div`
   display: inline-flex;
   align-items: center;
 
@@ -541,8 +1043,10 @@ const RatingRow = styled.div`
 
   svg {
     display: block;
+
     width: 16px;
     height: 16px;
+
     color: #d8d2ca;
   }
 
@@ -562,6 +1066,7 @@ const RatingRow = styled.div`
 
 const RatingNumber = styled.span`
   font-size: 0.75rem;
+
   font-weight: 600;
 
   color: #333;
@@ -605,6 +1110,7 @@ const PriceBlock = styled.div`
 
 const PriceLine = styled.div`
   display: flex;
+
   align-items: center;
 
   flex-wrap: wrap;
@@ -645,6 +1151,7 @@ const ComparePrice = styled.span`
 
 const SaveBadge = styled.span`
   display: inline-flex;
+
   align-items: center;
 
   padding: 4px 8px;
@@ -654,6 +1161,7 @@ const SaveBadge = styled.span`
   color: white;
 
   font-size: 0.63rem;
+
   font-weight: 600;
 
   line-height: 1.3;
@@ -667,6 +1175,7 @@ const SaveBadge = styled.span`
 
 const PriceNote = styled.div`
   display: flex;
+
   align-items: center;
 
   gap: 5px;
@@ -704,14 +1213,12 @@ const AttributesWrapper = styled.div`
 
 const ProductAttribute = styled.div`
   padding: 18px 0;
-
-  
 `;
 
 const AttributeHeader = styled.div`
   display: flex;
+
   align-items: baseline;
-  
 
   gap: 10px;
 
@@ -779,17 +1286,23 @@ const AttributeButton = styled.button`
 
   border: 1px solid
     ${({ $active }) =>
-      $active ? "#222" : "#dcd6ce"};
+      $active
+        ? "#222"
+        : "#dcd6ce"};
 
   border-radius: 2px;
 
   background:
     ${({ $active }) =>
-      $active ? "#222" : "#fff"};
+      $active
+        ? "#222"
+        : "#fff"};
 
   color:
     ${({ $active }) =>
-      $active ? "#fff" : "#383838"};
+      $active
+        ? "#fff"
+        : "#383838"};
 
   font-family: inherit;
 
@@ -799,7 +1312,9 @@ const AttributeButton = styled.button`
 
   cursor:
     ${({ disabled }) =>
-      disabled ? "not-allowed" : "pointer"};
+      disabled
+        ? "not-allowed"
+        : "pointer"};
 
   opacity:
     ${({ disabled }) =>
@@ -816,6 +1331,7 @@ const AttributeButton = styled.button`
 
   &:focus-visible {
     outline: 1px solid #9b815f;
+
     outline-offset: 3px;
   }
 `;
@@ -842,17 +1358,19 @@ const ColorItem = styled.button`
 
   cursor:
     ${({ $available }) =>
-      $available ? "pointer" : "not-allowed"};
+      $available
+        ? "pointer"
+        : "not-allowed"};
 
   opacity:
     ${({ $available }) =>
       $available ? 1 : 0.35};
 
-  transition:
-    opacity 180ms ease;
+  transition: opacity 180ms ease;
 
   &:focus-visible {
     outline: 1px solid #9b815f;
+
     outline-offset: 3px;
   }
 `;
@@ -863,6 +1381,7 @@ const ColorImageWrapper = styled.div`
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   width: 58px;
@@ -872,12 +1391,13 @@ const ColorImageWrapper = styled.div`
 
   border: 1px solid
     ${({ $active }) =>
-      $active ? "#9b815f" : "#ddd7ce"};
+      $active
+        ? "#9b815f"
+        : "#ddd7ce"};
 
   background: #fff;
 
-  transition:
-    border-color 180ms ease;
+  transition: border-color 180ms ease;
 
   &::after {
     content: "";
@@ -903,26 +1423,8 @@ const ColorImage = styled.img`
   object-fit: cover;
 
   background: #f5f2ed;
-`;
 
-const ColorLabel = styled.span`
-  max-width: 65px;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-
-  font-size: 0.66rem;
-
-  line-height: 1.35;
-
-  color: #5d5852;
-
-  @media (max-width: 600px) {
-    font-size: 0.64rem;
-  }
+  display: block;
 `;
 
 

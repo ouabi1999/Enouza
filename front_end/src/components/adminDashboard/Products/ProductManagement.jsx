@@ -19,77 +19,169 @@ function ProductManagement(props) {
   const [compareMarkUp, setCompareMarkUp] = useState(0.80)
   const { close_Modal, isEditProductOn, EditProduct, isAddProductOn } = props;
 
-   const [formData, setFormData] = useState({
-  product_id: "",
-  name: { en:"", fr:"", es:"", ar:"" },
-  description: { en:"", fr:"", es:"", ar:"" },
-  brand: "",
-  skuInfo: [],
-  specifications: [],
-  multimediaInfo: [],
-  in_stock: true,
-  category: "",
-  tags: [],
-  warranty: "",
-  care_instructions: "",
-  sale_end_date: "",
-  available_shipping: [],
-  return_policy: "",
-  country_of_origin: "",
-  social_media_links: { facebook: "", instagram: "" },
-  ali_express_ratings: []
-}
-);
+  const [formData, setFormData] = useState({
+    product_id: "",
+    name: { en: "", fr: "", es: "", ar: "" },
+    description: { en: "", fr: "", es: "", ar: "" },
+    brand: "",
+    skuInfo: [],
+    specifications: [],
+    multimediaInfo: [],
+    in_stock: true,
+    category: "",
+    tags: [],
+    warranty: "",
+    care_instructions: "",
+    sale_end_date: "",
+    available_shipping: [],
+    return_policy: "",
+    country_of_origin: "",
+    social_media_links: { facebook: "", instagram: "" },
+    ali_express_ratings: []
+  }
+  );
 
  useEffect(() => {
-  if (productData) {
-    const sku_info_slice = productData.ae_item_sku_info_dtos?.map(sku => {
-      const attributes = {};  // ✅ new object per SKU
-      let colorKey = null;    // ✅ new colorKey per SKU
+  if (!productData) return;
 
-      sku.ae_sku_property_dtos?.forEach(attr => {
-        attributes[attr.sku_property_name] = {
-          value: attr.sku_property_value,
-          image: attr.sku_image || null
-        };
-        if (attr.sku_image) colorKey = attr.sku_property_name;
-      });
+  const skuInfo = (
+  productData.ae_item_sku_info_dtos || []
+).map((sku, index) => {
+  const attributes = {};
 
-      return {
-        cost: sku.offer_sale_price || 0,
-        attributes,
-        colorKey,
-        sellingPrice: (sku.offer_sale_price*(1 + sellingMarkUp)).toFixed(2) || 0,
-        profitPrice: "",
-        comparePrice: ((sku.offer_sale_price*(1 + sellingMarkUp))  * (1 + compareMarkUp)).toFixed(2),
-        sku_attr: sku.sku_attr || "",
-        available_stock: sku.sku_available_stock || 0,
-      };
+  (sku.ae_sku_property_dtos || []).forEach((attr) => {
+    const propertyName =
+      attr.sku_property_name?.trim() ||
+      `Option ${index + 1}`;
+
+    attributes[propertyName] = {
+      value: attr.sku_property_value || "",
+      image: attr.sku_image || null,
+
+      propertyId:
+        attr.sku_property_id || null,
+
+      valueId:
+        attr.property_value_id || null,
+
+      definitionName:
+        attr.property_value_definition_name || "",
+    };
+  });
+
+  /*
+   * Find the attribute that actually owns
+   * the variant image.
+   *
+   * Example:
+   *
+   * Body Color      -> image: null
+   * Lampshade Color -> image: "https://..."
+   *
+   * Therefore:
+   *
+   * colorKey = "Lampshade Color"
+   */
+  const colorAttribute = Object.entries(attributes)
+    .find(([key, attribute]) => {
+      return Boolean(attribute?.image);
     });
 
-    setFormData(prev => ({
-      ...prev,
-      product_id: productData.ae_item_base_info_dto?.product_id || "",
-      name: {
-        ...prev.name,
-        en: productData.ae_item_base_info_dto?.subject || "",
-      },
-      description: {
-        ...prev.description,
-        en: productData.ae_item_base_info_dto?.detail || "",
-        ar:productData.ae_item_base_info_dto?.detail || "",
-        es:productData.ae_item_base_info_dto?.detail || "",
-      },
-      skuInfo: sku_info_slice || [],
-      multimediaInfo: productData.ae_multimedia_info_dto || [],
-    }));
-  }
-  console.log(formData)
+  const colorKey = colorAttribute
+    ? colorAttribute[0]
+    : null;
+
+  const cost =
+    Number(sku.offer_sale_price) || 0;
+
+  const sellingPrice = Number(
+    (cost * (1 + sellingMarkUp)).toFixed(2)
+  );
+
+  const comparePrice = Number(
+    (
+      sellingPrice *
+      (1 + compareMarkUp)
+    ).toFixed(2)
+  );
+
+  return {
+    id:
+      typeof crypto !== "undefined" &&
+      crypto.randomUUID
+        ? crypto.randomUUID()
+        : `variant-${Date.now()}-${index}-${Math.random()
+            .toString(36)
+            .substring(2, 8)}`,
+
+    sku_attr:
+      sku.sku_attr || "",
+
+    attributes,
+
+    /*
+     * IMPORTANT
+     */
+    colorKey,
+
+    cost,
+    sellingPrice,
+    comparePrice,
+
+    profitPrice: Number(
+      (sellingPrice - cost).toFixed(2)
+    ),
+
+    available_stock:
+      Number(sku.sku_available_stock) || 0,
+  };
+});
+
+  setFormData((prev) => ({
+    ...prev,
+
+    product_id:
+      productData.ae_item_base_info_dto?.product_id ||
+      "",
+
+    name: {
+      ...prev.name,
+
+      en:
+        productData.ae_item_base_info_dto?.subject ||"",
+    },
+
+    description: {
+      ...prev.description,
+
+      en:
+        productData.ae_item_base_info_dto?.detail ||
+        "",
+
+      ar:
+        productData.ae_item_base_info_dto?.detail ||
+        "",
+
+      es:
+        productData.ae_item_base_info_dto?.detail ||
+        "",
+    },
+
+    /*
+     * IMPORTANT:
+     * Keep every SKU combination exactly as
+     * AliExpress returned it.
+     */
+    skuInfo: skuInfo,
+
+    multimediaInfo:
+      productData.ae_multimedia_info_dto || [],
+  }));
 }, [productData]);
 
 
 
- 
+
 
   const [loading, setLoading] = useState(false);
 
@@ -105,7 +197,7 @@ function ProductManagement(props) {
   /// send products info to the backend
   const product_submit = (value) => {
     const data = new FormData();
-    console.log(formData)    
+    console.log(formData)
     formData.tags?.forEach((tag) => data.append("tags", tag));
 
     formData.ali_express_ratings?.forEach((rating) =>
@@ -120,8 +212,8 @@ function ProductManagement(props) {
 
 
 
-   
-      data.append("skuInfo", JSON.stringify(formData.skuInfo));
+
+    data.append("skuInfo", JSON.stringify(formData.skuInfo));
 
     data.append("social_media_links", JSON.stringify(formData.social_media_links));
 
@@ -132,7 +224,7 @@ function ProductManagement(props) {
     data.append("brand", formData.brand);
     data.append("product_id", formData.product_id);
 
- 
+
     data.append("discount", formData.discount);
     data.append("quantity", formData.quantity);
     data.append("warranty", formData.warranty);
