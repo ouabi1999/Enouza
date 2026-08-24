@@ -164,6 +164,14 @@ function ProductLayout({
 }
 
 export default ProductLayout;
+const COLORS = {
+  cream: "#f8efdd",
+  white: "#FFFFFF",
+  ink: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  border: "#E4DED4",
+};
 
 
 /* =========================================================
@@ -173,7 +181,7 @@ export default ProductLayout;
 const Section = styled.section`
   width: 100%;
   padding:20px 50px 75px;
-  
+ 
   box-sizing: border-box;
 
   @media (max-width: 900px) {

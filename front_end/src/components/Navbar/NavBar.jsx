@@ -152,7 +152,7 @@ function NavBar({ outlet, setSearchValue, value }) {
   // ==========================================================
 
   return (
-    <ParentContainer>
+    <ParentContainer dir = {"ltr"}>
 
       {/* ======================================================
           MOBILE SEARCH
@@ -164,7 +164,7 @@ function NavBar({ outlet, setSearchValue, value }) {
   touchEvent="onTouchEnd"
   onClickAway={() => setIsSearchInputOpen(false)}
 >
-          <div className="search-container" >
+          <div className="search-container" dir = {i18n.language == "ar"?"rtl":"ltr"}>
 
             <div className="responsive-input">
               <input
@@ -177,12 +177,8 @@ function NavBar({ outlet, setSearchValue, value }) {
               />
             </div>
 
-            <div className="search-icon-container"  style={{
-                borderRadius:
-                  i18n.dir() === "rtl"
-                    ? "2px 0 0 2px"
-                    : "0 2px 2px 0",
-              }}
+            <div className="search-icon-container" 
+                
             >
               <SearchIcon
                 className="search-icon"
@@ -218,11 +214,11 @@ function NavBar({ outlet, setSearchValue, value }) {
            
           {/* DESKTOP SEARCH */}
 
-          <SearchContainer>
+          <SearchContainer dir = {i18n.language == "ar"?"rtl":"ltr"}>
 
             <div className="search-bar">
 
-              <input
+              <input 
                 placeholder={t("common.search")}
                 value={value}
                 onChange={(e) =>
@@ -230,12 +226,7 @@ function NavBar({ outlet, setSearchValue, value }) {
                 }
                 maxLength="50"
 
-                style={{
-                  borderRadius:
-                    i18n.dir() === "rtl"
-                      ? "0 2px 2px 0"
-                      : "2px 0 0 2px",
-                }}
+              
               />
 
             </div>
@@ -244,12 +235,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <div
               className="search-icon-container"
 
-              style={{
-                borderRadius:
-                  i18n.dir() === "rtl"
-                    ? "2px 0 0 2px"
-                    : "0 2px 2px 0",
-              }}
+              
             >
               <SearchIcon
                 className="search-icon"
@@ -448,7 +434,6 @@ const ParentContainer = styled.div`
 
     border: 1px solid ${COLORS.border};
 
-    border-radius: 2px 0 0 2px;
 
     outline: none;
 
@@ -483,7 +468,6 @@ const ParentContainer = styled.div`
 
     flex-shrink: 0;
 
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
@@ -494,7 +478,6 @@ const ParentContainer = styled.div`
 
     cursor: pointer;
 
-    border-radius: 0 2px 2px 0;
   }
 
   .search-icon {

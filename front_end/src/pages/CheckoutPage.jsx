@@ -37,9 +37,9 @@ function CheckoutPage() {
     )
     
     :
-    <Conatiner>
+    <Conatiner dir = {"ltr"}>
       <HeadeSeo title= "Enouza - Checkout"/>
-      <Left_Section>
+      <Left_Section  >
         <ProductCart cartItems = {cartItems}/>
       </Left_Section>
       <Right_Section>

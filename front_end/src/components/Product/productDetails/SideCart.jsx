@@ -243,7 +243,7 @@ function SideCart(props) {
       ===================================================== */}
 
       <PurchaseSection>
-        <BuyButton
+        <BuyButton dir = {"ltr"}
           type="button"
           onClick={() =>
             buy_Now_item(

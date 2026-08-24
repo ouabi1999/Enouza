@@ -44,6 +44,7 @@ const Container = styled.section`
   width: 100%;
   max-width: 1400px;
   box-sizing: border-box;
+  
 `;
 
 const TabsWrapper = styled.div`
@@ -55,7 +56,7 @@ const TabsWrapper = styled.div`
 
   padding: 20px 0;
 
-  background: rgba(255, 255, 255, 0.96);
+background:#F6F3ED;
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
