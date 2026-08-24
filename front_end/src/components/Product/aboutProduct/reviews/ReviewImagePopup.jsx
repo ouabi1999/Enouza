@@ -41,7 +41,6 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
           >
 
             <Header>
-              <Title>Customer Images</Title>
               <CloseButton onClick={handleClose}>
                 <X size={20} />
               </CloseButton>
