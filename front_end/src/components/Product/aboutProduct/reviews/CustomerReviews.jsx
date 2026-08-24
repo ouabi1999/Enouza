@@ -122,7 +122,7 @@ function CustomerReviews(props) {
                   </Avatar>
 
                   <IdentityInfo>
-                    <CustomerName>
+                    <CustomerName dir = {"ltr"}>
                       {rate.user?.firstName + " " + rate.user?.lastName.slice(0, 1)}.
                     </CustomerName>
 

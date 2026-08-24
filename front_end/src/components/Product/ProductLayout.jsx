@@ -77,7 +77,7 @@ function ProductLayout({
   const isRTL = i18n.dir() === "rtl";
  
   return (
-    <Section>
+    <Section dir = {"ltr"}>
       <ProductGrid>
 
         <ImageSide>
@@ -172,7 +172,6 @@ export default ProductLayout;
 
 const Section = styled.section`
   width: 100%;
-
   padding:20px 50px 75px;
   
   box-sizing: border-box;
