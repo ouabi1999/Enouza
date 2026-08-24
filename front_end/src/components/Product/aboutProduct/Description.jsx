@@ -1,40 +1,35 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-// Static professional description (HTML)
-const PROFESSIONAL_DESCRIPTION = `
-  <p>
-    ENOUZA embodies the pinnacle of artisanal craftsmanship, where each piece is a testament to timeless elegance and meticulous attention to detail. Our collections are born from a harmonious blend of heritage techniques and contemporary vision, using only the finest materials sourced from the world’s most revered ateliers.
-  </p>
-  <h3>Uncompromising Quality</h3>
-  <p>
-    From the supple hand‑finished leathers to the precision‑cut gemstones, every component is chosen for its exceptional character and durability. Our master artisans devote weeks to perfecting each creation, ensuring that every stitch, seam, and setting meets the exacting standards that define the ENOUZA name.
-  </p>
-  <ul>
-    <li>Hand‑picked, full‑grain Italian leather</li>
-    <li>18‑karat gold hardware with anti‑tarnish coating</li>
-    <li>Natural, ethically sourced precious stones</li>
-    <li>Reinforced stitching for enduring strength</li>
-  </ul>
-  <blockquote>
-    “Luxury is in each detail – a philosophy we honour in every collection.”
-  </blockquote>
-  <p>
-    Each design tells a story of passion and precision, destined to become a cherished heirloom. Experience the ENOUZA difference – where heritage meets modernity, and every piece is crafted not just to be worn, but to be admired for a lifetime.
-  </p>
-`;
-
 function Description() {
+  const productData = useSelector((state) => state.product.productData);
+  const { i18n, t } = useTranslation();
+
+  const descriptions = productData?.description;
+
+  const description =
+    descriptions?.[i18n.language] ||
+    descriptions?.en ||
+    "";
+
+  if (!description) return null;
+
   return (
     <Container>
       <SectionHeader>
         <Eyebrow>ENOUZA</Eyebrow>
-        <Title>Product Description</Title>
+
+        <Title>
+          {t("customer_reviews.description", "Product Description")}
+        </Title>
+
         <Accent />
       </SectionHeader>
 
       <DescriptionContent
-        dangerouslySetInnerHTML={{ __html: PROFESSIONAL_DESCRIPTION }}
+        dangerouslySetInnerHTML={{ __html: description }}
       />
     </Container>
   );
@@ -43,7 +38,7 @@ function Description() {
 export default Description;
 
 /* =========================================================
-   STYLES (unchanged – only header & typography kept)
+   ENOUZA — LUXURY PRODUCT DESCRIPTION
 ========================================================= */
 
 const Container = styled.section`
