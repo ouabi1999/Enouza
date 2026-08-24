@@ -50,9 +50,7 @@ function ProductManagement(props) {
   const attributes = {};
 
   (sku.ae_sku_property_dtos || []).forEach((attr) => {
-    const propertyName =
-      attr.sku_property_name?.trim() ||
-      `Option ${index + 1}`;
+    const propertyName = attr.sku_property_name?.trim() || `Option ${index + 1}`;
 
     attributes[propertyName] = {
       value: attr.sku_property_value || "",
@@ -188,12 +186,36 @@ function ProductManagement(props) {
 
 
   useEffect(() => {
-    if (isEditProductOn) {
-      setFormData({ ...EditProduct })
+  if (!isEditProductOn || !EditProduct) return;
+
+  const normalizedSkuInfo = (EditProduct.skuInfo || []).map((sku, index) => {
+    const attributes = sku.attributes || {};
+
+    let colorKey = sku.colorKey || null;
+
+    // If colorKey is missing, find the attribute that owns the image
+    if (!colorKey) {
+      const colorAttribute = Object.entries(attributes).find(
+        ([, attribute]) => Boolean(attribute?.image)
+      );
+
+      colorKey = colorAttribute
+        ? colorAttribute[0]
+        : null;
     }
 
-  }, [])
+    return {
+      ...sku,
+      attributes,
+      colorKey,
+    };
+  });
 
+  setFormData({
+    ...EditProduct,
+    skuInfo: normalizedSkuInfo,
+  });
+}, [isEditProductOn, EditProduct]);
   /// send products info to the backend
   const product_submit = (value) => {
     const data = new FormData();
