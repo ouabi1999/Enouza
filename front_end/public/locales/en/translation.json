@@ -194,11 +194,12 @@
     },
   "productInfo": {
     "product_details": "Product details",
-
+     
     "view_full_image": "VIEW FULL IMAGE",
     "purchase_information": "Purchase information",
     "secure_purchase_premium_quality": "Secure purchase & premium quality",
     "save":"save",
+    "Emitting Color":"Emitting Color",
     "Lampshade Color": "Lampshade Color",
     "Body Color": "Body Color",
     "Color": "Color",
