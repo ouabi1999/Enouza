@@ -243,10 +243,7 @@ const FeaturesGrid = styled.div`
     gap: 60px 20px;
   }
 
-  @media (max-width: 520px) {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+ 
 `;
 
 const Feature = styled.div`
@@ -318,14 +315,7 @@ const IconCircle = styled.div`
     border-color 0.35s ease,
     color 0.35s ease;
 
-  ${Feature}:hover & {
-    transform: translateY(-6px);
-
-    background: #63390a;
-    border-color: ${COLORS.text};
-    color: ${COLORS.background};
-    opacity:0.5;
-  }
+  
 
   @media (max-width: 600px) {
     width: 92px;
