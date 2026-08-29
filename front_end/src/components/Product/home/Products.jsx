@@ -90,15 +90,7 @@ function Products({
                   </div>
                   */}
 
-                  {avgRating && (
-                    <div className="reviews-container">
-                      <StarIcon className="star-icon" />
-
-                      <span className="reviews">
-                        {avgRating}
-                      </span>
-                    </div>
-                  )}
+                 
                 </SecondSection>
 
                 <ThirdSection>
@@ -113,6 +105,15 @@ function Products({
                       </span>
                     )}
                   </div>
+                   {avgRating && (
+                    <div className="reviews-container">
+                      <StarIcon className="star-icon" />
+
+                      <span className="reviews">
+                        {avgRating}
+                      </span>
+                    </div>
+                  )}
                 </ThirdSection>
 
                 {item.available_shipping?.map(
@@ -405,46 +406,7 @@ const SecondSection = styled.div`
     font-size: 0.7rem;
   }
 
-  .reviews-container {
-    display: flex;
-
-    align-items: center;
-
-    gap: 3px;
-
-    margin: 0 8px;
-  }
-
-  .reviews {
-    color: #555;
-
-    font-size: 12px;
-
-    line-height: 1;
-  }
-
-  .star-icon {
-    color: #b18a4a;
-
-    font-size: 15px;
-  }
-
-  @media (max-width: 600px) {
-    min-height: 19px;
-
-    .reviews-container {
-      margin: 0 5px;
-    }
-
-    .reviews {
-      font-size: 10px;
-    }
-
-    .star-icon {
-      font-size: 13px;
-    }
-  }
-`;
+ `
 
 
 /* =====================================
@@ -521,4 +483,44 @@ const ThirdSection = styled.div`
       font-size: 0.58rem;
     }
   }
+     .reviews-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    margin: 0 15px;
+  }
+
+  .reviews {
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1;
+  }
+
+  .star-icon {
+    color: #cc9d51;
+
+    font-size: 15px;
+  }
+
+  @media (max-width: 600px) {
+    min-height: 19px;
+
+    .reviews-container {
+      margin: 0 5px;
+    }
+
+    .reviews {
+      font-size: 10px;
+    }
+
+    .star-icon {
+      font-size: 13px;
+    }
+  }
+
 `;
