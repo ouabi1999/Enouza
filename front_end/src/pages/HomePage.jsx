@@ -92,7 +92,12 @@ function HomePage() {
 
       {isLoading && (
 
-        <Spinner/>
+         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", margin: "10px" }}>
+          <CircularProgress
+            size={25}
+            thickness={4}
+          />
+        </div>
       )
       }
       {!isLoading && (
