@@ -104,7 +104,7 @@ function HomePage() {
         <div className="veiw-more"  >
           <button onClick={viewMore}
             className=""
-            style={nextStart >= totalProducts ? { opacity: "0.7", cursor: "not-allowed" } : {}}
+            style={nextStart >= totalProducts ? { opacity: "0.3", cursor:"inherit"} : {}}
             disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
         </div>
       )}
