@@ -99,7 +99,7 @@ const MetricsSection = () => {
           </VideoDescription>
         </VideoContent>
 
-        <ShopButton to="/product/29">
+        <ShopButton to="/product/50">
           {t("common.buyNow")}
 
           <Arrow $rtl={i18n.dir() === "rtl"}>
