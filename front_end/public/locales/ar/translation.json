@@ -413,6 +413,7 @@
      }
   },
   "common": {
+    "discoverCollection": "اكتشف المجموعة",
     "days": "أيام",
     "day": "يوم",
     "loading": "جاري التحميل...",

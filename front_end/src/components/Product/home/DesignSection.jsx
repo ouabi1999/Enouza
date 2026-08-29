@@ -568,12 +568,12 @@ const DesignSection = () => {
                   DISCOVER COLLECTION
               ================================== */}
 
-              <CollectionButton
+              <CollectionButton dir = {i18n.language === "ar"? "rtl": "ltr"}
                 as={Link}
                 to="/collections"
               >
                 {t(
-                  "common.discover",
+                  "common.discoverCollection",
                   {
                     defaultValue: "Discover Collection",
                   }

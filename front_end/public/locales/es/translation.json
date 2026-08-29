@@ -400,6 +400,7 @@
     }
   },
   "common": {
+    "discoverCollection": "DESCUBRIR LA COLECCIÓN",
     "payNow": "Pagar ahora",
     "days":"Días",
     "day":"Día",

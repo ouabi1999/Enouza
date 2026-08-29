@@ -411,6 +411,7 @@
     }
   },
   "common": {
+    "discoverCollection": "DISCOVER COLLECTION",
     "payNow": "Pay Now",
     "days": "days",
     "day": "day",
