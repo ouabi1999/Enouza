@@ -94,8 +94,7 @@ export default DropDownMenu;
 const Container = styled.div`
   position: relative;
 
-  direction: ${({ $rtl }) =>
-    $rtl ? "rtl" : "ltr"};
+ 
 
   span {
     font-size: 12px;

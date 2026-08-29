@@ -3,8 +3,8 @@ import styled from "styled-components";
 import {
   AutoAwesome,
   WorkspacePremium,
-  Groups,
-  Timeline,
+  LightMode,
+  DiamondOutlined,
   ArrowForward,
 } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
@@ -13,99 +13,68 @@ import { Link } from "react-router-dom";
 const MetricsSection = () => {
   const { t, i18n } = useTranslation();
 
-  const metrics = [
+  const features = [
     {
       icon: <AutoAwesome />,
-      number: "20",
-      title: t("matricsSection.exclusiveDesigns"),
-      progress: 100,
+      title: t("matricsSection.curated"),
     },
     {
       icon: <WorkspacePremium />,
-      number: "10",
-      title: t("matricsSection.internationalAwards"),
-      progress: 90,
+      title: t("matricsSection.refined"),
     },
     {
-      icon: <Groups />,
-      number: "41",
-      title: t("matricsSection.artisanPartners"),
-      progress: 85,
+      icon: <LightMode />,
+      title: t("matricsSection.atmospheric"),
     },
     {
-      icon: <Timeline />,
-      number: "8",
-      title: t("matricsSection.yearsOfExcellence"),
-      progress: 95,
+      icon: <DiamondOutlined />,
+      title: t("matricsSection.distinctive"),
     },
   ];
 
   return (
-    <Section>
-
+    <Section dir = {i18n.language === "ar"? "rtl": "ltr"}>
       {/* =========================
-          METRICS
+          WHY CHOOSE ENOUZA
       ========================= */}
 
-      <MetricsContainer>
+      <WhyChooseContainer>
+        <SectionHeader>
+          <SectionTitle>
+            {t("matricsSection.why_us")}
+          </SectionTitle>
 
-        <SectionTitle>
-          {t("matricsSection.why_us")}
-        </SectionTitle>
+          <TitleDecoration>
+            <DecorationLine />
+            <DecorationDot />
+            <DecorationLine />
+          </TitleDecoration>
+        </SectionHeader>
 
-        <MetricsGrid>
-          {metrics.map((metric, index) => (
-            <Metric key={index}>
+        <FeaturesGrid>
+          {features.map((feature, index) => (
+            <Feature key={index}>
+              <IconCircle>
+                <FeatureIcon>
+                  {React.cloneElement(feature.icon, {
+                    fontSize: "inherit",
+                  })}
+                </FeatureIcon>
+              </IconCircle>
 
-              <Circle>
-                <CircleSvg viewBox="0 0 100 100">
-
-                  <BackgroundCircle
-                    cx="50"
-                    cy="50"
-                    r="44"
-                  />
-
-                  <ProgressCircle
-                    cx="50"
-                    cy="50"
-                    r="44"
-                    $progress={metric.progress}
-                  />
-
-                </CircleSvg>
-
-                <CircleContent>
-
-                  <Icon>
-                    {metric.icon}
-                  </Icon>
-
-                  <Number>
-                    {metric.number}
-                    <Plus>+</Plus>
-                  </Number>
-
-                </CircleContent>
-              </Circle>
-
-              <MetricTitle>
-                {metric.title}
-              </MetricTitle>
-
-            </Metric>
+              <FeatureTitle>
+                {feature.title}
+              </FeatureTitle>
+            </Feature>
           ))}
-        </MetricsGrid>
-
-      </MetricsContainer>
-
+        </FeaturesGrid>
+      </WhyChooseContainer>
 
       {/* =========================
           VIDEO
       ========================= */}
 
       <VideoSection>
-
         <Video
           autoPlay
           muted
@@ -121,7 +90,6 @@ const MetricsSection = () => {
         <VideoOverlay />
 
         <VideoContent>
-
           <VideoTitle>
             {t("matricsSection.title")}
           </VideoTitle>
@@ -129,23 +97,16 @@ const MetricsSection = () => {
           <VideoDescription>
             {t("matricsSection.description")}
           </VideoDescription>
-
         </VideoContent>
 
-        <ShopButton
-          to="/product/29"
-        >
+        <ShopButton to="/product/29">
           {t("common.buyNow")}
 
-          <Arrow
-            $rtl={i18n.dir() === "rtl"}
-          >
+          <Arrow $rtl={i18n.dir() === "rtl"}>
             <ArrowForward />
           </Arrow>
         </ShopButton>
-
       </VideoSection>
-
     </Section>
   );
 };
@@ -158,10 +119,13 @@ export default MetricsSection;
 ========================= */
 
 const COLORS = {
-  background: "#FFFFFF",
-  text: "#292929",
-  bronze: "#9A7743",
-  light: "#E5E0D8",
+  background: "#F7F5F0",
+  white: "#FFFFFF",
+  text: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  softGold: "#DED4C4",
+  border: "#E4DED4",
 };
 
 
@@ -176,226 +140,234 @@ const Section = styled.section`
 
 
 /* =========================
-   METRICS
+   WHY CHOOSE US
 ========================= */
 
-const MetricsContainer = styled.div`
-  width: min(1100px, calc(100% - 40px));
-  margin: auto;
+const WhyChooseContainer = styled.div`
+  width: min(1300px, calc(100% - 48px));
+  margin: 0 auto;
 
-  padding: 80px 0 90px;
+  padding: 100px 0 105px;
 
-  @media (max-width: 700px) {
-    padding: 60px 0 70px;
+  @media (max-width: 768px) {
+    width: min(100% - 40px, 600px);
+    padding: 75px 0 80px;
+  }
+
+  @media (max-width: 480px) {
+    width: calc(100% - 32px);
+    padding: 60px 0 65px;
   }
 `;
 
 
-const SectionTitle = styled.h2`
-  margin: 0 0 65px;
+/* =========================
+   HEADER
+========================= */
 
+const SectionHeader = styled.div`
   text-align: center;
+  margin-bottom: 50px;
 
-  font-family: "Playfair Display", serif;
-  font-size: 1.7rem;
-  font-weight: 400;
+  @media (max-width: 768px) {
+    margin-bottom: 55px;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  margin: 0;
 
   color: ${COLORS.text};
 
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2vw, 2.5rem);
+  font-weight: 400;
 
-  @media (max-width: 600px) {
-    font-size: 1.25rem;
-    margin-bottom: 50px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  
+
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
   }
 `;
 
 
-const MetricsGrid = styled.div`
+/* =========================
+   TITLE DECORATION
+========================= */
+
+const TitleDecoration = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
+`;
+
+const DecorationLine = styled.span`
+  width: 55px;
+  height: 1px;
+
+  background: ${COLORS.softGold};
+
+  @media (max-width: 480px) {
+    width: 40px;
+  }
+`;
+
+const DecorationDot = styled.span`
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: ${COLORS.gold};
+`;
+
+
+/* =========================
+   FEATURES GRID
+========================= */
+
+const FeaturesGrid = styled.div`
   display: grid;
 
   grid-template-columns: repeat(4, 1fr);
 
-  gap: 40px;
-
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
-
-    gap: 55px 25px;
+    gap: 60px 20px;
   }
 
-  @media (max-width: 420px) {
-    gap: 45px 10px;
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 `;
 
-
-const Metric = styled.div`
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  text-align: center;
-`;
-
-
-/* =========================
-   CIRCLE
-========================= */
-
-const Circle = styled.div`
+const Feature = styled.div`
   position: relative;
 
-  width: 145px;
-  height: 145px;
+  display: flex;
+  flex-direction: column;
 
-  @media (max-width: 600px) {
-    width: 125px;
-    height: 125px;
-  }
+  align-items: center;
+  justify-content: center;
 
-  @media (max-width: 400px) {
-    width: 115px;
+  text-align: center;
+
+  min-height: 190px;
+
+  padding: 0 20px;
+
+  &:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+
+    transform: translateY(-50%);
+
+    width: 1px;
     height: 115px;
+
+    background: ${COLORS.border};
   }
-`;
 
+  @media (max-width: 900px) {
+    &:not(:last-child)::after {
+      display: none;
+    }
+  }
 
-const CircleSvg = styled.svg`
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  transform: rotate(-90deg);
-`;
-
-
-const BackgroundCircle = styled.circle`
-  fill: none;
-
-  stroke: ${COLORS.light};
-
-  stroke-width: 2;
-`;
-
-
-const ProgressCircle = styled.circle`
-  fill: none;
-
-  stroke: ${COLORS.bronze};
-
-  stroke-width: 2;
-
-  stroke-linecap: round;
-
-  stroke-dasharray: 276.46;
-
-  stroke-dashoffset: ${({ $progress }) =>
-    276.46 - (276.46 * $progress) / 100};
-
-  transition: stroke-dashoffset 1.4s ease;
+  @media (max-width: 520px) {
+    min-height: auto;
+    padding: 0;
+  }
 `;
 
 
 /* =========================
-   CIRCLE CONTENT
+   ICON CIRCLE
 ========================= */
 
-const CircleContent = styled.div`
-  position: absolute;
+const IconCircle = styled.div`
+  width: 105px;
+  height: 105px;
 
-  inset: 0;
+  border: 1px solid ${COLORS.gold};
+  border-radius: 50%;
 
   display: flex;
-
-  flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
+
+  margin-bottom: 24px;
+
+  color: ${COLORS.gold};
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+
+  ${Feature}:hover & {
+    transform: translateY(-6px);
+
+    background: #63390a;
+    border-color: ${COLORS.text};
+    color: ${COLORS.background};
+    opacity:0.5;
+  }
+
+  @media (max-width: 600px) {
+    width: 92px;
+    height: 92px;
+  }
 `;
 
-
-const Icon = styled.div`
+const FeatureIcon = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
-  color: ${COLORS.bronze};
-
-  margin-bottom: 7px;
+  font-size: 34px;
 
   svg {
-    font-size: 27px;
-
-    font-weight: 300;
+    font-size: inherit;
   }
 
   @media (max-width: 600px) {
-    svg {
-      font-size: 22px;
-    }
+    font-size: 30px;
   }
 `;
 
 
-const Number = styled.div`
-  display: flex;
+/* =========================
+   FEATURE TITLE
+========================= */
 
-  align-items: baseline;
+const FeatureTitle = styled.h3`
+  margin: 0;
+
+  color: ${COLORS.text};
 
   font-family: "Playfair Display", serif;
-
-  font-size: 1.8rem;
-
-  font-weight: 400;
-
-  color: ${COLORS.text};
-
-  @media (max-width: 600px) {
-    font-size: 1.5rem;
-  }
-`;
-
-
-const Plus = styled.span`
-  color: ${COLORS.bronze};
-
-  font-size: 1rem;
-
-  margin-left: 2px;
-`;
-
-
-const MetricTitle = styled.p`
-  margin: 18px 0 0;
-
-  max-width: 180px;
-
-  color: ${COLORS.text};
-
-  font-family: Arial, sans-serif;
-
-  font-size: 0.72rem;
-
+  font-size: 0.85rem;
   font-weight: 500;
 
-  line-height: 1.5;
-
-  letter-spacing: 0.08em;
-
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 
   @media (max-width: 600px) {
-    max-width: 140px;
-
-    font-size: 0.62rem;
-
-    letter-spacing: 0.06em;
+    font-size: 0.82rem;
   }
 `;
 
@@ -408,7 +380,6 @@ const VideoSection = styled.div`
   position: relative;
 
   width: 100%;
-
   height: 580px;
 
   overflow: hidden;
@@ -422,7 +393,6 @@ const VideoSection = styled.div`
   }
 `;
 
-
 const Video = styled.video`
   width: 100%;
   height: 100%;
@@ -432,18 +402,17 @@ const Video = styled.video`
   display: block;
 `;
 
-
 const VideoOverlay = styled.div`
   position: absolute;
 
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.3);
 `;
 
 
 /* =========================
-   VIDEO TEXT
+   VIDEO CONTENT
 ========================= */
 
 const VideoContent = styled.div`
@@ -461,7 +430,6 @@ const VideoContent = styled.div`
   color: white;
 `;
 
-
 const VideoTitle = styled.h2`
   margin: 0;
 
@@ -477,7 +445,6 @@ const VideoTitle = styled.h2`
     font-size: 2rem;
   }
 `;
-
 
 const VideoDescription = styled.p`
   margin: 20px auto 0;
@@ -550,7 +517,6 @@ const ShopButton = styled(Link)`
     font-size: 0.7rem;
   }
 `;
-
 
 const Arrow = styled.span`
   display: flex;
