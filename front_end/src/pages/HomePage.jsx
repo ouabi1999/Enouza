@@ -35,7 +35,7 @@ function HomePage() {
 
 
   const viewMore = () => {
-    setNextStart(prevStart => prevStart + 10);
+    setNextStart(prevStart => prevStart + 8);
 
   }
 
