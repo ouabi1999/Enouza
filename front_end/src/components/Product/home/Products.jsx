@@ -205,7 +205,7 @@ const ProductContainer = styled.div`
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 
     background: #fff;
 
