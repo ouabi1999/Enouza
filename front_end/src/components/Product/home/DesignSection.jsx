@@ -492,12 +492,12 @@ const DesignSection = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 600,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 1800,
     arrows: false,
     pauseOnHover: true,
   };
