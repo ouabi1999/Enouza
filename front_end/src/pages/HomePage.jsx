@@ -44,7 +44,7 @@ function HomePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    ApiInstance.get('product-api/', { params: { start: nextStart, per_page: 10 } })
+    ApiInstance.get('product-api/', { params: { start: nextStart, per_page: 8 } })
       .then(response => {
         setIsLoading(false);
         setHomeProducts(prev => {
