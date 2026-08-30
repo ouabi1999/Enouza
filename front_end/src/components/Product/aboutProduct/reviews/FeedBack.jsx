@@ -167,7 +167,7 @@ const Wrap = styled.div`
        width:100%;
        min-height:180px;
        padding:5px;
-       border-color: black;
+       border-color: #bb9a69;
        border-bottom:none;
        resize: none;
        border-radius:4px 4px 0 0 ;
@@ -215,9 +215,9 @@ const Wraper = styled.div`
 const Add_image_container = styled.div`
     display:flex;
     flex-wrap:wrap;
-    background:#F5F5F5;
+    background: #f7ead9;
     padding:5px;
-    border: 1px solid black;
+    border: 1px solid #bb9a69;
     border-top:1px solid lightgray;
     border-radius: 0 0 4px 4px;
     width:100%;

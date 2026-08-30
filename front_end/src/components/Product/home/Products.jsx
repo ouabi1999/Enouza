@@ -57,7 +57,7 @@ function Products({
                 />
 
                 {mainSku?.comparePrice > 0 && (
-                  <div className="discount-badge">
+                  <div className="discount-badge" dir = {i18n.language === "ar"? "rtl": "ltr"}>
                     {t("productInfo.save")}{" "}
                     <bdi>
                       {(

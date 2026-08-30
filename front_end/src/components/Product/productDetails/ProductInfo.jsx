@@ -698,9 +698,11 @@ function ProductInfo({
           )}
 
           {savePercentage && (
-            <SaveBadge>
+            <SaveBadge dir = {i18n.language === "ar"? "rtl": "ltr"}>
               {t("productInfo.save")}{" "}
-              {savePercentage}%
+              <bdi style={{margin:"0 2px"}}>
+                 {savePercentage}%
+              </bdi>
             </SaveBadge>
           )}
         </PriceLine>
@@ -1106,13 +1108,14 @@ const PriceBlock = styled.div`
   padding: 18px 0 17px;
 
   border-bottom: 1px solid #e9e3da;
+  
 `;
 
 const PriceLine = styled.div`
   display: flex;
 
   align-items: center;
-
+  
   flex-wrap: wrap;
 
   gap: 11px;

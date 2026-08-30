@@ -126,6 +126,7 @@ const ImageWrapper = styled.div`
   .slick-slide > div {
     line-height: 0;
   }
+   
 
   img {
     width: 100%;
@@ -179,10 +180,10 @@ const CollectionButton = styled(Link)`
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   z-index: 5; /* ✅ prevents hiding behind image */
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
-
+  
   &:hover {
-    color: #d4bd91;
-    border-color: #d4bd91;
+    color: #7c560a;
+    border-color: #7c560a;
     gap: 12px; /* optional: makes arrow move on hover */
   }
 

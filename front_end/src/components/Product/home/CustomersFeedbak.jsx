@@ -9,6 +9,7 @@ import ApiInstance from "../../../../common/baseUrl";
 const CustomersFeedback = () => {
   const [reviews, setReviews] = useState([]);
   const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
 
   // 1. Helper function to determine slides based on width
   const getSlidesToShow = () => {
@@ -130,7 +131,7 @@ const CustomersFeedback = () => {
                           {item.review?.text || ""} 
                         
                         </ReviewText>
-          
+                         
 
                         <Customer>
                           <CustomerName>
@@ -433,23 +434,20 @@ const ReviewContent = styled.div`
 ===================================================== */
 
 const ReviewText = styled.p`
-  margin: 22px 0 30px;
+  margin: 18px 0 24px;
 
   font-family: Georgia, serif;
-
-  font-size: 17px;
+  font-size: clamp(15px, 1.2vw, 17px);
   line-height: 1.7;
-
   color: #292929;
 
   display: -webkit-box;
-
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
 
   overflow: hidden;
+  text-overflow: ellipsis;
 `;
-
 
 /* =====================================================
    CUSTOMER

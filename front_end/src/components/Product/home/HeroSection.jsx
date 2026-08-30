@@ -660,9 +660,8 @@ const ImageContainer = styled.div`
 
 const HeroImage = styled.img`
   display: block;
-
   width: 100%;
-
+  
   height: clamp(470px, 46vw, 620px);
 
   max-width: 100%;
@@ -730,8 +729,8 @@ const ShopButton = styled(Link)`
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
-    color: #d4bd91;
-    border-color: #d4bd91;
+    color: #7c560a;
+    border-color: #7c560a;
     gap: 12px; /* optional: makes arrow move on hover */
   }
 

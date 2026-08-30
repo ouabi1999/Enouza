@@ -33,13 +33,13 @@ const MetricsSection = () => {
   ];
 
   return (
-    <Section dir = {i18n.language === "ar"? "rtl": "ltr"}>
+    <Section >
       {/* =========================
           WHY CHOOSE ENOUZA
       ========================= */}
 
       <WhyChooseContainer>
-        <SectionHeader>
+        <SectionHeader dir = {i18n.language === "ar"? "rtl": "ltr"}>
           <SectionTitle>
             {t("matricsSection.why_us")}
           </SectionTitle>
@@ -180,7 +180,7 @@ const SectionTitle = styled.h2`
   color: ${COLORS.text};
 
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.4rem, 2vw, 2.5rem);
+  font-size: clamp(1.4rem, 1vw, 2rem);
   font-weight: 400;
 
   letter-spacing: 0.12em;
