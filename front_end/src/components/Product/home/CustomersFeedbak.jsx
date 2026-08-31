@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 
 import ApiInstance from "../../../../common/baseUrl";
+import ReviewImagePopup, { PopupContainer } from "../aboutProduct/reviews/ReviewImagePopup";
 
 
 const CustomersFeedback = () => {
@@ -154,12 +155,16 @@ const CustomersFeedback = () => {
                     </ReviewCard>
                   </ReviewSlide>
                 );
+                expanded &&(
+        <ReviewImagePopup rate= {item} selected= {expanded} setSelected={setExpanded}/>
+      )
               })}
             </Slider>
           </Reviews>
         )}
 
       </Container>
+      
     </Section>
   );
 };
