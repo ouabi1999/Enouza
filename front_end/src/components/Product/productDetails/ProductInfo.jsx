@@ -1122,10 +1122,6 @@ const PriceLine = styled.div`
 `;
 
 const ProductPrice = styled.span`
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
 
   font-size: clamp(
     1.55rem,
