@@ -282,8 +282,7 @@ function SideCart(props) {
        
 
         <SecureImage
-          src={secureCheckoutSvg}
-          alt="Secure checkout"
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788301121/ChatGPT_Image_Sep_2_2026_12_18_11_AM_zbvron.png"
         />
 
       </SecureCheckout>
@@ -314,6 +313,7 @@ const SecureImage = styled.img`
   margin: 0 auto;
 
   opacity: 0.9;
+  border-radius:8px;
 `;
 
 /* =========================================================
