@@ -282,7 +282,7 @@ function SideCart(props) {
        
 
         <SecureImage
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788303686/ChatGPT_Image_Sep_2_2026_01_00_33_AM_vybor1.png"
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788348039/ChatGPT_Image_Sep_2_2026_01_19_00_PM_fhsqt8.png"
         />
 
       </SecureCheckout>
