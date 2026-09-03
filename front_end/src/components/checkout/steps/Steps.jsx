@@ -287,10 +287,10 @@ const Container = styled.div`
 
 
   .next-button {
-    min-width: 210px;
+    min-width: 150px;
     max-width: 200px;
-    height: 52px;
-
+    height: 50px;
+    border-radius: 4px;
     padding: 0 34px;
 
     border: 1px solid #1d1c1a;
@@ -335,10 +335,12 @@ const Container = styled.div`
 
 
   .back-button {
-    min-width: 210px;
-      max-width: 200px;
+    min-width: 150px;
+        max-width: 200px;
 
-    height: 52px;
+
+    height: 50px;
+    border-radius: 4px;
 
     padding: 0 34px;
 
@@ -405,12 +407,13 @@ const SingleButtonWrapper = styled.div`
   width: 100%;
 
   display: flex;
+    border-radius: 4px;
 
   justify-content: center;
 
     margin: 25px 0;
 
-  max-width: 200px;
+  max-width: 100px;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -428,10 +431,7 @@ const ButtonsContainer = styled.div`
   justify-content: center;
 
   gap: 14px;
-
-  margin: 25px 0;
-
-  padding-bottom: 20px;
+  margin: 25px;
 
 
   @media (max-width: 600px) {

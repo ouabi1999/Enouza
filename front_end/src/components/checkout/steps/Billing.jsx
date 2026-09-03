@@ -238,7 +238,7 @@ function Billing({ t, i18n }) {
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label"> {t("common.country")}</InputLabel>
-                    <Select
+                    <Select style={{ maxHeight: "50px" }}
                       value={values.country}
                       onChange={handleChange}
                       id="country"
@@ -295,49 +295,18 @@ export default Billing;
 const Container = styled.div`
   width: 100%;
 
-  @media (max-width: 600px) {
-    padding: 24px 14px 20px;
-  }
+  
 `;
 
-const FormHeader = styled.div`
-  margin-bottom: 28px;
 
-  @media (max-width: 600px) {
-    margin-bottom: 20px;
-  }
-`;
 
-const FormTitle = styled.h2`
-  margin: 0;
-  color: #1d1c1a;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.5px;
 
-  @media (max-width: 600px) {
-    font-size: 23px;
-  }
-`;
-
-const FormSubtitle = styled.p`
-  margin: 8px 0 0;
-  color: #77736b;
-  font-size: 14px;
-  line-height: 1.6;
-
-  @media (max-width: 600px) {
-    font-size: 13px;
-  }
-`;
 
 const FormCard = styled.div`
   background: #ffffff;
  
-  padding: 34px;
-
+padding: 30px 25px 0;
   @media (max-width: 600px) {
-    padding: 20px 16px;
     border-radius: 0;
   }
 `;
@@ -346,8 +315,7 @@ const LuxuryTextField = styled(TextField)`
   && {
     .MuiOutlinedInput-root {
       background: #ffffff;
-      border-radius: 2px;
-      min-height: 58px;
+      max-height: 50px;
       transition: all 0.25s ease;
 
       fieldset {
@@ -398,6 +366,24 @@ const LuxuryTextField = styled(TextField)`
       .MuiOutlinedInput-input {
         font-size: 14px;
         padding: 15px 14px;
+      }
+    }
+  }
+    && {
+    .MuiOutlinedInput-input,
+    .MuiSelect-select {
+      font-size: 16px !important;
+      
+    }
+
+    .MuiInputLabel-root {
+      font-size: 14px;
+    }
+
+    @media (min-width: 601px) {
+      .MuiOutlinedInput-input,
+      .MuiSelect-select {
+        font-size: 15px !important;
       }
     }
   }

@@ -68,11 +68,11 @@ const Wraper = styled.div`
   }
 
 .bg-indigo-500{
- background:#000;
+ background: #7a634d;
 }
 
 .text-white{
-    color:#ffff
+    color:#ffffff
 }
 
 .border-t-2{
