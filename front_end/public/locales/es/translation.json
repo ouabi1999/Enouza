@@ -399,7 +399,43 @@
       "copyright": ""
     }
   },
+  
+  "trust": {
+    "secureCheckout": "Secure Checkout",
+
+    "freeShipping": {
+      "title": "Free Shipping",
+      "text": "Free Shipping on All Orders"
+    },
+
+    "fastDelivery": {
+      "title": "Fast Delivery",
+      "text": "International Shipping in 2–4 Days*"
+    },
+
+    "returns": {
+      "title": "100-Day Returns",
+      "text": "100 Days Free Returns"
+    },
+
+    "warranty": {
+      "title": "3-Year Warranty",
+      "text": "Quality Designed to Last"
+    },
+
+    "shopWithConfidence": "Shop With Confidence"
+  },
+"checkout": {
+    "loggedInContinue": "Tu cuenta está lista. Continúa para introducir tus datos de facturación."
+  },
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 ¡Pedido realizado con éxito! 🎉",
+    "orderProcessingMessage": "Gracias por comprar con nosotros. Tu pedido está siendo procesado.",
+    "backToHome": "Volver al inicio"
+  },
   "common": {
+        "selectShippingMethod": "Seleccionar método de envío",
+
     "discoverCollection": "DESCUBRIR LA COLECCIÓN",
     "payNow": "Pagar ahora",
     "days":"Días",
@@ -602,6 +638,8 @@
     "helpCenter": "Ayuda",
     "from": "De",
     "member_since": "Miembro desde",
+      "pleaseSelectShippingMethod": "Por favor, selecciona un método de envío.",
+
     "please_confirm_your_password": "Confirma tu contraseña",
     "please_enter_your_new_password": "Ingresa nueva contraseña",
     "please_enter_your_email": "Ingresa tu correo",

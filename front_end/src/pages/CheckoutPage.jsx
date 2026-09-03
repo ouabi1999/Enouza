@@ -59,6 +59,7 @@ function CheckoutPage() {
 export default CheckoutPage
 const Conatiner = styled.div`
     width:100%;
+    height:100vh;
     margin:0 auto;
     background:#fff;
     display:flex;
@@ -73,6 +74,7 @@ const Conatiner = styled.div`
 const Left_Section = styled.div`
   flex:1;
   min-width:500px;
+
   @media only screen and (max-width: 500px){
 
    
@@ -94,9 +96,7 @@ const Right_Section = styled.div`
 
     flex:1;
     position:relative;
-    box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-        0px 2px 5px 0px rgba(50, 50, 93, 0.1),
-        0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+   
         @media only screen and (max-width: 500px){
 
    

@@ -24,19 +24,9 @@ function ProductCart(props) {
     <Container>
       <div className='header-container'>
            
-        <Link to = "/" >
-        <div style = {{display:"flex", alignItems:"stretch", marginBottom:"3px"}}>
-          <span>
-            <ArrowBackIcon style={{width:"19px"}} />
-          </span>
-          <span>
-          {t("common.back")}
-        </span>
-        </div>
-        </Link>
-
+       
         <div>
-          <span className='checkout'>{t("common.checkout")}</span>
+          <span className='checkout'> ENOUZA - {t("common.checkout")} </span>
         </div>
       </div>
       
@@ -70,12 +60,12 @@ function ProductCart(props) {
        
         </div>
 
-        <div className='discount'>
+        <div className='discount' dir = {i18n.language === "ar" ? "rtl":"ltr"}>
           <input type="text" placeholder={t("common.enterCouponCode")} />
           <button   disabled={true} style={{ opacity:"0.8", cursor:"not-allowed"}} type="button"> {t("common.apply")} </button>
         </div>
 
-        <Totals>
+        <Totals dir = {i18n.language === "ar" ? "rtl":"ltr"}>
         <div>
               <span>
                 {t("common.subtotal")}
@@ -110,10 +100,10 @@ function ProductCart(props) {
 export default ProductCart
 
 const Container = styled.div`
-    
+    position:sticky;
+    top:0;
     height:100vh;
-    background: rgb(63,231,251);
-    background: linear-gradient(90deg, rgba(63,231,251,0.4) 0%, rgba(68,55,251,0.5) 100%);
+    background: #F7F5F0;
     display:flex;
     flex-direction:column;
     
@@ -121,6 +111,7 @@ const Container = styled.div`
       letter-spacing:2px;
       font-weight:600;
       font-size:20px;
+      text-transform:uppercase;
       margin:0;
     }
 
@@ -130,11 +121,11 @@ const Container = styled.div`
      .header-container{
       display:flex;
       align-items:center;
-      padding: 16px 20px;
-      border-bottom:1px solid gray;
-      margin-bottom:10px;
-      box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-      0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+      padding: 23px 0;
+       border-bottom: 1px solid #e4ded4;
+
+      margin-bottom:30px;
+   
      }
 
      .header-container span{
@@ -175,12 +166,13 @@ const Wrraper = styled.div`
 
 
     .product-container{
-        background:rgba(255, 255, 255, 0.5);
-        border-radius:6px;
-        box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-        padding:5px 10px;
+        background: #ffffff;
+        border-radius:4px;
+        padding:15px 25px;
         overflow-y: auto;
         max-height:255px;
+          border: 1px solid #e4ded4;
+
     }
 
 
@@ -225,22 +217,23 @@ const Wrraper = styled.div`
    
    
     .discount{
-     
-      margin-top:10px;
+     display:flex;
+     align-items:center;
+    justify-content:center;
+      margin:30px 0;
       background:#fff;
    
-      padding: 15px 10px;
-      border-radius:6px;
+      padding: 20px 10px;
+      border-radius:4px;
+       border: 1px solid #e4ded4;
     }
 
     .discount input{
       height:40px;
-      width:85%;
-      padding-left:5px;
+      width:80%;
+      padding:0 10px;
       border-radius:4px;
       border:1px solid lightgray;
-      margin-right:8px;
-      margin-bottom:3px;
 
       &:focus{
         border:1px solid lightblue;
@@ -250,11 +243,13 @@ const Wrraper = styled.div`
     }
     
     .discount button{
-      height:44px;
+      height:40px;
       background:#000;
       color:#ffff;
       border-radius:4px;
       padding:0 10px;
+      margin:0 5px
+
     }
 
     @media only screen and (max-width: 500px){
@@ -271,7 +266,8 @@ const Wrraper = styled.div`
 const Totals = styled.div`
     margin:15px 0;
     background:#fff;
-    border-radius:6px;
+    border-radius:4px;
+    border: 1px solid #e4ded4;
     padding:15px;
 
 

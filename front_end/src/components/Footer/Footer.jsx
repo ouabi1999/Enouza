@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import NewsLetter from "./NewsLetter";
 import PaymentMethods from "../../../common/PaymentMethods";
+import GppGoodIcon from '@mui/icons-material/GppGood';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
 
-  const isRTL = i18n.dir() === "rtl";
+  const isRTL = i18n.language[0] === "ar";
 
   return (
     <FooterContainer dir={isRTL ? "rtl" : "ltr"}>
@@ -184,24 +185,25 @@ const Footer = () => {
             BOTTOM BAR
         ===================================================== */}
 
-        <BottomBar dir="ltr">
+        <BottomBar >
 
-          <Copyright>
-            © {new Date().getFullYear()} Enouza.{" "}
-            {t("footer.newsletter.all_rights_reserved")}
-          </Copyright>
-
+         
+           
+          <SecureText>
+            <GppGoodIcon style={{fontSize: "1.2rem", }}/>
+            {t("footer.payment.secure")}
+          </SecureText>
 
           <PaymentMethodsContainer>
               <PaymentMethods/>
           </PaymentMethodsContainer>
 
-
-          <SecureText>
-            <SecureDot />
-            {t("footer.payment.secure")}
-          </SecureText>
-
+           <bdi>
+            <Copyright>
+            © {new Date().getFullYear()} Enouza.{" "}
+            {t("footer.newsletter.all_rights_reserved")}
+          </Copyright>
+          </bdi>
         </BottomBar>
 
       </MainFooter>
@@ -644,14 +646,10 @@ const SocialMark = styled.span`
 
 const BottomBar = styled.div`
   min-height: 82px;
-
-  display: grid;
-
-  grid-template-columns:
-    1fr auto 1fr;
-
-  align-items: center;
-
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap: 30px;
 
   @media (max-width: 750px) {
@@ -699,27 +697,7 @@ const PaymentMethodsContainer = styled.div`
   justify-content: center;
 `;
 
-const PaymentImage = styled.img`
-  width: 205px;
 
-  height: auto;
-
-  display: block;
-
-  opacity: 0.7;
-
-  object-fit: contain;
-
-  transition: opacity 0.25s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  @media (max-width: 500px) {
-    width: 190px;
-  }
-`;
 
 
 /* =========================================================
@@ -730,10 +708,10 @@ const SecureText = styled.div`
   justify-self: end;
 
   display: flex;
-
+  
   align-items: center;
 
-  gap: 7px;
+  gap: 2px;
 
   color: #99948b;
 
@@ -741,7 +719,6 @@ const SecureText = styled.div`
 
   letter-spacing: 0.08em;
 
-  text-transform: uppercase;
 
   @media (max-width: 750px) {
     justify-self: center;

@@ -57,10 +57,24 @@ export default function StripeContanier({t, i18n}) {
       .then((error) => console.log(error));
   }, []);
 
+  
   const appearance = {
-    theme: "night",
-    labels: "floating",
-  };
+  theme: "flat",
+  labeles: "floating",
+  variables: {
+    colorPrimary: "#B39A76",      // muted luxury gold
+    colorBackground: "#F7F5F0",   // warm luxury cream
+
+    colorText: "#1D1C1A",         // ink black
+    colorTextSecondary: "#77736B",
+
+    colorDanger: "#B42318",
+
+    borderRadius: "0px",
+
+    spacingUnit: "5px",
+  },
+};
   const loader = 'auto';
   const options = {
     clientSecret,

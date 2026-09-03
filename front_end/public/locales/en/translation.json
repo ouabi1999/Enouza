@@ -410,7 +410,44 @@
       "title": "About"
     }
   },
+  
+  "trust": {
+    "secureCheckout": "Secure Checkout",
+
+    "freeShipping": {
+      "title": "Free Shipping",
+      "text": "Free Shipping on All Orders"
+    },
+
+    "fastDelivery": {
+      "title": "Fast Delivery",
+      "text": "International Shipping in 2–4 Days*"
+    },
+
+    "returns": {
+      "title": "100-Day Returns",
+      "text": "100 Days Free Returns"
+    },
+
+    "warranty": {
+      "title": "3-Year Warranty",
+      "text": "Quality Designed to Last"
+    },
+
+    "shopWithConfidence": "Shop With Confidence"
+  },
+  
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 Order Placed Successfully! 🎉",
+    "orderProcessingMessage": "Thank you for shopping with us. Your order is being processed.",
+    "backToHome": "Back to Home"
+  },
+   "checkout": {
+    "loggedInContinue": "Your account is ready. Continue to enter your billing details."
+  },
+
   "common": {
+     "selectShippingMethod": "Select Shipping Method",
     "discoverCollection": "DISCOVER COLLECTION",
     "payNow": "Pay Now",
     "days": "days",
@@ -617,6 +654,8 @@
     "please_enter_your_zip_code": "Enter ZIP",
     "please_enter_your_phone": "Enter phone",
     "please_enter_your_birthdate": "Enter birthdate",
+    "pleaseSelectShippingMethod": "Please select a shipping method.",
+
     "error_invalid_birthdate": "Birthdate can't be in future",
     "error_max_name_characters": "Name too long",
     "error_min_password_characters": "Password too short",

@@ -604,7 +604,6 @@ const DesignSection = () => {
                   color: COLORS.warmGray,
                 }}
               >
-                {t("designSection.noProducts")}
               </Typography>
             </div>
           )}

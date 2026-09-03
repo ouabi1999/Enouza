@@ -1,102 +1,456 @@
-import React,{useContext, useState, useEffect} from 'react'
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import React, {
+  useContext,
+  useRef,
+} from "react";
+
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+
+import Billing from "./Billing";
+import StripeContanier from "./StripeContanier";
+import { FormContext } from "../../../pages/CheckoutPage";
+import LogendIn from "./LogendIn";
+import Shipping from "./Shipping";
+import { OrderContext } from "../../../App";
+import { useTranslation } from "react-i18next";
 
 
-import Billing from './Billing';
-import StripeContanier from './StripeContanier';
-import { FormContext } from '../../../pages/CheckoutPage'
-import LogendIn from './LogendIn';
-import Shipping from './Shipping';
-import {OrderContext} from "../../../App"
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 function Steps() {
- 
-    const navigate = useNavigate()
-    const isAuth = window.localStorage.getItem("access_token")
-    const user = useSelector(state => state.auth.user)
-    const [signInMessage, setsignInMessage] = useState(null)
-  
-    const { activeStepIndex, setActiveStepIndex } = useContext(FormContext);
-    const { formData, setFormData} = useContext(OrderContext);
-    const { t, i18n } = useTranslation();
-    
-    const backButton =() => {
-        setActiveStepIndex(activeStepIndex - 1);
-      }
 
-    const onSubmit=() => {
-  
-            setActiveStepIndex(activeStepIndex + 1);
-            setFormData({...formData, userId:user.id})
-           
-          
-       
-        
-      }
-    let stepContent;
-    switch (activeStepIndex) {
-      case 0:
-        stepContent = !isAuth ? <div> {t("common.checkout_as_guest")}</div>: <LogendIn t= {t}/>;
-        break;
-      case 1:
-        
-        stepContent = <Billing t= {t} />;
-        break;
-      case 2:
-        stepContent = <Shipping t= {t}/>;
-        break;
-        case 3:
-          stepContent = <StripeContanier i18n = {i18n} t = {t}/>;
-          break;
-      default:
-        break;
+  const isAuth =
+    window.localStorage.getItem("access_token");
+
+  const user =
+    useSelector((state) => state.auth.user);
+
+  const shippingRef =
+    useRef(null);
+
+  const {
+    activeStepIndex,
+    setActiveStepIndex,
+  } = useContext(FormContext);
+
+  const {
+    setFormData,
+  } = useContext(OrderContext);
+
+  const {
+    t,
+    i18n,
+  } = useTranslation();
+
+
+  /* =====================================================
+     NEXT
+  ===================================================== */
+
+  const handleNext = () => {
+
+    /* ================= STEP 0 ================= */
+
+    if (activeStepIndex === 0) {
+
+      setFormData((prev) => ({
+        ...prev,
+        userId: user?.id,
+      }));
+
+      setActiveStepIndex((prev) => prev + 1);
+
+      return;
     }
-  
-    return (
-    <Container>
-       
-        {stepContent}
 
-        {activeStepIndex === 0 &&(
-          <button  className='button' onClick={onSubmit}>{t("common.next")}</button>
-        )}
-        
-       
-    </Container>
-    )
-    
+
+    /* ================= BILLING ================= */
+
+    if (activeStepIndex === 1) {
+      return;
+    }
+
+
+    /* ================= SHIPPING ================= */
+
+    if (activeStepIndex === 2) {
+
+      shippingRef.current?.submitShipping();
+
+      return;
+    }
+
+
+    /* ================= PAYMENT ================= */
+
+    if (activeStepIndex >= 3) {
+      return;
+    }
+
+  };
+
+
+  /* =====================================================
+     BACK
+  ===================================================== */
+
+  const handleBack = () => {
+
+    setActiveStepIndex((prev) =>
+      Math.max(prev - 1, 0)
+    );
+
+  };
+
+
+  /* =====================================================
+     STEP CONTENT
+  ===================================================== */
+
+  let stepContent = null;
+
+
+  switch (activeStepIndex) {
+
+    /* ================= STEP 0 ================= */
+
+    case 0:
+
+      stepContent = !isAuth ? (
+
+        <GuestMessage>
+          {t("common.checkout_as_guest")}
+        </GuestMessage>
+
+      ) : (
+
+        <LogendIn t={t} />
+
+      );
+
+      break;
+
+
+    /* ================= BILLING ================= */
+
+    case 1:
+
+      stepContent = (
+        <Billing t={t} />
+      );
+
+      break;
+
+
+    /* ================= SHIPPING ================= */
+
+    case 2:
+
+      stepContent = (
+        <Shipping
+          ref={shippingRef}
+          t={t}
+        />
+      );
+
+      break;
+
+
+    /* ================= PAYMENT ================= */
+
+    case 3:
+
+      stepContent = (
+        <StripeContanier
+          i18n={i18n}
+          t={t}
+        />
+      );
+
+      break;
+
+
+    default:
+
+      stepContent = null;
+
   }
-  const Container = styled.div`
-        
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        min-height:500px;
-        justify-content:center;
-        align-items:center;
-        position:sticky;
-        top:0;
-       
-    
-      
 
-        
-        .button{
-          color:#fff;
-          background:blue;
-          padding:8px 15px;
-          border-radius:6px;
-          margin-top:10px;
-          font-size: 17px;
-      
-          &:hover{
-            opacity:0.8;
-          }
-        }
-        
-       
-  `
 
-export default Steps
+  /* =====================================================
+     RETURN
+  ===================================================== */
+
+  return (
+
+    <Container
+      dir={
+        i18n.language === "ar"
+          ? "rtl"
+          : "ltr"
+      }
+    >
+
+      {stepContent}
+
+
+      {/* =================================================
+          STEP 0
+      ================================================= */}
+
+      {activeStepIndex === 0 ? (
+
+        <SingleButtonWrapper>
+
+          <button
+            type="button"
+            className="next-button"
+            onClick={handleNext}
+          >
+            {t("common.next")}
+          </button>
+
+        </SingleButtonWrapper>
+
+      ) : (
+
+        <ButtonsContainer>
+
+
+          {/* ================= BACK ================= */}
+
+          <button
+            type="button"
+            className="back-button"
+            onClick={handleBack}
+          >
+            {t("common.back")}
+          </button>
+
+
+          {/* =================================================
+              NEXT
+
+              HIDDEN ON PAYMENT STEP
+          ================================================= */}
+
+          {activeStepIndex !== 3 && (
+
+            activeStepIndex === 1 ? (
+
+              <button
+                type="submit"
+                form="billing-form"
+                className="next-button"
+              >
+                {t("common.next")}
+              </button>
+
+            ) : (
+
+              <button
+                type="button"
+                className="next-button"
+                onClick={handleNext}
+              >
+                {t("common.next")}
+              </button>
+
+            )
+
+          )}
+
+        </ButtonsContainer>
+
+      )}
+
+    </Container>
+
+  );
+
+}
+
+
+export default Steps;
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+const Container = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 500px;
+
+  position: sticky;
+  top: 0;
+
+  box-sizing: border-box;
+
+
+  .next-button {
+    min-width: 210px;
+
+    height: 52px;
+
+    padding: 0 34px;
+
+    border: 1px solid #1d1c1a;
+
+    background: #1d1c1a;
+
+    color: #ffffff;
+
+    font-family: Georgia, serif;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2.4px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      background: #3a332d;
+
+      border-color: #3a332d;
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 20px
+        rgba(29, 28, 26, 0.12);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+
+  .back-button {
+    min-width: 210px;
+
+    height: 52px;
+
+    padding: 0 34px;
+
+    border: 1px solid #d8d3ca;
+
+    background: transparent;
+
+    color: #5a534a;
+
+    font-family: Georgia, serif;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    letter-spacing: 2.2px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+
+    &:hover {
+      background: #f7f5f0;
+
+      border-color: #9a8d78;
+
+      color: #1d1c1a;
+
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+
+  @media (max-width: 600px) {
+
+    min-height: auto;
+
+    .next-button,
+    .back-button {
+      width: 100%;
+
+      min-width: 0;
+
+      height: 50px;
+
+      font-size: 9px;
+    }
+
+    .next-button {
+      letter-spacing: 2px;
+    }
+
+    .back-button {
+      letter-spacing: 2px;
+    }
+  }
+`;
+
+
+const SingleButtonWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 30px;
+
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
+
+const ButtonsContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 32px;
+
+  padding-bottom: 20px;
+
+
+  @media (max-width: 600px) {
+
+    flex-direction: column-reverse;
+
+    gap: 10px;
+
+  }
+`;

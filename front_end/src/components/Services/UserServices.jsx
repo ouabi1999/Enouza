@@ -29,7 +29,7 @@ function UserServices() {
     },
   ];
 
-  const isRTL = i18n.dir() === "rtl";
+  const isRTL = i18n.language[0] === "ar";
 
   return (
     <Container>

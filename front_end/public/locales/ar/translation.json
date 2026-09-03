@@ -412,7 +412,43 @@
       "enouza_faq_description": "اعثر على إجابات للأسئلة التي نتلقاها بشكل متكرر."
      }
   },
+  
+  "trust": {
+    "secureCheckout": "دفع آمن",
+
+    "freeShipping": {
+      "title": "شحن مجاني",
+      "text": "شحن مجاني على جميع الطلبات"
+    },
+
+    "fastDelivery": {
+      "title": "توصيل سريع",
+      "text": "شحن دولي خلال 2–4 أيام*"
+    },
+
+    "returns": {
+      "title": "إرجاع خلال 100 يوم",
+      "text": "إرجاع مجاني لمدة 100 يوم"
+    },
+
+    "warranty": {
+      "title": "ضمان لمدة 3 سنوات",
+      "text": "مصمم بجودة تدوم"
+    },
+
+    "shopWithConfidence": "تسوق بثقة"
+  },
+
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 تم تقديم طلبك بنجاح! 🎉",
+    "orderProcessingMessage": "شكرًا لتسوقك معنا. طلبك قيد المعالجة.",
+    "backToHome": "العودة إلى الصفحة الرئيسية"
+  },
+  "checkout": {
+    "loggedInContinue": "حسابك جاهز. تابع لإدخال تفاصيل الفوترة الخاصة بك."
+  },
   "common": {
+    "selectShippingMethod": "اختر طريقة الشحن",
     "discoverCollection": "اكتشف المجموعة",
     "days": "أيام",
     "day": "يوم",
@@ -616,6 +652,8 @@
     "from": "من",
     "member_since": "عضو منذ",
     "tryAgain": "حاول مرة أخرى",
+      "pleaseSelectShippingMethod": "يرجى اختيار طريقة الشحن",
+
     "please_confirm_your_password": "أكّد كلمة المرور",
     "please_enter_your_new_password": "أدخل كلمة المرور الجديدة",
     "please_enter_your_email": "أدخل بريدك",

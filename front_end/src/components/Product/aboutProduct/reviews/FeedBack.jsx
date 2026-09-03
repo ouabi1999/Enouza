@@ -123,7 +123,7 @@ function Feedback(props) {
                                     value={100}
                                 />
                             </>)
-                            : t("common.submit")}
+                            : t("common.send")}
                     </button>
                     
              
@@ -144,7 +144,7 @@ const Conatiner = styled.div`
       margin-bottom:10px;
     }
 .on{
-    color: #a88a62;
+    color: #d8b24a;
     cursor:pointer;
 }
 .off{
@@ -167,13 +167,13 @@ const Wrap = styled.div`
        width:100%;
        min-height:180px;
        padding:5px;
-       border-color: #bb9a69;
+       border-color: #e0d2bb;
        border-bottom:none;
        resize: none;
        border-radius:4px 4px 0 0 ;
 
        &:focus{
-        border-color: rgb(0,0,0, 0.4);
+        border-color: #eec280;
         outline: none
        }
     }
@@ -215,9 +215,11 @@ const Wraper = styled.div`
 const Add_image_container = styled.div`
     display:flex;
     flex-wrap:wrap;
-    background: #f7ead9;
+    background:  #f2ece2;
+
     padding:5px;
-    border: 1px solid #bb9a69;
+    border: 1px solid  #e0d2bb;
+
     border-top:1px solid lightgray;
     border-radius: 0 0 4px 4px;
     width:100%;

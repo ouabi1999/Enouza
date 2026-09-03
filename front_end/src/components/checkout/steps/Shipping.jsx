@@ -1,209 +1,769 @@
-import React, {useContext, useState, Fragment, useEffect}  from 'react'
-import styled from "styled-components"
-import InfoIcon from '@mui/icons-material/Info';
-import { FormContext } from '../../../pages/CheckoutPage'
-import {OrderContext} from "../../../App"
-import Radio from '@mui/material/Radio';
-import {useSelector} from "react-redux"
+import React, {
+  useContext,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 
-function Shipping({t}) {
-    const { activeStepIndex, setActiveStepIndex, total} = useContext(FormContext);
-    const { formData, setFormData} = useContext(OrderContext);
-    const [shippingMethodIndex, setShippingMethodIndex] = useState("")
-    const [inputRequired, setInputRequired] = useState(false)
-    const productData = useSelector(state => state.product.productData) || []
+import styled from "styled-components";
 
-  
-    const cartItems =  useSelector((state) => state.cart.cartItems)
+import Radio from "@mui/material/Radio";
+import { useSelector } from "react-redux";
 
-   
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 
-    const nextStep = () =>{
-      const totalPrice = Math.round( (Number(total) + Number(formData.shippingPrice)) * 100)
-      if(formData.shippingMethod === null ){
-        setInputRequired(true)
-        
-      }else{
-        setActiveStepIndex(activeStepIndex + 1)
-        console.log(formData)
+import { FormContext } from "../../../pages/CheckoutPage";
+import { OrderContext } from "../../../App";
 
-        setFormData({...formData, totalPrice})
-        
-      }
-     
 
-  }
- 
+/* =====================================================
+   DEFAULT SHIPPING METHODS
+
+   These are used ONLY when the backend does not provide
+   available_shipping.
+===================================================== */
+
+const DEFAULT_SHIPPING_METHODS = [
+  {
+    methodName: "Standard Shipping",
+    cost: 10,
+    from: 5,
+    to: 10,
+  },
+];
+
+
+const Shipping = forwardRef(({ t }, ref) => {
+
+  /* =====================================================
+     CONTEXT
+  ===================================================== */
+
+  const {
+    setActiveStepIndex,
+    total,
+  } = useContext(FormContext);
+
+
+  const {
+    formData,
+    setFormData,
+  } = useContext(OrderContext);
+
+
+  /* =====================================================
+     REDUX
+  ===================================================== */
+
+  const productData =
+    useSelector(
+      (state) => state.product.productData
+    ) || {};
+
+
+  /* =====================================================
+     SHIPPING METHODS
+
+     If backend has shipping methods:
+       → Use backend methods
+
+     If backend has no shipping methods:
+       → Use default methods
+  ===================================================== */
+
+  const backendShippingMethods =
+    Array.isArray(
+      productData?.available_shipping
+    )
+      ? productData.available_shipping
+      : [];
+
+
+  const shippingMethods =
+    productData?.available_shipping?.length > 0
+      ? productData?.available_shipping
+      : DEFAULT_SHIPPING_METHODS;
+
+
+  /* =====================================================
+     SELECTED SHIPPING METHOD
+
+     Restore the selected method from formData.
+
+     formData itself is restored from localStorage
+     by your OrderContext.
+  ===================================================== */
+
+  const [
+    selectedShippingIndex,
+    setSelectedShippingIndex,
+  ] = useState(() => {
+
+    if (!formData?.shippingMethod) {
+      return null;
+    }
+
+
+    const savedIndex =
+      shippingMethods.findIndex(
+        (item) =>
+          item.methodName ===
+          formData.shippingMethod
+      );
+
+
+    return savedIndex !== -1
+      ? savedIndex
+      : null;
+
+  });
+
+
+  /* =====================================================
+     VALIDATION STATE
+  ===================================================== */
+
+  const [
+    inputRequired,
+    setInputRequired,
+  ] = useState(false);
+
+
+  /* =====================================================
+     SELECT SHIPPING METHOD
+  ===================================================== */
+
+  const selectShippingMethod = (
+    item,
+    index
+  ) => {
+
+    setSelectedShippingIndex(index);
+
+    setInputRequired(false);
+
+
+    setFormData((prev) => ({
+
+      ...prev,
+
+      shippingMethod:
+        item.methodName,
+
+      shippingPrice:
+        Number(item.cost),
+
+      deliveryTime:
+        `${item.from} - ${item.to} Days`,
+
+    }));
+
+  };
+
+
+  /* =====================================================
+     VALIDATE + NEXT STEP
+  ===================================================== */
+
+  const submitShipping = () => {
+
+    /* No shipping method selected */
+
+    if (!formData?.shippingMethod) {
+
+      setInputRequired(true);
+
+      return false;
+
+    }
+
+
+    /* Get shipping price safely */
+
+    const shippingPrice =
+      Number(
+        formData.shippingPrice || 0
+      );
+
+
+    /* Stripe normally needs price in cents */
+
+    const totalPrice =
+      Math.round(
+        (
+          Number(total) +
+          shippingPrice
+        ) * 100
+      );
+
+
+    /* Save total */
+
+    setFormData((prev) => ({
+
+      ...prev,
+
+      totalPrice,
+
+    }));
+
+
+    /* Go to payment */
+
+    setActiveStepIndex(
+      (prev) => prev + 1
+    );
+
+
+    return true;
+
+  };
+
+
+  /* =====================================================
+     EXPOSE FUNCTION TO STEPS COMPONENT
+  ===================================================== */
+
+  useImperativeHandle(ref, () => ({
+
+    submitShipping,
+
+  }));
+
+
+  /* =====================================================
+     RETURN
+  ===================================================== */
 
   return (
 
     <ShippingMethods>
 
-      <div className='header'>
-        <h5>{t("common.selectPaymentMethod")}</h5>
-        <InfoIcon className='info-icon' />
+
+      {/* =================================================
+          HEADER
+      ================================================= */}
+
+      <div className="header">
+
+        <div className="header-text">
+
+          <h5>
+            {t("common.selectShippingMethod")}
+          </h5>
+
+         
+
+        </div>
+
+
+        <LocalShippingOutlinedIcon
+          className="shipping-icon"
+        />
+
       </div>
 
-      {productData.available_shipping?.length > 0 ? (
 
-        productData.available_shipping?.map((item, index) => {
-          return (
-            <div className="methods_container" key={index}>
-              <div className="shipping-methodName">
-                <span className="shipping-method">
-                  {item.methodName.toUpperCase()}
-                </span>
 
-                <span className="shipping-time">
-                  {item.from + " - " + item.to + " " + t("common.days")}
-                </span>
+      {/* =================================================
+          SHIPPING OPTIONS
+      ================================================= */}
+
+      <div className="methods-list">
+
+        {shippingMethods.map(
+          (item, index) => {
+
+            const isSelected =
+              selectedShippingIndex === index ||
+              formData?.shippingMethod ===
+                item.methodName;
+
+
+            return (
+
+              <div
+
+                key={`${item.methodName}-${index}`}
+
+                className={`
+                  shipping-option
+                  ${
+                    isSelected
+                      ? "selected"
+                      : ""
+                  }
+                `}
+
+                onClick={() =>
+                  selectShippingMethod(
+                    item,
+                    index
+                  )
+                }
+
+              >
+
+
+                {/* ================= LEFT ================= */}
+
+                <div className="shipping-info">
+
+
+                  <span className="method-name">
+
+                    {item.methodName}
+
+                  </span>
+
+
+                  <span className="delivery-time">
+
+                    {item.from}
+
+                    {" - "}
+
+                    {item.to}
+
+                    {" "}
+
+                    {t("common.days")}
+
+                  </span>
+
+
+                </div>
+
+
+
+                {/* ================= RIGHT ================= */}
+
+                <div className="shipping-price">
+
+
+                  <span className="price">
+
+                    €
+
+                    {Number(
+                      item.cost || 0
+                    ).toFixed(2)}
+
+                  </span>
+
+
+                  <Radio
+
+                    checked={isSelected}
+
+                    onChange={() =>
+                      selectShippingMethod(
+                        item,
+                        index
+                      )
+                    }
+
+                    onClick={(event) =>
+                      event.stopPropagation()
+                    }
+
+                    inputProps={{
+                      "aria-label":
+                        item.methodName,
+                    }}
+
+                  />
+
+
+                </div>
+
+
               </div>
-              <div>
-                <span>€{item.cost}</span>
-                <Radio
-                  value={item.cost}
-                  style={inputRequired ? { color: "red" } : {}}
-                  name={item.methodName}
-                  checked={shippingMethodIndex === index}
-                  onChange={(e) => {
-                    setShippingMethodIndex(index);
-                    setInputRequired(false);
-                    setFormData({
-                      ...formData,
-                      shippingMethod:e.target.name,
-                      shippingPrice:e.target.value,
-                      deliveryTime: item.from + " - " + item.to + " " + "Days",
-                    });
-                  }}
-                
-                  inputProps={{ "aria-label": "A" }}
-                />
-              </div>
-            </div>
-          );
-        })
-      ) :
-        <div className='methods_container' >
-          <div className='shipping-methodName'>
 
-            <span className='shipping-method'>
-              {"e-packet".toUpperCase()}
-            </span>
+            );
 
-            <span className="shipping-time">
-               7 - 15 {t("common.days")}
-            </span>
+          }
+        )}
 
-          </div>
-          <div>
-            <span>€0.00 </span>
-            <Radio
-              style={inputRequired ? { color: "red" } : {}}
-              name= "e-packet"
-              checked={shippingMethodIndex === 0}
-              value={0.00}
-              onChange={(e) => {
-                setShippingMethodIndex(0);
-                    setInputRequired(false);
-                    setFormData({
-                      ...formData,
-                      shippingMethod:e.target.name,
-                      shippingPrice:e.target.value,
-                      deliveryTime: "7" + " - " + "10" + " " + "Days",
-                    });
-               
-              }}
-             
-              inputProps={{ 'aria-label': 'A' }}
-            />
-          </div>
+      </div>
+
+
+
+      {/* =================================================
+          VALIDATION MESSAGE
+      ================================================= */}
+
+      {inputRequired && (
+
+        <div
+          className="validation-message"
+          role="alert"
+        >
+
+          {t(
+            "common.pleaseSelectShippingMethod"
+          )}
+
         </div>
-      }
-      <Buttons_container>
-        <button className='button' onClick={() => setActiveStepIndex(activeStepIndex - 1)}>{t("common.back")}</button>
-        <button className="button" onClick={nextStep} methodName="submit">{t("common.next")}</button>
-      </Buttons_container>
-    </ShippingMethods>
-  )
-}
 
-export default Shipping
+      )}
+
+
+    </ShippingMethods>
+
+  );
+
+});
+
+
+export default Shipping;
+
+
+/* =====================================================
+   STYLES
+===================================================== */
 
 const ShippingMethods = styled.div`
-    border:1px solid lightgray;
-    width:85%;
-    background:#fff;
-    margin:15px 0;
-    box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-    0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
 
-    padding: 5px 10px;
-    .header{
-      display:flex;
-      align-items:center;
-      .info-icon{
-        color:gray;
-      }
-    }
-    .shipping-methodName{
-      display:flex;
-      gap:10px;
-    }
-    .shipping-time{
-         font-size:0.8rem;
-         color:gray;
-    }
-    .shipping-method{
-        font-size:1rem;
-        width:180px;
-        font-family:monospace;
-        font-weight:900
-    }
-  .methods_container{
-       position:relative;
-       display:flex;
-       align-items:center;
-       justify-content:space-between;
-       border:1px solid lightgray;
-       border-radius:6px;
-       padding:3px 8px;
-       margin-bottom:10px;
+  width: 85%;
+
+  max-width: 760px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border:
+    1px solid #e4ded4;
+
+  padding: 30px;
+
+  margin: 15px 0;
+
+
+  /* =================================================
+     HEADER
+  ================================================= */
+
+  .header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 22px;
+
+    border-bottom:
+      1px solid #e4ded4;
+
   }
-  .methods_container img{
-    width:80px;
-    height:40px;
-    object-fit:cover;
-    position:absolute;
-    top:2px;
-    left:-5px;
-    
+
+
+  .header-text {
+
+    display: flex;
+
+    flex-direction: column;
+
   }
-  @media only screen and (max-width: 500px){
-      &{
-        width:90%;
-      }
-    .shipping-method{
-          display:none;
-     } 
-    }
-   `
 
-const Buttons_container = styled.div`
-  display:flex;
-  justify-content:space-evenly;
-  button{
-    color:#fff;
-    background:blue;
-    padding:8px 15px;
-    border-radius:6px;
-    margin-top:10px;
-    font-size: 17px;
 
-    &:hover{
-      opacity:0.8;
-    }
+  .header h5 {
+
+    margin: 0 0 6px;
+
+    font-family:
+      Georgia,
+      serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.7px;
+
+    color: #1d1c1a;
+
   }
- 
 
 
-`
+  .header p {
+
+    margin: 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: #77736b;
+
+  }
+
+
+  .shipping-icon {
+
+    font-size: 25px;
+
+    color: #b39a76;
+
+  }
+
+
+
+  /* =================================================
+     SHIPPING METHODS
+  ================================================= */
+
+  .methods-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+  }
+
+
+  .shipping-option {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    min-height: 76px;
+
+    padding: 14px 16px;
+
+    border:
+      1px solid #e4ded4;
+
+    background:
+      #ffffff;
+
+    cursor: pointer;
+
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      transform 0.25s ease;
+
+
+    &:hover {
+
+      border-color:
+        #b39a76;
+
+      transform:
+        translateY(-1px);
+
+    }
+
+
+    &.selected {
+
+      border-color:
+        #b39a76;
+
+      background:
+        #f7f5f0;
+
+    }
+
+  }
+
+
+
+  /* =================================================
+     SHIPPING INFORMATION
+  ================================================= */
+
+  .shipping-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+  }
+
+
+  .method-name {
+
+    font-family:
+      Georgia,
+      serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.1px;
+
+    text-transform:
+      uppercase;
+
+    color:
+      #1d1c1a;
+
+  }
+
+
+  .delivery-time {
+
+    font-size: 11px;
+
+    color:
+      #77736b;
+
+  }
+
+
+
+  /* =================================================
+     PRICE
+  ================================================= */
+
+  .shipping-price {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+  }
+
+
+  .price {
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color:
+      #3a332d;
+
+    white-space:
+      nowrap;
+
+  }
+
+
+  /* Material UI Radio */
+
+  .MuiRadio-root {
+
+    color:
+      #b39a76;
+
+    padding: 6px;
+
+  }
+
+
+  .MuiRadio-root.Mui-checked {
+
+    color:
+      #9d825e;
+
+  }
+
+
+
+  /* =================================================
+     VALIDATION
+  ================================================= */
+
+  .validation-message {
+
+    margin-top: 16px;
+
+    padding: 12px 14px;
+
+    background:
+      #f7f5f0;
+
+    border-left:
+      2px solid #b39a76;
+
+    font-size: 11px;
+
+    color:
+      #5a534a;
+
+  }
+
+
+
+  /* =================================================
+     MOBILE
+  ================================================= */
+
+  @media (max-width: 600px) {
+
+    width: 100%;
+
+    padding: 20px 15px;
+
+
+    .header h5 {
+
+      font-size: 14px;
+
+    }
+
+
+    .header p {
+
+      font-size: 10px;
+
+    }
+
+
+    .shipping-option {
+
+      min-height: 70px;
+
+      padding: 12px;
+
+    }
+
+
+    .method-name {
+
+      font-size: 11px;
+
+      letter-spacing:
+        0.8px;
+
+    }
+
+
+    .delivery-time {
+
+      font-size: 10px;
+
+    }
+
+
+    .price {
+
+      font-size: 12px;
+
+    }
+
+  }
+
+`;

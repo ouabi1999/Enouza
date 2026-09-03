@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 
 const OrderSuccess = () => {
+  const { t } = useTranslation();
   return (
     <SuccessContainer>
-      <Message>🎉 Order Placed Successfully! 🎉</Message>
-      <SubText>Thank you for shopping with us. Your order is being processed.</SubText>
-      <Button to="/">Back to Home</Button>
+      <Message>
+        {t("orderSuccess.orderPlacedSuccessfully")}
+      </Message>
+
+      <SubText>
+        {t("orderSuccess.orderProcessingMessage")}
+      </SubText>
+
+      <Button to="/">
+        {t("orderSuccess.backToHome")}
+      </Button>
     </SuccessContainer>
   );
 };

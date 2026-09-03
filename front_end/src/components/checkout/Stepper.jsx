@@ -18,7 +18,7 @@ function Stepper() {
 
       }, [activeStepIndex]);
   return (
-    <Container dir = {i18n.language == "ar"?"rtl": "ltr"}>
+    <Container dir = {i18n.language[0] == "ar" ? "ltr": "rtl"}>
        <Wraper>
         <div className='stepper-item'>
             <h5> {t("common.signin")} </h5>
@@ -56,9 +56,8 @@ const Wraper = styled.div`
   justify-content:center;
   align-items:center;
   padding: 20.5px 8px;
-  border-bottom:1px solid gray;
-  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-  0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+ border-bottom: 1px solid #e4ded4;
+
   
  .stepper-item{
      height:35px;
