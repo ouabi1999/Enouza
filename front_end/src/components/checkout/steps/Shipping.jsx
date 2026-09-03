@@ -26,7 +26,7 @@ import { OrderContext } from "../../../App";
 const DEFAULT_SHIPPING_METHODS = [
   {
     methodName: "Standard Shipping",
-    cost: 10,
+    cost: 0,
     from: 5,
     to: 10,
   },
