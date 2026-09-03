@@ -305,7 +305,6 @@ const Container = styled.div`
 
     font-weight: 500;
 
-    letter-spacing: 2.4px;
 
     text-transform: uppercase;
 
@@ -355,7 +354,6 @@ const Container = styled.div`
 
     font-weight: 400;
 
-    letter-spacing: 2.2px;
 
     text-transform: uppercase;
 
@@ -398,13 +396,7 @@ const Container = styled.div`
       font-size: 9px;
     }
 
-    .next-button {
-      letter-spacing: 2px;
-    }
-
-    .back-button {
-      letter-spacing: 2px;
-    }
+    
   }
 `;
 

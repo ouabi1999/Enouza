@@ -108,7 +108,6 @@ const Container = styled.div`
     flex-direction:column;
     
     .checkout{
-      letter-spacing:2px;
       font-weight:600;
       font-size:20px;
       text-transform:uppercase;

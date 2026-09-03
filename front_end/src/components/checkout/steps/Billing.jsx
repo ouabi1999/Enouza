@@ -396,7 +396,7 @@ const LuxuryTextField = styled(TextField)`
       }
 
       .MuiOutlinedInput-input {
-        font-size: 16px;
+        font-size: 14px;
         padding: 15px 14px;
       }
     }
