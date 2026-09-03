@@ -18,7 +18,7 @@ function Stepper() {
 
       }, [activeStepIndex]);
   return (
-    <Container dir = {i18n.language[0] == "ar" ? "ltr": "rtl"}>
+    <Container dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}>
        <Wraper>
         <div className='stepper-item'>
             <h5> {t("common.signin")} </h5>

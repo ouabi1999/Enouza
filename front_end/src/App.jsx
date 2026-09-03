@@ -59,6 +59,7 @@ function App() {
       lastName: "",
       userId: "",
       email: "",
+      phoneNumber: "",
       city: "",
       address2: "",
       zip: "",

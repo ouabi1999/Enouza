@@ -2,17 +2,17 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  Grid,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
-
+import { Grid, TextField } from "@mui/material";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
 import { FormContext } from "../../../pages/CheckoutPage";
 import { OrderContext } from "../../../App";
+import countriesData from "../../../../common/countryData.json"
 
-function Billing({ t }) {
+function Billing({ t, i18n }) {
   const { setActiveStepIndex } = useContext(FormContext);
   const { formData, setFormData } = useContext(OrderContext);
 
@@ -23,6 +23,9 @@ function Billing({ t }) {
     lastName: Yup.string().required(
       t("common.please_enter_your_last_name")
     ),
+    phoneNumber: Yup.string().required(
+    t("common.please_enter_your_phone")
+  ),
     email: Yup.string()
       .email(t("errors.error_invalid_email"))
       .required(t("common.please_enter_your_email")),
@@ -44,7 +47,9 @@ function Billing({ t }) {
   });
 
   return (
-    <Conatiner>
+    <Container dir={i18n.dir() === "ltr" ? "ltr" : "rtl"}>
+
+
       <Formik
         initialValues={formData.logistics_address}
         validationSchema={ValidationSchema}
@@ -65,197 +70,335 @@ function Billing({ t }) {
           errors,
           touched,
           handleChange,
+          handleBlur,
         }) => (
           <Form id="billing-form">
-            <Grid container justifyContent="center" spacing={3}>
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.firstName}
-                  onChange={handleChange}
-                  id="firstName"
-                  name="firstName"
-                  label={t("common.firstName")}
-                  fullWidth
-                  autoComplete="given-name"
-                  variant="outlined"
-                  helperText={
-                    touched.firstName ? errors.firstName : ""
-                  }
-                  error={
-                    touched.firstName &&
-                    Boolean(errors.firstName)
-                  }
-                />
-              </Grid>
+            <FormCard>
+              <Grid container spacing={{ xs: 2, sm: 2.5 }}>
 
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.lastName}
-                  onChange={handleChange}
-                  id="lastName"
-                  name="lastName"
-                  label={t("common.lastName")}
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="outlined"
-                  helperText={
-                    touched.lastName ? errors.lastName : ""
-                  }
-                  error={
-                    touched.lastName &&
-                    Boolean(errors.lastName)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12} sm={6}>
+                  <LuxuryTextField
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="firstName"
+                    name="firstName"
+                    label={t("common.firstName")}
+                    fullWidth
+                    autoComplete="given-name"
+                    helperText={
+                      touched.firstName ? errors.firstName : ""
+                    }
+                    error={
+                      touched.firstName &&
+                      Boolean(errors.firstName)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={10}>
-                <TextField
-                  value={values.email}
-                  onChange={handleChange}
-                  id="email"
-                  name="email"
-                  label={t("common.email")}
-                  type="email"
-                  fullWidth
-                  autoComplete="email"
-                  variant="outlined"
-                  helperText={
-                    touched.email ? errors.email : ""
-                  }
-                  error={
-                    touched.email &&
-                    Boolean(errors.email)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12} sm={6}>
+                  <LuxuryTextField
+                    value={values.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="lastName"
+                    name="lastName"
+                    label={t("common.lastName")}
+                    fullWidth
+                    autoComplete="family-name"
+                    helperText={
+                      touched.lastName ? errors.lastName : ""
+                    }
+                    error={
+                      touched.lastName &&
+                      Boolean(errors.lastName)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={10}>
-                <TextField
-                  value={values.address1}
-                  onChange={handleChange}
-                  id="address1"
-                  name="address1"
-                  label={t("common.address")}
-                  fullWidth
-                  autoComplete="address-line1"
-                  variant="outlined"
-                  helperText={
-                    touched.address1 ? errors.address1 : ""
-                  }
-                  error={
-                    touched.address1 &&
-                    Boolean(errors.address1)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12}>
+                  <LuxuryTextField
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="email"
+                    name="email"
+                    label={t("common.email")}
+                    type="email"
+                    fullWidth
+                    autoComplete="email"
+                    helperText={
+                      touched.email ? errors.email : ""
+                    }
+                    error={
+                      touched.email &&
+                      Boolean(errors.email)
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <LuxuryTextField
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    label={t("common.phoneNumber")}
+                    type="tel"
+                    fullWidth
+                    autoComplete="tel"
+                    helperText={
+                      touched.phoneNumber ? errors.phoneNumber : ""
+                    }
+                    error={
+                      touched.phoneNumber &&
+                      Boolean(errors.phoneNumber)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.city}
-                  onChange={handleChange}
-                  id="city"
-                  name="city"
-                  label={t("common.city")}
-                  fullWidth
-                  variant="outlined"
-                  helperText={
-                    touched.city ? errors.city : ""
-                  }
-                  error={
-                    touched.city &&
-                    Boolean(errors.city)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12}>
+                  <LuxuryTextField
+                    value={values.address1}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="address1"
+                    name="address1"
+                    label={t("common.address")}
+                    fullWidth
+                    autoComplete="address-line1"
+                    helperText={
+                      touched.address1 ? errors.address1 : ""
+                    }
+                    error={
+                      touched.address1 &&
+                      Boolean(errors.address1)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.state}
-                  onChange={handleChange}
-                  id="state"
-                  name="state"
-                  label={t("common.state")}
-                  fullWidth
-                  variant="outlined"
-                  helperText={
-                    touched.state ? errors.state : ""
-                  }
-                  error={
-                    touched.state &&
-                    Boolean(errors.state)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12} sm={6}>
+                  <LuxuryTextField
+                    value={values.city}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="city"
+                    name="city"
+                    label={t("common.city")}
+                    fullWidth
+                    helperText={
+                      touched.city ? errors.city : ""
+                    }
+                    error={
+                      touched.city &&
+                      Boolean(errors.city)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.zip}
-                  onChange={handleChange}
-                  id="zip"
-                  name="zip"
-                  label={t("common.zipCode")}
-                  autoComplete="postal-code"
-                  variant="outlined"
-                  fullWidth
-                  helperText={
-                    touched.zip ? errors.zip : ""
-                  }
-                  error={
-                    touched.zip &&
-                    Boolean(errors.zip)
-                  }
-                />
-              </Grid>
+                <Grid item xs={12} sm={6}>
+                  <LuxuryTextField
+                    value={values.state}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="state"
+                    name="state"
+                    label={t("common.state")}
+                    fullWidth
+                    helperText={
+                      touched.state ? errors.state : ""
+                    }
+                    error={
+                      touched.state &&
+                      Boolean(errors.state)
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12} sm={5}>
-                <TextField
-                  value={values.country}
-                  onChange={handleChange}
-                  id="country"
-                  name="country"
-                  label={t("common.country")}
-                  fullWidth
-                  autoComplete="country"
-                  variant="outlined"
-                  helperText={
-                    touched.country ? errors.country : ""
-                  }
-                  error={
-                    touched.country &&
-                    Boolean(errors.country)
-                  }
-                />
+                <Grid item xs={12} sm={6}>
+                  <LuxuryTextField
+                    value={values.zip}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id="zip"
+                    name="zip"
+                    label={t("common.zipCode")}
+                    autoComplete="postal-code"
+                    fullWidth
+                    helperText={
+                      touched.zip ? errors.zip : ""
+                    }
+                    error={
+                      touched.zip &&
+                      Boolean(errors.zip)
+                    }
+                  />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label"> {t("common.country")}</InputLabel>
+                    <Select
+                      value={values.country}
+                      onChange={handleChange}
+                      id="country"
+                      name="country"
+                      label={t("common.country")}
+                      fullWidth
+                      autoComplete="country"
+                      MenuProps={{
+                        disableScrollLock: true,
+                        anchorOrigin: {
+                          vertical: "bottom",
+                          horizontal: "left",
+                        },
+                        transformOrigin: {
+                          vertical: "top",
+                          horizontal: "left",
+                        },
+                      }}
+                      helperText={
+                        touched.country ? errors.country : ""
+                      }
+                      error={
+                        touched.country &&
+                        Boolean(errors.country)
+                      }
+                    >
+                      {countriesData?.map((country, index) => (
+                        <MenuItem key={index} value={country.label}>
+                          {t(`countries.${country.value}`)}
+                        </MenuItem>
+                      ))}
+
+                    </Select>
+                  </FormControl>
+
+                </Grid>
+
               </Grid>
-          {/*}
-              <Grid
-                item
-                marginLeft="60px"
-                justifyContent="center"
-                paddingBottom="5px"
-              >
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      color="secondary"
-                      name="saveAddress"
-                      value="yes"
-                    />
-                  }
-                  label={t("common.saving_address")}
-                />
-              </Grid>
-              */}
-             
-            </Grid>
+            </FormCard>
           </Form>
         )}
       </Formik>
-    </Conatiner>
+    </Container>
   );
 }
 
 export default Billing;
 
-const Conatiner = styled.div`
-  padding: 25px 15px;
+
+/* =========================
+   LUXURY STYLES
+========================= */
+
+const Container = styled.div`
+  width: 100%;
+
+  @media (max-width: 600px) {
+    padding: 24px 14px 20px;
+  }
+`;
+
+const FormHeader = styled.div`
+  margin-bottom: 28px;
+
+  @media (max-width: 600px) {
+    margin-bottom: 20px;
+  }
+`;
+
+const FormTitle = styled.h2`
+  margin: 0;
+  color: #1d1c1a;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    font-size: 23px;
+  }
+`;
+
+const FormSubtitle = styled.p`
+  margin: 8px 0 0;
+  color: #77736b;
+  font-size: 14px;
+  line-height: 1.6;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
+`;
+
+const FormCard = styled.div`
+  background: #ffffff;
+ 
+  padding: 34px;
+
+  @media (max-width: 600px) {
+    padding: 20px 16px;
+    border-radius: 0;
+  }
+`;
+
+const LuxuryTextField = styled(TextField)`
+  && {
+    .MuiOutlinedInput-root {
+      background: #ffffff;
+      border-radius: 2px;
+      min-height: 58px;
+      transition: all 0.25s ease;
+
+      fieldset {
+        border-color: #e4ded4;
+        border-width: 1px;
+      }
+
+      &:hover fieldset {
+        border-color: #b39a76;
+      }
+
+      &.Mui-focused fieldset {
+        border-color: #b39a76;
+        border-width: 1px;
+      }
+    }
+
+    .MuiInputLabel-root {
+      color: #77736b;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+    }
+
+    .MuiInputLabel-root.Mui-focused {
+      color: #b39a76;
+    }
+
+    .MuiOutlinedInput-input {
+      color: #1d1c1a;
+      font-size: 15px;
+      padding: 17px 15px;
+    }
+
+    .MuiFormHelperText-root {
+      margin-left: 2px;
+      font-size: 12px;
+    }
+
+    .Mui-error fieldset {
+      border-color: #c75c5c !important;
+    }
+
+    @media (max-width: 600px) {
+      .MuiOutlinedInput-root {
+        min-height: 54px;
+      }
+
+      .MuiOutlinedInput-input {
+        font-size: 16px;
+        padding: 15px 14px;
+      }
+    }
+  }
 `;

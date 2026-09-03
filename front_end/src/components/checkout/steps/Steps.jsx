@@ -134,7 +134,7 @@ function Steps() {
     case 1:
 
       stepContent = (
-        <Billing t={t} />
+        <Billing t={t} i18n={i18n} />
       );
 
       break;
@@ -181,13 +181,7 @@ function Steps() {
 
   return (
 
-    <Container
-      dir={
-        i18n.language === "ar"
-          ? "rtl"
-          : "ltr"
-      }
-    >
+    <Container dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}>
 
       {stepContent}
 
@@ -294,7 +288,7 @@ const Container = styled.div`
 
   .next-button {
     min-width: 210px;
-
+    max-width: 200px;
     height: 52px;
 
     padding: 0 34px;
@@ -343,6 +337,7 @@ const Container = styled.div`
 
   .back-button {
     min-width: 210px;
+      max-width: 200px;
 
     height: 52px;
 
@@ -421,8 +416,9 @@ const SingleButtonWrapper = styled.div`
 
   justify-content: center;
 
-  margin-top: 30px;
+    margin: 25px 0;
 
+  max-width: 200px;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -441,7 +437,7 @@ const ButtonsContainer = styled.div`
 
   gap: 14px;
 
-  margin-top: 32px;
+  margin: 25px 0;
 
   padding-bottom: 20px;
 
@@ -456,9 +452,10 @@ const ButtonsContainer = styled.div`
 `;
 const GuestMessage = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 300px;
 
   padding: 28px 32px;
+  margin-top: 30px;
 
   text-align: center;
 

@@ -29,8 +29,7 @@ export default LogendIn;
 
 const Wrapper = styled.div`
   width: 100%;
-  max-width: 420px;
-
+  max-width: 300px;
   min-height: 210px;
 
   display: flex;
@@ -40,7 +39,7 @@ const Wrapper = styled.div`
   justify-content: center;
 
   padding: 35px 30px;
-
+  margin:30px 0;
   background: #f7f5f0;
 
   border: 1px solid #e4ded4;
