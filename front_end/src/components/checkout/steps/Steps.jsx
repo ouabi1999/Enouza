@@ -454,3 +454,33 @@ const ButtonsContainer = styled.div`
 
   }
 `;
+const GuestMessage = styled.div`
+  width: 100%;
+  max-width: 520px;
+
+  padding: 28px 32px;
+
+  text-align: center;
+
+  background: #f7f5f0;
+
+  border: 1px solid #e4ded4;
+
+  color: #3a332d;
+
+  font-family: Georgia, serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.8px;
+
+  line-height: 1.6;
+
+  @media (max-width: 600px) {
+    padding: 24px 18px;
+
+    font-size: 12px;
+  }
+`;
