@@ -243,8 +243,8 @@ const Wrraper = styled.div`
     
     .discount button{
       height:40px;
-      background:#000;
-      color:#ffff;
+      background: #e6e6e6;
+      color:#000000;
       border-radius:4px;
       padding:0 10px;
       margin:0 5px

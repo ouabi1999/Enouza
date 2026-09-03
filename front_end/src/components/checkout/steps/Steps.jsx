@@ -288,14 +288,15 @@ const Container = styled.div`
 
   .next-button {
     min-width: 150px;
-    max-width: 200px;
+        max-width: 200px;
+        width: 100%;
     height: 50px;
     border-radius: 4px;
     padding: 0 34px;
 
     border: 1px solid #1d1c1a;
 
-    background: #1d1c1a;
+    background: #4e4a41;
 
     color: #ffffff;
 
@@ -337,6 +338,7 @@ const Container = styled.div`
   .back-button {
     min-width: 150px;
         max-width: 200px;
+        width: 100%;
 
 
     height: 50px;
@@ -390,7 +392,7 @@ const Container = styled.div`
     .next-button,
     .back-button {
       width: 100%;
-
+      max-width: 140px;
       min-width: 0;
 
       height: 50px;
@@ -413,7 +415,9 @@ const SingleButtonWrapper = styled.div`
 
     margin: 25px 0;
 
-  max-width: 100px;
+  min-width: 150px;
+        max-width: 200px;
+        width: 100%;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -429,18 +433,13 @@ const ButtonsContainer = styled.div`
   align-items: center;
 
   justify-content: center;
+  flex-wrap: nowrap;
 
   gap: 14px;
   margin: 25px;
 
 
-  @media (max-width: 600px) {
-
-    flex-direction: column-reverse;
-
-    gap: 10px;
-
-  }
+  
 `;
 const GuestMessage = styled.div`
   width: 100%;

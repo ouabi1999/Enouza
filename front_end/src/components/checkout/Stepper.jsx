@@ -60,23 +60,28 @@ const Wraper = styled.div`
 
   
  .stepper-item{
-     height:35px;
+     height:30px;
      display:flex;
      align-items:center;
      padding:0px 10px;
-     border-radius:6px;
+     border-radius:4px;
   }
 
 .bg-indigo-500{
- background: #7a634d;
+ border: 1px solid #b39a76;
+
+        
+
+      background:
+        #f7f5f0;
+
+
 }
 
-.text-white{
-    color:#ffffff
-}
 
 .border-t-2{
-    border-top:1px solid black;
+    border-top:1px solid  #b39a76;
+;
     width:25%;
 
 }
