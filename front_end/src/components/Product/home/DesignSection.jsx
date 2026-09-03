@@ -37,10 +37,11 @@ const COLORS = {
 
 const DesignContainer = styled(Container)`
   width: 100%;
-
+  display: flex;
+  justify-content: center;
   position: relative;
 
-padding: 54px 32px;
+ padding: 54px 32px;
 
 
   background: ${COLORS.cream};
@@ -92,6 +93,7 @@ padding: 54px 32px;
 
 const DesignGrid = styled(Grid)`
   position: relative;
+    max-width: 1300px;
 
   z-index: 1;
 
@@ -424,7 +426,7 @@ const DesignSection = () => {
     <DesignContainer maxWidth={false}  >
       <DesignGrid
         container
-        spacing={6}
+        spacing={2}
         wrap="wrap-reverse"
         
       >
@@ -463,7 +465,6 @@ const DesignSection = () => {
                           maxHeight: "580px",
                           maxWidth: "600px",
                           objectFit: "cover",
-                          borderRadius: "4px",
                           display: "block",
                         }}
                       />
