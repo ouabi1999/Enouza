@@ -608,7 +608,7 @@
     "myCart": "سلتي",
     "checkoutNow": "ادفع الآن",
     "applyCoupon": "استخدام كوبون",
-    "enterCouponCode": "أدخل الكوبون",
+    "enterCouponCode":"أدخل رمز الخصم",
     "removeCoupon": "إزالة الكوبون",
     "couponApplied": "تم تطبيق الكوبون",
     "invalidCoupon": "كوبون غير صالح",
@@ -667,7 +667,11 @@
     "please_enter_your_country": "أدخل الدولة",
     "please_enter_your_zip_code": "أدخل الرمز البريدي",
     "please_enter_your_phone": "أدخل رقم الهاتف",
-    "please_enter_your_birthdate": "أدخل تاريخ الميلاد"
+    "please_enter_your_birthdate": "أدخل تاريخ الميلاد",
+    "please_enter_coupon_code": "يرجى إدخال رمز الخصم",
+    "invalid_discount_code": "رمز الخصم غير صالح",
+    "discount_code_applied": "تم تطبيق رمز الخصم",
+    "discount": "الخصم"
     
   },
   "success": {

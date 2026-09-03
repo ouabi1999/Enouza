@@ -1,120 +1,282 @@
-import React,{useEffect} from 'react'
-import styled from 'styled-components'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useSelector } from "react-redux"
-import { useState, useContext} from 'react';
-import { OrderContext } from "../../App"
-import { FormContext } from '../../pages/CheckoutPage'
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import CircularProgress from "@mui/material/CircularProgress";
 
+import { OrderContext } from "../../App";
+import { FormContext } from "../../pages/CheckoutPage";
 
+function ProductCart() {
+  const { total } = useContext(FormContext);
+  const { formData } = useContext(OrderContext);
 
-function ProductCart(props) {
- 
-  const {total} = useContext(FormContext);
-  const {formData} = useContext(OrderContext);
-  const [products, setProducts] = useState([])
-  const cartItems =  useSelector((state) => state.cart.cartItems)
-  const {t, i18n} = useTranslation()
-  
-  
-  
+  const cartItems = useSelector(
+    (state) => state.cart.cartItems
+  );
+
+  const { t, i18n } = useTranslation();
+
+  const [couponCode, setCouponCode] = useState("");
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponError, setCouponError] = useState("");
+  const [couponSuccess, setCouponSuccess] = useState("");
+  const [discountAmount, setDiscountAmount] = useState(0);
+
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) {
+      setCouponError(
+        t("common.please_enter_coupon_code")
+      );
+      setCouponSuccess("");
+      setDiscountAmount(0);
+      return;
+    }
+
+    setCouponLoading(true);
+    setCouponError("");
+    setCouponSuccess("");
+
+    try {
+      // Temporary loading simulation.
+      // Replace this later with your Django API request.
+      await new Promise((resolve) =>
+        setTimeout(resolve, 1200)
+      );
+
+      const code = couponCode.trim().toUpperCase();
+
+      if (code === "ENOUZA10") {
+        const discount = Number(total) * 0.1;
+
+        setDiscountAmount(discount);
+        setCouponSuccess(
+          t("common.discount_code_applied")
+        );
+      } else {
+        setDiscountAmount(0);
+        setCouponSuccess("");
+        setCouponError(
+          t("common.invalid_discount_code")
+        );
+      }
+    } catch (error) {
+      setDiscountAmount(0);
+      setCouponSuccess("");
+      setCouponError(
+        t("common.invalid_discount_code")
+      );
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const shippingPrice = Number(
+    formData?.shippingPrice || 0
+  );
+
+  const finalTotal =
+    Number(total || 0) +
+    shippingPrice -
+    discountAmount;
+
   return (
     <Container>
-      <div className='header-container'>
-           
-       
+      <div className="header-container">
         <div>
-          <span className='checkout'> ENOUZA - {t("common.checkout")} </span>
+          <span className="checkout">
+            ENOUZA — {t("common.checkout")}
+          </span>
         </div>
       </div>
-      
-      <Wrraper>
 
+      <Wrapper>
         <div className="product-container">
-          
-            {cartItems?.map((item, index) => {
-              return (
-                <div className="child-container" key = {index}>
-                  
-                    <div className='img-container'>
-                      <img src={item.selectedSku.attributes[item.selectedSku.colorKey].image} alt={item.selectedSku.colorKey} />
+          {cartItems?.map((item, index) => {
+            const image =
+              item?.selectedSku?.attributes?.[
+                item?.selectedSku?.colorKey
+              ]?.image;
 
-                      <div className="quantity">
-                      <span>{item.quantity}</span>
-                    </div>
+            const productName =
+              item?.name?.[i18n.language] ||
+              item?.name?.[
+                i18n.language?.split("-")[0]
+              ] ||
+              item?.name?.en ||
+              "";
 
-                    </div>
+            return (
+              <div
+                className="child-container"
+                key={
+                  item?.id
+                    ? `${item.id}-${item?.selectedSku?.sku || index}`
+                    : index
+                }
+              >
+                <div className="img-container">
+                  {image && (
+                    <img
+                      src={image}
+                      alt={
+                        item?.selectedSku?.colorKey ||
+                        productName ||
+                        "Product"
+                      }
+                    />
+                  )}
 
-                   
-                  
-                  <span className="product-title">{item?.name[i18n.language]? item?.name[i18n.language]:item?.name["en"]}</span>
-                  <span className='price'>€{(item?.price * item.quantity).toFixed(2)}</span>
-                  
-                  {/*products?.find(product => product.id === item.id)?.sizes[item.selectedSize]*/}
+                  <div className="quantity">
+                    <span>{item.quantity}</span>
+                  </div>
                 </div>
-                
-              )
-            })}
-       
+
+                <span className="product-title">
+                  {productName}
+                </span>
+
+                <span className="price">
+                  €
+                  {(
+                    Number(item?.price || 0) *
+                    Number(item?.quantity || 0)
+                  ).toFixed(2)}
+                </span>
+              </div>
+            );
+          })}
         </div>
 
-        <div className='discount' dir = {i18n.language === "ar" ? "rtl":"ltr"}>
-          <input type="text" placeholder={t("common.enterCouponCode")} />
-          <button   disabled={true} style={{ opacity:"0.8", cursor:"not-allowed"}} type="button"> {t("common.apply")} </button>
-        </div>
+        <div
+          className="discount-wrapper"
+          dir={
+            i18n.language?.startsWith("ar")
+              ? "rtl"
+              : "ltr"
+          }
+        >
+          <div className="discount">
+            <input
+              type="text"
+              value={couponCode}
+              onChange={(e) => {
+                setCouponCode(e.target.value);
+                setCouponError("");
+                setCouponSuccess("");
+                setDiscountAmount(0);
+              }}
+              placeholder={t(
+                "common.enterCouponCode"
+              )}
+              disabled={couponLoading}
+            />
 
-        <Totals dir = {i18n.language === "ar" ? "rtl":"ltr"}>
-        <div>
-              <span>
-                {t("common.subtotal")}
-              </span>
-              <span>
-              €{total}
-              </span>
-            </div>
-            <div>
-              <span>
-                {t("common.shipping")}
-              </span>
-              <span>
-              €{Number(formData.shippingPrice).toFixed(2)}
-              </span>
-            </div>
-          <div className='Total-price'>
-            <span>
-              {t("common.total")}
+            <button
+              type="button"
+              onClick={handleApplyCoupon}
+              disabled={couponLoading}
+            >
+              {couponLoading ? (
+                <CircularProgress
+                  size={18}
+                  thickness={5}
+                  sx={{
+                    color: "#ffffff",
+                  }}
+                />
+              ) : (
+                t("common.apply")
+              )}
+            </button>
+          </div>
+
+          {couponError && (
+            <span className="coupon-error">
+              {couponError}
             </span>
+          )}
+
+          {couponSuccess && (
+            <span className="coupon-success">
+              {couponSuccess}
+            </span>
+          )}
+        </div>
+
+        <Totals
+          dir={
+            i18n.language?.startsWith("ar")
+              ? "rtl"
+              : "ltr"
+          }
+        >
+          <div>
+            <span>{t("common.subtotal")}</span>
+
             <span>
-            €{(Number(total) + Number(formData.shippingPrice)).toFixed(2)}
+              €{Number(total || 0).toFixed(2)}
+            </span>
+          </div>
+
+          <div>
+            <span>{t("common.shipping")}</span>
+
+            <span>
+              €{shippingPrice.toFixed(2)}
+            </span>
+          </div>
+
+          {discountAmount > 0 && (
+            <div className="discount-total">
+              <span>
+                {t("common.discount")}
+              </span>
+
+              <span>
+                -€{discountAmount.toFixed(2)}
+              </span>
+            </div>
+          )}
+
+          <div className="Total-price">
+            <span>{t("common.total")}</span>
+
+            <span>
+              €{finalTotal.toFixed(2)}
             </span>
           </div>
         </Totals>
-        
-      </Wrraper>   
+      </Wrapper>
     </Container>
-  )
+  );
 }
 
-export default ProductCart
+export default ProductCart;
+
+
+/* =========================
+   CHECKOUT CONTAINER
+========================= */
 
 const Container = styled.div`
   position: sticky;
   top: 0;
 
   height: 100vh;
-  background: #f7f5f0;
 
   display: flex;
   flex-direction: column;
 
+  background: #f7f5f0;
   border-left: 1px solid #e4ded4;
 
   .checkout {
     color: #1d1c1a;
+
     font-size: 17px;
     font-weight: 500;
+
     letter-spacing: 1.2px;
     text-transform: uppercase;
   }
@@ -126,9 +288,9 @@ const Container = styled.div`
     align-items: center;
 
     padding: 0 5%;
-    border-bottom: 1px solid #e4ded4;
 
     background: #f7f5f0;
+    border-bottom: 1px solid #e4ded4;
   }
 
   .header-container > div {
@@ -137,11 +299,12 @@ const Container = styled.div`
 
   @media (max-width: 900px) {
     position: relative;
+
     height: auto;
     min-height: auto;
 
-    border-left: none;
     border-top: 1px solid #e4ded4;
+    border-left: none;
 
     .header-container {
       min-height: 68px;
@@ -166,7 +329,13 @@ const Container = styled.div`
     }
   }
 `;
-const Wrraper = styled.div`
+
+
+/* =========================
+   CONTENT
+========================= */
+
+const Wrapper = styled.div`
   width: 100%;
   max-width: 620px;
 
@@ -176,15 +345,14 @@ const Wrraper = styled.div`
   box-sizing: border-box;
 
   .product-container {
-    background: transparent;
+    max-height: 320px;
+
+    overflow-y: auto;
 
     border-top: 1px solid #e4ded4;
     border-bottom: 1px solid #e4ded4;
 
     padding: 4px 0;
-
-    overflow-y: auto;
-    max-height: 320px;
 
     scrollbar-width: thin;
     scrollbar-color: #ded4c4 transparent;
@@ -221,21 +389,21 @@ const Wrraper = styled.div`
 
   .img-container {
     position: relative;
+
     width: 74px;
     height: 88px;
 
     background: #ffffff;
     border: 1px solid #e4ded4;
-
-    overflow: visible;
   }
 
   .product-container img {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
     display: block;
+
+    object-fit: cover;
   }
 
   .quantity {
@@ -264,7 +432,7 @@ const Wrraper = styled.div`
   }
 
   .product-title {
-    width: 100%;
+    min-width: 0;
 
     color: #1d1c1a;
 
@@ -275,7 +443,6 @@ const Wrraper = styled.div`
 
     overflow: hidden;
     text-overflow: ellipsis;
-
     white-space: nowrap;
   }
 
@@ -288,33 +455,36 @@ const Wrraper = styled.div`
     white-space: nowrap;
   }
 
+
+  /* =========================
+     DISCOUNT
+  ========================= */
+
+  .discount-wrapper {
+    margin: 28px 0;
+  }
+
   .discount {
     display: flex;
-
-    margin: 28px 0;
-
-    padding: 0;
-
-    background: transparent;
+    align-items: center;
   }
 
   .discount input {
     flex: 1;
+    min-width: 0;
 
     height: 52px;
 
     padding: 0 16px;
 
     background: #ffffff;
-
-    border: 1px solid #e4ded4;
-    border-right: none;
-
-    border-radius: 0;
-
     color: #1d1c1a;
 
     font-size: 16px;
+
+    border: 1px solid #e4ded4;
+    border-inline-end: none;
+    border-radius: 0;
 
     outline: none;
 
@@ -330,15 +500,17 @@ const Wrraper = styled.div`
   }
 
   .discount button {
+    width: 105px;
     height: 52px;
 
-    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background: #1d1c1a;
     color: #ffffff;
 
     border: none;
-    border-radius: 0;
 
     font-size: 12px;
     font-weight: 500;
@@ -347,14 +519,41 @@ const Wrraper = styled.div`
     text-transform: uppercase;
 
     white-space: nowrap;
+    cursor: pointer;
 
-    transition: all 0.25s ease;
+    transition: background 0.25s ease;
+  }
+
+  .discount button:not(:disabled):hover {
+    background: #3a332d;
   }
 
   .discount button:disabled {
-    opacity: 0.45 !important;
-    cursor: not-allowed !important;
+    opacity: 0.65;
+    cursor: not-allowed;
   }
+
+  .coupon-error,
+  .coupon-success {
+    display: block;
+
+    margin-top: 9px;
+
+    font-size: 12px;
+  }
+
+  .coupon-error {
+    color: #b85c5c;
+  }
+
+  .coupon-success {
+    color: #5d7a5d;
+  }
+
+
+  /* =========================
+     MOBILE
+  ========================= */
 
   @media (max-width: 900px) {
     max-width: none;
@@ -394,18 +593,20 @@ const Wrraper = styled.div`
       font-size: 13px;
     }
 
-    .discount {
+    .discount-wrapper {
       margin: 24px 0;
     }
 
     .discount input {
       height: 50px;
-      min-width: 0;
 
       padding: 0 12px;
+
+      font-size: 16px;
     }
 
     .discount button {
+      width: auto;
       height: 50px;
 
       padding: 0 14px;
@@ -414,6 +615,12 @@ const Wrraper = styled.div`
     }
   }
 `;
+
+
+/* =========================
+   TOTALS
+========================= */
+
 const Totals = styled.div`
   margin-top: 10px;
 
@@ -426,8 +633,8 @@ const Totals = styled.div`
 
   & > div {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 9px 0;
 
@@ -441,8 +648,13 @@ const Totals = styled.div`
     font-weight: 400;
   }
 
+  .discount-total span:last-child {
+    color: #5d7a5d;
+  }
+
   .Total-price {
     margin-top: 12px;
+
     padding: 18px 0 14px;
 
     border-top: 1px solid #e4ded4;
@@ -469,6 +681,7 @@ const Totals = styled.div`
 
     .Total-price {
       margin-top: 10px;
+
       padding-top: 16px;
 
       font-size: 16px;
@@ -479,3 +692,4 @@ const Totals = styled.div`
     }
   }
 `;
+

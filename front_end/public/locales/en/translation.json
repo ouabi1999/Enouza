@@ -656,7 +656,10 @@
     "please_enter_your_phone": "Enter phone number",
     "please_enter_your_birthdate": "Enter birthdate",
     "pleaseSelectShippingMethod": "Please select a shipping method.",
-
+     "please_enter_coupon_code": "Please enter a coupon code",
+    "invalid_discount_code": "Invalid discount code",
+    "discount_code_applied": "Discount code applied",
+    "discount": "Discount",
     "error_invalid_birthdate": "Birthdate can't be in future",
     "error_max_name_characters": "Name too long",
     "error_min_password_characters": "Password too short",

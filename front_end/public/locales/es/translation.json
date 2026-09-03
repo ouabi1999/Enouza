@@ -652,7 +652,11 @@
     "please_enter_your_country": "Selecciona país",
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa número de teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento"
+    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
+    "please_enter_coupon_code": "Por favor, introduce un código de descuento",
+    "invalid_discount_code": "Código de descuento no válido",
+    "discount_code_applied": "Código de descuento aplicado",
+    "discount": "Descuento"
     
     
   },
