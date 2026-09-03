@@ -296,7 +296,7 @@ const Container = styled.div`
 
     border: 1px solid #1d1c1a;
 
-    background: #4e4a41;
+    background: #000000;
 
     color: #ffffff;
 

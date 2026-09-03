@@ -287,10 +287,15 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    padding: 0 5%;
+    padding: 0 15%;
 
     background: #f7f5f0;
     border-bottom: 1px solid #e4ded4;
+     font-family:
+      "Playfair Display",
+      "Cormorant Garamond",
+      Georgia,
+      serif !important;
   }
 
   .header-container > div {
@@ -412,19 +417,19 @@ const Wrapper = styled.div`
     top: -8px;
     right: -8px;
 
-    min-width: 22px;
-    height: 22px;
+    min-width: 18px;
+    height: 18px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0 5px;
+    padding: 0 2px;
 
     background: #1d1c1a;
     color: #ffffff;
 
-    border: 2px solid #f7f5f0;
+    border: 2px solid #ffffff;
     border-radius: 50%;
 
     font-size: 11px;
