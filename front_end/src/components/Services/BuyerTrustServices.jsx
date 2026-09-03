@@ -37,9 +37,7 @@ const BuyerTrustServices = ({ divRef }) => {
         </ServiceTitle>
 
         <ServiceDescription>
-          {t(
-            "buyerTrustServices.worldwide_shipping.description"
-          )}
+          {t("buyerTrustServices.worldwide_shipping.description")}
         </ServiceDescription>
       </Service>
 
@@ -63,15 +61,11 @@ const BuyerTrustServices = ({ divRef }) => {
         </IconWrapper>
 
         <ServiceTitle>
-          {t(
-            "buyerTrustServices.Shop_with_confidence.title"
-          )}
+          {t("buyerTrustServices.Shop_with_confidence.title")}
         </ServiceTitle>
 
         <ServiceDescription>
-          {t(
-            "buyerTrustServices.Shop_with_confidence.description"
-          )}
+          {t("buyerTrustServices.Shop_with_confidence.description")}
         </ServiceDescription>
       </Service>
     </Container>
@@ -89,7 +83,7 @@ const Container = styled.section`
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   background: #faf9f6;
 
@@ -98,13 +92,21 @@ const Container = styled.section`
 
   box-sizing: border-box;
 
+
+  /* ===============================
+     TABLET — 2 COLUMNS
+  =============================== */
+
   @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
+
+  /* ===============================
+     MOBILE — 1 COLUMN
+  =============================== */
+
+ 
 `;
 
 
@@ -115,16 +117,28 @@ const Container = styled.section`
 const Service = styled.div`
   position: relative;
 
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  padding: 32px 20px;
-
   text-align: center;
 
-  /* DESKTOP — 3 separators */
+  padding: 32px 20px;
+
+  box-sizing: border-box;
+
+
+  /* =====================================================
+     DESKTOP — 4 COLUMNS
+
+     Vertical separators:
+     1 | 2 | 3 | 4
+  ===================================================== */
+
   &:not(:last-child)::after {
     content: "";
 
@@ -134,35 +148,80 @@ const Service = styled.div`
     inset-inline-end: 0;
 
     width: 1px;
-    height: 46px;
+    height: 52px;
 
     transform: translateY(-50%);
 
     background: #ddd6cd;
   }
 
-  /* TABLET — 2 columns */
+
+  /* =====================================================
+     TABLET — 2 × 2
+
+     1 | 2
+     -----
+     3 | 4
+  ===================================================== */
+
   @media (max-width: 900px) {
-    &:nth-child(2n)::after {
+
+    /* Remove desktop separators first */
+    &::after {
       display: none;
     }
-  }
 
-  /* MOBILE — horizontal separators */
-  @media (max-width: 600px) {
-    &:not(:last-child)::after {
-      top: auto;
-      bottom: 0;
-      inset-inline-end: 50%;
 
-      width: 60px;
-      height: 1px;
+    /*
+      Vertical separator only
+      after item 1 and item 3
+    */
 
-      transform: translateX(50%);
+    &:nth-child(odd)::after {
+      content: "";
 
       display: block;
+
+      position: absolute;
+
+      top: 50%;
+      inset-inline-end: 0;
+
+      width: 1px;
+      height: 52px;
+
+      transform: translateY(-50%);
+
+      background: #ddd6cd;
+    }
+
+
+    /*
+      Horizontal separator
+      after first row
+    */
+
+    &:nth-child(-n + 2)::before {
+      content: "";
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 50%;
+
+      width: 65%;
+
+      height: 1px;
+
+      transform: translateX(-50%);
+
+      background: #e5dfd7;
     }
   }
+
+
+ 
 `;
 
 
@@ -177,6 +236,8 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 
   margin-bottom: 13px;
 
@@ -197,6 +258,18 @@ const IconWrapper = styled.div`
 
   ${Service}:hover & .icon {
     transform: translateY(-2px);
+  }
+
+
+  @media (max-width: 600px) {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 11px;
+
+    .icon {
+      font-size: 19px;
+    }
   }
 `;
 
@@ -222,6 +295,11 @@ const ServiceTitle = styled.span`
   line-height: 1.2;
 
   letter-spacing: 0.02em;
+
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
 `;
 
 
@@ -230,7 +308,7 @@ const ServiceTitle = styled.span`
 ========================================================= */
 
 const ServiceDescription = styled.p`
-  width: min(148px, 100%);
+  width: min(160px, 100%);
 
   margin: 0;
 
@@ -245,4 +323,11 @@ const ServiceDescription = styled.p`
   letter-spacing: 0.04em;
 
   text-align: center;
+
+
+  @media (max-width: 600px) {
+    width: min(240px, 100%);
+
+    font-size: 10px;
+  }
 `;

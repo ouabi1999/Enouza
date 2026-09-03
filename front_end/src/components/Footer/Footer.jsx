@@ -185,26 +185,25 @@ const Footer = () => {
             BOTTOM BAR
         ===================================================== */}
 
-        <BottomBar >
+        <BottomBar>
 
-         
-           
-          <SecureText>
-            <GppGoodIcon style={{fontSize: "1.2rem", }}/>
-            {t("footer.payment.secure")}
-          </SecureText>
+  <SecureText>
+    <GppGoodIcon style={{ fontSize: "1.2rem" }} />
+    {t("footer.payment.secure")}
+  </SecureText>
 
-          <PaymentMethodsContainer>
-              <PaymentMethods/>
-          </PaymentMethodsContainer>
+  <PaymentMethodsContainer>
+    <PaymentMethods />
+  </PaymentMethodsContainer>
 
-           <bdi>
-            <Copyright>
-            © {new Date().getFullYear()} Enouza.{" "}
-            {t("footer.newsletter.all_rights_reserved")}
-          </Copyright>
-          </bdi>
-        </BottomBar>
+  <bdi>
+    <Copyright>
+      © {new Date().getFullYear()} Enouza.{" "}
+      {t("footer.newsletter.all_rights_reserved")}
+    </Copyright>
+  </bdi>
+
+</BottomBar>
 
       </MainFooter>
 
@@ -641,49 +640,24 @@ const SocialMark = styled.span`
 
 
 /* =========================================================
-   BOTTOM BAR
-========================================================= */
-
-const BottomBar = styled.div`
-  min-height: 82px;
-  width: 100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 30px;
-
-  @media (max-width: 750px) {
-    min-height: auto;
-
-    padding: 25px 0;
-
-    grid-template-columns: 1fr;
-
-    justify-items: center;
-
-    gap: 18px;
-  }
-`;
-
-
-/* =========================================================
    COPYRIGHT
 ========================================================= */
 
 const Copyright = styled.span`
-  color: #99948b;
+  font-family: Georgia, serif;
 
   font-size: 10px;
 
-  line-height: 1.5;
+  letter-spacing: 0.4px;
 
-  text-align: start;
+  color: #77736b;
+
+  white-space: nowrap;
 
   @media (max-width: 750px) {
-    text-align: center;
+    white-space: normal;
   }
 `;
-
 
 /* =========================================================
    PAYMENTS
@@ -705,23 +679,24 @@ const PaymentMethodsContainer = styled.div`
 ========================================================= */
 
 const SecureText = styled.div`
-  justify-self: end;
-
   display: flex;
-  
   align-items: center;
 
-  gap: 2px;
+  gap: 7px;
 
-  color: #99948b;
+  font-family: Georgia, serif;
 
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 400;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 1.3px;
 
+  text-transform: uppercase;
 
-  @media (max-width: 750px) {
-    justify-self: center;
+  color: #716c64;
+
+  svg {
+    color: #b39a76;
   }
 `;
 
@@ -733,3 +708,153 @@ const SecureDot = styled.span`
 
   background: #b8955b;
 `;
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+const BottomBar = styled.div`
+  width: 100%;
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  padding: 18px 0;
+
+  border-top: 1px solid #e4ded4;
+
+  /* ===============================
+     SECURE PAYMENT
+  =============================== */
+
+  ${SecureText} {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    white-space: nowrap;
+  }
+
+
+  /* ===============================
+     PAYMENT METHODS
+  =============================== */
+
+  ${PaymentMethodsContainer} {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+
+    min-width: 0;
+  }
+
+
+  /* ===============================
+     COPYRIGHT
+  =============================== */
+
+  bdi {
+    flex: 1;
+
+    display: flex;
+    justify-content: flex-end;
+
+    text-align: end;
+  }
+
+
+  /* ===============================
+     TABLET
+  =============================== */
+
+  @media (max-width: 900px) {
+    gap: 18px;
+
+    ${SecureText} {
+      font-size: 10px;
+    }
+
+    ${Copyright} {
+      font-size: 10px;
+    }
+  }
+
+
+  /* ===============================
+     MOBILE
+  =============================== */
+
+  @media (max-width: 900px) {
+    min-height: auto;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 24px 0;
+
+    text-align: center;
+
+
+    ${SecureText} {
+      flex: none;
+
+      width: 100%;
+
+      justify-content: center;
+
+      white-space: normal;
+    }
+
+
+    ${PaymentMethodsContainer} {
+      flex: none;
+
+      width: 100%;
+
+      justify-content: center;
+    }
+
+
+    bdi {
+      flex: none;
+
+      width: 100%;
+
+      justify-content: center;
+
+      text-align: center;
+    }
+  }
+
+
+  /* ===============================
+     SMALL MOBILE
+  =============================== */
+
+  @media (max-width: 400px) {
+    gap: 14px;
+
+    padding: 20px 0;
+
+    ${SecureText} {
+      font-size: 9px;
+    }
+
+    ${Copyright} {
+      font-size: 9px;
+    }
+  }
+`;
+
