@@ -254,7 +254,7 @@ const Wrraper = styled.div`
     @media only screen and (max-width: 500px){
       &{
         width:95%;
-        font-size:12px;
+        font-size:16px;
       }
     
     }
