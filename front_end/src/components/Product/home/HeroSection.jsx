@@ -41,7 +41,7 @@ export default function HeroSection() {
     <HeroBox $rtl={isRTL}>
       <HeroContainer>
         {/* LEFT / TEXT SIDE */}
-        <Content>
+        <Content dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
           <Title>{t("heroSection.title")}</Title>
 
           <Description>{t("heroSection.description")}</Description>
@@ -96,10 +96,11 @@ export default function HeroSection() {
             <ShopButton
               to={`/product/${product.id}`}
               $rtl={isRTL}
+              dir = {i18n.dir() === "rtl"? "rtl": "ltr"}
             >
               <span>{t("heroSection.ctaLabel")}</span>
 
-              <Arrow $rtl={isRTL}>
+              <Arrow $rtl={isRTL} >
                 <ArrowForwardIcon />
               </Arrow>
             </ShopButton>
@@ -163,7 +164,6 @@ const HeroBox = styled.section`
 
   color: #1a1917;
 
-  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
 
   @media (max-width: 1100px) {
     padding: 48px 28px;

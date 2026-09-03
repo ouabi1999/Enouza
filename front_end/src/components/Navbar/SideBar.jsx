@@ -27,7 +27,7 @@ function SideBar(props) {
       onClickAway={props.hideSideBarMenu}
 
     >
-      <Container>
+      <Container dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
         <div className="first-section">
           <DisabledByDefaultIcon onClick={props.hideSideBarMenu} />
           <User_container>

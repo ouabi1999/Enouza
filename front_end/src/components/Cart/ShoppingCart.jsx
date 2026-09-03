@@ -35,7 +35,7 @@ function ShoppingCart() {
   const isRTL = i18n.dir() === "rtl";
 
   return (
-    <Container dir={isRTL ? "rtl" : "ltr"}>
+    <Container>
       <HeadeSeo title="Enouza - Shopping Cart" />
 
       {/* =====================================================
@@ -74,7 +74,7 @@ function ShoppingCart() {
               PRODUCTS
           ================================================= */}
 
-          <Wrapper>
+          <Wrapper dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
             {cartItems?.map((item, index) => {
               const productName =
                 item?.name?.[i18n.language] ||

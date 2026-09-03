@@ -40,7 +40,8 @@ const DesignContainer = styled(Container)`
 
   position: relative;
 
-  padding: 7rem 2rem !important;
+padding: 54px 32px;
+
 
   background: ${COLORS.cream};
 
@@ -153,7 +154,7 @@ const Arrow = styled.span`
   svg{
    font-size: 10px;
   }
-  transform: ${({ $rtl }) =>
+   transform: ${({ $rtl }) =>
     $rtl ? "rotate(180deg)" : "none"};
 
   
@@ -201,13 +202,7 @@ const CollectionButton = styled(Link)`
     bottom: 30px;
     font-size: 0.7rem;
 
-    /* RTL fix for mobile */
-    [dir="rtl"] & {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%); /* mirror the centering */
-    }
-  }
+  
 
   @media (max-width: 420px) {
     bottom: 24px;
@@ -221,6 +216,7 @@ const CollectionButton = styled(Link)`
 // ==========================================
 
 const DesignPrinciple = styled(Box)`
+padding: 0.5rem 0;
   position: relative;
 
   display: flex;
@@ -250,10 +246,7 @@ const DesignPrinciple = styled(Box)`
     margin-bottom: 0;
   }
 
-  /* RTL movement */
-  [dir="rtl"] &:hover {
-    transform: translateX(-3px);
-  }
+  
 
   @media (max-width: 600px) {
     margin-bottom: 2rem;
@@ -358,94 +351,7 @@ const Slide = styled.div`
 `;
 
 
-// ==========================================
-// OPTIONAL: IMAGE
-// ==========================================
 
-const ProductImage = styled.img`
-  width: 100%;
-
-  max-height: 580px;
-
-  display: block;
-
-  object-fit: cover;
-
-  border-radius: 3px;
-
-  transition: transform 0.8s ease;
-`;
-
-
-// ==========================================
-// MOBILE TYPOGRAPHY HELPERS
-// ==========================================
-
-const DesignTitle = styled(Typography)`
-  color: ${COLORS.ink};
-
-  font-family:
-    "Playfair Display",
-    "Times New Roman",
-    Georgia,
-    serif !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1.15 !important;
-
-  letter-spacing: -0.025em !important;
-
-  @media (max-width: 600px) {
-    font-size: 2rem !important;
-
-    margin-bottom: 3rem !important;
-  }
-`;
-
-
-// ==========================================
-// PRINCIPLE TITLE
-// ==========================================
-
-const PrincipleTitle = styled(Typography)`
-  color: ${COLORS.ink};
-
-  margin-bottom: 0.55rem !important;
-
-  font-size: 0.98rem !important;
-
-  font-weight: 600 !important;
-
-  line-height: 1.35 !important;
-
-  letter-spacing: 0.01em;
-
-  @media (max-width: 600px) {
-    font-size: 0.92rem !important;
-  }
-`;
-
-
-// ==========================================
-// PRINCIPLE DESCRIPTION
-// ==========================================
-
-const PrincipleDescription = styled(Typography)`
-  color: ${COLORS.muted};
-
-  font-size: 0.84rem !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1.75 !important;
-
-  @media (max-width: 600px) {
-    font-size: 0.8rem !important;
-
-    line-height: 1.7 !important;
-  }
-`;
 
 // ==========================================
 // COMPONENT
@@ -515,22 +421,23 @@ const DesignSection = () => {
   // ========================================
 
   return (
-    <DesignContainer maxWidth={false}>
+    <DesignContainer maxWidth={false}  >
       <DesignGrid
         container
         spacing={6}
         wrap="wrap-reverse"
+        
       >
 
         {/* ==================================
             PRODUCT IMAGE SLIDER
         ================================== */}
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} > 
           {productList.length > 0 ? (
-            <ImageWrapper>
+            <ImageWrapper >
 
-              <Slider {...settings}>
+              <Slider {...settings} >
                 {productList.map((item, index) => {
                   const image =
                     item?.multimediaInfo?.image_urls
@@ -542,7 +449,7 @@ const DesignSection = () => {
                   }
 
                   return (
-                    <div key={item?.id || index}>
+                    <div key={item?.id || index} >
                       <img
                         src={image}
                         alt={
@@ -569,7 +476,7 @@ const DesignSection = () => {
                   DISCOVER COLLECTION
               ================================== */}
 
-              <CollectionButton dir = {i18n.language === "ar"? "rtl": "ltr"}
+              <CollectionButton dir = {i18n.dir() === "rtl"? "rtl": "ltr"}
                 as={Link}
                 to="/collections"
               >
@@ -613,7 +520,7 @@ const DesignSection = () => {
             DESIGN CONTENT
         ================================== */}
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
 
           <Typography
             variant="h3"

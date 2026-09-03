@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 function ProductSubtotal(props) {
   const navigate = useNavigate();
-
+ const { t, i18n } = useTranslation()
   const navigateTo = () => {
     navigate("/checkout");
   };
@@ -17,7 +17,7 @@ function ProductSubtotal(props) {
     ) || 0;
 
   return (
-    <Container>
+    <Container dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}>
       <Summary>
 
         {/* HEADER */}
