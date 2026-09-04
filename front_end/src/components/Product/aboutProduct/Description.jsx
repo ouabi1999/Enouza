@@ -17,7 +17,7 @@ function Description() {
   if (!description?.trim()) return null;
 
   return (
-    <Container>
+    <Container dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}>
       <SectionHeader>
         <Eyebrow>ENOUZA</Eyebrow>
 
