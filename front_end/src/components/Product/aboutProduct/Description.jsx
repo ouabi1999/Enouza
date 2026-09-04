@@ -231,6 +231,7 @@ const DescriptionContent = styled.div`
 
   ul,
   ol {
+    margin: 16px 0;
     padding-left: 24px;
   }
 
