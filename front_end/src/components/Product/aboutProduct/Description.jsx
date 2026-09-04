@@ -16,8 +16,10 @@ function Description() {
 
   if (!description?.trim()) return null;
 
+  const isArabic = i18n.language?.startsWith("ar");
+
   return (
-    <Container dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}>
+    <Container>
       <SectionHeader>
         <Eyebrow>ENOUZA</Eyebrow>
 
@@ -32,6 +34,7 @@ function Description() {
       </SectionHeader>
 
       <DescriptionContent
+        dir={isArabic ? "rtl" : "ltr"}
         dangerouslySetInnerHTML={{
           __html: description,
         }}
@@ -49,6 +52,7 @@ export default Description;
 const Container = styled.section`
   width: 100%;
   max-width: 1180px;
+
   margin: 0 auto;
   padding: 54px 32px 64px;
 
@@ -92,10 +96,7 @@ const Eyebrow = styled.span`
 
   color: #a88a62;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   font-size: 8px;
   font-weight: 500;
@@ -144,10 +145,7 @@ const DescriptionContent = styled.div`
 
   color: #514a42;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   font-size: 15px;
   font-weight: 400;
@@ -190,7 +188,6 @@ const DescriptionContent = styled.div`
       serif;
 
     font-weight: 500;
-
     line-height: 1.25;
 
     letter-spacing: 0.01em;
@@ -254,10 +251,7 @@ const DescriptionContent = styled.div`
     figcaption {
       color: #9a8d7f;
 
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
 
       font-size: 8px;
       line-height: 1.5;
@@ -268,13 +262,13 @@ const DescriptionContent = styled.div`
   }
 
   /* =======================================================
-     LISTS
+     LISTS — RTL + LTR SUPPORT
   ======================================================= */
 
   ul,
   ol {
     margin: 16px 0;
-    padding-left: 24px;
+    padding-inline-start: 24px;
   }
 
   ul {
@@ -284,14 +278,14 @@ const DescriptionContent = styled.div`
       position: relative;
 
       margin-bottom: 7px;
-      padding-left: 16px;
+      padding-inline-start: 16px;
 
       &::before {
         content: "";
 
         position: absolute;
 
-        left: 0;
+        inset-inline-start: 0;
         top: 0.78em;
 
         width: 3px;
@@ -304,10 +298,8 @@ const DescriptionContent = styled.div`
     }
   }
 
-  ol {
-    li {
-      margin-bottom: 7px;
-    }
+  ol li {
+    margin-bottom: 7px;
   }
 
   li {
@@ -338,8 +330,7 @@ const DescriptionContent = styled.div`
 
     text-decoration: none;
 
-    border-bottom: 1px solid
-      rgba(168, 138, 98, 0.35);
+    border-bottom: 1px solid rgba(168, 138, 98, 0.35);
 
     transition:
       color 0.2s ease,
@@ -347,7 +338,6 @@ const DescriptionContent = styled.div`
 
     &:hover {
       color: #5f4b35;
-
       border-color: #8f7655;
     }
   }
@@ -359,9 +349,10 @@ const DescriptionContent = styled.div`
   blockquote {
     margin: 22px 0;
 
-    padding: 5px 0 5px 20px;
+    padding: 5px 0;
+    padding-inline-start: 20px;
 
-    border-left: 1px solid #b39a76;
+    border-inline-start: 1px solid #b39a76;
 
     color: #62584e;
 
@@ -372,7 +363,6 @@ const DescriptionContent = styled.div`
       serif;
 
     font-size: 20px;
-
     font-style: italic;
 
     line-height: 1.55;
@@ -404,13 +394,9 @@ const DescriptionContent = styled.div`
 
     border-collapse: collapse;
 
-    font-family:
-      Arial,
-      Helvetica,
-      sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 12px;
-
     line-height: 1.5;
   }
 
@@ -420,7 +406,7 @@ const DescriptionContent = styled.div`
 
     border-bottom: 1px solid #e4ded6;
 
-    text-align: left;
+    text-align: start;
     vertical-align: top;
   }
 
@@ -431,7 +417,6 @@ const DescriptionContent = styled.div`
     font-weight: 600;
 
     letter-spacing: 0.08em;
-
     text-transform: uppercase;
   }
 
@@ -440,12 +425,11 @@ const DescriptionContent = styled.div`
   }
 
   /* =======================================================
-     MOBILE
+     TABLET
   ======================================================= */
 
   @media (max-width: 768px) {
     font-size: 15px;
-
     line-height: 1.7;
 
     p {
@@ -469,8 +453,6 @@ const DescriptionContent = styled.div`
     }
 
     img {
-      max-width: 100%;
-
       margin: 22px auto;
     }
 
@@ -481,7 +463,7 @@ const DescriptionContent = styled.div`
     blockquote {
       margin: 20px 0;
 
-      padding-left: 16px;
+      padding-inline-start: 16px;
 
       font-size: 18px;
     }
@@ -505,16 +487,15 @@ const DescriptionContent = styled.div`
 
   @media (max-width: 480px) {
     font-size: 14.5px;
-
     line-height: 1.68;
 
     ul,
     ol {
-      padding-left: 21px;
+      padding-inline-start: 21px;
     }
 
     ul li {
-      padding-left: 14px;
+      padding-inline-start: 14px;
     }
 
     h1 {

@@ -41,7 +41,7 @@ function PaymentMethods() {
         />
 
         <PaymentIcon
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370951/apple_pay_icon_195995_uv2rkw.png"
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788514961/applepay_logo_icon_247576_rcv5ud.svg"
           alt="Apple Pay"
         />
       </PaymentRow>
@@ -67,7 +67,7 @@ const Container = styled.div`
 
 const PaymentRow = styled.div`
   width: 100%;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,8 +97,8 @@ const PaymentRow = styled.div`
 const PaymentIcon = styled.img`
   display: block;
 
-  width: auto;
-  height: 28px;
+  width: 45px;
+  height: 45px;
 
   max-width: 52px;
 
@@ -120,13 +120,15 @@ const PaymentIcon = styled.img`
 
 
   @media (max-width: 750px) {
-    height: 24px;
+    height: 30px;
+    width:30px;
     max-width: 46px;
   }
 
 
   @media (max-width: 420px) {
-    height: 21px;
+    height: 30px;
+    width:30px;
     max-width: 40px;
   }
 `;

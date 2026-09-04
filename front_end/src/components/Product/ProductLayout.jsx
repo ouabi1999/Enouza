@@ -77,7 +77,7 @@ function ProductLayout({
   const isRTL = i18n.dir() === "rtl";
  
   return (
-    <Section dir = {"ltr"}>
+    <Section>
       <ProductGrid>
 
         <ImageSide>

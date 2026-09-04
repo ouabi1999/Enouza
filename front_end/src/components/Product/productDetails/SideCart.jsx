@@ -27,7 +27,7 @@ function SideCart(props) {
   const country = useSelector((state) => state.location.country);
   const productData = useSelector((state) => state.product.productData);
 
-  const { t } = useTranslation();
+  const { t , i18n} = useTranslation();
 
   const today = new Date();
   let date1 = new Date(today);
@@ -121,8 +121,9 @@ function SideCart(props) {
               </ShippingValue>
             </ShippingContent>
           </ShippingLeft>
-
-          <ShippingChangeButton
+          
+          {/*
+          <ShippingChangeButton 
             type="button"
             onClick={() =>
               setIsPopUpShippingOpen(!isPopUpShippingOpen)
@@ -131,7 +132,9 @@ function SideCart(props) {
           >
             <ArrowForwardIosOutlinedIcon />
           </ShippingChangeButton>
+          */}
         </ShippingRow>
+          
 
         {/* DELIVERY DATE */}
 
@@ -244,7 +247,7 @@ function SideCart(props) {
       ===================================================== */}
 
       <PurchaseSection>
-        <BuyButton dir = {"ltr"}
+        <BuyButton dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}
           type="button"
           onClick={() =>
             buy_Now_item(
@@ -256,7 +259,7 @@ function SideCart(props) {
           }
         >
           <span>{t("common.buyNow")}</span>
-          <ArrowForwardIosOutlinedIcon />
+          <ArrowForwardIosOutlinedIcon style={ {rotate: i18n.dir() === "ltr" ? "0deg" : "180deg"}} />
         </BuyButton>
 
         <AddButton

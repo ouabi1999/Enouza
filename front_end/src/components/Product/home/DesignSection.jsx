@@ -523,12 +523,14 @@ const DesignSection = () => {
 
         <Grid item xs={12} md={6} dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
 
-          <Typography
+          <Typography align= "center"
             variant="h3"
             sx={{
               color: COLORS.earth,
               mb: 6,
               fontFamily: "'Playfair Display', serif",
+              
+              
               fontSize: {
                 xs: "2rem",
                 md: "2.5rem",

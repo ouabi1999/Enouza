@@ -516,7 +516,6 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 2;
-  min-width: 320px;
   height: 68px;
   display: flex;
   align-items: center;

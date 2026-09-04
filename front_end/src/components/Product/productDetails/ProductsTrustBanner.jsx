@@ -35,9 +35,9 @@ const ProductTrustBanner = () => {
           alt="American Express"
         />
         <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354390/paypal_payment_method_card_icon_142733_mdhwby.svg" alt="PayPal" />
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354252/discover_payment_method_card_icon_142741_y62x9b.svg" alt="PayPal" />
+        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354252/discover_payment_method_card_icon_142741_y62x9b.svg" alt="Discover" />
 
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354905/applepay_logo_icon_247576_e5qbki.svg" alt="Apple Pay" />
+        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788514961/applepay_logo_icon_247576_rcv5ud.svg" alt="Apple Pay" />
       </PaymentMethods>
 
       {/* ================= BENEFITS ================= */}
@@ -118,15 +118,7 @@ const Banner = styled.section`
 
   color: #3d3a36;
 
-  padding: 32px 4% 38px;
-
-  @media (max-width: 900px) {
-    padding: 28px 24px 34px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 24px 16px 30px;
-  }
+  
 `;
 
 
@@ -215,11 +207,10 @@ const PaymentMethods = styled.div`
 
   @media (max-width: 700px) {
 
-    overflow-x: auto;
 
     padding-bottom: 4px;
 
-    gap: 10px;
+    gap: 12px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -228,10 +219,21 @@ const PaymentMethods = styled.div`
     scrollbar-width: none;
 
     img {
-      height: 20px;
-      flex-shrink: 0;
+      height: 34px;
+      width: 34px;
     }
   }
+
+    @media (max-width: 360px) {
+    img {
+    width: 30px;
+    height: 30px;
+
+  }
+    
+    
+    }
+
 `;
 
 
@@ -241,19 +243,13 @@ const PaymentMethods = styled.div`
 
 const TrustGrid = styled.div`
   width: 100%;
-  max-width: 1500px;
 
-  margin: 0 auto;
    margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
 
-  align-items: start;
-
-  @media (max-width: 850px) {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 40px;
-  }
+  
 
   
 `;
@@ -295,11 +291,11 @@ const IconWrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 34px;
+    height: 25px;
     margin-bottom: 10px;
 
-    svg {
-      font-size: 29px;
+    .icons {
+      font-size: 20px;
     }
   }
 `;
@@ -324,7 +320,7 @@ const TrustTitle = styled.div`
   
 
   @media (max-width: 600px) {
-    font-size: 12px;
+    font-size: 8px;
   }
 `;
 
