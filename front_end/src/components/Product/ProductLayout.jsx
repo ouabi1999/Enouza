@@ -77,7 +77,7 @@ function ProductLayout({
   const isRTL = i18n.dir() === "rtl";
  
   return (
-    <Section>
+    <Section >
       <ProductGrid>
 
         <ImageSide>
@@ -220,7 +220,7 @@ const ProductGrid = styled.div`
     gap: 35px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1120px) {
     grid-template-columns: 1fr;
 
     max-width: 680px;
@@ -245,7 +245,7 @@ const ImageSide = styled.div`
 
   min-width: 0;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1120px) {
     position: static;
   }
 `;

@@ -9,9 +9,9 @@ function AboutProductLayout() {
   const { t, i18n } = useTranslation();
 
   return (
-    <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+    <Container>
       <TabsWrapper>
-        <Tabs>
+        <Tabs dir = {i18n.dir() === "rtl" ? "rtl" : "ltr"}>
           <Tab
             type="button"
             $active={isOpen === 1}
@@ -74,7 +74,7 @@ const Tabs = styled.nav`
   align-items: center;
   justify-content: center;
 
-  gap: clamp(28px, 5vw, 70px);
+  gap: clamp(45px, 5vw, 100px);
 
   width: 100%;
 
