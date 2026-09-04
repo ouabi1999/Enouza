@@ -4,19 +4,22 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 function Description() {
-  const productData = useSelector((state) => state.product.productData);
+  const productData = useSelector(
+    (state) => state.product.productData
+  );
+
   const { i18n, t } = useTranslation();
 
   const descriptions = productData?.description;
 
+  const language = i18n.language?.split("-")[0] || "en";
+
   const description =
-    descriptions?.[i18n.language] ||
+    descriptions?.[language] ||
     descriptions?.en ||
     "";
 
   if (!description?.trim()) return null;
-
-  const isArabic = i18n.language?.startsWith("ar");
 
   return (
     <Container>
@@ -34,7 +37,6 @@ function Description() {
       </SectionHeader>
 
       <DescriptionContent
-        dir={isArabic ? "rtl" : "ltr"}
         dangerouslySetInnerHTML={{
           __html: description,
         }}
@@ -52,12 +54,9 @@ export default Description;
 const Container = styled.section`
   width: 100%;
   max-width: 1180px;
-
   margin: 0 auto;
   padding: 54px 32px 64px;
-
   box-sizing: border-box;
-
   color: #3f3932;
 
   @media (max-width: 768px) {
@@ -77,9 +76,7 @@ const SectionHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin-bottom: 38px;
-
   text-align: center;
 
   @media (max-width: 768px) {
@@ -93,11 +90,9 @@ const SectionHeader = styled.div`
 
 const Eyebrow = styled.span`
   margin-bottom: 7px;
-
   color: #a88a62;
 
   font-family: Arial, Helvetica, sans-serif;
-
   font-size: 8px;
   font-weight: 500;
 
@@ -107,7 +102,6 @@ const Eyebrow = styled.span`
 
 const Title = styled.h2`
   margin: 0;
-
   color: #211e1a;
 
   font-family:
@@ -118,18 +112,14 @@ const Title = styled.h2`
 
   font-size: clamp(27px, 3.4vw, 37px);
   font-weight: 400;
-
   line-height: 1.15;
-
   letter-spacing: 0.01em;
 `;
 
 const Accent = styled.span`
   width: 30px;
   height: 1px;
-
   margin-top: 13px;
-
   background: #b39a76;
 `;
 
@@ -140,7 +130,6 @@ const Accent = styled.span`
 const DescriptionContent = styled.div`
   width: 100%;
   max-width: 940px;
-
   margin: 0 auto;
 
   color: #514a42;
@@ -149,14 +138,8 @@ const DescriptionContent = styled.div`
 
   font-size: 15px;
   font-weight: 400;
-
   line-height: 1.72;
-
   letter-spacing: 0.005em;
-
-  /* =======================================================
-     PARAGRAPHS
-  ======================================================= */
 
   p {
     margin: 0 0 15px;
@@ -165,10 +148,6 @@ const DescriptionContent = styled.div`
       margin-bottom: 0;
     }
   }
-
-  /* =======================================================
-     HEADINGS
-  ======================================================= */
 
   h1,
   h2,
@@ -189,7 +168,6 @@ const DescriptionContent = styled.div`
 
     font-weight: 500;
     line-height: 1.25;
-
     letter-spacing: 0.01em;
 
     &:first-child {
@@ -221,27 +199,18 @@ const DescriptionContent = styled.div`
     font-size: 17px;
   }
 
-  /* =======================================================
-     IMAGES
-  ======================================================= */
-
   img {
     display: block;
-
     width: auto;
     max-width: 100%;
     height: auto;
-
     margin: 24px auto;
-
     object-fit: contain;
-
     border-radius: 0;
   }
 
   figure {
     margin: 28px 0;
-
     text-align: center;
 
     img {
@@ -250,65 +219,54 @@ const DescriptionContent = styled.div`
 
     figcaption {
       color: #9a8d7f;
-
       font-family: Arial, Helvetica, sans-serif;
-
       font-size: 8px;
       line-height: 1.5;
-
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
   }
 
-  /* =======================================================
-     LISTS — RTL + LTR SUPPORT
-  ======================================================= */
+  /* LISTS */
 
   ul,
   ol {
-    margin: 16px 0;
-    padding-inline-start: 24px;
+    padding-left: 24px;
   }
 
-  ul {
-    list-style: none;
+
 
     li {
-      position: relative;
+        list-style: initial;
 
+      position: relative;
       margin-bottom: 7px;
-      padding-inline-start: 16px;
+      padding-left: 16px;
 
       &::before {
         content: "";
-
         position: absolute;
-
-        inset-inline-start: 0;
+        left: 0;
         top: 0.78em;
 
         width: 3px;
         height: 3px;
 
         border-radius: 50%;
-
         background: #b39a76;
       }
     }
   }
 
-  ol li {
-    margin-bottom: 7px;
+  ol {
+    li {
+      margin-bottom: 7px;
+    }
   }
 
   li {
     line-height: 1.65;
   }
-
-  /* =======================================================
-     EMPHASIS
-  ======================================================= */
 
   strong,
   b {
@@ -321,16 +279,12 @@ const DescriptionContent = styled.div`
     color: #766a5d;
   }
 
-  /* =======================================================
-     LINKS
-  ======================================================= */
-
   a {
     color: #8f7655;
-
     text-decoration: none;
 
-    border-bottom: 1px solid rgba(168, 138, 98, 0.35);
+    border-bottom: 1px solid
+      rgba(168, 138, 98, 0.35);
 
     transition:
       color 0.2s ease,
@@ -342,17 +296,11 @@ const DescriptionContent = styled.div`
     }
   }
 
-  /* =======================================================
-     BLOCKQUOTE
-  ======================================================= */
-
   blockquote {
     margin: 22px 0;
+    padding: 5px 0 5px 20px;
 
-    padding: 5px 0;
-    padding-inline-start: 20px;
-
-    border-inline-start: 1px solid #b39a76;
+    border-left: 1px solid #b39a76;
 
     color: #62584e;
 
@@ -364,32 +312,20 @@ const DescriptionContent = styled.div`
 
     font-size: 20px;
     font-style: italic;
-
     line-height: 1.55;
   }
-
-  /* =======================================================
-     DIVIDER
-  ======================================================= */
 
   hr {
     width: 100%;
     height: 1px;
-
     margin: 28px 0;
 
     border: 0;
-
     background: #e4ded6;
   }
 
-  /* =======================================================
-     TABLE
-  ======================================================= */
-
   table {
     width: 100%;
-
     margin: 24px 0;
 
     border-collapse: collapse;
@@ -406,7 +342,7 @@ const DescriptionContent = styled.div`
 
     border-bottom: 1px solid #e4ded6;
 
-    text-align: start;
+    text-align: left;
     vertical-align: top;
   }
 
@@ -423,10 +359,6 @@ const DescriptionContent = styled.div`
   td {
     color: #665d54;
   }
-
-  /* =======================================================
-     TABLET
-  ======================================================= */
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -453,6 +385,7 @@ const DescriptionContent = styled.div`
     }
 
     img {
+      max-width: 100%;
       margin: 22px auto;
     }
 
@@ -462,28 +395,19 @@ const DescriptionContent = styled.div`
 
     blockquote {
       margin: 20px 0;
-
-      padding-inline-start: 16px;
-
+      padding-left: 16px;
       font-size: 18px;
     }
 
     table {
       display: block;
-
       width: 100%;
-
       overflow-x: auto;
-
       white-space: nowrap;
 
       -webkit-overflow-scrolling: touch;
     }
   }
-
-  /* =======================================================
-     SMALL MOBILE
-  ======================================================= */
 
   @media (max-width: 480px) {
     font-size: 14.5px;
@@ -491,11 +415,11 @@ const DescriptionContent = styled.div`
 
     ul,
     ol {
-      padding-inline-start: 21px;
+      padding-left: 21px;
     }
 
     ul li {
-      padding-inline-start: 14px;
+      padding-left: 14px;
     }
 
     h1 {
