@@ -4,23 +4,21 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import NewsLetter from "./NewsLetter";
 import PaymentMethods from "../../../common/PaymentMethods";
-import GppGoodIcon from '@mui/icons-material/GppGood';
+import GppGoodIcon from "@mui/icons-material/GppGood";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
 
-  const isRTL = i18n.language[0] === "ar";
+  const isRTL = i18n.dir() === "rtl";
 
   return (
-    <FooterContainer dir={isRTL ? "rtl" : "ltr"}>
-
+    <FooterContainer >
       {/* =====================================================
           NEWSLETTER
       ===================================================== */}
 
       <NewsletterSection>
         <NewsletterInner>
-
           <NewsletterText>
             <NewsletterEyebrow>
               {t("footer.newsletter.eyebrow")}
@@ -38,44 +36,35 @@ const Footer = () => {
           <NewsletterForm>
             <NewsLetter />
           </NewsletterForm>
-
         </NewsletterInner>
       </NewsletterSection>
-
 
       {/* =====================================================
           MAIN FOOTER
       ===================================================== */}
 
       <MainFooter>
-
         <FooterGrid>
-
           {/* BRAND */}
-          <BrandSection>
 
-            <BrandLogo>
-              ENOUZA
-            </BrandLogo>
+          <BrandSection>
+            <BrandLogo>ENOUZA</BrandLogo>
 
             <BrandDescription>
               {t("footer.brand.description")}
             </BrandDescription>
 
             <BrandAccent />
-
           </BrandSection>
 
-
           {/* HELP */}
-          <FooterColumn>
 
+          <FooterColumn>
             <ColumnTitle>
               {t("footer.help.title")}
             </ColumnTitle>
 
             <Links>
-
               <FooterLink to="/contact-us">
                 {t("footer.help.contactUs")}
               </FooterLink>
@@ -87,29 +76,23 @@ const Footer = () => {
               <FooterLink to="/help-center">
                 {t("footer.help.faq")}
               </FooterLink>
-
             </Links>
-
           </FooterColumn>
 
-
           {/* FOLLOW */}
-          <FooterColumn>
 
+          <FooterColumn>
             <ColumnTitle>
               {t("footer.followUs.title")}
             </ColumnTitle>
 
             <Links>
-
               <SocialLink
                 href="https://www.facebook.com/profile.php?id=61571681156358"
                 target="_blank"
                 rel="noreferrer"
               >
-                <SocialMark>
-                  f
-                </SocialMark>
+                <SocialMark>f</SocialMark>
 
                 <span>
                   {t("footer.followUs.facebook")}
@@ -121,9 +104,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <SocialMark>
-                  ◎
-                </SocialMark>
+                <SocialMark>◎</SocialMark>
 
                 <span>
                   {t("footer.followUs.instagram")}
@@ -135,29 +116,23 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <SocialMark>
-                  ♪
-                </SocialMark>
+                <SocialMark>♪</SocialMark>
 
                 <span>
                   {t("footer.followUs.tiktok")}
                 </span>
               </SocialLink>
-
             </Links>
-
           </FooterColumn>
 
-
           {/* POLICIES */}
-          <FooterColumn>
 
+          <FooterColumn>
             <ColumnTitle>
               {t("footer.policies.title")}
             </ColumnTitle>
 
             <Links>
-
               <FooterLink to="/terms-of-services">
                 {t("footer.policies.termsOfService")}
               </FooterLink>
@@ -173,40 +148,33 @@ const Footer = () => {
               <FooterLink to="/return-policy">
                 {t("footer.policies.refundPolicy")}
               </FooterLink>
-
             </Links>
-
           </FooterColumn>
-
         </FooterGrid>
-
 
         {/* =====================================================
             BOTTOM BAR
         ===================================================== */}
 
         <BottomBar>
+          <SecureText>
+            <GppGoodIcon style={{ fontSize: "1.2rem" }} />
 
-  <SecureText>
-    <GppGoodIcon style={{ fontSize: "1.2rem" }} />
-    {t("footer.payment.secure")}
-  </SecureText>
+            {t("footer.payment.secure")}
+          </SecureText>
 
-  <PaymentMethodsContainer>
-    <PaymentMethods />
-  </PaymentMethodsContainer>
+          <PaymentMethodsContainer dir="ltr">
+            <PaymentMethods />
+          </PaymentMethodsContainer>
 
-  <bdi>
-    <Copyright>
-      © {new Date().getFullYear()} Enouza.{" "}
-      {t("footer.newsletter.all_rights_reserved")}
-    </Copyright>
-  </bdi>
-
-</BottomBar>
-
+          <CopyrightContainer >
+            <Copyright dir="ltr">
+              © {new Date().getFullYear()} ENOUZA.{" "}
+              {t("footer.newsletter.all_rights_reserved")}
+            </Copyright>
+          </CopyrightContainer>
+        </BottomBar>
       </MainFooter>
-
     </FooterContainer>
   );
 };
@@ -287,6 +255,7 @@ const NewsletterInner = styled.div`
 
     top: 18px;
     bottom: 18px;
+
     left: 18px;
     right: 18px;
 
@@ -311,6 +280,7 @@ const NewsletterInner = styled.div`
     &::before {
       top: 10px;
       bottom: 10px;
+
       left: 10px;
       right: 10px;
     }
@@ -386,11 +356,6 @@ const NewsletterForm = styled.div`
   z-index: 2;
 
   width: 100%;
-
-  /*
-    Neutralize the old newsletter card so
-    the newsletter becomes part of this design.
-  */
 
   form {
     width: 100%;
@@ -643,8 +608,25 @@ const SocialMark = styled.span`
    COPYRIGHT
 ========================================================= */
 
+const CopyrightContainer = styled.div`
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  text-align: end;
+`;
+
 const Copyright = styled.span`
-  font-family: Georgia, serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size: 10px;
 
@@ -653,40 +635,56 @@ const Copyright = styled.span`
   color: #77736b;
 
   white-space: nowrap;
-
-  @media (max-width: 750px) {
-    white-space: normal;
-  }
 `;
 
+
 /* =========================================================
-   PAYMENTS
+   PAYMENT METHODS
 ========================================================= */
 
 const PaymentMethodsContainer = styled.div`
+  flex: 1;
+
+  min-width: 0;
+
   display: flex;
 
   align-items: center;
 
   justify-content: center;
+
+  /*
+    Payment logos should always remain
+    in their natural LTR order.
+  */
+  direction: ltr;
 `;
 
 
-
-
 /* =========================================================
-   SECURE
+   SECURE PAYMENT
 ========================================================= */
 
 const SecureText = styled.div`
+  flex: 1;
+
+  min-width: 0;
+
   display: flex;
+
   align-items: center;
 
-  gap: 7px;
+  justify-content: flex-start;
 
-  font-family: Georgia, serif;
+  gap: 8px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size: 10px;
+
   font-weight: 400;
 
   letter-spacing: 1.3px;
@@ -695,28 +693,29 @@ const SecureText = styled.div`
 
   color: #716c64;
 
+  white-space: nowrap;
+
   svg {
+    flex-shrink: 0;
+
     color: #b39a76;
   }
 `;
 
-const SecureDot = styled.span`
-  width: 5px;
-  height: 5px;
 
-  border-radius: 50%;
-
-  background: #b8955b;
-`;
 /* =========================================================
    BOTTOM BAR
 ========================================================= */
+
 const BottomBar = styled.div`
   width: 100%;
+
   min-height: 82px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 28px;
@@ -725,72 +724,34 @@ const BottomBar = styled.div`
 
   border-top: 1px solid #e4ded4;
 
-  /* ===============================
-     SECURE PAYMENT
-  =============================== */
 
-  ${SecureText} {
-    flex: 1;
+  /* =====================================================
+     RTL / LTR LAYOUT
+  ===================================================== */
 
-    display: flex;
-    align-items: center;
-
-    justify-content: flex-start;
-
-    gap: 8px;
-
-    white-space: nowrap;
-  }
-
-
-  /* ===============================
-     PAYMENT METHODS
-  =============================== */
-
-  ${PaymentMethodsContainer} {
-    flex: 1;
-
-    display: flex;
-    justify-content: center;
-
-    min-width: 0;
-  }
-
-
-  /* ===============================
-     COPYRIGHT
-  =============================== */
-
-  bdi {
-    flex: 1;
-
-    display: flex;
-    justify-content: flex-end;
-
-    text-align: end;
-  }
-
-
-  /* ===============================
-     TABLET
-  =============================== */
-
-  @media (max-width: 900px) {
-    gap: 18px;
-
+  &[dir="rtl"] {
     ${SecureText} {
-      font-size: 10px;
+      justify-content: flex-start;
     }
 
-    ${Copyright} {
-      font-size: 10px;
+    ${CopyrightContainer} {
+      justify-content: flex-end;
     }
   }
 
 
-  /* ===============================
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (max-width: 1100px) {
+    gap: 18px;
+  }
+
+
+  /* =====================================================
      MOBILE
-  =============================== */
+  ===================================================== */
 
   @media (max-width: 900px) {
     min-height: auto;
@@ -798,6 +759,7 @@ const BottomBar = styled.div`
     flex-direction: column;
 
     justify-content: center;
+
     align-items: center;
 
     gap: 16px;
@@ -827,7 +789,7 @@ const BottomBar = styled.div`
     }
 
 
-    bdi {
+    ${CopyrightContainer} {
       flex: none;
 
       width: 100%;
@@ -836,25 +798,26 @@ const BottomBar = styled.div`
 
       text-align: center;
     }
+
+
+    ${Copyright} {
+      white-space: normal;
+    }
   }
 
 
-  /* ===============================
+  /* =====================================================
      SMALL MOBILE
-  =============================== */
+  ===================================================== */
 
   @media (max-width: 400px) {
     gap: 14px;
 
     padding: 20px 0;
 
-    ${SecureText} {
-      font-size: 9px;
-    }
-
+    ${SecureText},
     ${Copyright} {
       font-size: 9px;
     }
   }
 `;
-

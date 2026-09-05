@@ -140,7 +140,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 70px 28px 80px;
+  padding: 30px 32px 64px;
   box-sizing: border-box;
   color: #29251f;
 

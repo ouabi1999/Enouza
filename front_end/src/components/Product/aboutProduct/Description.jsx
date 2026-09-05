@@ -55,7 +55,7 @@ const Container = styled.section`
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 54px 32px 64px;
+  padding: 30px 32px 64px;
   box-sizing: border-box;
   color: #3f3932;
 
@@ -110,7 +110,7 @@ const Title = styled.h2`
     "Times New Roman",
     serif;
 
-  font-size: clamp(27px, 3.4vw, 37px);
+  font-size: clamp(20px, 1.8vw, 37px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.01em;

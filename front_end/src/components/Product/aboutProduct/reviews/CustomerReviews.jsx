@@ -277,7 +277,6 @@ const ReviewsHeader = styled.div`
   grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
   align-items: center;
   gap: 30px;
-  margin: 72px 0 54px;
 
   @media (max-width: 700px) {
     gap: 16px;

@@ -107,9 +107,9 @@ export default Ratings;
 
 const Container = styled.section`
   width: 100%;
-  margin: 0 auto;
-  padding: 0;
+  
   color: #29251f;
+
 `;
 
 const RatingsHeader = styled.div`
@@ -133,11 +133,18 @@ const Eyebrow = styled.span`
 const Title = styled.h3`
   margin: 0;
   color: #211e1a;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(30px, 3.5vw, 38px);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(20px, 1.8vw, 37px);
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0.015em;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+;
 `;
 
 const HeaderAccent = styled.span`

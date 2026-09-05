@@ -129,7 +129,7 @@ function NewsLetter() {
         )}
 <div className="Toastify__toast-container">
   <ToastContainer
-    position={isRTL ? "top-left" : "top-right"}
+    position={isRTL ? "top-right" : "top-left"}
     autoClose={3000}
     hideProgressBar={false}
     newestOnTop
@@ -137,7 +137,6 @@ function NewsLetter() {
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    rtl={isRTL}
   />
 </div>
       </Container>

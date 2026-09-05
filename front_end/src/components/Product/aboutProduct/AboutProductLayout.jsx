@@ -74,13 +74,11 @@ const Tabs = styled.nav`
   align-items: center;
   justify-content: center;
 
-  gap: clamp(45px, 5vw, 100px);
+  gap: clamp(45px, 10vw, 80px);
 
   width: 100%;
 
-  @media (max-width: 500px) {
-    gap: 24px;
-  }
+ 
 `;
 
 const Tab = styled.button`

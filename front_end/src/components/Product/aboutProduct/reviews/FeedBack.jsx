@@ -208,7 +208,7 @@ const Wrap = styled.div`
     
 `
 const Wraper = styled.div`
-      min-width:300px;
+      min-width:280px;
       max-width:650px;
 
 `
