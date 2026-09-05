@@ -33,20 +33,10 @@ const toNumber = (value) => {
   return Number.isFinite(number) ? number : 0;
 };
 
-/*
- * IMPORTANT
- *
- * Every attribute contains BOTH:
- *
- * value
- * definitionName
- *
- * value:
- *   Original AliExpress/internal value.
- *
- * definitionName:
- *   Customer-facing name that YOU can edit.
- */
+/* =========================================================
+   EMPTY VARIANT
+========================================================= */
+
 const createEmptyVariant = (attributeNames = []) => {
   const attributes = {};
 
@@ -67,13 +57,23 @@ const createEmptyVariant = (attributeNames = []) => {
     cost: 0,
     sellingPrice: 0,
     comparePrice: 0,
-    profitPrice: 0,
     available_stock: 0,
   };
 };
 
 /* =========================================================
    NORMALIZE VARIANT
+
+   IMPORTANT:
+   This normalizer is NON-DESTRUCTIVE.
+
+   Any extra AliExpress/internal fields are preserved.
+
+   Example:
+   - colorKey
+   - sku_image
+   - property metadata
+   - future supplier fields
 ========================================================= */
 
 const normalizeVariant = (variant = {}) => {
@@ -88,29 +88,28 @@ const normalizeVariant = (variant = {}) => {
         if (
           attribute &&
           typeof attribute === "object" &&
-          Object.prototype.hasOwnProperty.call(
-            attribute,
-            "value"
-          )
+          !Array.isArray(attribute)
         ) {
           attributes[name] = {
             /*
-             * NEVER replace this when editing.
-             * This remains the original AliExpress value.
+             * Preserve ALL existing metadata.
+             *
+             * This is extremely important because
+             * AliExpress attributes may contain fields
+             * such as colorKey or sku_image.
+             */
+            ...attribute,
+
+            /*
+             * Standardized fields used by VariantManager.
              */
             value: attribute.value ?? "",
 
-            /*
-             * This is the value displayed/edited
-             * by your store.
-             *
-             * If an old product has no definitionName,
-             * fall back to value.
-             */
             definitionName:
-              attribute.definitionName?.trim() ||
-              attribute.value ||
-              "",
+              typeof attribute.definitionName === "string" &&
+              attribute.definitionName.trim()
+                ? attribute.definitionName.trim()
+                : attribute.value ?? "",
 
             image: attribute.image ?? null,
 
@@ -121,16 +120,14 @@ const normalizeVariant = (variant = {}) => {
               attribute.valueId ?? null,
           };
         } else {
+          /*
+           * Support older/simple attribute structures.
+           */
           attributes[name] = {
             value: attribute ?? "",
-
-            definitionName:
-              attribute ?? "",
-
+            definitionName: attribute ?? "",
             image: null,
-
             propertyId: null,
-
             valueId: null,
           };
         }
@@ -138,21 +135,41 @@ const normalizeVariant = (variant = {}) => {
     );
   }
 
+  /*
+   * Helper for backward compatibility.
+   *
+   * Attribute names are checked case-insensitively.
+   */
+  const hasAttribute = (targetName) =>
+    Object.keys(attributes).some(
+      (name) =>
+        name.toLowerCase() ===
+        targetName.toLowerCase()
+    );
+
   /* =======================================================
      OLD PRODUCT COMPATIBILITY
   ======================================================= */
 
+  /*
+   * Only create Color if an attribute named Color
+   * does not already exist.
+   *
+   * This does NOT interfere with:
+   *
+   * Body Color
+   * Lampshade Color
+   *
+   * because they are different attributes.
+   */
   if (
     variant.color &&
-    !Object.keys(attributes).some(
-      (name) =>
-        name.toLowerCase() === "color"
-    )
+    !hasAttribute("color")
   ) {
     attributes.Color = {
       value: variant.color,
       definitionName: variant.color,
-      image: variant.image || null,
+      image: variant.image ?? null,
       propertyId: null,
       valueId: null,
     };
@@ -160,10 +177,7 @@ const normalizeVariant = (variant = {}) => {
 
   if (
     variant.size &&
-    !Object.keys(attributes).some(
-      (name) =>
-        name.toLowerCase() === "size"
-    )
+    !hasAttribute("size")
   ) {
     attributes.Size = {
       value: variant.size,
@@ -174,13 +188,21 @@ const normalizeVariant = (variant = {}) => {
     };
   }
 
+  /*
+   * Preserve all variant-level metadata too.
+   *
+   * This prevents other supplier fields from
+   * disappearing during repeated normalization.
+   */
   return {
+    ...variant,
+
     id:
-      variant.id ||
+      variant.id ??
       createVariantId(),
 
     sku_attr:
-      variant.sku_attr || "",
+      variant.sku_attr ?? "",
 
     attributes,
 
@@ -192,9 +214,6 @@ const normalizeVariant = (variant = {}) => {
 
     comparePrice:
       toNumber(variant.comparePrice),
-
-    profitPrice:
-      toNumber(variant.profitPrice),
 
     available_stock:
       toNumber(variant.available_stock),
@@ -210,17 +229,21 @@ export default function VariantManager({
   setFormData,
 }) {
   /*
-   * formData.skuInfo remains the single source of truth.
+   * skuInfo remains the source of truth.
+   *
+   * normalizeVariant only prepares the data
+   * for safe rendering and editing.
    */
   const variants = useMemo(() => {
-    return (formData?.skuInfo || []).map(
-      normalizeVariant
-    );
+    return (
+      formData?.skuInfo || []
+    ).map(normalizeVariant);
   }, [formData?.skuInfo]);
 
-  /*
-   * Find all attributes.
-   */
+  /* =======================================================
+     FIND ALL ATTRIBUTE NAMES
+  ======================================================= */
+
   const attributeNames = useMemo(() => {
     const names = [];
 
@@ -238,7 +261,13 @@ export default function VariantManager({
   }, [variants]);
 
   /* =======================================================
-     SAVE
+     SAVE VARIANTS
+
+     IMPORTANT:
+     Save the edited structure directly.
+
+     Do not rebuild the attributes here,
+     otherwise supplier metadata can be lost.
   ======================================================= */
 
   const saveVariants = (nextVariants) => {
@@ -274,17 +303,15 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     DEFINITION NAME UPDATE
-     
+     ATTRIBUTE DEFINITION NAME UPDATE
+
      IMPORTANT:
-     
-     This changes:
-     
-     definitionName
-     
-     NOT:
-     
-     value
+
+     definitionName = customer-facing/editable value
+
+     value = original supplier value
+
+     Editing definitionName MUST NOT change value.
   ======================================================= */
 
   const updateAttributeDefinitionName = (
@@ -310,10 +337,13 @@ export default function VariantManager({
             ...variant.attributes,
 
             [attributeName]: {
+              /*
+               * Preserve all existing metadata.
+               */
               ...currentAttribute,
 
               /*
-               * ONLY CHANGE THE DISPLAY NAME.
+               * Only update the customer-facing name.
                */
               definitionName,
             },
@@ -326,7 +356,7 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     IMAGE
+     ATTRIBUTE IMAGE
   ======================================================= */
 
   const updateAttributeImage = (
@@ -336,6 +366,9 @@ export default function VariantManager({
   ) => {
     if (!file) return;
 
+    /*
+     * Used only for immediate browser preview.
+     */
     const previewUrl =
       URL.createObjectURL(file);
 
@@ -357,8 +390,24 @@ export default function VariantManager({
             ...variant.attributes,
 
             [attributeName]: {
+              /*
+               * Preserve colorKey, propertyId,
+               * valueId and all supplier metadata.
+               */
               ...currentAttribute,
+
+              /*
+               * Temporary browser preview.
+               */
               image: previewUrl,
+
+              /*
+               * Real File object.
+
+               * Your parent form submission can use
+               * this for actual upload.
+               */
+              imageFile: file,
             },
           },
         };
@@ -385,7 +434,7 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     DUPLICATE
+     DUPLICATE VARIANT
   ======================================================= */
 
   const duplicateVariant = (
@@ -400,8 +449,14 @@ export default function VariantManager({
     if (!original) return;
 
     const duplicate = {
+      /*
+       * Preserve all variant-level metadata.
+       */
       ...original,
 
+      /*
+       * New internal ID.
+       */
       id: createVariantId(),
 
       /*
@@ -409,6 +464,10 @@ export default function VariantManager({
        */
       sku_attr: "",
 
+      /*
+       * Clone attributes while preserving
+       * all AliExpress/internal metadata.
+       */
       attributes:
         Object.fromEntries(
           Object.entries(
@@ -417,29 +476,32 @@ export default function VariantManager({
             ([name, attribute]) => [
               name,
               {
-                /*
-                 * Preserve original AliExpress value.
-                 */
-                value:
-                  attribute?.value || "",
+                ...(
+                  attribute || {}
+                ),
 
-                /*
-                 * Preserve your edited definition.
-                 */
+                value:
+                  attribute?.value ??
+                  "",
+
                 definitionName:
-                  attribute?.definitionName ||
-                  attribute?.value ||
+                  attribute
+                    ?.definitionName ??
+                  attribute?.value ??
                   "",
 
                 image:
-                  attribute?.image || null,
+                  attribute?.image ??
+                  null,
 
                 propertyId:
-                  attribute?.propertyId ||
+                  attribute
+                    ?.propertyId ??
                   null,
 
                 valueId:
-                  attribute?.valueId ||
+                  attribute
+                    ?.valueId ??
                   null,
               },
             ]
@@ -467,7 +529,7 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     DELETE
+     DELETE VARIANT
   ======================================================= */
 
   const deleteVariant = (
@@ -498,6 +560,11 @@ export default function VariantManager({
 
     if (!cleanName) return;
 
+    /*
+     * Prevent duplicate attribute names.
+     *
+     * Comparison is case-insensitive.
+     */
     const alreadyExists =
       attributeNames.some(
         (attribute) =>
@@ -572,11 +639,20 @@ export default function VariantManager({
 
   /* =======================================================
      PROFIT
+
+     Profit is derived.
+
+     It is NOT stored separately,
+     avoiding inconsistent values.
   ======================================================= */
 
-  const getProfit = (variant) => {
+  const getProfit = (
+    variant
+  ) => {
     const cost =
-      toNumber(variant.cost);
+      toNumber(
+        variant.cost
+      );
 
     const selling =
       toNumber(
@@ -757,7 +833,9 @@ export default function VariantManager({
 
                 {attributeNames.map(
                   (attributeName) => (
-                    <TH key={attributeName}>
+                    <TH
+                      key={attributeName}
+                    >
                       {attributeName}
                     </TH>
                   )
@@ -776,20 +854,19 @@ export default function VariantManager({
             <tbody>
               {variants.map(
                 (variant, index) => (
-                  <TR key={variant.id}>
-
+                  <TR
+                    key={variant.id}
+                  >
                     <TD sticky>
                       <VariantNumber>
                         {index + 1}
                       </VariantNumber>
                     </TD>
 
-                    {/* =================================
-                        ATTRIBUTES
-                    ================================= */}
-
                     {attributeNames.map(
-                      (attributeName) => {
+                      (
+                        attributeName
+                      ) => {
                         const attribute =
                           variant
                             .attributes?.[
@@ -801,6 +878,14 @@ export default function VariantManager({
                             attribute?.image
                           );
 
+                        /*
+                         * Allow images for color-related
+                         * options such as:
+                         *
+                         * Color
+                         * Body Color
+                         * Lampshade Color
+                         */
                         const isImageOption =
                           attributeName
                             .toLowerCase()
@@ -815,11 +900,6 @@ export default function VariantManager({
                             }
                           >
                             <AttributeCell>
-
-                              {/* =================================
-                                  CUSTOMER-FACING NAME
-                              ================================= */}
-
                               <AttributeInput
                                 value={
                                   attribute
@@ -862,15 +942,24 @@ export default function VariantManager({
                                     accept="image/*"
                                     onChange={(
                                       event
-                                    ) =>
+                                    ) => {
+                                      const file =
+                                        event.target
+                                          .files?.[0];
+
                                       updateAttributeImage(
                                         variant.id,
                                         attributeName,
-                                        event
-                                          .target
-                                          .files?.[0]
-                                      )
-                                    }
+                                        file
+                                      );
+
+                                      /*
+                                       * Allows selecting
+                                       * the same file again.
+                                       */
+                                      event.target.value =
+                                        "";
+                                    }}
                                   />
 
                                   <ImageButton
@@ -888,16 +977,13 @@ export default function VariantManager({
                                   </ImageButton>
                                 </>
                               )}
-
                             </AttributeCell>
                           </TD>
                         );
                       }
                     )}
 
-                    {/* =================================
-                        SKU
-                    ================================= */}
+                    {/* SKU */}
 
                     <TD>
                       <TextInput
@@ -919,9 +1005,7 @@ export default function VariantManager({
                       />
                     </TD>
 
-                    {/* =================================
-                        COST
-                    ================================= */}
+                    {/* COST */}
 
                     <TD>
                       <NumberInput
@@ -937,18 +1021,20 @@ export default function VariantManager({
                           updateVariant(
                             variant.id,
                             "cost",
-                            toNumber(
-                              event.target
-                                .value
-                            )
+                            event.target
+                              .value === ""
+                              ? ""
+                              : toNumber(
+                                  event
+                                    .target
+                                    .value
+                                )
                           )
                         }
                       />
                     </TD>
 
-                    {/* =================================
-                        SELLING
-                    ================================= */}
+                    {/* SELLING */}
 
                     <TD>
                       <NumberInput
@@ -964,18 +1050,20 @@ export default function VariantManager({
                           updateVariant(
                             variant.id,
                             "sellingPrice",
-                            toNumber(
-                              event.target
-                                .value
-                            )
+                            event.target
+                              .value === ""
+                              ? ""
+                              : toNumber(
+                                  event
+                                    .target
+                                    .value
+                                )
                           )
                         }
                       />
                     </TD>
 
-                    {/* =================================
-                        COMPARE
-                    ================================= */}
+                    {/* COMPARE */}
 
                     <TD>
                       <NumberInput
@@ -991,18 +1079,20 @@ export default function VariantManager({
                           updateVariant(
                             variant.id,
                             "comparePrice",
-                            toNumber(
-                              event.target
-                                .value
-                            )
+                            event.target
+                              .value === ""
+                              ? ""
+                              : toNumber(
+                                  event
+                                    .target
+                                    .value
+                                )
                           )
                         }
                       />
                     </TD>
 
-                    {/* =================================
-                        PROFIT
-                    ================================= */}
+                    {/* PROFIT */}
 
                     <TD>
                       <Profit
@@ -1019,9 +1109,7 @@ export default function VariantManager({
                       </Profit>
                     </TD>
 
-                    {/* =================================
-                        STOCK
-                    ================================= */}
+                    {/* STOCK */}
 
                     <TD>
                       <StockInput
@@ -1037,22 +1125,23 @@ export default function VariantManager({
                           updateVariant(
                             variant.id,
                             "available_stock",
-                            toNumber(
-                              event.target
-                                .value
-                            )
+                            event.target
+                              .value === ""
+                              ? ""
+                              : toNumber(
+                                  event
+                                    .target
+                                    .value
+                                )
                           )
                         }
                       />
                     </TD>
 
-                    {/* =================================
-                        ACTIONS
-                    ================================= */}
+                    {/* ACTIONS */}
 
                     <TD>
                       <ActionsGroup>
-
                         <IconButton
                           type="button"
                           title="Duplicate variant"
@@ -1076,10 +1165,8 @@ export default function VariantManager({
                         >
                           <DeleteOutlineIcon fontSize="small" />
                         </DeleteButton>
-
                       </ActionsGroup>
                     </TD>
-
                   </TR>
                 )
               )}
@@ -1188,6 +1275,7 @@ const Subtitle = styled.p`
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   @media (max-width: 500px) {
@@ -1398,10 +1486,14 @@ const TH = styled.th`
       : "static"};
 
   left: ${(props) =>
-    props.sticky ? "0" : "auto"};
+    props.sticky
+      ? "0"
+      : "auto"};
 
   z-index: ${(props) =>
-    props.sticky ? "4" : "1"};
+    props.sticky
+      ? "4"
+      : "1"};
 
   min-width: 115px;
 
@@ -1564,7 +1656,6 @@ const StockInput = styled(NumberInput)`
   width: 70px;
   min-width: 70px;
 `;
-
 const OptionImage = styled.img`
   width: 30px;
   height: 30px;
