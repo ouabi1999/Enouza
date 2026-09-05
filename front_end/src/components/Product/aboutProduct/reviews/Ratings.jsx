@@ -107,7 +107,7 @@ export default Ratings;
 
 const Container = styled.section`
   width: 100%;
-  
+  padding: 0 28px 20px;
   color: #29251f;
 
 `;
