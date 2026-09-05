@@ -53,6 +53,12 @@ const MainSlider = () => {
     <span>
       {t("mainSlider.description")}
     </span>
+    <bdi>
+    <h5>
+      {t("mainSlider.welcome")}
+    </h5>
+    </bdi>
+
 
     
   </div>
@@ -125,6 +131,8 @@ const Container = styled.div`
         width:100%;
         min-width:290px;
         object-fit: cover;
+        height: 450px;
+
       }
         
       

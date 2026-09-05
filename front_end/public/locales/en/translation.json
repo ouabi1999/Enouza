@@ -42,8 +42,9 @@
     "best_sellers": "Bestsellers"
   },
   "mainSlider":{
-    "title": "Celebrating Eight Years of Enouza",
-  "description": "From one home in Miami to 50,000+ homes worldwide."
+    "title": "Lighting, Curated Differently.",
+    "description": "A considered collection of sculptural lighting, created to transform the atmosphere of every space.",
+    "welcome": "Welcome to ENOUZA."
   },
   "productPage": {
     "addToCart": "Add to Cart",

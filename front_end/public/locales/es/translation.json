@@ -43,8 +43,9 @@
     "best_sellers": "Más vendidos"
   },
   "mainSlider":{
-    "title": "Celebramos ocho años de Enouza",
-  "description": "De un hogar en Miami a más de 50.000 hogares en todo el mundo."
+     "title": "La iluminación, seleccionada de otra manera.",
+    "description": "Una cuidada colección de iluminación escultural, creada para transformar la atmósfera de cada espacio.",
+    "welcome": "Bienvenido a ENOUZA."
   },
   "productPage": {
     "addToCart": "Añadir al carrito",
