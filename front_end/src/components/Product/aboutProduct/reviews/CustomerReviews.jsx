@@ -90,17 +90,7 @@ function CustomerReviews(props) {
   return (
     <Container>
 
-      <ReviewsHeader>
-        <HeaderRule />
-        <HeadingGroup>
-          <HeadingEyebrow>ENOUZA</HeadingEyebrow>
-          <HeadingTitle>
-            {translate("customer_reviews", "customer_reviews")}
-          </HeadingTitle>
-          <HeadingAccent />
-        </HeadingGroup>
-        <HeaderRule />
-      </ReviewsHeader>
+      
 
       {ratings?.length > 0 ? (
         <ReviewsList>
@@ -257,8 +247,7 @@ export default CustomerReviews;
 const Container = styled.section`
   width: 100%;
   max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 28px 20px;
+  margin: 30px auto;
   box-sizing: border-box;
   color: #211e1a;
 
@@ -277,6 +266,7 @@ const ReviewsHeader = styled.div`
   grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
   align-items: center;
   gap: 30px;
+  padding:20px;
 
   @media (max-width: 700px) {
     gap: 16px;

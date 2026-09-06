@@ -53,7 +53,7 @@ function Ratings({
     <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
       <RatingsHeader>
         <Eyebrow>ENOUZA</Eyebrow>
-        <Title>{t("customer_reviews.customer_rating", "Customers Rating")}</Title>
+        <Title>{t("customer_reviews.customer_reviews", "Customers Reviews")}</Title>
         <HeaderAccent />
       </RatingsHeader>
 
@@ -107,7 +107,6 @@ export default Ratings;
 
 const Container = styled.section`
   width: 100%;
-  padding: 0 28px 20px;
   color: #29251f;
 
 `;
