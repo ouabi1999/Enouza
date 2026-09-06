@@ -32,5 +32,5 @@ admin.site.register(Display)
 
 admin.site.register(Orders)
 
-admin.site.register(Rating)
+admin.site.register(Rating, AliExpressRatingsAdmin)
 admin.site.register(Users, TodoAdmin)
