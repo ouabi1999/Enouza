@@ -571,6 +571,7 @@ const ProductImg = styled.div`
   align-items: center;
 
   justify-content: center;
+  
 
   @media (max-width: 1100px) {
     height: min(620px, 72vw);
@@ -626,7 +627,7 @@ const MainImage = styled.img`
 
   max-height: 100%;
 
-  object-fit: contain;
+  object-fit: cover;
 
   object-position: center;
 
