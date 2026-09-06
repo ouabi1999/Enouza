@@ -571,7 +571,6 @@ const ProductImg = styled.div`
   align-items: center;
 
   justify-content: center;
-  
 
   @media (max-width: 1100px) {
     height: min(620px, 72vw);
@@ -627,7 +626,7 @@ const MainImage = styled.img`
 
   max-height: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
 
   object-position: center;
 
@@ -1061,6 +1060,7 @@ const FullscreenImage = styled.div`
   -webkit-user-drag: none;
    img{
     object-fit: contain;
+      height: 100vh;
     
    }
     @media (max-width: 700px) {
