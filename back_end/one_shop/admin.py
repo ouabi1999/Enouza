@@ -1,6 +1,6 @@
-
 from django.contrib import admin
 from .models import *
+
 
 # Register your models here.
 class TodoAdmin(admin.ModelAdmin):
@@ -18,19 +18,14 @@ class TodoAdmin(admin.ModelAdmin):
     )
 
 
-
-class AliExpressRatingsAdmin(admin.ModelAdmin):
-    list_display = ('id',  'stars',"review", 'created_at')
-    
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ("id", "stars", "review", "created_at")
 
 
-
-
-    
 admin.site.register(Products)
 admin.site.register(Display)
 
 admin.site.register(Orders)
 
-admin.site.register(Rating, AliExpressRatingsAdmin)
+admin.site.register(Rating, RatingAdmin)
 admin.site.register(Users, TodoAdmin)
