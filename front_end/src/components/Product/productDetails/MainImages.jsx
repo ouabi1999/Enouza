@@ -1061,7 +1061,6 @@ const FullscreenImage = styled.div`
   -webkit-user-drag: none;
    img{
     object-fit: contain;
-    height: 100%;
     
    }
     @media (max-width: 700px) {
