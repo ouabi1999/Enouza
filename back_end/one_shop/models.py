@@ -147,7 +147,7 @@ class Rating(models.Model):
 
     user = models.JSONField()
     product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='user_ratings')
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateField(default=timezone.now)
     def __str__(self):
         return str(self.id)
 
