@@ -44,7 +44,7 @@ const createEmptyVariant = (attributeNames = []) => {
     attributes[name] = {
       value: "",
       definitionName: "",
-      image: null,
+      image: "",
       propertyId: null,
       valueId: null,
     };
@@ -63,17 +63,6 @@ const createEmptyVariant = (attributeNames = []) => {
 
 /* =========================================================
    NORMALIZE VARIANT
-
-   IMPORTANT:
-   This normalizer is NON-DESTRUCTIVE.
-
-   Any extra AliExpress/internal fields are preserved.
-
-   Example:
-   - colorKey
-   - sku_image
-   - property metadata
-   - future supplier fields
 ========================================================= */
 
 const normalizeVariant = (variant = {}) => {
@@ -91,18 +80,8 @@ const normalizeVariant = (variant = {}) => {
           !Array.isArray(attribute)
         ) {
           attributes[name] = {
-            /*
-             * Preserve ALL existing metadata.
-             *
-             * This is extremely important because
-             * AliExpress attributes may contain fields
-             * such as colorKey or sku_image.
-             */
             ...attribute,
 
-            /*
-             * Standardized fields used by VariantManager.
-             */
             value: attribute.value ?? "",
 
             definitionName:
@@ -111,7 +90,16 @@ const normalizeVariant = (variant = {}) => {
                 ? attribute.definitionName.trim()
                 : attribute.value ?? "",
 
-            image: attribute.image ?? null,
+            /*
+             * Support both image and sku_image.
+             *
+             * Existing supplier URLs will continue
+             * to work.
+             */
+            image:
+              attribute.image ??
+              attribute.sku_image ??
+              "",
 
             propertyId:
               attribute.propertyId ?? null,
@@ -120,13 +108,10 @@ const normalizeVariant = (variant = {}) => {
               attribute.valueId ?? null,
           };
         } else {
-          /*
-           * Support older/simple attribute structures.
-           */
           attributes[name] = {
             value: attribute ?? "",
             definitionName: attribute ?? "",
-            image: null,
+            image: "",
             propertyId: null,
             valueId: null,
           };
@@ -135,11 +120,6 @@ const normalizeVariant = (variant = {}) => {
     );
   }
 
-  /*
-   * Helper for backward compatibility.
-   *
-   * Attribute names are checked case-insensitively.
-   */
   const hasAttribute = (targetName) =>
     Object.keys(attributes).some(
       (name) =>
@@ -151,17 +131,6 @@ const normalizeVariant = (variant = {}) => {
      OLD PRODUCT COMPATIBILITY
   ======================================================= */
 
-  /*
-   * Only create Color if an attribute named Color
-   * does not already exist.
-   *
-   * This does NOT interfere with:
-   *
-   * Body Color
-   * Lampshade Color
-   *
-   * because they are different attributes.
-   */
   if (
     variant.color &&
     !hasAttribute("color")
@@ -169,7 +138,10 @@ const normalizeVariant = (variant = {}) => {
     attributes.Color = {
       value: variant.color,
       definitionName: variant.color,
-      image: variant.image ?? null,
+      image:
+        variant.image ??
+        variant.sku_image ??
+        "",
       propertyId: null,
       valueId: null,
     };
@@ -182,18 +154,12 @@ const normalizeVariant = (variant = {}) => {
     attributes.Size = {
       value: variant.size,
       definitionName: variant.size,
-      image: null,
+      image: "",
       propertyId: null,
       valueId: null,
     };
   }
 
-  /*
-   * Preserve all variant-level metadata too.
-   *
-   * This prevents other supplier fields from
-   * disappearing during repeated normalization.
-   */
   return {
     ...variant,
 
@@ -228,12 +194,10 @@ export default function VariantManager({
   formData,
   setFormData,
 }) {
-  /*
-   * skuInfo remains the source of truth.
-   *
-   * normalizeVariant only prepares the data
-   * for safe rendering and editing.
-   */
+  /* =======================================================
+     VARIANTS
+  ======================================================= */
+
   const variants = useMemo(() => {
     return (
       formData?.skuInfo || []
@@ -262,12 +226,6 @@ export default function VariantManager({
 
   /* =======================================================
      SAVE VARIANTS
-
-     IMPORTANT:
-     Save the edited structure directly.
-
-     Do not rebuild the attributes here,
-     otherwise supplier metadata can be lost.
   ======================================================= */
 
   const saveVariants = (nextVariants) => {
@@ -278,7 +236,7 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     VARIANT UPDATE
+     UPDATE VARIANT
   ======================================================= */
 
   const updateVariant = (
@@ -303,15 +261,7 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     ATTRIBUTE DEFINITION NAME UPDATE
-
-     IMPORTANT:
-
-     definitionName = customer-facing/editable value
-
-     value = original supplier value
-
-     Editing definitionName MUST NOT change value.
+     UPDATE ATTRIBUTE NAME
   ======================================================= */
 
   const updateAttributeDefinitionName = (
@@ -337,14 +287,8 @@ export default function VariantManager({
             ...variant.attributes,
 
             [attributeName]: {
-              /*
-               * Preserve all existing metadata.
-               */
               ...currentAttribute,
 
-              /*
-               * Only update the customer-facing name.
-               */
               definitionName,
             },
           },
@@ -356,22 +300,21 @@ export default function VariantManager({
   };
 
   /* =======================================================
-     ATTRIBUTE IMAGE
+     UPDATE ATTRIBUTE IMAGE URL
+
+     NO FILE UPLOAD.
+
+     The URL is edited directly.
+
+     Both image and sku_image are updated
+     for compatibility with existing products.
   ======================================================= */
 
   const updateAttributeImage = (
     variantId,
     attributeName,
-    file
+    imageUrl
   ) => {
-    if (!file) return;
-
-    /*
-     * Used only for immediate browser preview.
-     */
-    const previewUrl =
-      URL.createObjectURL(file);
-
     const nextVariants = variants.map(
       (variant) => {
         if (variant.id !== variantId) {
@@ -390,24 +333,15 @@ export default function VariantManager({
             ...variant.attributes,
 
             [attributeName]: {
-              /*
-               * Preserve colorKey, propertyId,
-               * valueId and all supplier metadata.
-               */
               ...currentAttribute,
 
-              /*
-               * Temporary browser preview.
-               */
-              image: previewUrl,
+              image: imageUrl,
 
               /*
-               * Real File object.
-
-               * Your parent form submission can use
-               * this for actual upload.
+               * Keep compatibility with your
+               * existing supplier data.
                */
-              imageFile: file,
+              sku_image: imageUrl,
             },
           },
         };
@@ -449,25 +383,12 @@ export default function VariantManager({
     if (!original) return;
 
     const duplicate = {
-      /*
-       * Preserve all variant-level metadata.
-       */
       ...original,
 
-      /*
-       * New internal ID.
-       */
       id: createVariantId(),
 
-      /*
-       * Do not duplicate supplier SKU.
-       */
       sku_attr: "",
 
-      /*
-       * Clone attributes while preserving
-       * all AliExpress/internal metadata.
-       */
       attributes:
         Object.fromEntries(
           Object.entries(
@@ -476,32 +397,33 @@ export default function VariantManager({
             ([name, attribute]) => [
               name,
               {
-                ...(
-                  attribute || {}
-                ),
+                ...(attribute || {}),
 
                 value:
                   attribute?.value ??
                   "",
 
                 definitionName:
-                  attribute
-                    ?.definitionName ??
+                  attribute?.definitionName ??
                   attribute?.value ??
                   "",
 
                 image:
                   attribute?.image ??
-                  null,
+                  attribute?.sku_image ??
+                  "",
+
+                sku_image:
+                  attribute?.image ??
+                  attribute?.sku_image ??
+                  "",
 
                 propertyId:
-                  attribute
-                    ?.propertyId ??
+                  attribute?.propertyId ??
                   null,
 
                 valueId:
-                  attribute
-                    ?.valueId ??
+                  attribute?.valueId ??
                   null,
               },
             ]
@@ -560,11 +482,6 @@ export default function VariantManager({
 
     if (!cleanName) return;
 
-    /*
-     * Prevent duplicate attribute names.
-     *
-     * Comparison is case-insensitive.
-     */
     const alreadyExists =
       attributeNames.some(
         (attribute) =>
@@ -591,7 +508,7 @@ export default function VariantManager({
             [cleanName]: {
               value: "",
               definitionName: "",
-              image: null,
+              image: "",
               propertyId: null,
               valueId: null,
             },
@@ -639,11 +556,6 @@ export default function VariantManager({
 
   /* =======================================================
      PROFIT
-
-     Profit is derived.
-
-     It is NOT stored separately,
-     avoiding inconsistent values.
   ======================================================= */
 
   const getProfit = (
@@ -690,7 +602,7 @@ export default function VariantManager({
 
           <Subtitle>
             Manage product options,
-            pricing, stock and SKUs.
+            images, pricing, stock and SKUs.
           </Subtitle>
         </HeaderLeft>
 
@@ -713,9 +625,7 @@ export default function VariantManager({
         </HeaderActions>
       </Header>
 
-      {/* =================================================
-          SUMMARY
-      ================================================= */}
+      {/* SUMMARY */}
 
       <Summary>
         <SummaryItem>
@@ -749,9 +659,7 @@ export default function VariantManager({
         </SummaryItem>
       </Summary>
 
-      {/* =================================================
-          OPTIONS
-      ================================================= */}
+      {/* OPTIONS */}
 
       {attributeNames.length > 0 && (
         <OptionsBar>
@@ -786,9 +694,7 @@ export default function VariantManager({
         </OptionsBar>
       )}
 
-      {/* =================================================
-          EMPTY
-      ================================================= */}
+      {/* EMPTY */}
 
       {variants.length === 0 ? (
         <EmptyState>
@@ -803,7 +709,7 @@ export default function VariantManager({
           <EmptyText>
             Add a variant to start
             managing product options,
-            pricing and stock.
+            images, pricing and stock.
           </EmptyText>
 
           <EmptyActions>
@@ -863,6 +769,8 @@ export default function VariantManager({
                       </VariantNumber>
                     </TD>
 
+                    {/* ATTRIBUTES */}
+
                     {attributeNames.map(
                       (
                         attributeName
@@ -873,18 +781,19 @@ export default function VariantManager({
                             attributeName
                           ];
 
+                        const imageUrl =
+                          attribute?.image ||
+                          attribute?.sku_image ||
+                          "";
+
                         const hasImage =
                           Boolean(
-                            attribute?.image
+                            imageUrl
                           );
 
                         /*
-                         * Allow images for color-related
-                         * options such as:
-                         *
-                         * Color
-                         * Body Color
-                         * Lampshade Color
+                         * Images are available for
+                         * color-related attributes.
                          */
                         const isImageOption =
                           attributeName
@@ -921,10 +830,12 @@ export default function VariantManager({
                                 }
                               />
 
+                              {/* IMAGE PREVIEW */}
+
                               {hasImage && (
                                 <OptionImage
                                   src={
-                                    attribute.image
+                                    imageUrl
                                   }
                                   alt={
                                     attribute
@@ -934,48 +845,26 @@ export default function VariantManager({
                                 />
                               )}
 
+                              {/* IMAGE URL */}
+
                               {isImageOption && (
-                                <>
-                                  <HiddenFileInput
-                                    id={`variant-image-${variant.id}-${attributeName}`}
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(
-                                      event
-                                    ) => {
-                                      const file =
-                                        event.target
-                                          .files?.[0];
-
-                                      updateAttributeImage(
-                                        variant.id,
-                                        attributeName,
-                                        file
-                                      );
-
-                                      /*
-                                       * Allows selecting
-                                       * the same file again.
-                                       */
-                                      event.target.value =
-                                        "";
-                                    }}
-                                  />
-
-                                  <ImageButton
-                                    type="button"
-                                    title="Change option image"
-                                    onClick={() =>
-                                      document
-                                        .getElementById(
-                                          `variant-image-${variant.id}-${attributeName}`
-                                        )
-                                        ?.click()
-                                    }
-                                  >
-                                    <ImageIcon fontSize="small" />
-                                  </ImageButton>
-                                </>
+                                <AttributeImageInput
+                                  type="url"
+                                  value={
+                                    imageUrl
+                                  }
+                                  placeholder="Image URL"
+                                  onChange={(
+                                    event
+                                  ) =>
+                                    updateAttributeImage(
+                                      variant.id,
+                                      attributeName,
+                                      event.target
+                                        .value
+                                    )
+                                  }
+                                />
                               )}
                             </AttributeCell>
                           </TD>
@@ -1023,12 +912,12 @@ export default function VariantManager({
                             "cost",
                             event.target
                               .value === ""
-                              ? ""
-                              : toNumber(
-                                  event
-                                    .target
-                                    .value
-                                )
+                                ? ""
+                                : toNumber(
+                                    event
+                                      .target
+                                      .value
+                                  )
                           )
                         }
                       />
@@ -1052,12 +941,12 @@ export default function VariantManager({
                             "sellingPrice",
                             event.target
                               .value === ""
-                              ? ""
-                              : toNumber(
-                                  event
-                                    .target
-                                    .value
-                                )
+                                ? ""
+                                : toNumber(
+                                    event
+                                      .target
+                                      .value
+                                  )
                           )
                         }
                       />
@@ -1081,12 +970,12 @@ export default function VariantManager({
                             "comparePrice",
                             event.target
                               .value === ""
-                              ? ""
-                              : toNumber(
-                                  event
-                                    .target
-                                    .value
-                                )
+                                ? ""
+                                : toNumber(
+                                    event
+                                      .target
+                                      .value
+                                  )
                           )
                         }
                       />
@@ -1127,12 +1016,12 @@ export default function VariantManager({
                             "available_stock",
                             event.target
                               .value === ""
-                              ? ""
-                              : toNumber(
-                                  event
-                                    .target
-                                    .value
-                                )
+                                ? ""
+                                : toNumber(
+                                    event
+                                      .target
+                                      .value
+                                  )
                           )
                         }
                       />
@@ -1175,9 +1064,7 @@ export default function VariantManager({
         </TableContainer>
       )}
 
-      {/* =================================================
-          BOTTOM
-      ================================================= */}
+      {/* BOTTOM */}
 
       {variants.length > 0 && (
         <BottomBar>
@@ -1596,6 +1483,38 @@ const AttributeInput = styled.input`
   }
 `;
 
+const AttributeImageInput = styled.input`
+  width: 190px;
+  min-width: 190px;
+
+  box-sizing: border-box;
+
+  padding: 8px 9px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #111827;
+
+  font-size: 12px;
+
+  &:focus {
+    border-color: #9ca3af;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(17, 24, 39, 0.06);
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+`;
+
 const TextInput = styled.input`
   width: 150px;
   min-width: 150px;
@@ -1656,45 +1575,19 @@ const StockInput = styled(NumberInput)`
   width: 70px;
   min-width: 70px;
 `;
-const OptionImage = styled.img`
-  width: 30px;
-  height: 30px;
 
-  flex: 0 0 30px;
+const OptionImage = styled.img`
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
 
   object-fit: cover;
 
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-`;
 
-const HiddenFileInput = styled.input`
-  display: none;
-`;
-
-const ImageButton = styled.button`
-  width: 30px;
-  height: 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-
-  background: #ffffff;
-
-  color: #6b7280;
-
-  cursor: pointer;
-
-  &:hover {
-    background: #f9fafb;
-    color: #111827;
-  }
+  background: #f9fafb;
 `;
 
 const Profit = styled.span`
@@ -1844,3 +1737,4 @@ const BottomInfo = styled.span`
   font-size: 12px;
   font-weight: 500;
 `;
+
