@@ -248,6 +248,8 @@ function ProductManagement(props) {
 
 
     data.append("discount", formData.discount);
+    data.append("category", formData.category);
+
     data.append("quantity", formData.quantity);
     data.append("warranty", formData.warranty);
     data.append("care_instructions", formData.care_instructions);
@@ -260,7 +262,7 @@ function ProductManagement(props) {
     formData.seo?.forEach((seoItem) =>
       data.append("seo", JSON.stringify(seoItem))
     );
-
+    
 
     // Append all data from formData to FormData
     setLoading(true);
