@@ -109,13 +109,22 @@
   }
 },
 "matricsSection": {
-  "why_us": "لماذا تختار ENOUZA؟",
-  "curated": "مختار بعناية",
-  "refined": "راقي",
-  "atmospheric": "ذو طابع دافئ",
-  "distinctive": "مميز",
-  "title": "كل قطعة، مصنوعة بإتقان.",
-  "description": "من مصابيح الطاولة إلى المصابيح المعلقة، كل قطعة من  Enouza  مصممة بعناية، ومصنوعة بحرفية، ويتم تصنيعها حسب الطلب."
+  "why_us": "ما يميّز ENOUZA",
+
+  "curated": "منتقى",
+  "curated_description": "مختار بعناية لمساحات مدروسة التفاصيل.",
+
+  "refined": "متقن",
+  "refined_description": "أشكال أنيقة صُقلت حتى جوهرها.",
+
+  "atmospheric": "آسر",
+  "atmospheric_description": "إضاءة صُممت لتشكّل أجواء المكان.",
+
+  "distinctive": "متفرّد",
+  "distinctive_description": "قطع تحمل طابعًا يتجاوز المألوف.",
+
+  "title": "كل قطعة، مصممة بإتقان.",
+  "description": "كل قطعة من ENOUZA مصممة بعناية، ومصنوعة بحرفية، ويتم إعدادها حسب الطلب."
 },
   
   "ctaSection": {

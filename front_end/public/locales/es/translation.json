@@ -126,13 +126,22 @@
   },
 
 "matricsSection": {
-  "why_us": "¿POR QUÉ ELEGIR ENOUZA?",
+  "why_us": "LA DIFERENCIA ENOUZA",
+
   "curated": "SELECCIONADO",
+  "curated_description": "Elegido cuidadosamente para espacios con intención.",
+
   "refined": "REFINADO",
+  "refined_description": "Formas elegantes, depuradas hasta lo esencial.",
+
   "atmospheric": "ATMOSFÉRICO",
+  "atmospheric_description": "Luz diseñada para transformar el ambiente.",
+
   "distinctive": "DISTINTIVO",
-  "title": "Cada pieza, hecha como debe ser.",
-  "description": "Desde lámparas de mesa hasta lámparas colgantes, cada pieza de Enouza está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
+  "distinctive_description": "Piezas con un carácter más allá de lo convencional.",
+
+  "title": "Cada pieza, hecha con intención.",
+  "description": "Cada pieza ENOUZA está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
 },
   "designSection": {
     "title": "El espíritu de Enouza",

@@ -16,6 +16,7 @@ import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import HeadeSeo from '../../common/HeadeSeo.jsx'
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 import Spinner from '../../common/Spinner.jsx'
+import NewArrival from '../components/newArrival/NewArrival.jsx'
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -77,37 +78,18 @@ function HomePage() {
       <AdvertiseMain />
       <HeroSection/>
       <DesignSection/>
-      <MatricsSection/>
-
-
-      <div className="product-header">
-        <strong> {t("homePage.best_sellers")}</strong>
-      </div>
-
-
-
-      <Products isLoading={isLoading} products={homeProducts} columsNumber={4} placeItems="center" scrolTo={scrolTo} />
-
       
 
-      {isLoading && (
 
-         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", margin: "10px" }}>
-          <CircularProgress
-            size={25}
-            thickness={4}
-          />
-        </div>
-      )
-      }
-      {!isLoading && (
-        <div className="veiw-more"  >
-          <button onClick={viewMore}
-            className=""
-            style={nextStart >= totalProducts ? { opacity: "0.3", cursor:"inherit"} : {}}
-            disabled={nextStart >= totalProducts ? true : false}> {t("common.view_more")}</button>
-        </div>
-      )}
+    
+
+
+
+       <NewArrival bestSellersProducts={homeProducts}/>
+      
+
+     
+      <MatricsSection/>
       <CustomersFeedback/>
       <CTASection/>
 

@@ -128,13 +128,22 @@
 },
 
   "matricsSection": {
-  "why_us": "WHY CHOOSE ENOUZA?",
+  "why_us": "THE ENOUZA DIFFERENCE",
+
   "curated": "CURATED",
+  "curated_description": "Thoughtfully selected for considered spaces.",
+
   "refined": "REFINED",
+  "refined_description": "Elegant forms, refined to the essential.",
+
   "atmospheric": "ATMOSPHERIC",
+  "atmospheric_description": "Light designed to shape the mood.",
+
   "distinctive": "DISTINCTIVE",
+  "distinctive_description": "Pieces with character beyond the ordinary.",
+
   "title": "Every piece, made properly.",
-  "description": "From table lamps to pendant lights, every Enouza piece is thoughtfully designed, handcrafted, and made to order."
+  "description": "Every ENOUZA piece is thoughtfully designed, handcrafted, and made to order."
 },
   
   "designSection": {

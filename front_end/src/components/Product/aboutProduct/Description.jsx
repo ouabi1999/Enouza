@@ -110,7 +110,7 @@ const Title = styled.h2`
     "Times New Roman",
     serif;
 
-  font-size: clamp(20px, 1.8vw, 37px);
+  font-size: clamp(20px, 1.5vw, 37px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.01em;

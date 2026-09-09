@@ -42,8 +42,6 @@ export default AboutProductLayout;
 
 const Container = styled.section`
   width: 100%;
-  max-width: 1400px;
-  box-sizing: border-box;
   
 `;
 
@@ -51,17 +49,12 @@ const TabsWrapper = styled.div`
   position: sticky;
   top: 69px;
   z-index:1;
-
+  display:flex;
+  justify-content:center;
   width: 100%;
+  background:#F6F3ED;
 
-  padding: 20px 0;
 
-background:#F6F3ED;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid #eee9e2;
 
   @media (max-width: 700px) {
     top: 55px;
@@ -72,9 +65,9 @@ background:#F6F3ED;
 const Tabs = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #eee9e2;
 
-  gap: clamp(45px, 10vw, 80px);
 
   width: 100%;
 
@@ -87,21 +80,20 @@ const Tab = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 7px 0;
+  
+  padding: 15px 0;
 
   border: none;
   background: transparent;
-
+  flex:1;
   color: ${({ $active }) =>
     $active ? "#211e1a" : "#8b8278"};
 
   font-family:
-    "Cormorant Garamond",
     Georgia,
     serif;
 
-  font-size: clamp(18px, 2vw, 23px);
+  font-size: clamp(18px, 1vw, 23px);
   font-weight: ${({ $active }) => ($active ? 500 : 400)};
 
   line-height: 1.2;
@@ -125,9 +117,9 @@ const Tab = styled.button`
     right: 0;
     bottom: -1px;
 
-    height: 1px;
+    height: 1.5px;
 
-    background: #a88a62;
+    background: #000000;
 
     transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
     transform-origin: center;

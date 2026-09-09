@@ -120,13 +120,15 @@ const RatingsHeader = styled.div`
 `;
 
 const Eyebrow = styled.span`
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   color: #a88a62;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 11px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.32em;
+
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
 `;
 
 const Title = styled.h3`
@@ -139,7 +141,7 @@ const Title = styled.h3`
     "Times New Roman",
     serif;
 
-  font-size: clamp(20px, 1.8vw, 37px);
+  font-size: clamp(20px, 1.5vw, 37px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.01em;

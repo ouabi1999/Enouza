@@ -141,13 +141,14 @@ export default function FilterPageStyled() {
         initial="hidden"
         animate="visible"
       >
+           
         <ControlsInner>
-          {/* CATEGORY */}
+          {/* CATEGORY
           <CategoryControls>
             <FilterTitle>
               {t("common.category")}
             </FilterTitle>
-
+  
             <CategoryArea>
               <CategoryList>
                 {categoryList.map((cat) => (
@@ -175,8 +176,7 @@ export default function FilterPageStyled() {
               {t("common.reset")}
             </ResetButton>
           </CategoryControls>
-
-          {/* SORT */}
+            */}
           <SortWrapper>
             <SortLabel>
               {t("common.sortBy")}
@@ -683,7 +683,7 @@ const ResetButton = styled.button`
 const SortWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   gap: 12px;
 

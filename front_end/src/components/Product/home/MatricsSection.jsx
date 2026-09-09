@@ -13,33 +13,34 @@ import { Link } from "react-router-dom";
 const MetricsSection = () => {
   const { t, i18n } = useTranslation();
 
-  const features = [
-    {
-      icon: <AutoAwesome />,
-      title: t("matricsSection.curated"),
-    },
-    {
-      icon: <WorkspacePremium />,
-      title: t("matricsSection.refined"),
-    },
-    {
-      icon: <LightMode />,
-      title: t("matricsSection.atmospheric"),
-    },
-    {
-      icon: <DiamondOutlined />,
-      title: t("matricsSection.distinctive"),
-    },
-  ];
-
+ const features = [
+  {
+    icon: <AutoAwesome />,
+    title: t("matricsSection.curated"),
+    description: t("matricsSection.curated_description"),
+  },
+  {
+    icon: <WorkspacePremium />,
+    title: t("matricsSection.refined"),
+    description: t("matricsSection.refined_description"),
+  },
+  {
+    icon: <LightMode />,
+    title: t("matricsSection.atmospheric"),
+    description: t("matricsSection.atmospheric_description"),
+  },
+  {
+    icon: <DiamondOutlined />,
+    title: t("matricsSection.distinctive"),
+    description: t("matricsSection.distinctive_description"),
+  },
+];
   return (
     <Section >
       {/* =========================
           WHY CHOOSE ENOUZA
       ========================= */}
-
-      <WhyChooseContainer>
-        <SectionHeader dir = {i18n.language === "ar"? "rtl": "ltr"}>
+       <SectionHeader dir = {i18n.language === "ar"? "rtl": "ltr"}>
           <SectionTitle>
             {t("matricsSection.why_us")}
           </SectionTitle>
@@ -50,31 +51,11 @@ const MetricsSection = () => {
             <DecorationLine />
           </TitleDecoration>
         </SectionHeader>
-
-        <FeaturesGrid>
-          {features.map((feature, index) => (
-            <Feature key={index}>
-              <IconCircle>
-                <FeatureIcon>
-                  {React.cloneElement(feature.icon, {
-                    fontSize: "inherit",
-                  })}
-                </FeatureIcon>
-              </IconCircle>
-
-              <FeatureTitle>
-                {feature.title}
-              </FeatureTitle>
-            </Feature>
-          ))}
-        </FeaturesGrid>
-      </WhyChooseContainer>
-
-      {/* =========================
+          {/* =========================
           VIDEO
       ========================= */}
 
-      <VideoSection>
+      <VideoSection dir = {i18n.language === "ar"? "rtl": "ltr"}>
         <Video
           autoPlay
           muted
@@ -106,7 +87,34 @@ const MetricsSection = () => {
             <ArrowForward />
           </Arrow>
         </ShopButton>
+        
       </VideoSection>
+      <WhyChooseContainer>
+       
+
+        <FeaturesGrid>
+          {features.map((feature, index) => (
+            <Feature key={index}>
+              <IconCircle>
+                <FeatureIcon>
+                  {React.cloneElement(feature.icon, {
+                    fontSize: "inherit",
+                  })}
+                </FeatureIcon>
+              </IconCircle>
+
+              <FeatureTitle>
+                {feature.title}
+              </FeatureTitle>
+              <FeatureDescription>
+  {feature.description}
+</FeatureDescription>
+            </Feature>
+          ))}
+        </FeaturesGrid>
+      </WhyChooseContainer>
+
+     
     </Section>
   );
 };
@@ -289,7 +297,19 @@ const Feature = styled.div`
   }
 `;
 
+const FeatureDescription = styled.p`
+  max-width: 220px;
+  margin: 10px auto 0;
 
+  color: #777168;
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.6;
+
+  text-align: center;
+`;
 /* =========================
    ICON CIRCLE
 ========================= */
