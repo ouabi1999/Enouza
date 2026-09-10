@@ -118,7 +118,7 @@ function ReviewsLayout() {
              t = {t}
              i18n = {i18n}
         />
-        {user.is_staff && (
+        {user?.is_staff && (
           <Feedback
               comment = {comment}
               setComment = {setComment}
