@@ -171,7 +171,7 @@ const Wrap = styled.div`
        border-bottom:none;
        resize: none;
        border-radius:4px 4px 0 0 ;
-
+ background: #f8f6f1;
        &:focus{
         border-color: #eec280;
         outline: none

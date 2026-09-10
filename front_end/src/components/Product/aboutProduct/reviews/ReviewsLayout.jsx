@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomerReviews from './CustomerReviews'
 import Feedback from './FeedBack'
 import { useSelector } from 'react-redux'
@@ -10,6 +10,9 @@ import Ratings from './Ratings'
 function ReviewsLayout() {
   const productData = useSelector(state => state.product.productData)
   const user = useSelector(state=> state.auth.user)
+  useEffect(()=>{
+   console.log(user)
+  },[])
   const [comment, setComment] = useState({ images:[], text:""})
   const [isLoading, setIsLoading] = useState(false)
   const [newRatings, setNewRatings ] = useState(null)
@@ -115,7 +118,8 @@ function ReviewsLayout() {
              t = {t}
              i18n = {i18n}
         />
-        <Feedback
+        {user.is_staff && (
+          <Feedback
               comment = {comment}
               setComment = {setComment}
               isLoading = {isLoading}  
@@ -131,7 +135,10 @@ function ReviewsLayout() {
              t = {t}
              i18n = {i18n}
         />
-    </Container>
+        
+      )}
+      </Container>
+        
   )
 }
 
