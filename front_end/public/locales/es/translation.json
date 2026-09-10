@@ -85,24 +85,28 @@
       "text": "No compartimos tus datos con terceros sin tu consentimiento. Protegemos tu privacidad y mantenemos tus datos seguros."
     }
   },
+  
   "heroSection": {
-  "title": "Iluminación que\ntransforma\nespacios",
-  "description": "Enouza selecciona cuidadosamente lámparas de diseño para elevar los interiores con calidez, sofisticación y elegancia atemporal.",
-  "ctaLabel": "Comprar Ahora",
-   "whereQualityMeetsDesign": "Donde la calidad se une al diseño:",
+    "title": "Luz, diseñada\npara pertenecer.",
+    "description": "Iluminación cuidadosamente seleccionada que aporta profundidad, calidez y carácter a los espacios que llamas hogar.",
+    "ctaLabel": "Descubre la Colección",
+    "detailDesign": "Donde el Detalle se Une al Diseño",
+    "stats": {
+      "rated": {
+        "value": "4.9★",
+        "label": "Valorado por nuestros clientes"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Satisfacción del cliente"
+      },
+      "reviews": {
+        "value": "100+",
+        "label": "Reseñas verificadas"
+      }
+    }
+  },
 
-  "materials": [
-    "Diseños seleccionados",
-    "Materiales premium",
-    "Estética contemporánea",
-    "Detalles refinados"
-  ],
-  "stats": {
-    "craftHours": "fabricación",
-    "satisfaction": "Satisfacción",
-    "rated": "Valorado"
-  }
-},
   
   "ctaSection": {
     "eyebrow": "ATENCIÓN AL CLIENTE ENOUZA",

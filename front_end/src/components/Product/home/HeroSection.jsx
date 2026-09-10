@@ -4,11 +4,41 @@ import { Link } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import {
+  AutoAwesome,
+  WorkspacePremium,
+  LightMode,
+  DiamondOutlined,
+  ArrowForward,
+} from "@mui/icons-material";
+import DecorationLine from "../../../../common/DecorationLine";
 
 export default function HeroSection() {
   const [product, setProduct] = useState(null);
   const { t, i18n } = useTranslation();
 
+  const features = [
+    {
+      icon: <AutoAwesome />,
+      title: t("matricsSection.curated"),
+      description: t("matricsSection.curated_description"),
+    },
+    {
+      icon: <WorkspacePremium />,
+      title: t("matricsSection.refined"),
+      description: t("matricsSection.refined_description"),
+    },
+    {
+      icon: <LightMode />,
+      title: t("matricsSection.atmospheric"),
+      description: t("matricsSection.atmospheric_description"),
+    },
+    {
+      icon: <DiamondOutlined />,
+      title: t("matricsSection.distinctive"),
+      description: t("matricsSection.distinctive_description"),
+    },
+  ];
   useEffect(() => {
     const getHeroProduct = async () => {
       try {
@@ -41,49 +71,46 @@ export default function HeroSection() {
     <HeroBox $rtl={isRTL}>
       <HeroContainer>
         {/* LEFT / TEXT SIDE */}
-        <Content dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
+        <Content dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}>
           <Title>{t("heroSection.title")}</Title>
 
           <Description>{t("heroSection.description")}</Description>
 
           <QualityTitle>
-            <QualityLine />
-            {t("heroSection.whereQualityMeetsDesign")}
+            {t("heroSection.detailDesign")}
           </QualityTitle>
+        <DecorationLine/>
 
-          {/* MATERIALS */}
-          <Materials>
-            {Array.isArray(materials) &&
-              materials.map((material, index) => (
-                <MaterialChip key={index}>{material}</MaterialChip>
-              ))}
-          </Materials>
-
+         
           {/* STATS */}
-          <Stats>
-            <Stat>
-              <StatNumber>24H</StatNumber>
-              <StatLabel>
-                {t("heroSection.stats.craftHours")}
-              </StatLabel>
-            </Stat>
+          <WhyChooseContainer dir={"ltr"}>
 
-            <Stat>
-              <StatNumber>98%</StatNumber>
-              <StatLabel>
-                {t("heroSection.stats.satisfaction")}
-              </StatLabel>
-            </Stat>
 
-            <Stat>
-              <StatNumber>4.9</StatNumber>
-              <StatLabel>
-                {t("heroSection.stats.rated")} ★
-              </StatLabel>
-            </Stat>
-          </Stats>
+            <FeaturesGrid>
+              {features.map((feature, index) => (
+                <Feature key={index}>
+                  <IconCircle>
+                    <FeatureIcon>
+                      {React.cloneElement(feature.icon, {
+                        fontSize: "inherit",
+                      })}
+                    </FeatureIcon>
+                  </IconCircle>
+
+                  <FeatureTitle>
+                    {feature.title}
+                  </FeatureTitle>
+                  <FeatureDescription>
+                    {feature.description}
+                  </FeatureDescription>
+                </Feature>
+              ))}
+            </FeaturesGrid>
+          </WhyChooseContainer>
+          
+
         </Content>
-
+           
         {/* IMAGE SIDE */}
         <ImageSide>
           <ImageContainer>
@@ -96,7 +123,7 @@ export default function HeroSection() {
             <ShopButton
               to={`/product/${product.id}`}
               $rtl={isRTL}
-              dir = {i18n.dir() === "rtl"? "rtl": "ltr"}
+              dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}
             >
               <span>{t("heroSection.ctaLabel")}</span>
 
@@ -110,6 +137,20 @@ export default function HeroSection() {
     </HeroBox>
   );
 }
+
+/* =========================
+   COLORS
+========================= */
+
+const COLORS = {
+  background: "#F7F5F0",
+  white: "#FFFFFF",
+  text: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  softGold: "#DED4C4",
+  border: "#E4DED4",
+};
 
 /* =========================
    ANIMATIONS
@@ -217,7 +258,7 @@ const HeroContainer = styled.div`
 const Content = styled.div`
   animation: ${fadeInUp} 0.8s ease-out both;
 
-  text-align: start;
+  text-align: center;
 
   max-width: 570px;
 
@@ -229,7 +270,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  margin: 0 0 25px;
+  margin: 0 0 37px;
 
   max-width: 570px;
 
@@ -248,7 +289,7 @@ const Title = styled.h1`
 
   letter-spacing: -0.025em;
 
-  text-align: start;
+  text-align: center;
 
   @media (max-width: 900px) {
     max-width: 700px;
@@ -266,7 +307,7 @@ const Title = styled.h1`
 const Description = styled.p`
   max-width: 535px;
 
-  margin: 0 0 27px;
+  margin: 0 0 37px;
 
   color: #68635d;
 
@@ -281,7 +322,7 @@ const Description = styled.p`
 
   line-height: 1.78;
 
-  text-align: start;
+  text-align: center;
 
   @media (max-width: 600px) {
     margin-bottom: 23px;
@@ -297,7 +338,7 @@ const QualityTitle = styled.p`
 
   align-items: center;
 
-  justify-content: flex-start;
+  justify-content: center;
 
   gap: 10px;
 
@@ -481,16 +522,12 @@ const Stats = styled.div`
   display: flex;
 
   align-items: stretch;
-
-  gap: 0;
-
+  gap: 15px;
+  margin-top:30px;
   width: 100%;
 
-  max-width: 460px;
 
-  border-top: 1px solid rgba(65, 59, 52, 0.15);
-
-  border-bottom: 1px solid rgba(65, 59, 52, 0.15);
+  
 
   padding: 18px 0;
 
@@ -498,6 +535,8 @@ const Stats = styled.div`
     max-width: 100%;
 
     padding: 15px 0;
+      gap: 0px;
+
   }
 `;
 
@@ -505,7 +544,6 @@ const Stat = styled.div`
   flex: 1;
 
   min-width: 0;
-
   display: flex;
 
   flex-direction: column;
@@ -518,23 +556,6 @@ const Stat = styled.div`
 
   position: relative;
 
-  &:not(:last-child)::after {
-    content: "";
-
-    position: absolute;
-
-    inset-inline-end: 0;
-
-    top: 50%;
-
-    width: 1px;
-
-    height: 32px;
-
-    transform: translateY(-50%);
-
-    background: rgba(65, 59, 52, 0.14);
-  }
 `;
 
 const StatNumber = styled.span`
@@ -542,7 +563,6 @@ const StatNumber = styled.span`
 
   font-family:
     "Playfair Display",
-    Georgia,
     serif;
 
   font-size: clamp(1.4rem, 2.2vw, 1.65rem);
@@ -707,12 +727,14 @@ const Arrow = styled.span`
 `;
 const ShopButton = styled(Link)`
   position: absolute;
-  left: 7%;
+  right: 7%;
+  background: #DED4C4;
+  padding:15px 20px;
   bottom: 20px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: white;
+  color: #000000;
   text-decoration: none;
   font-family:
   "Times New Roman",
@@ -723,8 +745,6 @@ const ShopButton = styled(Link)`
   white-space: nowrap; /* ✅ fixed */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding-bottom: 7px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   z-index: 5; /* ✅ prevents hiding behind image */
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
@@ -767,3 +787,141 @@ const ShopButton = styled(Link)`
     bottom: 24px;
   }
 `;
+//////////////////
+
+
+const WhyChooseContainer = styled.div`
+  margin: 34px auto;
+
+ width:100%;
+  @media (max-width: 768px) {
+    
+  }
+
+  @media (max-width: 480px) {
+  
+  }
+`;
+
+
+
+/* =========================
+   FEATURES GRID
+========================= */
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  gap:20px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 900px) {
+    gap: 40px 20px;
+      grid-template-columns: repeat(2, 1fr);
+
+    
+  }
+
+ 
+`;
+
+const Feature = styled.div`
+  position: relative;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  min-height: 190px;
+
+
+
+  @media (max-width: 520px) {
+    min-height: auto;
+    padding: 0;
+  }
+`;
+
+const FeatureDescription = styled.p`
+  margin: 10px auto 0;
+
+  color: #777168;
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1.6;
+
+  text-align: center;
+`;
+/* =========================
+   ICON CIRCLE
+========================= */
+
+const IconCircle = styled.div`
+  width: 75px;
+  height: 75px;
+
+  border: 1px solid ${COLORS.gold};
+  border-radius: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  color: ${COLORS.gold};
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+
+  
+
+ 
+`;
+
+const FeatureIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+
+  svg {
+    font-size: inherit;
+  }
+
+
+`;
+
+
+/* =========================
+   FEATURE TITLE
+========================= */
+
+const FeatureTitle = styled.h3`
+  margin: 0;
+
+  color: ${COLORS.text};
+
+  font-family: "Playfair Display", serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    font-size: 0.78rem;
+  }
+`;
+
+
+
+

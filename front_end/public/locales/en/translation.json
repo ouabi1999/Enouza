@@ -85,24 +85,29 @@
     }
   },
 
- "heroSection": {
-  "title": "Lighting that transforms\nspaces",
-  "description": "Enouza curates refined designer lighting created to elevate interiors with warmth, sophistication, and timeless elegance.",
-  "ctaLabel": "Shop Now",
-  "whereQualityMeetsDesign": "Where Quality Meets Design:",
+ 
+  "heroSection": {
+    "title": "Light, Designed\nto Belong.",
+    "description": "Thoughtfully selected lighting that brings depth, warmth, and character to the spaces you call home.",
+    "ctaLabel": "Discover the Collection",
+    "detailDesign": "Where Detail Meets Design",
+    "stats": {
+      "rated": {
+        "value": "4.9★",
+        "label": "Rated by Customers"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Customer Satisfaction"
+      },
+      "reviews": {
+        "value": "100+",
+        "label": "Verified Reviews"
+      }
+    }
+  },
 
-  "materials": [
-    "Curated Designs",
-    "Premium Materials",
-    "Modern Aesthetics",
-    "Refined Craftsmanship"
-  ],
-   "stats": {
-    "craftHours": "Craft Hours",
-    "satisfaction": "Satisfaction",
-    "rated": "Rated"
-  }
-},
+
   
   
   "ctaSection": {

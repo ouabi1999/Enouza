@@ -164,11 +164,13 @@ const Arrow = styled.span`
 const CollectionButton = styled(Link)`
   position: absolute;
   left: 7%;
+  background: #DED4C4;
+  padding:15px 20px;
   bottom: 20px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: white;
+  color:#000000;
   text-decoration: none;
   font-family:
   "Times New Roman",
@@ -179,8 +181,6 @@ const CollectionButton = styled(Link)`
   white-space: nowrap; /* ✅ fixed */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding-bottom: 7px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   z-index: 5; /* ✅ prevents hiding behind image */
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
   

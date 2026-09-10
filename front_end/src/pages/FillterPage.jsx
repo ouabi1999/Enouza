@@ -67,14 +67,14 @@ export default function FilterPageStyled() {
     setIsLoading(true);
 
     ApiInstance.get("product-search/", {
-      params: {
-        search,
-        category: categories,
-        sort,
-        current_page: count,
-        per_page: 12,
-      },
-    })
+  params: {
+    search: search || "",
+    category: categories?.join(",") || "",
+    sort: sort || "best_match",
+    page: count,
+    per_page: 12,
+  },
+})
       .then((response) => {
         setProductsList(response.data.results || []);
         setTotalPages(response.data.total_pages || 0);

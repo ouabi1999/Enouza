@@ -13,28 +13,6 @@ import { Link } from "react-router-dom";
 const MetricsSection = () => {
   const { t, i18n } = useTranslation();
 
- const features = [
-  {
-    icon: <AutoAwesome />,
-    title: t("matricsSection.curated"),
-    description: t("matricsSection.curated_description"),
-  },
-  {
-    icon: <WorkspacePremium />,
-    title: t("matricsSection.refined"),
-    description: t("matricsSection.refined_description"),
-  },
-  {
-    icon: <LightMode />,
-    title: t("matricsSection.atmospheric"),
-    description: t("matricsSection.atmospheric_description"),
-  },
-  {
-    icon: <DiamondOutlined />,
-    title: t("matricsSection.distinctive"),
-    description: t("matricsSection.distinctive_description"),
-  },
-];
   return (
     <Section >
       {/* =========================
@@ -89,30 +67,7 @@ const MetricsSection = () => {
         </ShopButton>
         
       </VideoSection>
-      <WhyChooseContainer>
-       
-
-        <FeaturesGrid>
-          {features.map((feature, index) => (
-            <Feature key={index}>
-              <IconCircle>
-                <FeatureIcon>
-                  {React.cloneElement(feature.icon, {
-                    fontSize: "inherit",
-                  })}
-                </FeatureIcon>
-              </IconCircle>
-
-              <FeatureTitle>
-                {feature.title}
-              </FeatureTitle>
-              <FeatureDescription>
-  {feature.description}
-</FeatureDescription>
-            </Feature>
-          ))}
-        </FeaturesGrid>
-      </WhyChooseContainer>
+      
 
      
     </Section>
@@ -483,9 +438,12 @@ const VideoDescription = styled.p`
 
 const ShopButton = styled(Link)`
   position: absolute;
+   padding:15px 20px;
 
   right: 7%;
-  bottom: 45px;
+  background: #DED4C4;
+  padding:15px 20px;
+    bottom: 20px;
 
   display: inline-flex;
 
@@ -505,9 +463,7 @@ const ShopButton = styled(Link)`
 
   text-transform: uppercase;
 
-  padding-bottom: 7px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 
   transition: 0.25s ease;
 

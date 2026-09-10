@@ -689,7 +689,7 @@ const Logo = styled.div`
   @media only screen and (max-width: 650px) {
 
     span {
-      font-size: 20px !important;
+      font-size: 25px !important;
 
       letter-spacing: 0.15em !important;
     }
