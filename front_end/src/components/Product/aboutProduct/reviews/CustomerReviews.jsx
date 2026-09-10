@@ -144,9 +144,11 @@ function CustomerReviews(props) {
                     </RatingStars>
 
                     {rate?.created_at && (
+                      <bdi>
                       <ReviewDate>
                         {formatDate(rate.created_at)}
                       </ReviewDate>
+                      </bdi>
                     )}
                   </ReviewMeta>
 
@@ -421,6 +423,7 @@ const CustomerName = styled.span`
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.025em;
+  text-transform:capitalize;
 `;
 
 const VerifiedLabel = styled.span`
@@ -430,10 +433,9 @@ const VerifiedLabel = styled.span`
   margin-top: 7px;
   color: #8f8172;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
-  font-weight: 500;
+  font-size: 8px;
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
 `;
 
@@ -488,7 +490,7 @@ const ReviewDate = styled.time`
   flex-shrink: 0;
   color: #9d9184;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.12em;

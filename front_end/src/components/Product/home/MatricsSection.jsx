@@ -441,7 +441,6 @@ const ShopButton = styled(Link)`
    padding:15px 20px;
 
   right: 7%;
-  background: #DED4C4;
   padding:15px 20px;
     bottom: 20px;
 
