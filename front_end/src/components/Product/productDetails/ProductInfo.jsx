@@ -606,6 +606,13 @@ function ProductInfo({
     );
   };
 
+  
+  const handleReviewsClick = () => {
+  document.getElementById("reviews")?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
   /*
    * =========================================================
    * RENDER
@@ -663,7 +670,7 @@ function ProductInfo({
             <>
               <RatingDivider />
 
-              <RatingCount>
+              <RatingCount onClick={handleReviewsClick}>
                 {ratingCount === 1
                   ? t(
                       "customer_reviews.customer_review",
@@ -1087,9 +1094,9 @@ const RatingDivider = styled.span`
   background: #d8d2ca;
 `;
 
-const RatingCount = styled.span`
+const RatingCount = styled.button`
   font-size: 0.72rem;
-
+  background:none;
   line-height: 1.4;
 
   color: #817c75;

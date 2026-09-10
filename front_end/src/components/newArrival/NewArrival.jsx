@@ -324,7 +324,8 @@ const NavigationArea = styled.div`
   align-items: center;
   justify-content:flex-end;
   gap: 8px;
-  padding: 15px 40px;
+  margin-top:25px;
+  margin-right:25px;
 
   direction: ltr;
 
@@ -369,6 +370,13 @@ const NavigationArea = styled.div`
       color: inherit;
     }
   }
+     
+
+    @media (max-width: 400px) {
+    &{
+     display:none;
+     }
+    }
 `;
 
 const Arrow = styled.span`

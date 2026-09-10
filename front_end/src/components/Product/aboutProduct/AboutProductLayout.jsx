@@ -9,7 +9,7 @@ function AboutProductLayout() {
   const { t, i18n } = useTranslation();
 
   return (
-    <Container>
+    <Container id="reviews">
       <TabsWrapper>
         <Tabs dir = {i18n.dir() === "rtl" ? "rtl" : "ltr"}>
           <Tab
