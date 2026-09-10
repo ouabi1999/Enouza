@@ -11,6 +11,11 @@ const CustomersFeedback = () => {
   const [reviews, setReviews] = useState([]);
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
+  const [selected, setSelected] = useState({
+  id: null,
+  index: null,
+});
+  const [review, setReview] = useState({})
 
   // 1. Helper function to determine slides based on width
   const getSlidesToShow = () => {
@@ -53,7 +58,12 @@ const CustomersFeedback = () => {
     pauseOnHover: true,
     // responsive: []  // ❌ DELETE THIS LINE
   };
-
+const setRate = (item, index) => {
+    setExpanded(true)
+    setReview(item)
+    setSelected( {id: item.id, index: index},)
+    console.log(review, expanded)
+}
   return (
     <Section>
       <Container>
@@ -93,7 +103,7 @@ const CustomersFeedback = () => {
         {reviews.length > 0 && (
           <Reviews>
             <Slider {...settings}>
-              {reviews.map((item) => {
+              {reviews.map((item, index) => {
 
 
                 return (
@@ -108,10 +118,13 @@ const CustomersFeedback = () => {
                             src={item.review.images[0]}
                             alt="Customer review"
                             loading="lazy"
+                            onClick={() => setRate(item, 0)}
                           />
                         </ImageWrapper>
                       ) : <ImageWrapper>
                         <ReviewImage
+                          onClick={() => setRate(item, 0)}
+
                           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png"
                           alt="Customer review"
 
@@ -154,17 +167,21 @@ const CustomersFeedback = () => {
 
                     </ReviewCard>
                   </ReviewSlide>
+                  
                 );
-                expanded &&(
-        <ReviewImagePopup rate= {item} selected= {expanded} setSelected={setExpanded}/>
-      )
+                
+          
               })}
             </Slider>
+                   {expanded === true && (
+        <ReviewImagePopup rate= {review} selected= {selected} setSelected={setSelected}/>
+      )}
+         
           </Reviews>
         )}
-
+        
       </Container>
-      
+        
     </Section>
   );
 };
@@ -401,7 +418,7 @@ const ImageWrapper = styled.div`
 const ReviewImage = styled.img`
   width: 100%;
   height: 100%;
-
+  cursor:pointer;
   display: block;
 
   object-fit: cover;

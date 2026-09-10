@@ -7,7 +7,7 @@ import { ClickAwayListener } from "@mui/base";
 export default function ReviewImagePopup({ rate, selected, setSelected }) {
   if (selected.index === null || rate.id !== selected.id) return null;
 
-  const images = rate.review.images || [];
+  const images = rate.review.images.length >0? rate.review.images : ["https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png"];
   const currentImage = images[selected.index];
 
   const handlePrev = () =>
@@ -48,7 +48,7 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
             <Content>
               {/* LEFT: Thumbnails */}
               <ThumbColumn>
-                {images.map((img, i) => (
+                {images?.map((img, i) => (
                   <Thumb
                     key={i}
                     src={img}
