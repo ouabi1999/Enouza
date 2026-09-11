@@ -77,7 +77,7 @@ function HomePage() {
       <UserServices />
       <AdvertiseMain />
       <HeroSection/>
-      <DesignSection/>
+     
       
 
 
@@ -87,7 +87,7 @@ function HomePage() {
 
        <NewArrival bestSellersProducts={homeProducts}/>
       
-
+ <DesignSection/>
      
       <MatricsSection/>
       <CustomersFeedback/>

@@ -151,23 +151,25 @@
   "description": "Every ENOUZA piece is thoughtfully designed, handcrafted, and made to order."
 },
   
+  
   "designSection": {
-    "title": "Enouza Ethos",
+    "title": "Our Design Philosophy.",
     "principles": {
       "minimalism": {
-        "title": "Minimalist Philosophy",
-        "description": "We believe in subtraction. Each line, curve, and angle is essential, creating pieces that speak through absence as much as presence."
+        "title": "Thoughtful Simplicity",
+        "description": "We believe in the power of thoughtful simplicity. Every line, curve, and proportion has a purpose, creating refined lighting that complements a space without overwhelming it."
       },
       "materials": {
         "title": "Material Integrity",
-        "description": "Only noble materials that age with grace: hand-blown Murano glass, forged brass, rare marbles, and sustainable hardwoods."
+        "description": "We look for considered materials and finishes that bring quality, tactility, and elegance to every piece, selecting designs where quality and beauty work naturally together."
       },
       "ambient": {
         "title": "Ambient Alchemy",
-        "description": "Light is not merely emitted—it's curated. Our designs transform illumination into atmosphere, shadow into sculpture."
+        "description": "Light is more than illumination—it shapes atmosphere. Our designs bring warmth, depth, and character to spaces, transforming everyday surroundings into something more considered."
       }
     }
   },
+
   "customersFeedback": {
   "eyebrow": "THE ENOUZA EXPERIENCE",
   "title": "Loved by homeowners worldwide.",

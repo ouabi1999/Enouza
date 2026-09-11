@@ -147,23 +147,25 @@
   "title": "Cada pieza, hecha con intención.",
   "description": "Cada pieza ENOUZA está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
 },
+  
   "designSection": {
-    "title": "El espíritu de Enouza",
+    "title": "Nuestra Filosofía de Diseño.",
     "principles": {
       "minimalism": {
-        "title": "Filosofía minimalista",
-        "description": "Creemos en la sustracción. Cada línea, curva y ángulo es esencial, creando piezas que expresan tanto a través de la ausencia como de la presencia."
+        "title": "Simplicidad Intencionada",
+        "description": "Creemos en el poder de la simplicidad intencionada. Cada línea, curva y proporción tiene un propósito, creando una iluminación refinada que complementa el espacio sin dominarlo."
       },
       "materials": {
-        "title": "Integridad de los materiales",
-        "description": "Solo materiales nobles que envejecen con elegancia: vidrio de Murano soplado a mano, latón forjado, mármoles selectos y maderas sostenibles."
+        "title": "Integridad de los Materiales",
+        "description": "Buscamos materiales y acabados cuidadosamente seleccionados que aporten calidad, tactilidad y elegancia a cada pieza, eligiendo diseños donde la calidad y la belleza se integran de forma natural."
       },
       "ambient": {
-        "title": "Alquimia ambiental",
-        "description": "La luz no solo se emite, se diseña. Nuestras creaciones transforman la iluminación en atmósfera y la sombra en escultura."
+        "title": "Alquimia de la Atmósfera",
+        "description": "La luz es más que iluminación: define la atmósfera. Nuestros diseños aportan calidez, profundidad y carácter a los espacios, transformando los entornos cotidianos en algo más especial."
       }
     }
   },
+
 
 "customersFeedback": {
   "eyebrow": "LA EXPERIENCIA ENOUZA",
