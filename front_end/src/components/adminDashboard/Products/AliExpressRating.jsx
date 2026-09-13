@@ -99,7 +99,6 @@ export const AliExpressRating= ({ product }) => {
       
       toast.success('Rating submitted successfully!');
       setFormData({
-        ...formData,
         stars: 0,
         review: { text: '', images: [] },
         user: { firstName: '', lastName:"",  avatar: '', country: '', countryCode: '' }
