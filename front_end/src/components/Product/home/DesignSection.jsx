@@ -439,7 +439,7 @@ const DesignSection = () => {
           {productList.length > 0 ? (
             <ImageWrapper >
 
-              
+              <Slider {...settings} >
                 {productList.map((item, index) => {
                   const image =
                     item?.multimediaInfo?.image_urls[0]
@@ -470,6 +470,7 @@ const DesignSection = () => {
                     </div>
                   );
                 })}
+              </Slider>
 
               {/* ==================================
                   DISCOVER COLLECTION
