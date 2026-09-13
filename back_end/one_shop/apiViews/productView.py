@@ -115,7 +115,6 @@ class ProductDetailsView(APIView):
         image_urls = multimedia_info.get("image_urls", [])
         print(request.FILES.getlist("additionalImageFiles"))
         for image_file in request.FILES.getlist("additionalImageFiles"):
-            print(request.FILES.getlist("additionalImageFiles"))
             result = cloudinary.uploader.upload(
                 image_file,
                 folder="enouza/products"

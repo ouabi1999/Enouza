@@ -149,16 +149,41 @@ const existingImages = formData.multimediaInfo?.image_urls
 
     addAdditionalImages(e.target.files);
 
-    e.target.value = "";
-    console.log(formData)
+
   };
 
-  const handleAdditionalImagesDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleAdditionalImagesDrop = async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
 
-    addAdditionalImages(e.dataTransfer.files);
-  };
+ 
+
+  
+
+  // Image URL from another website
+const uri = e.dataTransfer.getData("text/uri-list");
+
+ if (uri) {
+    setFormData((prev) => ({
+      ...prev,
+      multimediaInfo: {
+        ...prev.multimediaInfo,
+        image_urls: [
+          ...(prev.multimediaInfo?.image_urls || []),
+          uri.trim(),
+        ],
+      },
+    }));
+
+    return;
+  }
+  // Image/file dragged from the computer
+  const files = Array.from(e.dataTransfer.files || []);
+
+  if (files.length) {
+    addAdditionalImages(files);
+  }
+};
 
   /*
   ============================================================
