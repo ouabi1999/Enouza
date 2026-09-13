@@ -59,9 +59,7 @@ export default function HeroSection() {
     returnObjects: true,
   });
 
-  const imageUrl = product?.multimediaInfo?.image_urls
-    ?.split(";")
-    ?.filter(Boolean)?.[0];
+  const imageUrl = product?.multimediaInfo?.image_urls?.[0];
 
   if (!imageUrl) return null;
 
