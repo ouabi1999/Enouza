@@ -32,9 +32,7 @@ function MainImages(props) {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const images =
-    productData?.multimediaInfo?.image_urls
-      ?.split(";")
-      ?.filter(Boolean) || [];
+    productData?.multimediaInfo?.image_urls || [];
 
   const activeImage = isColorActive
     ? currentSku?.attributes?.[currentSku?.colorKey]?.image

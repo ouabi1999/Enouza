@@ -57,7 +57,7 @@ export default function adminProducts(props) {
                       <img
                         width="80"
                         height="90"
-                        src={product.multimediaInfo.image_urls.split(";")[0]}
+                        src={product.multimediaInfo?.image_urls?.[0]}
                         alt="productImage"
                       />
                     </a>

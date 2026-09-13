@@ -439,12 +439,11 @@ const DesignSection = () => {
           {productList.length > 0 ? (
             <ImageWrapper >
 
-              <Slider {...settings} >
+              
                 {productList.map((item, index) => {
                   const image =
-                    item?.multimediaInfo?.image_urls
-                      ?.split(";")[0]
-                      ?.trim() || "";
+                    item?.multimediaInfo?.image_urls[0]
+                      
 
                   if (!image) {
                     return null;
@@ -471,7 +470,6 @@ const DesignSection = () => {
                     </div>
                   );
                 })}
-              </Slider>
 
               {/* ==================================
                   DISCOVER COLLECTION

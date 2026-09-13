@@ -89,7 +89,6 @@ const nextRef = useRef(null);
 
                 const image =
                   item.multimediaInfo?.image_urls
-                    ?.split(";")
                     .map((url) => url.trim())
                     .filter(Boolean)[0] || "";
 
