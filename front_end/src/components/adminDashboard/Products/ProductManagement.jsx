@@ -176,7 +176,7 @@ useEffect(() => {
         productData.ae_item_base_info_dto?.subject ||
         "",
     },
-
+    main_image: productData.multimediaInfo.main_image,
     description: {
       ...prev.description,
 
@@ -243,7 +243,8 @@ useEffect(() => {
   }
 setFormData({
   ...EditProduct,
-
+  main_image: EditProduct.multimediaInfo.main_image,
+  mainImagePreview:EditProduct.multimediaInfo.main_image,
   multimediaInfo: {
     ...EditProduct.multimediaInfo,
     image_urls: imageUrls,
@@ -273,7 +274,8 @@ setFormData({
     // Append nested objects like specifications, images, social_media_links, etc.
     data.append("specifications", JSON.stringify(formData.specifications));
     // Append `main_image` as a file if it exists
-
+    data.append("main_image", formData.main_image);
+   
 
 
 

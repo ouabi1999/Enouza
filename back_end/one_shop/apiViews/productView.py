@@ -85,18 +85,19 @@ class ProductDetailsView(APIView):
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id=pk)
         data = request.data.copy()  # Make a copy to modify
-        images_object = {}
-       
+        multimedia_info = json.loads(data.get("multimediaInfo"))
+        image = request.FILES.get("main_image")
+        if image:
+            # Cloudinary - Upload main image, check if file exists in request.FILES
+            main_image_result = cloudinary.uploader.upload(image)
+            multimedia_info["main_image"] = main_image_result["secure_url"]
+            
+        else:
+            image = request.data.get("main_image")
 
-        # Cloudinary - Upload main image, check if file exists in request.FILES
-        if "main_image" in request.data:
-
-            main_image = request.data["main_image"]
-            main_image_result = cloudinary.uploader.upload(main_image)
-            images_object["main_image"] = main_image_result["secure_url"]
+            multimedia_info["main_image"] =  image
 
         color_urls = []
-
         # Get the color images from the request files
         color_images = data.getlist("colors")
         # Upload each color image to Cloudinary and get the URL
@@ -108,12 +109,9 @@ class ProductDetailsView(APIView):
         data["colors"] = json.dumps(color_urls)
 
         # Cloudinary - Upload additional images, if they are provided in request.FILES
-        multimedia_info = json.loads(
-            data.get("multimediaInfo")
-        )
+        
 
         image_urls = multimedia_info.get("image_urls", [])
-        print(request.FILES.getlist("additionalImageFiles"))
         for image_file in request.FILES.getlist("additionalImageFiles"):
             result = cloudinary.uploader.upload(
                 image_file,

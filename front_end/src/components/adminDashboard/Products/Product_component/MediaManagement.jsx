@@ -44,67 +44,79 @@ const existingImages = formData.multimediaInfo?.image_urls
   */
 
   const handleMainImageChange = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const file = e.target.files?.[0];
+  const file = e.target.files?.[0];
 
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      e.target.value = "";
-      return;
-    }
-
-    const preview = URL.createObjectURL(file);
-
-    setFormData((prev) => ({
-      ...prev,
-
-      images: {
-        ...prev.images,
-        main_image: preview,
-      },
-
-      mainImageFile: file,
-      mainImagePreview: preview,
-    }));
-
+  if (!file) return;
+  if (!file.type.startsWith("image/")) {
     e.target.value = "";
-  };
+    return;
+  }
 
-  const handleMainImageDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const preview = URL.createObjectURL(file);
 
-    const file = e.dataTransfer.files?.[0];
+  setFormData((prev) => ({
+    ...prev,
+    main_image: file,
+    mainImageFile: file,
+    mainImagePreview: preview,
+    mainImageExistingUrl: null,
+  }));
 
-    if (!file) return;
+  e.target.value = "";
+};
 
-    if (!file.type.startsWith("image/")) return;
+ const handleMainImageDrop = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
 
-    const preview = URL.createObjectURL(file);
+  // Image URL dragged from another website
+  const uri = e.dataTransfer.getData("text/uri-list");
+
+  if (uri) {
+    const imageUrl = uri.trim();
 
     setFormData((prev) => ({
       ...prev,
-
-      images: {
-        ...prev.images,
-        main_image: preview,
-      },
-
-      mainImageFile: file,
-      mainImagePreview: preview,
+      main_image: imageUrl,
+      mainImageFile: null,
+      mainImagePreview: imageUrl,
+      mainImageExistingUrl: imageUrl,
     }));
-  };
 
+    return;
+  }
+
+  // Image/file dragged from computer
+  const file = e.dataTransfer.files?.[0];
+
+  if (!file) return;
+  if (!file.type.startsWith("image/")) return;
+
+  const preview = URL.createObjectURL(file);
+
+  setFormData((prev) => ({
+    ...prev,
+    main_image: file,
+    mainImageFile: file,
+    mainImagePreview: preview,
+    mainImageExistingUrl: null,
+  }));
+};
   const removeMainImage = () => {
     setFormData((prev) => ({
       ...prev,
+      multimediaInfo:{
+        ...prev.multimediaInfo,
+              main_image: null,
 
-      images: {
-        ...prev.images,
-        main_image: null,
       },
+      main_image: null,
+  
+    mainImageExistingUrl: null,
+        
+      
 
       mainImageFile: null,
       mainImagePreview: null,
@@ -241,35 +253,22 @@ const uri = e.dataTransfer.getData("text/uri-list");
   SET EXISTING IMAGE AS MAIN
   ============================================================
   */
+const setExistingImageAsMain = (index) => {
+  const image = existingImages[index];
 
-  const setExistingImageAsMain = (index) => {
-    const image = existingImages[index];
+  if (!image) return;
 
-    if (!image) return;
+  setFormData((prev) => ({
+    ...prev,
 
-    setFormData((prev) => ({
-      ...prev,
+    main_image: image,              // ✅ existing URL
+    mainImageFile: null,            // ✅ no File
+    mainImagePreview: image,       // ✅ preview
+    mainImageExistingUrl: image,   // ✅ existing URL
+  }));
 
-      images: {
-        ...prev.images,
-        main_image: image,
-      },
-
-      /*
-      Existing URL.
-      No File because this image already exists remotely.
-      */
-      mainImageFile: null,
-      mainImagePreview: image,
-
-      /*
-      Keep track that this is an existing image.
-      */
-      mainImageExistingUrl: image,
-    }));
-
-    setOpenDropdown(null);
-  };
+  setOpenDropdown(null);
+};
 
   /*
   ============================================================
@@ -278,27 +277,21 @@ const uri = e.dataTransfer.getData("text/uri-list");
   */
 
   const setNewImageAsMain = (index) => {
-    const selected = newImages[index];
+  const selected = newImages[index];
 
-    if (!selected) return;
+  if (!selected) return;
 
-    setFormData((prev) => ({
-      ...prev,
+  setFormData((prev) => ({
+    ...prev,
+    
+    main_image: selected.file,
+    mainImageFile: selected.file,
+    mainImagePreview: selected.preview,
+    mainImageExistingUrl: null,
+  }));
 
-      images: {
-        ...prev.images,
-        main_image: selected.preview,
-      },
-
-      mainImageFile: selected.file,
-      mainImagePreview: selected.preview,
-
-      mainImageExistingUrl: null,
-    }));
-
-    setOpenDropdown(null);
-  };
-
+  setOpenDropdown(null);
+};
   /*
   ============================================================
   DRAG OVER
@@ -362,7 +355,7 @@ const uri = e.dataTransfer.getData("text/uri-list");
             onChange={handleMainImageChange}
           />
 
-          {!formData?.images?.main_image && (
+          {!formData?.main_image && (
             <button
               type="button"
               className="add-image"
@@ -376,10 +369,10 @@ const uri = e.dataTransfer.getData("text/uri-list");
             </button>
           )}
 
-          {formData?.images?.main_image && (
+          {formData?.main_image && (
             <div className="image-wrapper main-image-wrapper">
               <img
-                src={formData.images.main_image}
+                src={formData.mainImagePreview}
                 alt="Main product"
                 className="imgpreview"
               />
