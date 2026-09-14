@@ -87,10 +87,8 @@ const nextRef = useRef(null);
               bestSellersProducts.map((item) => {
                 const mainSku = item.skuInfo?.[0];
 
-                const image =
-                  item.multimediaInfo?.image_urls
-                    .map((url) => url.trim())
-                    .filter(Boolean)[0] || "";
+                const image = item.multimediaInfo?.main_image
+                    
 
                 const productName =
                   item.name?.[i18n.language] ||
