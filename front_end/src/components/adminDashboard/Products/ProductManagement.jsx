@@ -27,6 +27,8 @@ function ProductManagement(props) {
     skuInfo: [],
     specifications: [],
     multimediaInfo: [],
+    main_image: null,
+
     in_stock: true,
     category: "",
     tags: [],
@@ -176,7 +178,6 @@ useEffect(() => {
         productData.ae_item_base_info_dto?.subject ||
         "",
     },
-    main_image: productData.multimediaInfo.main_image,
     description: {
       ...prev.description,
 
