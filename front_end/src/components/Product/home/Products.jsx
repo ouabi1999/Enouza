@@ -22,7 +22,7 @@ function Products({
           const mainSku = item.skuInfo?.[0];
 
           const image =
-            item.multimediaInfo?.image_urls?.[0]
+            item.multimediaInfo?.main_image
 
           const sumRatings = item.ratings;
 
