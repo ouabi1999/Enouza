@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import { Save } from "lucide-react";
 import { tr } from "framer-motion/client";
 
-function NewArrival({ products = [], name, label, loop = true }) {
+function NewArrival({ products = [], name, label, loop}) {
   const { t, i18n } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
