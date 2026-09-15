@@ -307,7 +307,7 @@ class ProductFilterView(APIView):
 
         queryset = queryset.annotate(
                   orders_count=Count("orders", distinct=True),
-                  average_rating=Avg("user_ratings"),
+                  average_rating=Avg("user_ratings__stars"),
                   ratings_count=Count("user_ratings", distinct=True),
               ).order_by(
                   "-orders_count",
