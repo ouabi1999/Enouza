@@ -113,7 +113,7 @@ useEffect(() => {
 
 
 
-       <NewArrival products={bestSellersProducts} name="best_sellers" label={"best_sellers"}/>
+       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"}/>
       
  <DesignSection/>
      

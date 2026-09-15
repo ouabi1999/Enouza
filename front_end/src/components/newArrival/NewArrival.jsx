@@ -151,7 +151,7 @@ function NewArrival({ products = [], name, label }) {
                             loading="lazy"
                           />
 
-                          <ProductLabels>
+                          <ProductLabels  $isArabic = {isArabic}>
                             <SaveLabel>
                             {t("productInfo.save")}{" "}
                             <bdi>
@@ -491,9 +491,17 @@ const ProductLabels = styled.div`
    position: absolute;
    top: 12px;
    left: 12px;
+  ${({ $isArabic }) =>
+    $isArabic
+      ? `
+        left: 12px;
+      `
+      : `
+        right: 12px;
+      `}
+`;
 
 
-`
 const Label = styled.span`
    
 
@@ -502,6 +510,7 @@ const Label = styled.span`
     background: #000000;
 
     color: #fff;
+    border-radius:4px;
 
     font-family: Arial, sans-serif;
 
@@ -517,8 +526,8 @@ const SaveLabel = styled.span`
      
     padding: 5px 8px;
 
-    background: #9a7743;
-
+    background: #af956e;
+    border-radius:4px;
     color: #fff;
 
     font-family: Arial, sans-serif;
