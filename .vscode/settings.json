@@ -3,5 +3,7 @@
         "editor.formatOnSave": true
     },
     "python.analysis.autoImportCompletions": true,
-    "python.analysis.typeCheckingMode": "standard"
+    "python.analysis.typeCheckingMode": "standard",
+    "editor.inlineSuggest.triggerCommandOnProviderChange": false,
+    "editor.defaultFormatter": "ms-python.black-formatter"
 }

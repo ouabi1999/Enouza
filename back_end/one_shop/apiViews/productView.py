@@ -84,7 +84,7 @@ class ProductDetailsView(APIView):
 
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id=pk)
-        data = request.data.copy()  # Make a copy to modify
+        data = request.data  # Make a copy to modify
         multimedia_info = json.loads(data.get("multimediaInfo"))
         image = request.FILES.get("main_image")
         if image:
