@@ -87,7 +87,7 @@ const nextRef = useRef(null);
               bestSellersProducts.map((item) => {
                 const mainSku = item.skuInfo?.[0];
 
-                const image = item.multimediaInfo?.main_image
+                const image = item.multimediaInfo?.main_image ? item.multimediaInfo?.main_image:""
                     
 
                 const productName =

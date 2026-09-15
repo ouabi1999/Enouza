@@ -21,8 +21,8 @@ function Products({
         {products?.map((item) => {
           const mainSku = item.skuInfo?.[0];
 
-          const image =
-            item.multimediaInfo?.main_image
+        const image = item.multimediaInfo?.main_image ? item.multimediaInfo?.main_image: ""
+
 
           const sumRatings = item.ratings;
 
