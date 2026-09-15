@@ -226,30 +226,10 @@ useEffect(() => {
   useEffect(() => {
   if (!isEditProductOn || !EditProduct) return;
 
-  const multimedia =  EditProduct.multimediaInfo || {};
-
-  let imageUrls = multimedia.image_urls;
-
-  if (Array.isArray(imageUrls)) {
-    imageUrls = imageUrls.filter(
-      (url) =>
-        typeof url === "string" &&
-        url.trim() !== ""
-    );
-  } else if (typeof imageUrls === "string") {
-    imageUrls = imageUrls
-      .split(";").filter(Boolean);
-  } else {
-    imageUrls = imageUrls;
-  }
 setFormData({
   ...EditProduct,
   main_image: EditProduct.multimediaInfo.main_image,
   mainImagePreview:EditProduct.multimediaInfo.main_image,
-  multimediaInfo: {
-    ...EditProduct.multimediaInfo,
-    image_urls: imageUrls,
-  },
 });
 
 }, [isEditProductOn, EditProduct]);
@@ -257,7 +237,7 @@ setFormData({
   /// send products info to the backend
   const product_submit = (value) => {
     const data = new FormData();
-    console.log(formData)
+   
     formData.tags?.forEach((tag) => data.append("tags", tag));
 
     formData.ali_express_ratings?.forEach((rating) =>

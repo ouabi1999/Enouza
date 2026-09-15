@@ -15,7 +15,6 @@ from ..serializer import (
     ProductSerializer,
     OrderSerializer,
     RatingSerializer,
-    
 )
 from django.db import transaction
 from django.shortcuts import get_object_or_404
@@ -45,13 +44,9 @@ class ProductView(APIView):
         per_page = int(request.GET.get("per_page", 10))
 
         products_qs = Products.objects.annotate(
-              ratings_count=Count("user_ratings", distinct=True),
-              orders_count=Count("orders", distinct=True)
-              ).order_by("orders_count", "-ratings_count", "-release_date")
-
-
-
-
+            ratings_count=Count("user_ratings", distinct=True),
+            orders_count=Count("orders", distinct=True),
+        ).order_by("orders_count", "-ratings_count", "-release_date")
 
         total_products = products_qs.count()
 
@@ -84,126 +79,51 @@ class ProductDetailsView(APIView):
 
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id=pk)
-
-         # ============================================================
-        # CREATE MUTABLE DATA WITHOUT COPYING UPLOADED FILES
-        # ============================================================
-
-        data = {}
-
-        for key in request.data:
-            # Files are handled separately through request.FILES
-            if key not in ["main_image", "additionalImageFiles", "colors"]:
-                data[key] = request.data.get(key)
-
-            # Repeated fields
-        data["tags"] = request.data.getlist("tags")
-        data["ali_express_ratings"] = request.data.getlist(
-            "ali_express_ratings"
-        )
-        data["seo"] = request.data.getlist("seo")
-        
-        # ============================================================
-            # MULTIMEDIA INFO
-            # ============================================================
-        
-        multimedia_info = json.loads(
-            data.get("multimediaInfo", "{}")
-        )
-    
-        # ============================================================
-        # MAIN IMAGE
-        # ============================================================
-
-        main_image_file = request.FILES.get("main_image")
-    
-        if main_image_file:
-            result = cloudinary.uploader.upload(
-                main_image_file,
-                folder="enouza/products"
-            )
-    
-            multimedia_info["main_image"] = result["secure_url"]
+        data = request.data  # Make a copy to modify
+        multimedia_info = json.loads(data.get("multimediaInfo"))
+        image = request.FILES.get("main_image")
+        if image:
+            # Cloudinary - Upload main image, check if file exists in request.FILES
+            main_image_result = cloudinary.uploader.upload(image)
+            multimedia_info["main_image"] = main_image_result["secure_url"]
 
         else:
-            main_image_url = data.get("main_image")
-    
-            if main_image_url:
-                multimedia_info["main_image"] = main_image_url
-    
-        # ============================================================
-        # COLOR IMAGES
-        # ============================================================
+            image = request.data.get("main_image")
+
+            multimedia_info["main_image"] = image
 
         color_urls = []
-    
-        color_images = request.FILES.getlist("colors")
+        # Get the color images from the request files
+        color_images = data.getlist("colors")
+        if color_images:
+            # Upload each color image to Cloudinary and get the URL
+            for color_img in color_images:
+                upload_result = cloudinary.uploader.upload(color_img)
+                # Append the secure URL of the uploaded image
+                color_urls.append(upload_result["secure_url"])
+            # Update the 'colors' field with the list of color image URLs (flat list)
+            data["colors"] = json.dumps(color_urls)
 
-        for color_img in color_images:
-            result = cloudinary.uploader.upload(
-                color_img,
-                folder="enouza/products"
-            )
+            # Cloudinary - Upload additional images, if they are provided in request.FILES
 
-            color_urls.append(result["secure_url"])
-
-        data["colors"] = json.dumps(color_urls)
-    
-        # ============================================================
-        # ADDITIONAL IMAGES
-        # ============================================================
-
-        # Existing URLs already inside multimediaInfo
         image_urls = multimedia_info.get("image_urls", [])
+        additionalImageFiles = request.FILES.getlist("additionalImageFiles")
+        if additionalImageFiles:
+            for image_file in additionalImageFiles:
+                result = cloudinary.uploader.upload(image_file, folder="enouza/products")
+                print(result)
+                image_urls.append(result["secure_url"])
 
-        # Make sure it is always a list
-        if not isinstance(image_urls, list):
-            image_urls = []
+            multimedia_info["image_urls"] = image_urls
 
-        # New files uploaded from computer / drag & drop
-        additional_files = request.FILES.getlist(
-            "additionalImageFiles"
-        )
+            data["multimediaInfo"] = json.dumps(multimedia_info)
 
-        for image_file in additional_files:
-
-            result = cloudinary.uploader.upload(
-                image_file,
-                folder="enouza/products"
-            )
-
-            image_urls.append(
-                result["secure_url"]
-            )
-
-        # Save the final combined list
-        multimedia_info["image_urls"] = image_urls
-
-        data["multimediaInfo"] = json.dumps(
-            multimedia_info
-        )
-
-        # ============================================================
-        # SAVE PRODUCT
-        # ============================================================
-
-        serializer = ProductSerializer(
-            product_to_update,
-            data=data
-        )
-
+        serializer = ProductSerializer(product_to_update, data=data)
         if serializer.is_valid():
             serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-            return Response(
-                serializer.data,
-                status=status.HTTP_201_CREATED
-            )
-
-        return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class DashboardProductsView(APIView):
@@ -269,7 +189,6 @@ class OrderCreateView(APIView):
         serializer = OrderSerializer(Ordersdata, many=True, default=[])
 
         return Response(serializer.data)
-
 
 
 class RatingView(APIView):
@@ -362,8 +281,7 @@ class ProductFilterView(APIView):
 
         if search:
             queryset = queryset.filter(
-                Q(name__en__icontains=search)
-                | Q(description__en__icontains=search)
+                Q(name__en__icontains=search) | Q(description__en__icontains=search)
             )
 
         # ============================================================
@@ -378,26 +296,17 @@ class ProductFilterView(APIView):
         if category:
 
             categories = [
-                value.strip()
-                for value in category.split(",")
-                if value.strip()
+                value.strip() for value in category.split(",") if value.strip()
             ]
 
             if categories:
-                queryset = queryset.filter(
-                    category__in=categories
-                )
+                queryset = queryset.filter(category__in=categories)
 
         # ============================================================
         # ORDERS
         # ============================================================
 
-        queryset = queryset.annotate(
-            orders_count=Count(
-                "orders",
-                distinct=True
-            )
-        )
+        queryset = queryset.annotate(orders_count=Count("orders", distinct=True))
 
         # ============================================================
         # CONVERT QUERYSET TO LIST
@@ -553,18 +462,12 @@ class ProductFilterView(APIView):
 
             if parsed_min_price is not None:
 
-                if (
-                    product_min_price is None
-                    or product_min_price < parsed_min_price
-                ):
+                if product_min_price is None or product_min_price < parsed_min_price:
                     continue
 
             if parsed_max_price is not None:
 
-                if (
-                    product_max_price is None
-                    or product_max_price > parsed_max_price
-                ):
+                if product_max_price is None or product_max_price > parsed_max_price:
                     continue
 
             filtered_products.append(product)
@@ -584,9 +487,11 @@ class ProductFilterView(APIView):
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-                    product._filter_min_price
-                    if product._filter_min_price is not None
-                    else float("inf"),
+                    (
+                        product._filter_min_price
+                        if product._filter_min_price is not None
+                        else float("inf")
+                    ),
                     product.id,
                 )
             )
@@ -600,9 +505,11 @@ class ProductFilterView(APIView):
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-                    -product._filter_min_price
-                    if product._filter_min_price is not None
-                    else float("inf"),
+                    (
+                        -product._filter_min_price
+                        if product._filter_min_price is not None
+                        else float("inf")
+                    ),
                     product.id,
                 )
             )
@@ -637,13 +544,9 @@ class ProductFilterView(APIView):
                     name = product.name or {}
                     description = product.description or {}
 
-                    name_en = str(
-                        name.get("en", "")
-                    ).lower()
+                    name_en = str(name.get("en", "")).lower()
 
-                    description_en = str(
-                        description.get("en", "")
-                    ).lower()
+                    description_en = str(description.get("en", "")).lower()
 
                     # Exact/full name occurrence
                     if search_lower in name_en:
@@ -685,11 +588,7 @@ class ProductFilterView(APIView):
 
             products.sort(
                 key=lambda product: (
-                    -(
-                        product.release_date.timestamp()
-                        if product.release_date
-                        else 0
-                    ),
+                    -(product.release_date.timestamp() if product.release_date else 0),
                     product.id,
                 )
             )
@@ -698,10 +597,7 @@ class ProductFilterView(APIView):
         # PAGINATION
         # ============================================================
 
-        paginator = Paginator(
-            products,
-            per_page
-        )
+        paginator = Paginator(products, per_page)
 
         page_obj = paginator.get_page(page)
 
@@ -709,10 +605,7 @@ class ProductFilterView(APIView):
         # SERIALIZER
         # ============================================================
 
-        serializer = ProductSerializer(
-            page_obj.object_list,
-            many=True
-        )
+        serializer = ProductSerializer(page_obj.object_list, many=True)
 
         # ============================================================
         # RESPONSE
@@ -728,14 +621,12 @@ class ProductFilterView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
+
 class HeroProductView(APIView):
     def get(self, request):
         # 1️⃣ Try manual hero product
-        hero = (
-            Products.objects.filter(isHero=True)
-           
-            .first()
-        )
+        hero = Products.objects.filter(isHero=True).first()
         if not hero:
             return Response(
                 {"detail": "No hero product available"},
