@@ -147,7 +147,6 @@ const nextRef = useRef(null);
                           <ProductImage
                             src={item?.multimediaInfo?.main_image}
                             alt={productName}
-                            loading="lazy"
                           />
 
                           <ProductLabel>
