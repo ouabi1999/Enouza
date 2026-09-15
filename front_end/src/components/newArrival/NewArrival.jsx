@@ -85,16 +85,16 @@ const nextRef = useRef(null);
           >
             {bestSellersProducts.length > 0 ? (
               bestSellersProducts.map((item) => {
-                const mainSku = item.skuInfo?.[0];
+                const mainSku = item?.skuInfo?.[0];
 
                     
 
                 const productName =
-                  item.name?.[i18n.language] ||
-                  item.name?.en ||
+                  item?.name?.[i18n.language] ||
+                  item?.name?.en ||
                   "ENOUZA Lamp";
 
-                const ratings = item.ratings || [];
+                const ratings = item?.ratings || [];
 
                 const avgRating =
                   ratings.length > 0
@@ -128,24 +128,24 @@ const nextRef = useRef(null);
                   : null;
 
                 const hasFreeShipping =
-                  item.available_shipping?.some(
+                  item?.available_shipping?.some(
                     (shipping) =>
                       shipping.type === "Free"
                   );
 
                 return (
-                  <SwiperSlide key={item.id}>
+                  <SwiperSlide key={item?.id}>
                     <ProductCard>
 
                       {/* IMAGE */}
 
                       <ProductLink
-                        to={`/product/${item.id}`}
+                        to={`/product/${item?.id}`}
                         reloadDocument
                       >
                         <ImageWrapper>
                           <ProductImage
-                            src={item.multimediaInfo?.main_image}
+                            src={item?.multimediaInfo?.main_image}
                             alt={productName}
                             loading="lazy"
                           />
