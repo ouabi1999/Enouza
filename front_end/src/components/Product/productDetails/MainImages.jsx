@@ -631,7 +631,13 @@ const MainImage = styled.img`
   user-select: none;
 
   -webkit-user-drag: none;
+
+   @media (max-width: 450px) {
+     object-fit: cover;
+
+  }
 `;
+
 
 
 /* =========================================================
