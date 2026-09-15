@@ -9,15 +9,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { Save } from "lucide-react";
 
 function NewArrival({ products = [], name, label }) {
   const { t, i18n } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const isArabic = i18n.language === "ar";
+  const isArabic = i18n.dir() === "ltr";
 
   return (
-    <Section >
+    <Section dir = {isArabic? "ltr": "rtl"}>
       <Container>
 
         {/* ============================
@@ -150,7 +151,8 @@ function NewArrival({ products = [], name, label }) {
                             loading="lazy"
                           />
 
-                          <ProductLabel>
+                          <ProductLabels>
+                            <SaveLabel>
                             {t("productInfo.save")}{" "}
                             <bdi>
 
@@ -158,18 +160,20 @@ function NewArrival({ products = [], name, label }) {
                                 ? `${discountPercentage}%`
                                 : t("common.best_seller")}
                             </bdi>
-                          </ProductLabel>
+                            </SaveLabel>
+                         
                          {label&&(
 
                               <Label>
                             {t(`homePage.${label}`)}{" "}
 
                           </Label>
-
+                           
                          )
 
-
+                      
                          }
+                          </ProductLabels>
                         </ImageWrapper>
                       </ProductLink>
 
@@ -480,11 +484,18 @@ const ProductImage = styled.img`
     transform: scale(1.025);
   }
 `;
-const Label = styled.span`
-    position: absolute;
+const ProductLabels = styled.div`
+   display:flex;
+   align-items:center;
+   gap:20px;
+   position: absolute;
+   top: 12px;
+   left: 12px;
 
-    top: 12px;
-    left: 80px;
+
+`
+const Label = styled.span`
+   
 
     padding: 5px 8px;
 
@@ -502,12 +513,8 @@ const Label = styled.span`
 
     text-transform: uppercase;
 `;
-const ProductLabel = styled.span`
-      position: absolute;
-
-    top: 12px;
-    left: 12px;
-
+const SaveLabel = styled.span`
+     
     padding: 5px 8px;
 
     background: #9a7743;
