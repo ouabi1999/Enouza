@@ -25,6 +25,7 @@
     "orderSuccess": "Order Placed"
   },
   "homePage": {
+    "new":"New",
     "welcomeMessage": "Welcome to our store",
     "featuredProducts": "Featured",
     "mayAlsoLike": "You May Also Like",

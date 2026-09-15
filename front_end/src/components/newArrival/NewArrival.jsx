@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
-function NewArrival({ products = [], name }) {
+function NewArrival({ products = [], name, label }) {
   const { t, i18n } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -159,6 +159,17 @@ function NewArrival({ products = [], name }) {
                                 : t("common.best_seller")}
                             </bdi>
                           </ProductLabel>
+                         {label&&(
+
+                              <Label>
+                            {t(`homePage.${label}`)}{" "}
+
+                          </Label>
+
+                         )
+
+
+                         }
                         </ImageWrapper>
                       </ProductLink>
 
@@ -469,7 +480,28 @@ const ProductImage = styled.img`
     transform: scale(1.025);
   }
 `;
+const Label = styled.span`
+    position: absolute;
 
+    top: 12px;
+    left: 80px;
+
+    padding: 5px 8px;
+
+    background: #000000;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.65rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
+`;
 const ProductLabel = styled.span`
       position: absolute;
 

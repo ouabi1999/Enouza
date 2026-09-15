@@ -91,6 +91,7 @@ useEffect(() => {
   get_best_sellers_products();
 }, []);
 
+
   useEffect(() => {
 
     scrolTo.current?.scrollTo({ behavior: "smooth", block: "center", inline: "nearest" });
@@ -112,12 +113,12 @@ useEffect(() => {
 
 
 
-       <NewArrival products={bestSellersProducts} name="best_sellers"/>
+       <NewArrival products={bestSellersProducts} name="best_sellers" label={"best_sellers"}/>
       
  <DesignSection/>
      
       <MatricsSection/>
-      <NewArrival products={newArrivalProducts} name= "newArrival"/>
+      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} />
 
       <CustomersFeedback/>
       <CTASection/>
