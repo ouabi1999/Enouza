@@ -52,6 +52,7 @@ function Products({
                 className="image-container"
               >
                 <img
+                  loading="lazy"
                   src={image}
                   alt={item.name?.en || "product"}
                 />
