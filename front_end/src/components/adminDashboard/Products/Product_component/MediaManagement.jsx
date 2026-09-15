@@ -455,7 +455,7 @@ const setExistingImageAsMain = (index) => {
               key={`existing-${index}`}
             >
               <img
-                src={existingImages[0]}
+                src={image}
                 alt={`Product ${index + 1}`}
                 className="imgpreview"
               />
