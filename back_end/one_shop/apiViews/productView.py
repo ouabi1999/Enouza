@@ -87,7 +87,7 @@ class ProductDetailsView(APIView):
 
         # IMPORTANT:
         # Do NOT deepcopy(request.data) because it can contain uploaded files.
-        data = request.data.copy()
+        data = request.data
     
     # ============================================================
         # MULTIMEDIA INFO
