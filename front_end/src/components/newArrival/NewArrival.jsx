@@ -10,8 +10,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Save } from "lucide-react";
+import { tr } from "framer-motion/client";
 
-function NewArrival({ products = [], name, label }) {
+function NewArrival({ products = [], name, label, loop = true }) {
   const { t, i18n } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -40,7 +41,7 @@ function NewArrival({ products = [], name, label }) {
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={true}
+            loop={loop}
             autoplay={{
               delay: 2500,
             }}

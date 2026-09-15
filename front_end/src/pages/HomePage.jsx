@@ -47,7 +47,7 @@ const get_new_arrivals = async () => {
       params: {
         sort: "newest",
 
-        per_page: 4,
+        per_page: 5,
       },
     });
 
@@ -113,12 +113,12 @@ useEffect(() => {
 
 
 
-       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"}/>
+       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} loop = {true}/>
       
  <DesignSection/>
      
       <MatricsSection/>
-      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} />
+      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} loop = {false}/>
 
       <CustomersFeedback/>
       <CTASection/>

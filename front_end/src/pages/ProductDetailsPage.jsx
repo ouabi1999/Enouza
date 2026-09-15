@@ -112,7 +112,7 @@ const get_similar_products = async (category) => {
     const response = await ApiInstance.get("product-search/", {
       params: {
         category,
-        per_page: 8,
+        per_page: 5,
       },
     });
     console.log(response.data)
@@ -361,7 +361,7 @@ return (
         shippingInfo={shippingInfo}
       />
     )}
-    <NewArrival products={similarProducts} name="mayAlsoLike"/>
+    <NewArrival products={similarProducts} name="mayAlsoLike" loop={false}/>
   </Page>
     
   );
