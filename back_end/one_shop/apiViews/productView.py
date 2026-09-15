@@ -84,56 +84,112 @@ class ProductDetailsView(APIView):
 
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id=pk)
-        data = request.data  # Make a copy to modify
-        multimedia_info = json.loads(data.get("multimediaInfo"))
-        image = request.FILES.get("main_image")
-        if image:
-            # Cloudinary - Upload main image, check if file exists in request.FILES
-            main_image_result = cloudinary.uploader.upload(image)
-            multimedia_info["main_image"] = main_image_result["secure_url"]
-            
-        else:
-            image = request.data.get("main_image")
 
-            multimedia_info["main_image"] =  image
+        # IMPORTANT:
+        # Do NOT deepcopy(request.data) because it can contain uploaded files.
+        data = request.data.copy()
+    
+    # ============================================================
+        # MULTIMEDIA INFO
+        # ============================================================
+    
+        multimedia_info = json.loads(
+            data.get("multimediaInfo", "{}")
+        )
+    
+        # ============================================================
+        # MAIN IMAGE
+        # ============================================================
+
+        main_image_file = request.FILES.get("main_image")
+    
+        if main_image_file:
+            result = cloudinary.uploader.upload(
+                main_image_file,
+                folder="enouza/products"
+            )
+    
+            multimedia_info["main_image"] = result["secure_url"]
+
+        else:
+            main_image_url = data.get("main_image")
+    
+            if main_image_url:
+                multimedia_info["main_image"] = main_image_url
+    
+        # ============================================================
+        # COLOR IMAGES
+        # ============================================================
 
         color_urls = []
-        # Get the color images from the request files
-        color_images = data.getlist("colors")
-        # Upload each color image to Cloudinary and get the URL
+    
+        color_images = request.FILES.getlist("colors")
+
         for color_img in color_images:
-            upload_result = cloudinary.uploader.upload(color_img)
-            # Append the secure URL of the uploaded image
-            color_urls.append(upload_result["secure_url"])
-        # Update the 'colors' field with the list of color image URLs (flat list)
+            result = cloudinary.uploader.upload(
+                color_img,
+                folder="enouza/products"
+            )
+
+            color_urls.append(result["secure_url"])
+
         data["colors"] = json.dumps(color_urls)
+    
+        # ============================================================
+        # ADDITIONAL IMAGES
+        # ============================================================
 
-        # Cloudinary - Upload additional images, if they are provided in request.FILES
-        
-
+        # Existing URLs already inside multimediaInfo
         image_urls = multimedia_info.get("image_urls", [])
-        for image_file in request.FILES.getlist("additionalImageFiles"):
+
+        # Make sure it is always a list
+        if not isinstance(image_urls, list):
+            image_urls = []
+
+        # New files uploaded from computer / drag & drop
+        additional_files = request.FILES.getlist(
+            "additionalImageFiles"
+        )
+
+        for image_file in additional_files:
+
             result = cloudinary.uploader.upload(
                 image_file,
                 folder="enouza/products"
             )
-            print(result)
+
             image_urls.append(
                 result["secure_url"]
             )
 
+        # Save the final combined list
         multimedia_info["image_urls"] = image_urls
 
         data["multimediaInfo"] = json.dumps(
             multimedia_info
-        )             
+        )
 
-        serializer = ProductSerializer(product_to_update, data=data)
+        # ============================================================
+        # SAVE PRODUCT
+        # ============================================================
+
+        serializer = ProductSerializer(
+            product_to_update,
+            data=data
+        )
+
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class DashboardProductsView(APIView):
