@@ -26,7 +26,8 @@ function HomePage() {
   const [nextStart, setNextStart] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [totalProducts, setTotalProducts] = useState(0)
-  const [homeProducts, setHomeProducts] = useState([]);
+  const [bestSellersProducts, setBestSellersProducts] = useState([]);
+  const [newArrivalProducts, setNewArrivalProducts] = useState([]);
   const { t, i18n } = useTranslation();
   
   const scrolTo = useRef()
@@ -34,35 +35,61 @@ function HomePage() {
 
 
 
-
+  
   const viewMore = () => {
     setNextStart(prevStart => prevStart + 8);
 
   }
 
+const get_new_arrivals = async () => {
+  try {
+    const response = await ApiInstance.get("product-search/", {
+      params: {
+        sort: "newest",
+
+        per_page: 8,
+      },
+    });
+
+    const products = response.data?.results || [];
+
+    setNewArrivalProducts(products)
+     
+
+  } catch (error) {
+    console.error("Failed to get new arrivals:", error);
+  }
+};
 
 
+const get_best_sellers_products = async () => {
+  setIsLoading(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    ApiInstance.get('product-api/', { params: { start: nextStart, per_page: 8 } })
-      .then(response => {
-        setIsLoading(false);
-        setHomeProducts(prev => {
-          const newProducts = response.data.products.filter(
-            p => !prev.some(prevP => prevP.id === p.id)
-          );
-          return [...prev, ...newProducts];
-        });
-        setTotalProducts(response.data.total_products);
-        dispatch(setProducts(response.data.products));
-      })
-      .catch(error => {
-        setIsLoading(false);
-        console.error(error);
-      });
-  }, [nextStart]);
+  try {
+    const response = await ApiInstance.get("product-search/", {
+      params: {
+        sort: "orders",
+        per_page: 8,
+      },
+    });
 
+        setBestSellersProducts(response.data.results)
+
+      
+
+  } catch (error) {
+    console.error(error);
+
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
+useEffect(() => {
+  get_new_arrivals();
+  get_best_sellers_products();
+}, []);
 
   useEffect(() => {
 
@@ -85,11 +112,13 @@ function HomePage() {
 
 
 
-       <NewArrival bestSellersProducts={homeProducts}/>
+       <NewArrival products={bestSellersProducts} name="best_sellers"/>
       
  <DesignSection/>
      
       <MatricsSection/>
+      <NewArrival products={newArrivalProducts} name= "newArrival"/>
+
       <CustomersFeedback/>
       <CTASection/>
 

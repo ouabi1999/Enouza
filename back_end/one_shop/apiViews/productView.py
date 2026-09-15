@@ -111,7 +111,6 @@ class ProductDetailsView(APIView):
         if additionalImageFiles:
             for image_file in additionalImageFiles:
                 result = cloudinary.uploader.upload(image_file, folder="enouza/products")
-                print(result)
                 image_urls.append(result["secure_url"])
 
             multimedia_info["image_urls"] = image_urls

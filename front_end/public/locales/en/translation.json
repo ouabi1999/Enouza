@@ -27,7 +27,8 @@
   "homePage": {
     "welcomeMessage": "Welcome to our store",
     "featuredProducts": "Featured",
-    "newArrivals": "New",
+    "mayAlsoLike": "You May Also Like",
+    "newArrival": "New Arrivals",
     "bestSellers": "Top Picks",
     "specialOffers": "Deals",
     "buyerTrustServices": "Our Services",

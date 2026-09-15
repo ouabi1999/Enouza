@@ -178,21 +178,7 @@ useEffect(() => {
         productData.ae_item_base_info_dto?.subject ||
         "",
     },
-    description: {
-      ...prev.description,
-
-      en:
-        productData.ae_item_base_info_dto?.detail ||
-        "",
-
-      ar:
-        productData.ae_item_base_info_dto?.detail ||
-        "",
-
-      es:
-        productData.ae_item_base_info_dto?.detail ||
-        "",
-    },
+    
 
     /*
      * Keep every SKU combination exactly as

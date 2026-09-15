@@ -17,6 +17,8 @@ import { getProductDetails } from "../features/productDetails_slice";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../common/Spinner";
 import PageNoteFound from "../../common/PageNoteFound";
+import NewArrival from "../components/newArrival/NewArrival";
+import ApiInstance from "../../common/baseUrl";
 
 function ProductDetailsPage() {
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ function ProductDetailsPage() {
 
   const [quantity, setQuantity] = useState(1);
   const [currentSku, setCurrentSku] = useState(null);
-
+  const [similarProducts, setSimilarProducts] = useState([])
   const [maxOrderWorning, setMaxOrderWorning] = useState(false);
 
   const [isPopUpShippingOpen, setIsPopUpShippingOpen] =
@@ -56,6 +58,11 @@ function ProductDetailsPage() {
     methodName: t("purchaseOptions.free_Shipping"),
   });
 
+
+  ///the product details
+  const productData = useSelector(
+      (state) => state.product.productData
+    );
   /* =========================
      REDUX
   ========================= */
@@ -97,6 +104,35 @@ function ProductDetailsPage() {
     });
   }, [id]);
 
+
+
+ // filter by similar products
+const get_similar_products = async (category) => {
+  try {
+    const response = await ApiInstance.get("product-search/", {
+      params: {
+        category,
+        per_page: 8,
+      },
+    });
+    console.log(response.data)
+    const products = response.data?.results ||  [];
+
+    setSimilarProducts(
+      products.filter(
+        (product) => product.id !== productData?.id
+      )
+    );
+  } catch (error) {
+    console.error("Failed to get similar products:", error);
+  }
+};
+
+useEffect(() => {
+  if (!productData?.category) return;
+
+  get_similar_products(productData.category);
+}, [productData?.category]);
   /* =========================
      QUANTITY
   ========================= */
@@ -325,6 +361,7 @@ return (
         shippingInfo={shippingInfo}
       />
     )}
+    <NewArrival products={similarProducts} name="mayAlsoLike"/>
   </Page>
     
   );

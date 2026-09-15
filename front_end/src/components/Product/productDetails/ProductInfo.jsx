@@ -399,7 +399,7 @@ function ProductInfo({
 
           const otherAttr =
             sku?.attributes?.[
-              otherAttributeName
+            otherAttributeName
             ];
 
           if (!otherAttr) {
@@ -464,7 +464,7 @@ function ProductInfo({
 
           const otherAttr =
             sku?.attributes?.[
-              otherAttributeName
+            otherAttributeName
             ];
 
           if (!otherAttr) {
@@ -503,7 +503,7 @@ function ProductInfo({
       return (
         attr &&
         getAttributeId(attr) ===
-          String(option.id) &&
+        String(option.id) &&
         attr.image
       );
     });
@@ -544,9 +544,9 @@ function ProductInfo({
   const averageRating =
     ratingCount > 0
       ? (
-          Number(sum_stars || 0) /
-          ratingCount
-        ).toFixed(1)
+        Number(sum_stars || 0) /
+        ratingCount
+      ).toFixed(1)
       : "0.0";
 
   const roundedRating = Math.round(
@@ -571,13 +571,13 @@ function ProductInfo({
 
   const savePercentage =
     Number(currentSku?.comparePrice) > 0 &&
-    Number(currentSku?.sellingPrice) > 0
+      Number(currentSku?.sellingPrice) > 0
       ? (
-          ((Number(currentSku.comparePrice) -
-            Number(currentSku.sellingPrice)) /
-            Number(currentSku.comparePrice)) *
-          100
-        ).toFixed(0)
+        ((Number(currentSku.comparePrice) -
+          Number(currentSku.sellingPrice)) /
+          Number(currentSku.comparePrice)) *
+        100
+      ).toFixed(0)
       : null;
 
   /*
@@ -606,13 +606,13 @@ function ProductInfo({
     );
   };
 
-  
+
   const handleReviewsClick = () => {
-  document.getElementById("reviews")?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-};
+    document.getElementById("reviews")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   /*
    * =========================================================
    * RENDER
@@ -635,11 +635,11 @@ function ProductInfo({
         <Eyebrow>
           {productData?.category
             ? t(
-                `productInfo.${productData.category}`
-              )
+              `productInfo.${productData.category}`
+            )
             : t(
-                "footer.newsletter.eyebrow"
-              )}
+              "footer.newsletter.eyebrow"
+            )}
         </Eyebrow>
 
         <ProductTitle>
@@ -673,13 +673,13 @@ function ProductInfo({
               <RatingCount onClick={handleReviewsClick}>
                 {ratingCount === 1
                   ? t(
-                      "customer_reviews.customer_review",
-                      "Customer Review"
-                    )
+                    "customer_reviews.customer_review",
+                    "Customer Review"
+                  )
                   : t(
-                      "customer_reviews.customer_reviews",
-                      "Customer Reviews"
-                    )}
+                    "customer_reviews.customer_reviews",
+                    "Customer Reviews"
+                  )}
 
                 {" "}({ratingCount})
               </RatingCount>
@@ -705,10 +705,10 @@ function ProductInfo({
           )}
 
           {savePercentage && (
-            <SaveBadge dir = {i18n.language === "ar"? "rtl": "ltr"}>
+            <SaveBadge dir={i18n.language === "ar" ? "rtl" : "ltr"}>
               {t("productInfo.save")}{" "}
-              <bdi style={{margin:"0 2px"}}>
-                 {savePercentage}%
+              <bdi style={{ margin: "0 2px" }}>
+                {savePercentage}%
               </bdi>
             </SaveBadge>
           )}
@@ -739,7 +739,7 @@ function ProductInfo({
           ]) => {
             const selectedId =
               selectedAttributes?.[
-                attributeName
+              attributeName
               ];
 
             return (
@@ -1292,23 +1292,23 @@ const AttributeButton = styled.button`
 
   border: 1px solid
     ${({ $active }) =>
-      $active
-        ? "#222"
-        : "#dcd6ce"};
+    $active
+      ? "#222"
+      : "#dcd6ce"};
 
   border-radius: 2px;
 
   background:
     ${({ $active }) =>
-      $active
-        ? "#222"
-        : "#fff"};
+    $active
+      ? "#222"
+      : "#fff"};
 
   color:
     ${({ $active }) =>
-      $active
-        ? "#fff"
-        : "#383838"};
+    $active
+      ? "#fff"
+      : "#383838"};
 
   font-family: inherit;
 
@@ -1318,13 +1318,13 @@ const AttributeButton = styled.button`
 
   cursor:
     ${({ disabled }) =>
-      disabled
-        ? "not-allowed"
-        : "pointer"};
+    disabled
+      ? "not-allowed"
+      : "pointer"};
 
   opacity:
     ${({ disabled }) =>
-      disabled ? 0.35 : 1};
+    disabled ? 0.35 : 1};
 
   transition:
     background 180ms ease,
@@ -1364,13 +1364,13 @@ const ColorItem = styled.button`
 
   cursor:
     ${({ $available }) =>
-      $available
-        ? "pointer"
-        : "not-allowed"};
+    $available
+      ? "pointer"
+      : "not-allowed"};
 
   opacity:
     ${({ $available }) =>
-      $available ? 1 : 0.35};
+    $available ? 1 : 0.35};
 
   transition: opacity 180ms ease;
 
@@ -1397,9 +1397,9 @@ const ColorImageWrapper = styled.div`
 
   border: 1px solid
     ${({ $active }) =>
-      $active
-        ? "#9b815f"
-        : "#ddd7ce"};
+    $active
+      ? "#9b815f"
+      : "#ddd7ce"};
 
   background: #fff;
 
@@ -1414,9 +1414,9 @@ const ColorImageWrapper = styled.div`
 
     border:
       ${({ $active }) =>
-        $active
-          ? "1px solid #9b815f"
-          : "1px solid transparent"};
+    $active
+      ? "1px solid #9b815f"
+      : "1px solid transparent"};
 
     pointer-events: none;
   }

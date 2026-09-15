@@ -25,6 +25,8 @@
     "orderSuccess": "Pedido realizado"
   },
   "homePage": {
+    "mayAlsoLike": "También te puede interesar",
+    "newArrival": "Novedades",
     "welcomeMessage": "Bienvenido a nuestra tienda",
     "featuredProducts": "Destacados",
     "newArrivals": "Nuevos",

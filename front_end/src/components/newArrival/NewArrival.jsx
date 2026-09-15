@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
@@ -10,10 +10,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
-function NewArrival({ bestSellersProducts = [] }) {
+function NewArrival({ products = [], name }) {
   const { t, i18n } = useTranslation();
-const prevRef = useRef(null);
-const nextRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   const isArabic = i18n.language === "ar";
 
   return (
@@ -26,12 +26,11 @@ const nextRef = useRef(null);
 
         <Header>
           <Title>
-            {t("homePage.best_sellers")}
-          </Title>
+            {t(`homePage.${name}`, "bestsellers")} </Title>
 
-         
+
         </Header>
-        
+
 
         {/* ============================
             PRODUCTS
@@ -40,25 +39,25 @@ const nextRef = useRef(null);
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-          loop={true}
-          autoplay={{
-            delay: 2500,
-          }}
-          modules={[Navigation, Autoplay]}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+            }}
+            modules={[Navigation, Autoplay]}
 
             navigation={{
               prevEl: ".best-sellers-prev",
               nextEl: ".best-sellers-next",
             }}
 
-             onBeforeInit={(swiper) => {
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-  }}
-  onInit={(swiper) => {
-    swiper.navigation.init();
-    swiper.navigation.update();
-  }}
+            onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            onInit={(swiper) => {
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
             slidesPerView={1.35}
             spaceBetween={16}
             breakpoints={{
@@ -83,12 +82,12 @@ const nextRef = useRef(null);
               },
             }}
           >
-            {bestSellersProducts.length > 0 ? (
-              bestSellersProducts.map((item) => {
+            {products.length > 0 ? (
+              products.map((item) => {
                 const mainSku = item.skuInfo?.[0];
 
-                const image = item.multimediaInfo?.main_image 
-                    
+                const image = item.multimediaInfo?.main_image
+
 
                 const productName =
                   item.name?.[i18n.language] ||
@@ -100,12 +99,12 @@ const nextRef = useRef(null);
                 const avgRating =
                   ratings.length > 0
                     ? (
-                        ratings.reduce(
-                          (total, rating) =>
-                            total + Number(rating.stars || 0),
-                          0
-                        ) / ratings.length
-                      ).toFixed(1)
+                      ratings.reduce(
+                        (total, rating) =>
+                          total + Number(rating.stars || 0),
+                        0
+                      ) / ratings.length
+                    ).toFixed(1)
                     : null;
 
                 const sellingPrice = Number(
@@ -122,10 +121,10 @@ const nextRef = useRef(null);
 
                 const discountPercentage = hasDiscount
                   ? Math.round(
-                      ((comparePrice - sellingPrice) /
-                        comparePrice) *
-                        100
-                    )
+                    ((comparePrice - sellingPrice) /
+                      comparePrice) *
+                    100
+                  )
                   : null;
 
                 const hasFreeShipping =
@@ -152,13 +151,13 @@ const nextRef = useRef(null);
                           />
 
                           <ProductLabel>
-                                                {t("productInfo.save")}{" "}
-                                           <bdi>
+                            {t("productInfo.save")}{" "}
+                            <bdi>
 
-                            {hasDiscount
-                              ? `${discountPercentage}%` 
-                              : t("common.best_seller")}
-                              </bdi>
+                              {hasDiscount
+                                ? `${discountPercentage}%`
+                                : t("common.best_seller")}
+                            </bdi>
                           </ProductLabel>
                         </ImageWrapper>
                       </ProductLink>
@@ -235,28 +234,28 @@ const nextRef = useRef(null);
             )}
           </Swiper>
         </SwiperWrapper>
-        
+
 
       </Container>
-       <NavigationArea>
-  <button
-    ref={prevRef}
-    type="button"
-    className="best-sellers-prev"
-    aria-label="Previous products"
-  >
-    <Arrow $direction="prev" />
-  </button>
+      <NavigationArea>
+        <button
+          ref={prevRef}
+          type="button"
+          className="best-sellers-prev"
+          aria-label="Previous products"
+        >
+          <Arrow $direction="prev" />
+        </button>
 
-  <button
-    ref={nextRef}
-    type="button"
-    className="best-sellers-next"
-    aria-label="Next products"
-  >
-    <Arrow $direction="next" />
-  </button>
-</NavigationArea>
+        <button
+          ref={nextRef}
+          type="button"
+          className="best-sellers-next"
+          aria-label="Next products"
+        >
+          <Arrow $direction="next" />
+        </button>
+      </NavigationArea>
     </Section>
   );
 }

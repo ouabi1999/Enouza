@@ -25,6 +25,8 @@
     "orderSuccess": "تم الطلب"
   },
   "homePage": {
+    "mayAlsoLike": "قد يعجبك أيضًا",
+    "newArrival": "وصل حديثًا",
     "welcomeMessage": "مرحباً بك في متجرنا",
     "featuredProducts": "منتجات مميزة",
     "newArrivals": "وصل حديثاً",
