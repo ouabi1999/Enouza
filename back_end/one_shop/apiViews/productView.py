@@ -85,14 +85,28 @@ class ProductDetailsView(APIView):
     def put(self, request, pk=None):
         product_to_update = Products.objects.get(id=pk)
 
-        # IMPORTANT:
-        # Do NOT deepcopy(request.data) because it can contain uploaded files.
-        data = request.data
-    
-    # ============================================================
-        # MULTIMEDIA INFO
+         # ============================================================
+        # CREATE MUTABLE DATA WITHOUT COPYING UPLOADED FILES
         # ============================================================
-    
+
+        data = {}
+
+        for key in request.data:
+            # Files are handled separately through request.FILES
+            if key not in ["main_image", "additionalImageFiles", "colors"]:
+                data[key] = request.data.get(key)
+
+            # Repeated fields
+        data["tags"] = request.data.getlist("tags")
+        data["ali_express_ratings"] = request.data.getlist(
+            "ali_express_ratings"
+        )
+        data["seo"] = request.data.getlist("seo")
+        
+        # ============================================================
+            # MULTIMEDIA INFO
+            # ============================================================
+        
         multimedia_info = json.loads(
             data.get("multimediaInfo", "{}")
         )
