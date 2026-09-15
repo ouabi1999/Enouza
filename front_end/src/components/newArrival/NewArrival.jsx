@@ -41,7 +41,7 @@ function NewArrival({ products = [], name, label, loop}) {
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={loop|| false}
+            loop={loop}
             autoplay={{
               delay: 2500,
             }}

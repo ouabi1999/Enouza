@@ -47,7 +47,7 @@ const get_new_arrivals = async () => {
       params: {
         sort: "newest",
 
-        per_page: 6,
+        per_page: 5,
       },
     });
 
