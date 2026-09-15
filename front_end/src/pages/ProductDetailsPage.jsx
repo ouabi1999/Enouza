@@ -112,7 +112,7 @@ const get_similar_products = async (category) => {
     const response = await ApiInstance.get("product-search/", {
       params: {
         category,
-        per_page: 5,
+        per_page: 6,
       },
     });
     console.log(response.data)
