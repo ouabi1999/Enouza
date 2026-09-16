@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import { Save } from "lucide-react";
 import { tr } from "framer-motion/client";
 
-function NewArrival({ products = [], name, label, loop}) {
+function NewArrival({ products = [], name, label, isAuto = false}) {
   const { t, i18n } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -41,10 +41,12 @@ function NewArrival({ products = [], name, label, loop}) {
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={loop}
-            autoplay={{
+            loop={true}
+            
+              autoplay= { isAuto && {
               delay: 2500,
-            }}
+              }}
+            
             modules={[Navigation, Autoplay]}
 
             navigation={{

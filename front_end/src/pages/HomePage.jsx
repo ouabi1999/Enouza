@@ -113,12 +113,12 @@ useEffect(() => {
 
 
 
-       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} loop = {true}/>
+       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} isAuto = {true}/>
       
  <DesignSection/>
      
       <MatricsSection/>
-      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} loop = {false}/>
+      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} isAuto = {false}/>
 
       <CustomersFeedback/>
       <CTASection/>

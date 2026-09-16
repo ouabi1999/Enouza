@@ -361,7 +361,7 @@ return (
         shippingInfo={shippingInfo}
       />
     )}
-    <NewArrival products={similarProducts} name="mayAlsoLike" loop={false}/>
+    <NewArrival products={similarProducts} name="mayAlsoLike" isAuto = {false}/>
   </Page>
     
   );
