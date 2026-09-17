@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom"
 import Chart from '../adminDashboard/Chart'
 import Orders from "./Orders"
-import HeadeSeo from "../../../common/HeadeSeo"
-import { useSelector } from 'react-redux'
 
 function HomeDashboard(){
     
@@ -17,7 +15,6 @@ function HomeDashboard(){
                 <OrdersWrap>
                     <Orders />
                 </OrdersWrap>
-                <HeadeSeo title = "Admin / dashboard"/>
             </Wrapper>
         )
     }

@@ -2,7 +2,6 @@
 import styled from 'styled-components'
 import {Link} from "react-router-dom"
 
-import HeadeSeo from '../../common/HeadeSeo'
 import Chart from "../components/adminDashboard/Chart"
 import Orders from "../components/adminDashboard/Orders"
 import DashLayout from '../components/adminDashboard/DashLayout'
@@ -17,7 +16,6 @@ import DashLayout from '../components/adminDashboard/DashLayout'
                 <OrdersWrap>
                     <Orders/>
                 </OrdersWrap>
-                <HeadeSeo title = "Admin / dashboard"/>
             </Wrapper>
         )
     }
@@ -44,7 +42,6 @@ import { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import HeadeSeo from '../../common/HeadeSeo';
 import PageNoteFound from "../../common/PageNoteFound"
 import { getUser } from "../features/authSlice"
 import Dasheader from '../components/adminDashboard/Dasheader';
@@ -110,7 +107,6 @@ function AdminDashboardPage(props){
         const { showBar} = data;
         return (
             <>
-             <HeadeSeo title = "Dashboard"/>
            
            {isAuth  ? (
 

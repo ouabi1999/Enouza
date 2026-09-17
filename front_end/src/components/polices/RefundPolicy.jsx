@@ -1,6 +1,5 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
-import HeadeSeo from "../../../common/HeadeSeo";
 import { useTranslation } from "react-i18next";
 
 function RefundPolicy() {
@@ -27,9 +26,7 @@ function RefundPolicy() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-      <HeadeSeo
-        title={t("returnPolicy.seoTitle")}
-      />
+      
 
       {/* PAGE HEADER */}
       <Header>

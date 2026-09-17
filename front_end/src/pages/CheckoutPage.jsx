@@ -9,7 +9,6 @@ import Stepper from '../components/checkout/Stepper'
 import Steps from '../components/checkout/steps/Steps';
 import ProductCart from '../components/checkout/productCart';
 import { useNavigate } from 'react-router-dom'
-import HeadeSeo from '../../common/HeadeSeo'
 
 
 export const FormContext = createContext();
@@ -38,7 +37,6 @@ function CheckoutPage() {
     
     :
     <Conatiner dir = {"ltr"}>
-      <HeadeSeo title= "Enouza - Checkout"/>
       <Left_Section  >
         <ProductCart cartItems = {cartItems}/>
       </Left_Section>

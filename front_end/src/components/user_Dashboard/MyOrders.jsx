@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { CircularProgress } from '@mui/material'
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import HeadeSeo from "../../../common/HeadeSeo";
 import ApiInstance from '../../../common/baseUrl';
 
 
@@ -50,7 +49,6 @@ function MyOrders() {
   }, [user, currentPage]);
   return (
     <Container>
-      <HeadeSeo title="Dashboard / My orders" />
       {!isLoading ? (
         orders?.length <= 0 && user !== null ? (
           <div

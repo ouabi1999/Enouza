@@ -21,7 +21,6 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { setSignUp } from "../../features/authSlice";
 import { useLayoutEffect } from "react";
-import HeadeSeo from "../../../common/HeadeSeo";
 import ApiInstance from "../../../common/baseUrl";
 
 function SignUpForm({ show, t, i18n }) {
@@ -125,7 +124,6 @@ function SignUpForm({ show, t, i18n }) {
   });
   return (
     <>
-      <HeadeSeo title=" Enouza - Sign-up" />
       {!isAuth && (
         <Form onSubmit={formik.handleSubmit}>
           <div className="logo-img-container">

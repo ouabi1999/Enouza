@@ -1,4 +1,5 @@
 from django.urls import include, path
+
 """
 URL configuration for back_end project.
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,10 +17,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.sitemaps.views import sitemap
+from one_shop.sitemaps import ProductSitemap, StaticPagesSitemap
 
+sitemaps = {
+    "static": StaticPagesSitemap,
+    "products": ProductSitemap,
+}
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("api/", include("one_shop.urls")), 
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django-sitemap",
+    ),
+    path("admin/", admin.site.urls),
+    path("api/", include("one_shop.urls")),
 ]

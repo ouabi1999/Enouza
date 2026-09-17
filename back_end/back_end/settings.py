@@ -104,6 +104,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "cloudinary",
     "rest_framework_simplejwt",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [

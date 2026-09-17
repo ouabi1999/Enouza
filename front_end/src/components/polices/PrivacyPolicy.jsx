@@ -1,6 +1,5 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
-import HeadeSeo from "../../../common/HeadeSeo";
 import { useTranslation } from "react-i18next";
 
 function PrivacyPolicy() {
@@ -18,10 +17,7 @@ function PrivacyPolicy() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-      <HeadeSeo
-        title={t("privacyPolicy.seoTitle")}
-      />
-
+     
       {/* =================================================
           PAGE HEADER
       ================================================= */}

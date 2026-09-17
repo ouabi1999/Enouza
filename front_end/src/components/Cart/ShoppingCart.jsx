@@ -14,7 +14,6 @@ import ProductSubtotal from "./ProductSubtotal";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import HeadeSeo from "../../../common/HeadeSeo";
 
 function ShoppingCart() {
   const dispatch = useDispatch();
@@ -36,7 +35,6 @@ function ShoppingCart() {
 
   return (
     <Container>
-      <HeadeSeo title="Enouza - Shopping Cart" />
 
       {/* =====================================================
           HEADER

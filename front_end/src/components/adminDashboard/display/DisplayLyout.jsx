@@ -11,8 +11,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import DisplayBanners from './DisplayBanners';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDisplayInfo } from "../../../features/DisplaySlice"
-import { display } from '@mui/system';
-import HeadeSeo from "../../../../common/HeadeSeo"
 import ApiInstance from '../../../../common/baseUrl';
 export default function DisplayLyout() {
 
@@ -143,7 +141,6 @@ export default function DisplayLyout() {
 
   return (
     <>
-      <HeadeSeo title="Dashboard / display settings" />
       {display.isLoaded === false ? (
 
 

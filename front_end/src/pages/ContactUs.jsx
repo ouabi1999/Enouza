@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
 import { CircularProgress } from "@mui/material";
-import HeadeSeo from "../../common/HeadeSeo";
 import ApiInstance from "../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 
@@ -54,9 +53,7 @@ function ContactUs() {
 
   return (
     <Container dir={i18n.dir()}>
-      <HeadeSeo
-        title={`Enouza - ${t("footer.help.contactUs")}`}
-      />
+     
 
       <ContactWrapper>
         <ContactHeader>

@@ -10,7 +10,6 @@ import FemaleIcon from '@mui/icons-material/Female';
 import { ToastContainer, toast } from 'react-toastify';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {useTranslation} from 'react-i18next'
-import HeadeSeo from "../../../../common/HeadeSeo"
 import ApiInstance from "../../../../common/baseUrl"
 import EditBirthDate from "./popupEdit/EditBirthDate"
 import EditName from "./popupEdit/EditName"
@@ -198,7 +197,6 @@ function UserInfo(props){
           loading,
         }}
       >
-        <HeadeSeo title={`Dashboard / ${t("profile.my_profile")}`} />
         <Container>
             <ToastContainer/>
           <Section>

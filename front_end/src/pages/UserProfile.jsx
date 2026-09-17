@@ -6,7 +6,6 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate  } from 'react-router-dom';
 import NavBar from "../components/Navbar/NavBar"
-import HeadeSeo from '../../common/HeadeSeo'
 
 
 function UserProfile() {
@@ -35,7 +34,6 @@ function UserProfile() {
       
         {auth ? (
           <>
-          <HeadeSeo title="Dashboard"/>
           <NavBar/>
           <Container>
           

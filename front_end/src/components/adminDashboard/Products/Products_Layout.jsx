@@ -1,11 +1,7 @@
 import React, { Component, createRef, useEffect, useRef, useState } from 'react'
-import styled from 'styled-components';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AdminProducts from './Admin_Products';
 import { Stack } from '@mui/system';
 import { Pagination } from '@mui/material';
-import axios from 'axios';
-import HeadeSeo from '../../../../common/HeadeSeo';
 import ApiInstance from "../../../../common/baseUrl"
 import ProductManagement from '../Products/ProductManagement';
 import AliExpressRating from './AliExpressRating';
@@ -106,7 +102,6 @@ export default function ProductsLayout(){
    
     return (
             <div ref={scrollRef}>
-                <HeadeSeo title = "Dashboard / products"/>
                 {!opnedModel && (
                <>
                

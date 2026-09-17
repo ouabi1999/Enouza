@@ -2,7 +2,6 @@ import React, { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import HeadeSeo from "../../../common/HeadeSeo";
 
 function TermsOfServices() {
   const { t, i18n } = useTranslation("terms", {
@@ -26,7 +25,6 @@ function TermsOfServices() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-      <HeadeSeo title={seoTitle} />
 
       {/* =================================================
           PAGE HEADER

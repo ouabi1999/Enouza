@@ -10,10 +10,8 @@ import * as Yup from "yup"
 import CircularProgress, {
 } from '@mui/material/CircularProgress';
 import { useLayoutEffect } from 'react';
-//import HeadeSeo from "../../common/Heade"
 import ApiInstance from "../../../common/baseUrl"
 import { setLogin } from '../../features/authSlice';
-import { common } from '@mui/material/colors';
 
 function LoginForm({show, t, i18n}) {
   
@@ -108,7 +106,6 @@ function LoginForm({show, t, i18n}) {
   
   return (
     <>
-      {/*<HeadeSeo title= "Animis - Login"/>*/}
       {isAuth == null && (
       <Form onSubmit = {formik.handleSubmit}>
           <div className='logo-img-container'>

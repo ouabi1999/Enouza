@@ -1,7 +1,6 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import HeadeSeo from "../../../common/HeadeSeo";
 
 function ShippingPolicy() {
   const { t, i18n } = useTranslation("shipping");
@@ -18,7 +17,6 @@ function ShippingPolicy() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-      <HeadeSeo title={t("shipping.seoTitle")} />
 
       {/* PAGE HEADER */}
       <Header>

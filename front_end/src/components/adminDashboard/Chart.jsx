@@ -31,7 +31,6 @@ import {
   Tooltip,
   SubTitle
 } from 'chart.js';
-import HeadeSeo from "../../../common/HeadeSeo";
 
 
   
@@ -98,7 +97,6 @@ export default class Chart extends Component {
     render() {
         return (
           <Wrapper>
-            <HeadeSeo title = "Dashboard / analytics"/>
             <Wrapp>
               <div className='sells'>
                 <PaidIcon className="sellsIcon" />

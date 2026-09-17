@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
-
+import SEO from "../components/SEO/SEO";
 import UserServices from "../components/Services/UserServices";
 import ProductLayout from "../components/Product/ProductLayout";
 import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
@@ -312,6 +311,13 @@ if (hasError) {
 
 return (
   <Page>
+    <SEO
+  title={productData?.name?.en || "Luxury Lamp"}
+  description={productData?.description?.en}
+  canonical={`https://www.enouza.com/product/${id}`}
+  image={productData?.multimediaInfo?.main_image}
+  productData={productData}
+/>
     <ServicesSection>
       <UserServices />
     </ServicesSection>

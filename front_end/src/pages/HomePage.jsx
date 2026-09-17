@@ -13,7 +13,6 @@ import HeroSection from '../components/Product/home/HeroSection.jsx'
 import DesignSection from '../components/Product/home/DesignSection.jsx'
 import CTASection from '../components/Product/home/CTASection.jsx'
 import MatricsSection from "../components/Product/home/MatricsSection.jsx"
-import HeadeSeo from '../../common/HeadeSeo.jsx'
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 import Spinner from '../../common/Spinner.jsx'
 import NewArrival from '../components/newArrival/NewArrival.jsx'
