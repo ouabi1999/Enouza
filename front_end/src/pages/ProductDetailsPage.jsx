@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -84,7 +84,36 @@ function ProductDetailsPage() {
   /* =========================
      LOAD PRODUCT
   ========================= */
+const viewedProductRef = useRef(null);
 
+useEffect(() => {
+  if (!productData?.id) return;
+
+  // Prevent duplicate view_item events for the same product
+  if (viewedProductRef.current === productData.id) return;
+
+  const mainSku = productData?.skuInfo?.[0];
+
+  const price = Number(mainSku?.sellingPrice || 0);
+
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("event", "view_item", {
+    currency: "USD",
+    value: price,
+    items: [
+      {
+        item_id: productData?.product_id || productData.id,
+        item_name:
+          productData?.name?.en || "Luxury Lamp",
+        price: price,
+        quantity: 1,
+      },
+    ],
+  });
+
+  viewedProductRef.current = productData.id;
+}, [productData]);
   useEffect(() => {
     if (!id) return;
 
@@ -444,18 +473,6 @@ const Loading = styled.div`
   justify-content: center;
 `;
 
-const LoadingSpinner = styled.div`
-  width: 58px;
-  height: 58px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #f7f4ef;
-`;
 
 /* =====================================================
    ERROR
