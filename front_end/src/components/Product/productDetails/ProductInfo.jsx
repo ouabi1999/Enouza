@@ -670,7 +670,7 @@ function ProductInfo({
             <>
               <RatingDivider />
 
-              <RatingCount onClick={handleReviewsClick}>
+              <RatingCount   type="button" onClick={handleReviewsClick}>
                 {ratingCount === 1
                   ? t(
                     "customer_reviews.customer_review",

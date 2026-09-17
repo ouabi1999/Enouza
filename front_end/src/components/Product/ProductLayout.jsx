@@ -74,7 +74,6 @@ function ProductLayout({
   if (!productData) {
     return null;
   }
-  const isRTL = i18n.dir() === "rtl";
  
   return (
     <Section >

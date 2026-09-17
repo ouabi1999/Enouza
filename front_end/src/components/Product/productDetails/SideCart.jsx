@@ -6,28 +6,20 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 import { ClickAwayListener } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import Flag from "react-world-flags";
 import { useDispatch, useSelector } from "react-redux";
 
-import countriesData from "../../../../common/countryData.json";
-import { setLocation } from "../../../features/locationSlice";
-import secureCheckoutSvg from "../../../assets/secure-checkout.svg";
+
 import ProductTrustBanner from "./ProductsTrustBanner";
 
 function SideCart(props) {
-  const dispatch = useDispatch();
 
-  const [fromDate, setFromDate] = React.useState("");
-  const [toDate, setToDate] = React.useState("");
 
-  const country = useSelector((state) => state.location.country);
   const productData = useSelector((state) => state.product.productData);
 
-  const { t , i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const today = new Date();
   let date1 = new Date(today);
@@ -42,15 +34,13 @@ function SideCart(props) {
     quantity,
     add_item_to_cart,
     buy_Now_item,
-    setIsPopUpShippingOpen,
-    isPopUpShippingOpen,
+  
     shippingMethodIndex,
     currentSku,
     setShippingInfo,
   } = props;
 
-  const intervalRef = useRef(0);
-
+ const available = currentSku?.available_stock ? currentSku?.available_stock : ""
   /*
    * Keep your original warning behavior
    */
@@ -89,7 +79,7 @@ function SideCart(props) {
       ===================================================== */}
 
       <Section>
-        
+
 
         {/* SHIPPING METHOD */}
 
@@ -100,7 +90,7 @@ function SideCart(props) {
             </IconBox>
 
             <ShippingContent>
-              
+
 
               <ShippingValue>
                 {productData?.available_shipping?.length > 0 ? (
@@ -111,8 +101,8 @@ function SideCart(props) {
                   ) === 0
                     ? t("purchaseOptions.free_Shipping")
                     : productData?.available_shipping[
-                        shippingMethodIndex
-                      ]?.methodName
+                      shippingMethodIndex
+                    ]?.methodName
                 ) : shippingInfo?.cost <= 0 ? (
                   t("purchaseOptions.free_Shipping")
                 ) : (
@@ -121,7 +111,7 @@ function SideCart(props) {
               </ShippingValue>
             </ShippingContent>
           </ShippingLeft>
-          
+
           {/*
           <ShippingChangeButton 
             type="button"
@@ -134,7 +124,7 @@ function SideCart(props) {
           </ShippingChangeButton>
           */}
         </ShippingRow>
-          
+
 
         {/* DELIVERY DATE */}
 
@@ -150,12 +140,12 @@ function SideCart(props) {
               </SmallLabel>
 
               <ShippingValue>
-                   5-7 {t("purchaseOptions.business_days")}
+                5-7 {t("purchaseOptions.business_days")}
               </ShippingValue>
             </ShippingContent>
           </ShippingLeft>
 
-          
+
         </ShippingRow>
       </Section>
 
@@ -247,8 +237,11 @@ function SideCart(props) {
       ===================================================== */}
 
       <PurchaseSection>
-        <BuyButton dir = {i18n.dir() === "ltr" ? "ltr": "rtl"}
+        <BuyButton
+          dir={i18n.dir() === "ltr" ? "ltr" : "rtl"}
+          className={!available ? "out-of-stock" : ""}
           type="button"
+          disabled={available < 1}
           onClick={() =>
             buy_Now_item(
               currentSku,
@@ -258,12 +251,20 @@ function SideCart(props) {
             )
           }
         >
-          <span>{t("common.buyNow")}</span>
-          <ArrowForwardIosOutlinedIcon style={ {rotate: i18n.dir() === "ltr" ? "0deg" : "180deg"}} />
+          <span>{available < 1 ? t("productPage.soldOut"):t("common.buyNow") }</span>
+          <ArrowForwardIosOutlinedIcon
+            style={{
+              rotate:
+                i18n.dir() === "ltr"
+                  ? "0deg"
+                  : "180deg",
+            }}
+          />
         </BuyButton>
 
         <AddButton
           type="button"
+          disabled={!available}
           onClick={() =>
             add_item_to_cart(
               currentSku,
@@ -273,7 +274,7 @@ function SideCart(props) {
             )
           }
         >
-          {t("common.addToCart")}
+          <span>{t("common.addToCart")}</span>
         </AddButton>
       </PurchaseSection>
 
@@ -283,9 +284,9 @@ function SideCart(props) {
 
       <SecureCheckout>
 
-       
 
-        <ProductTrustBanner/>
+
+        <ProductTrustBanner />
 
       </SecureCheckout>
     </Container>
@@ -794,6 +795,25 @@ const PurchaseSection = styled.div`
   @media (max-width: 400px) {
     grid-template-columns: 1fr;
   }
+     .out-of-stock {
+  position: relative;
+}
+
+.out-of-stock::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  pointer-events: none;
+}
+  span{
+
+    text-transform:uppercase;
+  }
 `;
 
 const BuyButton = styled.button`
@@ -847,6 +867,11 @@ const BuyButton = styled.button`
   &:active {
     transform: scale(0.99);
   }
+    &:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+ 
 `;
 
 const AddButton = styled.button`
@@ -877,6 +902,10 @@ const AddButton = styled.button`
 
     border-color: #111;
   }
+     &:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 `;
 
 /* =========================================================

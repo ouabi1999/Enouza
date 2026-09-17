@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import SEO from "../SEO/SEO";
 
 
 const OrderSuccess = () => {
   const { t } = useTranslation();
   return (
     <SuccessContainer>
+      <SEO title="Order Confirmation" />
       <Message>
         {t("orderSuccess.orderPlacedSuccessfully")}
       </Message>

@@ -9,6 +9,7 @@ import Stepper from '../components/checkout/Stepper'
 import Steps from '../components/checkout/steps/Steps';
 import ProductCart from '../components/checkout/productCart';
 import { useNavigate } from 'react-router-dom'
+import SEO from '../components/SEO/SEO'
 
 
 export const FormContext = createContext();
@@ -29,7 +30,7 @@ function CheckoutPage() {
   return (
     
     <FormContext.Provider value={{ activeStepIndex, setActiveStepIndex, total, setTotal}}>
-
+           <SEO title="Checkout" />
     
     {cartItems.length === 0 ?(
       ""

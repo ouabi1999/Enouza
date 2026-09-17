@@ -13,6 +13,7 @@ import ProductSubtotal from "./ProductSubtotal";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import SEO from "../SEO/SEO"
 
 
 function ShoppingCart() {
@@ -31,11 +32,10 @@ function ShoppingCart() {
     });
   }, []);
 
-  const isRTL = i18n.dir() === "rtl";
 
   return (
     <Container>
-
+  <SEO title="Shopping Cart" />
       {/* =====================================================
           HEADER
       ===================================================== */}

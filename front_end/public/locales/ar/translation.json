@@ -62,7 +62,8 @@
     "stockAvailability": "التوفر",
     "quantity": "الكمية",
     "outOfStock": "غير متوفر",
-    "inStock": "متوفر"
+    "inStock": "متوفر",
+     "soldOut": "نفد من المخزون"
   },
   "purchaseOptions": {
       "business_days": "أيام العمل",

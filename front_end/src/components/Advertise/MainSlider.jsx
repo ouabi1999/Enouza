@@ -24,6 +24,8 @@ const MainSlider = () => {
     muted
     loop
     playsInline
+    aria-label="Enouza luxury home lighting and interior design"
+
     
   >
     <source

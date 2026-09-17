@@ -61,7 +61,8 @@
     "stockAvailability": "Stock",
     "quantity": "Cant.",
     "outOfStock": "Agotado",
-    "inStock": "En stock"
+    "inStock": "En stock",
+    "Soldout":  "Agotado"
   },
   "purchaseOptions": {
     "business_days":"Días hábiles",

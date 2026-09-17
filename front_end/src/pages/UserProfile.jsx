@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate  } from 'react-router-dom';
 import NavBar from "../components/Navbar/NavBar"
+import SEO from '../components/SEO/SEO'
 
 
 function UserProfile() {
@@ -35,6 +36,7 @@ function UserProfile() {
         {auth ? (
           <>
           <NavBar/>
+          <SEO title="My Profile"/>
           <Container>
           
           <SideBar />

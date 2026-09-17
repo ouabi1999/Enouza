@@ -59,7 +59,8 @@
     "stockAvailability": "Stock",
     "quantity": "Qty",
     "outOfStock": "Out of Stock",
-    "inStock": "In Stock"
+    "inStock": "In Stock",
+    "soldOut":"Sold Out"
   },
   "purchaseOptions": {
     "business_days": "Business Days",

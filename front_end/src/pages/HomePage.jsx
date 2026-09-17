@@ -103,7 +103,7 @@ function HomePage() {
   return (
     <Container>
       <SEO
-        title="Enouza"
+        title="Home"
         description="Discover Enouza's curated collection of luxury lamps and premium home lighting, designed to bring warmth, elegance, and character to every space."
         canonical="/"
       />

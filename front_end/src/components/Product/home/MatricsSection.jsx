@@ -39,6 +39,8 @@ const MetricsSection = () => {
           muted
           loop
           playsInline
+          aria-label="Enouza luxury lighting and premium home decor"
+
         >
           <source
             src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
