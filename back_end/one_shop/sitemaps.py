@@ -7,7 +7,7 @@ class ProductSitemap(Sitemap):
     priority = 0.9
 
     def items(self):
-        return Products.objects.all()
+        return Products.objects.all().order_by("id")
 
     def location(self, obj):
         return f"/product/{obj.id}"

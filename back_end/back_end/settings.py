@@ -59,7 +59,7 @@ if ENVIRONMENT == "production":
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "enouza.com", 'www.enouza.com' ]
 
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:5173",
