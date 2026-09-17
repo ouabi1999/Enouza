@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
+import SEO from "../../components/SEO/SEO"
 function ShippingPolicy() {
   const { t, i18n } = useTranslation("shipping");
 
@@ -16,7 +16,11 @@ function ShippingPolicy() {
 
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
-
+      <SEO
+      title="Shipping Policy"
+      description="Learn about Enouza shipping options, delivery times, order tracking, customs fees, and what to do if your package is delayed or lost."
+      canonical="/shipping-policy"
+    />
 
       {/* PAGE HEADER */}
       <Header>

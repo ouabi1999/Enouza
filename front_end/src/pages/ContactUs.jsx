@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { CircularProgress } from "@mui/material";
 import ApiInstance from "../../common/baseUrl";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO/SEO";
 
 function ContactUs() {
   const [email, setEmail] = useState("");
@@ -53,7 +54,11 @@ function ContactUs() {
 
   return (
     <Container dir={i18n.dir()}>
-     
+      <SEO
+      title="Contact Enouza"
+      description="Contact Enouza for questions about our luxury lamps, orders, shipping, returns, or any other assistance."
+      canonical="/contact-us"
+    />
 
       <ContactWrapper>
         <ContactHeader>

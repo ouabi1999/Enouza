@@ -13,6 +13,7 @@ import {
 } from "../features/filterSlice";
 import Skeleton from "@mui/material/Skeleton";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO/SEO";
 
 /* ============================================================
    ANIMATIONS
@@ -110,6 +111,11 @@ export default function FilterPageStyled() {
 
   return (
     <Page dir={i18n.dir()}>
+      <SEO
+  title="Luxury Lamps"
+  description="Explore Enouza's curated collection of luxury lamps and premium home lighting, including elegant table lamps, wall lamps, and statement lighting."
+  canonical="/collections"
+/>
       {/* =====================================================
           HEADER
       ===================================================== */}

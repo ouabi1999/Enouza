@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
+import SEO from "../../components/SEO/SEO";
 function TermsOfServices() {
   const { t, i18n } = useTranslation("terms", {
     returnObjects: true,
@@ -25,7 +25,11 @@ function TermsOfServices() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-
+    <SEO
+      title="Terms of Service"
+      description="Read Enouza's Terms of Service covering purchases, payments, orders, returns, privacy, shipping, and the use of our website."
+      canonical="/terms-of-services"
+    />
       {/* =================================================
           PAGE HEADER
       ================================================= */}

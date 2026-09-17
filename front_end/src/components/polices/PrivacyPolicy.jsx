@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
+import SEO from "../../components/SEO/SEO";
 function PrivacyPolicy() {
   const { t, i18n } = useTranslation("privacy");
 
@@ -16,7 +16,11 @@ function PrivacyPolicy() {
 
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
-
+          <SEO
+      title="Privacy Policy"
+      description="Read Enouza's Privacy Policy to learn how we collect, use, protect, and manage your personal information when you use our website."
+      canonical="/privacy-policy"
+    />
      
       {/* =================================================
           PAGE HEADER

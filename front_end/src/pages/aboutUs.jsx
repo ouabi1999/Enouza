@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import SEO from "../components/SEO/SEO";
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation("aboutus", {
@@ -12,6 +13,11 @@ const AboutUs = () => {
       className="about-us"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
+      <SEO
+        title="About Enouza"
+        description="Discover Enouza, a luxury lighting brand focused on elegant lamps and thoughtfully designed lighting for modern interiors."
+        canonical="/about-us"
+      />
       <Content>
 
         <Header>

@@ -1,141 +1,654 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useLayoutEffect, useState } from "react";
+import styled from "styled-components";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import SEO from "../../SEO/SEO"
+function FAQ() {
+  const { t: globalT, i18n } = useTranslation();
+
+  const { t: shippingT } = useTranslation("shippingFaq");
+  const { t: returnT } = useTranslation("returnFaq");
+
+  const [activeShipping, setActiveShipping] = useState(null);
+  const [activeReturn, setActiveReturn] = useState(null);
+
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, []);
+
+  const shippingFaqData = shippingT("shippingFaq", {
+    returnObjects: true,
+  });
+
+  const returnFaqData = returnT("returnFaq", {
+    returnObjects: true,
+  });
+
+  const isRTL = i18n.dir() === "rtl";
+
+  const toggleShipping = (id) => {
+    setActiveShipping((current) =>
+      current === id ? null : id
+    );
+  };
+
+  const toggleReturn = (id) => {
+    setActiveReturn((current) =>
+      current === id ? null : id
+    );
+  };
+
+  return (
+    <Container dir={isRTL ? "rtl" : "ltr"}>
+      
+     <SEO
+      title="Frequently Asked Questions"
+      description="Find answers to common questions about Enouza shipping, returns, refunds, orders, and our luxury lighting products."
+      canonical="/faq"
+    />
+      {/* =================================================
+          PAGE HEADER
+      ================================================= */}
+
+      <Header>
+        <Eyebrow>ENOUZA</Eyebrow>
+
+        <MainHeader>
+          {globalT("profile.enouza_faq")}
+        </MainHeader>
+
+        <HeaderDescription>
+          {globalT("footer.help.enouza_faq_description", {
+            defaultValue:
+              "Find answers to the questions we receive most often.",
+          })}
+        </HeaderDescription>
+      </Header>
 
 
+      {/* =================================================
+          SHIPPING
+      ================================================= */}
 
-/* =========================
-   CONTAINER
-========================= */
+      <FAQSection>
 
-const Container = styled.div`
-  width: min(100% - 40px, 980px);
-  margin: 0 auto 80px;
+        <SectionHeading>
+          <SectionNumber>01</SectionNumber>
 
-  @media (max-width: 600px) {
-    width: calc(100% - 28px);
-    margin-bottom: 50px;
+          <SectionTitle>
+            {globalT("footer.help.shipping", {
+              defaultValue: "Shipping",
+            })}
+          </SectionTitle>
+        </SectionHeading>
+
+        {Array.isArray(shippingFaqData) &&
+          shippingFaqData.map((item, index) => {
+            const isOpen =
+              activeShipping === item.id;
+
+            return (
+              <FAQItem
+                className={isOpen ? "is-open" : ""}
+                key={item.id || index}
+              >
+
+                <QuestionButton
+                  type="button"
+                  onClick={() =>
+                    toggleShipping(item.id)
+                  }
+                  aria-expanded={isOpen}
+                >
+
+                  <ArrowWrapper>
+                    {isOpen ? (
+                      <KeyboardArrowDownIcon className="arrow-icon" />
+                    ) : (
+                      <KeyboardArrowRightIcon className="arrow-icon" />
+                    )}
+                  </ArrowWrapper>
+
+                  <Question>
+                    {item.question}
+                  </Question>
+
+                </QuestionButton>
+
+
+                {isOpen && (
+                  <Answer>
+
+                    {item.answer?.paragraphe?.map(
+                      (paragraph, idx) => (
+                        <p key={idx}>
+                          {paragraph}
+                        </p>
+                      )
+                    )}
+
+                    {item.answer?.list?.length > 0 && (
+                      <AnswerList>
+                        {item.answer.list.map(
+                          (listItem, idx) => (
+                            <li key={idx}>
+                              {listItem}
+                            </li>
+                          )
+                        )}
+                      </AnswerList>
+                    )}
+
+                  </Answer>
+                )}
+
+              </FAQItem>
+            );
+          })}
+
+      </FAQSection>
+
+
+      {/* =================================================
+          RETURNS
+      ================================================= */}
+
+      <FAQSection className="return-section">
+
+        <SectionHeading>
+          <SectionNumber>02</SectionNumber>
+
+          <SectionTitle>
+            {globalT("footer.help.returns", {
+              defaultValue: "Returns",
+            })}
+          </SectionTitle>
+        </SectionHeading>
+
+        {Array.isArray(returnFaqData) &&
+          returnFaqData.map((item, index) => {
+            const isOpen =
+              activeReturn === item.id;
+
+            return (
+              <FAQItem
+                className={isOpen ? "is-open" : ""}
+                key={item.id || index}
+              >
+
+                <QuestionButton
+                  type="button"
+                  onClick={() =>
+                    toggleReturn(item.id)
+                  }
+                  aria-expanded={isOpen}
+                >
+
+                  <ArrowWrapper>
+                    {isOpen ? (
+                      <KeyboardArrowDownIcon className="arrow-icon" />
+                    ) : (
+                      <KeyboardArrowRightIcon className="arrow-icon" />
+                    )}
+                  </ArrowWrapper>
+
+                  <Question>
+                    {item.question}
+                  </Question>
+
+                </QuestionButton>
+
+
+                {isOpen && (
+                  <Answer>
+
+                    {item.answer?.paragraphe?.map(
+                      (paragraph, idx) => (
+                        <p key={idx}>
+                          {paragraph}
+                        </p>
+                      )
+                    )}
+
+                    {item.answer?.list?.length > 0 && (
+                      <AnswerList>
+                        {item.answer.list.map(
+                          (listItem, idx) => (
+                            <li key={idx}>
+                              {listItem}
+                            </li>
+                          )
+                        )}
+                      </AnswerList>
+                    )}
+
+                  </Answer>
+                )}
+
+              </FAQItem>
+            );
+          })}
+
+      </FAQSection>
+
+    </Container>
+  );
+}
+
+export default FAQ;
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+const Container = styled.main`
+  width: min(100% - 48px, 1080px);
+
+  margin: 0 auto;
+
+  padding: 52px 0 100px;
+
+  color: #1c1c1c;
+
+  @media (max-width: 700px) {
+    width: calc(100% - 30px);
+    padding: 38px 0 65px;
+  }
+
+  @media (max-width: 460px) {
+    width: calc(100% - 24px);
+    padding-top: 28px;
   }
 `;
 
 
-/* =========================
+/* =====================================================
+   HEADER
+===================================================== */
+
+const Header = styled.header`
+  text-align: center;
+
+  margin-bottom: 78px;
+
+  @media (max-width: 700px) {
+    margin-bottom: 58px;
+  }
+
+  @media (max-width: 460px) {
+    margin-bottom: 48px;
+  }
+`;
+
+const Eyebrow = styled.div`
+  margin-bottom: 15px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  color: #978f84;
+`;
+
+const MainHeader = styled.h1`
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 40px;
+  font-weight: 400;
+
+  line-height: 1.18;
+  letter-spacing: 0.2px;
+
+  color: #171717;
+
+  @media (max-width: 700px) {
+    font-size: 31px;
+  }
+
+  @media (max-width: 460px) {
+    font-size: 27px;
+  }
+`;
+
+const HeaderDescription = styled.p`
+  max-width: 540px;
+
+  margin: 18px auto 0;
+
+  color: #8a857d;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.8;
+
+  @media (max-width: 460px) {
+    max-width: 330px;
+    font-size: 12px;
+  }
+`;
+
+
+/* =====================================================
    FAQ SECTION
-========================= */
+===================================================== */
 
 const FAQSection = styled.section`
   width: 100%;
 
   &.return-section {
-    margin-top: 75px;
+    margin-top: 92px;
   }
 
-  .content {
-    border-top: 1px solid #d8d3ca;
+  @media (max-width: 700px) {
+    &.return-section {
+      margin-top: 65px;
+    }
   }
 
-  .content:last-child {
-    border-bottom: 1px solid #d8d3ca;
+  @media (max-width: 460px) {
+    &.return-section {
+      margin-top: 55px;
+    }
+  }
+`;
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+const SectionHeading = styled.div`
+  display: flex;
+  align-items: baseline;
+
+  gap: 18px;
+
+  margin-bottom: 27px;
+
+  @media (max-width: 460px) {
+    gap: 13px;
+    margin-bottom: 22px;
+  }
+`;
+
+const SectionNumber = styled.span`
+  flex-shrink: 0;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+
+  color: #aaa297;
+`;
+
+const SectionTitle = styled.h2`
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 26px;
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  color: #242424;
+
+  @media (max-width: 700px) {
+    font-size: 23px;
   }
 
-  .button-container {
-    width: 100%;
-    min-height: 84px;
+  @media (max-width: 460px) {
+    font-size: 21px;
+  }
+`;
 
-    padding: 0 6px;
 
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    align-items: center;
-    column-gap: 20px;
+/* =====================================================
+   FAQ ITEM
+===================================================== */
 
-    border: none;
-    outline: none;
-    background: transparent;
+const FAQItem = styled.div`
+  border-top: 1px solid #e9e5df;
 
-    cursor: pointer;
-
-    color: #191919;
-    text-align: left;
-
-    transition:
-      color 0.3s ease,
-      padding 0.3s ease;
+  &:last-child {
+    border-bottom: 1px solid #e9e5df;
   }
 
-  .button-container:hover {
-    color: #777;
-    padding-left: 14px;
+  &.is-open {
+    .arrow-icon {
+      color: #242424;
+    }
+  }
+`;
+
+
+/* =====================================================
+   QUESTION BUTTON
+===================================================== */
+
+const QuestionButton = styled.button`
+  width: 100%;
+  min-height: 88px;
+
+  padding: 0 8px;
+
+  display: grid;
+
+  grid-template-columns: 30px 1fr;
+
+  align-items: center;
+
+  column-gap: 22px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #1c1c1c;
+
+  text-align: left;
+
+  transition:
+    color 0.35s ease,
+    padding 0.35s ease;
+
+  &:hover {
+    color: #77736d;
+
+    padding-left: 16px;
+
+    .arrow-icon {
+      color: #1c1c1c;
+
+      transform: translateX(4px);
+    }
   }
 
-  .arrow-wrapper {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &:focus-visible {
+    outline: 1px solid #c9c3ba;
+    outline-offset: -1px;
   }
+
+  @media (max-width: 700px) {
+    min-height: 76px;
+
+    grid-template-columns: 27px 1fr;
+
+    column-gap: 14px;
+
+    padding: 0 4px;
+
+    &:hover {
+      padding-left: 9px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    min-height: 70px;
+
+    grid-template-columns: 25px 1fr;
+
+    column-gap: 10px;
+
+    padding: 0 2px;
+
+    &:hover {
+      padding-left: 6px;
+    }
+  }
+
+  [dir="rtl"] & {
+    text-align: right;
+
+    &:hover {
+      padding-left: 8px;
+      padding-right: 16px;
+
+      .arrow-icon {
+        transform: translateX(-4px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      &:hover {
+        padding-left: 4px;
+        padding-right: 9px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      &:hover {
+        padding-left: 2px;
+        padding-right: 6px;
+      }
+    }
+  }
+`;
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+const ArrowWrapper = styled.span`
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
 
   .arrow-icon {
-    font-size: 21px;
-    color: #777;
+    font-size: 20px;
+
+    color: #928c83;
 
     transition:
-      transform 0.3s ease,
-      color 0.3s ease;
+      color 0.35s ease,
+      transform 0.35s ease;
   }
 
-  .button-container:hover .arrow-icon {
-    color: #191919;
-    transform: translateX(3px);
+  @media (max-width: 700px) {
+    width: 25px;
+    height: 25px;
+
+    .arrow-icon {
+      font-size: 19px;
+    }
   }
 
-  .question {
-    font-family: Georgia, "Times New Roman", serif;
+  @media (max-width: 460px) {
+    width: 23px;
+    height: 23px;
 
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.2px;
+    .arrow-icon {
+      font-size: 18px;
+    }
+  }
+`;
+
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
+const Question = styled.span`
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  letter-spacing: 0.15px;
+
+  color: inherit;
+
+  @media (max-width: 700px) {
+    font-size: 14.5px;
   }
 
-  .show {
-    max-width: 720px;
+  @media (max-width: 460px) {
+    font-size: 13.5px;
+  }
+`;
 
-    margin-left: 54px;
 
-    padding: 0 20px 30px 0;
+/* =====================================================
+   ANSWER
+===================================================== */
 
-    color: #68645e;
+const Answer = styled.div`
+  max-width: 720px;
 
-    font-size: 14px;
-    line-height: 1.85;
+  margin-left: 52px;
 
-    animation: faqOpen 0.3s ease;
+  padding: 0 28px 34px 0;
+
+  color: #6e6961;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.9;
+
+  animation: answerReveal 0.35s ease both;
+
+  p {
+    margin: 0 0 14px;
   }
 
-  .show p {
-    margin: 0 0 13px;
-  }
-
-  .show p:last-child {
+  p:last-child {
     margin-bottom: 0;
   }
 
-  .show ul {
-    margin: 12px 0 0;
-    padding-left: 20px;
-  }
-
-  .show li {
-    margin-bottom: 7px;
-    padding-left: 4px;
-  }
-
-  @keyframes faqOpen {
+  @keyframes answerReveal {
     from {
       opacity: 0;
       transform: translateY(-5px);
@@ -147,28 +660,74 @@ const FAQSection = styled.section`
     }
   }
 
-  @media (max-width: 600px) {
-    .button-container {
-      min-height: 72px;
-      grid-template-columns: 28px 1fr;
-      column-gap: 12px;
+  @media (max-width: 700px) {
+    margin-left: 41px;
+
+    padding-right: 10px;
+    padding-bottom: 27px;
+
+    font-size: 13.5px;
+
+    line-height: 1.8;
+  }
+
+  @media (max-width: 460px) {
+    margin-left: 35px;
+
+    padding-right: 5px;
+    padding-bottom: 23px;
+
+    font-size: 12.8px;
+
+    line-height: 1.8;
+  }
+
+  [dir="rtl"] & {
+    margin-left: 0;
+    margin-right: 52px;
+
+    padding-left: 28px;
+    padding-right: 0;
+
+    text-align: right;
+
+    @media (max-width: 700px) {
+      margin-right: 41px;
+
+      padding-left: 10px;
     }
 
-    .question {
-      font-size: 14px;
+    @media (max-width: 460px) {
+      margin-right: 35px;
+
+      padding-left: 5px;
     }
+  }
+`;
 
-    .show {
-      margin-left: 40px;
-      padding-right: 8px;
-      padding-bottom: 24px;
 
-      font-size: 13px;
-      line-height: 1.8;
-    }
+/* =====================================================
+   ANSWER LIST
+===================================================== */
 
-    .arrow-icon {
-      font-size: 19px;
+const AnswerList = styled.ul`
+  margin: 15px 0 0;
+
+  padding-left: 20px;
+
+  li {
+    margin-bottom: 8px;
+
+    padding-left: 5px;
+  }
+
+  [dir="rtl"] & {
+    padding-left: 0;
+    padding-right: 20px;
+
+    li {
+      padding-left: 0;
+      padding-right: 5px;
     }
   }
 `;

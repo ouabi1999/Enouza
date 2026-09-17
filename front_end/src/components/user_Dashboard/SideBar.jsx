@@ -47,7 +47,7 @@ function SideBar() {
           </span>
         </Link>
      
-      <Link to="help-center">
+      <Link to="faq">
         <HelpCenterIcon className="sidebar_icons" />
         
           <span>

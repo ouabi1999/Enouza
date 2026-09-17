@@ -32,7 +32,7 @@ import RefundPolicy from "./components/polices/RefundPolicy";
 import TermsOfServices from "./components/polices/TermsOfServices";
 import AboutUs from "./pages/aboutUs";
 import ContactUs from "./pages/ContactUs";
-import HelpCenter from "./components/user_Dashboard/Help-center/HelpCenter";
+import FAQ from "./components/user_Dashboard/Help-center/FAQ";
 import ShippingPolicy from "./components/polices/ShippingPolicy";
 import OrderSuccess from "./components/checkout/OrderSuccsess";
 import "../public/i18n/index.jsx"
@@ -129,7 +129,7 @@ function App() {
                 <Route path="return-policy" element={<RefundPolicy />} />
                 <Route path="shipping-policy" element={<ShippingPolicy />} />
 
-                <Route path="help-center" element={<HelpCenter />} />
+                <Route path="faq" element={<FAQ />} />
               </Route>
               <Route path="/auth" element={<Auth />} />
               <Route path="reset-password/:id/:token" element={<ResetPassword />} />
@@ -138,7 +138,7 @@ function App() {
                 <Route path="/profile" element={<UserInfo />} />
                 <Route path="/profile/my-orders" element={<MyOrders />} />
                 <Route path="/profile/notifications" element={<Notifications />} />
-                <Route path="/profile/help-center" element={<HelpCenter />} />
+                <Route path="/profile/faq" element={<FAQ />} />
                 <Route path="/profile/contact-us" element={<ContactUs />} />
               </Route>
               <Route path="/order-success" element={<OrderSuccess />} />

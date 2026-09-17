@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
+import SEO from "../../components/SEO/SEO.jsx";
 function RefundPolicy() {
   const { t, i18n } = useTranslation("refund", {
     returnObjects: true,
@@ -26,7 +26,11 @@ function RefundPolicy() {
   return (
     <Container dir={isRTL ? "rtl" : "ltr"}>
 
-      
+       <SEO
+      title="Refund & Return Policy"
+      description="Learn about Enouza's refund and return policy, including eligible returns, refund conditions, return shipping, damaged items, and refund processing."
+      canonical="/return-policy"
+    />
 
       {/* PAGE HEADER */}
       <Header>
