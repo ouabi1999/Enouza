@@ -16,6 +16,7 @@ import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 import Spinner from '../../common/Spinner.jsx'
 import NewArrival from '../components/newArrival/NewArrival.jsx'
+import SEO from '../components/SEO/SEO.jsx'
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -28,67 +29,67 @@ function HomePage() {
   const [bestSellersProducts, setBestSellersProducts] = useState([]);
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
   const { t, i18n } = useTranslation();
-  
+
   const scrolTo = useRef()
   // show more products
 
 
 
-  
+
   const viewMore = () => {
     setNextStart(prevStart => prevStart + 8);
 
   }
 
-const get_new_arrivals = async () => {
-  try {
-    const response = await ApiInstance.get("product-search/", {
-      params: {
-        sort: "newest",
+  const get_new_arrivals = async () => {
+    try {
+      const response = await ApiInstance.get("product-search/", {
+        params: {
+          sort: "newest",
 
-        per_page: 5,
-      },
-    });
+          per_page: 5,
+        },
+      });
 
-    const products = response.data?.results || [];
+      const products = response.data?.results || [];
 
-    setNewArrivalProducts(products)
-     
-
-  } catch (error) {
-    console.error("Failed to get new arrivals:", error);
-  }
-};
+      setNewArrivalProducts(products)
 
 
-const get_best_sellers_products = async () => {
-  setIsLoading(true);
-
-  try {
-    const response = await ApiInstance.get("product-search/", {
-      params: {
-        sort: "orders",
-        per_page: 8,
-      },
-    });
-
-        setBestSellersProducts(response.data.results)
-
-      
-
-  } catch (error) {
-    console.error(error);
-
-  } finally {
-    setIsLoading(false);
-  }
-};
+    } catch (error) {
+      console.error("Failed to get new arrivals:", error);
+    }
+  };
 
 
-useEffect(() => {
-  get_new_arrivals();
-  get_best_sellers_products();
-}, []);
+  const get_best_sellers_products = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await ApiInstance.get("product-search/", {
+        params: {
+          sort: "orders",
+          per_page: 8,
+        },
+      });
+
+      setBestSellersProducts(response.data.results)
+
+
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
+  useEffect(() => {
+    get_new_arrivals();
+    get_best_sellers_products();
+  }, []);
 
 
   useEffect(() => {
@@ -101,26 +102,49 @@ useEffect(() => {
 
   return (
     <Container>
+      <SEO
+        title="Enouza"
+        description="Discover Enouza's curated collection of luxury lamps and premium home lighting, designed to bring warmth, elegance, and character to every space."
+        canonical="/"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Enouza",
+          url: "https://www.enouza.com/",
+        })}
+      </script>
+
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Enouza",
+          url: "https://www.enouza.com/",
+          logo: "https://www.enouza.com/Asset%2012.svg",
+        })}
+      </script>
       <UserServices />
       <AdvertiseMain />
-      <HeroSection/>
-     
-      
-
-
-    
+      <HeroSection />
 
 
 
-       <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} isAuto = {true}/>
-      
- <DesignSection/>
-     
-      <MatricsSection/>
-      <NewArrival products={newArrivalProducts} name= "newArrival" label={"new"} isAuto = {false}/>
 
-      <CustomersFeedback/>
-      <CTASection/>
+
+
+
+
+      <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} isAuto={true} />
+
+      <DesignSection />
+
+      <MatricsSection />
+      <NewArrival products={newArrivalProducts} name="newArrival" label={"new"} isAuto={false} />
+
+      <CustomersFeedback />
+      <CTASection />
 
     </Container>
   )

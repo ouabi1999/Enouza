@@ -311,10 +311,10 @@ if (hasError) {
 
 return (
   <Page>
-    <SEO
+   <SEO
   title={productData?.name?.en || "Luxury Lamp"}
   description={productData?.description?.en}
-  canonical={`https://www.enouza.com/product/${id}`}
+  canonical={`/product/${id}`}
   image={productData?.multimediaInfo?.main_image}
   productData={productData}
 />

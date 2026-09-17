@@ -9,8 +9,8 @@ class ProductSitemap(Sitemap):
     def items(self):
         return Products.objects.all().order_by("id")
 
-    def location(self, obj):
-        return f"/product/{obj.id}"
+    def location(self, item):
+        return f"/product/{item.id}"
 
 
 class StaticPagesSitemap(Sitemap):

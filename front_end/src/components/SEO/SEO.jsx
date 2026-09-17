@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 function SEO({
   title,
+  description = "",
   canonical,
   image,
   productData = null,
@@ -25,8 +26,6 @@ function SEO({
       .trim();
   };
 
-
-
   // ============================================================
   // PRODUCT NAME
   // ============================================================
@@ -35,66 +34,27 @@ function SEO({
     title ||
     "Luxury Lamps & Premium Home Lighting";
 
-// ============================================================
+  // ============================================================
   // SEO DESCRIPTION
   // ============================================================
-  const createSeoDescription = (html, productName) => {
-    if (!html) {
-      return `Discover ${productName} at Enouza. Explore its design, features, and product details.`;
-    }
+  const cleanDescription = (text = "") => {
+    if (!text) return "";
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    // Get meaningful paragraphs from the React Quill content
-    const paragraphs = Array.from(doc.querySelectorAll("p"))
-      .map((p) =>
-        p.textContent
-          .replace(/\s+/g, " ")
-          .trim()
-      )
-      .filter((text) => text.length > 20);
-
-    // Use the first two meaningful paragraphs
-    let description = paragraphs
-      .slice(0, 2)
-      .join(" ");
-
-    // If no paragraphs exist, use all available text
-    if (!description) {
-      description = stripHtml(html);
-    }
-
-    // Final fallback
-    if (!description) {
-      description = `Discover ${productName} at Enouza. Explore its design, features, and product details.`;
-    }
-
-    // Keep meta description concise
-    if (description.length > 160) {
-      description =
-        description
-          .slice(0, 157)
-          .replace(/\s+\S*$/, "")
-          .trim() + "...";
-    }
-
-    return description;
+    return stripHtml(text)
+      .replace(/\s+/g, " ")
+      .trim();
   };
 
-  const productDescription =
-    productData?.description?.en || "";
-
-  const finalDescription = createSeoDescription(
-    productDescription,
-    productName
-  );
+  const finalDescription =
+    cleanDescription(description) ||
+    `Discover ${productName} at Enouza. Explore its design, features, and product details.`;
 
   // ============================================================
   // CANONICAL
   // ============================================================
-  const finalCanonical =
-    canonical || siteUrl;
+ const finalCanonical = canonical
+  ? `${siteUrl}${canonical}`
+  : siteUrl;
 
   // ============================================================
   // IMAGE
@@ -154,16 +114,17 @@ function SEO({
       : null;
 
   // ============================================================
+  // PRODUCT STOCK
+  // ============================================================
+  const hasAvailableStock =
+    Array.isArray(productData?.skuInfo) &&
+    productData.skuInfo.some(
+      (sku) => Number(sku?.available_stock) > 0
+    );
+
+  // ============================================================
   // PRODUCT STRUCTURED DATA
   // ============================================================
-
-  
-  const hasAvailableStock =
-  Array.isArray(productData?.skuInfo) &&
-  productData.skuInfo.some(
-    (sku) => Number(sku?.available_stock) > 0
-  );
-
   const productStructuredData = productData
     ? {
         "@context": "https://schema.org",
@@ -190,23 +151,34 @@ function SEO({
           productData?.category ||
           undefined,
 
-      ...(lowestPrice !== null && {
-        offers: {
-          "@type": "AggregateOffer",
-          url: finalCanonical,
-          priceCurrency: "USD",
-          lowPrice: Math.min(...skuPrices).toFixed(2),
-          highPrice: Math.max(...skuPrices).toFixed(2),
-          offerCount: skuPrices.length,
-          availability: hasAvailableStock
-            ? "https://schema.org/InStock"
-            : "https://schema.org/OutOfStock",
-          seller: {
-            "@type": "Organization",
-            name: siteName,
+        ...(lowestPrice !== null && {
+          offers: {
+            "@type": "AggregateOffer",
+            url: finalCanonical,
+            priceCurrency: "USD",
+
+            lowPrice: Math.min(
+              ...skuPrices
+            ).toFixed(2),
+
+            highPrice: Math.max(
+              ...skuPrices
+            ).toFixed(2),
+
+            offerCount:
+              skuPrices.length,
+
+            availability:
+              hasAvailableStock
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock",
+
+            seller: {
+              "@type": "Organization",
+              name: siteName,
+            },
           },
-        },
-      }),
+        }),
 
         ...(ratingCount > 0 &&
           averageRating !== null && {
