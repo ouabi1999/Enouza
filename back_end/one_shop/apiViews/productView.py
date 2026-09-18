@@ -82,9 +82,10 @@ class ProductDetailsView(APIView):
         data = request.data  # Make a copy to modify
         multimedia_info = json.loads(data.get("multimediaInfo"))
         image = request.FILES.get("main_image")
-        
+       
+
         if image:
-             
+
             # Cloudinary - Upload main image, check if file exists in request.FILES
             main_image_result = cloudinary.uploader.upload(image)
             multimedia_info["main_image"] = main_image_result["secure_url"]
@@ -93,7 +94,8 @@ class ProductDetailsView(APIView):
 
 
         else:
-            
+            print(image)
+            data = request.data.copy()
             image = request.data.get("main_image")
             multimedia_info["main_image"] = image
             data["multimediaInfo"] = json.dumps(multimedia_info)
@@ -122,7 +124,7 @@ class ProductDetailsView(APIView):
             multimedia_info["image_urls"] = image_urls
 
             data["multimediaInfo"] = json.dumps(multimedia_info)
-
+            
         serializer = ProductSerializer(product_to_update, data=data)
         if serializer.is_valid():
             serializer.save()
