@@ -84,15 +84,19 @@ class ProductDetailsView(APIView):
         image = request.FILES.get("main_image")
         
         if image:
-            
+             
             # Cloudinary - Upload main image, check if file exists in request.FILES
             main_image_result = cloudinary.uploader.upload(image)
             multimedia_info["main_image"] = main_image_result["secure_url"]
+            data["multimediaInfo"] = json.dumps(multimedia_info)
+
+
 
         else:
+            
             image = request.data.get("main_image")
-
             multimedia_info["main_image"] = image
+            data["multimediaInfo"] = json.dumps(multimedia_info)
 
         color_urls = []
         # Get the color images from the request files
