@@ -243,7 +243,7 @@ setFormData({
     // Append `main_image` as a file if it exists
     data.append("main_image", formData.main_image);
    
-
+ console.log(formData.main_image)
 
 
     data.append("skuInfo", JSON.stringify(formData.skuInfo));
