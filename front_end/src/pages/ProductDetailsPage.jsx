@@ -146,12 +146,17 @@ function ProductDetailsPage() {
       });
       console.log(response.data)
       const products = response.data?.results || [];
+       if (products.length > 1){
+         setSimilarProducts(
+           products.filter(
+             (product) => product.id !== productData?.id
+           )
+         );
+      
+       }else{
+         setSimilarProducts( products)
 
-      setSimilarProducts(
-        products.filter(
-          (product) => product.id !== productData?.id
-        )
-      );
+       }
     } catch (error) {
       console.error("Failed to get similar products:", error);
     }
