@@ -703,6 +703,8 @@ const SortWrapper = styled.div`
 
   @media (max-width: 480px) {
     gap: 8px;
+      justify-content: center;
+
   }
 `;
 
