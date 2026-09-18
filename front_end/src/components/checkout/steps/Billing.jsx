@@ -24,8 +24,8 @@ function Billing({ t, i18n }) {
       t("common.please_enter_your_last_name")
     ),
     phoneNumber: Yup.string().required(
-    t("common.please_enter_your_phone")
-  ),
+      t("common.please_enter_your_phone")
+    ),
     email: Yup.string()
       .email(t("errors.error_invalid_email"))
       .required(t("common.please_enter_your_email")),
@@ -63,6 +63,12 @@ function Billing({ t, i18n }) {
           }));
 
           setActiveStepIndex((prev) => prev + 1);
+          
+
+          
+          
+
+         
         }}
       >
         {({
@@ -238,33 +244,31 @@ function Billing({ t, i18n }) {
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label"> {t("common.country")}</InputLabel>
-                    <Select style={{ maxHeight: "50px" }}
-                      value={values.country}
-                      onChange={handleChange}
-                      id="country"
-                      name="country"
-                      label={t("common.country")}
-                      fullWidth
-                      autoComplete="country"
-                      MenuProps={{
-                        disableScrollLock: true,
-                        anchorOrigin: {
-                          vertical: "bottom",
-                          horizontal: "left",
-                        },
-                        transformOrigin: {
-                          vertical: "top",
-                          horizontal: "left",
-                        },
-                      }}
-                      helperText={
-                        touched.country ? errors.country : ""
-                      }
-                      error={
-                        touched.country &&
-                        Boolean(errors.country)
-                      }
-                    >
+                    <Select
+  style={{ maxHeight: "50px" }}
+  value={values.country}
+  onChange={handleChange}
+  id="country"
+  name="country"
+  label={t("common.country")}
+  fullWidth
+  autoComplete="country"
+  MenuProps={{
+    disableScrollLock: true,
+    anchorOrigin: {
+      vertical: "bottom",
+      horizontal: "left",
+    },
+    transformOrigin: {
+      vertical: "top",
+      horizontal: "left",
+    },
+  }}
+  error={
+    touched.country &&
+    Boolean(errors.country)
+  }
+>
                       {countriesData?.map((country, index) => (
                         <MenuItem key={index} value={country.label}>
                           {t(`countries.${country.value}`)}

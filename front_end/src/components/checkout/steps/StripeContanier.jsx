@@ -57,6 +57,23 @@ export default function StripeContanier({t, i18n}) {
       .then((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+  if (typeof window.gtag !== "function") return;
+  if (!cartItems?.length) return;
+
+  window.gtag("event", "add_payment_info", {
+    currency: "USD",
+    value: Number(formData?.totalPrice || 0),
+    items: cartItems.map((item) => ({
+      item_id: item?.selectedSku?.sku_attr || item?.id,
+      item_name: item?.name?.[i18n.language] ||
+                item?.name?.en
+                 || "Luxury Lamp",
+      price: Number(item?.price || 0),
+      quantity: Number(item?.quantity || 1),
+    })),
+  });
+}, []);
   
   const appearance = {
   theme: "flat",

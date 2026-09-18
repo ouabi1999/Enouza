@@ -263,7 +263,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
 
-  height: 100vh;
+
 
   display: flex;
   flex-direction: column;
@@ -326,6 +326,7 @@ const Container = styled.div`
     .header-container {
       min-height: 62px;
       padding: 0 16px;
+      margin:auto;
     }
 
     .checkout {

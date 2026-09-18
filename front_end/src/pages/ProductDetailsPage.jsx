@@ -60,8 +60,8 @@ function ProductDetailsPage() {
 
   ///the product details
   const productData = useSelector(
-      (state) => state.product.productData
-    );
+    (state) => state.product.productData
+  );
   /* =========================
      REDUX
   ========================= */
@@ -77,43 +77,44 @@ function ProductDetailsPage() {
   const hasError = useSelector(
     (state) => state.product.hasError
   );
-   const isNotFound = useSelector(
+  const isNotFound = useSelector(
     (state) => state.product.isNotFound
   );
 
   /* =========================
      LOAD PRODUCT
   ========================= */
-const viewedProductRef = useRef(null);
-
-useEffect(() => {
-  if (!productData?.id) return;
-
-  // Prevent duplicate view_item events for the same product
-  if (viewedProductRef.current === productData.id) return;
-
   const mainSku = productData?.skuInfo?.[0];
-
   const price = Number(mainSku?.sellingPrice || 0);
 
-  if (typeof window.gtag !== "function") return;
 
-  window.gtag("event", "view_item", {
-    currency: "USD",
-    value: price,
-    items: [
-      {
-        item_id: productData?.product_id || productData.id,
-        item_name:
-          productData?.name?.en || "Luxury Lamp",
-        price: price,
-        quantity: 1,
-      },
-    ],
-  });
+  const viewedProductRef = useRef(null);
 
-  viewedProductRef.current = productData.id;
-}, [productData]);
+  useEffect(() => {
+    if (!productData?.id) return;
+
+    if (viewedProductRef.current === productData.id) return;
+
+
+
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", "view_item", {
+      currency: "USD",
+      value: price,
+      items: [
+        {
+          item_id: productData?.product_id || productData.id,
+          item_name: productData?.name?.en || "Luxury Lamp",
+          price: price,
+          quantity: 1,
+        },
+      ],
+    });
+
+    viewedProductRef.current = productData.id;
+  }, [productData]);
+
   useEffect(() => {
     if (!id) return;
 
@@ -134,33 +135,33 @@ useEffect(() => {
 
 
 
- // filter by similar products
-const get_similar_products = async (category) => {
-  try {
-    const response = await ApiInstance.get("product-search/", {
-      params: {
-        category,
-        per_page: 6,
-      },
-    });
-    console.log(response.data)
-    const products = response.data?.results ||  [];
+  // filter by similar products
+  const get_similar_products = async (category) => {
+    try {
+      const response = await ApiInstance.get("product-search/", {
+        params: {
+          category,
+          per_page: 6,
+        },
+      });
+      console.log(response.data)
+      const products = response.data?.results || [];
 
-    setSimilarProducts(
-      products.filter(
-        (product) => product.id !== productData?.id
-      )
-    );
-  } catch (error) {
-    console.error("Failed to get similar products:", error);
-  }
-};
+      setSimilarProducts(
+        products.filter(
+          (product) => product.id !== productData?.id
+        )
+      );
+    } catch (error) {
+      console.error("Failed to get similar products:", error);
+    }
+  };
 
-useEffect(() => {
-  if (!productData?.category) return;
+  useEffect(() => {
+    if (!productData?.category) return;
 
-  get_similar_products(productData.category);
-}, [productData?.category]);
+    get_similar_products(productData.category);
+  }, [productData?.category]);
   /* =========================
      QUANTITY
   ========================= */
@@ -251,6 +252,21 @@ useEffect(() => {
     const price = Number(
       selectedSku.sellingPrice
     );
+    // GA4 — Add to Cart
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "add_to_cart", {
+        currency: "USD",
+        value: price * quantity,
+        items: [
+          {
+            item_id: productData?.product_id || productId,
+            item_name: productData?.name?.en || name,
+            price: price,
+            quantity: quantity,
+          },
+        ],
+      });
+    }
 
     dispatch(
       addToCart({
@@ -284,7 +300,18 @@ useEffect(() => {
     const price = Number(
       selectedSku.sellingPrice
     );
-
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "begin_checkout", {
+        currency: "USD",
+        value: price * quantity,
+        items:[{
+          item_id: productId || item?.id,
+          item_name: name?.en || "Luxury Lamp",
+          price: price || 0,
+          quantity: quantity || 1,
+      }],
+      });
+    }
     dispatch(
       buyNowItem({
         id: productId,
@@ -300,105 +327,105 @@ useEffect(() => {
     navigate("/checkout");
   };
 
- /* =========================
-   PAGE STATES
-========================= */
+  /* =========================
+    PAGE STATES
+ ========================= */
 
-if (isLoading) {
+  if (isLoading) {
+    return (
+      <Loading>
+        <Spinner />
+      </Loading>
+    );
+  }
+
+  if (isNotFound) {
+    return <PageNoteFound />
+  }
+
+  if (hasError) {
+    return (
+      <ErrorPage>
+        <ErrorCard>
+          <ErrorTitle>
+            {t("common.error")}
+          </ErrorTitle>
+
+          <RetryButton
+            onClick={() => setTryAgain(!tryAgain)}
+          >
+            {t("common.tryAgain")}
+          </RetryButton>
+        </ErrorCard>
+      </ErrorPage>
+    );
+  }
+
+  /* =========================
+     SUCCESS
+  ========================= */
+
   return (
-    <Loading>
-      <Spinner />
-    </Loading>
-  );
-}
-
-if (isNotFound) {
-  return <PageNoteFound/>
-}
-
-if (hasError) {
-  return (
-    <ErrorPage>
-      <ErrorCard>
-        <ErrorTitle>
-          {t("common.error")}
-        </ErrorTitle>
-
-        <RetryButton
-          onClick={() => setTryAgain(!tryAgain)}
-        >
-          {t("common.tryAgain")}
-        </RetryButton>
-      </ErrorCard>
-    </ErrorPage>
-  );
-}
-
-/* =========================
-   SUCCESS
-========================= */
-
-return (
-  <Page>
-   <SEO
-  title={productData?.name?.en || "Luxury Lamp"}
-  description={productData?.description?.en}
-  canonical={`/product/${id}`}
-  image={productData?.multimediaInfo?.main_image}
-  productData={productData}
-/>
-    <ServicesSection>
-      <UserServices />
-    </ServicesSection>
-
-    <ProductSection>
-      <ProductLayout
-        quantity={quantity}
-        shippingInfo={shippingInfo}
-        checkboxChange={checkboxChange}
-        currentSku={currentSku}
-        setCurrentSku={setCurrentSku}
-        setShippingInfo={setShippingInfo}
-        addQuantity={addQuantity}
-        subtractQuantity={subtractQuantity}
-        maxOrderWorning={maxOrderWorning}
-        setMaxOrderWorning={setMaxOrderWorning}
-        add_item_to_cart={add_item_to_cart}
-        buy_Now_item={buy_Now_item}
-        setIsPopUpShoppingOpen={
-          setIsPopUpShippingOpen
-        }
-        isPopUpShippingOpen={
-          isPopUpShippingOpen
-        }
-        shippingMethodIndex={
-          shippingMethodIndex
-        }
+    <Page>
+      <SEO
+        title={productData?.name?.en || "Luxury Lamp"}
+        description={productData?.description?.en}
+        canonical={`/product/${id}`}
+        image={productData?.multimediaInfo?.main_image}
+        productData={productData}
       />
-    </ProductSection>
+      <ServicesSection>
+        <UserServices />
+      </ServicesSection>
 
-    <AboutSection>
-      <AboutProductLayout />
-    </AboutSection>
+      <ProductSection>
+        <ProductLayout
+          quantity={quantity}
+          shippingInfo={shippingInfo}
+          checkboxChange={checkboxChange}
+          currentSku={currentSku}
+          setCurrentSku={setCurrentSku}
+          setShippingInfo={setShippingInfo}
+          addQuantity={addQuantity}
+          subtractQuantity={subtractQuantity}
+          maxOrderWorning={maxOrderWorning}
+          setMaxOrderWorning={setMaxOrderWorning}
+          add_item_to_cart={add_item_to_cart}
+          buy_Now_item={buy_Now_item}
+          setIsPopUpShoppingOpen={
+            setIsPopUpShippingOpen
+          }
+          isPopUpShippingOpen={
+            isPopUpShippingOpen
+          }
+          shippingMethodIndex={
+            shippingMethodIndex
+          }
+        />
+      </ProductSection>
 
-    {isPopUpShippingOpen && (
-      <PopUpShoppingMethod
-        setIsPopUpShippingOpen={
-          setIsPopUpShippingOpen
-        }
-        isPopUpShippingOpen={
-          isPopUpShippingOpen
-        }
-        checkboxChange={checkboxChange}
-        shippingMethodIndex={
-          shippingMethodIndex
-        }
-        shippingInfo={shippingInfo}
-      />
-    )}
-    <NewArrival products={similarProducts} name="mayAlsoLike" isAuto = {false}/>
-  </Page>
-    
+      <AboutSection>
+        <AboutProductLayout />
+      </AboutSection>
+
+      {isPopUpShippingOpen && (
+        <PopUpShoppingMethod
+          setIsPopUpShippingOpen={
+            setIsPopUpShippingOpen
+          }
+          isPopUpShippingOpen={
+            isPopUpShippingOpen
+          }
+          checkboxChange={checkboxChange}
+          shippingMethodIndex={
+            shippingMethodIndex
+          }
+          shippingInfo={shippingInfo}
+        />
+      )}
+      <NewArrival products={similarProducts} name="mayAlsoLike" isAuto={false} />
+    </Page>
+
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useEffect } from "react";
 import {
   removeFromCart,
   addQuantity,
@@ -24,6 +24,31 @@ function ShoppingCart() {
   );
 
   const { t, i18n } = useTranslation();
+  useEffect(() => {
+    if (!cartItems?.length) return;
+
+    if (typeof window.gtag !== "function") return;
+
+    const items = cartItems.map((item) => ({
+      item_id: item?.selectedSku?.sku_attr || item?.id,
+      item_name:
+        item?.name?.en || "Luxury Lamp",
+      price: Number(item?.price || 0),
+      quantity: Number(item?.quantity || 1),
+    }));
+
+    const value = items.reduce(
+      (total, item) =>
+        total + item.price * item.quantity,
+      0
+    );
+
+    window.gtag("event", "view_cart", {
+      currency: "USD",
+      value,
+      items,
+    });
+  }, [cartItems]);
 
   useLayoutEffect(() => {
     window.scrollTo({
@@ -33,9 +58,11 @@ function ShoppingCart() {
   }, []);
 
 
+
+
   return (
     <Container>
-  <SEO title="Shopping Cart" />
+      <SEO title="Shopping Cart" />
       {/* =====================================================
           HEADER
       ===================================================== */}
@@ -72,7 +99,7 @@ function ShoppingCart() {
               PRODUCTS
           ================================================= */}
 
-          <Wrapper dir = {i18n.dir() === "rtl"? "rtl": "ltr"}>
+          <Wrapper dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}>
             {cartItems?.map((item, index) => {
               const productName =
                 item?.name?.[i18n.language] ||

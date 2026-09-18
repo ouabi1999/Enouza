@@ -4,17 +4,33 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 function ProductSubtotal(props) {
   const navigate = useNavigate();
- const { t, i18n } = useTranslation()
-  const navigateTo = () => {
-    navigate("/checkout");
-  };
-
+  const { t, i18n } = useTranslation()
   const subtotal =
     props.cartItems?.reduce(
       (total, item) =>
         total + item.price * item.quantity,
       0
     ) || 0;
+  const navigateTo = () => {
+   
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "begin_checkout", {
+        currency: "USD",
+        value: subtotal,
+        items: props.cartItems.map((item) => ({
+          item_id:  item?.id,
+          item_name:  item?.name?.[i18n.language] ||
+                item?.name?.en
+                 || "Luxury Lamp",
+          price: Number(item?.price || 0),
+          quantity: Number(item?.quantity || 1),
+        })),
+      });
+    }
+     navigate("/checkout");
+  };
+
+
 
   return (
     <Container dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}>
@@ -66,7 +82,7 @@ function ProductSubtotal(props) {
         </CheckoutButton>
 
         <SecureText>
-            {props.t("footer.payment.secure")}
+          {props.t("footer.payment.secure")}
         </SecureText>
 
       </Summary>

@@ -167,57 +167,46 @@ const Shipping = forwardRef(({ t }, ref) => {
 
   const submitShipping = () => {
 
-    /* No shipping method selected */
+  if (!formData?.shippingMethod) {
+    setInputRequired(true);
+    return false;
+  }
 
-    if (!formData?.shippingMethod) {
+  const shippingPrice = Number(
+    formData.shippingPrice || 0
+  );
 
-      setInputRequired(true);
+  const totalPrice = Math.round(
+    (
+      Number(total) +
+      shippingPrice
+    ) * 100
+  );
 
-      return false;
+  // GA4 — Shipping Information
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "add_shipping_info", {
+      currency: "USD",
+      value: totalPrice / 100,
+      shipping: shippingPrice,
+      items: formData.cartItems?.map((item) => ({
+        item_id: item?.selectedSku?.sku_attr || item?.id,
+        item_name: item?.name?.en || "Luxury Lamp",
+        price: Number(item?.price || 0),
+        quantity: Number(item?.quantity || 1),
+      })),
+    });
+  }
 
-    }
+  setFormData((prev) => ({
+    ...prev,
+    totalPrice,
+  }));
 
+  setActiveStepIndex((prev) => prev + 1);
 
-    /* Get shipping price safely */
-
-    const shippingPrice =
-      Number(
-        formData.shippingPrice || 0
-      );
-
-
-    /* Stripe normally needs price in cents */
-
-    const totalPrice =
-      Math.round(
-        (
-          Number(total) +
-          shippingPrice
-        ) * 100
-      );
-
-
-    /* Save total */
-
-    setFormData((prev) => ({
-
-      ...prev,
-
-      totalPrice,
-
-    }));
-
-
-    /* Go to payment */
-
-    setActiveStepIndex(
-      (prev) => prev + 1
-    );
-
-
-    return true;
-
-  };
+  return true;
+};
 
 
   /* =====================================================
