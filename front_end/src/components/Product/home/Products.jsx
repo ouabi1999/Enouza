@@ -19,8 +19,14 @@ function Products({
     >
       <div className="grid-container">
         {products?.map((item) => {
-          const mainSku = item.skuInfo?.[0];
+        const mainSku = item.skuInfo?.[0];
+         const comparePrice = Number(
+                  mainSku?.comparePrice || 0
+                );
 
+          const hasDiscount =
+                  comparePrice > mainSku.sellingPrice &&
+                  mainSku.sellingPrice > 0;
         const image = item.multimediaInfo?.main_image
 
 
@@ -57,7 +63,7 @@ function Products({
                   alt={item.name?.en || "product"}
                 />
 
-                {mainSku?.comparePrice > 0 && (
+                {hasDiscount && (
                   <div className="discount-badge" dir = {i18n.language === "ar"? "rtl": "ltr"}>
                     {t("productInfo.save")}{" "}
                     <bdi>
