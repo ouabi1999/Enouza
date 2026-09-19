@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
@@ -9,17 +9,47 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Save } from "lucide-react";
-import { tr } from "framer-motion/client";
 
-function NewArrival({ products = [], name, label, isAuto = false}) {
+function NewArrival({
+  products = [],
+  name,
+  label,
+  isAuto = false,
+}) {
   const { t, i18n } = useTranslation();
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const isArabic = i18n.dir() === "ltr";
+  const swiperRef = useRef(null);
+
+  const isArabic = i18n.dir() === "rtl";
+
+  /*
+   * Connect custom navigation buttons to Swiper
+   * after the buttons have been rendered.
+   */
+  useEffect(() => {
+    if (!swiperRef.current) return;
+
+    const swiper = swiperRef.current;
+
+    if (!swiper.params.navigation) return;
+
+    swiper.params.navigation.prevEl = prevRef.current;
+    swiper.params.navigation.nextEl = nextRef.current;
+
+    swiper.navigation.init();
+    swiper.navigation.update();
+
+    return () => {
+      if (swiper && !swiper.destroyed) {
+        swiper.navigation.destroy();
+      }
+    };
+  }, []);
 
   return (
-    <Section dir = {isArabic? "ltr": "rtl"}>
+    <Section dir={isArabic ? "rtl" : "ltr"}>
       <Container>
 
         {/* ============================
@@ -28,11 +58,9 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
 
         <Header>
           <Title>
-            {t(`homePage.${name}`, "bestsellers")} </Title>
-
-
+            {t(`homePage.${name}`, "bestsellers")}
+          </Title>
         </Header>
-
 
         {/* ============================
             PRODUCTS
@@ -42,28 +70,28 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
           <Swiper
             className="mySwiper"
             loop={true}
-            
-              autoplay= { isAuto && {
-              delay: 2500,
-              }}
-            
+
+            autoplay={
+              isAuto
+                ? {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }
+                : false
+            }
+
             modules={[Navigation, Autoplay]}
 
-            navigation={{
-              prevEl: ".best-sellers-prev",
-              nextEl: ".best-sellers-next",
+            /*
+             * Store the Swiper instance.
+             */
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
             }}
 
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-            onInit={(swiper) => {
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
             slidesPerView={1.35}
             spaceBetween={16}
+
             breakpoints={{
               600: {
                 slidesPerView: 2,
@@ -90,8 +118,8 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
               products.map((item) => {
                 const mainSku = item.skuInfo?.[0];
 
-                const image = item.multimediaInfo?.main_image
-
+                const image =
+                  item.multimediaInfo?.main_image;
 
                 const productName =
                   item.name?.[i18n.language] ||
@@ -103,12 +131,13 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                 const avgRating =
                   ratings.length > 0
                     ? (
-                      ratings.reduce(
-                        (total, rating) =>
-                          total + Number(rating.stars || 0),
-                        0
-                      ) / ratings.length
-                    ).toFixed(1)
+                        ratings.reduce(
+                          (total, rating) =>
+                            total +
+                            Number(rating.stars || 0),
+                          0
+                        ) / ratings.length
+                      ).toFixed(1)
                     : null;
 
                 const sellingPrice = Number(
@@ -125,10 +154,10 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
 
                 const discountPercentage = hasDiscount
                   ? Math.round(
-                    ((comparePrice - sellingPrice) /
-                      comparePrice) *
-                    100
-                  )
+                      ((comparePrice - sellingPrice) /
+                        comparePrice) *
+                        100
+                    )
                   : null;
 
                 const hasFreeShipping =
@@ -141,46 +170,49 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                   <SwiperSlide key={item.id}>
                     <ProductCard>
 
-                      {/* IMAGE */}
+                      {/* ============================
+                          IMAGE
+                      ============================ */}
 
                       <ProductLink
                         to={`/product/${item.id}`}
                         reloadDocument
                       >
                         <ImageWrapper>
+
                           <ProductImage
                             src={image}
                             alt={productName}
                             loading="lazy"
                           />
 
-                          <ProductLabels  $isArabic = {isArabic}>
-                              {hasDiscount &&
-                            <SaveLabel>
-                            {t("productInfo.save")}{" "}
-                            <bdi>
+                          <ProductLabels
+                            $isArabic={isArabic}
+                          >
+                            {hasDiscount && (
+                              <SaveLabel>
+                                {t("productInfo.save")}{" "}
+                                <bdi>
+                                  {discountPercentage}%
+                                </bdi>
+                              </SaveLabel>
+                            )}
 
-                                {discountPercentage}%
-                                
-                            </bdi>
-                            </SaveLabel>
-                                     }
-                         {label&&(
-
+                            {label && (
                               <Label>
-                            {t(`homePage.${label}`)}{" "}
-
-                          </Label>
-                           
-                         )
-
-                      
-                         }
+                                {t(
+                                  `homePage.${label}`
+                                )}
+                              </Label>
+                            )}
                           </ProductLabels>
+
                         </ImageWrapper>
                       </ProductLink>
 
-                      {/* INFO */}
+                      {/* ============================
+                          INFO
+                      ============================ */}
 
                       <ProductInfo>
 
@@ -191,19 +223,28 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                         <BottomRow>
 
                           <PriceGroup>
+
                             <CurrentPrice>
-                              ${sellingPrice.toFixed(2)}
+                              $
+                              {sellingPrice.toFixed(
+                                2
+                              )}
                             </CurrentPrice>
 
                             {hasDiscount && (
                               <ComparePrice>
-                                ${comparePrice.toFixed(2)}
+                                $
+                                {comparePrice.toFixed(
+                                  2
+                                )}
                               </ComparePrice>
                             )}
+
                           </PriceGroup>
 
                           {avgRating && (
                             <Rating>
+
                               <StarIcon />
 
                               <span>
@@ -213,6 +254,7 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                               <ReviewCount>
                                 {ratings.length}
                               </ReviewCount>
+
                             </Rating>
                           )}
 
@@ -220,7 +262,9 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
 
                         {hasFreeShipping && (
                           <Shipping>
-                            {t("common.free_shipping")}
+                            {t(
+                              "common.free_shipping"
+                            )}
                           </Shipping>
                         )}
 
@@ -234,18 +278,27 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
               <>
                 {[1, 2, 3, 4, 5].map((item) => (
                   <SwiperSlide key={item}>
+
                     <SkeletonCard>
+
                       <SkeletonImage />
 
                       <SkeletonInfo>
+
                         <SkeletonName />
 
                         <SkeletonBottom>
+
                           <SkeletonPrice />
+
                           <SkeletonRating />
+
                         </SkeletonBottom>
+
                       </SkeletonInfo>
+
                     </SkeletonCard>
+
                   </SwiperSlide>
                 ))}
               </>
@@ -253,9 +306,14 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
           </Swiper>
         </SwiperWrapper>
 
-
       </Container>
+
+      {/* ============================
+          CUSTOM NAVIGATION
+      ============================ */}
+
       <NavigationArea>
+
         <button
           ref={prevRef}
           type="button"
@@ -273,7 +331,9 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
         >
           <Arrow $direction="next" />
         </button>
+
       </NavigationArea>
+
     </Section>
   );
 }
@@ -336,10 +396,12 @@ const Title = styled.h2`
 const NavigationArea = styled.div`
   display: flex;
   align-items: center;
-  justify-content:flex-end;
+  justify-content: flex-end;
+
   gap: 8px;
-  margin-top:25px;
-  margin-right:25px;
+
+  margin-top: 25px;
+  margin-right: 25px;
 
   direction: ltr;
 
@@ -362,6 +424,8 @@ const NavigationArea = styled.div`
 
     cursor: pointer;
 
+    color: #25221f;
+
     transition:
       background 0.25s ease,
       border-color 0.25s ease,
@@ -381,17 +445,15 @@ const NavigationArea = styled.div`
     &.swiper-button-disabled:hover {
       background: transparent;
       border-color: #d7d1c8;
-      color: inherit;
+      color: #25221f;
     }
   }
-     
 
-    @media (max-width: 400px) {
-    &{
-     display:none;
-     }
-    }
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
+
 
 const Arrow = styled.span`
   width: 7px;
@@ -434,10 +496,9 @@ const SwiperWrapper = styled.div`
   }
 
   /*
-    Hide Swiper's own navigation buttons.
-
-    We use our own buttons in the header.
-  */
+   * Swiper's default navigation arrows
+   * are not used because we use custom buttons.
+   */
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -480,68 +541,80 @@ const ProductImage = styled.img`
 
   object-fit: cover;
 
-  transition: transform 0.7s
+  transition:
+    transform 0.7s
     cubic-bezier(0.2, 0.65, 0.3, 1);
 
   ${ProductCard}:hover & {
     transform: scale(1.025);
   }
 `;
+
+
+/* =========================================================
+   PRODUCT LABELS
+========================================================= */
+
 const ProductLabels = styled.div`
-   display:flex;
-   align-items:center;
-   gap:20px;
-   position: absolute;
-   top: 12px;
-   left: 12px;
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  position: absolute;
+
+  top: 12px;
+
   ${({ $isArabic }) =>
     $isArabic
       ? `
-        left: 12px;
+        right: 12px;
       `
       : `
-        right: 12px;
+        left: 12px;
       `}
 `;
 
 
 const Label = styled.span`
-   
+  padding: 5px 8px;
 
-    padding: 5px 8px;
+  background: #000000;
 
-    background: #000000;
+  color: #ffffff;
 
-    color: #fff;
-    border-radius:4px;
+  border-radius: 4px;
 
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 
-    font-size: 0.65rem;
+  font-size: 0.65rem;
 
-    font-weight: 500;
+  font-weight: 500;
 
-    letter-spacing: 0.04em;
+  letter-spacing: 0.04em;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 `;
+
+
 const SaveLabel = styled.span`
-     
-    padding: 5px 8px;
+  padding: 5px 8px;
 
-    background: #af956e;
-    border-radius:4px;
-    color: #fff;
+  background: #af956e;
 
-    font-family: Arial, sans-serif;
+  border-radius: 4px;
 
-    font-size: 0.65rem;
+  color: #ffffff;
 
-    font-weight: 500;
+  font-family: Arial, sans-serif;
 
-    letter-spacing: 0.04em;
+  font-size: 0.65rem;
 
-    text-transform: uppercase;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
 `;
 
 
@@ -559,7 +632,9 @@ const ProductName = styled.h3`
   color: #292622;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.84rem;
+
   font-weight: 500;
 
   line-height: 1.45;
@@ -578,6 +653,7 @@ const BottomRow = styled.div`
 const PriceGroup = styled.div`
   display: flex;
   align-items: baseline;
+
   gap: 8px;
 
   min-width: 0;
@@ -587,7 +663,9 @@ const CurrentPrice = styled.span`
   color: #25221f;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.86rem;
+
   font-weight: 600;
 
   white-space: nowrap;
@@ -597,6 +675,7 @@ const ComparePrice = styled.span`
   color: #a49c93;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.72rem;
 
   text-decoration: line-through;
@@ -615,6 +694,7 @@ const Rating = styled.div`
   color: #777067;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.65rem;
 
   svg {
@@ -643,6 +723,7 @@ const Shipping = styled.div`
   color: #8b8177;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.61rem;
 
   letter-spacing: 0.02em;
@@ -659,6 +740,7 @@ const SkeletonCard = styled.div`
 
 const SkeletonImage = styled.div`
   width: 100%;
+
   aspect-ratio: 0.82;
 
   background: #e9e5de;
