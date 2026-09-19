@@ -92,7 +92,7 @@ export default function FilterPageStyled() {
 
   useEffect(()=>{
       window.scrollTo({top:0, left:0, behavior:"auto"})
-  },[])
+  },[count])
   
   useEffect(() => {
     fetchProducts();
