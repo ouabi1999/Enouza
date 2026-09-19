@@ -160,7 +160,7 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                             {t("productInfo.save")}{" "}
                             <bdi>
 
-                                {discountPercentage}%`
+                                {discountPercentage}%
                                 
                             </bdi>
                             </SaveLabel>
