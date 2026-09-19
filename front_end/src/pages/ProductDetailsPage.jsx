@@ -140,7 +140,7 @@ function ProductDetailsPage() {
     try {
       const response = await ApiInstance.get("product-search/", {
         params: {
-          category,
+          category : category || "table lamps",
           per_page: 6,
         },
       });

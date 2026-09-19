@@ -29,10 +29,46 @@ class ProductView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
-        data = request.data.copy()  # Make a copy to modify
+       
+        data = request.data  # Make a copy to modify
+        multimedia_info = json.loads(data.get("multimediaInfo"))
+        image = request.FILES.get("main_image")
+
+        if image:
+            # Cloudinary - Upload main image, check if file exists in request.FILES
+            main_image_result = cloudinary.uploader.upload(image)
+            multimedia_info["main_image"] = main_image_result["secure_url"]
+            data["multimediaInfo"] = json.dumps(multimedia_info)
+        else:
+            data = request.data.copy()
+            image = request.data.get("main_image")
+            multimedia_info["main_image"] = image
+            data["multimediaInfo"] = json.dumps(multimedia_info)
+
+            color_urls = []
+            # Get the color images from the request files
+            color_images = data.getlist("colors")
+            if color_images:
+                # Upload each color image to Cloudinary and get the URL
+                for color_img in color_images:
+                    upload_result = cloudinary.uploader.upload(color_img)
+                    # Append the secure URL of the uploaded image
+                    color_urls.append(upload_result["secure_url"])
+                    # Update the 'colors' field with the list of color image URLs (flat list)
+                    data["colors"] = json.dumps(color_urls)
+
+        # Cloudinary - Upload additional images, if they are provided in request.FILES
+        image_urls = multimedia_info.get("image_urls", [])
+        additionalImageFiles = request.FILES.getlist("additionalImageFiles")
+        if additionalImageFiles:
+            for image_file in additionalImageFiles:
+                result = cloudinary.uploader.upload(image_file, folder="enouza/products")
+                image_urls.append(result["secure_url"])
+
+            multimedia_info["image_urls"] = image_urls
+            data["multimediaInfo"] = json.dumps(multimedia_info)
 
         serializer = ProductSerializer(data=data)
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

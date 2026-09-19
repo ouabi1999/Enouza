@@ -704,7 +704,7 @@ function ProductInfo({
             </ComparePrice>
           )}
 
-          {savePercentage && (
+          {comparePrice > 0 && (
             <SaveBadge dir={i18n.language === "ar" ? "rtl" : "ltr"}>
               {t("productInfo.save")}{" "}
               <bdi style={{ margin: "0 2px" }}>

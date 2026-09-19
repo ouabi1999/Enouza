@@ -155,16 +155,16 @@ function NewArrival({ products = [], name, label, isAuto = false}) {
                           />
 
                           <ProductLabels  $isArabic = {isArabic}>
+                              {hasDiscount &&
                             <SaveLabel>
                             {t("productInfo.save")}{" "}
                             <bdi>
 
-                              {hasDiscount
-                                ? `${discountPercentage}%`
-                                : t("common.best_seller")}
+                                {discountPercentage}%`
+                                
                             </bdi>
                             </SaveLabel>
-                         
+                                     }
                          {label&&(
 
                               <Label>
