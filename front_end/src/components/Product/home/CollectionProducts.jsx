@@ -19,28 +19,64 @@ function CollectionProducts({
     >
       <div className="grid-container">
   {products?.flatMap((item) => {
-    const skus = Array.isArray(item.skuInfo) ? item.skuInfo : [];
+    const skus = Array.isArray(item.skuInfo)
+      ? item.skuInfo
+      : [];
 
     return skus.map((skuItem, skuIndex) => {
       // =========================
       // SKU PRICE
       // =========================
 
-      const sellingPrice = Number(skuItem?.sellingPrice || 0);
-      const comparePrice = Number(skuItem?.comparePrice || 0);
+      const sellingPrice = Number(
+        skuItem?.sellingPrice || 0
+      );
+
+      const comparePrice = Number(
+        skuItem?.comparePrice || 0
+      );
 
       const hasDiscount =
-        comparePrice > sellingPrice && sellingPrice > 0;
+        comparePrice > sellingPrice &&
+        sellingPrice > 0;
 
       // =========================
       // SKU IMAGE
       // =========================
+      
+      // Get the image from the SKU attributes
+      const skuAttributes = skuItem?.attributes || {};
 
+      const skuImage = Object.values(skuAttributes)
+        .map((attribute) => attribute?.image)
+        .find((image) => image);
+
+      // Fallback to product main image
       const image =
-        skuItem?.image ||
-        skuItem?.main_image ||
-        skuItem?.multimediaInfo?.main_image ||
+        skuImage ||
         item.multimediaInfo?.main_image;
+
+      // =========================
+      // PRODUCT NAME
+      // =========================
+
+      const language = i18n.language;
+
+      const productName =
+        item.name?.[language] ||
+        item.name?.en ||
+        "Product";
+
+      // =========================
+      // SKU VARIATIONS
+      // =========================
+
+      const skuVariation = Object.values(
+        skuAttributes
+      )
+        .map((attribute) => attribute?.value)
+        .filter(Boolean)
+        .join(" • ");
 
       // =========================
       // RATINGS
@@ -52,7 +88,8 @@ function CollectionProducts({
         sumRatings.length > 0
           ? (
               sumRatings.reduce(
-                (total, r) => total + Number(r.stars || 0),
+                (total, r) =>
+                  total + Number(r.stars || 0),
                 0
               ) / sumRatings.length
             ).toFixed(1)
@@ -66,43 +103,9 @@ function CollectionProducts({
         (item?.orders?.length || 0) +
         (item?.ratings?.length || 0);
 
-      // =========================
-      // SKU NAME
-      // =========================
-
-      const language = i18n.language;
-
-      const productName =
-        item.name?.[language] ||
-        item.name?.en ||
-        "Product";
-
-      // Optional SKU variation text
-      const skuVariation = Object.entries(skuItem || {})
-        .filter(
-          ([key]) =>
-            ![
-              "sellingPrice",
-              "comparePrice",
-              "image",
-              "main_image",
-              "skuId",
-              "id",
-            ].includes(key)
-        )
-        .map(([key, value]) => {
-          if (value && typeof value === "object") {
-            return value.value;
-          }
-
-          return value;
-        })
-        .filter(Boolean)
-        .join(" • ");
-
       return (
         <div
-          key={`${item.id}-${skuItem?.skuId || skuItem?.id || skuIndex}`}
+          key={`${item.id}-${skuItem.id || skuIndex}`}
           className="product-container"
         >
           {/* =========================
@@ -153,7 +156,7 @@ function CollectionProducts({
                 {productName}
               </p>
 
-            
+             
             </FirstSection>
 
             <SecondSection>
@@ -165,8 +168,6 @@ function CollectionProducts({
             </SecondSection>
 
             <ThirdSection>
-              {/* PRICE */}
-
               <div className="price-wrapper">
                 <span className="product-price">
                   ${sellingPrice.toFixed(2)}
@@ -178,8 +179,6 @@ function CollectionProducts({
                   </span>
                 )}
               </div>
-
-              {/* RATING */}
 
               {avgRating && (
                 <div className="reviews-container">
