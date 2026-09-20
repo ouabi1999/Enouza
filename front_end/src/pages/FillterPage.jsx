@@ -5,7 +5,7 @@ import { categoryList } from "../../common/categoryList";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import ApiInstance from "../../common/baseUrl";
-import Products from "../components/Product/home/Products";
+import CollectionProducts from "../components/Product/home/CollectionProducts";
 import {
   toggleCategory,
   setSort,
@@ -287,7 +287,7 @@ export default function FilterPageStyled() {
             initial="hidden"
             animate="visible"
           >
-            <Products
+            <CollectionProducts 
               columsNumber={4}
               products={productsList}
               placeItems="center"

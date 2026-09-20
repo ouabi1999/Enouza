@@ -42,10 +42,11 @@ function DropDownMenuLang(props) {
 
     if (i18n.language !== savedLanguage) {
       i18n.changeLanguage(savedLanguage);
+      
     }
 
     setSelectedLang(savedLanguage);
-    window.location.reload();
+    
   }, [i18n]);
 
   const switchLanguage = () => {
@@ -54,6 +55,7 @@ function DropDownMenuLang(props) {
     i18n.changeLanguage(selectedLang);
 
     props.setIsLangMenuOpen(false);
+    window.location.reload();
   };
 
   return (

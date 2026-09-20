@@ -1,0 +1,601 @@
+import React from "react";
+import styled from "styled-components";
+import StarIcon from "@mui/icons-material/Star";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+function CollectionProducts({
+  products,
+  scrollTo,
+  columsNumber,
+  placeItems,
+}) {
+  const { t, i18n } = useTranslation();
+
+  return (
+    <ProductContainer
+      colums_number={columsNumber}
+      place_items={placeItems}
+    >
+      <div className="grid-container">
+  {products?.flatMap((item) => {
+    const skus = Array.isArray(item.skuInfo) ? item.skuInfo : [];
+
+    return skus.map((skuItem, skuIndex) => {
+      // =========================
+      // SKU PRICE
+      // =========================
+
+      const sellingPrice = Number(skuItem?.sellingPrice || 0);
+      const comparePrice = Number(skuItem?.comparePrice || 0);
+
+      const hasDiscount =
+        comparePrice > sellingPrice && sellingPrice > 0;
+
+      // =========================
+      // SKU IMAGE
+      // =========================
+
+      const image =
+        skuItem?.image ||
+        skuItem?.main_image ||
+        skuItem?.multimediaInfo?.main_image ||
+        item.multimediaInfo?.main_image;
+
+      // =========================
+      // RATINGS
+      // =========================
+
+      const sumRatings = item.ratings || [];
+
+      const avgRating =
+        sumRatings.length > 0
+          ? (
+              sumRatings.reduce(
+                (total, r) => total + Number(r.stars || 0),
+                0
+              ) / sumRatings.length
+            ).toFixed(1)
+          : null;
+
+      // =========================
+      // ORDERS
+      // =========================
+
+      const ordersCount =
+        (item?.orders?.length || 0) +
+        (item?.ratings?.length || 0);
+
+      // =========================
+      // SKU NAME
+      // =========================
+
+      const language = i18n.language;
+
+      const productName =
+        item.name?.[language] ||
+        item.name?.en ||
+        "Product";
+
+      // Optional SKU variation text
+      const skuVariation = Object.entries(skuItem || {})
+        .filter(
+          ([key]) =>
+            ![
+              "sellingPrice",
+              "comparePrice",
+              "image",
+              "main_image",
+              "skuId",
+              "id",
+            ].includes(key)
+        )
+        .map(([key, value]) => {
+          if (value && typeof value === "object") {
+            return value.value;
+          }
+
+          return value;
+        })
+        .filter(Boolean)
+        .join(" • ");
+
+      return (
+        <div
+          key={`${item.id}-${skuItem?.skuId || skuItem?.id || skuIndex}`}
+          className="product-container"
+        >
+          {/* =========================
+              PRODUCT IMAGE
+          ========================= */}
+
+          <Link
+            reloadDocument
+            to={`/product/${item.id}`}
+            className="image-container"
+          >
+            <img
+              loading="lazy"
+              src={image}
+              alt={productName}
+            />
+
+            {hasDiscount && (
+              <div
+                className="discount-badge"
+                dir={
+                  i18n.language === "ar"
+                    ? "rtl"
+                    : "ltr"
+                }
+              >
+                {t("productInfo.save")}{" "}
+
+                <bdi>
+                  {(
+                    ((comparePrice - sellingPrice) /
+                      comparePrice) *
+                    100
+                  ).toFixed(0)}
+                  %
+                </bdi>
+              </div>
+            )}
+          </Link>
+
+          {/* =========================
+              PRODUCT INFORMATION
+          ========================= */}
+
+          <ProductInfo>
+            <FirstSection>
+              <p className="product-title">
+                {productName}
+              </p>
+
+            
+            </FirstSection>
+
+            <SecondSection>
+              {/*
+              <div className="orders">
+                {t("common.orders")} ({ordersCount})
+              </div>
+              */}
+            </SecondSection>
+
+            <ThirdSection>
+              {/* PRICE */}
+
+              <div className="price-wrapper">
+                <span className="product-price">
+                  ${sellingPrice.toFixed(2)}
+                </span>
+
+                {comparePrice > 0 && (
+                  <span className="compare-price">
+                    ${comparePrice.toFixed(2)}
+                  </span>
+                )}
+              </div>
+
+              {/* RATING */}
+
+              {avgRating && (
+                <div className="reviews-container">
+                  <StarIcon className="star-icon" />
+
+                  <span className="reviews">
+                    {avgRating}
+                  </span>
+                </div>
+              )}
+            </ThirdSection>
+
+            {/* FREE SHIPPING */}
+
+            {item.available_shipping?.some(
+              (ship) => ship.type === "Free"
+            ) && (
+              <span className="shipping">
+                {t("common.free_shipping")}
+              </span>
+            )}
+          </ProductInfo>
+        </div>
+      );
+    });
+  })}
+</div>
+    
+      <div ref={scrollTo} />
+    </ProductContainer>
+  );
+}
+
+export default CollectionProducts;
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+const ProductContainer = styled.div`
+  width: 100%;
+
+  font-family: Arial, sans-serif;
+
+  .grid-container {
+  width: min(1300px, calc(100% - 40px));
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(
+    ${(props) => props.colums_number},
+    minmax(0, 1fr)
+  );
+
+  gap: 30px 20px;
+
+  align-items: start;
+}
+  /* =====================================
+     PRODUCT CARD
+  ===================================== */
+
+  .product-container {
+    width: 100%;
+    min-width: 0;
+
+    padding-bottom: 12px;
+
+    background: #fff;
+  }
+
+
+  /* =====================================
+     IMAGE
+  ===================================== */
+
+  .image-container {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background: #f7f6f3;
+
+    text-decoration: none;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #fff;
+
+    transition: transform 0.45s ease;
+  }
+
+  .image-container:hover img {
+    transform: scale(1.025);
+  }
+
+
+  /* =====================================
+     DISCOUNT
+  ===================================== */
+
+  .discount-badge {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    padding: 5px 8px;
+
+    background: #9a7743;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.65rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
+  }
+
+
+  /* =====================================
+     TABLET
+  ===================================== */
+
+  @media (max-width: 1200px) {
+    .grid-container {
+      grid-template-columns: repeat(
+        4,
+        minmax(0, 1fr)
+      );
+
+      gap: 28px 16px;
+    }
+  }
+
+
+  @media (max-width: 950px) {
+    .grid-container {
+      grid-template-columns: repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+      gap: 28px 14px;
+    }
+  }
+
+
+  /* =====================================
+     MOBILE
+  ===================================== */
+
+  @media (max-width: 730px) {
+    .grid-container {
+      grid-template-columns: repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+      gap: 25px 10px;
+
+      padding: 6px;
+    }
+  }
+
+
+  @media (max-width: 490px) {
+    .grid-container {
+      gap: 22px 7px;
+
+      padding: 4px;
+    }
+
+    .discount-badge {
+      top: 8px;
+      left: 8px;
+
+      padding: 4px 6px;
+
+      font-size: 0.55rem;
+    }
+  }
+`;
+
+
+/* =====================================
+   PRODUCT INFO
+===================================== */
+
+const ProductInfo = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  padding-top: 11px;
+
+  .shipping {
+    margin: 7px 0 0 4px;
+
+    color: #496b52;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 490px) {
+    padding-top: 8px;
+
+    .shipping {
+      margin-top: 6px;
+
+      font-size: 9px;
+    }
+  }
+`;
+
+
+/* =====================================
+   TITLE
+===================================== */
+
+const FirstSection = styled.div`
+  .product-title {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    margin: 0;
+
+    padding: 0 5px;
+
+    color: #292929;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 0.92rem;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+  }
+
+  @media (max-width: 600px) {
+    .product-title {
+      font-size: 0.78rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .product-title {
+      font-size: 0.72rem;
+    }
+  }
+`;
+
+
+/* =====================================
+   RATING
+===================================== */
+
+const SecondSection = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  min-height: 21px;
+
+  margin-top: 6px;
+
+  .orders {
+    padding: 0 5px;
+
+    font-size: 0.7rem;
+  }
+
+ `
+
+
+/* =====================================
+   PRICE
+===================================== */
+
+const ThirdSection = styled.div`
+  margin-top: 7px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  .price-wrapper {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    padding: 0 5px;
+  }
+
+  .product-price {
+    color: #222;
+
+   font-family: 'Trebuchet MS', sans-serif;
+
+    font-size: 1.15rem;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .compare-price {
+    color: #999;
+
+    font-family: 'Trebuchet MS', sans-serif;
+
+    font-size: 0.72rem;
+
+    text-decoration: line-through;
+
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 6px;
+
+    .price-wrapper {
+      gap: 6px;
+    }
+
+    .product-price {
+      font-size: 0.95rem;
+    }
+
+    .compare-price {
+      font-size: 0.62rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .product-price {
+      font-size: 0.88rem;
+    }
+
+    .compare-price {
+      font-size: 0.58rem;
+    }
+  }
+     .reviews-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    margin: 0 15px;
+  }
+
+  .reviews {
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1;
+  }
+
+  .star-icon {
+    color: #cc9d51;
+
+    font-size: 15px;
+  }
+
+  @media (max-width: 600px) {
+    min-height: 19px;
+
+    .reviews-container {
+      margin: 0 5px;
+    }
+
+    .reviews {
+      font-size: 10px;
+    }
+
+    .star-icon {
+      font-size: 13px;
+    }
+  }
+
+`;
