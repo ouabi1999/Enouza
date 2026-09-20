@@ -45,6 +45,7 @@ function DropDownMenuLang(props) {
     }
 
     setSelectedLang(savedLanguage);
+    window.location.reload();
   }, [i18n]);
 
   const switchLanguage = () => {
