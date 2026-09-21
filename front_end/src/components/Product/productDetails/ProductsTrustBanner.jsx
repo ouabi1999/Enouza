@@ -5,20 +5,40 @@ import { useTranslation } from "react-i18next";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
-import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
-import ReplayIcon from '@mui/icons-material/Replay';
-import VolunteerActivismOutlinedIcon from '@mui/icons-material/VolunteerActivismOutlined';
+import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
+import ReplayIcon from "@mui/icons-material/Replay";
+import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
+
+const optimizeCloudinaryImage = (url, width = 50) => {
+  if (!url?.includes("res.cloudinary.com")) return url;
+  if (!url.includes("/image/upload/")) return url;
+
+  if (
+    url.includes("f_auto") ||
+    url.includes("q_auto") ||
+    /w_\d+/.test(url)
+  ) {
+    return url;
+  }
+
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
+
 const ProductTrustBanner = () => {
   const { t } = useTranslation();
 
   return (
     <Banner>
       {/* ================= SECURE CHECKOUT ================= */}
+
       <SecureCheckout>
         <SecureLine />
 
         <SecureContent>
-          <GppGoodOutlinedIcon style={{ fontSize: "15px" }} />
+          <GppGoodOutlinedIcon aria-hidden="true" />
           <span>{t("trust.secureCheckout")}</span>
         </SecureContent>
 
@@ -26,79 +46,118 @@ const ProductTrustBanner = () => {
       </SecureCheckout>
 
       {/* ================= PAYMENT METHODS ================= */}
+
       <PaymentMethods>
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353548/visa_payment_method_card_icon_142729_hi0vvw.svg" alt="Visa" />
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353547/mastercard_payment_method_card_icon_142734_xc6uqc.svg" alt="Mastercard" />
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788355836/amazon-payments_82089_f6able.png" alt="amazon Pay" />
-        <img
+        <PaymentIcon
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353548/visa_payment_method_card_icon_142729_hi0vvw.svg"
+          alt="Visa"
+          width="45"
+          height="45"
+        />
+
+        <PaymentIcon
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353547/mastercard_payment_method_card_icon_142734_xc6uqc.svg"
+          alt="Mastercard"
+          width="45"
+          height="45"
+        />
+
+        <PaymentIcon
+          src={optimizeCloudinaryImage(
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788355836/amazon-payments_82089_f6able.png",
+            50
+          )}
+          alt="Amazon Pay"
+          width="45"
+          height="45"
+        />
+
+        <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353547/amex_payment_method_card_icon_142744_q0dtfq.svg"
           alt="American Express"
+          width="45"
+          height="45"
         />
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354390/paypal_payment_method_card_icon_142733_mdhwby.svg" alt="PayPal" />
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354252/discover_payment_method_card_icon_142741_y62x9b.svg" alt="Discover" />
 
-        <img src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788514961/applepay_logo_icon_247576_rcv5ud.svg" alt="Apple Pay" />
+        <PaymentIcon
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354390/paypal_payment_method_card_icon_142733_mdhwby.svg"
+          alt="PayPal"
+          width="45"
+          height="45"
+        />
+
+        <PaymentIcon
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354252/discover_payment_method_card_icon_142741_y62x9b.svg"
+          alt="Discover"
+          width="45"
+          height="45"
+        />
+
+        <PaymentIcon
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788514961/applepay_logo_icon_247576_rcv5ud.svg"
+          alt="Apple Pay"
+          width="45"
+          height="45"
+        />
       </PaymentMethods>
 
-      {/* ================= BENEFITS ================= */}
-       <SecureCheckout>
+      {/* ================= SHOP WITH CONFIDENCE ================= */}
+
+      <SecureCheckout>
         <SecureLine />
 
         <SecureContent>
-          
-          <VolunteerActivismOutlinedIcon style={{ fontSize: "15px" }} />
+          <VolunteerActivismOutlinedIcon aria-hidden="true" />
           <span>{t("trust.shopWithConfidence")}</span>
         </SecureContent>
 
         <SecureLine />
       </SecureCheckout>
+
+      {/* ================= BENEFITS ================= */}
+
       <TrustGrid>
         <TrustItem>
           <IconWrapper>
-            <LocalShippingOutlinedIcon className="icons" />
+            <LocalShippingOutlinedIcon className="icons" aria-hidden="true" />
           </IconWrapper>
 
           <TrustTitle>
             {t("trust.freeShipping.title")}
           </TrustTitle>
-
-          
         </TrustItem>
 
         <TrustItem>
           <IconWrapper>
-            <Inventory2OutlinedIcon className="icons" />
+            <Inventory2OutlinedIcon className="icons" aria-hidden="true" />
           </IconWrapper>
 
           <TrustTitle>
             {t("trust.fastDelivery.title")}
           </TrustTitle>
-
-          
         </TrustItem>
 
         <TrustItem>
           <IconWrapper>
-            <ReplayIcon className="icons" />
+            <ReplayIcon className="icons" aria-hidden="true" />
           </IconWrapper>
 
           <TrustTitle>
             {t("trust.returns.title")}
           </TrustTitle>
-
-        
         </TrustItem>
 
         <TrustItem>
           <IconWrapper>
-            <WorkspacePremiumOutlinedIcon className="icons"  />
+            <WorkspacePremiumOutlinedIcon
+              className="icons"
+              aria-hidden="true"
+            />
           </IconWrapper>
 
           <TrustTitle>
             {t("trust.warranty.title")}
           </TrustTitle>
-
-         
         </TrustItem>
       </TrustGrid>
     </Banner>
@@ -107,7 +166,6 @@ const ProductTrustBanner = () => {
 
 export default ProductTrustBanner;
 
-
 /* =====================================================
    MAIN BANNER
 ===================================================== */
@@ -115,12 +173,8 @@ export default ProductTrustBanner;
 const Banner = styled.section`
   width: 100%;
   box-sizing: border-box;
-
   color: #3d3a36;
-
-  
 `;
-
 
 /* =====================================================
    SECURE CHECKOUT
@@ -134,16 +188,13 @@ const SecureCheckout = styled.div`
   justify-content: center;
 
   gap: 22px;
-
   margin-bottom: 18px;
 `;
 
 const SecureLine = styled.div`
   flex: 1;
   max-width: 420px;
-
   height: 1px;
-
   background: #d8d3ca;
 `;
 
@@ -153,11 +204,9 @@ const SecureContent = styled.div`
   justify-content: center;
 
   gap: 7px;
-
   white-space: nowrap;
 
   font-family: Georgia, serif;
-
   font-size: 10px;
   font-weight: 400;
 
@@ -167,8 +216,9 @@ const SecureContent = styled.div`
   color: #716c64;
 
   svg {
-    font-size: 18px;
+    font-size: 15px;
     color: #9a8d78;
+    flex-shrink: 0;
   }
 
   @media (max-width: 600px) {
@@ -176,11 +226,10 @@ const SecureContent = styled.div`
     letter-spacing: 1.5px;
 
     svg {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 `;
-
 
 /* =====================================================
    PAYMENT METHODS
@@ -195,47 +244,34 @@ const PaymentMethods = styled.div`
 
   gap: 18px;
 
-  margin-bottom: 32px;
   margin-top: 32px;
-
-  img {
-    width: 45px;
-    height: 45px;
-
-    object-fit: contain;
-  }
+  margin-bottom: 32px;
 
   @media (max-width: 700px) {
-
-
-    padding-bottom: 4px;
-
     gap: 12px;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    scrollbar-width: none;
-
-    img {
-      height: 34px;
-      width: 34px;
-    }
   }
-
-    @media (max-width: 360px) {
-    img {
-    width: 30px;
-    height: 30px;
-
-  }
-    
-    
-    }
-
 `;
 
+const PaymentIcon = styled.img`
+  display: block;
+
+  width: 45px;
+  height: 45px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  @media (max-width: 700px) {
+    width: 34px;
+    height: 34px;
+  }
+
+  @media (max-width: 360px) {
+    width: 30px;
+    height: 30px;
+  }
+`;
 
 /* =====================================================
    BENEFITS
@@ -244,14 +280,10 @@ const PaymentMethods = styled.div`
 const TrustGrid = styled.div`
   width: 100%;
 
-   margin-top: 32px;
+  margin-top: 32px;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
-
-  
-
-  
 `;
 
 const TrustItem = styled.div`
@@ -262,13 +294,7 @@ const TrustItem = styled.div`
   text-align: center;
 
   padding: 0 15px;
-  .icons{
-   font-wieght:500;
-   outline: none;
-   font-size: 25px;
-  } 
 `;
-
 
 /* =====================================================
    ICONS
@@ -280,7 +306,6 @@ const IconWrapper = styled.div`
   justify-content: center;
 
   height: 38px;
-
   margin-bottom: 13px;
 
   svg {
@@ -300,47 +325,22 @@ const IconWrapper = styled.div`
   }
 `;
 
-
 /* =====================================================
    TEXT
 ===================================================== */
 
 const TrustTitle = styled.div`
-  
-   text-wrap:nowrap;
+  white-space: nowrap;
+
   font-size: 12px;
   line-height: 1.18;
 
   font-weight: 400;
-
   letter-spacing: 0;
 
   color: #45413d;
 
-  
-
   @media (max-width: 600px) {
     font-size: 8px;
-  }
-`;
-
-const TrustText = styled.div`
-  margin-top: 2px;
-
-  font-family: Georgia, serif;
-
-  font-size: 10px;
-  line-height: 1.2;
-
-  font-weight: 400;
-
-  color: #59544e;
-
-  @media (max-width: 1000px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 15px;
   }
 `;

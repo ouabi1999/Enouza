@@ -1,6 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+const optimizeCloudinaryImage = (url, width = 50) => {
+  if (!url?.includes("res.cloudinary.com")) return url;
+  if (!url.includes("/image/upload/")) return url;
+
+  // Avoid adding transformations twice
+  if (url.includes("f_auto") || url.includes("q_auto")) {
+    return url;
+  }
+
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
+
 function PaymentMethods() {
   return (
     <Container>
@@ -8,41 +23,66 @@ function PaymentMethods() {
         <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353548/visa_payment_method_card_icon_142729_hi0vvw.svg"
           alt="Visa"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353547/mastercard_payment_method_card_icon_142734_xc6uqc.svg"
           alt="Mastercard"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788368908/amazon-payments-inverted_82055_hctxsm.png"
+          src={optimizeCloudinaryImage(
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788368908/amazon-payments-inverted_82055_hctxsm.png",
+            50
+          )}
           alt="Amazon Pay"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788353547/amex_payment_method_card_icon_142744_q0dtfq.svg"
           alt="American Express"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370983/paypal_payment_method_card_icon_142733_tz08at.png"
+          src={optimizeCloudinaryImage(
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370983/paypal_payment_method_card_icon_142733_tz08at.png",
+            50
+          )}
           alt="PayPal"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370981/jcb_payment_method_card_icon_142738_utwp3t.png"
+          src={optimizeCloudinaryImage(
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370981/jcb_payment_method_card_icon_142738_utwp3t.png",
+            50
+          )}
           alt="JCB"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788354252/discover_payment_method_card_icon_142741_y62x9b.svg"
           alt="Discover"
+          width="45"
+          height="45"
         />
 
         <PaymentIcon
           src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788514961/applepay_logo_icon_247576_rcv5ud.svg"
           alt="Apple Pay"
+          width="45"
+          height="45"
         />
       </PaymentRow>
     </Container>
@@ -50,7 +90,6 @@ function PaymentMethods() {
 }
 
 export default PaymentMethods;
-
 
 /* =========================
    CONTAINER
@@ -60,35 +99,30 @@ const Container = styled.div`
   width: 100%;
 `;
 
-
 /* =========================
    PAYMENT ROW
 ========================= */
 
 const PaymentRow = styled.div`
   width: 100%;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   flex-wrap: nowrap;
-
   gap: 16px;
 
   margin: 0 auto;
-
 
   @media (max-width: 750px) {
     gap: 14px;
   }
 
-
   @media (max-width: 420px) {
     gap: 10px;
   }
 `;
-
 
 /* =========================
    PAYMENT ICON
@@ -112,23 +146,20 @@ const PaymentIcon = styled.img`
     opacity 0.25s ease,
     transform 0.25s ease;
 
-
   &:hover {
     opacity: 1;
     transform: translateY(-1px);
   }
 
-
   @media (max-width: 750px) {
+    width: 30px;
     height: 30px;
-    width:30px;
     max-width: 46px;
   }
 
-
   @media (max-width: 420px) {
+    width: 30px;
     height: 30px;
-    width:30px;
     max-width: 40px;
   }
 `;
