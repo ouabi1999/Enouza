@@ -1,65 +1,160 @@
-import React, { useEffect, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/navigation";
+
+/* =========================================================
+   CLOUDINARY IMAGE OPTIMIZATION
+========================================================= */
+
+const optimizeCloudinaryImage = (url, width = 700) => {
+  if (!url?.includes("res.cloudinary.com")) {
+    return url;
+  }
+
+  if (!url.includes("/image/upload/")) {
+    return url;
+  }
+
+  // Prevent duplicate transformations
+  if (
+    url.includes("f_auto") ||
+    url.includes("q_auto") ||
+    /w_\d+/.test(url)
+  ) {
+    return url;
+  }
+
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
+
+/* =========================================================
+   COMPONENT
+========================================================= */
 
 function NewArrival({
   products = [],
   name,
   label,
   isAuto = false,
+  isLoading = false,
 }) {
   const { t, i18n } = useTranslation();
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
   const swiperRef = useRef(null);
 
   const isArabic = i18n.dir() === "rtl";
 
   /*
-   * Connect custom navigation buttons to Swiper
-   * after the buttons have been rendered.
+   * Only calculate these values when products change.
+   * This keeps unnecessary calculations out of rendering.
    */
-  useEffect(() => {
-    if (!swiperRef.current) return;
+  const normalizedProducts = useMemo(() => {
+    return products.map((item) => {
+      const mainSku = item.skuInfo?.[0];
 
-    const swiper = swiperRef.current;
+      const image = item.multimediaInfo?.main_image;
 
-    if (!swiper.params.navigation) return;
+      const productName =
+        item.name?.[i18n.language] ||
+        item.name?.en ||
+        "ENOUZA Lamp";
 
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
+      const ratings = Array.isArray(item.ratings)
+        ? item.ratings
+        : [];
 
-    swiper.navigation.init();
-    swiper.navigation.update();
+      let avgRating = null;
 
-    return () => {
-      if (swiper && !swiper.destroyed) {
-        swiper.navigation.destroy();
+      if (ratings.length > 0) {
+        const totalRating = ratings.reduce(
+          (total, rating) =>
+            total + Number(rating.stars || 0),
+          0
+        );
+
+        avgRating = (totalRating / ratings.length).toFixed(1);
       }
-    };
-  }, []);
-  const optimizeCloudinaryImage = (url, width = 700) => {
-    if (!url?.includes("res.cloudinary.com")) return url;
-    if (!url.includes("/image/upload/")) return url;
 
-    return url.replace(
-      "/image/upload/",
-      `/image/upload/f_auto,q_auto,w_${width}/`
-    );
+      const sellingPrice = Number(
+        mainSku?.sellingPrice || 0
+      );
+
+      const comparePrice = Number(
+        mainSku?.comparePrice || 0
+      );
+
+      const hasDiscount =
+        comparePrice > sellingPrice &&
+        sellingPrice > 0;
+
+      const discountPercentage = hasDiscount
+        ? Math.round(
+            ((comparePrice - sellingPrice) /
+              comparePrice) *
+              100
+          )
+        : null;
+
+      const hasFreeShipping =
+        Array.isArray(item.available_shipping) &&
+        item.available_shipping.some(
+          (shipping) => shipping.type === "Free"
+        );
+
+      return {
+        ...item,
+        image,
+        productName,
+        ratings,
+        avgRating,
+        sellingPrice,
+        comparePrice,
+        hasDiscount,
+        discountPercentage,
+        hasFreeShipping,
+      };
+    });
+  }, [products, i18n.language]);
+
+  /*
+   * Don't initialize Swiper Navigation manually.
+   *
+   * The previous version used:
+   *
+   * swiper.navigation.init()
+   * swiper.navigation.update()
+   *
+   * after rendering.
+   *
+   * Those operations can force Swiper to measure/recalculate
+   * layout and contribute to forced reflow.
+   *
+   * Instead, the custom buttons directly control Swiper.
+   */
+
+  const handlePrevious = () => {
+    swiperRef.current?.slidePrev();
   };
+
+  const handleNext = () => {
+    swiperRef.current?.slideNext();
+  };
+
+  const hasProducts = normalizedProducts.length > 0;
+
   return (
     <Section dir={isArabic ? "rtl" : "ltr"}>
       <Container>
-
         {/* ============================
             HEADER
         ============================ */}
@@ -78,28 +173,20 @@ function NewArrival({
           <Swiper
             className="mySwiper"
             loop={false}
-
+            modules={isAuto ? [Autoplay] : []}
             autoplay={
-              isAuto
+              isAuto && hasProducts
                 ? {
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }
                 : false
             }
-
-            modules={[Navigation, Autoplay]}
-
-            /*
-             * Store the Swiper instance.
-             */
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-
             slidesPerView={1.35}
             spaceBetween={16}
-
             breakpoints={{
               600: {
                 slidesPerView: 2,
@@ -122,200 +209,131 @@ function NewArrival({
               },
             }}
           >
-            {products.length > 0 ? (
-              products.map((item) => {
-                const mainSku = item.skuInfo?.[0];
+            {hasProducts ? (
+              normalizedProducts.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <ProductCard>
+                    {/* ============================
+                        IMAGE
+                    ============================ */}
 
-                const image =
-                  item.multimediaInfo?.main_image;
+                    <ProductLink
+                      to={`/product/${item.id}`}
+                      reloadDocument
+                    >
+                      <ImageWrapper>
+                        <ProductImage
+                          src={optimizeCloudinaryImage(
+                            item.image,
+                            700
+                          )}
+                          alt={item.productName}
+                          loading="lazy"
+                          decoding="async"
+                          width="700"
+                          height="854"
+                        />
 
-                const productName =
-                  item.name?.[i18n.language] ||
-                  item.name?.en ||
-                  "ENOUZA Lamp";
-
-                const ratings = item.ratings || [];
-
-                const avgRating =
-                  ratings.length > 0
-                    ? (
-                      ratings.reduce(
-                        (total, rating) =>
-                          total +
-                          Number(rating.stars || 0),
-                        0
-                      ) / ratings.length
-                    ).toFixed(1)
-                    : null;
-
-                const sellingPrice = Number(
-                  mainSku?.sellingPrice || 0
-                );
-
-                const comparePrice = Number(
-                  mainSku?.comparePrice || 0
-                );
-
-                const hasDiscount =
-                  comparePrice > sellingPrice &&
-                  sellingPrice > 0;
-
-                const discountPercentage = hasDiscount
-                  ? Math.round(
-                    ((comparePrice - sellingPrice) /
-                      comparePrice) *
-                    100
-                  )
-                  : null;
-
-                const hasFreeShipping =
-                  item.available_shipping?.some(
-                    (shipping) =>
-                      shipping.type === "Free"
-                  );
-
-                return (
-                  <SwiperSlide key={item.id}>
-                    <ProductCard>
-
-                      {/* ============================
-                          IMAGE
-                      ============================ */}
-
-                      <ProductLink
-                        to={`/product/${item.id}`}
-                        reloadDocument
-                      >
-                        <ImageWrapper>
-
-                          <ProductImage
-                            src={optimizeCloudinaryImage(image, 700)}
-                            alt={productName}
-                            loading="lazy"
-                            decoding="async"
-                            width="700"
-                            height="854"
-                          />
-
-                          <ProductLabels
-                            $isArabic={isArabic}
-                          >
-                            {hasDiscount && (
-                              <SaveLabel>
-                                {t("productInfo.save")}{" "}
-                                <bdi>
-                                  {discountPercentage}%
-                                </bdi>
-                              </SaveLabel>
-                            )}
-
-                            {label && (
-                              <Label>
-                                {t(
-                                  `homePage.${label}`
-                                )}
-                              </Label>
-                            )}
-                          </ProductLabels>
-
-                        </ImageWrapper>
-                      </ProductLink>
-
-                      {/* ============================
-                          INFO
-                      ============================ */}
-
-                      <ProductInfo>
-
-                        <ProductName>
-                          {productName}
-                        </ProductName>
-
-                        <BottomRow>
-
-                          <PriceGroup>
-
-                            <CurrentPrice>
-                              $
-                              {sellingPrice.toFixed(
-                                2
-                              )}
-                            </CurrentPrice>
-
-                            {hasDiscount && (
-                              <ComparePrice>
-                                $
-                                {comparePrice.toFixed(
-                                  2
-                                )}
-                              </ComparePrice>
-                            )}
-
-                          </PriceGroup>
-
-                          {avgRating && (
-                            <Rating>
-
-                              <StarIcon />
-
-                              <span>
-                                {avgRating}
-                              </span>
-
-                              <ReviewCount>
-                                {ratings.length}
-                              </ReviewCount>
-
-                            </Rating>
+                        <ProductLabels
+                          $isArabic={isArabic}
+                        >
+                          {item.hasDiscount && (
+                            <SaveLabel>
+                              {t("productInfo.save")}{" "}
+                              <bdi>
+                                {item.discountPercentage}%
+                              </bdi>
+                            </SaveLabel>
                           )}
 
-                        </BottomRow>
+                          {label && (
+                            <Label>
+                              {t(
+                                `homePage.${label}`
+                              )}
+                            </Label>
+                          )}
+                        </ProductLabels>
+                      </ImageWrapper>
+                    </ProductLink>
 
-                        {hasFreeShipping && (
-                          <Shipping>
-                            {t(
-                              "common.free_shipping"
-                            )}
-                          </Shipping>
+                    {/* ============================
+                        INFO
+                    ============================ */}
+
+                    <ProductInfo>
+                      <ProductName>
+                        {item.productName}
+                      </ProductName>
+
+                      <BottomRow>
+                        <PriceGroup>
+                          <CurrentPrice>
+                            ${item.sellingPrice.toFixed(2)}
+                          </CurrentPrice>
+
+                          {item.hasDiscount && (
+                            <ComparePrice>
+                              $
+                              {item.comparePrice.toFixed(
+                                2
+                              )}
+                            </ComparePrice>
+                          )}
+                        </PriceGroup>
+
+                        {item.avgRating && (
+                          <Rating>
+                            <StarIcon aria-hidden="true" />
+
+                            <span>
+                              {item.avgRating}
+                            </span>
+
+                            <ReviewCount>
+                              {item.ratings.length}
+                            </ReviewCount>
+                          </Rating>
                         )}
+                      </BottomRow>
 
-                      </ProductInfo>
-
-                    </ProductCard>
-                  </SwiperSlide>
-                );
-              })
+                      {item.hasFreeShipping ? (
+                        <Shipping>
+                          {t("common.free_shipping")}
+                        </Shipping>
+                      ) : (
+                        <Shipping aria-hidden="true">
+                          &nbsp;
+                        </Shipping>
+                      )}
+                    </ProductInfo>
+                  </ProductCard>
+                </SwiperSlide>
+              ))
             ) : (
               <>
                 {[1, 2, 3, 4, 5].map((item) => (
                   <SwiperSlide key={item}>
-
                     <SkeletonCard>
-
                       <SkeletonImage />
 
                       <SkeletonInfo>
+                        <SkeletonName />
 
-  <SkeletonName />
+                        <SkeletonBottom>
+                          <SkeletonPrice />
+                          <SkeletonRating />
+                        </SkeletonBottom>
 
-  <SkeletonBottom>
-    <SkeletonPrice />
-    <SkeletonRating />
-  </SkeletonBottom>
-
-  <SkeletonShipping />
-
-</SkeletonInfo>
-
+                        <SkeletonShipping />
+                      </SkeletonInfo>
                     </SkeletonCard>
-
                   </SwiperSlide>
                 ))}
               </>
             )}
           </Swiper>
         </SwiperWrapper>
-
       </Container>
 
       {/* ============================
@@ -323,33 +341,27 @@ function NewArrival({
       ============================ */}
 
       <NavigationArea>
-
-        <button
-          ref={prevRef}
+        <NavigationButton
           type="button"
-          className="best-sellers-prev"
+          onClick={handlePrevious}
           aria-label="Previous products"
         >
           <Arrow $direction="prev" />
-        </button>
+        </NavigationButton>
 
-        <button
-          ref={nextRef}
+        <NavigationButton
           type="button"
-          className="best-sellers-next"
+          onClick={handleNext}
           aria-label="Next products"
         >
           <Arrow $direction="next" />
-        </button>
-
+        </NavigationButton>
       </NavigationArea>
-
     </Section>
   );
 }
 
 export default NewArrival;
-
 
 /* =========================================================
    SECTION
@@ -357,11 +369,19 @@ export default NewArrival;
 
 const Section = styled.section`
   width: 100%;
-  background: #f7f5f0;
-  padding: 90px 0;
-  overflow: hidden;
-`;
 
+  background: #f7f5f0;
+
+  padding: 90px 0;
+
+  overflow: hidden;
+
+  /*
+   * Prevent the section from changing width because of
+   * scrollbar/layout calculations.
+   */
+  box-sizing: border-box;
+`;
 
 /* =========================================================
    CONTAINER
@@ -369,9 +389,15 @@ const Section = styled.section`
 
 const Container = styled.div`
   width: min(1440px, calc(100% - 64px));
-  margin: 0 auto;
-`;
 
+  margin: 0 auto;
+
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 32px);
+  }
+`;
 
 /* =========================================================
    HEADER
@@ -379,8 +405,11 @@ const Container = styled.div`
 
 const Header = styled.div`
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  min-height: 51px;
 
   margin-bottom: 38px;
 `;
@@ -391,13 +420,15 @@ const Title = styled.h2`
   color: #25221f;
 
   font-family: Georgia, "Times New Roman", serif;
+
   font-size: clamp(2rem, 2vw, 3.2rem);
+
   font-weight: 400;
+
   line-height: 1;
 
   letter-spacing: -0.04em;
 `;
-
 
 /* =========================================================
    NAVIGATION
@@ -405,6 +436,7 @@ const Title = styled.h2`
 
 const NavigationArea = styled.div`
   display: flex;
+
   align-items: center;
   justify-content: flex-end;
 
@@ -415,55 +447,52 @@ const NavigationArea = styled.div`
 
   direction: ltr;
 
-  button {
-    position: relative;
-
-    width: 42px;
-    height: 42px;
-
-    padding: 0;
-
-    border: 1px solid #d7d1c8;
-    border-radius: 50%;
-
-    background: transparent;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    color: #25221f;
-
-    transition:
-      background 0.25s ease,
-      border-color 0.25s ease,
-      color 0.25s ease;
-
-    &:hover {
-      background: #25221f;
-      border-color: #25221f;
-      color: #ffffff;
-    }
-
-    &.swiper-button-disabled {
-      opacity: 0.3;
-      cursor: default;
-    }
-
-    &.swiper-button-disabled:hover {
-      background: transparent;
-      border-color: #d7d1c8;
-      color: #25221f;
-    }
-  }
-
   @media (max-width: 400px) {
     display: none;
   }
 `;
 
+const NavigationButton = styled.button`
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 1px solid #d7d1c8;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  color: #25221f;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background: #25221f;
+
+    border-color: #25221f;
+
+    color: #ffffff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #9a8d78;
+    outline-offset: 3px;
+  }
+`;
 
 const Arrow = styled.span`
   width: 7px;
@@ -483,7 +512,6 @@ const Arrow = styled.span`
       : "margin-right: 3px;"}
 `;
 
-
 /* =========================================================
    SWIPER
 ========================================================= */
@@ -491,31 +519,43 @@ const Arrow = styled.span`
 const SwiperWrapper = styled.div`
   width: 100%;
 
+  /*
+   * Stable carousel area.
+   * This prevents late Swiper initialization from causing
+   * unnecessary vertical changes.
+   */
+  min-height: 560px;
+
+  box-sizing: border-box;
+
   .swiper {
     width: 100%;
+
     overflow: visible;
   }
 
   .swiper-wrapper {
     display: flex;
+
+    align-items: stretch;
   }
 
   .swiper-slide {
     height: auto;
+
     flex-shrink: 0;
+
+    box-sizing: border-box;
   }
 
-  /*
-   * Swiper's default navigation arrows
-   * are not used because we use custom buttons.
-   */
+  @media (max-width: 768px) {
+    min-height: 500px;
+  }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: none;
+  @media (max-width: 600px) {
+    min-height: 475px;
   }
 `;
-
 
 /* =========================================================
    PRODUCT
@@ -523,12 +563,17 @@ const SwiperWrapper = styled.div`
 
 const ProductCard = styled.article`
   width: 100%;
+
+  height: 100%;
+
+  box-sizing: border-box;
 `;
 
 const ProductLink = styled(Link)`
   display: block;
 
   color: inherit;
+
   text-decoration: none;
 `;
 
@@ -536,11 +581,14 @@ const ImageWrapper = styled.div`
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 0.82;
 
   overflow: hidden;
 
   background: #ebe7df;
+
+  box-sizing: border-box;
 `;
 
 const ProductImage = styled.img`
@@ -552,14 +600,12 @@ const ProductImage = styled.img`
   object-fit: cover;
 
   transition:
-    transform 0.7s
-    cubic-bezier(0.2, 0.65, 0.3, 1);
+    transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
 
   ${ProductCard}:hover & {
     transform: scale(1.025);
   }
 `;
-
 
 /* =========================================================
    PRODUCT LABELS
@@ -567,6 +613,7 @@ const ProductImage = styled.img`
 
 const ProductLabels = styled.div`
   display: flex;
+
   align-items: center;
 
   gap: 20px;
@@ -584,7 +631,6 @@ const ProductLabels = styled.div`
         left: 12px;
       `}
 `;
-
 
 const Label = styled.span`
   padding: 5px 8px;
@@ -604,8 +650,9 @@ const Label = styled.span`
   letter-spacing: 0.04em;
 
   text-transform: uppercase;
-`;
 
+  white-space: nowrap;
+`;
 
 const SaveLabel = styled.span`
   padding: 5px 8px;
@@ -625,8 +672,9 @@ const SaveLabel = styled.span`
   letter-spacing: 0.04em;
 
   text-transform: uppercase;
-`;
 
+  white-space: nowrap;
+`;
 
 /* =========================================================
    PRODUCT INFO
@@ -634,7 +682,9 @@ const SaveLabel = styled.span`
 
 const ProductInfo = styled.div`
   padding-top: 17px;
+
   min-height: 105px;
+
   box-sizing: border-box;
 `;
 
@@ -644,13 +694,19 @@ const ProductName = styled.h3`
   color: #292622;
 
   font-family: Arial, sans-serif;
+
   font-size: 0.84rem;
+
   font-weight: 500;
+
   line-height: 1.45;
 
   display: -webkit-box;
+
   -webkit-box-orient: vertical;
+
   -webkit-line-clamp: 2;
+
   overflow: hidden;
 
   min-height: calc(0.84rem * 1.45 * 2);
@@ -658,16 +714,21 @@ const ProductName = styled.h3`
 
 const BottomRow = styled.div`
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 12px;
 
   margin-top: 9px;
+
+  min-height: 18px;
 `;
 
 const PriceGroup = styled.div`
   display: flex;
+
   align-items: baseline;
 
   gap: 8px;
@@ -701,6 +762,7 @@ const ComparePrice = styled.span`
 
 const Rating = styled.div`
   display: flex;
+
   align-items: center;
 
   gap: 3px;
@@ -715,9 +777,12 @@ const Rating = styled.div`
 
   svg {
     width: 12px;
+
     height: 12px;
 
     color: #9b8568;
+
+    flex-shrink: 0;
   }
 `;
 
@@ -749,13 +814,16 @@ const Shipping = styled.div`
   letter-spacing: 0.02em;
 `;
 
-
 /* =========================================================
    SKELETON
 ========================================================= */
 
 const SkeletonCard = styled.div`
   width: 100%;
+
+  height: 100%;
+
+  box-sizing: border-box;
 `;
 
 const SkeletonImage = styled.div`
@@ -784,12 +852,15 @@ const SkeletonImage = styled.div`
 
 const SkeletonInfo = styled.div`
   padding-top: 17px;
+
   min-height: 105px;
+
   box-sizing: border-box;
 `;
 
 const SkeletonName = styled.div`
   width: 75%;
+
   height: 11px;
 
   background: #e2ddd5;
@@ -798,9 +869,11 @@ const SkeletonName = styled.div`
 
   &::after {
     content: "";
+
     display: block;
 
     width: 65%;
+
     height: 11px;
 
     margin-top: 6px;
@@ -811,7 +884,9 @@ const SkeletonName = styled.div`
 
 const SkeletonBottom = styled.div`
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   margin-top: 12px;
@@ -819,6 +894,7 @@ const SkeletonBottom = styled.div`
 
 const SkeletonPrice = styled.div`
   width: 65px;
+
   height: 10px;
 
   background: #e2ddd5;
@@ -826,6 +902,7 @@ const SkeletonPrice = styled.div`
 
 const SkeletonRating = styled.div`
   width: 40px;
+
   height: 10px;
 
   background: #e2ddd5;
@@ -833,6 +910,7 @@ const SkeletonRating = styled.div`
 
 const SkeletonShipping = styled.div`
   width: 85px;
+
   height: 8px;
 
   margin-top: 8px;
