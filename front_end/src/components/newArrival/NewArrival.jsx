@@ -47,7 +47,15 @@ function NewArrival({
       }
     };
   }, []);
+  const optimizeCloudinaryImage = (url, width = 700) => {
+    if (!url?.includes("res.cloudinary.com")) return url;
+    if (!url.includes("/image/upload/")) return url;
 
+    return url.replace(
+      "/image/upload/",
+      `/image/upload/f_auto,q_auto,w_${width}/`
+    );
+  };
   return (
     <Section dir={isArabic ? "rtl" : "ltr"}>
       <Container>
@@ -69,14 +77,14 @@ function NewArrival({
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={true}
+            loop={false}
 
             autoplay={
               isAuto
                 ? {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }
                 : false
             }
 
@@ -131,13 +139,13 @@ function NewArrival({
                 const avgRating =
                   ratings.length > 0
                     ? (
-                        ratings.reduce(
-                          (total, rating) =>
-                            total +
-                            Number(rating.stars || 0),
-                          0
-                        ) / ratings.length
-                      ).toFixed(1)
+                      ratings.reduce(
+                        (total, rating) =>
+                          total +
+                          Number(rating.stars || 0),
+                        0
+                      ) / ratings.length
+                    ).toFixed(1)
                     : null;
 
                 const sellingPrice = Number(
@@ -154,10 +162,10 @@ function NewArrival({
 
                 const discountPercentage = hasDiscount
                   ? Math.round(
-                      ((comparePrice - sellingPrice) /
-                        comparePrice) *
-                        100
-                    )
+                    ((comparePrice - sellingPrice) /
+                      comparePrice) *
+                    100
+                  )
                   : null;
 
                 const hasFreeShipping =
@@ -181,9 +189,12 @@ function NewArrival({
                         <ImageWrapper>
 
                           <ProductImage
-                            src={image}
+                            src={optimizeCloudinaryImage(image, 700)}
                             alt={productName}
                             loading="lazy"
+                            decoding="async"
+                            width="700"
+                            height="854"
                           />
 
                           <ProductLabels

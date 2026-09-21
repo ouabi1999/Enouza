@@ -2,41 +2,56 @@
 <html lang="en">
 
 <head>
-  <!-- Meta Information -->
+  <!-- Basic Meta Information -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="google-site-verification" content="wAPcmTgEtqewHsBidyj-SwjAl7U8dx7hq2IWbi6LyNs" />
-  <meta name="facebook-domain-verification" content="cdu3xqz2ac1hghdcz7dql053xn4ybl" />
-  <meta name="p:domain_verify" content="1ac89bea472339cd69fc18782cd38df5"/>
+  <!-- Search / Platform Verification -->
+  <meta
+    name="google-site-verification"
+    content="wAPcmTgEtqewHsBidyj-SwjAl7U8dx7hq2IWbi6LyNs"
+  />
 
+  <meta
+    name="facebook-domain-verification"
+    content="cdu3xqz2ac1hghdcz7dql053xn4ybl"
+  />
 
+  <meta
+    name="p:domain_verify"
+    content="1ac89bea472339cd69fc18782cd38df5"
+  />
 
   <!-- Page Title -->
   <title>Enouza | Luxury Lamps & Premium Home Lighting</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789942022/ChatGPT_Image_Sep_21_2026_12_05_22_AM_u1yqq7.png" />
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789942022/ChatGPT_Image_Sep_21_2026_12_05_22_AM_u1yqq7.png"
+  />
 
-  <!-- Preconnect for Performance -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://www.googletagmanager.com" />
-  <link rel="preconnect" href="https://www.google-analytics.com" />
-  <!-- Meta Pixel Code -->
+  <link rel="preconnect" href="https://connect.facebook.net" />
+
+  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Sans+Arabic:wght@400;500&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet"
+  />
 
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-380769740"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- =========================================================
+       Google Analytics 4 + Google Ads
+       One gtag.js request for both destinations
+       ========================================================= -->
 
-  gtag('config', 'AW-380769740');
-</script>
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-TYB1VC5JYB"
+  ></script>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYB1VC5JYB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -44,13 +59,19 @@
       dataLayer.push(arguments);
     }
 
-    gtag('js', new Date());
-    gtag('config', 'G-TYB1VC5JYB');
+    gtag("js", new Date());
+
+    // Google Analytics 4
+    gtag("config", "G-TYB1VC5JYB");
+
+    // Google Ads
+    gtag("config", "AW-380769740");
   </script>
-  <!-- End Google Analytics 4 -->
 
+  <!-- =========================================================
+       Organization Structured Data
+       ========================================================= -->
 
-  <!-- Structured Data for SEO -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -63,44 +84,102 @@
         "https://www.instagram.com/en.ouza"
       ]
     }
-    </script>
-
-  <!-- Add any additional custom scripts or styles if needed -->
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1361145192394907');
-    fbq('track', 'PageView');
   </script>
 
-  <!-- End Meta Pixel Code -->
+
+<!-- =========================================================
+     Meta Pixel — deferred to protect initial page performance
+     ========================================================= -->
+
+<script>
+  window.__loadMetaPixel = function () {
+    if (window.__metaPixelLoaded) return;
+    window.__metaPixelLoaded = true;
+
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+
+      if (!f._fbq) f._fbq = n;
+
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+
+      t = b.createElement(e);
+      t.async = true;
+      t.src = v;
+
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    }(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js"
+    );
+
+    fbq("init", "1361145192394907");
+    fbq("track", "PageView");
+  };
+
+  /*
+   * Give the page priority first.
+   * Then load Meta Pixel during browser idle time.
+   */
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(
+      window.__loadMetaPixel,
+      { timeout: 3000 }
+    );
+  } else {
+    window.setTimeout(window.__loadMetaPixel, 1500);
+  }
+</script>
 
 </head>
 
-
-
 <body>
-  <!-- meta Code -->
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1361145192394907&ev=PageView&noscript=1" /></noscript>
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W695XVTJ" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <!-- =========================================================
+       Meta Pixel fallback for users without JavaScript
+       ========================================================= -->
+
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=1361145192394907&ev=PageView&noscript=1"
+      alt=""
+    />
+  </noscript>
+
+  <!-- =========================================================
+       Google Tag Manager fallback
+       ========================================================= -->
+
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-W695XVTJ"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+      title="Google Tag Manager"
+    ></iframe>
+  </noscript>
+
+  <!-- React Application -->
   <div id="root"></div>
+
   <script type="module" src="/src/main.jsx"></script>
+
 </body>
 
 </html>

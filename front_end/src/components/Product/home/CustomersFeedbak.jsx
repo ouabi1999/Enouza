@@ -12,9 +12,9 @@ const CustomersFeedback = () => {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const [selected, setSelected] = useState({
-  id: null,
-  index: null,
-});
+    id: null,
+    index: null,
+  });
   const [review, setReview] = useState({})
 
   // 1. Helper function to determine slides based on width
@@ -58,12 +58,22 @@ const CustomersFeedback = () => {
     pauseOnHover: true,
     // responsive: []  // ❌ DELETE THIS LINE
   };
-const setRate = (item, index) => {
+  const setRate = (item, index) => {
     setExpanded(true)
     setReview(item)
-    setSelected( {id: item.id, index: index},)
+    setSelected({ id: item.id, index: index },)
     console.log(review, expanded)
-}
+  }
+
+  const optimizeCloudinaryImage = (url, width = 700) => {
+    if (!url?.includes("res.cloudinary.com")) return url;
+    if (!url.includes("/image/upload/")) return url;
+
+    return url.replace(
+      "/image/upload/",
+      `/image/upload/f_auto,q_auto,w_${width}/`
+    );
+  };
   return (
     <Section>
       <Container>
@@ -115,19 +125,28 @@ const setRate = (item, index) => {
                       {item.review?.images?.length > 0 ? (
                         <ImageWrapper>
                           <ReviewImage
-                            src={item.review.images[0]}
+                            src={optimizeCloudinaryImage(item.review.images[0], 700)}
                             alt="Customer review"
                             loading="lazy"
+                            decoding="async"
+                            width="700"
+                            height="500"
                             onClick={() => setRate(item, 0)}
                           />
                         </ImageWrapper>
                       ) : <ImageWrapper>
+
                         <ReviewImage
-                          onClick={() => setRate(item, 0)}
-
-                          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png"
+                          src={optimizeCloudinaryImage(
+                            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png",
+                            700
+                          )}
                           alt="Customer review"
-
+                          loading="lazy"
+                          decoding="async"
+                          width="700"
+                          height="500"
+                          onClick={() => setRate(item, 0)}
                         />
                       </ImageWrapper>}
 
@@ -142,15 +161,15 @@ const setRate = (item, index) => {
                         </Stars>
 
                         <ReviewText>
-                          {item.review?.text || ""} 
-                        
+                          {item.review?.text || ""}
+
                         </ReviewText>
-                         
+
 
                         <Customer>
                           <CustomerName>
                             {item.user?.firstName
-                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) +"." || ""}`
+                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) + "." || ""}`
                               : "Customer"}
                           </CustomerName>
 
@@ -167,21 +186,21 @@ const setRate = (item, index) => {
 
                     </ReviewCard>
                   </ReviewSlide>
-                  
+
                 );
-                
-          
+
+
               })}
             </Slider>
-                   {expanded === true && (
-        <ReviewImagePopup rate= {review} selected= {selected} setSelected={setSelected}/>
-      )}
-         
+            {expanded === true && (
+              <ReviewImagePopup rate={review} selected={selected} setSelected={setSelected} />
+            )}
+
           </Reviews>
         )}
-        
+
       </Container>
-        
+
     </Section>
   );
 };

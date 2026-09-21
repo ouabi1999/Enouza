@@ -128,9 +128,7 @@ export default function CheckoutForm() {
 
     });
   };
-  const paymentElementOptions = {
-    layout: "accordion"
-  }
+ 
   return (
     <>
       {/*<div>
@@ -162,7 +160,7 @@ export default function CheckoutForm() {
           id="payment-form"
           onSubmit={handleSubmit}
         >
-          <PaymentElement id="payment-element"   />
+          <PaymentElement />
           <button disabled={isLoading || !stripe || !elements} id="submit">
             <span id="button-text">
               {isLoading ? (
@@ -189,21 +187,7 @@ export default function CheckoutForm() {
   );
 }
 const Container = styled.div`
-  #root {
-    display: flex;
-    align-items: center;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 100vh;
-    width: 100vw;
-  }
+ 
 
   form {
     width: 30vw;
@@ -224,9 +208,7 @@ const Container = styled.div`
     text-align: center;
   }
 
-  #payment-element {
-    margin-bottom: 24px;
-  }
+ 
 
   /* Buttons and links */
   button {

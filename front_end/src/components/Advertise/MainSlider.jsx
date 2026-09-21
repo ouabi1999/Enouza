@@ -1,144 +1,149 @@
-import React from "react"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"
-import Slider from "react-slick";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-
-import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from 'uuid';
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-const MainSlider = () => {
 
-  const displayData = useSelector(state => state.display.displayData)
-  
-  const handleSelect = (value)=>{
-      window.localStorage.setItem("selectedImageSlider", value)
-  }
-   const {t} = useTranslation()
+const MainSlider = () => {
+  const { t } = useTranslation();
+  const videoRef = useRef(null);
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  const videoUrl =
+    "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4";
+
+  /*
+   * Let the poster render first.
+   * Then load the video shortly after the initial page becomes usable.
+   */
+  useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setLoadVideo(true);
+    }, 1200);
+
+    return () => clearTimeout(loadTimer);
+  }, []);
+
+  /*
+   * Start playback once the video source has been mounted.
+   */
+  useEffect(() => {
+    if (!loadVideo || !videoRef.current) return;
+
+    const video = videoRef.current;
+
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch (error) {
+        // Autoplay can be blocked by some browsers.
+      }
+    };
+
+    if (video.readyState >= 2) {
+      playVideo();
+    } else {
+      video.addEventListener("canplay", playVideo, { once: true });
+
+      return () => {
+        video.removeEventListener("canplay", playVideo);
+      };
+    }
+  }, [loadVideo]);
 
   return (
-    <Container style={{ position: "relative", width: "100%" }}>
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    aria-label="Enouza luxury home lighting and interior design"
+    <Container>
+      {loadVideo ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
+          aria-label="Enouza luxury home lighting and interior design"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      ) : (
+        <Poster
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
+          alt="Enouza luxury home lighting and interior design"
+          width="1920"
+          height="1080"
+        />
+      )}
 
-    
-  >
-    <source
-      src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4"
-      type="video/mp4"
-    />
-    Your browser does not support the video tag.
-  </video>
+      <Overlay>
+        <h1>{t("mainSlider.title")}</h1>
 
-  <div
-    style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      zIndex: 1,
-      color: "#fff",
-      textAlign: "center",
-      width: "90%",
-      fontFamily: '"Playfair Display", serif'
-    }}
-  >
-    <h1>
-      {t("mainSlider.title")}
-    </h1>
-    
-    <span>
-      {t("mainSlider.description")}
-    </span>
-    <bdi>
-    <h5>
-      {t("mainSlider.welcome")}
-    </h5>
-    </bdi>
+        <span>{t("mainSlider.description")}</span>
 
-
-    
-  </div>
-</Container>
-  )}
+        <bdi>
+          <h5>{t("mainSlider.welcome")}</h5>
+        </bdi>
+      </Overlay>
+    </Container>
+  );
+};
 
 export default MainSlider;
 
 const Container = styled.div`
-    
-   
-   min-width:200px;
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  height: 550px;
+  overflow: hidden;
 
-     video {
-        width: 100%;
-        height: 550px;
-        object-fit: cover;
-        display: block;
-}
-
- 
-  .skeleton {
-      
-      animation: skeleton-loading 1s linear infinite alternate;
-      height:100%;
-      
-}
-
-@-webkit-keyframes skeleton-loading {
-  0% {
-    background-color: #c2cfd6;
-  }
-  100% {
-    background-color: #f0f3f5;
-  }
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: #c2cfd6;
-  }
-  100% {
-    background-color: #f0f3f5;
-  }
-}
-   
-
- img{
+  video,
+  img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    min-width:200px;
-    width:100%;
-    display:flex;
+    display: block;
+  }
 
-    
-   
-}
+  @media only screen and (max-width: 850px) {
+    min-width: 315px;
+    height: 500px;
+  }
 
-@media only screen and (max-width:850px){
-      &{
-        width:100%;
-        min-width:315px;
-        object-fit: cover;
-      }
-       
+  @media only screen and (max-width: 420px) {
+    min-width: 290px;
+    height: 450px;
+  }
+`;
 
+const Poster = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
-}
-@media only screen and (max-width:420px){
-      &{
-        width:100%;
-        min-width:290px;
-        object-fit: cover;
-        height: 450px;
+const Overlay = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-      }
-        
-      
+  z-index: 2;
 
+  width: 90%;
 
+  color: #fff;
+  text-align: center;
 
-`
+  font-family: "Playfair Display", serif;
+
+  h1 {
+    margin: 0 0 12px;
+  }
+
+  span {
+    display: block;
+  }
+
+  h5 {
+    margin-top: 18px;
+  }
+`;

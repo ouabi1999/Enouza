@@ -1,52 +1,101 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import {
-  AutoAwesome,
-  WorkspacePremium,
-  LightMode,
-  DiamondOutlined,
-  ArrowForward,
-} from "@mui/icons-material";
+import { ArrowForward } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const MetricsSection = () => {
   const { t, i18n } = useTranslation();
 
+  const videoContainerRef = useRef(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  /*
+   * Load the video only when the section is close to entering
+   * the user's viewport.
+   *
+   * This prevents the 8+ MB video from being downloaded
+   * during the initial homepage load.
+   */
+  useEffect(() => {
+    const container = videoContainerRef.current;
+
+    if (!container) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setShouldLoadVideo(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting) {
+          setShouldLoadVideo(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "500px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <Section >
+    <Section>
       {/* =========================
           WHY CHOOSE ENOUZA
       ========================= */}
-       <SectionHeader dir = {i18n.language === "ar"? "rtl": "ltr"}>
-          <SectionTitle>
-            {t("matricsSection.why_us")}
-          </SectionTitle>
 
-          <TitleDecoration>
-            <DecorationLine />
-            <DecorationDot />
-            <DecorationLine />
-          </TitleDecoration>
-        </SectionHeader>
-          {/* =========================
+      <SectionHeader
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      >
+        <SectionTitle>
+          {t("matricsSection.why_us")}
+        </SectionTitle>
+
+        <TitleDecoration>
+          <DecorationLine />
+          <DecorationDot />
+          <DecorationLine />
+        </TitleDecoration>
+      </SectionHeader>
+
+      {/* =========================
           VIDEO
       ========================= */}
 
-      <VideoSection dir = {i18n.language === "ar"? "rtl": "ltr"}>
-        <Video
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-label="Enouza luxury lighting and premium home decor"
-
-        >
-          <source
-            src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
-            type="video/mp4"
+      <VideoSection
+        ref={videoContainerRef}
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      >
+        {shouldLoadVideo ? (
+          <Video
+            autoPlay
+            muted
+            loop
+            playsInline
+preload="auto"
+            aria-label="Enouza luxury lighting and premium home decor"
+          >
+            <source
+              src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
+              type="video/mp4"
+            />
+          </Video>
+        ) : (
+          <VideoPlaceholder
+            aria-hidden="true"
           />
-        </Video>
+        )}
 
         <VideoOverlay />
 
@@ -67,17 +116,12 @@ const MetricsSection = () => {
             <ArrowForward />
           </Arrow>
         </ShopButton>
-        
       </VideoSection>
-      
-
-     
     </Section>
   );
 };
 
 export default MetricsSection;
-
 
 /* =========================
    COLORS
@@ -93,7 +137,6 @@ const COLORS = {
   border: "#E4DED4",
 };
 
-
 /* =========================
    SECTION
 ========================= */
@@ -102,29 +145,6 @@ const Section = styled.section`
   width: 100%;
   background: ${COLORS.background};
 `;
-
-
-/* =========================
-   WHY CHOOSE US
-========================= */
-
-const WhyChooseContainer = styled.div`
-  width: min(1300px, calc(100% - 48px));
-  margin: 0 auto;
-
-  padding: 100px 0 105px;
-
-  @media (max-width: 768px) {
-    width: min(100% - 40px, 600px);
-    padding: 75px 0 80px;
-  }
-
-  @media (max-width: 480px) {
-    width: calc(100% - 32px);
-    padding: 60px 0 65px;
-  }
-`;
-
 
 /* =========================
    HEADER
@@ -150,14 +170,12 @@ const SectionTitle = styled.h2`
 
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  
 
   @media (max-width: 480px) {
     font-size: 1.3rem;
     letter-spacing: 0.08em;
   }
 `;
-
 
 /* =========================
    TITLE DECORATION
@@ -193,154 +211,8 @@ const DecorationDot = styled.span`
   background: ${COLORS.gold};
 `;
 
-
 /* =========================
-   FEATURES GRID
-========================= */
-
-const FeaturesGrid = styled.div`
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px 20px;
-  }
-
- 
-`;
-
-const Feature = styled.div`
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  min-height: 190px;
-
-  padding: 0 20px;
-
-  &:not(:last-child)::after {
-    content: "";
-
-    position: absolute;
-
-    top: 50%;
-    right: 0;
-
-    transform: translateY(-50%);
-
-    width: 1px;
-    height: 115px;
-
-    background: ${COLORS.border};
-  }
-
-  @media (max-width: 900px) {
-    &:not(:last-child)::after {
-      display: none;
-    }
-  }
-
-  @media (max-width: 520px) {
-    min-height: auto;
-    padding: 0;
-  }
-`;
-
-const FeatureDescription = styled.p`
-  max-width: 220px;
-  margin: 10px auto 0;
-
-  color: #777168;
-
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.78rem;
-  font-weight: 400;
-  line-height: 1.6;
-
-  text-align: center;
-`;
-/* =========================
-   ICON CIRCLE
-========================= */
-
-const IconCircle = styled.div`
-  width: 105px;
-  height: 105px;
-
-  border: 1px solid ${COLORS.gold};
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 24px;
-
-  color: ${COLORS.gold};
-
-  transition:
-    transform 0.35s ease,
-    background 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease;
-
-  
-
-  @media (max-width: 600px) {
-    width: 92px;
-    height: 92px;
-  }
-`;
-
-const FeatureIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 34px;
-
-  svg {
-    font-size: inherit;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 30px;
-  }
-`;
-
-
-/* =========================
-   FEATURE TITLE
-========================= */
-
-const FeatureTitle = styled.h3`
-  margin: 0;
-
-  color: ${COLORS.text};
-
-  font-family: "Playfair Display", serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-
-  @media (max-width: 600px) {
-    font-size: 0.82rem;
-  }
-`;
-
-
-/* =========================
-   VIDEO
+   VIDEO SECTION
 ========================= */
 
 const VideoSection = styled.div`
@@ -360,6 +232,10 @@ const VideoSection = styled.div`
   }
 `;
 
+/* =========================
+   VIDEO
+========================= */
+
 const Video = styled.video`
   width: 100%;
   height: 100%;
@@ -369,14 +245,38 @@ const Video = styled.video`
   display: block;
 `;
 
+/*
+ * Lightweight placeholder.
+ *
+ * It keeps the section's exact dimensions while the video
+ * is not loaded, preventing layout shifts.
+ */
+const VideoPlaceholder = styled.div`
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      #d9d0c2 0%,
+      #eee8df 45%,
+      #d4c8b8 100%
+    );
+`;
+
+/* =========================
+   VIDEO OVERLAY
+========================= */
+
 const VideoOverlay = styled.div`
   position: absolute;
 
   inset: 0;
 
   background: rgba(0, 0, 0, 0.3);
-`;
 
+  z-index: 1;
+`;
 
 /* =========================
    VIDEO CONTENT
@@ -395,6 +295,8 @@ const VideoContent = styled.div`
   text-align: center;
 
   color: white;
+
+  z-index: 2;
 `;
 
 const VideoTitle = styled.h2`
@@ -433,18 +335,17 @@ const VideoDescription = styled.p`
   }
 `;
 
-
 /* =========================
    BUTTON
 ========================= */
 
 const ShopButton = styled(Link)`
   position: absolute;
-   padding:15px 20px;
 
   right: 7%;
-  padding:15px 20px;
-    bottom: 20px;
+  bottom: 20px;
+
+  padding: 15px 20px;
 
   display: inline-flex;
 
@@ -464,14 +365,12 @@ const ShopButton = styled(Link)`
 
   text-transform: uppercase;
 
-
-
   transition: 0.25s ease;
+
+  z-index: 3;
 
   &:hover {
     color: #d4bd91;
-
-    border-color: #d4bd91;
   }
 
   @media (max-width: 700px) {
@@ -484,6 +383,10 @@ const ShopButton = styled(Link)`
     font-size: 0.7rem;
   }
 `;
+
+/* =========================
+   ARROW
+========================= */
 
 const Arrow = styled.span`
   display: flex;

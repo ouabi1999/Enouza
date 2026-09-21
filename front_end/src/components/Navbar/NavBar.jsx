@@ -42,7 +42,7 @@ const COLORS = {
 // COMPONENT
 // ============================================================
 
-function NavBar({ outlet, setSearchValue, value }) {
+function NavBar({outlet, setSearchValue, value}) {
   // ----------------------------------------------------------
   // REDUX
   // ----------------------------------------------------------

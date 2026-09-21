@@ -6,13 +6,11 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import CloseIcon from "@mui/icons-material/Close";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 function MainImages(props) {
   const {
-    colorIndex,
     currentSku,
     productData,
     picsDetailsIndex,
@@ -27,10 +25,22 @@ function MainImages(props) {
     Arabic = RTL
     Everything else = LTR
   */
-  const isRTL = i18n.language === "ar";
 
   const [isFullscreen, setIsFullscreen] = useState(false);
+const optimizeCloudinaryImage = (url, width) => {
+  if (!url?.includes("res.cloudinary.com")) {
+    return url;
+  }
 
+  if (!url.includes("/image/upload/")) {
+    return url;
+  }
+
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
   const images =
     productData?.multimediaInfo?.image_urls || [];
 
@@ -165,10 +175,13 @@ function MainImages(props) {
                   type="button"
                 >
                   <img
-                    src={img}
-                    alt={`${productData?.name || "Product"} ${index + 1
-                      }`}
-                  />
+  src={optimizeCloudinaryImage(img, 150)}
+  alt={`${productData?.name || "Product"} ${index + 1}`}
+  loading="lazy"
+  decoding="async"
+  width="58"
+  height="58"
+/>
                 </Thumbnail>
               );
             })}
@@ -226,11 +239,14 @@ function MainImages(props) {
                 >
                   {activeImage && (
                     <MainImage
-                      src={activeImage}
-                      alt={
-                        productData?.name || "Product"
-                      }
-                    />
+  src={optimizeCloudinaryImage(activeImage, 1200)}
+  alt={productData?.name || "Product"}
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+  width="1200"
+  height="1200"
+/>
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -347,12 +363,17 @@ function MainImages(props) {
 
             <FullscreenContent>
               <FullscreenImage>
-              <motion.img key={activeImage} 
-              src={activeImage} alt={productData?.name || "Product"} 
-              initial={{ opacity: 0, scale: 0.96, }} 
-              animate={{ opacity: 1, scale: 1, }} 
-              exit={{ opacity: 0, scale: 0.96, }} 
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], }} />
+              <motion.img
+  key={activeImage}
+  src={optimizeCloudinaryImage(activeImage, 1600)}
+  alt={productData?.name || "Product"}
+  initial={{ opacity: 0, scale: 0.96 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{
+    duration: 0.35,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+/>
                </FullscreenImage>
               {images.length > 1 &&
                 !isColorActive && (

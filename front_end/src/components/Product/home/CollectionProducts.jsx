@@ -11,7 +11,15 @@ function CollectionProducts({
   placeItems,
 }) {
   const { t, i18n } = useTranslation();
+const optimizeCloudinaryImage = (url, width = 600) => {
+  if (!url?.includes("res.cloudinary.com")) return url;
+  if (!url.includes("/image/upload/")) return url;
 
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
   return (
     <ProductContainer
       colums_number={columsNumber}
@@ -117,11 +125,14 @@ function CollectionProducts({
             to={`/product/${item.id}`}
             className="image-container"
           >
-            <img
-              loading="lazy"
-              src={image}
-              alt={productName}
-            />
+           <img
+  loading="lazy"
+  decoding="async"
+  src={optimizeCloudinaryImage(image, 600)}
+  alt={productName}
+  width="600"
+  height="600"
+/>
 
             {hasDiscount && (
               <div

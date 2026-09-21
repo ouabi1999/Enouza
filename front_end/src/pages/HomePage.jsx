@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from "react-redux"
-import { setProducts } from "../features/productSlice"
-import axios from 'axios'
-import { CircularProgress } from '@mui/material'
-import Products from '../components/Product/home/Products'
 import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
 import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
@@ -14,15 +10,10 @@ import DesignSection from '../components/Product/home/DesignSection.jsx'
 import CTASection from '../components/Product/home/CTASection.jsx'
 import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
-import Spinner from '../../common/Spinner.jsx'
 import NewArrival from '../components/newArrival/NewArrival.jsx'
 import SEO from '../components/SEO/SEO.jsx'
 
 function HomePage() {
-  const dispatch = useDispatch()
-  //const products = useSelector((state) => state.products?.products)
-
-
   const [nextStart, setNextStart] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [totalProducts, setTotalProducts] = useState(0)

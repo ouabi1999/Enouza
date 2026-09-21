@@ -55,11 +55,19 @@ export default function HeroSection() {
 
   if (!product) return null;
 
-  const materials = t("heroSection.materials", {
-    returnObjects: true,
-  });
+const optimizeCloudinaryImage = (url, width = 700) => {
+  if (!url?.includes("res.cloudinary.com")) return url;
 
-  const imageUrl = product?.multimediaInfo?.image_urls?.[0];
+  return url.replace(
+    "/image/upload/",
+    `/image/upload/f_auto,q_auto,w_${width}/`
+  );
+};
+
+  const imageUrl = optimizeCloudinaryImage(
+  product?.multimediaInfo?.image_urls?.[0],
+  700
+);
 
   if (!imageUrl) return null;
 
@@ -77,9 +85,9 @@ export default function HeroSection() {
           <QualityTitle>
             {t("heroSection.detailDesign")}
           </QualityTitle>
-        <DecorationLine/>
+          <DecorationLine />
 
-         
+
           {/* STATS */}
           <WhyChooseContainer dir={"ltr"}>
 
@@ -105,16 +113,21 @@ export default function HeroSection() {
               ))}
             </FeaturesGrid>
           </WhyChooseContainer>
-          
+
 
         </Content>
-           
+
         {/* IMAGE SIDE */}
         <ImageSide>
           <ImageContainer>
             <HeroImage
               src={imageUrl}
               alt={t("heroSection.title")}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width="700"
+              height="620"
             />
 
             {/* SHOP BUTTON */}
@@ -681,6 +694,7 @@ const HeroImage = styled.img`
   width: 100%;
   
   height: clamp(470px, 46vw, 620px);
+  aspect-ratio: 700 / 620;
 
   max-width: 100%;
 
