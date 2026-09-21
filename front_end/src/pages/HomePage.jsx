@@ -122,6 +122,7 @@ function HomePage() {
       <DesignSection />
 
       <MatricsSection />
+      <SectionPlaceholder>
       <NewArrival
         products={newArrivalProducts}
         name="newArrival"
@@ -129,6 +130,7 @@ function HomePage() {
         isAuto={false}
         isLoading={isNewArrivalLoading}
       />
+      </SectionPlaceholder>
       <CustomersFeedback />
       <CTASection />
 

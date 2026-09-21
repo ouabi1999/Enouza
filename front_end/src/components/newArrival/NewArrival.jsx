@@ -14,6 +14,7 @@ function NewArrival({
   products = [],
   name,
   label,
+  isLoading,
   isAuto = false,
 }) {
   const { t, i18n } = useTranslation();
