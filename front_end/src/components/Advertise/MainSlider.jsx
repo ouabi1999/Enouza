@@ -10,9 +10,13 @@ const MainSlider = () => {
   const videoUrl =
     "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4";
 
+  // Optimized Cloudinary poster
+  const posterUrl =
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto,q_auto,w_1200/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png";
+
   /*
    * Let the poster render first.
-   * Then load the video shortly after the initial page becomes usable.
+   * Load the video after the initial page becomes usable.
    */
   useEffect(() => {
     const loadTimer = setTimeout(() => {
@@ -59,17 +63,18 @@ const MainSlider = () => {
           loop
           playsInline
           preload="metadata"
-          poster="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
+          poster={posterUrl}
           aria-label="Enouza luxury home lighting and interior design"
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
       ) : (
         <Poster
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
+          src={posterUrl}
           alt="Enouza luxury home lighting and interior design"
-          width="1920"
-          height="1080"
+          width="1200"
+          height="675"
+          decoding="async"
         />
       )}
 
