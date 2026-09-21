@@ -296,17 +296,16 @@ function NewArrival({
 
                       <SkeletonInfo>
 
-                        <SkeletonName />
+  <SkeletonName />
 
-                        <SkeletonBottom>
+  <SkeletonBottom>
+    <SkeletonPrice />
+    <SkeletonRating />
+  </SkeletonBottom>
 
-                          <SkeletonPrice />
+  <SkeletonShipping />
 
-                          <SkeletonRating />
-
-                        </SkeletonBottom>
-
-                      </SkeletonInfo>
+</SkeletonInfo>
 
                     </SkeletonCard>
 
@@ -635,6 +634,8 @@ const SaveLabel = styled.span`
 
 const ProductInfo = styled.div`
   padding-top: 17px;
+  min-height: 105px;
+  box-sizing: border-box;
 `;
 
 const ProductName = styled.h3`
@@ -643,12 +644,16 @@ const ProductName = styled.h3`
   color: #292622;
 
   font-family: Arial, sans-serif;
-
   font-size: 0.84rem;
-
   font-weight: 500;
-
   line-height: 1.45;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
+  min-height: calc(0.84rem * 1.45 * 2);
 `;
 
 const BottomRow = styled.div`
@@ -731,11 +736,15 @@ const ReviewCount = styled.span`
 const Shipping = styled.div`
   margin-top: 8px;
 
+  min-height: 12px;
+
   color: #8b8177;
 
   font-family: Arial, sans-serif;
 
   font-size: 0.61rem;
+
+  line-height: 1.2;
 
   letter-spacing: 0.02em;
 `;
@@ -775,18 +784,35 @@ const SkeletonImage = styled.div`
 
 const SkeletonInfo = styled.div`
   padding-top: 17px;
+  min-height: 105px;
+  box-sizing: border-box;
 `;
 
 const SkeletonName = styled.div`
-  width: 65%;
+  width: 75%;
   height: 11px;
 
   background: #e2ddd5;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+
+    width: 65%;
+    height: 11px;
+
+    margin-top: 6px;
+
+    background: #e2ddd5;
+  }
 `;
 
 const SkeletonBottom = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   margin-top: 12px;
 `;
@@ -801,6 +827,15 @@ const SkeletonPrice = styled.div`
 const SkeletonRating = styled.div`
   width: 40px;
   height: 10px;
+
+  background: #e2ddd5;
+`;
+
+const SkeletonShipping = styled.div`
+  width: 85px;
+  height: 8px;
+
+  margin-top: 8px;
 
   background: #e2ddd5;
 `;

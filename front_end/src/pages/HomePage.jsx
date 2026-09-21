@@ -19,6 +19,7 @@ function HomePage() {
   const [totalProducts, setTotalProducts] = useState(0)
   const [bestSellersProducts, setBestSellersProducts] = useState([]);
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
+  const [isNewArrivalLoading, setIsNewArrivalLoading] = useState(true);
   const { t, i18n } = useTranslation();
 
   const scrolTo = useRef()
@@ -27,31 +28,26 @@ function HomePage() {
 
 
 
-  const viewMore = () => {
-    setNextStart(prevStart => prevStart + 8);
 
-  }
 
   const get_new_arrivals = async () => {
     try {
       const response = await ApiInstance.get("product-search/", {
         params: {
           sort: "newest",
-
           per_page: 5,
         },
       });
 
       const products = response.data?.results || [];
 
-      setNewArrivalProducts(products)
-
-
+      setNewArrivalProducts(products);
     } catch (error) {
       console.error("Failed to get new arrivals:", error);
+    } finally {
+      setIsNewArrivalLoading(false);
     }
   };
-
 
   const get_best_sellers_products = async () => {
     setIsLoading(true);
@@ -127,13 +123,25 @@ function HomePage() {
 
 
 
-      <NewArrival products={bestSellersProducts} name="best_sellers" label={"bestSellers"} isAuto={true} />
-
+      <SectionPlaceholder>
+        <NewArrival
+          products={bestSellersProducts}
+          name="best_sellers"
+          label="bestSellers"
+          isAuto={true}
+          isLoading={isLoading}
+        />
+      </SectionPlaceholder>
       <DesignSection />
 
       <MatricsSection />
-      <NewArrival products={newArrivalProducts} name="newArrival" label={"new"} isAuto={false} />
-
+      <NewArrival
+        products={newArrivalProducts}
+        name="newArrival"
+        label="new"
+        isAuto={false}
+        isLoading={isNewArrivalLoading}
+      />
       <CustomersFeedback />
       <CTASection />
 
@@ -197,5 +205,13 @@ const Container = styled.div`
   }
 
  
+`;
+const SectionPlaceholder = styled.div`
+  width: 100%;
+  min-height: 520px;
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+  }
 `;
 
