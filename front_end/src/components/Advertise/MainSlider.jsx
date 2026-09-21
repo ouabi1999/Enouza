@@ -59,15 +59,12 @@ const MainSlider = () => {
           loop
           playsInline
           preload="metadata"
-          poster="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
           aria-label="Enouza luxury home lighting and interior design"
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
       ) : (
         <Poster
-          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png"
-          alt="Enouza luxury home lighting and interior design"
           width="1920"
           height="1080"
         />
@@ -114,7 +111,7 @@ const Container = styled.div`
   }
 `;
 
-const Poster = styled.img`
+const Poster = styled.div`
   width: 100%;
   height: 100%;
   object-fit: cover;
