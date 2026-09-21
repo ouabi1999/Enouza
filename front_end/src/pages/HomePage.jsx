@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from "react-redux"
 import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
 import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
@@ -14,18 +13,13 @@ import NewArrival from '../components/newArrival/NewArrival.jsx'
 import SEO from '../components/SEO/SEO.jsx'
 
 function HomePage() {
-  const [nextStart, setNextStart] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalProducts, setTotalProducts] = useState(0)
   const [bestSellersProducts, setBestSellersProducts] = useState([]);
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
   const [isNewArrivalLoading, setIsNewArrivalLoading] = useState(true);
   const { t, i18n } = useTranslation();
 
-  const scrolTo = useRef()
-  // show more products
-
-
+  
 
 
 
@@ -77,13 +71,6 @@ function HomePage() {
     get_new_arrivals();
     get_best_sellers_products();
   }, []);
-
-
-  useEffect(() => {
-
-    scrolTo.current?.scrollTo({ behavior: "smooth", block: "center", inline: "nearest" });
-  }, [nextStart])
-
 
 
 
