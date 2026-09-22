@@ -178,7 +178,6 @@ function NavBar({ outlet, setSearchValue, value }) {
                 style={{
                   borderColor: required ? "red" : undefined,
                 }}
-                onBlur={() => setRequired(false)}
                 placeholder={t("common.search")}
                 value={value}
                 onChange={(e) => {
@@ -192,6 +191,8 @@ function NavBar({ outlet, setSearchValue, value }) {
 
             <button className="search-icon-container"
               onClick={handleSearchInput}
+              onMouseLeave = {() => setRequired(false)}
+
 
             >
               <SearchIcon
@@ -235,7 +236,6 @@ function NavBar({ outlet, setSearchValue, value }) {
                 style={{
                   borderColor: required ? "red" : undefined,
                 }}
-                onBlur={() => setRequired(false)}
                 placeholder={t("common.search")}
                 value={value}
                 onChange={(e) => {
@@ -255,6 +255,8 @@ function NavBar({ outlet, setSearchValue, value }) {
             <button
               className="search-icon-container"
               onClick={handleSearchInput}
+              onMouseLeave = {() => setRequired(false)}
+
 
 
             >
@@ -281,6 +283,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <SearchIcon
               onClick={() =>
                 setIsSearchInputOpen(true)
+                
               }
 
               className="search-icon-responsive"
