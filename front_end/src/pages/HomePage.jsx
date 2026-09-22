@@ -96,7 +96,7 @@ function HomePage() {
           "@type": "Organization",
           name: "Enouza",
           url: "https://www.enouza.com/",
-          logo: "https://www.enouza.com/Asset%2012.svg",
+          logo: "https://www.enouza.com/assestLogo.png",
         })}
       </script>
       <UserServices />
