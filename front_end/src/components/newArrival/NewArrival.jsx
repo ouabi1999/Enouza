@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import CurrencyPrice from "../../../common/CurrencyPrice";
 
 function NewArrival({
@@ -25,8 +24,6 @@ function NewArrival({
 
   const isArabic = i18n.dir() === "rtl";
 
- 
-
   const optimizeCloudinaryImage = (url, width = 700) => {
     if (!url?.includes("res.cloudinary.com")) return url;
     if (!url.includes("/image/upload/")) return url;
@@ -36,6 +33,7 @@ function NewArrival({
       `/image/upload/f_auto,q_auto,w_${width}/`
     );
   };
+
   return (
     <Section dir={isArabic ? "rtl" : "ltr"}>
       <Container>
@@ -46,7 +44,7 @@ function NewArrival({
 
         <Header>
           <Title>
-            {t(`homePage.${name}`, "bestsellers")}
+            {t(`homePage.${name}`)}
           </Title>
         </Header>
 
@@ -62,17 +60,14 @@ function NewArrival({
             autoplay={
               isAuto
                 ? {
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }
                 : false
             }
 
-            modules={[Navigation, Autoplay]}
+            modules={[Autoplay]}
 
-            /*
-             * Store the Swiper instance.
-             */
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -119,13 +114,13 @@ function NewArrival({
                 const avgRating =
                   ratings.length > 0
                     ? (
-                      ratings.reduce(
-                        (total, rating) =>
-                          total +
-                          Number(rating.stars || 0),
-                        0
-                      ) / ratings.length
-                    ).toFixed(1)
+                        ratings.reduce(
+                          (total, rating) =>
+                            total +
+                            Number(rating.stars || 0),
+                          0
+                        ) / ratings.length
+                      ).toFixed(1)
                     : null;
 
                 const sellingPrice = Number(
@@ -142,10 +137,10 @@ function NewArrival({
 
                 const discountPercentage = hasDiscount
                   ? Math.round(
-                    ((comparePrice - sellingPrice) /
-                      comparePrice) *
-                    100
-                  )
+                      ((comparePrice - sellingPrice) /
+                        comparePrice) *
+                        100
+                    )
                   : null;
 
                 const hasFreeShipping =
@@ -169,7 +164,10 @@ function NewArrival({
                         <ImageWrapper>
 
                           <ProductImage
-                            src={optimizeCloudinaryImage(image, 700)}
+                            src={optimizeCloudinaryImage(
+                              image,
+                              700
+                            )}
                             alt={productName}
                             loading="lazy"
                             decoding="async"
@@ -216,18 +214,16 @@ function NewArrival({
                           <PriceGroup>
 
                             <CurrentPrice>
-                              <CurrencyPrice price = 
-                              {sellingPrice.toFixed(
-                                2
-                              )}/>
+                              <CurrencyPrice
+                                price={sellingPrice}
+                              />
                             </CurrentPrice>
 
                             {hasDiscount && (
                               <ComparePrice>
-                                 <CurrencyPrice price = 
-                                {comparePrice.toFixed(
-                                  2
-                                )}/>
+                                <CurrencyPrice
+                                  price={comparePrice}
+                                />
                               </ComparePrice>
                             )}
 
@@ -310,6 +306,9 @@ function NewArrival({
           type="button"
           className="best-sellers-prev"
           aria-label="Previous products"
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+          }}
         >
           <Arrow $direction="prev" />
         </button>
@@ -319,6 +318,9 @@ function NewArrival({
           type="button"
           className="best-sellers-next"
           aria-label="Next products"
+          onClick={() => {
+            swiperRef.current?.slideNext();
+          }}
         >
           <Arrow $direction="next" />
         </button>
@@ -365,6 +367,7 @@ const Header = styled.div`
 
   margin-bottom: 38px;
 `;
+
 
 const Title = styled.h2`
   margin: 0;
@@ -427,17 +430,6 @@ const NavigationArea = styled.div`
       border-color: #25221f;
       color: #ffffff;
     }
-
-    &.swiper-button-disabled {
-      opacity: 0.3;
-      cursor: default;
-    }
-
-    &.swiper-button-disabled:hover {
-      background: transparent;
-      border-color: #d7d1c8;
-      color: #25221f;
-    }
   }
 
   @media (max-width: 400px) {
@@ -445,6 +437,10 @@ const NavigationArea = styled.div`
   }
 `;
 
+
+/* =========================================================
+   ARROW
+========================================================= */
 
 const Arrow = styled.span`
   width: 7px;
@@ -486,11 +482,6 @@ const SwiperWrapper = styled.div`
     flex-shrink: 0;
   }
 
-  /*
-   * Swiper's default navigation arrows
-   * are not used because we use custom buttons.
-   */
-
   .swiper-button-prev,
   .swiper-button-next {
     display: none;
@@ -506,12 +497,14 @@ const ProductCard = styled.article`
   width: 100%;
 `;
 
+
 const ProductLink = styled(Link)`
   display: block;
 
   color: inherit;
   text-decoration: none;
 `;
+
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -523,6 +516,7 @@ const ImageWrapper = styled.div`
 
   background: #ebe7df;
 `;
+
 
 const ProductImage = styled.img`
   display: block;
@@ -559,11 +553,11 @@ const ProductLabels = styled.div`
   ${({ $isArabic }) =>
     $isArabic
       ? `
-        right: 12px;
-      `
+          right: 12px;
+        `
       : `
-        left: 12px;
-      `}
+          left: 12px;
+        `}
 `;
 
 
@@ -617,6 +611,7 @@ const ProductInfo = styled.div`
   padding-top: 17px;
 `;
 
+
 const ProductName = styled.h3`
   margin: 0;
 
@@ -631,6 +626,7 @@ const ProductName = styled.h3`
   line-height: 1.45;
 `;
 
+
 const BottomRow = styled.div`
   display: flex;
   align-items: center;
@@ -641,6 +637,7 @@ const BottomRow = styled.div`
   margin-top: 9px;
 `;
 
+
 const PriceGroup = styled.div`
   display: flex;
   align-items: baseline;
@@ -649,6 +646,7 @@ const PriceGroup = styled.div`
 
   min-width: 0;
 `;
+
 
 const CurrentPrice = styled.span`
   color: #25221f;
@@ -662,6 +660,7 @@ const CurrentPrice = styled.span`
   white-space: nowrap;
 `;
 
+
 const ComparePrice = styled.span`
   color: #a49c93;
 
@@ -673,6 +672,7 @@ const ComparePrice = styled.span`
 
   white-space: nowrap;
 `;
+
 
 const Rating = styled.div`
   display: flex;
@@ -696,6 +696,7 @@ const Rating = styled.div`
   }
 `;
 
+
 const ReviewCount = styled.span`
   color: #aaa29a;
 
@@ -707,6 +708,7 @@ const ReviewCount = styled.span`
     content: ")";
   }
 `;
+
 
 const Shipping = styled.div`
   margin-top: 8px;
@@ -728,6 +730,7 @@ const Shipping = styled.div`
 const SkeletonCard = styled.div`
   width: 100%;
 `;
+
 
 const SkeletonImage = styled.div`
   width: 100%;
@@ -753,9 +756,11 @@ const SkeletonImage = styled.div`
   }
 `;
 
+
 const SkeletonInfo = styled.div`
   padding-top: 17px;
 `;
+
 
 const SkeletonName = styled.div`
   width: 65%;
@@ -764,6 +769,7 @@ const SkeletonName = styled.div`
   background: #e2ddd5;
 `;
 
+
 const SkeletonBottom = styled.div`
   display: flex;
   justify-content: space-between;
@@ -771,12 +777,14 @@ const SkeletonBottom = styled.div`
   margin-top: 12px;
 `;
 
+
 const SkeletonPrice = styled.div`
   width: 65px;
   height: 10px;
 
   background: #e2ddd5;
 `;
+
 
 const SkeletonRating = styled.div`
   width: 40px;
