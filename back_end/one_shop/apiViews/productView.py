@@ -77,7 +77,7 @@ class ProductView(APIView):
 
     def get(self, request):
         start = int(request.GET.get("start", 0))
-        per_page = int(request.GET.get("per_page", 10))
+        per_page = int(request.GET.get("per_page", 4))
 
         products_qs = Products.objects.annotate(
             ratings_count=Count("user_ratings", distinct=True),

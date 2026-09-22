@@ -25,6 +25,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage.jsx";
 
 import { getUser } from "./features/authSlice";
+import {getProduct} from "./features/productSlice.js"
 
 import { useTranslation } from "react-i18next";
 
@@ -254,6 +255,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getProduct())
 
   }, [retry]);
 
