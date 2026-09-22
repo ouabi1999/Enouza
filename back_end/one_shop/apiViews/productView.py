@@ -29,7 +29,7 @@ class ProductView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
-       
+
         data = request.data  # Make a copy to modify
         multimedia_info = json.loads(data.get("multimediaInfo"))
         image = request.FILES.get("main_image")
@@ -62,7 +62,9 @@ class ProductView(APIView):
         additionalImageFiles = request.FILES.getlist("additionalImageFiles")
         if additionalImageFiles:
             for image_file in additionalImageFiles:
-                result = cloudinary.uploader.upload(image_file, folder="enouza/products")
+                result = cloudinary.uploader.upload(
+                    image_file, folder="enouza/products"
+                )
                 image_urls.append(result["secure_url"])
 
             multimedia_info["image_urls"] = image_urls
@@ -118,7 +120,6 @@ class ProductDetailsView(APIView):
         data = request.data  # Make a copy to modify
         multimedia_info = json.loads(data.get("multimediaInfo"))
         image = request.FILES.get("main_image")
-       
 
         if image:
 
@@ -126,8 +127,6 @@ class ProductDetailsView(APIView):
             main_image_result = cloudinary.uploader.upload(image)
             multimedia_info["main_image"] = main_image_result["secure_url"]
             data["multimediaInfo"] = json.dumps(multimedia_info)
-
-
 
         else:
             print(image)
@@ -154,13 +153,15 @@ class ProductDetailsView(APIView):
         additionalImageFiles = request.FILES.getlist("additionalImageFiles")
         if additionalImageFiles:
             for image_file in additionalImageFiles:
-                result = cloudinary.uploader.upload(image_file, folder="enouza/products")
+                result = cloudinary.uploader.upload(
+                    image_file, folder="enouza/products"
+                )
                 image_urls.append(result["secure_url"])
 
             multimedia_info["image_urls"] = image_urls
 
             data["multimediaInfo"] = json.dumps(multimedia_info)
-            
+
         serializer = ProductSerializer(product_to_update, data=data)
         if serializer.is_valid():
             serializer.save()
@@ -280,10 +281,6 @@ class RatingView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
-
-
 class ProductFilterView(APIView):
 
     def get(self, request):
@@ -328,8 +325,7 @@ class ProductFilterView(APIView):
 
         if search:
             queryset = queryset.filter(
-                Q(name__en__icontains=search)
-                | Q(description__en__icontains=search)
+                Q(name__en__icontains=search) | Q(description__en__icontains=search)
             )
 
         # ============================================================
@@ -344,30 +340,22 @@ class ProductFilterView(APIView):
         if category:
 
             categories = [
-                value.strip()
-                for value in category.split(",")
-                if value.strip()
+                value.strip() for value in category.split(",") if value.strip()
             ]
 
             if categories:
-                queryset = queryset.filter(
-                    category__in=categories
-                )
+                queryset = queryset.filter(category__in=categories)
 
         # ============================================================
         # RATINGS / ORDERS
         # ============================================================
 
         queryset = queryset.annotate(
-            average_rating=Avg(
-                "user_ratings__stars"
-            ),
-
+            average_rating=Avg("user_ratings__stars"),
             ratings_count=Count(
                 "user_ratings",
                 distinct=True,
             ),
-
             orders_count=Count(
                 "orders__products",
                 distinct=True,
@@ -534,18 +522,12 @@ class ProductFilterView(APIView):
 
             if parsed_min_price is not None:
 
-                if (
-                    product_min_price is None
-                    or product_min_price < parsed_min_price
-                ):
+                if product_min_price is None or product_min_price < parsed_min_price:
                     continue
 
             if parsed_max_price is not None:
 
-                if (
-                    product_max_price is None
-                    or product_max_price > parsed_max_price
-                ):
+                if product_max_price is None or product_max_price > parsed_max_price:
                     continue
 
             filtered_products.append(product)
@@ -565,13 +547,11 @@ class ProductFilterView(APIView):
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-
                     (
                         product._filter_min_price
                         if product._filter_min_price is not None
                         else float("inf")
                     ),
-
                     product.id,
                 )
             )
@@ -585,13 +565,11 @@ class ProductFilterView(APIView):
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-
                     (
                         -product._filter_min_price
                         if product._filter_min_price is not None
                         else float("inf")
                     ),
-
                     product.id,
                 )
             )
@@ -602,11 +580,10 @@ class ProductFilterView(APIView):
 
         elif sort == "orders":
 
-           
             products = Products.objects.annotate(
-                        ratings_count=Count("user_ratings", distinct=True),
-                        orders_count=Count("orders", distinct=True),
-                    ).order_by("orders_count", "-ratings_count", "-release_date")
+                ratings_count=Count("user_ratings", distinct=True),
+                orders_count=Count("orders", distinct=True),
+            ).order_by("orders_count", "-ratings_count", "-release_date")
 
         # ------------------------------------------------------------
         # BEST MATCH
@@ -625,13 +602,9 @@ class ProductFilterView(APIView):
                     name = product.name or {}
                     description = product.description or {}
 
-                    name_en = str(
-                        name.get("en", "")
-                    ).lower()
+                    name_en = str(name.get("en", "")).lower()
 
-                    description_en = str(
-                        description.get("en", "")
-                    ).lower()
+                    description_en = str(description.get("en", "")).lower()
 
                     # Exact/full name occurrence
                     if search_lower in name_en:
@@ -656,13 +629,11 @@ class ProductFilterView(APIView):
                 products.sort(
                     key=lambda product: (
                         -(product.orders_count or 0),
-
                         -(
                             product.release_date.timestamp()
                             if product.release_date
                             else 0
                         ),
-
                         product.id,
                     )
                 )
@@ -675,12 +646,7 @@ class ProductFilterView(APIView):
 
             products.sort(
                 key=lambda product: (
-                    -(
-                        product.release_date.timestamp()
-                        if product.release_date
-                        else 0
-                    ),
-
+                    -(product.release_date.timestamp() if product.release_date else 0),
                     product.id,
                 )
             )
@@ -689,10 +655,7 @@ class ProductFilterView(APIView):
         # PAGINATION
         # ============================================================
 
-        paginator = Paginator(
-            products,
-            per_page
-        )
+        paginator = Paginator(products, per_page)
 
         page_obj = paginator.get_page(page)
 
@@ -700,10 +663,7 @@ class ProductFilterView(APIView):
         # SERIALIZER
         # ============================================================
 
-        serializer = ProductSerializer(
-            page_obj.object_list,
-            many=True
-        )
+        serializer = ProductSerializer(page_obj.object_list, many=True)
 
         # ============================================================
         # RESPONSE
@@ -719,6 +679,7 @@ class ProductFilterView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
 
 class HeroProductView(APIView):
     def get(self, request):
