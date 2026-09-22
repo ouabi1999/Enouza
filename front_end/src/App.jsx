@@ -32,6 +32,7 @@ import { useTranslation } from "react-i18next";
 import Spinner from "../common/Spinner.jsx";
 
 import "../public/i18n/index.jsx";
+import { fetchExchangeRates } from "./features/currencySlice.js";
 
 /*
 =========================================================
@@ -256,8 +257,9 @@ function App() {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getProduct())
+    dispatch(fetchExchangeRates());
 
-  }, [retry]);
+  }, [retry, dispatch]);
 
 
   /*

@@ -37,6 +37,7 @@ class CreatePaymentIntentView(APIView):
     def post(self, request, *args, **kwargs):
         try:
             data = request.data
+            currency = data.get("currency", "usd")
             items = data.get('ordered_items', [])
             locale = data.get("locale", "auto")
 
@@ -46,7 +47,7 @@ class CreatePaymentIntentView(APIView):
             intent = stripe.PaymentIntent.create(
                 amount=data.get('total_price'),
                 metadata = data,
-                currency='usd',
+                currency= currency,
                 receipt_email =  data["email"],
                 automatic_payment_methods={'enabled': True},
                

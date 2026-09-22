@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import CurrencyPrice from "../../../common/CurrencyPrice";
 
 function NewArrival({
   products = [],
@@ -215,18 +216,18 @@ function NewArrival({
                           <PriceGroup>
 
                             <CurrentPrice>
-                              $
+                              <CurrencyPrice price = 
                               {sellingPrice.toFixed(
                                 2
-                              )}
+                              )}/>
                             </CurrentPrice>
 
                             {hasDiscount && (
                               <ComparePrice>
-                                $
+                                 <CurrencyPrice price = 
                                 {comparePrice.toFixed(
                                   2
-                                )}
+                                )}/>
                               </ComparePrice>
                             )}
 

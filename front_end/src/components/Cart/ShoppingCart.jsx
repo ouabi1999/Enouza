@@ -14,6 +14,7 @@ import ProductSubtotal from "./ProductSubtotal";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import SEO from "../SEO/SEO"
+import CurrencyPrice from "../../../common/CurrencyPrice";
 
 
 function ShoppingCart() {
@@ -166,7 +167,7 @@ function ShoppingCart() {
                     <ProductBottom>
 
                       <Price>
-                        US ${item.price}
+                        <CurrencyPrice price={item.price}/>
                       </Price>
 
 

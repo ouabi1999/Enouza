@@ -3,6 +3,7 @@ import styled from "styled-components";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CurrencyPrice from "../../../../common/CurrencyPrice";
 
 function CollectionProducts({
   products,
@@ -181,12 +182,12 @@ const optimizeCloudinaryImage = (url, width = 600) => {
             <ThirdSection>
               <div className="price-wrapper">
                 <span className="product-price">
-                  ${sellingPrice.toFixed(2)}
+                  <CurrencyPrice price = {sellingPrice.toFixed(2)}/>
                 </span>
 
                 {comparePrice > 0 && (
                   <span className="compare-price">
-                    ${comparePrice.toFixed(2)}
+                    <CurrencyPrice price = {comparePrice.toFixed(2)}/>
                   </span>
                 )}
               </div>

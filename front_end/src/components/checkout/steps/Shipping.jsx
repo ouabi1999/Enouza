@@ -14,6 +14,7 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 
 import { FormContext } from "../../../pages/CheckoutPage";
 import { OrderContext } from "../../../App";
+import CurrencyPrice from "../../../../common/CurrencyPrice";
 
 
 /* =====================================================
@@ -50,6 +51,9 @@ const Shipping = forwardRef(({ t }, ref) => {
     setFormData,
   } = useContext(OrderContext);
 
+   const selectedCurrency = useSelector(
+     (state) => state.currency.selectedCurrency
+   );
 
   /* =====================================================
      REDUX
@@ -186,7 +190,7 @@ const Shipping = forwardRef(({ t }, ref) => {
   // GA4 — Shipping Information
   if (typeof window.gtag === "function") {
     window.gtag("event", "add_shipping_info", {
-      currency: "USD",
+      currency: selectedCurrency,
       value: totalPrice / 100,
       shipping: shippingPrice,
       items: formData.cartItems?.map((item) => ({
@@ -332,11 +336,12 @@ const Shipping = forwardRef(({ t }, ref) => {
 
                   <span className="price">
 
-                    €
+                    <CurrencyPrice price = 
 
                     {Number(
                       item.cost || 0
                     ).toFixed(2)}
+                    />
 
                   </span>
 

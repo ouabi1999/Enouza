@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { OrderContext } from "../../App";
 import { FormContext } from "../../pages/CheckoutPage";
+import CurrencyPrice from "../../../common/CurrencyPrice";
 
 function ProductCart() {
   const { total } = useContext(FormContext);
@@ -137,11 +138,11 @@ function ProductCart() {
                 </span>
 
                 <span className="price">
-                  €
+                    <CurrencyPrice price=
                   {(
                     Number(item?.price || 0) *
                     Number(item?.quantity || 0)
-                  ).toFixed(2)}
+                  ).toFixed(2)}/>
                 </span>
               </div>
             );
@@ -215,7 +216,7 @@ function ProductCart() {
             <span>{t("common.subtotal")}</span>
 
             <span>
-              €{Number(total || 0).toFixed(2)}
+                <CurrencyPrice price={Number(total || 0).toFixed(2)}/>
             </span>
           </div>
 
@@ -223,7 +224,7 @@ function ProductCart() {
             <span>{t("common.shipping")}</span>
 
             <span>
-              €{shippingPrice.toFixed(2)}
+               <CurrencyPrice price={shippingPrice.toFixed(2)}/>
             </span>
           </div>
 
@@ -234,16 +235,17 @@ function ProductCart() {
               </span>
 
               <span>
-                -€{discountAmount.toFixed(2)}
+                -<CurrencyPrice price ={discountAmount.toFixed(2)}/>
               </span>
             </div>
           )}
 
           <div className="Total-price">
-            <span>{t("common.total")}</span>
+            <span>
+              {t("common.total")}</span>
 
             <span>
-              €{finalTotal.toFixed(2)}
+              <CurrencyPrice price = {finalTotal.toFixed(2)}/>
             </span>
           </div>
         </Totals>
@@ -264,7 +266,7 @@ const Container = styled.div`
   top: 0;
 
 
-
+  height:100%;
   display: flex;
   flex-direction: column;
 

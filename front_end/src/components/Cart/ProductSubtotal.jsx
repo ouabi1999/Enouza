@@ -2,9 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import CurrencyPrice from "../../../common/CurrencyPrice";
 function ProductSubtotal(props) {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation()
+  const selectedCurrency = useSelector(
+    (state) => state.currency.selectedCurrency
+  );  
+  
   const subtotal =
     props.cartItems?.reduce(
       (total, item) =>
@@ -15,7 +21,7 @@ function ProductSubtotal(props) {
    
     if (typeof window.gtag === "function") {
       window.gtag("event", "begin_checkout", {
-        currency: "USD",
+        currency:selectedCurrency,
         value: subtotal,
         items: props.cartItems.map((item) => ({
           item_id:  item?.id,
@@ -47,6 +53,16 @@ function ProductSubtotal(props) {
         {/* TOTALS */}
 
         <Totals>
+           <Row>
+            <Label>
+              {props.t("common.shipping")}
+            </Label>
+
+            <Value>
+              <CurrencyPrice  price ={0.00}/>
+              
+            </Value>
+          </Row>
 
           <Row>
             <Label>
@@ -54,7 +70,8 @@ function ProductSubtotal(props) {
             </Label>
 
             <Value>
-              ${subtotal.toFixed(2)}
+              <CurrencyPrice  price ={subtotal.toFixed(2)}/>
+              
             </Value>
           </Row>
 
@@ -65,7 +82,7 @@ function ProductSubtotal(props) {
             </Label>
 
             <TotalValue>
-              ${subtotal.toFixed(2)}
+              <CurrencyPrice  price ={subtotal.toFixed(2)}/>
             </TotalValue>
           </Row>
 

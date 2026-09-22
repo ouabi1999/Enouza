@@ -7,6 +7,8 @@ import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import { useTranslation } from "react-i18next";
 
 import SideCart from "./SideCart";
+import { Currency } from "lucide-react";
+import CurrencyPrice from "../../../../common/CurrencyPrice";
 
 function ProductInfo({
   productData,
@@ -561,12 +563,12 @@ function ProductInfo({
 
   const sellingPrice =
     Number(currentSku?.sellingPrice) > 0
-      ? `$${currentSku.sellingPrice} USD`
+      ? currentSku.sellingPrice
       : productData?.price;
 
   const comparePrice =
     Number(currentSku?.comparePrice) > 0
-      ? `$${currentSku.comparePrice} USD`
+      ? currentSku.comparePrice
       : productData?.discount;
 
   const savePercentage =
@@ -618,7 +620,6 @@ function ProductInfo({
    * RENDER
    * =========================================================
    */
-
   return (
     <Container
       dir={
@@ -695,12 +696,13 @@ function ProductInfo({
       <PriceBlock>
         <PriceLine>
           <ProductPrice>
-            {sellingPrice}
+            <CurrencyPrice price = {sellingPrice}/> 
+
           </ProductPrice>
 
           {comparePrice && (
             <ComparePrice>
-              {comparePrice}
+              <CurrencyPrice price= {comparePrice}/> 
             </ComparePrice>
           )}
 

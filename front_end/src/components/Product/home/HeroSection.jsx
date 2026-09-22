@@ -124,7 +124,7 @@ const optimizeCloudinaryImage = (url, width = 700) => {
               src={imageUrl}
               alt={t("heroSection.title")}
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
               decoding="async"
               width="700"
               height="620"

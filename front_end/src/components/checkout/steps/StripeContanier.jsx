@@ -24,6 +24,9 @@ export default function StripeContanier({ t, i18n }) {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   const paymentIntentCreated = useRef(false);
+   const selectedCurrency = useSelector(
+       (state) => state.currency.selectedCurrency
+     );
 
   const ordered_items =
     cartItems?.map((item) => ({

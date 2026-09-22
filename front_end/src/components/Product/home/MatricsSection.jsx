@@ -275,7 +275,7 @@ const VideoOverlay = styled.div`
 
   background: rgba(0, 0, 0, 0.3);
 
-  z-index: 1;
+ 
 `;
 
 /* =========================
@@ -296,7 +296,7 @@ const VideoContent = styled.div`
 
   color: white;
 
-  z-index: 2;
+  z-index:1;
 `;
 
 const VideoTitle = styled.h2`
@@ -367,7 +367,7 @@ const ShopButton = styled(Link)`
 
   transition: 0.25s ease;
 
-  z-index: 3;
+  z-index: 1;
 
   &:hover {
     color: #d4bd91;

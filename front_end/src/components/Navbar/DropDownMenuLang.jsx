@@ -4,37 +4,85 @@ import styled from "styled-components";
 import data from "../../../common/countryData.json";
 import { ClickAwayListener } from "@mui/material";
 import { setLocation } from "../../features/locationSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import Flag from "react-world-flags";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-
+import {
+  setCurrency,
+  setCurrencyAutomatically,
+} from "../../features/currencySlice";
 function DropDownMenuLang(props) {
   const { t, i18n } = useTranslation();
 
   const dispatch = useDispatch();
+  const [selectedLang, setSelectedLang] = useState(window.localStorage.getItem("selectedLang") || "en");
 
-  const [selectedLang, setSelectedLang] = useState(
-    window.localStorage.getItem("selectedLang") || "en"
+  const selectedCurrency = useSelector(
+    (state) => state.currency.selectedCurrency
   );
-
   const languages = [
     { code: "en", label: t("languages.en") },
     { code: "es", label: t("languages.es") },
     { code: "ar", label: t("languages.ar") },
   ];
 
+  const currencyManuallySelected = useSelector(
+    (state) => state.currency.currencyManuallySelected
+  );
+
+  const COUNTRY_CURRENCY_MAP = {
+    US: "USD",
+    ES: "EUR",
+    GB: "GBP",
+    AE: "AED",
+    SA: "SAR",
+  };
+
   useEffect(() => {
-    if (!window.localStorage.getItem("country")) {
-      fetch("https://ipinfo.io/json?token=ced98efb100ff5")
-        .then((response) => response.json())
-        .then((locationData) => {
-          dispatch(setLocation(locationData.country));
-        })
-        .catch((error) => console.log(error));
+    if (window.localStorage.getItem("country")) {
+      return;
     }
-  }, [dispatch]);
+
+    fetch("https://ipinfo.io/json?token=ced98efb100ff5")
+      .then((response) => response.json())
+      .then((locationData) => {
+        const detectedCountry = locationData.country;
+        dispatch(setLocation(detectedCountry));
+
+        window.localStorage.setItem(
+          "selectedLang",
+          detectedCountry.toLowerCase()
+        );
+
+       
+          i18n.changeLanguage(detectedCountry.toLowerCase());
+        
+          setSelectedLang(detectedCountry.toLowerCase())
+
+
+
+        if (!currencyManuallySelected) {
+          const automaticCurrency =
+            COUNTRY_CURRENCY_MAP[detectedCountry];
+
+          if (automaticCurrency) {
+            dispatch(
+              setCurrencyAutomatically(
+                automaticCurrency
+              )
+            );
+          }
+        }
+      })
+      .catch((error) =>
+        console.log("Location detection failed:", error)
+      );
+  }, [
+    dispatch,
+    currencyManuallySelected,
+  ]);
 
   useEffect(() => {
     const savedLanguage =
@@ -42,22 +90,36 @@ function DropDownMenuLang(props) {
 
     if (i18n.language !== savedLanguage) {
       i18n.changeLanguage(savedLanguage);
-      
+
     }
 
     setSelectedLang(savedLanguage);
-    
+
   }, [i18n]);
 
-  const switchLanguage = () => {
-    window.localStorage.setItem("selectedLang", selectedLang);
+  const switchLanguage = (value) => {
+  
 
-    i18n.changeLanguage(selectedLang);
-
-    props.setIsLangMenuOpen(false);
-    window.location.reload();
+    if (i18n.language !== value) {
+      i18n.changeLanguage(value);
+        window.localStorage.setItem(
+      "selectedLang",
+      value
+    );
+    setSelectedLang(value)
+    }
+  
   };
 
+  const handleCurrencyChange = (event) => {
+    const newCurrency = event.target.value;
+
+    if (newCurrency === selectedCurrency) {
+      return;
+    }
+
+    dispatch(setCurrency(newCurrency));
+  };
   return (
     <Container>
       <div className="Lang_currency">
@@ -78,7 +140,7 @@ function DropDownMenuLang(props) {
 
           <span className="separator">/</span>
 
-          <span>USD</span>
+          <span>{selectedCurrency}</span>
 
           <ArrowDropDownIcon className="dropDownArrow-icon" />
         </button>
@@ -102,9 +164,22 @@ function DropDownMenuLang(props) {
               <select
                 value={props.country || ""}
                 onChange={(e) => {
-                  dispatch(
-                    setLocation(e.target.value)
-                  );
+                  const newCountry = e.target.value;
+
+                  dispatch(setLocation(newCountry));
+
+                  if (!currencyManuallySelected) {
+                    const automaticCurrency =
+                      COUNTRY_CURRENCY_MAP[newCountry];
+
+                    if (automaticCurrency) {
+                      dispatch(
+                        setCurrencyAutomatically(
+                          automaticCurrency
+                        )
+                      );
+                    }
+                  }
                 }}
               >
                 {data?.map((country, index) => (
@@ -127,8 +202,8 @@ function DropDownMenuLang(props) {
               <select
                 value={selectedLang}
                 onChange={(e) =>
-                  setSelectedLang(e.target.value)
-                }
+                   switchLanguage(e.target.value)
+                       }
               >
                 {languages.map((lang) => (
                   <option
@@ -146,20 +221,23 @@ function DropDownMenuLang(props) {
               <label>
                 {t("purchaseOptions.Currency")}
               </label>
-
               <select
-                value="USD"
-                disabled
+                value={selectedCurrency}
+                onChange={handleCurrencyChange}
               >
-                <option value="USD">
-                  USD
-                </option>
+                <option value="USD">USD — US Dollar</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="GBP">GBP — British Pound</option>
+                <option value="AED">AED — UAE Dirham</option>
+                <option value="SAR">SAR — Saudi Riyal</option>
               </select>
+
+
             </OptionGroup>
 
             {/* SAVE */}
             <SaveButton
-              onClick={switchLanguage}
+              onClick={()=> props.setIsLangMenuOpen(false)}
               type="button"
             >
               {t("common.save")}

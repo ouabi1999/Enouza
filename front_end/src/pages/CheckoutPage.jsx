@@ -73,6 +73,8 @@ const Conatiner = styled.div`
 const Left_Section = styled.div`
   flex:1;
   min-width:500px;
+  
+ 
 
   @media only screen and (max-width: 500px){
 
