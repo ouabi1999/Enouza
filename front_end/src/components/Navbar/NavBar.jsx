@@ -42,7 +42,7 @@ const COLORS = {
 // COMPONENT
 // ============================================================
 
-function NavBar({outlet, setSearchValue, value}) {
+function NavBar({ outlet, setSearchValue, value }) {
   // ----------------------------------------------------------
   // REDUX
   // ----------------------------------------------------------
@@ -54,7 +54,7 @@ function NavBar({outlet, setSearchValue, value}) {
   const country = useSelector(
     (state) => state.location.country
   );
-
+  const [required, setRequired] = useState(false)
 
   // ----------------------------------------------------------
   // AUTH
@@ -142,8 +142,15 @@ function NavBar({outlet, setSearchValue, value}) {
 
   const handleSearchInput = () => {
     dispatch(setSearch(value));
+    if (value) {
 
-    navigate("/collections/?search");
+      navigate("/collections/?search");
+
+    }
+    else {
+      setRequired(true)
+    }
+
   };
 
 
@@ -152,7 +159,7 @@ function NavBar({outlet, setSearchValue, value}) {
   // ==========================================================
 
   return (
-    <ParentContainer dir = {"ltr"}>
+    <ParentContainer dir={"ltr"}>
 
       {/* ======================================================
           MOBILE SEARCH
@@ -160,26 +167,32 @@ function NavBar({outlet, setSearchValue, value}) {
 
       {isSearchInputOpen && (
         <ClickAwayListener
-  mouseEvent="onMouseDown"
-  touchEvent="onTouchEnd"
-  onClickAway={() => setIsSearchInputOpen(false)}
->
-          <div className="search-container" dir = {i18n.language == "ar"?"rtl":"ltr"}>
+          mouseEvent="onMouseDown"
+          touchEvent="onTouchEnd"
+          onClickAway={() => setIsSearchInputOpen(false)}
+        >
+          <div className="search-container" dir={i18n.language == "ar" ? "rtl" : "ltr"}>
 
             <div className="responsive-input">
               <input
+                style={{
+                  borderColor: required ? "red" : undefined,
+                }}
+                onBlur={() => setRequired(false)}
                 placeholder={t("common.search")}
                 value={value}
-                onChange={(e) =>
+                onChange={(e) => {
                   setSearchValue(e.target.value)
+                  setRequired(false)
                 }
-                 maxLength="100"
+                }
+                maxLength="100"
               />
             </div>
 
-            <button className="search-icon-container" 
-                  onClick={handleSearchInput}
- 
+            <button className="search-icon-container"
+              onClick={handleSearchInput}
+
             >
               <SearchIcon
                 className="search-icon"
@@ -211,22 +224,29 @@ function NavBar({outlet, setSearchValue, value}) {
             </Link>
           </Logo>
 
-           
+
           {/* DESKTOP SEARCH */}
 
-          <SearchContainer dir = {i18n.language == "ar"?"rtl":"ltr"}>
+          <SearchContainer dir={i18n.language == "ar" ? "rtl" : "ltr"}>
 
             <div className="search-bar">
 
-              <input 
+              <input
+                style={{
+                  borderColor: required ? "red" : undefined,
+                }}
+                onBlur={() => setRequired(false)}
                 placeholder={t("common.search")}
                 value={value}
-                onChange={(e) =>
+                onChange={(e) => {
                   setSearchValue(e.target.value)
+                  setRequired(false)
+                }
+
                 }
                 maxLength="50"
 
-              
+
               />
 
             </div>
@@ -234,9 +254,9 @@ function NavBar({outlet, setSearchValue, value}) {
 
             <button
               className="search-icon-container"
-                               onClick={handleSearchInput}
+              onClick={handleSearchInput}
 
-              
+
             >
               <SearchIcon
                 className="search-icon"
