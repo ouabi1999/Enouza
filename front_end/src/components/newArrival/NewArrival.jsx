@@ -57,7 +57,7 @@ function NewArrival({
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={false}
+            loop={true}
 
             autoplay={
               isAuto
