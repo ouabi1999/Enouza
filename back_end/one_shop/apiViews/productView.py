@@ -285,26 +285,16 @@ class ProductFilterView(APIView):
 
     def get(self, request):
 
-        # ============================================================
-        # QUERY PARAMETERS
-        # ============================================================
-
         search = request.query_params.get("search", "").strip()
         category = request.query_params.get("category", "").strip()
         min_price = request.query_params.get("min_price", "").strip()
         max_price = request.query_params.get("max_price", "").strip()
         sort = request.query_params.get("sort", "best_match").strip()
 
-        # ============================================================
-        # PAGINATION
-        # ============================================================
-
         try:
-            page = int(request.query_params.get("page", 1))
+            page = max(int(request.query_params.get("page", 1)), 1)
         except (TypeError, ValueError):
             page = 1
-
-        page = max(page, 1)
 
         try:
             per_page = int(request.query_params.get("per_page", 12))
@@ -313,361 +303,243 @@ class ProductFilterView(APIView):
 
         per_page = max(1, min(per_page, 50))
 
-        # ============================================================
-        # BASE QUERYSET
-        # ============================================================
-
+        # Base queryset
         queryset = Products.objects.all()
 
-        # ============================================================
-        # SEARCH
-        # ============================================================
-
+        # Search
         if search:
             queryset = queryset.filter(
-                Q(name__en__icontains=search) | Q(description__en__icontains=search)
+                Q(name__en__icontains=search) |
+                Q(description__en__icontains=search)
             )
 
-        # ============================================================
-        # CATEGORY
-        # Supports:
-        #
-        # category=table_lamps
-        #
-        # category=table_lamps,wall_lamps
-        # ============================================================
-
+        # Category
         if category:
-
             categories = [
-                value.strip() for value in category.split(",") if value.strip()
+                value.strip()
+                for value in category.split(",")
+                if value.strip()
             ]
 
-            if categories:
-                queryset = queryset.filter(category__in=categories)
+            queryset = queryset.filter(
+                category__in=categories
+            )
 
-        # ============================================================
-        # RATINGS / ORDERS
-        # ============================================================
-
+        # Ratings and orders
         queryset = queryset.annotate(
             average_rating=Avg("user_ratings__stars"),
             ratings_count=Count(
                 "user_ratings",
-                distinct=True,
+                distinct=True
             ),
             orders_count=Count(
-                "orders__products",
-                distinct=True,
+                "orders",
+                distinct=True
             ),
         )
 
-        # ============================================================
-        # CONVERT QUERYSET TO LIST
-        # ============================================================
-
         products = list(queryset)
 
-        # ============================================================
-        # HELPER: GET PRODUCT PRICES
-        # ============================================================
-
-        def get_product_prices(product):
+        # Get SKU prices
+        def get_prices(product):
 
             sku_info = product.skuInfo
 
             if not sku_info:
                 return []
 
-            prices = []
-
-            # --------------------------------------------------------
-            # skuInfo is normally a list
-            # --------------------------------------------------------
-
             if isinstance(sku_info, list):
-
-                for sku in sku_info:
-
-                    if not isinstance(sku, dict):
-                        continue
-
-                    price = sku.get("sellingPrice")
-
-                    if price is None:
-                        continue
-
-                    try:
-                        price = float(price)
-                        prices.append(price)
-                    except (TypeError, ValueError):
-                        continue
-
-            # --------------------------------------------------------
-            # In case skuInfo is a dictionary containing a list
-            # --------------------------------------------------------
+                skus = sku_info
 
             elif isinstance(sku_info, dict):
-
-                possible_skus = (
+                skus = (
                     sku_info.get("skus")
                     or sku_info.get("items")
                     or sku_info.get("list")
-                    or []
+                    or [sku_info]
                 )
 
-                if isinstance(possible_skus, list):
+            else:
+                return []
 
-                    for sku in possible_skus:
+            prices = []
 
-                        if not isinstance(sku, dict):
-                            continue
+            for sku in skus:
 
-                        price = sku.get("sellingPrice")
+                if not isinstance(sku, dict):
+                    continue
 
-                        if price is None:
-                            continue
-
-                        try:
-                            price = float(price)
-                            prices.append(price)
-                        except (TypeError, ValueError):
-                            continue
-
-                # ----------------------------------------------------
-                # If the dictionary itself represents one SKU
-                # ----------------------------------------------------
-
-                else:
-
-                    price = sku_info.get("sellingPrice")
-
-                    if price is not None:
-
-                        try:
-                            price = float(price)
-                            prices.append(price)
-                        except (TypeError, ValueError):
-                            pass
+                try:
+                    price = float(sku.get("sellingPrice"))
+                    prices.append(price)
+                except (TypeError, ValueError):
+                    continue
 
             return prices
 
-        # ============================================================
-        # ADD PRICE INFORMATION
-        # ============================================================
+        # Price filters
+        try:
+            min_price = float(min_price) if min_price else None
+        except (TypeError, ValueError):
+            min_price = None
+
+        try:
+            max_price = float(max_price) if max_price else None
+        except (TypeError, ValueError):
+            max_price = None
 
         filtered_products = []
 
-        parsed_min_price = None
-        parsed_max_price = None
-
-        # ------------------------------------------------------------
-        # Parse minimum price
-        # ------------------------------------------------------------
-
-        try:
-
-            if min_price:
-                parsed_min_price = float(min_price)
-
-        except (TypeError, ValueError):
-
-            parsed_min_price = None
-
-        # ------------------------------------------------------------
-        # Parse maximum price
-        # ------------------------------------------------------------
-
-        try:
-
-            if max_price:
-                parsed_max_price = float(max_price)
-
-        except (TypeError, ValueError):
-
-            parsed_max_price = None
-
-        # ============================================================
-        # PROCESS PRODUCTS
-        # ============================================================
-
         for product in products:
 
-            prices = get_product_prices(product)
+            prices = get_prices(product)
 
-            # --------------------------------------------------------
-            # Product has valid SKU prices
-            # --------------------------------------------------------
-
-            if prices:
-
-                product_min_price = min(prices)
-                product_max_price = max(prices)
-
-            else:
-
-                product_min_price = None
-                product_max_price = None
-
-            # --------------------------------------------------------
-            # Save temporary values on the object
-            # --------------------------------------------------------
+            product_min_price = min(prices) if prices else None
+            product_max_price = max(prices) if prices else None
 
             product._filter_min_price = product_min_price
             product._filter_max_price = product_max_price
 
-            # --------------------------------------------------------
-            # PRICE FILTER
-            # --------------------------------------------------------
-
-            if parsed_min_price is not None:
-
-                if product_min_price is None or product_min_price < parsed_min_price:
+            if min_price is not None:
+                if (
+                    product_min_price is None
+                    or product_min_price < min_price
+                ):
                     continue
 
-            if parsed_max_price is not None:
-
-                if product_max_price is None or product_max_price > parsed_max_price:
+            if max_price is not None:
+                if (
+                    product_max_price is None
+                    or product_max_price > max_price
+                ):
                     continue
 
             filtered_products.append(product)
 
         products = filtered_products
 
-        # ============================================================
-        # SORTING
-        # ============================================================
-
-        # ------------------------------------------------------------
-        # PRICE LOW → HIGH
-        # ------------------------------------------------------------
-
+        # Sorting
         if sort == "price_asc":
 
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-                    (
-                        product._filter_min_price
-                        if product._filter_min_price is not None
-                        else float("inf")
-                    ),
+                    product._filter_min_price
+                    if product._filter_min_price is not None
+                    else float("inf"),
                     product.id,
                 )
             )
-
-        # ------------------------------------------------------------
-        # PRICE HIGH → LOW
-        # ------------------------------------------------------------
 
         elif sort == "price_desc":
 
             products.sort(
                 key=lambda product: (
                     product._filter_min_price is None,
-                    (
-                        -product._filter_min_price
-                        if product._filter_min_price is not None
-                        else float("inf")
+                    -product._filter_min_price
+                    if product._filter_min_price is not None
+                    else float("inf"),
+                    product.id,
+                )
+            )
+
+        # Homepage best sellers
+        elif sort == "bestsellers":
+
+            products = list(
+                Products.objects.annotate(
+                    ratings_count=Count(
+                        "user_ratings",
+                        distinct=True
+                    ),
+                    orders_count=Count(
+                        "orders",
+                        distinct=True
+                    ),
+                ).order_by(
+                    "-orders_count",
+                    "-ratings_count",
+                    "-release_date",
+                )
+            )
+
+        # Filter-page order sorting
+        elif sort == "orders":
+
+            products.sort(
+                key=lambda product: (
+                    -(product.orders_count or 0),
+                    -(product.ratings_count or 0),
+                    -(
+                        product.release_date.timestamp()
+                        if product.release_date
+                        else 0
                     ),
                     product.id,
                 )
             )
 
-        # ------------------------------------------------------------
-        # MOST ORDERS / BESTSELLERS
-        # ------------------------------------------------------------
+        # Best match
+        elif sort == "best_match" and search:
 
-        elif sort == "orders":
+            search_lower = search.lower()
 
-            products = Products.objects.annotate(
-                ratings_count=Count("user_ratings", distinct=True),
-                orders_count=Count("orders", distinct=True),
-            ).order_by("orders_count", "-ratings_count", "-release_date")
+            def relevance(product):
 
-        # ------------------------------------------------------------
-        # BEST MATCH
-        # ------------------------------------------------------------
+                name = product.name or {}
+                description = product.description or {}
 
-        elif sort == "best_match":
+                name_en = str(
+                    name.get("en", "")
+                ).lower()
 
-            if search:
+                description_en = str(
+                    description.get("en", "")
+                ).lower()
 
-                search_lower = search.lower()
+                score = 0
 
-                def relevance(product):
+                if search_lower in name_en:
+                    score += 3
 
-                    score = 0
+                if search_lower in description_en:
+                    score += 2
 
-                    name = product.name or {}
-                    description = product.description or {}
+                return score
 
-                    name_en = str(name.get("en", "")).lower()
-
-                    description_en = str(description.get("en", "")).lower()
-
-                    # Exact/full name occurrence
-                    if search_lower in name_en:
-                        score += 3
-
-                    # Description occurrence
-                    if search_lower in description_en:
-                        score += 2
-
-                    return score
-
-                products.sort(
-                    key=lambda product: (
-                        -relevance(product),
-                        -(product.orders_count or 0),
-                        product.id,
-                    )
+            products.sort(
+                key=lambda product: (
+                    -relevance(product),
+                    -(product.orders_count or 0),
+                    product.id,
                 )
-
-            else:
-
-                products.sort(
-                    key=lambda product: (
-                        -(product.orders_count or 0),
-                        -(
-                            product.release_date.timestamp()
-                            if product.release_date
-                            else 0
-                        ),
-                        product.id,
-                    )
-                )
-
-        # ------------------------------------------------------------
-        # FALLBACK
-        # ------------------------------------------------------------
+            )
 
         else:
 
             products.sort(
                 key=lambda product: (
-                    -(product.release_date.timestamp() if product.release_date else 0),
+                    -(
+                        product.release_date.timestamp()
+                        if product.release_date
+                        else 0
+                    ),
                     product.id,
                 )
             )
 
-        # ============================================================
-        # PAGINATION
-        # ============================================================
-
-        paginator = Paginator(products, per_page)
+        # Pagination
+        paginator = Paginator(
+            products,
+            per_page
+        )
 
         page_obj = paginator.get_page(page)
 
-        # ============================================================
-        # SERIALIZER
-        # ============================================================
-
-        serializer = ProductSerializer(page_obj.object_list, many=True)
-
-        # ============================================================
-        # RESPONSE
-        # ============================================================
+        serializer = ProductSerializer(
+            page_obj.object_list,
+            many=True
+        )
 
         return Response(
             {
@@ -677,7 +549,7 @@ class ProductFilterView(APIView):
                 "per_page": per_page,
                 "results": serializer.data,
             },
-            status=status.HTTP_200_OK,
+            status=status.HTTP_200_OK
         )
 
 
