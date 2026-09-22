@@ -602,12 +602,11 @@ class ProductFilterView(APIView):
 
         elif sort == "orders":
 
-            products.sort(
-                key=lambda product: (
-                    -(product.orders_count or 0),
-                    product.id,
-                )
-            )
+           
+            products = Products.objects.annotate(
+                        ratings_count=Count("user_ratings", distinct=True),
+                        orders_count=Count("orders", distinct=True),
+                    ).order_by("orders_count", "-ratings_count", "-release_date")
 
         # ------------------------------------------------------------
         # BEST MATCH
