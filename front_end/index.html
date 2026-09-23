@@ -71,61 +71,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
 
 
-<!-- =========================================================
-     Meta Pixel — deferred to protect initial page performance
-     ========================================================= -->
-
+<!-- Meta Pixel Code -->
 <script>
-  window.__loadMetaPixel = function () {
-    if (window.__metaPixelLoaded) return;
-    window.__metaPixelLoaded = true;
-
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-
-      if (!f._fbq) f._fbq = n;
-
-      n.push = n;
-      n.loaded = true;
-      n.version = "2.0";
-      n.queue = [];
-
-      t = b.createElement(e);
-      t.async = true;
-      t.src = v;
-
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    }(
-      window,
-      document,
-      "script",
-      "https://connect.facebook.net/en_US/fbevents.js"
-    );
-
-    fbq("init", "1361145192394907");
-    fbq("track", "PageView");
-  };
-
-  /*
-   * Give the page priority first.
-   * Then load Meta Pixel during browser idle time.
-   */
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(
-      window.__loadMetaPixel,
-      { timeout: 3000 }
-    );
-  } else {
-    window.setTimeout(window.__loadMetaPixel, 1500);
-  }
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1361145192394907');
+fbq('track', 'PageView');
 </script>
+
+
 
 </head>
 
@@ -139,15 +99,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        Meta Pixel fallback for users without JavaScript
        ========================================================= -->
 
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style="display:none"
-      src="https://www.facebook.com/tr?id=1361145192394907&ev=PageView&noscript=1"
-      alt=""
-    />
-  </noscript>
+  <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1361145192394907&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
   
 
