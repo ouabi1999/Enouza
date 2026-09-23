@@ -73,7 +73,7 @@ const Footer = () => {
                 {t("footer.help.aboutUs")}
               </FooterLink>
 
-              <FooterLink to="/help-center">
+              <FooterLink to="/Faq">
                 {t("footer.help.faq")}
               </FooterLink>
             </Links>

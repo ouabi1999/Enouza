@@ -23,7 +23,7 @@ class StaticPagesSitemap(Sitemap):
             "/collections",
             "/about-us",
             "/contact-us",
-            "/help-center",
+            "/Faq",
             "/privacy-policy",
             "/terms-of-services",
             "/return-policy",
