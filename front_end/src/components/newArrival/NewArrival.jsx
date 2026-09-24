@@ -159,7 +159,6 @@ function NewArrival({
 
                       <ProductLink
                         to={`/product/${item.id}`}
-                        reloadDocument
                       >
                         <ImageWrapper>
 
