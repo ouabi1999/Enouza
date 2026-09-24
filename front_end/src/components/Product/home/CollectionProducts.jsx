@@ -122,7 +122,6 @@ const optimizeCloudinaryImage = (url, width = 600) => {
           ========================= */}
 
           <Link
-            reloadDocument
             to={`/product/${item.id}`}
             className="image-container"
           >
