@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { categoryList } from "../../common/categoryList";
+//import { categoryList } from "../../common/categoryList";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import ApiInstance from "../../common/baseUrl";

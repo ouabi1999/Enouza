@@ -7,12 +7,11 @@ const MainSlider = () => {
   const videoRef = useRef(null);
   const [loadVideo, setLoadVideo] = useState(false);
 
-  const videoUrl =
-    "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786302680/Blossholm_Danish_home_decor_design_Free_shipping_to_Europe_3_itjarw.mp4";
+  const videoUrl = false
 
   // Optimized Cloudinary poster
   const posterUrl =
-    "https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto,q_auto,w_1200/v1789947181/Captura_de_pantalla_2026-09-21_013141_hgh8vs.png";
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790529844/ChatGPT_Image_Sep_27_2026_07_23_04_PM_csaple.png";
 
   /*
    * Let the poster render first.
