@@ -221,7 +221,8 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           <Logo>
             <Link to="/">
-              <span>ENOUZA</span>
+            <img  src="../enouza_logo_black.png" alt="logo" style={{width:"30px"}}/>
+              <span>NOUZA</span>
             </Link>
           </Logo>
 

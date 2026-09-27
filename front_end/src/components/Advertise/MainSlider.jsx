@@ -7,7 +7,7 @@ const MainSlider = () => {
   const videoRef = useRef(null);
   const [loadVideo, setLoadVideo] = useState(false);
 
-  const videoUrl = false
+  const videoUrl = "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1790536327/Aure_Portable_Lamp_Travertine_Stone_Linen_-_Blossholm_3_c7eahz.mp4"
 
   // Optimized Cloudinary poster
   const posterUrl =
@@ -54,8 +54,9 @@ const MainSlider = () => {
 
   return (
     <Container>
-      {loadVideo ? (
+    
         <video
+        className="video"
           ref={videoRef}
           autoPlay
           muted
@@ -67,15 +68,15 @@ const MainSlider = () => {
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
-      ) : (
+   
         <Poster
           src={posterUrl}
           alt="Enouza luxury home lighting and interior design"
           width="1200"
           height="675"
           decoding="async"
+          className="poster"
         />
-      )}
 
       <Overlay>
         <h1>{t("mainSlider.title")}</h1>
@@ -98,8 +99,11 @@ const Container = styled.div`
   min-width: 200px;
   height: 550px;
   overflow: hidden;
+  video{
+    display:none;
+   
+  }
 
-  video,
   img {
     width: 100%;
     height: 100%;
@@ -115,6 +119,16 @@ const Container = styled.div`
   @media only screen and (max-width: 420px) {
     min-width: 290px;
     height: 450px;
+
+    img{
+    display:none;
+    }
+    video{
+    display:block;
+     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
   }
 `;
 

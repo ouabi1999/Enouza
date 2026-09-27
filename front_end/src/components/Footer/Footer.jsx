@@ -48,7 +48,10 @@ const Footer = () => {
           {/* BRAND */}
 
           <BrandSection>
-            <BrandLogo>ENOUZA</BrandLogo>
+            <BrandLogo>
+            <img src="../enouza_logo_black.png" alt="logo" style={{width:"30px"}}/>
+            <span> NOUZA</span>
+            </BrandLogo>
 
             <BrandDescription>
               {t("footer.brand.description")}
@@ -427,6 +430,7 @@ const FooterGrid = styled.div`
 
 const BrandSection = styled.div`
   max-width: 270px;
+  
 
   @media (max-width: 650px) {
     grid-column: 1 / -1;
@@ -439,7 +443,8 @@ const BrandSection = styled.div`
 
 const BrandLogo = styled.div`
   color: #20201d;
-
+   display:flex;
+   align-items:center;
   font-family:
     Georgia,
     "Times New Roman",
