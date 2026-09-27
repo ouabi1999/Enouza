@@ -83,7 +83,7 @@ const MetricsSection = () => {
             muted
             loop
             playsInline
-preload="auto"
+            preload="auto"
             aria-label="Enouza luxury lighting and premium home decor"
           >
             <source

@@ -153,10 +153,84 @@
   "title": "Every piece, made properly.",
   "description": "Every ENOUZA piece is thoughtfully designed, handcrafted, and made to order."
 },
-  
+  "inspirationPage": {
+  "hero": {
+    "catlabel": "THE ENOUZA JOURNAL",
+    "title": "A world of beautiful light.",
+    "description": "Discover interiors, lighting ideas, and quiet moments that inspire the way we live."
+  },
+
+  "intro": {
+    "catlabel": "FIND YOUR INSPIRATION",
+    "title": "Spaces shaped by light.",
+    "description": "The right light can change the feeling of a room. Explore our collection of interiors and discover thoughtful ways to bring warmth, atmosphere, and character into your home."
+  },
+
+  "spaces": {
+    "catlabel": "EXPLORE BY SPACE",
+    "title": "Light for every room.",
+    "items": {
+      "livingRoom": {
+        "title": "Living Rooms",
+        "description": "Create a warm and inviting atmosphere with lighting designed for everyday living."
+      },
+      "diningRoom": {
+        "title": "Dining Rooms",
+        "description": "Set the mood with considered lighting above the table and throughout the room."
+      },
+      "bedroom": {
+        "title": "Bedrooms",
+        "description": "Soft, intimate illumination designed to make the bedroom feel calm and effortless."
+      }
+    }
+  },
+
+  "explore": "Explore",
+
+  "statement": {
+    "catlabel": "THE ART OF LIGHT",
+    "title": "Light is what gives a space its feeling.",
+    "description": "From a quiet corner to a room made for gathering, lighting shapes how we experience the spaces around us."
+  },
+
+  "ideas": {
+    "catlabel": "LIGHTING IDEAS",
+    "title": "Ways to illuminate beautifully.",
+    "items": {
+      "ambientLighting": {
+        "title": "Ambient Lighting",
+        "description": "Create a soft foundation of light that makes a room feel warm, balanced, and welcoming."
+      },
+      "statementLighting": {
+        "title": "Statement Lighting",
+        "description": "Let a distinctive fixture become part of the architecture and character of the room."
+      },
+      "layeredLighting": {
+        "title": "Layered Lighting",
+        "description": "Combine different sources of light to create depth, atmosphere, and flexibility."
+      }
+    }
+  },
+
+  "editorial": {
+    "catlabel": "ENOUZA EDITORIAL",
+    "title": "Designed for the moments that matter.",
+    "description": "Explore lighting that brings warmth and character to the everyday spaces we call home.",
+    "link": "Shop Lighting"
+  },
+
+  "newsletter": {
+    "catlabel": "STAY INSPIRED",
+    "title": "Bring more beauty home.",
+    "description": "Discover new lighting, interiors, and inspiration from Enouza.",
+    "button": "Join Enouza"
+  }
+},
   
   "designSection": {
     "title": "Our Design Philosophy.",
+      "catlabel": "DISCOVER OUR BRAND",
+
     "principles": {
       "minimalism": {
         "title": "Thoughtful Simplicity",
@@ -172,6 +246,29 @@
       }
     }
   },
+  "collectionSection": {
+  "title": "Discover Our Collection.",
+  "catlabel": "EXPLORE OUR LIGHTING",
+
+  "categories": {
+    "wallLamps": {
+      "title": "Wall Lamps",
+      "description": "Elegant lighting designed to add depth, warmth, and character to your walls."
+    },
+    "pendantLights": {
+      "title": "Pendant Lights",
+      "description": "Distinctive pieces designed to create a refined focal point above dining tables, kitchen islands, and living spaces."
+    },
+    "tableLamps": {
+      "title": "Table Lamps",
+      "description": "Sculptural lighting that brings warmth, atmosphere, and understated elegance to your interior."
+    },
+    "ceilingLamps": {
+      "title": "Ceiling Lamps",
+      "description": "Refined overhead lighting created to shape the atmosphere and complete the character of a room."
+    }
+  }
+},
 
   "customersFeedback": {
   "eyebrow": "THE ENOUZA EXPERIENCE",

@@ -151,9 +151,84 @@
   "title": "Cada pieza, hecha con intención.",
   "description": "Cada pieza ENOUZA está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
 },
+"inspirationPage": {
+  "hero": {
+    "catlabel": "EL DIARIO DE ENOUZA",
+    "title": "Un mundo de luz hermosa.",
+    "description": "Descubre interiores, ideas de iluminación y momentos especiales que inspiran nuestra forma de vivir."
+  },
+
+  "intro": {
+    "catlabel": "ENCUENTRA TU INSPIRACIÓN",
+    "title": "Espacios definidos por la luz.",
+    "description": "La iluminación adecuada puede transformar la sensación de una estancia. Explora nuestra selección de interiores y descubre formas cuidadas de aportar calidez, ambiente y carácter a tu hogar."
+  },
+
+  "spaces": {
+    "catlabel": "EXPLORA POR ESPACIO",
+    "title": "Luz para cada estancia.",
+    "items": {
+      "livingRoom": {
+        "title": "Salones",
+        "description": "Crea un ambiente cálido y acogedor con una iluminación diseñada para la vida cotidiana."
+      },
+      "diningRoom": {
+        "title": "Comedores",
+        "description": "Crea el ambiente perfecto con una iluminación cuidada sobre la mesa y en toda la estancia."
+      },
+      "bedroom": {
+        "title": "Dormitorios",
+        "description": "Una iluminación suave e íntima diseñada para crear un dormitorio tranquilo y armonioso."
+      }
+    }
+  },
+
+  "explore": "Explorar",
+
+  "statement": {
+    "catlabel": "EL ARTE DE LA LUZ",
+    "title": "La luz es lo que da carácter a un espacio.",
+    "description": "Desde un rincón tranquilo hasta una estancia pensada para compartir, la iluminación transforma la forma en que vivimos los espacios que nos rodean."
+  },
+
+  "ideas": {
+    "catlabel": "IDEAS DE ILUMINACIÓN",
+    "title": "Formas de iluminar con belleza.",
+    "items": {
+      "ambientLighting": {
+        "title": "Iluminación Ambiental",
+        "description": "Crea una base de luz suave que haga que la estancia se sienta cálida, equilibrada y acogedora."
+      },
+      "statementLighting": {
+        "title": "Iluminación Protagonista",
+        "description": "Deja que una pieza distintiva forme parte de la arquitectura y del carácter de la estancia."
+      },
+      "layeredLighting": {
+        "title": "Iluminación por Capas",
+        "description": "Combina diferentes fuentes de luz para crear profundidad, ambiente y versatilidad."
+      }
+    }
+  },
+
+  "editorial": {
+    "catlabel": "EDITORIAL ENOUZA",
+    "title": "Diseñada para los momentos que importan.",
+    "description": "Descubre una iluminación que aporta calidez y carácter a los espacios cotidianos que llamamos hogar.",
+    "link": "Comprar Iluminación"
+  },
+
+  "newsletter": {
+    "catlabel": "SIGUE INSPIRÁNDOTE",
+    "title": "Lleva más belleza a tu hogar.",
+    "description": "Descubre nuevas lámparas, interiores e inspiración de Enouza.",
+    "button": "Unirse a Enouza"
+  }
+},
   
   "designSection": {
     "title": "Nuestra Filosofía de Diseño.",
+    "catlabel": "DESCUBRE NUESTRA MARCA",
+
     "principles": {
       "minimalism": {
         "title": "Simplicidad Intencionada",
@@ -170,6 +245,29 @@
     }
   },
 
+  "collectionSection": {
+  "title": "اكتشف مجموعتنا.",
+  "catlabel": "اكتشف مجموعتنا من الإضاءة",
+
+  "categories": {
+    "wallLamps": {
+      "title": "مصابيح الجدار",
+      "description": "إضاءة أنيقة صُممت لتضيف العمق والدفء والشخصية إلى جدران منزلك."
+    },
+    "pendantLights": {
+      "title": "المصابيح المعلّقة",
+      "description": "قطع مميزة صُممت لتكون نقطة محورية راقية فوق طاولات الطعام وجزر المطبخ ومساحات المعيشة."
+    },
+    "tableLamps": {
+      "title": "مصابيح الطاولة",
+      "description": "إضاءة ذات طابع فني تضيف الدفء والأجواء والأناقة الهادئة إلى مساحتك."
+    },
+    "ceilingLamps": {
+      "title": "مصابيح السقف",
+      "description": "إضاءة راقية من الأعلى صُممت لتشكّل أجواء الغرفة وتكمل طابعها."
+    }
+  }
+},
 
 "customersFeedback": {
   "eyebrow": "LA EXPERIENCIA ENOUZA",

@@ -191,7 +191,7 @@ function NavBar({ outlet, setSearchValue, value }) {
 
             <button className="search-icon-container"
               onClick={handleSearchInput}
-              onMouseLeave = {() => setRequired(false)}
+              onMouseLeave={() => setRequired(false)}
 
 
             >
@@ -221,7 +221,7 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           <Logo>
             <Link to="/">
-            <img  src="../enouza_logo_black.png" alt="logo" style={{width:"30px"}}/>
+              <img src="../enouza_logo_black.png" alt="logo" />
               <span>NOUZA</span>
             </Link>
           </Logo>
@@ -256,7 +256,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <button
               className="search-icon-container"
               onClick={handleSearchInput}
-              onMouseLeave = {() => setRequired(false)}
+              onMouseLeave={() => setRequired(false)}
 
 
 
@@ -284,7 +284,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <SearchIcon
               onClick={() =>
                 setIsSearchInputOpen(true)
-                
+
               }
 
               className="search-icon-responsive"
@@ -666,7 +666,9 @@ const Logo = styled.div`
   align-items: center;
 
   margin: 0;
-
+ img{
+width:30px;
+ }
 
   a {
     display: flex;
@@ -717,6 +719,10 @@ const Logo = styled.div`
 
       letter-spacing: 0.15em !important;
     }
+
+     img{
+width:25px;
+ }
   }
 
 

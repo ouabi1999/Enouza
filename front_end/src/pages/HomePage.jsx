@@ -11,6 +11,8 @@ import MatricsSection from "../components/Product/home/MatricsSection.jsx"
 import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 import NewArrival from '../components/newArrival/NewArrival.jsx'
 import SEO from '../components/SEO/SEO.jsx'
+import CollectionSection from '../components/Product/home/CollectionSection.jsx'
+import InspirationSection from '../components/Product/home/InspirationSection.jsx'
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -109,7 +111,6 @@ function HomePage() {
 
 
 
-
       <SectionPlaceholder>
         <NewArrival
           products={bestSellersProducts}
@@ -119,6 +120,8 @@ function HomePage() {
           isLoading={isLoading}
         />
       </SectionPlaceholder>
+        <CollectionSection/>
+
       <DesignSection />
 
       <MatricsSection />

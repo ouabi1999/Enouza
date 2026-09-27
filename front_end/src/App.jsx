@@ -178,6 +178,12 @@ const AliExpressProductFetcher = React.lazy(() =>
   )
 );
 
+const InsperationPage = React.lazy(() =>
+  import(
+    "./pages/InspirationPage.jsx"
+  )
+);
+
 
 /* =========================
    404
@@ -442,7 +448,12 @@ function App() {
                 }
               />
 
+             
+             {/* <Route 
+                 path="inspiration"
+                 element={<InsperationPage/>}/>
 
+                 */}
               {/* =================================================
                   USER PROFILE
               ================================================= */}
@@ -620,3 +631,4 @@ const AppContainer = styled.div`
   width: 100%;
   min-height: 100vh;
 `;
+

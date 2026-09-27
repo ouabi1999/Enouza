@@ -58,6 +58,263 @@ const optimizeCloudinaryImage = (url, width = 700) => {
   );
 };
 
+
+// ==========================================
+// COMPONENT
+// ==========================================
+
+const DesignSection = () => {
+  const { t, i18n } = useTranslation();
+
+  const products = useSelector(
+    (state) => state.products.productData
+  );
+
+  // ========================================
+  // DESIGN PRINCIPLES
+  // ========================================
+
+  const principles = [
+    {
+      icon: <DesignServicesIcon />,
+      title: t(
+        "designSection.principles.minimalism.title"
+      ),
+      description: t(
+        "designSection.principles.minimalism.description"
+      ),
+    },
+    {
+      icon: <StarIcon />,
+      title: t(
+        "designSection.principles.materials.title"
+      ),
+      description: t(
+        "designSection.principles.materials.description"
+      ),
+    },
+    {
+      icon: <SpaIcon />,
+      title: t(
+        "designSection.principles.ambient.title"
+      ),
+      description: t(
+        "designSection.principles.ambient.description"
+      ),
+    },
+  ];
+
+  // ========================================
+  // SLIDER SETTINGS
+  // ========================================
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    autoplay: true,
+    autoplaySpeed: 1800,
+    arrows: false,
+    pauseOnHover: true,
+  };
+
+  // ========================================
+  // PRODUCTS
+  // ========================================
+
+
+
+  // ========================================
+  // RETURN
+  // ========================================
+  const ImageuRL ="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790541531/ChatGPT_Image_Sep_27_2026_10_38_31_PM_e4ukkl.png"
+
+
+  return (
+    <DesignContainer maxWidth={false}>
+      <DesignGrid
+        container
+        spacing={2}
+        wrap="wrap-reverse"
+      >
+        {/* ==================================
+            PRODUCT IMAGE SLIDER
+        ================================== */}
+
+        <Grid item xs={12} md={6}>
+            <ImageWrapper>
+              <Slider {...settings}>
+                
+
+                  
+
+                    <div>
+                      <img
+                        src={ImageuRL}
+                        alt={
+                         
+                          "Luxury lamp DESIGN"
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="580"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          maxHeight: "580px",
+                          maxWidth: "600px",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                
+              </Slider>
+
+              {/* ==================================
+                  DISCOVER COLLECTION
+              ================================== */}
+
+              <CollectionButton
+                dir={
+                  i18n.dir() === "rtl"
+                    ? "rtl"
+                    : "ltr"
+                }
+                as={Link}
+                to="/collections"
+              >
+                {t(
+                  "designSection.catlabel",
+                  {
+                    defaultValue:
+                      "Discover our brand",
+                  }
+                )}
+
+                <Arrow
+                  $rtl={i18n.dir() === "rtl"}
+                >
+                  <ArrowForwardIcon />
+                </Arrow>
+              </CollectionButton>
+            </ImageWrapper>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                maxHeight: "600px",
+                maxWidth: "600px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: COLORS.muted,
+                }}
+              />
+            </div>
+        </Grid>
+
+        {/* ==================================
+            DESIGN CONTENT
+        ================================== */}
+
+        <Grid
+          item
+          xs={12}
+          md={6}
+          dir={
+            i18n.dir() === "rtl"
+              ? "rtl"
+              : "ltr"
+          }
+        >
+          <Typography
+            align="center"
+            variant="h3"
+            sx={{
+              color: COLORS.ink,
+              mb: 6,
+              fontFamily:
+                "'Playfair Display', serif",
+
+              fontSize: {
+                xs: "2rem",
+                md: "2.5rem",
+              },
+
+              fontWeight: 400,
+
+              lineHeight: 1.15,
+
+              letterSpacing: "-0.025em",
+            }}
+          >
+            {t("designSection.title")}
+          </Typography>
+
+          {principles.map((principle, index) => (
+            <DesignPrinciple key={index}>
+              <PrincipleIcon>
+                {principle.icon}
+              </PrincipleIcon>
+
+              <PrincipleContent>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: COLORS.ink,
+
+                    mb: 0.8,
+
+                    fontSize: {
+                      xs: "0.95rem",
+                      md: "1rem",
+                    },
+
+                    fontWeight: 600,
+
+                    letterSpacing: "0.01em",
+
+                    lineHeight: 1.35,
+                  }}
+                >
+                  {principle.title}
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: COLORS.muted,
+
+                    fontSize: {
+                      xs: "0.83rem",
+                      md: "0.86rem",
+                    },
+
+                    lineHeight: 1.75,
+                  }}
+                >
+                  {principle.description}
+                </Typography>
+              </PrincipleContent>
+            </DesignPrinciple>
+          ))}
+        </Grid>
+      </DesignGrid>
+    </DesignContainer>
+  );
+};
+
+export default DesignSection;
+
 // ==========================================
 // MAIN CONTAINER
 // ==========================================
@@ -188,9 +445,10 @@ const Arrow = styled.span`
 const CollectionButton = styled(Link)`
   position: absolute;
 
-  left: 7%;
 
-  background: #ded4c4;
+    left: 30%;
+
+  background: #fff5e4b2;
 
   padding: 15px 20px;
 
@@ -242,9 +500,7 @@ const CollectionButton = styled(Link)`
   }
 
   @media (max-width: 700px) {
-    left: auto;
-
-    right: 50%;
+   
 
     transform: translateX(50%);
 
@@ -382,274 +638,3 @@ const PrincipleContent = styled(Box)`
 
   min-width: 0;
 `;
-
-// ==========================================
-// COMPONENT
-// ==========================================
-
-const DesignSection = () => {
-  const { t, i18n } = useTranslation();
-
-  const products = useSelector(
-    (state) => state.products.productData
-  );
-
-  // ========================================
-  // DESIGN PRINCIPLES
-  // ========================================
-
-  const principles = [
-    {
-      icon: <DesignServicesIcon />,
-      title: t(
-        "designSection.principles.minimalism.title"
-      ),
-      description: t(
-        "designSection.principles.minimalism.description"
-      ),
-    },
-    {
-      icon: <StarIcon />,
-      title: t(
-        "designSection.principles.materials.title"
-      ),
-      description: t(
-        "designSection.principles.materials.description"
-      ),
-    },
-    {
-      icon: <SpaIcon />,
-      title: t(
-        "designSection.principles.ambient.title"
-      ),
-      description: t(
-        "designSection.principles.ambient.description"
-      ),
-    },
-  ];
-
-  // ========================================
-  // SLIDER SETTINGS
-  // ========================================
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    autoplay: true,
-    autoplaySpeed: 1800,
-    arrows: false,
-    pauseOnHover: true,
-  };
-
-  // ========================================
-  // PRODUCTS
-  // ========================================
-
-  const productList =
-    products?.[0]?.products?.slice(0, 3) || [];
-
-  // ========================================
-  // RETURN
-  // ========================================
-
-  return (
-    <DesignContainer maxWidth={false}>
-      <DesignGrid
-        container
-        spacing={2}
-        wrap="wrap-reverse"
-      >
-        {/* ==================================
-            PRODUCT IMAGE SLIDER
-        ================================== */}
-
-        <Grid item xs={12} md={6}>
-          {productList.length > 0 ? (
-            <ImageWrapper>
-              <Slider {...settings}>
-                {productList.map((item, index) => {
-                  const rawImage =
-                    item?.multimediaInfo?.image_urls?.[0];
-
-                  const image =
-                    optimizeCloudinaryImage(
-                      rawImage,
-                      700
-                    );
-
-                  if (!image) {
-                    return null;
-                  }
-
-                  return (
-                    <div key={item?.id || index}>
-                      <img
-                        src={image}
-                        alt={
-                          item?.name ||
-                          item?.title ||
-                          "Luxury lamp"
-                        }
-                        loading="lazy"
-                        decoding="async"
-                        width="600"
-                        height="580"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          maxHeight: "580px",
-                          maxWidth: "600px",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
-                    </div>
-                  );
-                })}
-              </Slider>
-
-              {/* ==================================
-                  DISCOVER COLLECTION
-              ================================== */}
-
-              <CollectionButton
-                dir={
-                  i18n.dir() === "rtl"
-                    ? "rtl"
-                    : "ltr"
-                }
-                as={Link}
-                to="/collections"
-              >
-                {t(
-                  "common.discoverCollection",
-                  {
-                    defaultValue:
-                      "Discover Collection",
-                  }
-                )}
-
-                <Arrow
-                  $rtl={i18n.dir() === "rtl"}
-                >
-                  <ArrowForwardIcon />
-                </Arrow>
-              </CollectionButton>
-            </ImageWrapper>
-          ) : (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                maxHeight: "600px",
-                maxWidth: "600px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: COLORS.muted,
-                }}
-              />
-            </div>
-          )}
-        </Grid>
-
-        {/* ==================================
-            DESIGN CONTENT
-        ================================== */}
-
-        <Grid
-          item
-          xs={12}
-          md={6}
-          dir={
-            i18n.dir() === "rtl"
-              ? "rtl"
-              : "ltr"
-          }
-        >
-          <Typography
-            align="center"
-            variant="h3"
-            sx={{
-              color: COLORS.ink,
-              mb: 6,
-              fontFamily:
-                "'Playfair Display', serif",
-
-              fontSize: {
-                xs: "2rem",
-                md: "2.5rem",
-              },
-
-              fontWeight: 400,
-
-              lineHeight: 1.15,
-
-              letterSpacing: "-0.025em",
-            }}
-          >
-            {t("designSection.title")}
-          </Typography>
-
-          {principles.map((principle, index) => (
-            <DesignPrinciple key={index}>
-              <PrincipleIcon>
-                {principle.icon}
-              </PrincipleIcon>
-
-              <PrincipleContent>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: COLORS.ink,
-
-                    mb: 0.8,
-
-                    fontSize: {
-                      xs: "0.95rem",
-                      md: "1rem",
-                    },
-
-                    fontWeight: 600,
-
-                    letterSpacing: "0.01em",
-
-                    lineHeight: 1.35,
-                  }}
-                >
-                  {principle.title}
-                </Typography>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: COLORS.muted,
-
-                    fontSize: {
-                      xs: "0.83rem",
-                      md: "0.86rem",
-                    },
-
-                    lineHeight: 1.75,
-                  }}
-                >
-                  {principle.description}
-                </Typography>
-              </PrincipleContent>
-            </DesignPrinciple>
-          ))}
-        </Grid>
-      </DesignGrid>
-    </DesignContainer>
-  );
-};
-
-export default DesignSection;

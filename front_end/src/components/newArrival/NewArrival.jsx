@@ -36,7 +36,9 @@ function NewArrival({
 
   return (
     <Section dir={isArabic ? "rtl" : "ltr"}>
+      
       <Container>
+        
 
         {/* ============================
             HEADER
@@ -51,6 +53,37 @@ function NewArrival({
         {/* ============================
             PRODUCTS
         ============================ */}
+         {/* ============================
+          CUSTOM NAVIGATION
+      ============================ */}
+
+      <NavigationArea>
+
+        <button
+          ref={prevRef}
+          type="button"
+          className="best-sellers-prev"
+          aria-label="Previous products"
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+          }}
+        >
+          <Arrow $direction="prev" />
+        </button>
+
+        <button
+          ref={nextRef}
+          type="button"
+          className="best-sellers-next"
+          aria-label="Next products"
+          onClick={() => {
+            swiperRef.current?.slideNext();
+          }}
+        >
+          <Arrow $direction="next" />
+        </button>
+
+      </NavigationArea>
 
         <SwiperWrapper>
           <Swiper
@@ -294,37 +327,7 @@ function NewArrival({
 
       </Container>
 
-      {/* ============================
-          CUSTOM NAVIGATION
-      ============================ */}
-
-      <NavigationArea>
-
-        <button
-          ref={prevRef}
-          type="button"
-          className="best-sellers-prev"
-          aria-label="Previous products"
-          onClick={() => {
-            swiperRef.current?.slidePrev();
-          }}
-        >
-          <Arrow $direction="prev" />
-        </button>
-
-        <button
-          ref={nextRef}
-          type="button"
-          className="best-sellers-next"
-          aria-label="Next products"
-          onClick={() => {
-            swiperRef.current?.slideNext();
-          }}
-        >
-          <Arrow $direction="next" />
-        </button>
-
-      </NavigationArea>
+     
 
     </Section>
   );
@@ -393,7 +396,7 @@ const NavigationArea = styled.div`
 
   gap: 8px;
 
-  margin-top: 25px;
+  margin-bottom: 20px;
   margin-right: 25px;
 
   direction: ltr;
