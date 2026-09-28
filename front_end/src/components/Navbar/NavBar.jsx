@@ -662,16 +662,14 @@ const Logo = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content:center;
 
-  margin: 0;
  img{
-width:30px;
+width:29px;
+margin:0;
  }
-
   a {
-    display: flex;
-
-    align-items: center;
+   
 
     text-decoration: none;
   }
@@ -719,7 +717,7 @@ width:30px;
     }
 
      img{
-         width:25px;
+         width:24px;
         }
   }
 
