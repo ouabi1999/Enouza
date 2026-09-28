@@ -689,13 +689,13 @@ const BrandLogo = styled.div`
 
     
   &{
-      font-size: 20px;
+      font-size: 24px;
 
       
     }
 
      img{
-         width:21px;
+         width:25px;
         }
   }
 `;
