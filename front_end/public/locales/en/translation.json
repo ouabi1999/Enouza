@@ -251,19 +251,19 @@
   "catlabel": "EXPLORE OUR LIGHTING",
 
   "categories": {
-    "wallLamps": {
+    "wall_lamps": {
       "title": "Wall Lamps",
       "description": "Elegant lighting designed to add depth, warmth, and character to your walls."
     },
-    "pendantLights": {
+    "pendant_lights": {
       "title": "Pendant Lights",
       "description": "Distinctive pieces designed to create a refined focal point above dining tables, kitchen islands, and living spaces."
     },
-    "tableLamps": {
+    "table_lamps": {
       "title": "Table Lamps",
       "description": "Sculptural lighting that brings warmth, atmosphere, and understated elegance to your interior."
     },
-    "ceilingLamps": {
+    "ceiling_lamps": {
       "title": "Ceiling Lamps",
       "description": "Refined overhead lighting created to shape the atmosphere and complete the character of a room."
     }

@@ -1,29 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import {toggleCategory} from  "../../../features/filterSlice"
 
 const CollectionSection = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch()
 
   const collections = [
     {
-      key: "wallLamps",
+      key: "wall_lamps",
       image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790005276/nano-banana-free-nano-pro-6JWakrel8kripcoDnlxNnx_jzugzs.png",
-      link: "/collections?category=wall-lamps",
+      link: "/collections?category=wall_lamps",
     },
     {
-      key: "pendantLights",
+      key: "pendant_lights",
       image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789772276/enouza/products/cf9x7hm6kfetpdhrqusc.png",
-      link: "/collections?category=pendant-lights",
+      link: "/collections?category=pendant_lights",
     },
     {
-      key: "tableLamps",
+      key: "table_lamps",
       image:"https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png",
-      link: "/collections?category=table-lamps",
+      link: "/collections?category=table_lamps",
     },
     /*
     {
-      key: "ceilingLamps",
+      key: "ceiling_lamps",
       image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790548888/ChatGPT_Image_Sep_28_2026_12_39_52_AM_snui6f.png",
       link: "/collections?category=ceiling-lamps",
     },*/
@@ -45,6 +48,7 @@ const CollectionSection = () => {
         {collections.map((collection, index) => (
           <CollectionCard
             href={collection.link}
+            onClick={()=> dispatch(toggleCategory(collection.key))}
             key={collection.key}
           >
             <ImageWrapper>
