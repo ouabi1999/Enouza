@@ -220,10 +220,10 @@ function NavBar({ outlet, setSearchValue, value }) {
           {/* LOGO */}
 
             <Link to="/">
-          <Logo>
-              <img src="../enouza_logo_black.png" alt="logo" />
-              <span>NOUZA</span>
-          </Logo>
+            <BrandLogo>
+            <img src="../enouza_logo_black.png" alt="logo" style={{width:"29px"}}/>
+            <span > NOUZA</span>
+            </BrandLogo>
             </Link>
 
 
@@ -657,7 +657,23 @@ const ChildContainer = styled.div`
 // ============================================================
 // LOGO
 // ============================================================
+const BrandLogo = styled.div`
+  color: #20201d;
+   display:flex;
+   align-items:center;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
+  font-size: 27px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.17em;
+
+  line-height: 1;
+`;
 const Logo = styled.div`
 
   display: flex;

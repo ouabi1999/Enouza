@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {toggleCategory} from  "../../../features/filterSlice"
+import { Link } from "react-router-dom";
 
 const CollectionSection = () => {
   const { t } = useTranslation();
@@ -46,9 +47,11 @@ const CollectionSection = () => {
 
       <CollectionGrid>
         {collections.map((collection, index) => (
-          <CollectionCard
-            href={collection.link}
-            onClick={()=> dispatch(toggleCategory(collection.key))}
+          <Link
+            to={collection.link}
+            onClick={()=> dispatch(toggleCategory(collection.key))
+            
+            }
             key={collection.key}
           >
             <ImageWrapper>
@@ -81,7 +84,7 @@ const CollectionSection = () => {
                 </Explore>
               </CardContent>
             </ImageWrapper>
-          </CollectionCard>
+          </Link>
         ))}
       </CollectionGrid>
     </Section>
@@ -132,7 +135,7 @@ const CollectionGrid = styled.div`
   }
 `;
 
-const CollectionCard = styled.a`
+const CollectionCard = styled.button`
   display: block;
   color: inherit;
   text-decoration: none;

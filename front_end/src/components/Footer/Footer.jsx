@@ -49,7 +49,7 @@ const Footer = () => {
 
           <BrandSection >
             <BrandLogo  dir="ltr">
-            <img src="../enouza_logo_black.png" alt="logo" style={{width:"30px"}}/>
+            <img src="../enouza_logo_black.png" alt="logo" style={{width:"29px"}}/>
             <span > NOUZA</span>
             </BrandLogo>
 
