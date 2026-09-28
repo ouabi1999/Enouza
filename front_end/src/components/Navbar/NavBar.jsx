@@ -221,7 +221,7 @@ function NavBar({ outlet, setSearchValue, value }) {
 
             <Link to="/">
             <BrandLogo>
-            <img src="../enouza_logo_black.png" alt="logo" style={{width:"29px"}}/>
+            <img src="../enouza_logo_black.png" alt="logo"/>
             <span > NOUZA</span>
             </BrandLogo>
             </Link>
@@ -673,49 +673,10 @@ const BrandLogo = styled.div`
   letter-spacing: 0.17em;
 
   line-height: 1;
-`;
-const Logo = styled.div`
-
-  display: flex;
-  align-items: center;
-  justify-content:center;
-
- img{
-width:29px;
-margin:0;
- }
-  a {
-   
-
-    text-decoration: none;
+  img{
+    width:29px;
   }
 
-
-  span {
-    margin: 0 !important;
-
-    color: ${COLORS.ink} !important;
-
-    font-family:
-      "Playfair Display",
-      "Cormorant Garamond",
-      Georgia,
-      serif !important;
-
-    font-size: 30px !important;
-
-    font-weight: 900 !important;
-
-    line-height: 1 !important;
-
-    letter-spacing: 0.18em !important;
-
-    transition:
-      color 0.25s ease;
-  }
-
-
-  
     @media (hover: hover) and (pointer: fine) {
   span:hover {
         color: ${COLORS.gold} !important;
@@ -726,20 +687,19 @@ margin:0;
 
   @media only screen and (max-width: 650px) {
 
-    span {
-      font-size: 25px !important;
+    
+  &{
+      font-size: 20px;
 
-      letter-spacing: 0.15em !important;
+      
     }
 
      img{
-         width:24px;
+         width:21px;
         }
   }
-
-
- 
 `;
+
 
 
 // ============================================================
