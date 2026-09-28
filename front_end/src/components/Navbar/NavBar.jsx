@@ -659,10 +659,8 @@ const ChildContainer = styled.div`
 // ============================================================
 
 const Logo = styled.div`
-  flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
 
   margin: 0;
