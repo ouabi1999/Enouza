@@ -219,12 +219,12 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           {/* LOGO */}
 
-          <Logo>
             <Link to="/">
+          <Logo>
               <img src="../enouza_logo_black.png" alt="logo" />
               <span>NOUZA</span>
-            </Link>
           </Logo>
+            </Link>
 
 
           {/* DESKTOP SEARCH */}
@@ -719,8 +719,8 @@ width:30px;
     }
 
      img{
-width:25px;
- }
+         width:25px;
+        }
   }
 
 

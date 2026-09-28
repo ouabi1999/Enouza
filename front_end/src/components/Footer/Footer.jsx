@@ -12,7 +12,7 @@ const Footer = () => {
   const isRTL = i18n.dir() === "rtl";
 
   return (
-    <FooterContainer >
+    <FooterContainer  >
       {/* =====================================================
           NEWSLETTER
       ===================================================== */}
@@ -47,10 +47,10 @@ const Footer = () => {
         <FooterGrid>
           {/* BRAND */}
 
-          <BrandSection>
-            <BrandLogo>
+          <BrandSection >
+            <BrandLogo  dir="ltr">
             <img src="../enouza_logo_black.png" alt="logo" style={{width:"30px"}}/>
-            <span> NOUZA</span>
+            <span > NOUZA</span>
             </BrandLogo>
 
             <BrandDescription>

@@ -158,7 +158,7 @@ const Container = styled.form`
 
   margin-top: 0;
   .Toastify__toast-container {
-  z-index: 300 !important;
+  z-index: 1 !important;
 }
 `;
 
