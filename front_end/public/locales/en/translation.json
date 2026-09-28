@@ -90,9 +90,9 @@
 
  
   "heroSection": {
-    "title": "Light, Designed\nto Belong.",
+    "title": "Light, Made to Belong",
     "description": "Thoughtfully selected lighting that brings depth, warmth, and character to the spaces you call home.",
-    "ctaLabel": "Discover Collection",
+    "ctaLabel": "Explore the Collection",
     "detailDesign": "Where Detail Meets Design",
     "stats": {
       "rated": {
@@ -137,21 +137,8 @@
 
   "matricsSection": {
   "why_us": "THE ENOUZA DIFFERENCE",
-
-  "curated": "CURATED",
-  "curated_description": "Thoughtfully selected for considered spaces.",
-
-  "refined": "REFINED",
-  "refined_description": "Elegant forms, refined to the essential.",
-
-  "atmospheric": "ATMOSPHERIC",
-  "atmospheric_description": "Light designed to shape the mood.",
-
-  "distinctive": "DISTINCTIVE",
-  "distinctive_description": "Pieces with character beyond the ordinary.",
-
-  "title": "Every piece, made properly.",
-  "description": "Every ENOUZA piece is thoughtfully designed, handcrafted, and made to order."
+  "title": "Every piece, thoughtfully chosen.",
+  "description": "Every ENOUZA piece is selected for its form, materials, and ability to bring warmth and character to the spaces we live in."
 },
   "inspirationPage": {
   "hero": {
@@ -227,28 +214,28 @@
   }
 },
   
-  "designSection": {
-    "title": "Our Design Philosophy.",
-      "catlabel": "DISCOVER OUR BRAND",
+"designSection": {
+  "title": "The Art of Light",
+  "catlabel": "THE ENOUZA APPROACH",
 
-    "principles": {
-      "minimalism": {
-        "title": "Thoughtful Simplicity",
-        "description": "We believe in the power of thoughtful simplicity. Every line, curve, and proportion has a purpose, creating refined lighting that complements a space without overwhelming it."
-      },
-      "materials": {
-        "title": "Material Integrity",
-        "description": "We look for considered materials and finishes that bring quality, tactility, and elegance to every piece, selecting designs where quality and beauty work naturally together."
-      },
-      "ambient": {
-        "title": "Ambient Alchemy",
-        "description": "Light is more than illumination—it shapes atmosphere. Our designs bring warmth, depth, and character to spaces, transforming everyday surroundings into something more considered."
-      }
+  "principles": {
+    "minimalism": {
+      "title": "Quietly Considered",
+      "description": "We are drawn to forms that do more with less. Clean lines, balanced proportions, and restrained silhouettes allow each piece to belong naturally within its surroundings."
+    },
+    "materials": {
+      "title": "Chosen for Character",
+      "description": "Marble, glass, metal, and fabric are selected for the character they bring to a space. We look for finishes that feel as considered to the touch as they do to the eye."
+    },
+    "ambient": {
+      "title": "Light With Atmosphere",
+      "description": "We see light as part of the interior, not simply a source of illumination. The right glow can soften a room, create depth, and change how a space feels."
     }
-  },
+  }
+},
   "collectionSection": {
   "title": "Discover Our Collection.",
-  "catlabel": "EXPLORE OUR LIGHTING",
+  "catlabel": "EXPLORE",
 
   "categories": {
     "wall_lamps": {

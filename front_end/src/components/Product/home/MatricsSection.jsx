@@ -54,7 +54,7 @@ const MetricsSection = () => {
       {/* =========================
           WHY CHOOSE ENOUZA
       ========================= */}
-
+{/*
       <SectionHeader
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
@@ -100,9 +100,7 @@ const MetricsSection = () => {
         <VideoOverlay />
 
         <VideoContent>
-          <VideoTitle>
-            {t("matricsSection.title")}
-          </VideoTitle>
+          
 
           <VideoDescription>
             {t("matricsSection.description")}
@@ -322,7 +320,7 @@ const VideoDescription = styled.p`
 
   font-family: Arial, sans-serif;
 
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 1.5vw, 2rem);
 
   line-height: 1.7;
 

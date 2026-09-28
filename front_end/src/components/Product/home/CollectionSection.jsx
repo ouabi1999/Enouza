@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {toggleCategory} from  "../../../features/filterSlice"
 import { Link } from "react-router-dom";
-
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 const CollectionSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
 
   const collections = [
@@ -36,13 +36,13 @@ const CollectionSection = () => {
   return (
     <Section>
       <Header>
+        <bdi>
         <Eyebrow>
-          {t("collectionSection.catlabel")}
-        </Eyebrow>
-
-        <Title>
           {t("collectionSection.title")}
-        </Title>
+        </Eyebrow>
+        </bdi>
+
+      
       </Header>
 
       <CollectionGrid>
@@ -78,10 +78,17 @@ const CollectionSection = () => {
 
              
 
+                  <bdi>
                 <Explore>
                   {t("collectionSection.catlabel")}
-                  <Arrow>↗</Arrow>
+                  <TrendingFlatIcon
+  className="arrow-icon"
+  style={{
+    transform: i18n.language === "ar" ? "rotate(180deg)" : "none",
+  }}
+/>
                 </Explore>
+                  </bdi>
               </CardContent>
             </ImageWrapper>
           </Link>
@@ -107,7 +114,7 @@ const Header = styled.div`
 const Eyebrow = styled.div`
   color: #9b815f;
   font-family: Arial, sans-serif;
-  font-size: 10px;
+  font-size: clamp(35px, 2vw, 50px);
   letter-spacing: 3px;
   margin-bottom: 18px;
 `;
@@ -116,7 +123,7 @@ const Title = styled.h2`
   margin: 0;
   color: #171614;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(44px, 5vw, 70px);
+  font-size: clamp(40px, 4vw, 50px);
   font-weight: 500;
   line-height: 1;
 `;
@@ -216,6 +223,7 @@ const Explore = styled.span`
   align-items: center;
   gap: 9px;
   padding-bottom: 6px;
+  margin-top:15px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.65);
 
@@ -225,8 +233,8 @@ const Explore = styled.span`
   text-transform: uppercase;
 
   transition: transform 300ms ease;
+  .arrow-icon{
+  font-size: 15px;
+  }
 `;
 
-const Arrow = styled.span`
-  font-size: 15px;
-`;

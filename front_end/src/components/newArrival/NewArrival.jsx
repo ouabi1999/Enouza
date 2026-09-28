@@ -36,9 +36,7 @@ function NewArrival({
 
   return (
     <Section dir={isArabic ? "rtl" : "ltr"}>
-      
       <Container>
-        
 
         {/* ============================
             HEADER
@@ -51,91 +49,98 @@ function NewArrival({
         </Header>
 
         {/* ============================
+            NAVIGATION
+        ============================ */}
+
+        <NavigationArea>
+          <button
+            ref={prevRef}
+            type="button"
+            className="best-sellers-prev"
+            aria-label="Previous products"
+            onClick={() => {
+              swiperRef.current?.slidePrev();
+            }}
+          >
+            <Arrow $direction="prev" />
+          </button>
+
+          <button
+            ref={nextRef}
+            type="button"
+            className="best-sellers-next"
+            aria-label="Next products"
+            onClick={() => {
+              swiperRef.current?.slideNext();
+            }}
+          >
+            <Arrow $direction="next" />
+          </button>
+        </NavigationArea>
+
+        {/* ============================
             PRODUCTS
         ============================ */}
-         {/* ============================
-          CUSTOM NAVIGATION
-      ============================ */}
-
-      <NavigationArea>
-
-        <button
-          ref={prevRef}
-          type="button"
-          className="best-sellers-prev"
-          aria-label="Previous products"
-          onClick={() => {
-            swiperRef.current?.slidePrev();
-          }}
-        >
-          <Arrow $direction="prev" />
-        </button>
-
-        <button
-          ref={nextRef}
-          type="button"
-          className="best-sellers-next"
-          aria-label="Next products"
-          onClick={() => {
-            swiperRef.current?.slideNext();
-          }}
-        >
-          <Arrow $direction="next" />
-        </button>
-
-      </NavigationArea>
 
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
-            loop={true}
-
+            loop={products.length > 4}
             autoplay={
               isAuto
                 ? {
-                    delay: 2500,
+                    delay: 3000,
                     disableOnInteraction: false,
                   }
                 : false
             }
-
             modules={[Autoplay]}
-
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-
-            slidesPerView={1.35}
+            slidesPerView={1.25}
             spaceBetween={16}
-
             breakpoints={{
+              480: {
+                slidesPerView: 1.6,
+                spaceBetween: 18,
+              },
+
               600: {
                 slidesPerView: 2,
-                spaceBetween: 18,
+                spaceBetween: 20,
               },
 
               768: {
                 slidesPerView: 3,
-                spaceBetween: 20,
+                spaceBetween: 22,
               },
 
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 22,
+                spaceBetween: 24,
               },
 
               1440: {
                 slidesPerView: 4,
-                spaceBetween: 24,
+                spaceBetween: 28,
               },
             }}
           >
             {products.length > 0 ? (
-              products.map((item) => {
+              products.map((item, index) => {
                 const mainSku = item.skuInfo?.[0];
 
                 const image =
                   item.multimediaInfo?.main_image;
+
+                const imageUrls =
+                  item.multimediaInfo?.image_urls || [];
+
+                const secondaryImage =
+                  imageUrls.find(
+                    (img) => img && img !== image
+                  ) || image;
 
                 const productName =
                   item.name?.[i18n.language] ||
@@ -195,27 +200,48 @@ function NewArrival({
                       >
                         <ImageWrapper>
 
+                          {/* PRIMARY IMAGE */}
+
                           <ProductImage
                             src={optimizeCloudinaryImage(
                               image,
-                              700
+                              800
                             )}
                             alt={productName}
                             loading="lazy"
                             decoding="async"
-                            width="700"
-                            height="854"
+                            width="800"
+                            height="976"
+                            $secondary={false}
                           />
+
+                          {/* SECONDARY IMAGE */}
+
+                          {secondaryImage && (
+                            <ProductImage
+                              src={optimizeCloudinaryImage(
+                                secondaryImage,
+                                800
+                              )}
+                              alt={`${productName} alternate view`}
+                              loading="lazy"
+                              decoding="async"
+                              width="800"
+                              height="976"
+                              $secondary
+                            />
+                          )}
+
+                          {/* ============================
+                              TOP LABELS
+                          ============================ */}
 
                           <ProductLabels
                             $isArabic={isArabic}
                           >
                             {hasDiscount && (
                               <SaveLabel>
-                                {t("productInfo.save")}{" "}
-                                <bdi>
-                                  {discountPercentage}%
-                                </bdi>
+                                -{discountPercentage}%
                               </SaveLabel>
                             )}
 
@@ -228,11 +254,24 @@ function NewArrival({
                             )}
                           </ProductLabels>
 
+                         
+
+                          {/* ============================
+                              PRODUCT INDEX
+                          ============================ */}
+
+                          <ProductIndex>
+                            {String(index + 1).padStart(
+                              2,
+                              "0"
+                            )}
+                          </ProductIndex>
+
                         </ImageWrapper>
                       </ProductLink>
 
                       {/* ============================
-                          INFO
+                          CENTERED PRODUCT INFO
                       ============================ */}
 
                       <ProductInfo>
@@ -241,43 +280,35 @@ function NewArrival({
                           {productName}
                         </ProductName>
 
-                        <BottomRow>
+                        <PriceGroup>
+                          <CurrentPrice>
+                            <CurrencyPrice
+                              price={sellingPrice}
+                            />
+                          </CurrentPrice>
 
-                          <PriceGroup>
-
-                            <CurrentPrice>
+                          {hasDiscount && (
+                            <ComparePrice>
                               <CurrencyPrice
-                                price={sellingPrice}
+                                price={comparePrice}
                               />
-                            </CurrentPrice>
-
-                            {hasDiscount && (
-                              <ComparePrice>
-                                <CurrencyPrice
-                                  price={comparePrice}
-                                />
-                              </ComparePrice>
-                            )}
-
-                          </PriceGroup>
-
-                          {avgRating && (
-                            <Rating>
-
-                              <StarIcon />
-
-                              <span>
-                                {avgRating}
-                              </span>
-
-                              <ReviewCount>
-                                {ratings.length}
-                              </ReviewCount>
-
-                            </Rating>
+                            </ComparePrice>
                           )}
+                        </PriceGroup>
+                       {/*  {avgRating && (
+                          <Rating>
+                            <StarIcon />
 
-                        </BottomRow>
+                            <span>
+                              {avgRating}
+                            </span>
+
+                            <ReviewCount>
+                              {ratings.length}
+                            </ReviewCount>
+                          </Rating>
+                        )}
+                        */}
 
                         {hasFreeShipping && (
                           <Shipping>
@@ -297,27 +328,20 @@ function NewArrival({
               <>
                 {[1, 2, 3, 4, 5].map((item) => (
                   <SwiperSlide key={item}>
-
                     <SkeletonCard>
 
                       <SkeletonImage />
 
                       <SkeletonInfo>
-
                         <SkeletonName />
 
                         <SkeletonBottom>
-
                           <SkeletonPrice />
-
                           <SkeletonRating />
-
                         </SkeletonBottom>
-
                       </SkeletonInfo>
 
                     </SkeletonCard>
-
                   </SwiperSlide>
                 ))}
               </>
@@ -326,9 +350,6 @@ function NewArrival({
         </SwiperWrapper>
 
       </Container>
-
-     
-
     </Section>
   );
 }
@@ -343,7 +364,7 @@ export default NewArrival;
 const Section = styled.section`
   width: 100%;
   background: #f7f5f0;
-  padding: 90px 0;
+  padding: 96px 0 105px;
   overflow: hidden;
 `;
 
@@ -355,6 +376,10 @@ const Section = styled.section`
 const Container = styled.div`
   width: min(1440px, calc(100% - 64px));
   margin: 0 auto;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 32px);
+  }
 `;
 
 
@@ -367,7 +392,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 38px;
+  margin-bottom: 34px;
 `;
 
 
@@ -376,12 +401,20 @@ const Title = styled.h2`
 
   color: #25221f;
 
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 2vw, 3.2rem);
-  font-weight: 400;
-  line-height: 1;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  letter-spacing: -0.04em;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+
+  text-align: center;
 `;
 
 
@@ -397,7 +430,6 @@ const NavigationArea = styled.div`
   gap: 8px;
 
   margin-bottom: 20px;
-  margin-right: 25px;
 
   direction: ltr;
 
@@ -409,7 +441,8 @@ const NavigationArea = styled.div`
 
     padding: 0;
 
-    border: 1px solid #d7d1c8;
+    border: 1px solid #d4cec5;
+
     border-radius: 50%;
 
     background: transparent;
@@ -423,14 +456,21 @@ const NavigationArea = styled.div`
     color: #25221f;
 
     transition:
-      background 0.25s ease,
-      border-color 0.25s ease,
-      color 0.25s ease;
+      background 0.35s ease,
+      border-color 0.35s ease,
+      color 0.35s ease,
+      transform 0.35s ease;
 
     &:hover {
       background: #25221f;
       border-color: #25221f;
       color: #ffffff;
+
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
@@ -497,6 +537,7 @@ const SwiperWrapper = styled.div`
 
 const ProductCard = styled.article`
   width: 100%;
+  position: relative;
 `;
 
 
@@ -508,19 +549,32 @@ const ProductLink = styled(Link)`
 `;
 
 
+/* =========================================================
+   IMAGE
+========================================================= */
+
 const ImageWrapper = styled.div`
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 0.82;
 
   overflow: hidden;
 
   background: #ebe7df;
+
+  isolation: isolate;
+
+  cursor: pointer;
 `;
 
 
 const ProductImage = styled.img`
+  position: absolute;
+
+  inset: 0;
+
   display: block;
 
   width: 100%;
@@ -529,11 +583,36 @@ const ProductImage = styled.img`
   object-fit: cover;
 
   transition:
-    transform 0.7s
-    cubic-bezier(0.2, 0.65, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  opacity: ${({ $secondary }) =>
+    $secondary ? 0 : 1};
+
+  transform: scale(1);
 
   ${ProductCard}:hover & {
     transform: scale(1.025);
+
+    ${({ $secondary }) =>
+      $secondary
+        ? `
+          opacity: 1;
+        `
+        : `
+          opacity: 0;
+        `}
+  }
+
+  @media (max-width: 768px) {
+    transition: none;
+
+    ${ProductCard}:hover & {
+      transform: none;
+
+      opacity: ${({ $secondary }) =>
+        $secondary ? 0 : 1};
+    }
   }
 `;
 
@@ -543,65 +622,126 @@ const ProductImage = styled.img`
 ========================================================= */
 
 const ProductLabels = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 20px;
-
   position: absolute;
 
-  top: 12px;
+  top: 15px;
 
   ${({ $isArabic }) =>
     $isArabic
       ? `
-          right: 12px;
-        `
+        right: 15px;
+      `
       : `
-          left: 12px;
-        `}
+        left: 15px;
+      `}
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  z-index: 4;
+
+  pointer-events: none;
 `;
 
 
 const Label = styled.span`
-  padding: 5px 8px;
+  display: inline-flex;
 
-  background: #000000;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding: 0 10px;
+
+  background: rgba(37, 34, 31, 0.94);
 
   color: #ffffff;
 
-  border-radius: 4px;
-
   font-family: Arial, sans-serif;
 
-  font-size: 0.65rem;
+  font-size: 0.58rem;
 
   font-weight: 500;
 
-  letter-spacing: 0.04em;
+  letter-spacing: 0.11em;
+
+  line-height: 1;
 
   text-transform: uppercase;
+
+  white-space: nowrap;
 `;
 
 
 const SaveLabel = styled.span`
-  padding: 5px 8px;
+  display: inline-flex;
 
-  background: #af956e;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 4px;
+  min-height: 25px;
+
+  padding: 0 10px;
+
+  background: #ad9270;
 
   color: #ffffff;
 
   font-family: Arial, sans-serif;
 
-  font-size: 0.65rem;
+  font-size: 0.58rem;
 
   font-weight: 500;
 
-  letter-spacing: 0.04em;
+  letter-spacing: 0.09em;
 
-  text-transform: uppercase;
+  line-height: 1;
+
+  white-space: nowrap;
+`;
+
+
+
+
+/* =========================================================
+   PRODUCT INDEX
+========================================================= */
+
+const ProductIndex = styled.span`
+  position: absolute;
+
+  right: 15px;
+  bottom: 14px;
+
+  z-index: 3;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.55rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.12em;
+
+  mix-blend-mode: difference;
+
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+
+  ${ProductCard}:hover & {
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    opacity: 0.8;
+  }
 `;
 
 
@@ -610,65 +750,85 @@ const SaveLabel = styled.span`
 ========================================================= */
 
 const ProductInfo = styled.div`
-  padding-top: 17px;
+  padding-top: 20px;
+
+  text-align: center;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 `;
 
 
 const ProductName = styled.h3`
   margin: 0;
 
+  max-width: 95%;
+
   color: #292622;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    sans-serif;
 
-  font-size: 0.84rem;
+  font-size: 0.82rem;
 
   font-weight: 500;
 
-  line-height: 1.45;
+  line-height: 1.5;
+
+  letter-spacing: 0.005em;
+
+  text-align: center;
 `;
 
 
-const BottomRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-
-  margin-top: 9px;
-`;
-
+/* =========================================================
+   PRICE
+========================================================= */
 
 const PriceGroup = styled.div`
   display: flex;
+
   align-items: baseline;
 
-  gap: 8px;
+  justify-content: center;
 
-  min-width: 0;
+  gap: 9px;
+
+  margin-top: 9px;
 `;
 
 
 const CurrentPrice = styled.span`
   color: #25221f;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    sans-serif;
 
-  font-size: 0.86rem;
+  font-size: 0.82rem;
 
   font-weight: 600;
+
+  letter-spacing: 0.01em;
 
   white-space: nowrap;
 `;
 
 
 const ComparePrice = styled.span`
-  color: #a49c93;
+  color: #aaa39b;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    sans-serif;
 
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+
+  font-weight: 400;
 
   text-decoration: line-through;
 
@@ -676,25 +836,31 @@ const ComparePrice = styled.span`
 `;
 
 
+/* =========================================================
+   RATING
+========================================================= */
+
 const Rating = styled.div`
   display: flex;
+
   align-items: center;
+  justify-content: center;
 
-  gap: 3px;
+  gap: 4px;
 
-  flex-shrink: 0;
+  margin-top: 9px;
 
   color: #777067;
 
   font-family: Arial, sans-serif;
 
-  font-size: 0.65rem;
+  font-size: 0.62rem;
 
   svg {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
 
-    color: #9b8568;
+    color: #a58c68;
   }
 `;
 
@@ -712,16 +878,26 @@ const ReviewCount = styled.span`
 `;
 
 
+/* =========================================================
+   SHIPPING
+========================================================= */
+
 const Shipping = styled.div`
-  margin-top: 8px;
+  margin-top: 7px;
 
-  color: #8b8177;
+  color: #918980;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    sans-serif;
 
-  font-size: 0.61rem;
+  font-size: 0.59rem;
 
-  letter-spacing: 0.02em;
+  font-weight: 400;
+
+  letter-spacing: 0.045em;
+
+  text-transform: uppercase;
 `;
 
 
@@ -741,7 +917,7 @@ const SkeletonImage = styled.div`
 
   background: #e9e5de;
 
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: pulse 1.7s ease-in-out infinite;
 
   @keyframes pulse {
     0% {
@@ -760,13 +936,20 @@ const SkeletonImage = styled.div`
 
 
 const SkeletonInfo = styled.div`
-  padding-top: 17px;
+  padding-top: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 `;
 
 
 const SkeletonName = styled.div`
-  width: 65%;
-  height: 11px;
+  width: 62%;
+
+  height: 10px;
 
   background: #e2ddd5;
 `;
@@ -774,23 +957,30 @@ const SkeletonName = styled.div`
 
 const SkeletonBottom = styled.div`
   display: flex;
-  justify-content: space-between;
 
-  margin-top: 12px;
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 13px;
 `;
 
 
 const SkeletonPrice = styled.div`
   width: 65px;
-  height: 10px;
+
+  height: 9px;
 
   background: #e2ddd5;
 `;
 
 
 const SkeletonRating = styled.div`
-  width: 40px;
-  height: 10px;
+  width: 38px;
+
+  height: 9px;
 
   background: #e2ddd5;
 `;

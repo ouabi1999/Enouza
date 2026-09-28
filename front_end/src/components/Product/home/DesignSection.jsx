@@ -443,18 +443,17 @@ const Arrow = styled.span`
 `;
 
 const CollectionButton = styled(Link)`
-  position: absolute;
-
-
-    left: 30%;
-
-  background: #fff5e4b2;
+   position: absolute;
+   right: 25%;
+   left:25%;
+   bottom: 20px;
+   width:fit-content;
+  background: #fff5e4c2;
 
   padding: 15px 20px;
 
-  bottom: 20px;
 
-  display: inline-flex;
+  display:flex;
 
   align-items: center;
 

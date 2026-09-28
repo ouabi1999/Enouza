@@ -91,10 +91,10 @@
   },
   
   "heroSection": {
-    "title": "Luz, diseñada\npara pertenecer.",
+    "title": "Luz hecha para encajar",
     "description": "Iluminación cuidadosamente seleccionada que aporta profundidad, calidez y carácter a los espacios que llamas hogar.",
-    "ctaLabel": "Descubre la Colección",
     "detailDesign": "Donde el Detalle se Une al Diseño",
+    "ctaLabel": "Explora la colección",
     "stats": {
       "rated": {
         "value": "4.9★",
@@ -135,21 +135,8 @@
 
 "matricsSection": {
   "why_us": "LA DIFERENCIA ENOUZA",
-
-  "curated": "SELECCIONADO",
-  "curated_description": "Elegido cuidadosamente para espacios con intención.",
-
-  "refined": "REFINADO",
-  "refined_description": "Formas elegantes, depuradas hasta lo esencial.",
-
-  "atmospheric": "ATMOSFÉRICO",
-  "atmospheric_description": "Luz diseñada para transformar el ambiente.",
-
-  "distinctive": "DISTINTIVO",
-  "distinctive_description": "Piezas con un carácter más allá de lo convencional.",
-
-  "title": "Cada pieza, hecha con intención.",
-  "description": "Cada pieza ENOUZA está cuidadosamente diseñada, elaborada artesanalmente y hecha bajo pedido."
+  "title": "Cada pieza, cuidadosamente seleccionada.",
+  "description": "Cada pieza de ENOUZA se selecciona por su diseño, sus materiales y su capacidad para aportar calidez y carácter a los espacios que habitamos."
 },
 "inspirationPage": {
   "hero": {
@@ -225,57 +212,60 @@
   }
 },
   
-  "designSection": {
-    "title": "Nuestra Filosofía de Diseño.",
-    "catlabel": "DESCUBRE NUESTRA MARCA",
+ "designSection": {
+  "title": "El arte de la luz",
+  "catlabel": "EL ENFOQUE DE ENOUZA",
 
-    "principles": {
-      "minimalism": {
-        "title": "Simplicidad Intencionada",
-        "description": "Creemos en el poder de la simplicidad intencionada. Cada línea, curva y proporción tiene un propósito, creando una iluminación refinada que complementa el espacio sin dominarlo."
-      },
-      "materials": {
-        "title": "Integridad de los Materiales",
-        "description": "Buscamos materiales y acabados cuidadosamente seleccionados que aporten calidad, tactilidad y elegancia a cada pieza, eligiendo diseños donde la calidad y la belleza se integran de forma natural."
-      },
-      "ambient": {
-        "title": "Alquimia de la Atmósfera",
-        "description": "La luz es más que iluminación: define la atmósfera. Nuestros diseños aportan calidez, profundidad y carácter a los espacios, transformando los entornos cotidianos en algo más especial."
-      }
+  "principles": {
+    "minimalism": {
+      "title": "Simplicidad con intención",
+      "description": "Nos atraen las formas que logran más con menos. Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
+    },
+    "materials": {
+      "title": "Materiales con carácter",
+      "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter que aportan a un espacio. Buscamos acabados tan cuidados al tacto como a la vista."
+    },
+    "ambient": {
+      "title": "Luz que crea atmósfera",
+      "description": "Entendemos la luz como parte del interior, no simplemente como una fuente de iluminación. La luz adecuada puede suavizar un espacio, crear profundidad y transformar cómo se siente."
     }
-  },
-
+  }
+},
   "collectionSection": {
-  "title": "اكتشف مجموعتنا.",
-  "catlabel": "اكتشف مجموعتنا من الإضاءة",
+  "title": "Descubre nuestra colección.",
+  "catlabel": "EXPLORA",
 
   "categories": {
     "wall_lamps": {
-      "title": "مصابيح الجدار",
-      "description": "إضاءة أنيقة صُممت لتضيف العمق والدفء والشخصية إلى جدران منزلك."
+      "title": "Lámparas de Pared",
+      "description": "Iluminación elegante diseñada para aportar profundidad, calidez y carácter a tus paredes."
     },
+
     "pendant_lights": {
-      "title": "المصابيح المعلّقة",
-      "description": "قطع مميزة صُممت لتكون نقطة محورية راقية فوق طاولات الطعام وجزر المطبخ ومساحات المعيشة."
+      "title": "Lámparas Colgantes",
+      "description": "Piezas distintivas diseñadas para crear un punto focal refinado sobre mesas de comedor, islas de cocina y espacios de estar."
     },
+
     "table_lamps": {
-      "title": "مصابيح الطاولة",
-      "description": "إضاءة ذات طابع فني تضيف الدفء والأجواء والأناقة الهادئة إلى مساحتك."
+      "title": "Lámparas de Mesa",
+      "description": "Iluminación escultórica que aporta calidez, ambiente y una elegancia sutil a tu interior."
     },
+
     "ceiling_lamps": {
-      "title": "مصابيح السقف",
-      "description": "إضاءة راقية من الأعلى صُممت لتشكّل أجواء الغرفة وتكمل طابعها."
+      "title": "Lámparas de Techo",
+      "description": "Iluminación refinada diseñada para crear atmósfera y completar el carácter de una estancia."
     }
   }
 },
 
 "customersFeedback": {
   "eyebrow": "LA EXPERIENCIA ENOUZA",
-  "title": "Elegido por hogares de todo el mundo.",
+  "title": "Elegida por hogares de todo el mundo.",
   "description": "Hogares reales. Experiencias reales.",
-  "ratingText": "Basado en opiniones de clientes",
+  "ratingText": "Basado en las opiniones de nuestros clientes",
   "verifiedPurchase": "Compra verificada"
 },
+
 "filterPage":{
    "clearAll": "Limpiar todo",
     "applyFilters": "Aplicar filtros",
