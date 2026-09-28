@@ -186,7 +186,7 @@ const DesignSection = () => {
                     : "ltr"
                 }
                 as={Link}
-                to="/collections"
+                to="/about-us"
               >
                 {t(
                   "designSection.catlabel",

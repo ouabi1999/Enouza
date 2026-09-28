@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import SEO from "../components/SEO/SEO";
@@ -7,7 +7,12 @@ const AboutUs = () => {
   const { t, i18n } = useTranslation("aboutus", {
     returnObjects: true,
   });
-
+ useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, []);
   return (
     <Container
       className="about-us"

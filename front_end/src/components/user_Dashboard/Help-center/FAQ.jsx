@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -13,7 +13,7 @@ function FAQ() {
   const [activeShipping, setActiveShipping] = useState(null);
   const [activeReturn, setActiveReturn] = useState(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
