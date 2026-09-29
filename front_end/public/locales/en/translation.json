@@ -560,6 +560,7 @@
    "checkout": {
     "loggedInContinue": "Your account is ready. Continue to enter your billing details."
   },
+
 "aboutus": {
   "seo": {
     "title": "About Enouza | Refined Lighting & Interior Design",
@@ -636,6 +637,7 @@
     "cta": "Explore the Collection"
   }
 },
+
   "common": {
     "phoneNumber": "Phone Number",
     "selectShippingMethod": "Select Shipping Method",

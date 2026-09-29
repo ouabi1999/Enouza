@@ -270,6 +270,90 @@
   }
 },
 
+"aboutus": {
+  "seo": {
+    "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
+    "description": "Descubre Enouza, una marca de iluminación cuidadosamente seleccionada que reúne piezas refinadas y distintivas para interiores con carácter."
+  },
+
+  "hero": {
+    "eyebrow": "DESCUBRE ENOUZA",
+    "title": "Luz que encuentra su lugar.",
+    "description": "Iluminación refinada para espacios cálidos y cuidadosamente concebidos."
+  },
+
+  "story": {
+    "eyebrow": "NUESTRA HISTORIA",
+    "title": "Iluminación con sentido de lugar.",
+    "lead": "Creemos que la iluminación es mucho más que iluminar.",
+    "text": "Da forma a la atmósfera de una estancia, dirige la atención hacia los detalles que importan y transforma la manera en que sentimos un espacio.",
+    "text2": "Enouza nació de esta idea: descubrir y reunir piezas de iluminación que se sientan cuidadosamente elegidas, distintivas y naturalmente integradas en su entorno."
+  },
+
+  "statement": {
+    "title": "Creemos que la luz adecuada lo cambia todo.",
+    "description": "Una luz suave puede aportar calidez a una estancia. Una forma escultórica puede convertirse en el punto focal. Y la pieza adecuada puede hacer que un espacio se sienta, sencillamente, más tuyo."
+  },
+
+  "approach": {
+    "eyebrow": "EL ENFOQUE DE ENOUZA",
+    "title": "Menos, pero mejor elegido.",
+
+    "curated": {
+      "title": "Seleccionado",
+      "description": "Piezas cuidadosamente elegidas para espacios bien concebidos."
+    },
+
+    "refined": {
+      "title": "Refinado",
+      "description": "Formas elegantes depuradas hasta lo esencial."
+    },
+
+    "atmospheric": {
+      "title": "Atmosférico",
+      "description": "Luz diseñada para crear y transformar el ambiente."
+    },
+
+    "distinctive": {
+      "title": "Distintivo",
+      "description": "Piezas con un carácter que va más allá de lo convencional."
+    }
+  },
+
+  "selection": {
+    "eyebrow": "LO QUE GUÍA NUESTRA SELECCIÓN",
+    "title": "Elegidas por algo más que su apariencia.",
+
+    "form": {
+      "title": "Forma",
+      "description": "Proporciones equilibradas y siluetas distintivas que se integran de forma natural en un interior."
+    },
+
+    "material": {
+      "title": "Material",
+      "description": "Mármol, vidrio, metal, tejidos y acabados elegidos por su carácter visual y táctil."
+    },
+
+    "light": {
+      "title": "Luz",
+      "description": "Iluminación que aporta calidez, profundidad y atmósfera, en lugar de limitarse a llenar una estancia de luz."
+    }
+  },
+
+  "promise": {
+    "eyebrow": "EL COMPROMISO DE ENOUZA",
+    "title": "Elegido con cuidado. Presentado con belleza.",
+    "description": "Seleccionamos cuidadosamente cada pieza que incorporamos a Enouza, prestando atención al diseño, los materiales, las proporciones y la atmósfera que crea."
+  },
+
+  "final": {
+    "eyebrow": "LA COLECCIÓN",
+    "title": "Encuentra la luz que pertenece a tu espacio.",
+    "description": "Explora la colección Enouza y descubre piezas seleccionadas para complementar tu forma de vivir.",
+    "cta": "Explorar la colección"
+  }
+},
+
 "customersFeedback": {
   "eyebrow": "LA EXPERIENCIA ENOUZA",
   "title": "Elegida por hogares de todo el mundo.",

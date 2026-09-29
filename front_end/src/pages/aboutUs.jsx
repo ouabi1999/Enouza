@@ -2,20 +2,78 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import {
+  AutoAwesome,
+  WorkspacePremium,
+  LightMode,
+  DiamondOutlined,
+} from "@mui/icons-material";
+
 import SEO from "../components/SEO/SEO";
+
+/* =========================================================
+   ENOUZA COLORS
+========================================================= */
+
+const COLORS = {
+  background: "#F7F5F0",
+  white: "#FFFFFF",
+  text: "#1D1C1A",
+  muted: "#77736B",
+  gold: "#B39A76",
+  softGold: "#DED4C4",
+  border: "#E4DED4",
+  dark: "#292723",
+};
+
+/* =========================================================
+   ABOUT US
+========================================================= */
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
 
   const isArabic = i18n.language?.startsWith("ar");
 
+  /* =====================================================
+     SCROLL TO TOP
+  ===================================================== */
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: "auto",
     });
   }, []);
+
+  /* =====================================================
+     FEATURES
+  ===================================================== */
+
+  const features = [
+    {
+      icon: <AutoAwesome />,
+      title: t("aboutus.approach.curated.title"),
+      description: t("aboutus.approach.curated.description"),
+    },
+    {
+      icon: <WorkspacePremium />,
+      title: t("aboutus.approach.refined.title"),
+      description: t("aboutus.approach.refined.description"),
+    },
+    {
+      icon: <LightMode />,
+      title: t("aboutus.approach.atmospheric.title"),
+      description: t("aboutus.approach.atmospheric.description"),
+    },
+    {
+      icon: <DiamondOutlined />,
+      title: t("aboutus.approach.distinctive.title"),
+      description: t("aboutus.approach.distinctive.description"),
+    },
+  ];
 
   return (
     <Page dir={isArabic ? "rtl" : "ltr"}>
@@ -112,55 +170,27 @@ const AboutUs = () => {
           </SectionTitle>
         </SectionHeader>
 
-        <ApproachGrid>
-          <ApproachItem>
-            <ApproachNumber>01</ApproachNumber>
+        <FeaturesGrid>
+          {features.map((feature, index) => (
+            <Feature key={index}>
+              <IconCircle>
+                <FeatureIcon>
+                  {React.cloneElement(feature.icon, {
+                    fontSize: "inherit",
+                  })}
+                </FeatureIcon>
+              </IconCircle>
 
-            <ApproachTitle>
-              {t("aboutus.approach.curated.title")}
-            </ApproachTitle>
+              <FeatureTitle>
+                {feature.title}
+              </FeatureTitle>
 
-            <ApproachText>
-              {t("aboutus.approach.curated.description")}
-            </ApproachText>
-          </ApproachItem>
-
-          <ApproachItem>
-            <ApproachNumber>02</ApproachNumber>
-
-            <ApproachTitle>
-              {t("aboutus.approach.refined.title")}
-            </ApproachTitle>
-
-            <ApproachText>
-              {t("aboutus.approach.refined.description")}
-            </ApproachText>
-          </ApproachItem>
-
-          <ApproachItem>
-            <ApproachNumber>03</ApproachNumber>
-
-            <ApproachTitle>
-              {t("aboutus.approach.atmospheric.title")}
-            </ApproachTitle>
-
-            <ApproachText>
-              {t("aboutus.approach.atmospheric.description")}
-            </ApproachText>
-          </ApproachItem>
-
-          <ApproachItem>
-            <ApproachNumber>04</ApproachNumber>
-
-            <ApproachTitle>
-              {t("aboutus.approach.distinctive.title")}
-            </ApproachTitle>
-
-            <ApproachText>
-              {t("aboutus.approach.distinctive.description")}
-            </ApproachText>
-          </ApproachItem>
-        </ApproachGrid>
+              <FeatureDescription>
+                {feature.description}
+              </FeatureDescription>
+            </Feature>
+          ))}
+        </FeaturesGrid>
       </ApproachSection>
 
       {/* =====================================================
@@ -179,6 +209,7 @@ const AboutUs = () => {
         </SelectionHeader>
 
         <SelectionList>
+          {/* 01 */}
           <SelectionItem>
             <SelectionNumber>01</SelectionNumber>
 
@@ -193,6 +224,7 @@ const AboutUs = () => {
             </SelectionContent>
           </SelectionItem>
 
+          {/* 02 */}
           <SelectionItem>
             <SelectionNumber>02</SelectionNumber>
 
@@ -207,6 +239,7 @@ const AboutUs = () => {
             </SelectionContent>
           </SelectionItem>
 
+          {/* 03 */}
           <SelectionItem>
             <SelectionNumber>03</SelectionNumber>
 
@@ -278,7 +311,6 @@ const AboutUs = () => {
 
 export default AboutUs;
 
-
 /* =========================================================
    PAGE
 ========================================================= */
@@ -287,9 +319,8 @@ const Page = styled.main`
   width: 100%;
   overflow: hidden;
 
-  background: #f7f5f0;
-
-  color: #292723;
+  background: ${COLORS.background};
+  color: ${COLORS.text};
 
   font-family:
     "Jost",
@@ -298,9 +329,8 @@ const Page = styled.main`
     sans-serif;
 `;
 
-
 /* =========================================================
-   SHARED
+   SHARED EYEBROW
 ========================================================= */
 
 const Eyebrow = styled.span`
@@ -316,22 +346,20 @@ const Eyebrow = styled.span`
     sans-serif;
 
   font-size: 9px;
-
   font-weight: 600;
 
   letter-spacing: 0.22em;
-
   line-height: 1.4;
 
   text-transform: uppercase;
 
   @media (max-width: 600px) {
-    font-size: 8px;
+    margin-bottom: 12px;
 
+    font-size: 8px;
     letter-spacing: 0.18em;
   }
 `;
-
 
 /* =========================================================
    HERO
@@ -341,12 +369,10 @@ const Hero = styled.section`
   min-height: 58vh;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
-  padding: 90px 24px;
+  padding: 100px 24px;
 
   background:
     linear-gradient(
@@ -359,26 +385,29 @@ const Hero = styled.section`
   text-align: center;
 
   @media (max-width: 768px) {
-    min-height: 54vh;
+    min-height: auto;
+    padding: 72px 22px 76px;
+  }
 
-    padding: 75px 22px;
+  @media (max-width: 480px) {
+    padding: 62px 20px 66px;
   }
 `;
 
-
 const HeroInner = styled.div`
   width: 100%;
-
   max-width: 720px;
 
   margin: 0 auto;
 `;
 
-
 const HeroEyebrow = styled(Eyebrow)`
   margin-bottom: 20px;
-`;
 
+  @media (max-width: 600px) {
+    margin-bottom: 17px;
+  }
+`;
 
 const HeroTitle = styled.h1`
   margin: 0;
@@ -390,27 +419,20 @@ const HeroTitle = styled.h1`
     Georgia,
     serif;
 
-  font-size: clamp(
-    2.8rem,
-    6vw,
-    5.2rem
-  );
-
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
   font-weight: 400;
 
-  line-height: 1;
-
-  letter-spacing: -0.04em;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
 
   @media (max-width: 600px) {
-    font-size: clamp(
-      2.5rem,
-      12vw,
-      3.8rem
-    );
+    max-width: 390px;
+    margin-inline: auto;
+
+    font-size: clamp(2.6rem, 12vw, 3.65rem);
+    line-height: 1;
   }
 `;
-
 
 const HeroDescription = styled.p`
   max-width: 480px;
@@ -420,7 +442,6 @@ const HeroDescription = styled.p`
   color: #68625a;
 
   font-size: 14px;
-
   line-height: 1.7;
 
   @media (max-width: 600px) {
@@ -429,41 +450,45 @@ const HeroDescription = styled.p`
     margin-top: 20px;
 
     font-size: 13px;
+    line-height: 1.7;
   }
 `;
-
 
 const HeroLine = styled.span`
   display: block;
 
   width: 38px;
-
   height: 1px;
 
   margin: 27px auto 0;
 
   background: #ad9067;
-`;
 
+  @media (max-width: 600px) {
+    margin-top: 23px;
+  }
+`;
 
 /* =========================================================
    STORY
 ========================================================= */
 
 const StorySection = styled.section`
-  padding: 90px 7vw;
+  padding: 100px 7vw;
 
-  background: #f7f5f0;
+  background: ${COLORS.background};
 
   @media (max-width: 768px) {
     padding: 70px 24px;
   }
-`;
 
+  @media (max-width: 480px) {
+    padding: 64px 20px;
+  }
+`;
 
 const StoryGrid = styled.div`
   width: 100%;
-
   max-width: 1080px;
 
   margin: 0 auto;
@@ -485,11 +510,9 @@ const StoryGrid = styled.div`
   }
 `;
 
-
 const StoryIntro = styled.div`
   position: static;
 `;
-
 
 const StoryTitle = styled.h2`
   max-width: 390px;
@@ -512,15 +535,26 @@ const StoryTitle = styled.h2`
   font-weight: 400;
 
   line-height: 1.08;
-
   letter-spacing: -0.03em;
-`;
 
+  @media (max-width: 600px) {
+    max-width: 100%;
+
+    font-size: clamp(
+      2rem,
+      9vw,
+      2.8rem
+    );
+  }
+`;
 
 const StoryContent = styled.div`
   max-width: 570px;
-`;
 
+  @media (max-width: 800px) {
+    max-width: 650px;
+  }
+`;
 
 const StoryLead = styled.p`
   margin: 0 0 20px;
@@ -543,40 +577,41 @@ const StoryLead = styled.p`
   line-height: 1.45;
 `;
 
-
 const StoryText = styled.p`
   margin: 0 0 16px;
 
   color: #6b655d;
 
   font-size: 14px;
-
   line-height: 1.8;
 
   &:last-child {
     margin-bottom: 0;
   }
-`;
 
+  @media (max-width: 600px) {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+`;
 
 /* =========================================================
    STATEMENT
 ========================================================= */
 
 const StatementSection = styled.section`
-  padding: 90px 24px;
+  padding: 100px 24px;
 
-  background: #292723;
+  background: ${COLORS.dark};
 
-  color: #f7f5f0;
+  color: ${COLORS.background};
 
   text-align: center;
 
   @media (max-width: 600px) {
-    padding: 75px 24px;
+    padding: 76px 22px;
   }
 `;
-
 
 const StatementInner = styled.div`
   max-width: 700px;
@@ -584,22 +619,24 @@ const StatementInner = styled.div`
   margin: 0 auto;
 `;
 
-
 const StatementMark = styled.div`
   margin-bottom: 22px;
 
   color: #b89a6b;
 
   font-size: 12px;
-`;
 
+  @media (max-width: 600px) {
+    margin-bottom: 18px;
+  }
+`;
 
 const Statement = styled.h2`
   max-width: 680px;
 
   margin: 0 auto;
 
-  color: #f7f5f0;
+  color: ${COLORS.background};
 
   font-family:
     "Playfair Display",
@@ -615,10 +652,16 @@ const Statement = styled.h2`
   font-weight: 400;
 
   line-height: 1.1;
-
   letter-spacing: -0.03em;
-`;
 
+  @media (max-width: 600px) {
+    font-size: clamp(
+      2rem,
+      9vw,
+      2.8rem
+    );
+  }
+`;
 
 const StatementDescription = styled.p`
   max-width: 510px;
@@ -628,35 +671,47 @@ const StatementDescription = styled.p`
   color: rgba(247, 245, 240, 0.65);
 
   font-size: 14px;
-
   line-height: 1.8;
-`;
 
+  @media (max-width: 600px) {
+    margin-top: 18px;
 
-/* =========================================================
-   APPROACH
-========================================================= */
-
-const ApproachSection = styled.section`
-  padding: 90px 7vw;
-
-  background: #f7f5f0;
-
-  @media (max-width: 768px) {
-    padding: 70px 24px;
+    font-size: 13px;
+    line-height: 1.75;
   }
 `;
 
+/* =========================================================
+   ENOUZA APPROACH
+========================================================= */
 
-const SectionHeader = styled.div`
-  max-width: 1080px;
+const ApproachSection = styled.section`
+  padding: 100px 7vw 105px;
 
-  margin: 0 auto 45px;
+  background: ${COLORS.background};
+
+  @media (max-width: 768px) {
+    padding: 72px 22px 78px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 64px 20px 68px;
+  }
 `;
 
+const SectionHeader = styled.div`
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto 52px;
+
+  @media (max-width: 600px) {
+    margin-bottom: 40px;
+  }
+`;
 
 const SectionTitle = styled.h2`
-  max-width: 520px;
+  max-width: 540px;
 
   margin: 0;
 
@@ -676,12 +731,21 @@ const SectionTitle = styled.h2`
   font-weight: 400;
 
   line-height: 1.08;
-
   letter-spacing: -0.03em;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+
+    font-size: clamp(
+      2rem,
+      10vw,
+      2.75rem
+    );
+  }
 `;
 
-
-const ApproachGrid = styled.div`
+const FeaturesGrid = styled.div`
+  width: 100%;
   max-width: 1080px;
 
   margin: 0 auto;
@@ -689,125 +753,174 @@ const ApproachGrid = styled.div`
   display: grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4, minmax(0, 1fr));
 
-  border-top: 1px solid
-    rgba(41, 39, 35, 0.14);
+  gap: 32px;
 
   @media (max-width: 900px) {
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2, minmax(0, 1fr));
+
+    gap: 48px 24px;
   }
 
   @media (max-width: 520px) {
-    grid-template-columns: 1fr;
+    gap: 38px 16px;
   }
 `;
 
+const Feature = styled.article`
+  min-width: 0;
 
-const ApproachItem = styled.article`
-  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  padding: 22px 22px 25px;
+  text-align: center;
 
-  border-bottom: 1px solid
-    rgba(41, 39, 35, 0.14);
-
-  &:not(:last-child) {
-    border-inline-end: 1px solid
-      rgba(41, 39, 35, 0.14);
-  }
-
-  @media (max-width: 900px) {
-    &:nth-child(2) {
-      border-inline-end: none;
-    }
-
-    &:nth-child(3) {
-      border-inline-end: 1px solid
-        rgba(41, 39, 35, 0.14);
-    }
-
-    &:nth-child(4) {
-      border-inline-end: none;
-    }
-  }
-
-  @media (max-width: 520px) {
-    min-height: auto;
-
-    padding: 25px 0;
-
-    border-inline-end: none !important;
+  @media (min-width: 901px) {
+    padding: 0 12px;
   }
 `;
 
+const IconCircle = styled.div`
+  width: 68px;
+  height: 68px;
 
-const ApproachNumber = styled.span`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  margin-bottom: 35px;
+  margin-bottom: 21px;
+
+  border: 1px solid rgba(179, 154, 118, 0.8);
+
+  border-radius: 40%;
 
   color: #a8895e;
 
-  font-size: 9px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 
-  letter-spacing: 0.14em;
+  @media (hover: hover) {
+    ${Feature}:hover & {
+      transform: translateY(-3px);
+
+      background: #292723;
+      border-color: #292723;
+
+      color: #f7f5f0;
+    }
+  }
+
+  @media (max-width: 520px) {
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 16px;
+  }
 `;
 
+const FeatureIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-const ApproachTitle = styled.h3`
-  margin: 0 0 10px;
+  font-size: 19px;
 
-  color: #292723;
+  svg {
+    font-size: inherit;
+  }
+
+  @media (max-width: 520px) {
+    font-size: 17px;
+  }
+`;
+
+const FeatureTitle = styled.h3`
+  margin: 0;
+
+  color: ${COLORS.text};
 
   font-family:
     "Playfair Display",
     Georgia,
     serif;
 
-  font-size: 21px;
+  font-size: 0.8rem;
+  font-weight: 500;
 
+  line-height: 1.35;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  @media (max-width: 520px) {
+    font-size: 0.72rem;
+
+    letter-spacing: 0.1em;
+  }
+`;
+
+const FeatureDescription = styled.p`
+  width: 100%;
+  max-width: 190px;
+
+  margin: 10px auto 0;
+
+  color: #777168;
+
+  font-family:
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 0.72rem;
   font-weight: 400;
 
-  line-height: 1.2;
+  line-height: 1.65;
+
+  @media (max-width: 520px) {
+    max-width: 145px;
+
+    margin-top: 8px;
+
+    font-size: 0.67rem;
+    line-height: 1.55;
+  }
 `;
-
-
-const ApproachText = styled.p`
-  max-width: 220px;
-
-  margin: 0;
-
-  color: #6b655d;
-
-  font-size: 12px;
-
-  line-height: 1.7;
-`;
-
 
 /* =========================================================
    SELECTION
 ========================================================= */
 
 const SelectionSection = styled.section`
-  padding: 90px 7vw;
+  padding: 100px 7vw;
 
   background: #ece8e0;
 
   @media (max-width: 768px) {
-    padding: 70px 24px;
+    padding: 70px 22px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 64px 20px;
   }
 `;
-
 
 const SelectionHeader = styled.div`
   max-width: 1080px;
 
   margin: 0 auto 45px;
-`;
 
+  @media (max-width: 600px) {
+    margin-bottom: 35px;
+  }
+`;
 
 const SelectionTitle = styled.h2`
   max-width: 570px;
@@ -830,10 +943,18 @@ const SelectionTitle = styled.h2`
   font-weight: 400;
 
   line-height: 1.08;
-
   letter-spacing: -0.03em;
-`;
 
+  @media (max-width: 600px) {
+    max-width: 100%;
+
+    font-size: clamp(
+      2rem,
+      10vw,
+      2.75rem
+    );
+  }
+`;
 
 const SelectionList = styled.div`
   max-width: 1080px;
@@ -843,7 +964,6 @@ const SelectionList = styled.div`
   border-top: 1px solid
     rgba(41, 39, 35, 0.18);
 `;
-
 
 const SelectionItem = styled.div`
   display: grid;
@@ -866,7 +986,6 @@ const SelectionItem = styled.div`
   }
 `;
 
-
 const SelectionNumber = styled.span`
   padding-top: 3px;
 
@@ -876,7 +995,6 @@ const SelectionNumber = styled.span`
 
   letter-spacing: 0.14em;
 `;
-
 
 const SelectionContent = styled.div`
   display: grid;
@@ -894,7 +1012,6 @@ const SelectionContent = styled.div`
   }
 `;
 
-
 const SelectionItemTitle = styled.h3`
   margin: 0;
 
@@ -906,10 +1023,14 @@ const SelectionItemTitle = styled.h3`
     serif;
 
   font-size: 21px;
-
   font-weight: 400;
-`;
 
+  line-height: 1.2;
+
+  @media (max-width: 600px) {
+    font-size: 19px;
+  }
+`;
 
 const SelectionText = styled.p`
   max-width: 480px;
@@ -919,34 +1040,35 @@ const SelectionText = styled.p`
   color: #6b655d;
 
   font-size: 13px;
-
   line-height: 1.7;
-`;
 
+  @media (max-width: 600px) {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+`;
 
 /* =========================================================
    PROMISE
 ========================================================= */
 
 const PromiseSection = styled.section`
-  padding: 95px 24px;
+  padding: 105px 24px;
 
-  background: #f7f5f0;
+  background: ${COLORS.background};
 
   text-align: center;
 
   @media (max-width: 600px) {
-    padding: 75px 24px;
+    padding: 76px 22px;
   }
 `;
-
 
 const PromiseInner = styled.div`
   max-width: 650px;
 
   margin: 0 auto;
 `;
-
 
 const PromiseTitle = styled.h2`
   max-width: 620px;
@@ -969,10 +1091,16 @@ const PromiseTitle = styled.h2`
   font-weight: 400;
 
   line-height: 1.08;
-
   letter-spacing: -0.03em;
-`;
 
+  @media (max-width: 600px) {
+    font-size: clamp(
+      2rem,
+      9vw,
+      2.8rem
+    );
+  }
+`;
 
 const PromiseText = styled.p`
   max-width: 500px;
@@ -982,17 +1110,22 @@ const PromiseText = styled.p`
   color: #6b655d;
 
   font-size: 14px;
-
   line-height: 1.8;
-`;
 
+  @media (max-width: 600px) {
+    margin-top: 17px;
+
+    font-size: 13px;
+    line-height: 1.75;
+  }
+`;
 
 /* =========================================================
    FINAL CTA
 ========================================================= */
 
 const FinalSection = styled.section`
-  padding: 85px 24px;
+  padding: 95px 24px;
 
   background:
     linear-gradient(
@@ -1004,10 +1137,9 @@ const FinalSection = styled.section`
   text-align: center;
 
   @media (max-width: 600px) {
-    padding: 70px 24px;
+    padding: 70px 22px;
   }
 `;
-
 
 const FinalInner = styled.div`
   max-width: 720px;
@@ -1015,11 +1147,13 @@ const FinalInner = styled.div`
   margin: 0 auto;
 `;
 
-
 const FinalEyebrow = styled(Eyebrow)`
   margin-bottom: 18px;
-`;
 
+  @media (max-width: 600px) {
+    margin-bottom: 15px;
+  }
+`;
 
 const FinalTitle = styled.h2`
   max-width: 700px;
@@ -1042,10 +1176,18 @@ const FinalTitle = styled.h2`
   font-weight: 400;
 
   line-height: 1.05;
-
   letter-spacing: -0.035em;
-`;
 
+  @media (max-width: 600px) {
+    font-size: clamp(
+      2.2rem,
+      10vw,
+      3rem
+    );
+
+    line-height: 1.05;
+  }
+`;
 
 const FinalText = styled.p`
   max-width: 480px;
@@ -1055,23 +1197,27 @@ const FinalText = styled.p`
   color: #6b655d;
 
   font-size: 14px;
-
   line-height: 1.75;
-`;
 
+  @media (max-width: 600px) {
+    margin: 18px auto 25px;
+
+    font-size: 13px;
+    line-height: 1.7;
+  }
+`;
 
 const CollectionLink = styled(Link)`
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 12px;
 
-  min-height: 44px;
+  min-height: 46px;
 
-  padding: 0 22px;
+  padding: 0 24px;
 
   background: #292723;
 
@@ -1080,7 +1226,6 @@ const CollectionLink = styled(Link)`
   text-decoration: none;
 
   font-size: 9px;
-
   font-weight: 500;
 
   letter-spacing: 0.15em;
@@ -1089,15 +1234,29 @@ const CollectionLink = styled(Link)`
 
   transition:
     background 0.25s ease,
-    gap 0.25s ease;
+    gap 0.25s ease,
+    transform 0.25s ease;
 
   &:hover {
     background: #a8895e;
 
     gap: 16px;
+
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    font-size: 8px;
   }
 `;
-
 
 const Arrow = styled.span`
   font-size: 14px;

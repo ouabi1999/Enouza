@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import NewsLetter from "./NewsLetter";
 import PaymentMethods from "../../../common/PaymentMethods";
 import GppGoodIcon from "@mui/icons-material/GppGood";
+import FooterPreferences from "./FooterPreferences";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -154,10 +155,13 @@ const Footer = () => {
             </Links>
           </FooterColumn>
         </FooterGrid>
-
+          <div className="langueges" style={{display:"flex", justifyContent:"center"}}>
+            <FooterPreferences/>
+            </div>
         {/* =====================================================
             BOTTOM BAR
         ===================================================== */}
+        
 
         <BottomBar>
           <SecureText>
