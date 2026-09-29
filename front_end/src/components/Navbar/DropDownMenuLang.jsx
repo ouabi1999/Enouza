@@ -232,11 +232,7 @@ function DropDownMenuLang(props) {
                 {t("purchaseOptions.Currency")}
               </HeaderTitle>
 
-              <HeaderDescription>
-                {t("purchaseOptions.Ship_to")}
-                {" · "}
-                {selectedCurrency}
-              </HeaderDescription>
+             
             </DropdownHeader>
 
             {/* CONTENT */}

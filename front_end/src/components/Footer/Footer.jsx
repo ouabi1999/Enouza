@@ -173,10 +173,9 @@ const Footer = () => {
           <PaymentMethodsContainer dir="ltr">
             <PaymentMethods />
           </PaymentMethodsContainer>
-
           <CopyrightContainer >
             <Copyright dir="ltr">
-              © {new Date().getFullYear()} ENOUZA.{" "}
+              © {new Date().getFullYear()} ENOUZA,{" "}
               {t("footer.newsletter.all_rights_reserved")}
             </Copyright>
           </CopyrightContainer>
