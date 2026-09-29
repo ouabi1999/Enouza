@@ -230,18 +230,18 @@
   "title": "The Art of Light",
 "catlabel": "DISCOVER THE BRAND",
   "principles": {
-    "minimalism": {
-      "title": "Quietly Considered",
-      "description": "We are drawn to forms that do more with less. Clean lines, balanced proportions, and restrained silhouettes allow each piece to belong naturally within its surroundings."
-    },
-    "materials": {
-      "title": "Chosen for Character",
-      "description": "Marble, glass, metal, and fabric are selected for the character they bring to a space. We look for finishes that feel as considered to the touch as they do to the eye."
-    },
-    "ambient": {
-      "title": "Light With Atmosphere",
-      "description": "We see light as part of the interior, not simply a source of illumination. The right glow can soften a room, create depth, and change how a space feels."
-    }
+     "minimalism": {
+    "title": "Quietly Considered",
+    "description": "Clean lines, balanced proportions, and restrained silhouettes allow each piece to belong naturally within its surroundings."
+  },
+  "materials": {
+    "title": "Chosen for Character",
+    "description": "Marble, glass, metal, and fabric are selected for the character and depth they bring to a space."
+  },
+  "ambient": {
+    "title": "Light With Atmosphere",
+    "description": "We see light as part of the interior — a way to soften a room, create depth, and shape how a space feels."
+  }
   }
 },
   "collectionSection": {

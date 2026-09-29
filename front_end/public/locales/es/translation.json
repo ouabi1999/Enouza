@@ -229,19 +229,19 @@
 "catlabel": "DESCUBRE LA MARCA",
 
   "principles": {
-    "minimalism": {
-      "title": "Simplicidad con intención",
-      "description": "Nos atraen las formas que logran más con menos. Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
-    },
-    "materials": {
-      "title": "Materiales con carácter",
-      "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter que aportan a un espacio. Buscamos acabados tan cuidados al tacto como a la vista."
-    },
-    "ambient": {
-      "title": "Luz que crea atmósfera",
-      "description": "Entendemos la luz como parte del interior, no simplemente como una fuente de iluminación. La luz adecuada puede suavizar un espacio, crear profundidad y transformar cómo se siente."
-    }
+  "minimalism": {
+    "title": "Simplicidad con intención",
+    "description": "Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
+  },
+  "materials": {
+    "title": "Materiales con carácter",
+    "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter y la profundidad que aportan a un espacio."
+  },
+  "ambient": {
+    "title": "Luz que crea atmósfera",
+    "description": "Entendemos la luz como parte del interior: una forma de suavizar un espacio, crear profundidad y transformar cómo se siente."
   }
+}
 },
   "collectionSection": {
   "title": "Descubre nuestra colección.",

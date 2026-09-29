@@ -518,9 +518,6 @@ const DesignPrinciple = styled(Box)`
 
   margin-bottom: 2.4rem;
 
-  padding-inline-start: 1.15rem;
-
-  border-inline-start: 1px solid ${COLORS.border};
 
   transition:
     border-color 0.3s ease,
