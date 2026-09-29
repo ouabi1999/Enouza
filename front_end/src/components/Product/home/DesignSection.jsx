@@ -444,8 +444,7 @@ const Arrow = styled.span`
 
 const CollectionButton = styled(Link)`
    position: absolute;
-   right: 25%;
-   left:25%;
+   left: 7%;
    bottom: 20px;
    width:fit-content;
   background: #fff5e4c2;

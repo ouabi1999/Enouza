@@ -258,16 +258,7 @@ function CollectionProducts({
                       
                     </ProductLabels>
 
-                    {/* ============================
-                        PRODUCT INDEX
-                    ============================ */}
-
-                    <ProductIndex>
-                      {String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}
-                    </ProductIndex>
+                   
                   </ImageWrapper>
                 </ProductLink>
 
