@@ -16,6 +16,7 @@ import {
   setCurrency,
   setCurrencyAutomatically,
 } from "../../features/currencySlice";
+import { setLanguage } from "../../features/LanguagesSlice";
 
 // ============================================================
 // ENOUZA FOOTER PREFERENCES
@@ -24,6 +25,9 @@ import {
 function FooterPreferences() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
+    const selectedLang = useSelector(state=> state.language.selectedLanguage)
+    
+  
 
   // ==========================================================
   // REDUX
@@ -48,9 +52,7 @@ function FooterPreferences() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const [selectedLang, setSelectedLang] = useState(
-    window.localStorage.getItem("selectedLang") || "en"
-  );
+
 
   // ==========================================================
   // LANGUAGES
@@ -97,7 +99,7 @@ function FooterPreferences() {
       value
     );
 
-    setSelectedLang(value);
+    dispatch(setLanguage(value))
   };
 
   // ==========================================================

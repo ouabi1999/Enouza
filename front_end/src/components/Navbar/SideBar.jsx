@@ -42,7 +42,7 @@ function SideBar(props) {
                     openProfileMenu={openProfileMenu}
                     setIsProfileOpen={setIsProfileOpen}
                   />
-                </div>
+                </div> 
               </div>
             ) : (
               <Link onClick={props.hideSideBarMenu} to="/auth" className="sign_in_button">

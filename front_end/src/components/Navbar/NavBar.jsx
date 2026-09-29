@@ -995,12 +995,12 @@ const BrandLogo = styled.div`
 
   @media only screen and (max-width: 380px) {
 
-    font-size: 22px;
+    font-size: 20px;
 
 
     img {
 
-      width: 23px;
+      width: 21px;
 
     }
 

@@ -8,6 +8,7 @@ import AliExpressReducer from "../features/AliExpressProductSlice"
 import productDetails_reducer from "../features/productDetails_slice"
 import filterReducer from '../features/filterSlice'
 import currencyReducer from "../features/currencySlice";
+import languageReducer from "../features/LanguagesSlice"
 
 
 export const store = configureStore({
@@ -24,6 +25,7 @@ export const store = configureStore({
     product : productDetails_reducer,
     //customers : customers_Reducer,
     filter: filterReducer,
+    language:languageReducer,
 
 
   },

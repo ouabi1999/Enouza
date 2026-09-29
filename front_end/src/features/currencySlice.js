@@ -6,6 +6,7 @@ const initialState = {
 
   currencyManuallySelected:
     window.localStorage.getItem("currencyManuallySelected") === "true",
+  
 
   rates: {
     USD: 1,
