@@ -662,19 +662,18 @@ const BrandLogo = styled.div`
    display:flex;
    align-items:center;
   font-family:
-    Georgia,
     "Times New Roman",
     serif;
 
   font-size: 27px;
 
-  font-weight: 400;
 
   letter-spacing: 0.17em;
 
-  line-height: 1;
+
   img{
-    width:29px;
+    width:27px;
+    margin-bottom:0.5px;
   }
 
     @media (hover: hover) and (pointer: fine) {

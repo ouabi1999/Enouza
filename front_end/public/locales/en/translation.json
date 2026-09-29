@@ -94,6 +94,17 @@
     "description": "Thoughtfully selected lighting that brings depth, warmth, and character to the spaces you call home.",
     "ctaLabel": "Explore the Collection",
     "detailDesign": "Where Detail Meets Design",
+    "curated": "CURATED",
+  "curated_description": "Thoughtfully selected for considered spaces.",
+
+  "refined": "REFINED",
+  "refined_description": "Elegant forms, refined to the essential.",
+
+  "atmospheric": "ATMOSPHERIC",
+  "atmospheric_description": "Light designed to shape the mood.",
+
+  "distinctive": "DISTINCTIVE",
+  "distinctive_description": "Pieces with character beyond the ordinary.",
     "stats": {
       "rated": {
         "value": "4.9★",
@@ -135,10 +146,11 @@
   
 },
 
-  "matricsSection": {
-  "why_us": "THE ENOUZA DIFFERENCE",
-  "title": "Every piece, thoughtfully chosen.",
-  "description": "Every ENOUZA piece is selected for its form, materials, and ability to bring warmth and character to the spaces we live in."
+ 
+"matricsSection": {
+  "why_us": "تميّز ENOUZA",
+  "title": "كل قطعة، مختارة بعناية.",
+  "description": "نختار كل قطعة من ENOUZA بعناية لما تتميز به من تصميم وخامات وقدرتها على إضافة الدفء والطابع المميز إلى المساحات التي نعيش فيها."
 },
   "inspirationPage": {
   "hero": {
@@ -216,8 +228,7 @@
   
 "designSection": {
   "title": "The Art of Light",
-  "catlabel": "THE ENOUZA APPROACH",
-
+"catlabel": "DISCOVER THE BRAND",
   "principles": {
     "minimalism": {
       "title": "Quietly Considered",
@@ -549,7 +560,82 @@
    "checkout": {
     "loggedInContinue": "Your account is ready. Continue to enter your billing details."
   },
+"aboutus": {
+  "seo": {
+    "title": "About Enouza | Refined Lighting & Interior Design",
+    "description": "Discover Enouza, a curated lighting brand bringing refined, distinctive pieces to considered interiors."
+  },
 
+  "hero": {
+    "eyebrow": "DISCOVER ENOUZA",
+    "title": "Light, Made to Belong.",
+    "description": "Refined lighting for warm, considered spaces."
+  },
+
+  "story": {
+    "eyebrow": "OUR STORY",
+    "title": "Lighting with a sense of place.",
+    "lead": "We believe lighting is more than illumination.",
+    "text": "It shapes the atmosphere of a room, draws attention to the details that matter, and changes how a space feels.",
+    "text2": "Enouza was created around this idea — to discover and bring together lighting pieces that feel considered, distinctive, and naturally at home within their surroundings."
+  },
+
+  "statement": {
+    "title": "We believe the right light changes everything.",
+    "description": "A quiet glow can soften a room. A sculptural form can become a focal point. The right piece can simply make a space feel more like your own."
+  },
+
+  "approach": {
+    "eyebrow": "THE ENOUZA APPROACH",
+    "title": "Less, but considered.",
+    "curated": {
+      "title": "Curated",
+      "description": "Thoughtfully selected for considered spaces."
+    },
+    "refined": {
+      "title": "Refined",
+      "description": "Elegant forms, refined to the essential."
+    },
+    "atmospheric": {
+      "title": "Atmospheric",
+      "description": "Light designed to shape the mood."
+    },
+    "distinctive": {
+      "title": "Distinctive",
+      "description": "Pieces with character beyond the ordinary."
+    }
+  },
+
+  "selection": {
+    "eyebrow": "WHAT GUIDES OUR SELECTION",
+    "title": "Chosen for more than appearance.",
+    "form": {
+      "title": "Form",
+      "description": "Balanced proportions and distinctive silhouettes that feel natural within an interior."
+    },
+    "material": {
+      "title": "Material",
+      "description": "Marble, glass, metal, fabric, and finishes chosen for their visual and tactile character."
+    },
+    "light": {
+      "title": "Light",
+      "description": "Illumination that creates warmth, depth, and atmosphere rather than simply filling a room."
+    }
+  },
+
+  "promise": {
+    "eyebrow": "THE ENOUZA PROMISE",
+    "title": "Thoughtfully chosen. Beautifully presented.",
+    "description": "We carefully select each piece we bring to Enouza, with attention to design, materials, proportions, and the atmosphere it creates."
+  },
+
+  "final": {
+    "eyebrow": "THE COLLECTION",
+    "title": "Find the light that belongs in your space.",
+    "description": "Explore the Enouza collection and discover pieces chosen to complement the way you live.",
+    "cta": "Explore the Collection"
+  }
+},
   "common": {
     "phoneNumber": "Phone Number",
     "selectShippingMethod": "Select Shipping Method",

@@ -98,6 +98,17 @@
     "description": "إضاءة مختارة بعناية تضفي العمق والدفء والطابع المميز على المساحات التي تنتمي إليها.",
     "ctaLabel": "اكتشف المجموعة",
     "detailDesign": "حيث تلتقي التفاصيل بالتصميم",
+     "curated": "منتقى",
+  "curated_description": "مختار بعناية لمساحات مدروسة التفاصيل.",
+
+  "refined": "متقن",
+  "refined_description": "أشكال أنيقة صُقلت حتى جوهرها.",
+
+  "atmospheric": "آسر",
+  "atmospheric_description": "إضاءة صُممت لتشكّل أجواء المكان.",
+
+  "distinctive": "متفرّد",
+  "distinctive_description": "قطع تحمل طابعًا يتجاوز المألوف.",
     "stats": {
       "rated": {
         "value": "4.9★",
@@ -114,11 +125,13 @@
     }
   },
 
+
 "matricsSection": {
   "why_us": "تميّز ENOUZA",
   "title": "كل قطعة، مختارة بعناية.",
   "description": "نختار كل قطعة من ENOUZA بعناية لما تتميز به من تصميم وخامات وقدرتها على إضافة الدفء والطابع المميز إلى المساحات التي نعيش فيها."
 },
+  
   "ctaSection": {
     "eyebrow": "خدمة عملاء ENOUZA",
     "titleLeft": "نحن هنا لمساعدتك.",
@@ -239,7 +252,7 @@
 
 "designSection": {
   "title": "فن الإضاءة",
-  "catlabel": "نهج Enouza",
+"catlabel": "اكتشف العلامة التجارية",
 
   "principles": {
     "minimalism": {

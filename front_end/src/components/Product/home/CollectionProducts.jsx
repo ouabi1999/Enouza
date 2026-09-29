@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CurrencyPrice from "../../../../common/CurrencyPrice";
@@ -12,212 +11,319 @@ function CollectionProducts({
   placeItems,
 }) {
   const { t, i18n } = useTranslation();
-const optimizeCloudinaryImage = (url, width = 600) => {
-  if (!url?.includes("res.cloudinary.com")) return url;
-  if (!url.includes("/image/upload/")) return url;
 
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
+  const isArabic = i18n.dir() === "rtl";
+
+  const optimizeCloudinaryImage = (url, width = 600) => {
+    if (!url?.includes("res.cloudinary.com")) return url;
+    if (!url.includes("/image/upload/")) return url;
+
+    return url.replace(
+      "/image/upload/",
+      `/image/upload/f_auto,q_auto,w_${width}/`
+    );
+  };
+
   return (
     <ProductContainer
       colums_number={columsNumber}
       place_items={placeItems}
     >
       <div className="grid-container">
-  {products?.flatMap((item) => {
-    const skus = Array.isArray(item.skuInfo)
-      ? item.skuInfo
-      : [];
+        {products?.flatMap((item) => {
+          const skus = Array.isArray(item.skuInfo)
+            ? item.skuInfo
+            : [];
 
-    return skus.map((skuItem, skuIndex) => {
-      // =========================
-      // SKU PRICE
-      // =========================
+          return skus.map((skuItem, skuIndex) => {
+            /* =========================
+               SKU PRICE
+            ========================= */
 
-      const sellingPrice = Number(
-        skuItem?.sellingPrice || 0
-      );
+            const sellingPrice = Number(
+              skuItem?.sellingPrice || 0
+            );
 
-      const comparePrice = Number(
-        skuItem?.comparePrice || 0
-      );
+            const comparePrice = Number(
+              skuItem?.comparePrice || 0
+            );
 
-      const hasDiscount =
-        comparePrice > sellingPrice &&
-        sellingPrice > 0;
+            const hasDiscount =
+              comparePrice > sellingPrice &&
+              sellingPrice > 0;
 
-      // =========================
-      // SKU IMAGE
-      // =========================
-      
-      // Get the image from the SKU attributes
-      const skuAttributes = skuItem?.attributes || {};
+            /* =========================
+               SKU IMAGE
+            ========================= */
 
-      const skuImage = Object.values(skuAttributes)
-        .map((attribute) => attribute?.image)
-        .find((image) => image);
+            const skuAttributes =
+              skuItem?.attributes || {};
 
-      // Fallback to product main image
-      const image =
-        skuImage ||
-        item.multimediaInfo?.main_image;
+            const skuImage = Object.values(
+              skuAttributes
+            )
+              .map(
+                (attribute) => attribute?.image
+              )
+              .find((image) => image);
 
-      // =========================
-      // PRODUCT NAME
-      // =========================
+            const image =
+              skuImage ||
+              item.multimediaInfo?.main_image;
 
-      const language = i18n.language;
+            /* =========================
+               PRODUCT NAME
+            ========================= */
 
-      const productName =
-        item.name?.[language] ||
-        item.name?.en ||
-        "Product";
+            const language = i18n.language;
 
-      // =========================
-      // SKU VARIATIONS
-      // =========================
+            const productName =
+              item.name?.[language] ||
+              item.name?.en ||
+              "Product";
 
-      const skuVariation = Object.values(
-        skuAttributes
-      )
-        .map((attribute) => attribute?.value)
-        .filter(Boolean)
-        .join(" • ");
+            /* =========================
+               SKU VARIATION
+            ========================= */
 
-      // =========================
-      // RATINGS
-      // =========================
+            const skuVariation = Object.values(
+              skuAttributes
+            )
+              .map(
+                (attribute) => attribute?.value
+              )
+              .filter(Boolean)
+              .join(" • ");
 
-      const sumRatings = item.ratings || [];
+            /* =========================
+               SECONDARY IMAGE
+            ========================= */
 
-      const avgRating =
-        sumRatings.length > 0
-          ? (
-              sumRatings.reduce(
-                (total, r) =>
-                  total + Number(r.stars || 0),
-                0
-              ) / sumRatings.length
-            ).toFixed(1)
-          : null;
+            const imageUrls = Array.isArray(
+              item.multimediaInfo?.image_urls
+            )
+              ? item.multimediaInfo.image_urls
+              : [];
 
-      // =========================
-      // ORDERS
-      // =========================
+            const secondaryImage =
+              imageUrls.find(
+                (img) => img && img !== image
+              ) || null;
 
-      const ordersCount =
-        (item?.orders?.length || 0) +
-        (item?.ratings?.length || 0);
+            /* =========================
+               DISCOUNT
+            ========================= */
 
-      return (
-        <div
-          key={`${item.id}-${skuItem.id || skuIndex}`}
-          className="product-container"
-        >
-          {/* =========================
-              PRODUCT IMAGE
-          ========================= */}
-
-          <Link
-            to={`/product/${item.id}`}
-            className="image-container"
-          >
-           <img
-  loading="lazy"
-  decoding="async"
-  src={optimizeCloudinaryImage(image, 600)}
-  alt={productName}
-  width="600"
-  height="600"
-/>
-
-            {hasDiscount && (
-              <div
-                className="discount-badge"
-                dir={
-                  i18n.language === "ar"
-                    ? "rtl"
-                    : "ltr"
-                }
-              >
-                {t("productInfo.save")}{" "}
-
-                <bdi>
-                  {(
-                    ((comparePrice - sellingPrice) /
+            const discountPercentage =
+              hasDiscount
+                ? Math.round(
+                    ((comparePrice -
+                      sellingPrice) /
                       comparePrice) *
-                    100
-                  ).toFixed(0)}
-                  %
-                </bdi>
-              </div>
-            )}
-          </Link>
+                      100
+                  )
+                : 0;
 
-          {/* =========================
-              PRODUCT INFORMATION
-          ========================= */}
+            /* =========================
+               SHIPPING
+            ========================= */
 
-          <ProductInfo>
-            <FirstSection>
-              <p className="product-title">
-                {productName}
-              </p>
+            const shippingOptions =
+              item?.available_shipping;
 
-             
-            </FirstSection>
+            const hasFreeShipping =
+              Array.isArray(shippingOptions)
+                ? shippingOptions.some(
+                    (shipping) => {
+                      if (
+                        typeof shipping ===
+                        "string"
+                      ) {
+                        return shipping
+                          .toLowerCase()
+                          .includes("free");
+                      }
 
-            <SecondSection>
-              {/*
-              <div className="orders">
-                {t("common.orders")} ({ordersCount})
-              </div>
-              */}
-            </SecondSection>
+                      return (
+                        shipping?.free === true ||
+                        shipping?.is_free ===
+                          true ||
+                        String(
+                          shipping?.price ?? ""
+                        ) === "0"
+                      );
+                    }
+                  )
+                : typeof shippingOptions ===
+                    "string"
+                  ? shippingOptions
+                      .toLowerCase()
+                      .includes("free")
+                  : false;
 
-            <ThirdSection>
-              <div className="price-wrapper">
-                <span className="product-price">
-                  <CurrencyPrice price = {sellingPrice.toFixed(2)}/>
-                </span>
+            /* =========================
+               RATINGS
+            ========================= */
 
-                {comparePrice > 0 && (
-                  <span className="compare-price">
-                    <CurrencyPrice price = {comparePrice.toFixed(2)}/>
-                  </span>
-                )}
-              </div>
+            const sumRatings =
+              item.ratings || [];
 
-              {avgRating && (
-                <div className="reviews-container">
-                  <StarIcon className="star-icon" />
+            const avgRating =
+              sumRatings.length > 0
+                ? (
+                    sumRatings.reduce(
+                      (total, r) =>
+                        total +
+                        Number(
+                          r.stars || 0
+                        ),
+                      0
+                    ) /
+                    sumRatings.length
+                  ).toFixed(1)
+                : null;
 
-                  <span className="reviews">
-                    {avgRating}
-                  </span>
-                </div>
-              )}
-            </ThirdSection>
+            /* =========================
+               ORDERS
+            ========================= */
 
-            {/* FREE SHIPPING */}
+            const ordersCount =
+              (item?.orders?.length || 0) +
+              (item?.ratings?.length || 0);
 
-            {item.available_shipping?.some(
-              (ship) => ship.type === "Free"
-            ) && (
-              <span className="shipping">
-                {t("common.free_shipping")}
-              </span>
-            )}
-          </ProductInfo>
-        </div>
-      );
-    });
-  })}
-</div>
-    
+            /*
+             * This index is used only for the
+             * visual number on the product image.
+             */
+            const index = skuIndex;
+
+            return (
+              <ProductCard key={`${item.id}-${skuIndex}`}>
+                {/* ============================
+                    IMAGE
+                ============================ */}
+
+                <ProductLink
+                  to={`/product/${item.id}`}
+                >
+                  <ImageWrapper>
+                    {/* PRIMARY IMAGE */}
+
+                    <ProductImage
+                      src={optimizeCloudinaryImage(
+                        image,
+                        800
+                      )}
+                      alt={productName}
+                      loading="lazy"
+                      decoding="async"
+                      width="800"
+                      height="976"
+                      $secondary={false}
+                    />
+
+                    {/* SECONDARY IMAGE */}
+
+                    {secondaryImage && (
+                      <ProductImage
+                        src={optimizeCloudinaryImage(
+                          secondaryImage,
+                          800
+                        )}
+                        alt={`${productName} alternate view`}
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="976"
+                        $secondary
+                      />
+                    )}
+
+                    {/* ============================
+                        TOP LABELS
+                    ============================ */}
+
+                    <ProductLabels
+                      $isArabic={isArabic}
+                    >
+                      {hasDiscount && (
+                        <bdi>
+                        <SaveLabel>
+                          -{discountPercentage}%
+                        </SaveLabel>
+                        </bdi>
+                      )}
+
+                       
+                      
+                    </ProductLabels>
+
+                    {/* ============================
+                        PRODUCT INDEX
+                    ============================ */}
+
+                    <ProductIndex>
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
+                    </ProductIndex>
+                  </ImageWrapper>
+                </ProductLink>
+
+                {/* ============================
+                    PRODUCT INFO
+                ============================ */}
+
+                <ProductInfo>
+                  <ProductName>
+                    {productName}
+                  </ProductName>
+
+                  <PriceGroup>
+                    <CurrentPrice>
+                      <CurrencyPrice
+                        price={sellingPrice}
+                      />
+                    </CurrentPrice>
+
+                    {hasDiscount && (
+                      <ComparePrice>
+                        <CurrencyPrice
+                          price={comparePrice}
+                        />
+                      </ComparePrice>
+                    )}
+                  </PriceGroup>
+
+                  {avgRating && (
+                    <Rating>
+                      <span>★</span>
+
+                      <span>
+                        {avgRating}
+                      </span>
+
+                      <ReviewCount>
+                        {sumRatings.length}
+                      </ReviewCount>
+                    </Rating>
+                  )}
+
+                  {hasFreeShipping && (
+                    <Shipping>
+                      {t(
+                        "common.free_shipping"
+                      )}
+                    </Shipping>
+                  )}
+                </ProductInfo>
+              </ProductCard>
+            );
+          });
+        })}
+      </div>
+
       <div ref={scrollTo} />
     </ProductContainer>
   );
@@ -225,10 +331,9 @@ const optimizeCloudinaryImage = (url, width = 600) => {
 
 export default CollectionProducts;
 
-
-/* =====================================
+/* =========================================================
    MAIN CONTAINER
-===================================== */
+========================================================= */
 
 const ProductContainer = styled.div`
   width: 100%;
@@ -236,104 +341,24 @@ const ProductContainer = styled.div`
   font-family: Arial, sans-serif;
 
   .grid-container {
-  width: min(1300px, calc(100% - 40px));
-  margin: 0 auto;
+    width: min(
+      1300px,
+      calc(100% - 40px)
+    );
 
-  display: grid;
+    margin: 0 auto;
 
-  grid-template-columns: repeat(
-    ${(props) => props.colums_number},
-    minmax(0, 1fr)
-  );
+    display: grid;
 
-  gap: 30px 20px;
+    grid-template-columns: repeat(
+      ${(props) => props.colums_number},
+      minmax(0, 1fr)
+    );
 
-  align-items: start;
-}
-  /* =====================================
-     PRODUCT CARD
-  ===================================== */
+    gap: 30px 20px;
 
-  .product-container {
-    width: 100%;
-    min-width: 0;
-
-    padding-bottom: 12px;
-
-    background: #fff;
+    align-items: start;
   }
-
-
-  /* =====================================
-     IMAGE
-  ===================================== */
-
-  .image-container {
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-    
-
-    aspect-ratio: 1 / 1;
-
-    overflow: hidden;
-
-    background: #f7f6f3;
-
-    text-decoration: none;
-  }
-
-  .image-container img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    background: #fff;
-
-    transition: transform 0.45s ease;
-  }
-
-  .image-container:hover img {
-    transform: scale(1.025);
-  }
-
-
-  /* =====================================
-     DISCOUNT
-  ===================================== */
-
-  .discount-badge {
-    position: absolute;
-
-    top: 12px;
-    left: 12px;
-
-    padding: 5px 8px;
-
-    background: #9a7743;
-
-    color: #fff;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 0.65rem;
-
-    font-weight: 500;
-
-    letter-spacing: 0.04em;
-
-    text-transform: uppercase;
-  }
-
-
-  /* =====================================
-     TABLET
-  ===================================== */
 
   @media (max-width: 1200px) {
     .grid-container {
@@ -346,7 +371,6 @@ const ProductContainer = styled.div`
     }
   }
 
-
   @media (max-width: 950px) {
     .grid-container {
       grid-template-columns: repeat(
@@ -357,11 +381,6 @@ const ProductContainer = styled.div`
       gap: 28px 14px;
     }
   }
-
-
-  /* =====================================
-     MOBILE
-  ===================================== */
 
   @media (max-width: 730px) {
     .grid-container {
@@ -376,236 +395,392 @@ const ProductContainer = styled.div`
     }
   }
 
-
   @media (max-width: 490px) {
     .grid-container {
       gap: 22px 7px;
 
       padding: 4px;
     }
+  }
+`;
 
-    .discount-badge {
-      top: 8px;
-      left: 8px;
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
 
-      padding: 4px 6px;
+const ProductCard = styled.article`
+  width: 100%;
 
-      font-size: 0.55rem;
+  position: relative;
+`;
+
+/* =========================================================
+   PRODUCT LINK
+========================================================= */
+
+const ProductLink = styled(Link)`
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
+`;
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 0.82;
+
+  overflow: hidden;
+
+  background: #ebe7df;
+
+  isolation: isolate;
+
+  cursor: pointer;
+`;
+
+const ProductImage = styled.img`
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    opacity 0.8s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    transform 1.1s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      );
+
+  opacity: ${({ $secondary }) =>
+    $secondary ? 0 : 1};
+
+  transform: scale(1);
+
+  ${ProductCard}:hover & {
+    transform: scale(1.025);
+
+    ${({ $secondary }) =>
+      $secondary
+        ? `
+          opacity: 1;
+        `
+        : `
+          opacity: 0;
+        `}
+  }
+
+  @media (max-width: 768px) {
+    transition: none;
+
+    ${ProductCard}:hover & {
+      transform: none;
+
+      opacity: ${({ $secondary }) =>
+        $secondary ? 0 : 1};
     }
   }
 `;
 
+/* =========================================================
+   PRODUCT LABELS
+========================================================= */
 
-/* =====================================
+const ProductLabels = styled.div`
+  position: absolute;
+
+  top: 15px;
+
+  ${({ $isArabic }) =>
+    $isArabic
+      ? `
+        right: 15px;
+      `
+      : `
+        left: 15px;
+      `}
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  z-index: 4;
+
+  pointer-events: none;
+`;
+
+const Label = styled.span`
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding: 0 10px;
+
+  background: rgba(
+    37,
+    34,
+    31,
+    0.94
+  );
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.58rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.11em;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+`;
+
+const SaveLabel = styled.span`
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding: 0 10px;
+
+  background: #ad9270;
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.58rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.09em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+`;
+
+/* =========================================================
+   PRODUCT INDEX
+========================================================= */
+
+const ProductIndex = styled.span`
+  position: absolute;
+
+  right: 15px;
+  bottom: 14px;
+
+  z-index: 3;
+
+  color: rgba(
+    255,
+    255,
+    255,
+    0.85
+  );
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.55rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.12em;
+
+  mix-blend-mode: difference;
+
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+
+  ${ProductCard}:hover & {
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    opacity: 0.8;
+  }
+`;
+
+/* =========================================================
    PRODUCT INFO
-===================================== */
+========================================================= */
 
 const ProductInfo = styled.div`
+  padding-top: 20px;
+
+  text-align: center;
+
   display: flex;
 
   flex-direction: column;
 
-  padding-top: 11px;
-
-  .shipping {
-    margin: 7px 0 0 4px;
-
-    color: #496b52;
-
-    font-size: 10px;
-
-    font-weight: 400;
-
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 490px) {
-    padding-top: 8px;
-
-    .shipping {
-      margin-top: 6px;
-
-      font-size: 9px;
-    }
-  }
+  align-items: center;
 `;
 
+const ProductName = styled.h3`
+  margin: 0;
 
-/* =====================================
-   TITLE
-===================================== */
+  max-width: 95%;
 
-const FirstSection = styled.div`
-  .product-title {
-    overflow: hidden;
+  color: #292622;
 
-    text-overflow: ellipsis;
+  font-family:
+    Arial,
+    sans-serif;
 
-    white-space: nowrap;
+  font-size: 0.82rem;
 
-    margin: 0;
+  font-weight: 500;
 
-    padding: 0 5px;
+  line-height: 1.5;
 
-    color: #292929;
+  letter-spacing: 0.005em;
 
-    font-family: "Playfair Display", serif;
-
-    font-size: 0.92rem;
-
-    font-weight: 400;
-
-    line-height: 1.4;
-  }
-
-  @media (max-width: 600px) {
-    .product-title {
-      font-size: 0.78rem;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .product-title {
-      font-size: 0.72rem;
-    }
-  }
+  text-align: center;
 `;
 
+/* =========================================================
+   PRICE
+========================================================= */
 
-/* =====================================
+const PriceGroup = styled.div`
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 9px;
+`;
+
+const CurrentPrice = styled.span`
+  color: #25221f;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.01em;
+
+  white-space: nowrap;
+`;
+
+const ComparePrice = styled.span`
+  color: #aaa39b;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 0.68rem;
+
+  font-weight: 400;
+
+  text-decoration: line-through;
+
+  white-space: nowrap;
+`;
+
+/* =========================================================
    RATING
-===================================== */
+========================================================= */
 
-const SecondSection = styled.div`
+const Rating = styled.div`
   display: flex;
 
   align-items: center;
 
-  min-height: 21px;
+  justify-content: center;
 
-  margin-top: 6px;
+  gap: 4px;
 
-  .orders {
-    padding: 0 5px;
+  margin-top: 9px;
 
-    font-size: 0.7rem;
+  color: #777067;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.62rem;
+
+  svg {
+    width: 11px;
+    height: 11px;
+
+    color: #a58c68;
+  }
+`;
+
+const ReviewCount = styled.span`
+  color: #aaa29a;
+
+  &::before {
+    content: "(";
   }
 
- `
+  &::after {
+    content: ")";
+  }
+`;
 
+/* =========================================================
+   SHIPPING
+========================================================= */
 
-/* =====================================
-   PRICE
-===================================== */
-
-const ThirdSection = styled.div`
+const Shipping = styled.div`
   margin-top: 7px;
 
-  display: flex;
+  color: #918980;
 
-  align-items: center;
+  font-family:
+    Arial,
+    sans-serif;
 
-  justify-content: space-between;
+  font-size: 0.59rem;
 
-  .price-wrapper {
-    display: flex;
+  font-weight: 400;
 
-    align-items: baseline;
+  letter-spacing: 0.045em;
 
-    gap: 8px;
-
-    padding: 0 5px;
-  }
-
-  .product-price {
-    color: #222;
-
-   font-family: 'Trebuchet MS', sans-serif;
-
-    font-size: 1.15rem;
-
-    font-weight: 500;
-
-    line-height: 1;
-
-    white-space: nowrap;
-  }
-
-  .compare-price {
-    color: #999;
-
-    font-family: 'Trebuchet MS', sans-serif;
-
-    font-size: 0.72rem;
-
-    text-decoration: line-through;
-
-    white-space: nowrap;
-  }
-
-  @media (max-width: 600px) {
-    margin-top: 6px;
-
-    .price-wrapper {
-      gap: 6px;
-    }
-
-    .product-price {
-      font-size: 0.95rem;
-    }
-
-    .compare-price {
-      font-size: 0.62rem;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .product-price {
-      font-size: 0.88rem;
-    }
-
-    .compare-price {
-      font-size: 0.58rem;
-    }
-  }
-     .reviews-container {
-    display: flex;
-
-    align-items: center;
-
-    gap: 3px;
-
-    margin: 0 15px;
-  }
-
-  .reviews {
-    color: #555;
-
-    font-size: 13px;
-
-    line-height: 1;
-  }
-
-  .star-icon {
-    color: #cc9d51;
-
-    font-size: 15px;
-  }
-
-  @media (max-width: 600px) {
-    min-height: 19px;
-
-    .reviews-container {
-      margin: 0 5px;
-    }
-
-    .reviews {
-      font-size: 10px;
-    }
-
-    .star-icon {
-      font-size: 13px;
-    }
-  }
-
+  text-transform: uppercase;
 `;

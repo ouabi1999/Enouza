@@ -20,23 +20,23 @@ export default function HeroSection() {
   const features = [
     {
       icon: <AutoAwesome />,
-      title: t("matricsSection.curated"),
-      description: t("matricsSection.curated_description"),
+      title: t("heroSection.curated"),
+      description: t("heroSection.curated_description"),
     },
     {
       icon: <WorkspacePremium />,
-      title: t("matricsSection.refined"),
-      description: t("matricsSection.refined_description"),
+      title: t("heroSection.refined"),
+      description: t("heroSection.refined_description"),
     },
     {
       icon: <LightMode />,
-      title: t("matricsSection.atmospheric"),
-      description: t("matricsSection.atmospheric_description"),
+      title: t("heroSection.atmospheric"),
+      description: t("heroSection.atmospheric_description"),
     },
     {
       icon: <DiamondOutlined />,
-      title: t("matricsSection.distinctive"),
-      description: t("matricsSection.distinctive_description"),
+      title: t("heroSection.distinctive"),
+      description: t("heroSection.distinctive_description"),
     },
   ];
   useEffect(() => {
