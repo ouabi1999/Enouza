@@ -423,9 +423,8 @@ const ReviewCard = styled.article`
 ===================================================== */
 
 const ImageWrapper = styled.div`
-  width: 100%;
 
-  height: 250px;
+  height: 300px;
 
   flex-shrink: 0;
 
@@ -437,8 +436,8 @@ const ImageWrapper = styled.div`
 const ReviewImage = styled.img`
   width: 100%;
   height: 100%;
+ 
   cursor:pointer;
-  display: block;
 
   object-fit: cover;
 

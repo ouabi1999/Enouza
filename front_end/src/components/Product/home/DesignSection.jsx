@@ -443,37 +443,29 @@ const Arrow = styled.span`
 `;
 
 const CollectionButton = styled(Link)`
-   position: absolute;
-   left: 7%;
-   bottom: 20px;
-   width:fit-content;
-  background: #fff5e4c2;
+  position: absolute;
+  left: 7%;
+  bottom: 20px;
+
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
 
   padding: 15px 20px;
 
-
-  display:flex;
-
-  align-items: center;
-
-  gap: 9px;
+  background: #fff5e4;
 
   color: #000000;
-
   text-decoration: none;
 
-  font-family:
-    "Times New Roman",
-    serif;
-
+  font-family: "Times New Roman", serif;
   font-weight: 500;
-
   font-size: 0.7rem;
 
   white-space: nowrap;
-
   letter-spacing: 0.12em;
-
   text-transform: uppercase;
 
   z-index: 5;
@@ -485,35 +477,32 @@ const CollectionButton = styled(Link)`
 
   &:hover {
     color: #7c560a;
-
     border-color: #7c560a;
-
     gap: 12px;
   }
 
   &:focus-visible {
     outline: 1px solid white;
-
     outline-offset: 5px;
   }
 
   @media (max-width: 700px) {
-   
+    bottom: 20px;
 
-    transform: translateX(50%);
+    padding: 12px 16px;
+    font-size: 0.68rem;
+    left:50%;
+    transform: translateX(-50%);
 
-    bottom: 30px;
-
-    font-size: 0.7rem;
   }
 
   @media (max-width: 420px) {
-    bottom: 24px;
+    bottom: 15px;
 
-    font-size: 0.7rem;
+    padding: 11px 14px;
+    font-size: 0.65rem;
   }
 `;
-
 // ==========================================
 // DESIGN PRINCIPLE
 // ==========================================
