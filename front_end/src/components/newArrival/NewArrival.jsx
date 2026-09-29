@@ -196,7 +196,9 @@ function NewArrival({
                       ============================ */}
 
                       <ProductLink
-                        to={`/product/${item.id}`}
+                        to={`/product/${item.id}?name=${encodeURIComponent(
+                          item.name?.en || ""
+                        )}&index=${index}`}
                       >
                         <ImageWrapper>
 
@@ -256,16 +258,9 @@ function NewArrival({
 
                          
 
-                          {/* ============================
-                              PRODUCT INDEX
-                          ============================ */}
+                        
 
-                          <ProductIndex>
-                            {String(index + 1).padStart(
-                              2,
-                              "0"
-                            )}
-                          </ProductIndex>
+                         
 
                         </ImageWrapper>
                       </ProductLink>

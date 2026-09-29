@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
+import { useSearchParams } from "react-router-dom";
 
 import StarIcon from "@mui/icons-material/Star";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
@@ -49,14 +50,24 @@ function ProductInfo({
     ? productData.skuInfo
     : [];
 
+    const [searchParams] = useSearchParams();
+
+const skuIndexParam = searchParams.get("index");
+
+const initialSkuIndex =
+  skuIndexParam !== null
+    ? Number(skuIndexParam)
+    : null;
+
   /*
+  
    * =========================================================
    * HELPERS
    * =========================================================
    *
    * IMPORTANT:
    *
-   * New AliExpress SKU:
+   * New SKU:
    *
    * value: "green"
    * definitionName: "White Jazz White"
@@ -226,52 +237,98 @@ function ProductInfo({
    *
    * The IDs are used internally.
    */
+useEffect(() => {
+  if (!skuInfo.length) {
+    return;
+  }
 
-  useEffect(() => {
-    if (!Object.keys(normalizedAttributes).length) {
-      return;
-    }
+  if (!Object.keys(normalizedAttributes).length) {
+    return;
+  }
 
-    setSelectedAttributes((previous) => {
-      const next = {};
+  setSelectedAttributes((previous) => {
+    const next = {};
 
-      Object.entries(normalizedAttributes).forEach(
-        ([attributeName, options]) => {
-          if (!options.length) return;
+    /*
+     * =====================================================
+     * 1. TRY TO SELECT THE SKU FROM THE URL
+     * =====================================================
+     */
 
-          /*
-           * Keep an existing valid selection.
-           */
+    const initialSku =
+      initialSkuIndex !== null &&
+      Number.isInteger(initialSkuIndex)
+        ? skuInfo[initialSkuIndex]
+        : null;
 
-          const currentSelection =
-            previous?.[attributeName];
+    if (initialSku) {
+      Object.entries(
+        initialSku.attributes || {}
+      ).forEach(
+        ([attributeName, attr]) => {
+          const id = getAttributeId(attr);
 
-          const stillExists = options.some(
-            (option) =>
-              option.id === currentSelection
-          );
-
-          if (stillExists) {
-            next[attributeName] =
-              currentSelection;
-          } else {
-            /*
-             * Otherwise select the first available
-             * option.
-             */
-
-            next[attributeName] =
-              options[0].id;
+          if (id) {
+            next[attributeName] = id;
           }
         }
       );
+    }
 
-      return next;
-    });
-  }, [
-    normalizedAttributes,
-    setSelectedAttributes,
-  ]);
+    /*
+     * =====================================================
+     * 2. FILL ANY MISSING ATTRIBUTES
+     * =====================================================
+     *
+     * This is useful if the URL SKU does not contain
+     * every possible attribute.
+     */
+
+    Object.entries(normalizedAttributes).forEach(
+      ([attributeName, options]) => {
+        if (!options.length) return;
+
+        /*
+         * Keep the SKU selection if it exists.
+         */
+        if (next[attributeName]) {
+          return;
+        }
+
+        /*
+         * Otherwise keep the previous selection
+         * if it is still valid.
+         */
+        const previousSelection =
+          previous?.[attributeName];
+
+        const stillExists = options.some(
+          (option) =>
+            option.id === previousSelection
+        );
+
+        if (stillExists) {
+          next[attributeName] =
+            previousSelection;
+        } else {
+          /*
+           * Final fallback:
+           * select the first option.
+           */
+          next[attributeName] =
+            options[0].id;
+        }
+      }
+    );
+
+    return next;
+  });
+}, [
+  skuInfo,
+  normalizedAttributes,
+  initialSkuIndex,
+  setSelectedAttributes,
+]);
 
   /*
    * =========================================================

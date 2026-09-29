@@ -204,7 +204,9 @@ function CollectionProducts({
                 ============================ */}
 
                 <ProductLink
-                  to={`/product/${item.id}`}
+                  to={`/product/${item.id}?name=${encodeURIComponent(
+                          item.name?.en || ""
+                        )}&index=${index}`}
                 >
                   <ImageWrapper>
                     {/* PRIMARY IMAGE */}
