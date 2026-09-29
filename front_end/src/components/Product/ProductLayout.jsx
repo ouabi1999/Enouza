@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-
+import { useSearchParams } from "react-router-dom";
 import MainImages from "./productDetails/MainImages";
 import ProductInfo from "./productDetails/ProductInfo";
 import { useTranslation } from "react-i18next";
@@ -34,6 +34,9 @@ function ProductLayout({
   );
 
    let ratings = productData?.ratings;
+   const [searchParams] = useSearchParams();
+
+    const hasSkuIndex = searchParams.get("index") !== null;
 
 
    let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
@@ -46,20 +49,16 @@ function ProductLayout({
   const [availableAttributes, setAvailableAttributes] =
     useState({});
 
-  const [picsDetailsIndex, setPicsDetailsIndex] =
-    useState(0);
-
+  const [picsDetailsIndex, setPicsDetailsIndex] = useState(0);
+ 
   const [isPicsDetailsActive, setIsPicsDetailsActive] =
-    useState(true);
+  useState(!hasSkuIndex);
 
-  const [isColorActive, setIsColorActive] =
-    useState(false);
+const [isColorActive, setIsColorActive] =
+  useState(hasSkuIndex);
+
   const {i18n} = useTranslation()
-  useEffect(() => {
-    setPicsDetailsIndex(0);
-    setIsPicsDetailsActive(true);
-    setIsColorActive(false);
-  }, [productData]);
+ 
 
   const selectPicsDetails = (index) => {
     setPicsDetailsIndex(index);
@@ -74,6 +73,8 @@ function ProductLayout({
   if (!productData) {
     return null;
   }
+
+ 
  
   return (
     <Section >

@@ -140,11 +140,7 @@ const optimizeCloudinaryImage = (url, width) => {
      FULLSCREEN IMAGE CLICK
   ========================================================= */
 
-  const handleFullscreenBackgroundClick = (event) => {
-    if (event.target === event.currentTarget) {
-      closeFullscreen();
-    }
-  };
+
 
   return (
     <>

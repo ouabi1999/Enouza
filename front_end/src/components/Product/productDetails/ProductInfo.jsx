@@ -261,20 +261,23 @@ useEffect(() => {
         ? skuInfo[initialSkuIndex]
         : null;
 
-    if (initialSku) {
-      Object.entries(
-        initialSku.attributes || {}
-      ).forEach(
-        ([attributeName, attr]) => {
-          const id = getAttributeId(attr);
+   if (initialSku) {
+  if (selectColor) {
+    selectColor();
+  }
 
-          if (id) {
-            next[attributeName] = id;
-          }
-        }
-      );
+  Object.entries(
+    initialSku.attributes || {}
+  ).forEach(
+    ([attributeName, attr]) => {
+      const id = getAttributeId(attr);
+
+      if (id) {
+        next[attributeName] = id;
+      }
     }
-
+  );
+}
     /*
      * =====================================================
      * 2. FILL ANY MISSING ATTRIBUTES
@@ -328,6 +331,7 @@ useEffect(() => {
   normalizedAttributes,
   initialSkuIndex,
   setSelectedAttributes,
+  
 ]);
 
   /*
