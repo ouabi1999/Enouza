@@ -65,7 +65,7 @@ const optimizeCloudinaryImage = (url, width = 700) => {
 };
 
   const imageUrl = optimizeCloudinaryImage(
-  product?.multimediaInfo?.image_urls?.[0],
+  product?.multimediaInfo?.image_urls?.[2],
   700
 );
 
