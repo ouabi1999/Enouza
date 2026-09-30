@@ -72,14 +72,14 @@ export default UserServices;
 const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-  padding: 13px 0;
-  background: #ffffff;
+  padding: 6px 0;
+  background: #2b2b28;
   overflow: hidden;
+  position: sticky;
+  z-index:50;
+  position: -webkit-sticky;
 
-  border-top: 1px solid #f1efec;
-  border-bottom: 1px solid #f1efec;
-
-  position: relative;
+  top: 0;
 `;
 
 const Track = styled(motion.div)`
@@ -130,14 +130,14 @@ const MinWrap = styled.div`
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0.25px;
-    color: #34312e;
+    color: #ffffff;
   }
 
   .icon {
     width: 19px;
     height: 19px;
 
-    color: #81766b;
+    color: #ffffff;
 
     margin-right: 7px;
     margin-left: 7px;
@@ -159,7 +159,7 @@ const MinWrap = styled.div`
     transform: translateY(-50%);
 
     border-radius: 50%;
-    background: #b8afa7;
+    background: #ffffff;
   }
 
   @media only screen and (max-width: 815px) {

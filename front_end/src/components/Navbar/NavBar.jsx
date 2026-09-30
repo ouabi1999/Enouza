@@ -21,6 +21,7 @@ import DropDownMenuLang from "./DropDownMenuLang";
 import SideBar from "./SideBar";
 
 import { useTranslation } from "react-i18next";
+import UserServices from "../Services/UserServices";
 
 
 // ============================================================
@@ -248,8 +249,9 @@ function NavBar({ outlet, setSearchValue, value }) {
           MAIN NAVBAR
       ====================================================== */}
 
+   <UserServices/>
       <Container>
-
+   
 
         {/* ====================================================
             LEFT SIDE
@@ -703,11 +705,11 @@ const Container = styled.div`
 
   position: -webkit-sticky;
 
-  top: 0;
+  top: 37px;
 
   z-index: 50;
 
-  height: 68px;
+  height: 60px;
 
   display: flex;
 
