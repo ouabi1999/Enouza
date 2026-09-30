@@ -73,12 +73,12 @@ const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   padding: 6px 0;
-  height:25px;
   background: #2b2b28;
   overflow: hidden;
   position: sticky;
   z-index:2;
   position: -webkit-sticky;
+  z-index:50;
 
   top: 0;
 `;
@@ -127,8 +127,8 @@ const MinWrap = styled.div`
   white-space: nowrap;
 
   span {
-    font-size: 11px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0.25px;
     color: #ffffff;
@@ -188,8 +188,23 @@ const MinWrap = styled.div`
 
   @media only screen and (max-width: 420px) {
 
-   
+    span {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.05px;
+    }
 
-   
+    .icon {
+      width: 13px;
+      height: 13px;
+
+      margin-right: 3px;
+      margin-left: 3px;
+    }
+
+    &::after {
+      width: 2px;
+      height: 2px;
+    }
   }
 `;
