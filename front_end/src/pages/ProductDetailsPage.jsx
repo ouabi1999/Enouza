@@ -336,13 +336,7 @@ function ProductDetailsPage() {
     PAGE STATES
  ========================= */
 
-  if (isLoading) {
-    return (
-      <Loading>
-        <Spinner />
-      </Loading>
-    );
-  }
+ 
 
   if (isNotFound) {
     return <PageNoteFound />

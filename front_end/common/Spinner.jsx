@@ -50,8 +50,8 @@ const LuxurySpinner = styled.div`
   top: 40%;
   left: 50%;
   
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
 
   transform: translate(-50%, -50%);
 
@@ -104,8 +104,8 @@ const SpinnerRing = styled.div`
 ========================================================= */
 
 const SpinnerInner = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 
   border-radius: 50%;
 
