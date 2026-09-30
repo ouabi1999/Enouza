@@ -185,7 +185,15 @@ const initialSkuIndex =
               definitionName:
                 attr?.definitionName || "",
 
-              image: attr?.image || null,
+              image:
+                attr?.image ||
+                attr?.sku_image ||
+                null,
+
+              sku_image:
+                attr?.sku_image ||
+                attr?.image ||
+                null,
 
               propertyId:
                 attr?.propertyId ?? null,
@@ -545,7 +553,10 @@ useEffect(() => {
     const exactImage =
       matchingSku?.attributes?.[
         attributeName
-      ]?.image;
+      ]?.image ||
+      matchingSku?.attributes?.[
+        attributeName
+      ]?.sku_image;
 
     if (exactImage) {
       return exactImage;
@@ -574,7 +585,11 @@ useEffect(() => {
     return (
       fallbackSku?.attributes?.[
         attributeName
-      ]?.image || null
+      ]?.image ||
+      fallbackSku?.attributes?.[
+        attributeName
+      ]?.sku_image ||
+      null
     );
   };
 
