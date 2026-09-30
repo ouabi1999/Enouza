@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import CancelIcon from "@mui/icons-material/Cancel";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button as MUIButton } from '@mui/material';
 
@@ -332,6 +333,7 @@ setFormData({
         draggable
         pauseOnHover
       />
+
       <ButtonsContainer>
         <AliExpressAuth />
         <AliExpressProductFetcher />
