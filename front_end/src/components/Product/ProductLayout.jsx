@@ -201,6 +201,7 @@ const Section = styled.section`
 const ProductGrid = styled.div`
   width: 100%;
   max-width: 1500px;
+  min-height:600px;
 
   margin: 0 auto;
 

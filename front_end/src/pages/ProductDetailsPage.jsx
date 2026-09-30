@@ -11,7 +11,7 @@ import AboutProductLayout from "../components/Product/aboutProduct/AboutProductL
 import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
 
 import { addToCart, buyNowItem } from "../features/cartSlice";
-import { getProductDetails } from "../features/productDetails_slice";
+import { getProductDetails, setProductDetails } from "../features/productDetails_slice";
 
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../common/Spinner";
@@ -70,9 +70,6 @@ function ProductDetailsPage() {
     (state) => state.cart.cartItems
   );
 
-  const isLoading = useSelector(
-    (state) => state.product.isLoading
-  );
 
   const hasError = useSelector(
     (state) => state.product.hasError
@@ -114,12 +111,15 @@ function ProductDetailsPage() {
 
     viewedProductRef.current = productData.id;
   }, [productData]);
+useEffect(() => {
+  if (!id) return;
 
-  useEffect(() => {
-    if (!id) return;
+  dispatch(getProductDetails(id));
 
-    dispatch(getProductDetails(id));
-  }, [dispatch, id, tryAgain]);
+  return () => {
+    dispatch(setProductDetails(null));
+  };
+}, [dispatch, id, tryAgain]);
 
   /* =========================
      RESET SCROLL
@@ -458,8 +458,8 @@ const ServicesSection = styled.section`
 
 const ProductSection = styled.section`
   width: 100%;
-
- 
+  min-height: 600px;
+  box-sizing: border-box;
 `;
 
 /* =====================================================

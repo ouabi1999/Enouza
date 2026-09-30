@@ -30,9 +30,11 @@ import {getProduct} from "./features/productSlice.js"
 import { useTranslation } from "react-i18next";
 
 import Spinner from "../common/Spinner.jsx";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 import "../public/i18n/index.jsx";
 import { fetchExchangeRates } from "./features/currencySlice.js";
+
 
 /*
 =========================================================
@@ -57,9 +59,7 @@ const Auth = React.lazy(() =>
   import("./pages/Auth")
 );
 
-const ProductDetailsPage = React.lazy(() =>
-  import("./pages/ProductDetailsPage")
-);
+
 
 const ShoppingCart = React.lazy(() =>
   import("./components/Cart/ShoppingCart")
