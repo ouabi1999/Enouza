@@ -101,7 +101,6 @@ function HomePage() {
           logo: "https://www.enouza.com/assestLogo.png",
         })}
       </script>
-      <UserServices />
       <AdvertiseMain />
       <HeroSection />
 

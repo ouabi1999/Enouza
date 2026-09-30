@@ -379,9 +379,7 @@ function ProductDetailsPage() {
         image={productData?.multimediaInfo?.main_image}
         productData={productData}
       />
-      <ServicesSection>
-        <UserServices />
-      </ServicesSection>
+     
 
       <ProductSection>
         <ProductLayout
