@@ -70,9 +70,6 @@ function ProductDetailsPage() {
     (state) => state.cart.cartItems
   );
 
-  const isLoading = useSelector(
-    (state) => state.product.isLoading
-  );
 
   const hasError = useSelector(
     (state) => state.product.hasError
@@ -461,8 +458,8 @@ const ServicesSection = styled.section`
 
 const ProductSection = styled.section`
   width: 100%;
-
- 
+  min-height: 600px;
+  box-sizing: border-box;
 `;
 
 /* =====================================================

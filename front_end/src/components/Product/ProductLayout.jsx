@@ -181,9 +181,7 @@ const COLORS = {
 const Section = styled.section`
   width: 100%;
   padding:20px 50px 75px;
-  height:100%;
-  min-height:600px;
-
+ 
   box-sizing: border-box;
 
   @media (max-width: 900px) {
@@ -203,6 +201,7 @@ const Section = styled.section`
 const ProductGrid = styled.div`
   width: 100%;
   max-width: 1500px;
+  min-height:600px;
 
   margin: 0 auto;
 
