@@ -11,7 +11,7 @@ import AboutProductLayout from "../components/Product/aboutProduct/AboutProductL
 import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
 
 import { addToCart, buyNowItem } from "../features/cartSlice";
-import { getProductDetails } from "../features/productDetails_slice";
+import { getProductDetails, setProductDetails } from "../features/productDetails_slice";
 
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../common/Spinner";
@@ -114,12 +114,15 @@ function ProductDetailsPage() {
 
     viewedProductRef.current = productData.id;
   }, [productData]);
+useEffect(() => {
+  if (!id) return;
 
-  useEffect(() => {
-    if (!id) return;
+  dispatch(getProductDetails(id));
 
-    dispatch(getProductDetails(id));
-  }, [dispatch, id, tryAgain]);
+  return () => {
+    dispatch(setProductDetails(null));
+  };
+}, [dispatch, id, tryAgain]);
 
   /* =========================
      RESET SCROLL
