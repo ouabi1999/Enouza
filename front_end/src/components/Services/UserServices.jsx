@@ -76,8 +76,11 @@ const Container = styled.div`
   background: #2b2b28;
   overflow: hidden;
   position: sticky;
-  z-index:50;
+<<<<<<< HEAD
+=======
+  z-index:2;
   position: -webkit-sticky;
+>>>>>>> enouza-new-version
 
   top: 0;
 `;
