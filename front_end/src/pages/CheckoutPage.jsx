@@ -20,12 +20,19 @@ function CheckoutPage() {
   const navigate = useNavigate()
   
   useEffect(() => {
+     window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
         if(cartItems.length === 0){
        navigate("/") 
        
      }
       
   }, [])
+
+ 
   
   return (
     
