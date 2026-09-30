@@ -47,7 +47,7 @@ const Container = styled.section`
 
 const TabsWrapper = styled.div`
   position: sticky;
-  top: 69px;
+  top: 95px;
   z-index:1;
   display:flex;
   justify-content:center;

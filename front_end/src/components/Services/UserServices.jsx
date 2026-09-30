@@ -76,6 +76,8 @@ const Container = styled.div`
   background: #2b2b28;
   overflow: hidden;
   position: sticky;
+  z-index:2;
+  position: -webkit-sticky;
   z-index:50;
 
   top: 0;
