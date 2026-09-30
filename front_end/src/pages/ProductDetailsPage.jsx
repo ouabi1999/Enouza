@@ -444,7 +444,6 @@ const Page = styled.main`
 
   background:#F6F3ED;
 
-  padding-bottom: 100px;
 
   overflow-x: clip;
 `;
