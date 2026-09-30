@@ -705,7 +705,7 @@ const Container = styled.div`
 
   position: -webkit-sticky;
 
-  top: 35px;
+  top: 37px;
 
   z-index: 50;
 
@@ -828,6 +828,7 @@ const Container = styled.div`
   @media only screen and (max-width: 650px) {
 
     height: 50px;
+     top: 31px;
   }
 
 `;
