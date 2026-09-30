@@ -262,69 +262,10 @@ const Container = styled.section`
   }
 `;
 
-const ReviewsHeader = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
-  align-items: center;
-  gap: 30px;
-  padding:20px;
 
-  @media (max-width: 700px) {
-    gap: 16px;
-    margin: 48px 0 38px;
-  }
 
-  @media (max-width: 420px) {
-    gap: 10px;
-    margin: 40px 0 32px;
-  }
-`;
 
-const HeaderRule = styled.span`
-  width: 100%;
-  height: 1px;
-  background: #ded7ce;
-`;
 
-const HeadingGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 210px;
-
-  @media (max-width: 500px) {
-    min-width: 160px;
-  }
-`;
-
-const HeadingEyebrow = styled.span`
-  margin-bottom: 7px;
-  color: #a88a62;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.42em;
-  line-height: 1;
-`;
-
-const HeadingTitle = styled.h2`
-  margin: 0;
-  color: #211e1a;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: 0.015em;
-  text-align: center;
-`;
-
-const HeadingAccent = styled.span`
-  width: 24px;
-  height: 1px;
-  margin-top: 12px;
-  background: #a88a62;
-`;
 
 const ReviewsList = styled.div`
   width: 100%;
@@ -333,7 +274,7 @@ const ReviewsList = styled.div`
 const ReviewCard = styled.article`
   position: relative;
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);
   column-gap: 48px;
   width: 100%;
   padding: 42px 4px;

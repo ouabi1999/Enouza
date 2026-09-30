@@ -271,7 +271,6 @@ const Container = styled.div`
   flex-direction: column;
 
   background: #f7f5f0;
-  border-left: 1px solid #e4ded4;
 
   .checkout {
     color: #1d1c1a;
@@ -310,7 +309,6 @@ const Container = styled.div`
     height: auto;
     min-height: auto;
 
-    border-top: 1px solid #e4ded4;
     border-left: none;
 
     .header-container {
@@ -357,7 +355,6 @@ const Wrapper = styled.div`
 
     overflow-y: auto;
 
-    border-top: 1px solid #e4ded4;
     border-bottom: 1px solid #e4ded4;
 
     padding: 4px 0;
