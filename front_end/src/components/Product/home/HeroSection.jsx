@@ -97,19 +97,9 @@ const optimizeCloudinaryImage = (url, width = 700) => {
   );
 }
 
-/* =========================
-   COLORS
-========================= */
 
-const COLORS = {
-  background: "#F7F5F0",
-  white: "#FFFFFF",
-  text: "#1D1C1A",
-  muted: "#77736B",
-  gold: "#B39A76",
-  softGold: "#DED4C4",
-  border: "#E4DED4",
-};
+
+
 
 /* =========================
    ANIMATIONS
@@ -143,7 +133,7 @@ const floatAnimation = keyframes`
 ========================= */
 
 const HeroBox = styled.section`
-  min-height: 100vh;
+  min-height: 600px;
 
   padding: 54px 32px;
 
