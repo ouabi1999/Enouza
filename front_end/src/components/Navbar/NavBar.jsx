@@ -559,7 +559,7 @@ const ParentContainer = styled.div`
 
     inset-inline: 0;
 
-    z-index: 100;
+    z-index: 2;
 
     height: 50px;
 
@@ -703,11 +703,10 @@ const Container = styled.div`
 
   position: sticky;
 
-  position: -webkit-sticky;
 
   top: 37px;
 
-  z-index: 50;
+  z-index: 2;
 
   height: 60px;
 
@@ -909,7 +908,7 @@ const LogoLink = styled(Link)`
 
     transform: translate(-50%, -50%);
 
-    z-index: 10;
+    z-index: 2;
 
     white-space: nowrap;
 

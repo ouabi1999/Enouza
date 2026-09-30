@@ -77,6 +77,7 @@ const Container = styled.div`
   overflow: hidden;
   position: sticky;
   z-index:50;
+  position: -webkit-sticky;
 
   top: 0;
 `;

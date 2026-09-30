@@ -161,6 +161,7 @@ function ContactUs() {
         draggable
         pauseOnHover
         rtl={i18n.dir() === "rtl"}
+         style={{ zIndex: 999999 }}
       />
     </Container>
   );

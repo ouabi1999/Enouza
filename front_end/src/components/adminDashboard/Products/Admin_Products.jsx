@@ -32,7 +32,6 @@ export default function adminProducts(props) {
 
   return (
     <>
-      {isLoading === false ? (
         <Product_Container>
           <button className="addproduct-button" onClick={open_addProduct_Modal}>
             Add New Product
@@ -90,11 +89,8 @@ export default function adminProducts(props) {
             })}
           </TableWrap>
         </Product_Container>
-      ) : (
-        <div style={{ margin: "auto" }}>
-          <Spinner />
-        </div>
-      )}
+      ) 
+      
     </>
   );
 }

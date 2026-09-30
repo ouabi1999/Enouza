@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import ApiInstance from '../../common/baseUrl';
-
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import ApiInstance from "../../common/baseUrl";
 
 export const getProductDetails = createAsyncThunk(
   "product/getProductDetails",
@@ -31,60 +30,70 @@ export const getProductDetails = createAsyncThunk(
   }
 );
 
-
-
 export const productDetails_Slice = createSlice({
   name: "product",
-
-
-
 
   initialState: {
     productData: null,
     isLoading: true,
     hasError: false,
     isNotFound: false,
-
-
   },
+
   reducers: {
     setProductDetails(state, action) {
-      state.product = action.payload
-
-    }
+      
+      state.productData = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
-    builder.addCase(getProductDetails.pending, (state) => {
-      state.isLoading = true;
-      
-    }),
-      builder.addCase(getProductDetails.rejected, (state, action) => {
-      
-        if (action.payload?.notFound === true) {
-          state.isNotFound = true;
-          state.hasError = false;
-          state.isLoading =false
-        } else {
-          state.isNotFound = false;
-          state.hasError = true;
-          state.isLoading =false
-        }
+    builder
+      // --------------------------------
+      // REQUEST STARTED
+      // --------------------------------
+      .addCase(getProductDetails.pending, (state) => {
+        state.isLoading = true;
 
-      }),
-      builder.addCase(getProductDetails.fulfilled, (state, action) => {
+        // IMPORTANT:
+        // Remove old product immediately
+        state.productData = null;
+
+        state.isNotFound = false;
+        state.hasError = false;
+      })
+
+      // --------------------------------
+      // REQUEST SUCCESS
+      // --------------------------------
+      .addCase(getProductDetails.fulfilled, (state, action) => {
         state.productData = action.payload.data;
+
         state.isLoading = false;
         state.isNotFound = false;
         state.hasError = false;
-
-
-
       })
 
+      // --------------------------------
+      // REQUEST FAILED
+      // --------------------------------
+      .addCase(getProductDetails.rejected, (state, action) => {
+        state.productData = null;
 
-  }
-})
+        state.isLoading = false;
 
-export const { setProductDetails } = productDetails_Slice.actions
-export default productDetails_Slice.reducer
+        if (action.payload?.notFound === true) {
+          state.isNotFound = true;
+          state.hasError = false;
+        } else {
+          state.isNotFound = false;
+          state.hasError = true;
+        }
+      });
+  },
+});
+
+export const { setProductDetails } =
+  productDetails_Slice.actions;
+
+export default productDetails_Slice.reducer;
