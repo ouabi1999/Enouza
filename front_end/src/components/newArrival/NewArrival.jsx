@@ -188,7 +188,7 @@ function NewArrival({
                   );
 
                 return (
-                  <SwiperSlide key={item.id}>
+                  <SwiperSlide key={item.id} dir={"rtl"}>
                     <ProductCard>
 
                       {/* ============================
