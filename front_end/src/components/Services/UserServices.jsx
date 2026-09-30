@@ -73,6 +73,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   padding: 6px 0;
+  height:25px;
   background: #2b2b28;
   overflow: hidden;
   position: sticky;
@@ -126,8 +127,8 @@ const MinWrap = styled.div`
   white-space: nowrap;
 
   span {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: 0.25px;
     color: #ffffff;
@@ -169,7 +170,6 @@ const MinWrap = styled.div`
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.15px;
-      color: #383532;
     }
 
     .icon {
@@ -187,13 +187,11 @@ const MinWrap = styled.div`
   }
 
   @media only screen and (max-width: 420px) {
-    padding: 2px 6px;
 
     span {
       font-size: 8px;
       font-weight: 600;
       letter-spacing: 0.05px;
-      color: #3b3835;
     }
 
     .icon {

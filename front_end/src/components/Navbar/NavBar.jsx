@@ -555,13 +555,13 @@ const ParentContainer = styled.div`
 
     position: fixed;
 
-    top: 0;
+    top: 37px;
 
     inset-inline: 0;
 
     z-index: 100;
 
-    height: 58px;
+    height: 50px;
 
     padding: 8px 14px;
 
@@ -583,7 +583,7 @@ const ParentContainer = styled.div`
 
     min-width: 0;
 
-    height: 40px;
+    height: 35px;
 
     display: flex;
 
@@ -596,7 +596,7 @@ const ParentContainer = styled.div`
 
     width: 100%;
 
-    height: 40px;
+    height: 35px;
 
     padding: 0 16px;
 
@@ -643,7 +643,7 @@ const ParentContainer = styled.div`
 
     width: 42px;
 
-    height: 40px;
+    height: 35px;
 
     flex-shrink: 0;
 
@@ -827,10 +827,7 @@ const Container = styled.div`
 
   @media only screen and (max-width: 650px) {
 
-    height: 58px;
-
-    padding: 0 15px;
-
+    height: 50px;
   }
 
 `;
