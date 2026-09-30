@@ -127,7 +127,7 @@ function NewsLetter() {
             {formik.errors.email}
           </ErrorMessage>
         )}
-<div className="Toastify__toast-container">
+<div>
   <ToastContainer
     position={isRTL ? "top-right" : "top-left"}
     autoClose={3000}
@@ -137,6 +137,8 @@ function NewsLetter() {
     pauseOnFocusLoss
     draggable
     pauseOnHover
+   
+
   />
 </div>
       </Container>
@@ -158,7 +160,7 @@ const Container = styled.form`
 
   margin-top: 0;
   .Toastify__toast-container {
-  z-index: 1 !important;
+  z-index: 11 !important;
 }
 `;
 
