@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 import data from "../../../common/countryData.json";
 import { ClickAwayListener } from "@mui/material";
+
 import { setLocation } from "../../features/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 import { useTranslation } from "react-i18next";
 
 import Flag from "react-world-flags";
@@ -14,15 +16,20 @@ import {
   setCurrency,
   setCurrencyAutomatically,
 } from "../../features/currencySlice";
+
 import { setLanguage } from "../../features/LanguagesSlice";
 
 function DropDownMenuLang(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
-  const selectedLang = useSelector(state=> state.language.selectedLanguage)
-   
-  
+  /* ============================================================
+     REDUX STATE
+  ============================================================ */
+
+  const selectedLang = useSelector(
+    (state) => state.language.selectedLanguage
+  );
 
   const selectedCurrency = useSelector(
     (state) => state.currency.selectedCurrency
@@ -31,6 +38,10 @@ function DropDownMenuLang(props) {
   const currencyManuallySelected = useSelector(
     (state) => state.currency.currencyManuallySelected
   );
+
+  /* ============================================================
+     LANGUAGES
+  ============================================================ */
 
   const languages = [
     {
@@ -47,104 +58,329 @@ function DropDownMenuLang(props) {
     },
   ];
 
+  /* ============================================================
+     COUNTRY → CURRENCY
+  ============================================================ */
+
   const COUNTRY_CURRENCY_MAP = {
     US: "USD",
     ES: "EUR",
     GB: "GBP",
     AE: "AED",
     SA: "SAR",
+    MA: "MAD",
+  };
+
+  /* ============================================================
+     COUNTRY → LANGUAGE
+
+     We only use languages that actually exist in the app:
+     en / es / ar
+  ============================================================ */
+
+  const COUNTRY_LANGUAGE_MAP = {
+    /* Spanish */
+    ES: "es",
+    MX: "es",
+    AR: "es",
+    CL: "es",
+    CO: "es",
+    PE: "es",
+    VE: "es",
+    UY: "es",
+    EC: "es",
+    BO: "es",
+    PY: "es",
+    CR: "es",
+    PA: "es",
+    DO: "es",
+    GT: "es",
+    HN: "es",
+    NI: "es",
+    SV: "es",
+
+    /* Arabic */
+    MA: "ar",
+    DZ: "ar",
+    TN: "ar",
+    LY: "ar",
+    EG: "ar",
+    SA: "ar",
+    AE: "ar",
+    QA: "ar",
+    KW: "ar",
+    BH: "ar",
+    OM: "ar",
+    JO: "ar",
+    LB: "ar",
+    IQ: "ar",
+    YE: "ar",
+    PS: "ar",
+    SY: "ar",
+    SD: "ar",
+
+    /* English */
+    US: "en",
+    GB: "en",
+    CA: "en",
+    AU: "en",
+    NZ: "en",
+    IE: "en",
+    DE: "en",
+    FR: "en",
+    IT: "en",
+    PT: "en",
+    NL: "en",
+    BE: "en",
+    CH: "en",
+    AT: "en",
+    SE: "en",
+    NO: "en",
+    DK: "en",
+    FI: "en",
+    JP: "en",
+    KR: "en",
+    IN: "en",
+    SG: "en",
+  };
+
+  /* ============================================================
+     HELPERS
+  ============================================================ */
+
+  const changeAppLanguage = (language) => {
+    if (!language) return;
+
+    if (i18n.language !== language) {
+      i18n.changeLanguage(language);
+    }
+
+    dispatch(setLanguage(language));
+
+    window.localStorage.setItem("selectedLang", language);
+
+    /*
+      Remember that the customer manually chose a language.
+      This prevents automatic country detection from changing it.
+    */
+    window.localStorage.setItem("languageManuallySelected", "true");
   };
 
   /* ============================================================
      AUTO DETECT COUNTRY
-     ============================================================ */
+  ============================================================ */
 
   useEffect(() => {
-    if (window.localStorage.getItem("country")) {
+    const savedCountry = window.localStorage.getItem("country");
+    const savedLanguage = window.localStorage.getItem("selectedLang");
+
+    /*
+      If we already have both preferences, don't run
+      automatic detection again.
+    */
+    if (savedCountry && savedLanguage) {
       return;
     }
 
     fetch("https://ipinfo.io/json?token=ced98efb100ff5")
-      .then((response) => response.json())
-      .then((locationData) => {
-        const detectedCountry = locationData.country;
-
-        dispatch(setLocation(detectedCountry));
-        
-
-        window.localStorage.setItem(
-          "selectedLang",
-          detectedCountry.toLowerCase()
-        );
-        dispatch(setLanguage(detectedCountry.toLowerCase()))
-
-        if (i18n.language !== detectedCountry.toLowerCase()) {
-          i18n.changeLanguage(detectedCountry.toLowerCase());
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Location request failed");
         }
 
+        return response.json();
+      })
+      .then((locationData) => {
+        const detectedCountry = locationData?.country;
+
+        if (!detectedCountry) {
+          return;
+        }
+
+        /* ---------------------------------------------
+           COUNTRY
+        --------------------------------------------- */
+
+        dispatch(setLocation(detectedCountry));
+
+        window.localStorage.setItem(
+          "country",
+          detectedCountry
+        );
+
+        /* ---------------------------------------------
+           LANGUAGE
+        --------------------------------------------- */
+
+        const languageWasManuallySelected =
+          window.localStorage.getItem(
+            "languageManuallySelected"
+          ) === "true";
+
+        /*
+          Only automatically select a language when
+          the customer has not manually selected one.
+        */
+        if (!savedLanguage && !languageWasManuallySelected) {
+          const automaticLanguage =
+            COUNTRY_LANGUAGE_MAP[detectedCountry] || "en";
+
+          if (i18n.language !== automaticLanguage) {
+            i18n.changeLanguage(automaticLanguage);
+          }
+
+          dispatch(setLanguage(automaticLanguage));
+
+          window.localStorage.setItem(
+            "selectedLang",
+            automaticLanguage
+          );
+        }
+
+        /* ---------------------------------------------
+           CURRENCY
+        --------------------------------------------- */
 
         if (!currencyManuallySelected) {
           const automaticCurrency =
             COUNTRY_CURRENCY_MAP[detectedCountry];
 
           if (automaticCurrency) {
-            dispatch(setCurrencyAutomatically(automaticCurrency));
+            dispatch(
+              setCurrencyAutomatically(
+                automaticCurrency
+              )
+            );
           }
         }
       })
       .catch((error) => {
-        console.log("Location detection failed:", error);
+        console.log(
+          "Location detection failed:",
+          error
+        );
       });
-  }, [dispatch, currencyManuallySelected, i18n]);
+
+    /*
+      We intentionally run this only on initial load.
+      Otherwise changes to Redux currency/language can
+      cause the location request to run again.
+    */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ============================================================
      LOAD SAVED LANGUAGE
-     ============================================================ */
+  ============================================================ */
 
   useEffect(() => {
     const savedLanguage =
-      window.localStorage.getItem("selectedLang") || "en";
+      window.localStorage.getItem("selectedLang");
+
+    if (!savedLanguage) {
+      return;
+    }
+
+    const validLanguage = languages.some(
+      (language) => language.code === savedLanguage
+    );
+
+    if (!validLanguage) {
+      return;
+    }
 
     if (i18n.language !== savedLanguage) {
       i18n.changeLanguage(savedLanguage);
     }
 
     dispatch(setLanguage(savedLanguage));
-  }, [i18n]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /* ============================================================
+     LOAD SAVED COUNTRY
+  ============================================================ */
+
+  useEffect(() => {
+    const savedCountry =
+      window.localStorage.getItem("country");
+
+    if (!savedCountry) {
+      return;
+    }
+
+    dispatch(setLocation(savedCountry));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ============================================================
      LANGUAGE
-     ============================================================ */
+  ============================================================ */
 
   const switchLanguage = (value) => {
-    if (i18n.language !== value) {
-      i18n.changeLanguage(value);
+    if (!value) return;
 
+    if (value === selectedLang) {
+      return;
     }
+
+    changeAppLanguage(value);
   };
 
   /* ============================================================
      CURRENCY
-     ============================================================ */
+  ============================================================ */
 
   const handleCurrencyChange = (event) => {
     const newCurrency = event.target.value;
+
+    if (!newCurrency) {
+      return;
+    }
 
     if (newCurrency === selectedCurrency) {
       return;
     }
 
+    /*
+      setCurrency() should mark the currency as manually
+      selected inside your Redux slice.
+    */
     dispatch(setCurrency(newCurrency));
+
+    window.localStorage.setItem(
+      "selectedCurrency",
+      newCurrency
+    );
   };
 
   /* ============================================================
      COUNTRY
-     ============================================================ */
+  ============================================================ */
 
   const handleCountryChange = (event) => {
     const newCountry = event.target.value;
 
+    if (!newCountry) {
+      return;
+    }
+
+    /* ---------------------------------------------
+       SAVE COUNTRY
+    --------------------------------------------- */
+
     dispatch(setLocation(newCountry));
+
+    window.localStorage.setItem(
+      "country",
+      newCountry
+    );
+
+    /* ---------------------------------------------
+       AUTOMATIC CURRENCY
+    --------------------------------------------- */
 
     if (!currencyManuallySelected) {
       const automaticCurrency =
@@ -158,13 +394,33 @@ function DropDownMenuLang(props) {
         );
       }
     }
+
+    /*
+      IMPORTANT:
+      Changing the shipping country does NOT
+      automatically change the customer's language.
+
+      Language remains their chosen language.
+    */
   };
+
+  /* ============================================================
+     SAVE / CLOSE
+  ============================================================ */
+
+  const handleSave = () => {
+    props.setIsLangMenuOpen(false);
+  };
+
+  /* ============================================================
+     RENDER
+  ============================================================ */
 
   return (
     <Container>
       {/* ======================================================
           TRIGGER
-         ====================================================== */}
+      ====================================================== */}
 
       <Trigger
         type="button"
@@ -185,7 +441,7 @@ function DropDownMenuLang(props) {
 
         <TriggerContent>
           <TriggerTop>
-            {t(`languages.${selectedLang}`)}
+            {t(`languages.${selectedLang || "en"}`)}
           </TriggerTop>
 
           <TriggerBottom>
@@ -208,17 +464,17 @@ function DropDownMenuLang(props) {
 
       {/* ======================================================
           DROPDOWN
-         ====================================================== */}
+      ====================================================== */}
 
       {props.isLangMenuOpen && (
         <ClickAwayListener
-          mouseEvent="onMouseDown"
-          touchEvent="onTouchStart"
-          onClickAway={() =>
-            props.setIsLangMenuOpen(false)
-          }
-        >
-          <Dropdown>
+  mouseEvent="onClick"
+  touchEvent="onTouchEnd"
+  onClickAway={() => {
+    props.setIsLangMenuOpen(false);
+  }}
+>
+          <Dropdown  dir="ltr">
             {/* HEADER */}
 
             <DropdownHeader>
@@ -231,8 +487,6 @@ function DropDownMenuLang(props) {
                 {" & "}
                 {t("purchaseOptions.Currency")}
               </HeaderTitle>
-
-             
             </DropdownHeader>
 
             {/* CONTENT */}
@@ -258,7 +512,7 @@ function DropDownMenuLang(props) {
                     {data?.map(
                       (country, index) => (
                         <option
-                          key={index}
+                          key={`${country.value}-${index}`}
                           value={country.value}
                         >
                           {country.label}
@@ -282,7 +536,7 @@ function DropDownMenuLang(props) {
 
                 <SelectBox>
                   <select
-                    value={selectedLang}
+                    value={selectedLang || "en"}
                     onChange={(e) =>
                       switchLanguage(
                         e.target.value
@@ -316,7 +570,9 @@ function DropDownMenuLang(props) {
 
                 <SelectBox>
                   <select
-                    value={selectedCurrency}
+                    value={
+                      selectedCurrency || "USD"
+                    }
                     onChange={handleCurrencyChange}
                   >
                     <option value="USD">
@@ -338,6 +594,10 @@ function DropDownMenuLang(props) {
                     <option value="SAR">
                       SAR — Saudi Riyal
                     </option>
+
+                    <option value="MAD">
+                      MAD — Moroccan Dirham
+                    </option>
                   </select>
 
                   <SelectArrow>
@@ -352,9 +612,7 @@ function DropDownMenuLang(props) {
             <DropdownFooter>
               <SaveButton
                 type="button"
-                onClick={() =>
-                  props.setIsLangMenuOpen(false)
-                }
+                onClick={handleSave}
               >
                 {t("common.save")}
               </SaveButton>
@@ -370,7 +628,7 @@ export default DropDownMenuLang;
 
 /* ============================================================
    CONTAINER
-   ============================================================ */
+============================================================ */
 
 const Container = styled.div`
   position: relative;
@@ -382,7 +640,7 @@ const Container = styled.div`
 
 /* ============================================================
    TRIGGER
-   ============================================================ */
+============================================================ */
 
 const Trigger = styled.button`
   appearance: none;
@@ -404,8 +662,14 @@ const Trigger = styled.button`
   border-radius: 2px;
 
   outline: none;
+  background: rgba(179, 154, 118, 0.06);
 
-  background: transparent;
+    border-color: rgba(
+      179,
+      154,
+      118,
+      0.18
+    );
 
   color: #171615;
 
@@ -421,15 +685,6 @@ const Trigger = styled.button`
     border-color 0.25s ease,
     color 0.25s ease;
 
-
-    background: rgba(179, 154, 118, 0.06);
-
-    border-color: rgba(
-      179,
-      154,
-      118,
-      0.18
-    );
   
 
   &:focus-visible {
@@ -449,7 +704,7 @@ const Trigger = styled.button`
 
 /* ============================================================
    FLAG
-   ============================================================ */
+============================================================ */
 
 const TriggerFlag = styled.span`
   display: flex;
@@ -493,7 +748,7 @@ const TriggerFlag = styled.span`
 
 /* ============================================================
    TRIGGER CONTENT
-   ============================================================ */
+============================================================ */
 
 const TriggerContent = styled.span`
   display: flex;
@@ -511,7 +766,7 @@ const TriggerContent = styled.span`
 
 /* ============================================================
    TRIGGER TOP
-   ============================================================ */
+============================================================ */
 
 const TriggerTop = styled.span`
   color: #171615;
@@ -546,7 +801,7 @@ const TriggerTop = styled.span`
 
 /* ============================================================
    TRIGGER BOTTOM
-   ============================================================ */
+============================================================ */
 
 const TriggerBottom = styled.span`
   color: #77716a;
@@ -571,7 +826,7 @@ const TriggerBottom = styled.span`
 
 /* ============================================================
    DIVIDER
-   ============================================================ */
+============================================================ */
 
 const TriggerDivider = styled.span`
   margin-inline: 4px;
@@ -581,7 +836,7 @@ const TriggerDivider = styled.span`
 
 /* ============================================================
    ARROW
-   ============================================================ */
+============================================================ */
 
 const ArrowWrapper = styled.span`
   display: flex;
@@ -613,7 +868,7 @@ const ArrowWrapper = styled.span`
 
 /* ============================================================
    DROPDOWN
-   ============================================================ */
+============================================================ */
 
 const Dropdown = styled.div`
   position: fixed;
@@ -708,7 +963,7 @@ const Dropdown = styled.div`
 
 /* ============================================================
    HEADER
-   ============================================================ */
+============================================================ */
 
 const DropdownHeader = styled.div`
   padding: 25px 26px 22px;
@@ -729,7 +984,7 @@ const DropdownHeader = styled.div`
 
 /* ============================================================
    EYEBROW
-   ============================================================ */
+============================================================ */
 
 const HeaderEyebrow = styled.div`
   margin-bottom: 8px;
@@ -754,7 +1009,7 @@ const HeaderEyebrow = styled.div`
 
 /* ============================================================
    HEADER TITLE
-   ============================================================ */
+============================================================ */
 
 const HeaderTitle = styled.h3`
   margin: 0;
@@ -778,31 +1033,8 @@ const HeaderTitle = styled.h3`
 `;
 
 /* ============================================================
-   HEADER DESCRIPTION
-   ============================================================ */
-
-const HeaderDescription = styled.p`
-  margin: 7px 0 0;
-
-  color: #817a72;
-
-  font-family:
-    "Inter",
-    Arial,
-    sans-serif;
-
-  font-size: 10px;
-
-  font-weight: 400;
-
-  line-height: 1.5;
-
-  letter-spacing: 0.02em;
-`;
-
-/* ============================================================
    CONTENT
-   ============================================================ */
+============================================================ */
 
 const DropdownContent = styled.div`
   padding: 21px 26px 5px;
@@ -816,7 +1048,7 @@ const DropdownContent = styled.div`
 
 /* ============================================================
    OPTION GROUP
-   ============================================================ */
+============================================================ */
 
 const OptionGroup = styled.div`
   margin-bottom: 20px;
@@ -832,7 +1064,7 @@ const OptionGroup = styled.div`
 
 /* ============================================================
    OPTION LABEL
-   ============================================================ */
+============================================================ */
 
 const OptionLabel = styled.label`
   display: block;
@@ -859,7 +1091,7 @@ const OptionLabel = styled.label`
 
 /* ============================================================
    SELECT BOX
-   ============================================================ */
+============================================================ */
 
 const SelectBox = styled.div`
   position: relative;
@@ -955,7 +1187,7 @@ const SelectBox = styled.div`
 
 /* ============================================================
    SELECT ARROW
-   ============================================================ */
+============================================================ */
 
 const SelectArrow = styled.span`
   position: absolute;
@@ -985,7 +1217,7 @@ const SelectArrow = styled.span`
 
 /* ============================================================
    FOOTER
-   ============================================================ */
+============================================================ */
 
 const DropdownFooter = styled.div`
   display: flex;
@@ -1007,7 +1239,7 @@ const DropdownFooter = styled.div`
 
 /* ============================================================
    SAVE BUTTON
-   ============================================================ */
+============================================================ */
 
 const SaveButton = styled.button`
   appearance: none;
