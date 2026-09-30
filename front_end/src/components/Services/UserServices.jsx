@@ -188,23 +188,8 @@ const MinWrap = styled.div`
 
   @media only screen and (max-width: 420px) {
 
-    span {
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.05px;
-    }
+   
 
-    .icon {
-      width: 13px;
-      height: 13px;
-
-      margin-right: 3px;
-      margin-left: 3px;
-    }
-
-    &::after {
-      width: 2px;
-      height: 2px;
-    }
+   
   }
 `;

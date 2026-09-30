@@ -555,7 +555,7 @@ const ParentContainer = styled.div`
 
     position: fixed;
 
-    top: 37px;
+    top: 35px;
 
     inset-inline: 0;
 
@@ -705,7 +705,7 @@ const Container = styled.div`
 
   position: -webkit-sticky;
 
-  top: 37px;
+  top: 35px;
 
   z-index: 50;
 
