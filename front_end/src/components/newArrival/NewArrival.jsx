@@ -35,7 +35,7 @@ function NewArrival({
   };
 
   return (
-    <Section dir={isArabic ? "rtl" : "ltr"}>
+    <Section dir="ltr">
       <Container>
 
         {/* ============================
@@ -188,7 +188,7 @@ function NewArrival({
                   );
 
                 return (
-                  <SwiperSlide key={item.id} dir={"rtl"}>
+                  <SwiperSlide key={item.id}>
                     <ProductCard>
 
                       {/* ============================
