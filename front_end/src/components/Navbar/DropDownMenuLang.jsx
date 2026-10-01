@@ -435,6 +435,7 @@ function DropDownMenuLang(props) {
         <TriggerFlag>
           <Flag
             className="flag-icon"
+            alt="country flag"
             code={props.country}
           />
         </TriggerFlag>
@@ -501,6 +502,7 @@ function DropDownMenuLang(props) {
 
                 <SelectBox>
                   <Flag
+                    alt="country flag"
                     className="field-flag"
                     code={props.country}
                   />

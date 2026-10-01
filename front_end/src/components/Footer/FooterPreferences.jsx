@@ -193,6 +193,7 @@ function FooterPreferences() {
             <TriggerMain>
               {country && (
                 <Flag
+                alt="country flag"
                   className="triggerFlag"
                   code={country}
                 />
@@ -274,6 +275,7 @@ function FooterPreferences() {
                     <Flag
                       className="selectFlag"
                       code={country}
+                      alt="country flag"
                     />
                   )}
 

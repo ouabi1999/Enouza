@@ -18,6 +18,7 @@ import Spinner from "../../common/Spinner";
 import PageNoteFound from "../../common/PageNoteFound";
 import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
+import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 
 function ProductDetailsPage() {
   const dispatch = useDispatch();
@@ -76,6 +77,9 @@ function ProductDetailsPage() {
   );
   const isNotFound = useSelector(
     (state) => state.product.isNotFound
+  );
+  const isLoading = useSelector(
+    (state) => state.product.isLoading
   );
 
   /* =========================
@@ -366,6 +370,10 @@ useEffect(() => {
 
   return (
     <Page>
+      {isLoading ? (
+        <ProductDetailsSkeleton/>
+      ) : (
+        <>
       <SEO
         title={productData?.name?.en || "Luxury Lamp"}
         description={productData?.description?.en}
@@ -421,6 +429,8 @@ useEffect(() => {
         />
       )}
       <NewArrival products={similarProducts} name="mayAlsoLike" isAuto={false} />
+      </>
+      )}
     </Page>
 
   );
