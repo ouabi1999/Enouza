@@ -1,123 +1,242 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function UserServices() {
   const { t, i18n } = useTranslation();
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const isRTL = i18n.language?.startsWith("ar");
+
   const services = [
     {
-      icon: <MonetizationOnIcon className="icon" />,
+      icon: MonetizationOnIcon,
       text: t("homePage.money_Back"),
     },
     {
-      icon: <VerifiedUserIcon className="icon" />,
+      icon: VerifiedUserIcon,
       text: t("homePage.safe_reliable_payments"),
     },
     {
-      icon: <SupportAgentIcon className="icon" />,
+      icon: SupportAgentIcon,
       text: t("homePage.support_24_7"),
     },
     {
-      icon: <LocalShippingIcon className="icon" />,
+      icon: LocalShippingIcon,
       text: t("common.free_shipping"),
     },
   ];
 
-  const isRTL = i18n.language[0] === "ar";
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(isRTL ? -1 : 1);
+
+      setActiveIndex((prev) => {
+        return (prev + 1) % services.length;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [services.length, isRTL]);
+
+  const ActiveIcon = services[activeIndex].icon;
 
   return (
     <Container>
-      <Track
-        $rtl={isRTL}
-        animate={{
-          x: isRTL ? ["0%", "50%"] : ["0%", "-50%"],
-        }}
-        transition={{
-          duration:12,
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-        }}
-      >
-        <Group>
-          {services.map((service, index) => (
-            <MinWrap key={`one-${index}`}>
-              {service.icon}
-              <span>{service.text}</span>
-            </MinWrap>
-          ))}
-        </Group>
+      <SliderViewport $rtl={isRTL}>
+        <AnimatePresence
+          mode="popLayout"
+          initial={false}
+          custom={direction}
+        >
+          <SliderItem
+            key={activeIndex}
+            custom={direction}
+            $rtl={isRTL}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              duration: 0.55,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <IconWrapper>
+              <ActiveIcon />
+            </IconWrapper>
 
-        <Group>
-          {services.map((service, index) => (
-            <MinWrap key={`two-${index}`}>
-              {service.icon}
-              <span>{service.text}</span>
-            </MinWrap>
-          ))}
-        </Group>
-      </Track>
+            <Text>
+              {services[activeIndex].text}
+            </Text>
+          </SliderItem>
+        </AnimatePresence>
+      </SliderViewport>
     </Container>
   );
 }
 
 export default UserServices;
 
+
+/* =========================================================
+   SLIDE ANIMATION
+========================================================= */
+
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+
+  center: {
+    x: "0%",
+    opacity: 1,
+  },
+
+  exit: (direction) => ({
+    x: direction > 0 ? "-100%" : "100%",
+    opacity: 0,
+  }),
+};
+
+
+/* =========================================================
+   MAIN BAR
+========================================================= */
+
 const Container = styled.div`
-  width: 100%;
-  max-width: 100vw;
-  padding: 6px 0;
-  background: #2b2b28;
-  overflow: hidden;
+  position: -webkit-sticky;
   position: sticky;
 
-  z-index:2;
-  position: -webkit-sticky;
-
-
   top: 0;
-`;
 
-const Track = styled(motion.div)`
-  display: flex;
+  z-index: 20;
 
-  width: 200vw;
+  width: 100%;
 
-  will-change: transform;
+  height: 38px;
 
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  background: #363633;
 
-  transform: translate3d(0, 0, 0);
-
-  @media only screen and (max-width: 815px) {
-    will-change: transform;
-  }
-`;
-
-const Group = styled.div`
-  flex: 0 0 100vw;
-  width: 100vw;
+  overflow: hidden;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+
+  box-sizing: border-box;
+
+  @media (max-width: 815px) {
+    height: 34px;
+  }
+
+  @media (max-width: 480px) {
+    height: 30px;
+  }
 `;
 
-const MinWrap = styled.div`
+
+/* =========================================================
+   SLIDER VIEWPORT
+========================================================= */
+
+const SliderViewport = styled.div`
   position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 3px 18px;
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
+`;
+
+
+/* =========================================================
+   SLIDER ITEM
+========================================================= */
+
+const SliderItem = styled(motion.div)`
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+
+  padding: 0 20px;
+
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
+
+  will-change: transform, opacity;
+`;
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+const IconWrapper = styled.div`
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-inline-end: 7px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    color: #ffffff;
+  }
+
+  @media (max-width: 815px) {
+    width: 15px;
+    height: 15px;
+
+    margin-inline-end: 5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 13px;
+    height: 13px;
+
+    margin-inline-end: 4px;
+  }
+`;
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+const Text = styled.span`
+  color: #ffffff;
 
   font-family:
     "Franklin Gothic Medium",
@@ -125,87 +244,25 @@ const MinWrap = styled.div`
     Arial,
     sans-serif;
 
+  font-size: 12px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.15px;
+
   white-space: nowrap;
 
-  span {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: 0.25px;
-    color: #ffffff;
+  @media (max-width: 815px) {
+    font-size: 10px;
   }
 
-  .icon {
-    width: 19px;
-    height: 19px;
-
-    color: #ffffff;
-
-    margin-right: 7px;
-    margin-left: 7px;
-
-    flex-shrink: 0;
+  @media (max-width: 480px) {
+    font-size: 8.5px;
   }
 
-  &::after {
-    content: "";
-
-    position: absolute;
-
-    right: -1px;
-    top: 50%;
-
-    width: 3px;
-    height: 3px;
-
-    transform: translateY(-50%);
-
-    border-radius: 50%;
-    background: #ffffff;
-  }
-
-  @media only screen and (max-width: 815px) {
-    padding: 3px 10px;
-
-    span {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.15px;
-    }
-
-    .icon {
-      width: 16px;
-      height: 16px;
-
-      margin-right: 4px;
-      margin-left: 4px;
-    }
-
-    &::after {
-      width: 2.5px;
-      height: 2.5px;
-    }
-  }
-
-  @media only screen and (max-width: 420px) {
-
-    span {
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.05px;
-    }
-
-    .icon {
-      width: 13px;
-      height: 13px;
-
-      margin-right: 3px;
-      margin-left: 3px;
-    }
-
-    &::after {
-      width: 2px;
-      height: 2px;
-    }
+  @media (max-width: 360px) {
+    font-size: 8px;
   }
 `;
