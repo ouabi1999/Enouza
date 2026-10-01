@@ -115,7 +115,7 @@ function HomePage() {
           products={bestSellersProducts}
           name="best_sellers"
           label="bestSellers"
-          isAuto={true}
+          isAuto={false}
           isLoading={isLoading}
         />
       </SectionPlaceholder>
@@ -124,6 +124,7 @@ function HomePage() {
       <DesignSection />
 
       <MatricsSection />
+
       <SectionPlaceholder>
       <NewArrival
         products={newArrivalProducts}
