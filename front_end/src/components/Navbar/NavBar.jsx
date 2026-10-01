@@ -559,7 +559,7 @@ const ParentContainer = styled.div`
 
     inset-inline: 0;
 
-    z-index: 3;
+    z-index: 2;
 
     height: 50px;
 
@@ -824,10 +824,10 @@ const Container = styled.div`
      SMALL MOBILE
   ======================================================== */
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 816px) {
 
-    height: 45px;
-    top:31px;
+    height: 50px;
+     top: 31px;
   }
 
 `;
@@ -1021,7 +1021,6 @@ const SearchContainer = styled.div`
   width: auto;
 
   height: 38px;
-    
 
 
   .search-bar {
@@ -1311,7 +1310,6 @@ const Wrapper = styled.div`
     .search-icon-container-responsive {
 
       display: flex;
-
 
     }
 
