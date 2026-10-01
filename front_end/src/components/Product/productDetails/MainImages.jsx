@@ -344,7 +344,7 @@ function MainImages(props) {
               <FullscreenImage>
               <motion.img
   key={activeImage}
-  src={optimizeCloudinaryImage(activeImage, 1600)}
+  src={activeImage}
   alt={productData?.name || "Product"}
   initial={{ opacity: 0, scale: 0.96 }}
   animate={{ opacity: 1, scale: 1 }}
