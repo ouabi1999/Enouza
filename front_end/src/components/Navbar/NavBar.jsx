@@ -559,7 +559,7 @@ const ParentContainer = styled.div`
 
     inset-inline: 0;
 
-    z-index: 2;
+    z-index: 3;
 
     height: 50px;
 
@@ -826,8 +826,8 @@ const Container = styled.div`
 
   @media only screen and (max-width: 650px) {
 
-    height: 50px;
-     top: 31px;
+    height: 45px;
+    top:34px;
   }
 
 `;
@@ -1021,6 +1021,7 @@ const SearchContainer = styled.div`
   width: auto;
 
   height: 38px;
+    
 
 
   .search-bar {
@@ -1310,6 +1311,7 @@ const Wrapper = styled.div`
     .search-icon-container-responsive {
 
       display: flex;
+
 
     }
 
