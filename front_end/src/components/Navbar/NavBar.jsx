@@ -559,7 +559,7 @@ const ParentContainer = styled.div`
 
     inset-inline: 0;
 
-    z-index: 2;
+    z-index: 3;
 
     height: 50px;
 
@@ -704,7 +704,7 @@ const Container = styled.div`
   position: sticky;
 
 
-  top: 37px;
+  top: 34px;
 
   z-index: 2;
 
@@ -827,7 +827,7 @@ const Container = styled.div`
   @media only screen and (max-width: 816px) {
 
     height: 50px;
-     top: 31px;
+     top: 34px;
   }
 
 `;
