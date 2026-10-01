@@ -27,20 +27,7 @@ function MainImages(props) {
   */
 
   const [isFullscreen, setIsFullscreen] = useState(false);
-const optimizeCloudinaryImage = (url, width) => {
-  if (!url?.includes("res.cloudinary.com")) {
-    return url;
-  }
 
-  if (!url.includes("/image/upload/")) {
-    return url;
-  }
-
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
   const images =
     productData?.multimediaInfo?.image_urls || [];
 
@@ -136,15 +123,7 @@ const optimizeCloudinaryImage = (url, width) => {
     selectPicsDetails(nextIndex);
   };
 
-  /* =========================================================
-     FULLSCREEN IMAGE CLICK
-  ========================================================= */
-
-  const handleFullscreenBackgroundClick = (event) => {
-    if (event.target === event.currentTarget) {
-      closeFullscreen();
-    }
-  };
+ 
 
   return (
     <>
@@ -175,7 +154,7 @@ const optimizeCloudinaryImage = (url, width) => {
                   type="button"
                 >
                   <img
-  src={optimizeCloudinaryImage(img, 150)}
+  src={img}
   alt={`${productData?.name || "Product"} ${index + 1}`}
   loading="lazy"
   decoding="async"
@@ -239,7 +218,7 @@ const optimizeCloudinaryImage = (url, width) => {
                 >
                   {activeImage && (
                     <MainImage
-  src={optimizeCloudinaryImage(activeImage, 1200)}
+  src={activeImage}
   alt={productData?.name || "Product"}
   loading="eager"
   fetchPriority="high"
