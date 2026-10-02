@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO/SEO";
-import UserServices from "../components/Services/UserServices";
 import ProductLayout from "../components/Product/ProductLayout";
 import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
 import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
@@ -14,7 +13,6 @@ import { addToCart, buyNowItem } from "../features/cartSlice";
 import { getProductDetails, setProductDetails } from "../features/productDetails_slice";
 
 import "react-toastify/dist/ReactToastify.css";
-import Spinner from "../../common/Spinner";
 import PageNoteFound from "../../common/PageNoteFound";
 import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
