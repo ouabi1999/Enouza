@@ -473,16 +473,8 @@ const ProductImage = styled.img`
   transform: scale(1);
 
   ${ProductCard}:hover & {
-    transform: scale(1.025);
+    transform: scale(1.027);
 
-    ${({ $secondary }) =>
-      $secondary
-        ? `
-          opacity: 1;
-        `
-        : `
-          opacity: 0;
-        `}
   }
 
   @media (max-width: 768px) {
