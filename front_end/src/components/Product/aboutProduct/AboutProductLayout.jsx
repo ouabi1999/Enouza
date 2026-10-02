@@ -47,7 +47,7 @@ const Container = styled.section`
 
 const TabsWrapper = styled.div`
   position: sticky;
-  top: 95px;
+  top: 94px;
   z-index:1;
   display:flex;
   justify-content:center;
@@ -57,7 +57,7 @@ const TabsWrapper = styled.div`
 
 
   @media (max-width: 700px) {
-    top: 55px;
+    top: 70px;
     padding: 16px 0;
   }
 `;

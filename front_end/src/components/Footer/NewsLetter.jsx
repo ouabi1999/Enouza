@@ -137,6 +137,7 @@ function NewsLetter() {
     pauseOnFocusLoss
     draggable
     pauseOnHover
+    style={{ zIndex: 4 }}
    
 
   />

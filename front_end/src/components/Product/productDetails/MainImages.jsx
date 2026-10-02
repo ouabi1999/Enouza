@@ -652,7 +652,7 @@ const ProgressContainer = styled.div`
 
   left: 15px;
 
-  z-index: 10;
+  z-index: 1;
 
   display: flex;
 
@@ -752,7 +752,7 @@ const FullscreenButton = styled.button`
 
   bottom: 15px;
 
-  z-index: 10;
+  z-index: 1;
 
   display: flex;
 
@@ -838,7 +838,7 @@ const NavigationButton = styled.button`
 
   transform: translateY(-50%);
 
-  z-index: 8;
+  z-index: 1;
 
   width: 42px;
 
@@ -907,7 +907,7 @@ const FullscreenOverlay = styled(motion.div)`
 
   inset: 0;
 
-  z-index: 2147483647;
+  z-index: 1;
 
   width: 100%;
   height: 100%;
@@ -937,7 +937,7 @@ const FullscreenTop = styled.div`
   left: 0;
   right: 0;
 
-  z-index: 10;
+  z-index: 1;
 
   height: 78px;
 
@@ -1155,7 +1155,7 @@ const FullscreenBottom = styled.div`
   right: 0;
   bottom: 0;
 
-  z-index: 10;
+  z-index: 1;
 
   height: 74px;
 
