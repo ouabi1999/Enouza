@@ -473,7 +473,7 @@ const ProductImage = styled.img`
   transform: scale(1);
 
   ${ProductCard}:hover & {
-    transform: scale(1.027);
+    transform: scale(1.08);
 
   }
 
