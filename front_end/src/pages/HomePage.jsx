@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react'
 import styled from 'styled-components'
-import UserServices from '../components/Services/UserServices'
 import ApiInstance from '../../common/baseUrl'
 import AdvertiseMain from '../components/Advertise/AdvertiseMain.jsx'
 import { useTranslation } from 'react-i18next'
@@ -12,7 +11,6 @@ import CustomersFeedback from '../components/Product/home/CustomersFeedbak.jsx'
 import NewArrival from '../components/newArrival/NewArrival.jsx'
 import SEO from '../components/SEO/SEO.jsx'
 import CollectionSection from '../components/Product/home/CollectionSection.jsx'
-import InspirationSection from '../components/Product/home/InspirationSection.jsx'
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);

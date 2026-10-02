@@ -68,7 +68,9 @@ const ShoppingCart = React.lazy(() =>
 const UserProfile = React.lazy(() =>
   import("./pages/UserProfile")
 );
-
+const ReviewsPage = React.lazy(()=> 
+  import("./pages/ReviewsPage.jsx")
+);
 const UserInfo = React.lazy(() =>
   import("./components/user_Dashboard/profile/UserInfo")
 );
@@ -367,7 +369,7 @@ function App() {
                     <ShoppingCart />
                   }
                 />
-
+  <Route path="/reviews" element={<ReviewsPage />} />
 
                 {/* =========================
                     INFORMATION

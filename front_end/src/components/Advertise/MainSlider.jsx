@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
+import { useDispatch } from "react-redux";
+import { toggleCategory } from "../../features/filterSlice";
+import { Link } from "react-router-dom";
 const MainSlider = () => {
   const { t } = useTranslation();
   const videoRef = useRef(null);
   const [loadVideo, setLoadVideo] = useState(false);
+  const dispatch = useDispatch();
 
   const videoUrl = "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1790536327/Aure_Portable_Lamp_Travertine_Stone_Linen_-_Blossholm_3_c7eahz.mp4"
 
@@ -54,7 +57,6 @@ const MainSlider = () => {
 
   return (
     <Container>
-    
         <video
         className="video"
           ref={videoRef}
@@ -87,6 +89,11 @@ const MainSlider = () => {
           <h5>{t("mainSlider.welcome")}</h5>
         </bdi>
       </Overlay>
+      <ShopNowButton
+       to = "/collections?category=table_lamps"
+       onClick={()=> dispatch(toggleCategory("table_lamps"))}>
+        {t("profile.start_shopping")}
+      </ShopNowButton>
     </Container>
   );
 };
@@ -165,3 +172,25 @@ const Overlay = styled.div`
     margin-top: 18px;
   }
 `;
+
+const ShopNowButton = styled(Link)` 
+  color: #ffffff;
+  padding: 8px 15px;
+  border: 2px solid #ffffff;
+  position: absolute;
+  cursor: pointer;
+  text-wrap: nowrap;
+  text-transform: uppercase;
+  font-size:14px;
+   z-index: 1;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &:hover {
+    color: #e6e6e6;
+    border: 2px solid #e6e6e6;
+
+}
+    
+
+`

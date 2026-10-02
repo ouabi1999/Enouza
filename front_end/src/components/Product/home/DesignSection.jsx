@@ -443,42 +443,31 @@ const Arrow = styled.span`
 `;
 
 const CollectionButton = styled(Link)`
-  position: absolute;
+ position: absolute;
   left: 7%;
+  border: 2px solid #ffffff;
+  padding:10px 15px;
   bottom: 20px;
-
-  width: fit-content;
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 9px;
-
-  padding: 15px 20px;
-
-  background: #fff5e4;
-
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
+  background: #0000004f;
+ 
+  font-wieght:500;
+    font-size: 0.7rem;
 
-  font-family: "Times New Roman", serif;
-  font-weight: 500;
-  font-size: 0.7rem;
-
-  white-space: nowrap;
+  white-space: nowrap; /* ✅ fixed */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-
-  z-index: 5;
-
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease,
-    gap 0.25s ease;
+  z-index: 5; /* ✅ prevents hiding behind image */
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
-    color: #7c560a;
-    border-color: #7c560a;
-    gap: 12px;
+    color: #000000;
+    border-color: #000000;
+    gap: 12px; /* optional: makes arrow move on hover */
   }
 
   &:focus-visible {

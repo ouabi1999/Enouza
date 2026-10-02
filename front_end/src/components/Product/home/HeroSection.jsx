@@ -436,17 +436,16 @@ const Arrow = styled.span`
 const ShopButton = styled(Link)`
   position: absolute;
   right: 7%;
-  background: #DED4C4;
-  padding:15px 20px;
+  border: 2px solid #ffffff;
+  padding:10px 15px;
   bottom: 20px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
-  font-family:
-  "Times New Roman",
-  serif;
+   background: #0000004f;
+
   font-wieght:500;
     font-size: 0.7rem;
 
@@ -457,8 +456,8 @@ const ShopButton = styled(Link)`
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
-    color: #7c560a;
-    border-color: #7c560a;
+    color: #000000;
+    border-color: #000000;
     gap: 12px; /* optional: makes arrow move on hover */
   }
 

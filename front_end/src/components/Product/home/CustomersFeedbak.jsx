@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
-
+import { useNavigate } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import ReviewImagePopup, { PopupContainer } from "../aboutProduct/reviews/ReviewImagePopup";
 
@@ -16,7 +16,7 @@ const CustomersFeedback = () => {
     index: null,
   });
   const [review, setReview] = useState({})
-
+const navigate = useNavigate();
   // 1. Helper function to determine slides based on width
   const getSlidesToShow = () => {
     if (window.innerWidth < 550) return 1;
@@ -82,9 +82,10 @@ const CustomersFeedback = () => {
 
         <Header>
           <Eyebrow>
-            {t("customersFeedback.eyebrow")}
+            <bdi>
+              {t("customersFeedback.eyebrow")}
+            </bdi>
           </Eyebrow>
-
           <Title>
             {t("customersFeedback.title")}
           </Title>
@@ -200,6 +201,10 @@ const CustomersFeedback = () => {
         )}
 
       </Container>
+      <ViewAllButton onClick={() => navigate("/reviews")}>
+  {t("customersFeedback.viewAllReviews")}
+  <Arrow>→</Arrow>
+</ViewAllButton>
 
     </Section>
   );
@@ -538,4 +543,43 @@ const Check = styled.span`
 
   background: #1d1d1b;
   color: #fff;
+`;
+const ViewAllButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 55px auto 0;
+
+  padding: 14px 28px;
+
+  border: 1px solid #1d1d1b;
+
+  background: transparent;
+
+  color: #1d1d1b;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #1d1d1b;
+    color: #fff;
+  }
+`;
+
+const Arrow = styled.span`
+  font-size: 16px;
+
+  transition: transform 0.3s ease;
+
+  ${ViewAllButton}:hover & {
+    transform: translateX(4px);
+  }
 `;

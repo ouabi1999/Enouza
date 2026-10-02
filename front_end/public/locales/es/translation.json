@@ -356,10 +356,19 @@
 
 "customersFeedback": {
   "eyebrow": "LA EXPERIENCIA ENOUZA",
-  "title": "Elegida por hogares de todo el mundo.",
+  "title": "Amado por hogares de todo el mundo.",
   "description": "Hogares reales. Experiencias reales.",
   "ratingText": "Basado en las opiniones de nuestros clientes",
-  "verifiedPurchase": "Compra verificada"
+  "verifiedPurchase": "Compra verificada",
+
+  "back": "Volver",
+  "review": "reseña",
+  "reviews": "reseñas",
+  "noReviews": "Aún no hay reseñas",
+  "noReviewsDescription": "Actualmente no hay reseñas de clientes para mostrar.",
+  "previousPage": "Página anterior",
+  "nextPage": "Página siguiente",
+  "viewAllReviews": "Ver todas las reseñas"
 },
 
 "filterPage":{

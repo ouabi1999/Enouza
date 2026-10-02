@@ -358,8 +358,17 @@
   "eyebrow": "تجربة ENOUZA",
   "title": "محبوب من أصحاب المنازل حول العالم.",
   "description": "منازل حقيقية. تجارب حقيقية.",
-  "ratingText": "استنادًا إلى تقييمات العملاء",
-  "verifiedPurchase": "شراء موثّق"
+  "ratingText": "بناءً على تقييمات العملاء",
+  "verifiedPurchase": "عملية شراء موثّقة",
+
+  "back": "رجوع",
+  "review": "تقييم",
+  "reviews": "تقييمات",
+  "noReviews": "لا توجد تقييمات بعد",
+  "noReviewsDescription": "لا توجد حالياً تقييمات من العملاء لعرضها.",
+  "previousPage": "الصفحة السابقة",
+  "nextPage": "الصفحة التالية",
+  "viewAllReviews": "عرض جميع التقييمات"
 },
 "filterPage":{
   "clear_all": "مسح الكل",

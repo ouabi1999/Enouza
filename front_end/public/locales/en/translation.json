@@ -268,12 +268,21 @@
   }
 },
 
-  "customersFeedback": {
+ "customersFeedback": {
   "eyebrow": "THE ENOUZA EXPERIENCE",
   "title": "Loved by homeowners worldwide.",
   "description": "Real homes. Real experiences.",
   "ratingText": "Based on customer reviews",
-  "verifiedPurchase": "Verified Purchase"
+  "verifiedPurchase": "Verified Purchase",
+
+  "back": "Back",
+  "review": "review",
+  "reviews": "reviews",
+  "noReviews": "No reviews yet",
+  "noReviewsDescription": "There are currently no customer reviews to display.",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
+  "viewAllReviews": "View All Reviews"
 },
 
   "filterPage":{
