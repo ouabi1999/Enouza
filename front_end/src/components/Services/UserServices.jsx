@@ -225,6 +225,11 @@ const Group = styled.div`
 
   direction: ${({ $rtl }) =>
     $rtl ? "rtl" : "ltr"};
+   @media only screen and (max-width: 816px) {
+
+      width: max(100vw, 1000px);
+      min-width: max(100vw, 1000px);
+  }
 `;
 
 
