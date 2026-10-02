@@ -610,31 +610,31 @@
      }
   },
   
-  "trust": {
-    "secureCheckout": "دفع آمن",
+"trust": {
+  "secureCheckout": "دفع آمن",
 
-    "freeShipping": {
-      "title": "شحن مجاني",
-      "text": "شحن مجاني على جميع الطلبات"
-    },
-
-    "fastDelivery": {
-      "title": "توصيل سريع",
-      "text": "شحن دولي خلال 2–4 أيام*"
-    },
-
-    "returns": {
-      "title": "إرجاع خلال 100 يوم",
-      "text": "إرجاع مجاني لمدة 100 يوم"
-    },
-
-    "warranty": {
-      "title": "ضمان لمدة 3 سنوات",
-      "text": "مصمم بجودة تدوم"
-    },
-
-    "shopWithConfidence": "تسوق بثقة"
+  "freeShipping": {
+    "title": "شحن مجاني",
+    "text": "شحن مجاني على جميع الطلبات"
   },
+
+  "fastDelivery": {
+    "title": "توصيل دولي",
+    "text": "توصيل دولي خلال 5–15 يومًا"
+  },
+
+  "returns": {
+    "title": "إرجاع خلال 100 يوم",
+    "text": "إرجاع سهل خلال 100 يوم"
+  },
+
+  "warranty": {
+    "title": "ضمان لمدة 3 سنوات",
+    "text": "مصمم بجودة تدوم طويلاً"
+  },
+
+  "shopWithConfidence": "تسوّق بثقة"
+},
 
   "orderSuccess": {
     "orderPlacedSuccessfully": "🎉 تم تقديم طلبك بنجاح! 🎉",

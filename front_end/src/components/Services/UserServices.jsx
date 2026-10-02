@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -16,20 +16,22 @@ function UserServices() {
 
   const services = [
     {
-      icon: MonetizationOnIcon,
-      text: t("homePage.money_Back"),
-    },
-    {
       icon: VerifiedUserIcon,
-      text: t("homePage.safe_reliable_payments"),
+      text: t("trust.secureCheckout"),
     },
-    {
-      icon: SupportAgentIcon,
-      text: t("homePage.support_24_7"),
-    },
+    
+   
     {
       icon: LocalShippingIcon,
-      text: t("common.free_shipping"),
+      text: t("trust.freeShipping.text"),
+    },
+    {
+      icon: AssignmentReturnIcon,
+      text: t("trust.returns.text"),
+    },
+    {
+      icon: WorkspacePremiumIcon,
+      text: t("trust.warranty.title"),
     },
   ];
 
@@ -66,9 +68,6 @@ function UserServices() {
                     <span>{service.text}</span>
                   </Service>
 
-                  {/* Dot after EVERY item.
-                      This includes the last item so that
-                      the loop connects naturally. */}
                   <Separator aria-hidden="true">
                     <span />
                   </Separator>
@@ -97,7 +96,6 @@ function UserServices() {
                     <span>{service.text}</span>
                   </Service>
 
-                  {/* Dot after EVERY item */}
                   <Separator aria-hidden="true">
                     <span />
                   </Separator>
@@ -190,23 +188,6 @@ const Track = styled(motion.div)`
 ========================================================= */
 
 const Group = styled.div`
-  /*
-   * Desktop-first canvas.
-   *
-   * At desktop sizes:
-   *     the group fills the viewport.
-   *
-   * Below 1440px:
-   *     the group DOES NOT shrink.
-   *
-   * This is what allows the viewport to show:
-   *     4 items
-   *     3.5 items
-   *     3 items
-   *     2.5 items
-   *     2 items
-   * etc.
-   */
   width: max(100vw, 1440px);
   min-width: max(100vw, 1440px);
 
@@ -225,10 +206,10 @@ const Group = styled.div`
 
   direction: ${({ $rtl }) =>
     $rtl ? "rtl" : "ltr"};
-   @media only screen and (max-width: 816px) {
 
-      width: max(100vw, 1000px);
-      min-width: max(100vw, 1000px);
+  @media only screen and (max-width: 816px) {
+    width: max(100vw, 1000px);
+    min-width: max(100vw, 1000px);
   }
 `;
 
@@ -238,12 +219,6 @@ const Group = styled.div`
 ========================================================= */
 
 const Service = styled.div`
-  /*
-   * Natural fixed width.
-   *
-   * The item never stretches
-   * and never shrinks.
-   */
   width: max-content;
   min-width: max-content;
 
@@ -317,10 +292,6 @@ const Separator = styled.div`
 
   box-sizing: border-box;
 
-  /*
-   * The dot is a real element.
-   * It is centered vertically by flexbox.
-   */
   span {
     display: block;
 

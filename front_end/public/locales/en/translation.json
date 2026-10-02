@@ -439,6 +439,7 @@
       "description": "Your satisfaction is our priority. Enjoy secure shopping and easy returns."
     }
   },
+
   "profile": {
     "my_profile": "My Profile",
     "enouza_faq": "FAQ",
@@ -526,31 +527,31 @@
     }
   },
   
-  "trust": {
-    "secureCheckout": "Secure Checkout",
+ "trust": {
+  "secureCheckout": "Secure Checkout",
 
-    "freeShipping": {
-      "title": "Free Shipping",
-      "text": "Free Shipping on All Orders"
-    },
-
-    "fastDelivery": {
-      "title": "Fast Delivery",
-      "text": "International Shipping in 2–4 Days*"
-    },
-
-    "returns": {
-      "title": "100-Day Returns",
-      "text": "100 Days Free Returns"
-    },
-
-    "warranty": {
-      "title": "3-Year Warranty",
-      "text": "Quality Designed to Last"
-    },
-
-    "shopWithConfidence": "Shop With Confidence"
+  "freeShipping": {
+    "title": "Free Shipping",
+    "text": "Free Shipping on All Orders"
   },
+
+  "fastDelivery": {
+    "title": "Worldwide Delivery",
+    "text": "International Delivery in 5–15 Days"
+  },
+
+  "returns": {
+    "title": "100-Day Returns",
+    "text": "Easy Returns Within 100 Days"
+  },
+
+  "warranty": {
+    "title": "3-Year Warranty",
+    "text": "Crafted for Lasting Quality"
+  },
+
+  "shopWithConfidence": "Shop With Confidence"
+},
   
   "orderSuccess": {
     "orderPlacedSuccessfully": "🎉 Order Placed Successfully! 🎉",
