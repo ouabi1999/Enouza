@@ -274,7 +274,7 @@ const ReviewsPage = () => {
 
               const customerName =
                 `${item?.user?.firstName || ""} ${
-                  item?.user?.lastName || ""
+                  item?.user?.lastName.slice(0, 1) || ""
                 }`.trim() || "Customer";
 
               return (
@@ -384,10 +384,11 @@ const ReviewsPage = () => {
                       </Avatar>
 
                       <CustomerInfo>
+                        <bdi>
                         <CustomerName>
-                          {customerName}
+                          {customerName}.
                         </CustomerName>
-
+                         </bdi>
                         <CustomerDate>
                           {item?.created_at
                             ? new Date(
@@ -869,6 +870,7 @@ const CustomerName = styled.div`
 
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-transform: capitalize;
 `;
 
 const CustomerDate = styled.div`
