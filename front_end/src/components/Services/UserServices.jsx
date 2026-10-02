@@ -234,11 +234,7 @@ const Service = styled.div`
 
   white-space: nowrap;
 
-  font-family:
-    "Franklin Gothic Medium",
-    "Arial Narrow",
-    Arial,
-    sans-serif;
+  
 
   color: #ffffff;
 
@@ -261,7 +257,6 @@ const Service = styled.div`
 
     font-size: 12px;
 
-    font-weight: 500;
 
     line-height: 1;
 
