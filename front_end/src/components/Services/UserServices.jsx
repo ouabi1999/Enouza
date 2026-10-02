@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -26,7 +26,7 @@ function UserServices() {
       text: t("trust.freeShipping.text"),
     },
     {
-      icon: AssignmentReturnIcon,
+      icon: ReplayIcon,
       text: t("trust.returns.text"),
     },
     {

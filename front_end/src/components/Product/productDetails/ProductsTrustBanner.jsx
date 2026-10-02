@@ -9,23 +9,7 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import ReplayIcon from "@mui/icons-material/Replay";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 
-const optimizeCloudinaryImage = (url, width = 50) => {
-  if (!url?.includes("res.cloudinary.com")) return url;
-  if (!url.includes("/image/upload/")) return url;
 
-  if (
-    url.includes("f_auto") ||
-    url.includes("q_auto") ||
-    /w_\d+/.test(url)
-  ) {
-    return url;
-  }
-
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
 
 const ProductTrustBanner = () => {
   const { t } = useTranslation();
@@ -63,10 +47,10 @@ const ProductTrustBanner = () => {
         />
 
         <PaymentIcon
-          src={optimizeCloudinaryImage(
-            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788355836/amazon-payments_82089_f6able.png",
-            50
-          )}
+          src=
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788355836/amazon-payments_82089_f6able.png"
+            
+          
           alt="Amazon Pay"
           width="45"
           height="45"

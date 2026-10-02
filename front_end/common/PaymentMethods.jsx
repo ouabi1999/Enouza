@@ -1,20 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const optimizeCloudinaryImage = (url, width = 50) => {
-  if (!url?.includes("res.cloudinary.com")) return url;
-  if (!url.includes("/image/upload/")) return url;
 
-  // Avoid adding transformations twice
-  if (url.includes("f_auto") || url.includes("q_auto")) {
-    return url;
-  }
-
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
 
 function PaymentMethods() {
   return (
@@ -35,10 +22,9 @@ function PaymentMethods() {
         />
 
         <PaymentIcon
-          src={optimizeCloudinaryImage(
-            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788368908/amazon-payments-inverted_82055_hctxsm.png",
-            50
-          )}
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788368908/amazon-payments-inverted_82055_hctxsm.png"
+            
+        
           alt="Amazon Pay"
           width="45"
           height="45"
@@ -52,20 +38,19 @@ function PaymentMethods() {
         />
 
         <PaymentIcon
-          src={optimizeCloudinaryImage(
-            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370983/paypal_payment_method_card_icon_142733_tz08at.png",
-            50
-          )}
+          src="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370983/paypal_payment_method_card_icon_142733_tz08at.png"
+            
+          
           alt="PayPal"
           width="45"
           height="45"
         />
 
         <PaymentIcon
-          src={optimizeCloudinaryImage(
-            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370981/jcb_payment_method_card_icon_142738_utwp3t.png",
-            50
-          )}
+          src=
+            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1788370981/jcb_payment_method_card_icon_142738_utwp3t.png"
+            
+          
           alt="JCB"
           width="45"
           height="45"

@@ -8,7 +8,6 @@ import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import { useTranslation } from "react-i18next";
 
 import SideCart from "./SideCart";
-import { Currency } from "lucide-react";
 import CurrencyPrice from "../../../../common/CurrencyPrice";
 
 function ProductInfo({
