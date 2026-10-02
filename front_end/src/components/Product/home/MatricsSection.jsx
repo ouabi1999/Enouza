@@ -318,11 +318,10 @@ const VideoDescription = styled.p`
 
   max-width: 580px;
 
-  font-family: Arial, sans-serif;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
 
-  font-size: clamp(0.9rem, 1.5vw, 2rem);
-
-  line-height: 1.7;
+  line-height: 1.9;
 
   opacity: 0.92;
 

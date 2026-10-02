@@ -170,11 +170,14 @@ const Overlay = styled.div`
 
   h5 {
     margin-top: 18px;
+    text-transform: uppercase;
   }
 `;
 
 const ShopNowButton = styled(Link)` 
   color: #ffffff;
+    font-family: "Playfair Display", serif;
+
   padding: 8px 15px;
   border: 2px solid #ffffff;
   position: absolute;

@@ -145,9 +145,7 @@ function MainImages(props) {
                 <Thumbnail
                   key={`${img}-${index}`}
                   $active={isActive}
-                  onMouseEnter={() =>
-                    selectPicsDetails(index)
-                  }
+                 
                   onClick={() =>
                     selectPicsDetails(index)
                   }
