@@ -112,7 +112,7 @@ export default function FilterPageStyled() {
   return (
     <Page dir={i18n.dir()}>
       <SEO
-  title="Luxury Lamps"
+  title="Lamps and Home Lighting Collection | Enouza"
   description="Explore Enouza's curated collection of luxury lamps and premium home lighting, including elegant table lamps, wall lamps, and statement lighting."
   canonical="/collections"
 />

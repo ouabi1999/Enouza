@@ -113,6 +113,7 @@ function ProductDetailsPage() {
 
     viewedProductRef.current = productData.id;
   }, [productData]);
+  
 useEffect(() => {
   if (!slug) return;
 
