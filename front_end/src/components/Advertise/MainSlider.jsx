@@ -32,13 +32,24 @@ const MainSlider = () => {
           loop
           playsInline
           preload="metadata"
-         
+          poster={optimizeCloudinaryImage(posterUrl, {width: 1820})}
           aria-label="Enouza luxury home lighting and interior design"
         >
           <source src={optimizeCloudinaryVideo(videoUrl)} type="video/mp4" />
         </video>
    
-      
+      <Poster
+        src={optimizeCloudinaryImage(
+          posterUrl, {width: 1820}
+         
+        )}
+          alt="Enouza luxury home lighting and interior design"
+          width="1200"
+          height="675"
+          className="poster"
+          fetchPriority="high"
+        />
+ 
       <Overlay>
         <h1>{t("mainSlider.title")}</h1>
 
