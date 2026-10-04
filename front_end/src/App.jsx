@@ -25,11 +25,9 @@ import "./App.css";
 import HomePage from "./pages/HomePage.jsx";
 
 import { getUser } from "./features/authSlice";
-import {getProduct} from "./features/productSlice.js"
 
 import { useTranslation } from "react-i18next";
 
-import Spinner from "../common/Spinner.jsx";
 
 
 import "../public/i18n/index.jsx";

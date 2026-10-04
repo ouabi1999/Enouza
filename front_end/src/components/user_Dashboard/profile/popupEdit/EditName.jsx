@@ -6,9 +6,9 @@ import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import styled from 'styled-components';
 import { useFormik } from 'formik';
 import * as Yup from "yup"
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import TextField from "@mui/material/TextField";
+
+
+
 import { UserContext } from '../UserInfo';
 
 function EditName(props) {
