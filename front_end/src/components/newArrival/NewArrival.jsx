@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { optimizeCloudinaryImage } from "../../utilis/cloudinary";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -24,15 +23,7 @@ function NewArrival({
 
   const isArabic = i18n.dir() === "rtl";
 
-  const optimizeCloudinaryImage = (url, width = 700) => {
-    if (!url?.includes("res.cloudinary.com")) return url;
-    if (!url.includes("/image/upload/")) return url;
 
-    return url.replace(
-      "/image/upload/",
-      `/image/upload/f_auto,q_auto,w_${width}/`
-    );
-  };
 
   return (
     <Section dir="ltr">
@@ -207,14 +198,13 @@ function NewArrival({
                           <ProductImage
                             src={optimizeCloudinaryImage(
                               image,
-                              800
+                              {width: 800}
                             )}
                             alt={productName}
-                            loading="lazy"
-                            decoding="async"
                             width="800"
                             height="976"
                             $secondary={false}
+                            fetchPriority="high"
                           />
 
                           {/* SECONDARY IMAGE */}
@@ -223,11 +213,10 @@ function NewArrival({
                             <ProductImage
                               src={optimizeCloudinaryImage(
                                 secondaryImage,
-                                800
+                                {width: 800}
                               )}
                               alt={`${productName} alternate view`}
-                              loading="lazy"
-                              decoding="async"
+                              fetchPriority="high"
                               width="800"
                               height="976"
                               $secondary

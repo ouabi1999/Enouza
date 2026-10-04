@@ -8,7 +8,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PersonIcon from "@mui/icons-material/Person";
 import DropDownMenuLang from "./DropDownMenuLang";
 import { useSelector } from "react-redux";
-import { ClickAwayListener } from "@mui/material";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useTranslation } from "react-i18next";
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 

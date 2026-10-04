@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Rating, MenuItem, TextField, Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
+import Rating from "@mui/material/Rating";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import countriesData from "../../../../common/countryData.json";
 import ApiInstance from '../../../../common/baseUrl';
 

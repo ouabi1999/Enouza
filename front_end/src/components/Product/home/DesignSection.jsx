@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Container, Typography, Grid, Box } from "@mui/material";
-
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import StarIcon from "@mui/icons-material/Star";
 import SpaIcon from "@mui/icons-material/Spa";
@@ -9,12 +11,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import {optimizeCloudinaryImage} from "../../../utilis/cloudinary"
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
-import { useSelector } from "react-redux";
 
 // ==========================================
 // COLORS
@@ -30,33 +29,6 @@ const COLORS = {
   border: "#E4DED4",
 };
 
-// ==========================================
-// CLOUDINARY IMAGE OPTIMIZATION
-// ==========================================
-
-const optimizeCloudinaryImage = (url, width = 700) => {
-  if (!url?.includes("res.cloudinary.com")) {
-    return url;
-  }
-
-  if (!url.includes("/image/upload/")) {
-    return url;
-  }
-
-  // Avoid adding transformations twice
-  if (
-    url.includes("f_auto") ||
-    url.includes("q_auto") ||
-    /w_\d+/.test(url)
-  ) {
-    return url;
-  }
-
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
 
 
 // ==========================================
@@ -66,9 +38,7 @@ const optimizeCloudinaryImage = (url, width = 700) => {
 const DesignSection = () => {
   const { t, i18n } = useTranslation();
 
-  const products = useSelector(
-    (state) => state.products.productData
-  );
+
 
   // ========================================
   // DESIGN PRINCIPLES
@@ -104,22 +74,8 @@ const DesignSection = () => {
     },
   ];
 
-  // ========================================
-  // SLIDER SETTINGS
-  // ========================================
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    autoplay: true,
-    autoplaySpeed: 1800,
-    arrows: false,
-    pauseOnHover: true,
-  };
+  
+ 
 
   // ========================================
   // PRODUCTS
@@ -146,20 +102,18 @@ const DesignSection = () => {
 
         <Grid item xs={12} md={6}>
             <ImageWrapper>
-              <Slider {...settings}>
                 
 
                   
 
                     <div>
                       <img
-                        src={ImageuRL}
+                        src= {optimizeCloudinaryImage(ImageuRL, {width: 580})}
                         alt={
                          
                           "Luxury lamp DESIGN"
                         }
-                        loading="lazy"
-                        decoding="async"
+                         fetchPriority="high"
                         width="600"
                         height="580"
                         style={{
@@ -173,7 +127,6 @@ const DesignSection = () => {
                       />
                     </div>
                 
-              </Slider>
 
               {/* ==================================
                   DISCOVER COLLECTION
@@ -400,17 +353,7 @@ const ImageWrapper = styled.div`
 
   background: ${COLORS.white};
 
-  .slick-slider {
-    width: 100%;
-  }
-
-  .slick-list {
-    overflow: hidden;
-  }
-
-  .slick-slide > div {
-    line-height: 0;
-  }
+  
 
   img {
     width: 100%;

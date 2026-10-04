@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Grid, TextField } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Box from '@mui/material/Box';
 import { FormContext } from "../../../pages/CheckoutPage";
 import { OrderContext } from "../../../App";
 import countriesData from "../../../../common/countryData.json"

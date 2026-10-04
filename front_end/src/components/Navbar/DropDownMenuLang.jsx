@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import data from "../../../common/countryData.json";
-import { ClickAwayListener } from "@mui/material";
-
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { setLocation } from "../../features/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 

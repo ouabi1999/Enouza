@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button, CircularProgress, IconButton, InputAdornment, TextField } from '@mui/material';
+import React, { useContext} from 'react'
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import TextField from "@mui/material/TextField";
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { Form, Formik, useFormik } from 'formik';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useFormik } from 'formik';
+
 import { UserContext } from '../UserInfo';
 import * as Yup from "yup"
 function EditEmail(props) {

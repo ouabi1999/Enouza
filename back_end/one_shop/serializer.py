@@ -203,18 +203,6 @@ class RatingSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    available_shipping = serializers.JSONField()
-    specifications = serializers.JSONField()
-    seo = serializers.JSONField(required=False)
-    tags = serializers.JSONField(required=False)
-    skuInfo = serializers.JSONField()
-    multimediaInfo = serializers.JSONField()
-    read_only_fields = ["id", "release_date"]
-
-    ratings = getRatingSerializer(
-        source="user_ratings", many=True, read_only=True, default=[]
-    )
-
     def validate_price(self, value):
         if value < 0:
             raise serializers.ValidationError("Price cannot be negative.")
@@ -222,8 +210,31 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = "__all__"
+        fields = [
+            "id",
+            "name",
+            "multimediaInfo",
+            "category"
+        ]
+        
+class HeroProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Products
+        fields = [
+            "id",
+            "name",
+            "multimediaInfo",
+            "category"
+        ]
 
+class ProductDetailsSerializer(serializers.ModelSerializer):
+    ratings = getRatingSerializer(
+        source="user_ratings", many=True, read_only=True, default=[]
+    )
+    class Meta:
+        model = Products
+        fields = "__all__"
+        
 
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:

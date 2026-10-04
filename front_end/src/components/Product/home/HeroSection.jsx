@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
+import {optimizeCloudinaryImage} from  "../../../utilis/cloudinary";
 import DecorationLine from "../../../../common/DecorationLine";
 
 export default function HeroSection() {
@@ -26,20 +26,10 @@ export default function HeroSection() {
     getHeroProduct();
   }, []);
 
-  if (!product) return null;
-
-const optimizeCloudinaryImage = (url, width = 700) => {
-  if (!url?.includes("res.cloudinary.com")) return url;
-
-  return url.replace(
-    "/image/upload/",
-    `/image/upload/f_auto,q_auto,w_${width}/`
-  );
-};
 
   const imageUrl = optimizeCloudinaryImage(
   product?.multimediaInfo?.image_urls?.[2],
-  700
+  {width: 620}
 );
 
   if (!imageUrl) return null;
@@ -69,11 +59,9 @@ const optimizeCloudinaryImage = (url, width = 700) => {
         <ImageSide>
           <ImageContainer>
             <HeroImage
-              src={imageUrl}
+              src= {imageUrl}
               alt={t("heroSection.title")}
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
+              fetchPriority="high"
               width="700"
               height="620"
             />

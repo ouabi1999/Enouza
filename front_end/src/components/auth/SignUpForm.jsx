@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  Grid,
-  TextField,
-  MenuItem,
-  Button,
-  IconButton,
-  InputAdornment,
-  CircularProgress,
-} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import CircularProgress from "@mui/material/CircularProgress";
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
-import Flag from "react-world-flags";
 import countriesData from "../../../common/countryData.json";
 import { useFormik } from "formik";
 import Visibility from "@mui/icons-material/Visibility";

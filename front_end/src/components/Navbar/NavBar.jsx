@@ -3,14 +3,12 @@ import styled from "styled-components";
 
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ClickAwayListener } from "@mui/material";
-
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { setLogout } from "../../features/authSlice";
 import { setSearch } from "../../features/filterSlice";
 
@@ -19,6 +17,7 @@ import ApiInstance from "../../../common/baseUrl";
 import DropDownMenu from "./DropDownMenu";
 import DropDownMenuLang from "./DropDownMenuLang";
 import SideBar from "./SideBar";
+import {optimizeCloudinaryImage} from "../../utilis/cloudinary"
 
 import { useTranslation } from "react-i18next";
 import UserServices from "../Services/UserServices";
@@ -279,7 +278,8 @@ function NavBar({ outlet, setSearchValue, value }) {
             <BrandLogo>
 
               <img
-                src="../enouza_logo_black.png"
+                    src="https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto,q_auto,w_100/v1791076399/enouza_logo_black_vpsxgw.png"
+
                 alt="ENOUZA"
               />
 
@@ -943,8 +943,8 @@ const BrandLogo = styled.div`
   img {
 
     width: 27px;
+    
 
-    height: auto;
 
     display: block;
 

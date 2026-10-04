@@ -15,6 +15,8 @@ from ..serializer import (
     ProductSerializer,
     OrderSerializer,
     RatingSerializer,
+    HeroProductSerializer,
+    ProductDetailsSerializer
 )
 from django.db import transaction
 from django.shortcuts import get_object_or_404
@@ -106,7 +108,7 @@ class ProductDetailsView(APIView):
 
     def get(self, request, pk=None):
         product = get_object_or_404(Products, id=pk)
-        serializer = ProductSerializer(product)
+        serializer = ProductDetailsSerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk=None):
@@ -569,5 +571,5 @@ class HeroProductView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        serializer = ProductSerializer(hero)
+        serializer = HeroProductSerializer(hero)
         return Response(serializer.data, status=status.HTTP_200_OK)

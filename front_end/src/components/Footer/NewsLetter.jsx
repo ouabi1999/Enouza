@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";

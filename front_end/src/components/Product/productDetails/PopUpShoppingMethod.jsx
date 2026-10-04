@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import InfoIcon from "@mui/icons-material/Info";
-import Radio from "@mui/material/Radio";
 import { useSelector } from "react-redux";
-import { Checkbox } from "@mui/material";
-import { pink, yellow } from "@mui/material/colors";
+import Checkbox from "@mui/material/Checkbox";
+
+import { yellow } from "@mui/material/colors";
 import { ClickAwayListener } from "@mui/base";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "motion/react"
@@ -13,7 +13,7 @@ import { AnimatePresence, motion } from "motion/react"
 function PopUpShoppingMethod(props) {
   const productData = useSelector((state) => state.products.productData);
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const {t, i18n} = useTranslation()
+  const {t} = useTranslation()
 
   const {
     checkboxChange,

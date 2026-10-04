@@ -7,8 +7,7 @@ import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-
-import { ClickAwayListener } from "@mui/material";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Flag from "react-world-flags";

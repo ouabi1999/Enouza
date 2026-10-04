@@ -1,53 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { ArrowForward } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
+import {optimizeCloudinaryVideo} from "../../../utilis/cloudinary"
 
 const MetricsSection = () => {
   const { t, i18n } = useTranslation();
 
-  const videoContainerRef = useRef(null);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-
-  /*
-   * Load the video only when the section is close to entering
-   * the user's viewport.
-   *
-   * This prevents the 8+ MB video from being downloaded
-   * during the initial homepage load.
-   */
-  useEffect(() => {
-    const container = videoContainerRef.current;
-
-    if (!container) return;
-
-    if (!("IntersectionObserver" in window)) {
-      setShouldLoadVideo(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        if (entry.isIntersecting) {
-          setShouldLoadVideo(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: "500px 0px",
-        threshold: 0,
-      }
-    );
-
-    observer.observe(container);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+ const vedeoUrl = "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
+  
+  
+  
 
   return (
     <Section>
@@ -74,10 +38,8 @@ const MetricsSection = () => {
       ========================= */}
 
       <VideoSection
-        ref={videoContainerRef}
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
-        {shouldLoadVideo ? (
           <Video
             autoPlay
             muted
@@ -87,15 +49,12 @@ const MetricsSection = () => {
             aria-label="Enouza luxury lighting and premium home decor"
           >
             <source
-              src="https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
+              src={optimizeCloudinaryVideo(  vedeoUrl, {width: 1600} )}
               type="video/mp4"
             />
           </Video>
-        ) : (
-          <VideoPlaceholder
-            aria-hidden="true"
-          />
-        )}
+        
+        
 
         <VideoOverlay />
 

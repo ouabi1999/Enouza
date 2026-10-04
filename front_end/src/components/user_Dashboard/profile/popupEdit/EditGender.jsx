@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
-import {Button, IconButton, MenuItem, InputAdornment, TextField}from '@mui/material';
+import React, { useContext } from 'react'
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { Form, Formik, useFormik } from 'formik';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {useFormik } from 'formik';
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
 import { UserContext } from '../UserInfo';
 import * as Yup from "yup"
 import FemaleIcon from '@mui/icons-material/Female';
@@ -32,18 +31,11 @@ function EditGender(props) {
             updateUserInfo({...formData, gender:values.gender})
         },
     });  const {
-        nameEdit,
-        emailEdit,
-        passwordEdit,
-        countryEdit,
+       
         genderEdit,
-        closeNameEdit,
-        closeEmailEdit,
-        closePasswordEdit,
-        closeCountryEdit,
+       
         closeGenderEdit,
-        closeAgeEdit,
-        ageEdit } = props;
+         } = props;
 
     const genders = [
        {gender : "male", tranGender : props.t("common.male"), icon:<MaleIcon/>},

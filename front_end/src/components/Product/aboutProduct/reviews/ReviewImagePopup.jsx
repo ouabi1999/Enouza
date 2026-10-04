@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import { ClickAwayListener } from "@mui/base";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function ReviewImagePopup({ rate, selected, setSelected }) {
   if (selected.index === null || rate.id !== selected.id) return null;
@@ -42,7 +44,7 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
 
             <Header>
               <CloseButton onClick={handleClose}>
-                <X size={20} />
+                <CloseIcon style={{ fontSize: 20 }} />
               </CloseButton>
             </Header>
             <Content>
@@ -63,10 +65,10 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
                 {images.length > 1 && (
                   <>
                     <NavButtonLeft onClick={handlePrev}>
-                      <ArrowLeft size={28} />
+                      <ArrowBackIcon style={{ fontSize: 28 }} />
                     </NavButtonLeft>
                     <NavButtonRight onClick={handleNext}>
-                      <ArrowRight size={28} />
+                      <ArrowForwardIcon style={{ fontSize: 28}} />
                     </NavButtonRight>
                   </>
                 )}

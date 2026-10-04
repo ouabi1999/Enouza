@@ -1,11 +1,9 @@
-import React, { Component, useState, createRef, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import styled from "styled-components";
 
-import CancelIcon from "@mui/icons-material/Cancel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button as MUIButton } from '@mui/material';
 
 import ApiInstance from "../../../../common/baseUrl";
 import Stepper from "./Product_component/Stepper"

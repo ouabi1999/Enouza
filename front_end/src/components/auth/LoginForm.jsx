@@ -1,7 +1,11 @@
 import React, {  useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Grid, TextField, Button, IconButton, InputAdornment } from '@mui/material';
+import { useDispatch} from 'react-redux';
 import { Link, useLocation, useNavigate}  from 'react-router-dom'
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
 import styled from 'styled-components';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -15,10 +19,8 @@ import { setLogin } from '../../features/authSlice';
 
 function LoginForm({show, t, i18n}) {
   
-  const { state } = useLocation();
   
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const user =  null //useSelector(state => state.auth.auth) ||  []
   const isAuth = window.localStorage.getItem("access_token") 
   const [isLoading, setIsLoading] = useState(false)

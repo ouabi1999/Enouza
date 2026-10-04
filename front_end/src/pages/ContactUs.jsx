@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import ApiInstance from "../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO/SEO";

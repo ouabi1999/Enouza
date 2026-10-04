@@ -4,7 +4,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { categoryList } from "../../../../common/categoryList";
 
-import { Button, InputLabel, MenuItem, OutlinedInput, TextField } from '@mui/material';
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
 
 export default function DisplayCategoryMain({formData, setFormData}) {
   const [mainCategory, setMainCategory] = useState({

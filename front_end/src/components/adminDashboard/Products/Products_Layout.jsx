@@ -1,13 +1,13 @@
-import React, { Component, createRef, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AdminProducts from './Admin_Products';
 import { Stack } from '@mui/system';
-import { Pagination } from '@mui/material';
+import Pagination from "@mui/material/Pagination";
 import ApiInstance from "../../../../common/baseUrl"
 import ProductManagement from '../Products/ProductManagement';
 import AliExpressRating from './AliExpressRating';
+
 export default function ProductsLayout(){
    
-    const imgInput = createRef()
     const [currentPage, setCurrentPage] = useState(1);
     const PER_PAGE = 20;
     const [totalProucts, setTotalProucts] = useState(0)

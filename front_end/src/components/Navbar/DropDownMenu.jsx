@@ -5,8 +5,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { Link } from "react-router-dom";
-import { ClickAwayListener } from "@mui/material";
 import { useSelector } from "react-redux";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useTranslation } from "react-i18next";
 
 function DropDownMenu(props) {

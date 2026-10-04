@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MenuItem, TextField } from '@mui/material';
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
 import { categoryList, series, types } from '../../../../../../common/categoryList';
 
 function Organization({ formData, setFormData }) {

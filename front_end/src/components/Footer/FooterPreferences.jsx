@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { ClickAwayListener } from "@mui/material";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Flag from "react-world-flags";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 

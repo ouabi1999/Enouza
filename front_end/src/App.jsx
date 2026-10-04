@@ -30,7 +30,7 @@ import {getProduct} from "./features/productSlice.js"
 import { useTranslation } from "react-i18next";
 
 import Spinner from "../common/Spinner.jsx";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
+
 
 import "../public/i18n/index.jsx";
 import { fetchExchangeRates } from "./features/currencySlice.js";
@@ -58,7 +58,9 @@ This reduces the initial JavaScript bundle.
 const Auth = React.lazy(() =>
   import("./pages/Auth")
 );
-
+const ProductDetailsPage  = React.lazy(() =>
+  import("./pages/ProductDetailsPage")
+);
 
 
 const ShoppingCart = React.lazy(() =>
@@ -264,7 +266,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getProduct())
     dispatch(fetchExchangeRates());
 
   }, [retry, dispatch]);
@@ -283,7 +284,7 @@ function App() {
       }}
     >
 
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={null}>
 
         <OrderContext.Provider
           value={{

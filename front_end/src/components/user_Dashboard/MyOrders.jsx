@@ -3,9 +3,8 @@ import Pagination from '@mui/material/Pagination';
 import { useSelector } from 'react-redux';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import { CircularProgress } from '@mui/material'
+import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import ApiInstance from '../../../common/baseUrl';
 
 

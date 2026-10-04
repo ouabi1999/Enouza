@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button, CircularProgress, IconButton, InputAdornment, TextField } from '@mui/material';
+import React, { useContext} from 'react'
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import TextField from "@mui/material/TextField";
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { Form, Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from "yup"
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import TextField from "@mui/material/TextField";
 import { UserContext } from '../UserInfo';
-import { propTypes } from 'react-world-flags';
 
 function EditName(props) {
 
-    const user = useSelector(state=> state.auth.user)
-    const { formData, setFormData , updateUserInfo, loading } = useContext(UserContext)
+    const { formData,  updateUserInfo, loading } = useContext(UserContext)
     const editSechema = Yup.object({ 
         firstName: Yup.string()
           .max(10, props.t('errors.error_max_name_characters'))

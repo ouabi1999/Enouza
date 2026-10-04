@@ -3,12 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  AutoAwesome,
-  WorkspacePremium,
-  LightMode,
-  DiamondOutlined,
-} from "@mui/icons-material";
+import AutoAwesome from "@mui/icons-material/AutoAwesome";
+import WorkspacePremium from "@mui/icons-material/WorkspacePremium";
+import LightMode from "@mui/icons-material/LightMode";
+import DiamondOutlined from "@mui/icons-material/DiamondOutlined";
 
 import SEO from "../components/SEO/SEO";
 

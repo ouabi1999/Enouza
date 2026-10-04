@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import {toggleCategory} from  "../../../features/filterSlice"
+import { toggleCategory } from "../../../features/filterSlice"
 import { Link } from "react-router-dom";
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
+import { optimizeCloudinaryImage } from "../../../utilis/cloudinary"
 const CollectionSection = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const CollectionSection = () => {
     },
     {
       key: "table_lamps",
-      image:"https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png",
+      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png",
       link: "/collections?category=table_lamps",
     },
     /*
@@ -37,30 +38,30 @@ const CollectionSection = () => {
     <Section>
       <Header>
         <bdi>
-        <Eyebrow>
-          {t("collectionSection.title")}
-        </Eyebrow>
+          <Eyebrow>
+            {t("collectionSection.title")}
+          </Eyebrow>
         </bdi>
 
-      
+
       </Header>
 
       <CollectionGrid>
         {collections.map((collection, index) => (
           <Link
             to={collection.link}
-            onClick={()=> dispatch(toggleCategory(collection.key))
-            
+            onClick={() => dispatch(toggleCategory(collection.key))
+
             }
             key={collection.key}
           >
             <ImageWrapper>
               <CollectionImage
-                src={collection.image}
+                src={optimizeCloudinaryImage(collection.image, { width: 800 })}
                 alt={t(
                   `collectionSection.categories.${collection.key}.title`
                 )}
-                loading="lazy"
+                fetchPriority="high"
               />
 
               <Overlay />
@@ -76,19 +77,19 @@ const CollectionSection = () => {
                   )}
                 </CardTitle>
 
-             
 
-                  <bdi>
-                <Explore>
-                  {t("collectionSection.catlabel")}
-                  <TrendingFlatIcon
-  className="arrow-icon"
-  style={{
-    transform: i18n.language === "ar" ? "rotate(180deg)" : "none",
-  }}
-/>
-                </Explore>
-                  </bdi>
+
+                <bdi>
+                  <Explore>
+                    {t("collectionSection.catlabel")}
+                    <TrendingFlatIcon
+                      className="arrow-icon"
+                      style={{
+                        transform: i18n.language === "ar" ? "rotate(180deg)" : "none",
+                      }}
+                    />
+                  </Explore>
+                </bdi>
               </CardContent>
             </ImageWrapper>
           </Link>
