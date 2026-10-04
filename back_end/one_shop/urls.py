@@ -48,6 +48,11 @@ urlpatterns = [
         name="product-details",
     ),
     path(
+    "product-slug/<slug:slug>/",
+    productView.ProductSlugView.as_view(),
+    name="product-slug"
+),
+    path(
         "get_dashboard_products/",
         productView.DashboardProductsView.as_view(),
         name="get_dashboard_products",

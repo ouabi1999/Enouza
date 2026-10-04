@@ -204,10 +204,12 @@ function CollectionProducts({
                 ============================ */}
 
                 <ProductLink
-                  to={`/product/${item.id}?name=${encodeURIComponent(
-                          item.name?.en || ""
-                        )}&index=${index}`}
-                >
+                        to={`/product/${item.name?.en
+                          ?.toLowerCase()
+                          .trim()
+                          .replace(/\s+/g, "-")
+                          .replace(/[^\w-]+/g, "")}`}
+                      >
                   <ImageWrapper>
                     {/* PRIMARY IMAGE */}
 

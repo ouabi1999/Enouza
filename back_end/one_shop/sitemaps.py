@@ -1,5 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Products
+from django.utils.text import slugify
+from django.utils.text import slugify
 
 
 class ProductSitemap(Sitemap):
@@ -10,7 +12,7 @@ class ProductSitemap(Sitemap):
         return Products.objects.all().order_by("id")
 
     def location(self, item):
-        return f"/product/{item.id}"
+        return f"/product/{slugify(item.name.get('en', ''))}"
 
 
 class StaticPagesSitemap(Sitemap):

@@ -10,6 +10,7 @@ from django.db.models import Count
 from django.http import JsonResponse
 from django.db.models import Avg, Count, Value
 from django.db.models.functions import Coalesce
+from django.utils.text import slugify
 
 from ..serializer import (
     ProductSerializer,
@@ -103,6 +104,25 @@ class ProductView(APIView):
         )
 
 
+class ProductSlugView(APIView):
+
+    def get(self, request, slug):
+        products = Products.objects.all()
+
+        for product in products:
+            name = product.name or {}
+            english_name = name.get("en", "")
+
+            if slugify(english_name) == slug:
+                return Response({
+                    "id": product.id,
+                    "slug": slug,
+                })
+
+        return Response(
+            {"detail": "Product not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
 class ProductDetailsView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 

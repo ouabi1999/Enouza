@@ -21,7 +21,7 @@ import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDeta
 function ProductDetailsPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
+ const { slug } = useParams();
   const { t } = useTranslation();
 
   const [quantity, setQuantity] = useState(1);
@@ -113,15 +113,36 @@ function ProductDetailsPage() {
 
     viewedProductRef.current = productData.id;
   }, [productData]);
-useEffect(() => {
-  if (!id) return;
 
-  dispatch(getProductDetails(id));
+useEffect(() => {
+  if (!slug) return;
+
+  const loadProduct = async () => {
+    try {
+      const response = await ApiInstance.get(
+        `product-slug/${slug}/`
+      );
+
+      const productId = response.data?.id;
+
+      if (!productId) {
+        throw new Error("Product ID not found");
+      }
+
+      dispatch(getProductDetails(productId));
+
+    } catch (error) {
+      console.error("Failed to resolve product slug:", error);
+    }
+  };
+
+  loadProduct();
 
   return () => {
     dispatch(setProductDetails(null));
   };
-}, [dispatch, id, tryAgain]);
+
+}, [dispatch, slug, tryAgain]);
 
   /* =========================
      RESET SCROLL
@@ -133,7 +154,7 @@ useEffect(() => {
       left: 0,
       behavior: "auto",
     });
-  }, [id]);
+  }, [slug]);
 
 
 
@@ -375,7 +396,7 @@ useEffect(() => {
       <SEO
         title={productData?.name?.en || "Luxury Lamp"}
         description={productData?.description?.en}
-        canonical={`/product/${id}`}
+        canonical={`/product/${slug}`}
         image={productData?.multimediaInfo?.main_image}
         productData={productData}
       />
