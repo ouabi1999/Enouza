@@ -15,8 +15,8 @@ from ..serializer import (
     ProductSerializer,
     OrderSerializer,
     RatingSerializer,
+    ProductDetailsSerializer,
     HeroProductSerializer,
-    ProductDetailsSerializer
 )
 from django.db import transaction
 from django.shortcuts import get_object_or_404
@@ -164,7 +164,7 @@ class ProductDetailsView(APIView):
 
             data["multimediaInfo"] = json.dumps(multimedia_info)
 
-        serializer = ProductSerializer(product_to_update, data=data)
+        serializer = ProductDetailsSerializer(product_to_update, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -185,7 +185,7 @@ class DashboardProductsView(APIView):
         page = paginator.get_page(current_page)
 
         # Serialize the products data
-        serializer = ProductSerializer(page.object_list, many=True)
+        serializer = ProductDetailsSerializer(page.object_list, many=True)
 
         # Return response with paginated data
         return Response(

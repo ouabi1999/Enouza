@@ -1,25 +1,13 @@
 import React, { Component, useState } from "react";
 import styled from "styled-components";
 
-import Spinner from "../../../../common/Spinner";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function adminProducts(props) {
-  const myRef = React.createRef();
-  const [index, setIndex] = useState(0);
 
-  const handleTab = (index) => {
-    setIndex(index);
-    const images = myRef.current.children;
-    for (let i = 0; i < images.length; i++) {
-      images[i].classnNameName = images[i].classnNameName.replace("active", "");
-    }
-    images[index].classnNameName = "active";
-  };
-  const handFirstProduct = () => {
-    myRef.current.children[index].classnNameName = "active";
-  };
+  
+  
 
   const {
     isLoading,
