@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { optimizeCloudinaryImage } from "../../utilis/cloudinary";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {createProductSlug} from "../../utilis/CreateSlug"
+
 import "swiper/css";
 import CurrencyPrice from "../../../common/CurrencyPrice";
 
@@ -80,9 +80,9 @@ function NewArrival({
             autoplay={
               isAuto
                 ? {
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }
                 : false
             }
             modules={[Autoplay]}
@@ -143,13 +143,13 @@ function NewArrival({
                 const avgRating =
                   ratings.length > 0
                     ? (
-                      ratings.reduce(
-                        (total, rating) =>
-                          total +
-                          Number(rating.stars || 0),
-                        0
-                      ) / ratings.length
-                    ).toFixed(1)
+                        ratings.reduce(
+                          (total, rating) =>
+                            total +
+                            Number(rating.stars || 0),
+                          0
+                        ) / ratings.length
+                      ).toFixed(1)
                     : null;
 
                 const sellingPrice = Number(
@@ -166,10 +166,10 @@ function NewArrival({
 
                 const discountPercentage = hasDiscount
                   ? Math.round(
-                    ((comparePrice - sellingPrice) /
-                      comparePrice) *
-                    100
-                  )
+                      ((comparePrice - sellingPrice) /
+                        comparePrice) *
+                        100
+                    )
                   : null;
 
                 const hasFreeShipping =
@@ -187,8 +187,8 @@ function NewArrival({
                       ============================ */}
 
                       <ProductLink
-  to={`/product/${createProductSlug(item.name?.en)}`}
->
+                        to={`/product/${item.slug}`}
+                      >
                         <ImageWrapper>
 
                           {/* PRIMARY IMAGE */}
@@ -196,7 +196,7 @@ function NewArrival({
                           <ProductImage
                             src={optimizeCloudinaryImage(
                               image,
-                              { width: 800 }
+                              {width: 800}
                             )}
                             alt={productName}
                             width="800"
@@ -211,7 +211,7 @@ function NewArrival({
                             <ProductImage
                               src={optimizeCloudinaryImage(
                                 secondaryImage,
-                                { width: 800 }
+                                {width: 800}
                               )}
                               alt={`${productName} alternate view`}
                               fetchPriority="high"
@@ -243,11 +243,11 @@ function NewArrival({
                             )}
                           </ProductLabels>
 
+                         
 
+                        
 
-
-
-
+                         
 
                         </ImageWrapper>
                       </ProductLink>
@@ -277,7 +277,7 @@ function NewArrival({
                             </ComparePrice>
                           )}
                         </PriceGroup>
-                        {/*  {avgRating && (
+                       {/*  {avgRating && (
                           <Rating>
                             <StarIcon />
 
@@ -577,11 +577,11 @@ const ProductImage = styled.img`
     transform: scale(1.025);
 
     ${({ $secondary }) =>
-    $secondary
-      ? `
+      $secondary
+        ? `
           opacity: 1;
         `
-      : `
+        : `
           opacity: 0;
         `}
   }
@@ -593,7 +593,7 @@ const ProductImage = styled.img`
       transform: none;
 
       opacity: ${({ $secondary }) =>
-    $secondary ? 0 : 1};
+        $secondary ? 0 : 1};
     }
   }
 `;

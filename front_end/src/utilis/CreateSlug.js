@@ -1,5 +1,4 @@
 // utils/createProductSlug.js
-
 export const createProductSlug = (name) => {
   return name
     ?.toLowerCase()

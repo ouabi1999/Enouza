@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import {optimizeCloudinaryImage} from  "../../../utilis/cloudinary";
+import { optimizeCloudinaryImage } from "../../../utilis/cloudinary";
 import DecorationLine from "../../../../common/DecorationLine";
+import { createProductSlug } from "../../../utilis/CreateSlug";
 
 export default function HeroSection() {
   const [product, setProduct] = useState(null);
   const { t, i18n } = useTranslation();
 
-  
+
   useEffect(() => {
     const getHeroProduct = async () => {
       try {
@@ -28,9 +29,9 @@ export default function HeroSection() {
 
 
   const imageUrl = optimizeCloudinaryImage(
-  product?.multimediaInfo?.image_urls?.[2],
-  {width: 620}
-);
+    product?.multimediaInfo?.image_urls?.[2],
+    { width: 620 }
+  );
 
   if (!imageUrl) return null;
 
@@ -52,14 +53,14 @@ export default function HeroSection() {
 
 
           {/* STATS */}
-          
+
         </Content>
 
         {/* IMAGE SIDE */}
         <ImageSide>
           <ImageContainer>
             <HeroImage
-              src= {imageUrl}
+              src={imageUrl}
               alt={t("heroSection.title")}
               fetchPriority="high"
               width="700"
@@ -68,8 +69,7 @@ export default function HeroSection() {
 
             {/* SHOP BUTTON */}
             <ShopButton
-              to={`/product/${product.id}`}
-              $rtl={isRTL}
+              to={`/product/${createProductSlug(product.name?.en)}`} $rtl={isRTL}
               dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}
             >
               <span>{t("heroSection.ctaLabel")}</span>

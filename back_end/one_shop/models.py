@@ -8,7 +8,6 @@ import uuid
 from django.utils import timezone
 from django.conf import settings
 
-
 def get_uuid():
     return str(uuid.uuid4())
 
@@ -74,7 +73,7 @@ class Products(models.Model):
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
     orders = models.ManyToManyField("Orders", related_name="products", blank=True)
-
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
     def __str__(self):
         if isinstance(self.name, dict):
             # If name is a dictionary, try to extract a readable field

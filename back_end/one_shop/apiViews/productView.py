@@ -23,9 +23,11 @@ from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Q, Case, When, IntegerField, Count, Min, Max, FloatField
 from django.db.models.functions import Cast
+from django.utils.text import slugify
 
 
 import cloudinary.uploader
+
 
 
 class ProductView(APIView):
@@ -33,101 +35,161 @@ class ProductView(APIView):
 
     def post(self, request):
 
-        data = request.data  # Make a copy to modify
+        data = request.data.copy()
+
         multimedia_info = json.loads(data.get("multimediaInfo"))
         image = request.FILES.get("main_image")
 
         if image:
-            # Cloudinary - Upload main image, check if file exists in request.FILES
+            # Cloudinary - Upload main image
             main_image_result = cloudinary.uploader.upload(image)
+
             multimedia_info["main_image"] = main_image_result["secure_url"]
             data["multimediaInfo"] = json.dumps(multimedia_info)
+
         else:
-            data = request.data.copy()
             image = request.data.get("main_image")
+
             multimedia_info["main_image"] = image
             data["multimediaInfo"] = json.dumps(multimedia_info)
 
             color_urls = []
+
             # Get the color images from the request files
             color_images = data.getlist("colors")
-            if color_images:
-                # Upload each color image to Cloudinary and get the URL
-                for color_img in color_images:
-                    upload_result = cloudinary.uploader.upload(color_img)
-                    # Append the secure URL of the uploaded image
-                    color_urls.append(upload_result["secure_url"])
-                    # Update the 'colors' field with the list of color image URLs (flat list)
-                    data["colors"] = json.dumps(color_urls)
 
-        # Cloudinary - Upload additional images, if they are provided in request.FILES
+            if color_images:
+                # Upload each color image to Cloudinary
+                for color_img in color_images:
+
+                    upload_result = cloudinary.uploader.upload(color_img)
+
+                    color_urls.append(upload_result["secure_url"])
+
+                # Update colors field
+                data["colors"] = json.dumps(color_urls)
+
+        # Cloudinary - Upload additional images
         image_urls = multimedia_info.get("image_urls", [])
-        additionalImageFiles = request.FILES.getlist("additionalImageFiles")
+
+        additionalImageFiles = request.FILES.getlist(
+            "additionalImageFiles"
+        )
+
         if additionalImageFiles:
+
             for image_file in additionalImageFiles:
+
                 result = cloudinary.uploader.upload(
-                    image_file, folder="enouza/products"
+                    image_file,
+                    folder="enouza/products"
                 )
+
                 image_urls.append(result["secure_url"])
 
             multimedia_info["image_urls"] = image_urls
-            data["multimediaInfo"] = json.dumps(multimedia_info)
+
+            data["multimediaInfo"] = json.dumps(
+                multimedia_info
+            )
+
+        # --------------------------------------------------
+        # CREATE UNIQUE PRODUCT SLUG
+        # --------------------------------------------------
+
+        name_data = data.get("name")
+
+        if isinstance(name_data, str):
+            name_data = json.loads(name_data)
+
+        base_slug = slugify(
+            name_data.get("en", "")
+        )
+
+        slug = base_slug
+        counter = 2
+
+        while Products.objects.filter(slug=slug).exists():
+
+            slug = f"{base_slug}-{counter}"
+
+            counter += 1
+
+        data["slug"] = slug
+
+        # --------------------------------------------------
+        # SAVE PRODUCT
+        # --------------------------------------------------
 
         serializer = ProductSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
     def get(self, request):
-        start = int(request.GET.get("start", 0))
-        per_page = int(request.GET.get("per_page", 4))
+
+        start = int(
+            request.GET.get("start", 0)
+        )
+
+        per_page = int(
+            request.GET.get("per_page", 4)
+        )
 
         products_qs = Products.objects.annotate(
-            ratings_count=Count("user_ratings", distinct=True),
-            orders_count=Count("orders", distinct=True),
-        ).order_by("orders_count", "-ratings_count", "-release_date")
+            ratings_count=Count(
+                "user_ratings",
+                distinct=True
+            ),
+            orders_count=Count(
+                "orders",
+                distinct=True
+            ),
+        ).order_by(
+            "orders_count",
+            "-ratings_count",
+            "-release_date"
+        )
 
         total_products = products_qs.count()
 
-        products = products_qs[start : start + per_page]
+        products = products_qs[
+            start : start + per_page
+        ]
 
-        serializer = ProductSerializer(products, many=True)
+        serializer = ProductSerializer(
+            products,
+            many=True
+        )
 
         return JsonResponse(
             {
                 "products": serializer.data,
                 "total_products": total_products,
-                "has_more": start + per_page < total_products,
+                "has_more": (
+                    start + per_page
+                    < total_products
+                ),
             }
         )
 
 
-class ProductSlugView(APIView):
-
-    def get(self, request, slug):
-        products = Products.objects.all()
-
-        for product in products:
-            name = product.name or {}
-            english_name = name.get("en", "")
-
-            if slugify(english_name) == slug:
-                return Response({
-                    "id": product.id,
-                    "slug": slug,
-                })
-
-        return Response(
-            {"detail": "Product not found"},
-            status=status.HTTP_404_NOT_FOUND
-        )
 class ProductDetailsView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, pk=None):
-        product = get_object_or_404(Products, id=pk)
+        product = get_object_or_404(Products, slug=pk)
         serializer = ProductDetailsSerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

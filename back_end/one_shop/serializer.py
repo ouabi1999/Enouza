@@ -211,13 +211,13 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ["id", "name", "multimediaInfo", "category", "skuInfo"]
+        fields = ["id", "name","slug", "multimediaInfo", "category", "skuInfo"]
 
 
 class HeroProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
-        fields = ["id", "name", "multimediaInfo", "category"]
+        fields = ["id", "name","slug", "multimediaInfo", "category"]
 
 
 class ProductDetailsSerializer(serializers.ModelSerializer):

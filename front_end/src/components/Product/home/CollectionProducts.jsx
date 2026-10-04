@@ -204,12 +204,8 @@ function CollectionProducts({
                 ============================ */}
 
                 <ProductLink
-                        to={`/product/${item.name?.en
-                          ?.toLowerCase()
-                          .trim()
-                          .replace(/\s+/g, "-")
-                          .replace(/[^\w-]+/g, "")}`}
-                      >
+                  to={`/product/${item.slug}`}
+                >
                   <ImageWrapper>
                     {/* PRIMARY IMAGE */}
 
