@@ -227,6 +227,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <button
               className="search-icon-container"
               onClick={handleSearchInput}
+              aria-label={t("common.search")}
               onMouseLeave={() =>
                 setRequired(false)
               }
@@ -332,6 +333,8 @@ function NavBar({ outlet, setSearchValue, value }) {
             <button
               className="search-icon-container"
               onClick={handleSearchInput}
+              aria-label={t("common.search")}
+
               onMouseLeave={() =>
                 setRequired(false)
               }
