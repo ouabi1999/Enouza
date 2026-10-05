@@ -6,7 +6,7 @@ import Pagination from "@mui/material/Pagination";
 
 import ApiInstance from "../../common/baseUrl";
 import ReviewImagePopup from "../components/Product/aboutProduct/reviews/ReviewImagePopup";
-
+import { optimizeCloudinaryImage } from "../utilis/cloudinary";
 const ReviewsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -29,24 +29,6 @@ const ReviewsPage = () => {
 
   const PAGE_SIZE = 12;
 
-  /* =========================================================
-     CLOUDINARY IMAGE OPTIMIZATION
-  ========================================================= */
-
-  const optimizeCloudinaryImage = (url, width = 700) => {
-    if (!url?.includes("res.cloudinary.com")) {
-      return url;
-    }
-
-    if (!url.includes("/image/upload/")) {
-      return url;
-    }
-
-    return url.replace(
-      "/image/upload/",
-      `/image/upload/f_auto,q_auto,w_${width}/`
-    );
-  };
 
   /* =========================================================
      FETCH REVIEWS
@@ -316,9 +298,11 @@ const ReviewsPage = () => {
                     </ReviewImageWrapper>
                   ) : (
                     <NoImage>
-                      <NoImageIcon>
-                        ✦
-                      </NoImageIcon>
+                      <img
+                         src={optimizeCloudinaryImage(
+                            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png",
+                            700
+                          )}/>
                     </NoImage>
                   )}
 
@@ -587,17 +571,18 @@ const ReviewsSection = styled.section`
 
 const ReviewsGrid = styled.div`
   display: grid;
+  justify-content:center;
 
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 0.5fr));
 
   gap: 28px;
 
   @media (max-width: 1100px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 0.5fr));
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 0.8fr;
 
     gap: 22px;
   }
@@ -712,6 +697,9 @@ const NoImage = styled.div`
       #f2f0eb,
       #e9e6df
     );
+    img{
+    width:100%;
+    }
 `;
 
 const NoImageIcon = styled.span`
