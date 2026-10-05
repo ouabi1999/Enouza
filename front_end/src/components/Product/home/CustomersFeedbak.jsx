@@ -216,535 +216,568 @@ const navigate = useNavigate();
 export default CustomersFeedback;
 
 
-/* =====================================================
-   SECTION
-===================================================== */
+const Section = styled.section`
+  width: 100%;
 
-const ReviewCard = styled.article`
-  min-width: 0;
+  padding: 110px 20px 120px;
 
-  height: 510px;
+  background: #faf9f7;
 
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
 
-  background: #fff;
-
-  border: 1px solid #eceae5;
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (max-width: 600px) {
-    height: 500px;
+  @media (max-width: 550px) {
+    padding: 80px 18px 90px;
   }
 `;
 
-/* =============================================================
-   REVIEW IMAGE
-============================================================= */
 
-const ReviewImageWrapper = styled.div`
-  position: relative;
+// =====================================================
+// CONTAINER
+// =====================================================
 
-  height: 300px;
-  min-height: 300px;
+const Container = styled.div`
+  width: 100%;
 
-  overflow: hidden;
+  max-width: 1280px;
 
-  background: #f1efe9;
+  margin: 0 auto;
 
-  cursor: pointer;
+  box-sizing: border-box;
+`;
 
-  &:focus-visible {
-    outline: 2px solid #1d1d1b;
-    outline-offset: -2px;
+
+// =====================================================
+// HEADER
+// =====================================================
+
+const Header = styled.div`
+  max-width: 700px;
+
+  margin: 0 auto 65px;
+
+  text-align: center;
+
+  @media (max-width: 550px) {
+    margin-bottom: 50px;
   }
 `;
 
-const ReviewImage = styled.img`
+
+const Eyebrow = styled.span`
   display: block;
 
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition: transform 0.6s ease;
-
-  ${ReviewImageWrapper}:hover & {
-    transform: scale(1.025);
-  }
-`;
-
-const ImageCount = styled.span`
-  position: absolute;
-
-  right: 14px;
-  bottom: 14px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 34px;
-  height: 28px;
-
-  padding: 0 8px;
-
-  background: rgba(255, 255, 255, 0.94);
-
-  color: #1d1d1b;
+  margin-bottom: 18px;
 
   font-size: 11px;
+
   font-weight: 600;
 
-  backdrop-filter: blur(8px);
-`;
+  letter-spacing: 2.5px;
 
-const NoImage = styled.div`
-  height: 300px;
-  min-height: 300px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f2f0eb,
-      #e9e6df
-    );
-    img{
-    width:100%;
-    }
-`;
-
-const NoImageIcon = styled.span`
-  font-size: 28px;
-  color: #aaa;
-`;
-
-/* =============================================================
-   REVIEW CONTENT
-============================================================= */
-
-const ReviewContent = styled.div`
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 22px 24px 20px;
-
-  min-height: 0;
-`;
-
-const TopRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-
-  margin-bottom: 15px;
-`;
-
-const Stars = styled.div`
-  display: flex;
-
-  flex-shrink: 0;
-`;
-
-const Star = styled.span`
-  font-size: 14px;
-
-  color: ${({ active }) =>
-    active ? "#1d1d1b" : "#d8d5ce"};
-`;
-
-const Verified = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 6px;
-
-  font-size: 9px;
-  font-weight: 600;
-
-  letter-spacing: 0.05em;
   text-transform: uppercase;
 
   color: #777;
 `;
 
-const VerifiedDot = styled.span`
-  width: 6px;
-  height: 6px;
 
-  border-radius: 50%;
-
-  background: #777;
-`;
-
-const ReviewText = styled.p`
+const Title = styled.h2`
   margin: 0;
 
-  color: #444;
+  font-family: Georgia, serif;
 
-  font-size: 14px;
+  font-size: clamp(36px, 5vw, 58px);
+
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.5px;
+
+  color: #1d1d1b;
+`;
+
+
+const Description = styled.p`
+  max-width: 560px;
+
+  margin: 24px auto 32px;
+
+  font-size: 16px;
+
   line-height: 1.7;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  color: #666;
+
+  @media (max-width: 550px) {
+    margin-top: 20px;
+
+    font-size: 14px;
+  }
+`;
+
+
+// =====================================================
+// RATING
+// =====================================================
+
+const Rating = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+`;
+
+
+const RatingNumber = styled.strong`
+  font-family: Georgia, serif;
+
+  font-size: 32px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #1d1d1b;
+`;
+
+
+const RatingContent = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 4px;
+`;
+
+
+const Stars = styled.span`
+  display: block;
+
+  color: #c9a35c;
+
+  font-size: 15px;
+
+  line-height: 1;
+
+  letter-spacing: 3px;
+`;
+
+
+const RatingText = styled.span`
+  font-size: 12px;
+
+  color: #777;
+`;
+
+
+// =====================================================
+// REVIEWS SLIDER
+// =====================================================
+
+const Reviews = styled.div`
+  width: 100%;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+
+  .slick-slider {
+    width: 100%;
+  }
+
+  .slick-list {
+    width: 100%;
+
+    margin: 0 -10px;
+
+    padding: 10px 0 35px;
+
+    overflow: hidden;
+  }
+
+  .slick-track {
+    display: flex;
+
+    align-items: stretch;
+  }
+
+  .slick-slide {
+    height: auto;
+
+    padding: 0 10px;
+
+    box-sizing: border-box;
+  }
+
+  .slick-slide > div {
+    height: 100%;
+  }
+
+  .slick-dots {
+    bottom: -15px;
+
+    height: 10px;
+  }
+
+  .slick-dots li {
+    width: 18px;
+
+    margin: 0 2px;
+  }
+
+  .slick-dots li button {
+    width: 18px;
+
+    padding: 0;
+  }
+
+  .slick-dots li button:before {
+    width: 18px;
+
+    font-size: 7px;
+
+    color: #1d1d1b;
+
+    opacity: 0.22;
+
+    transition:
+      opacity 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #c9a35c;
+
+    opacity: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .slick-list {
+      margin: 0 -8px;
+    }
+
+    .slick-slide {
+      padding: 0 8px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .slick-list {
+      margin: 0 -7px;
+    }
+
+    .slick-slide {
+      padding: 0 7px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .slick-list {
+      margin: 0;
+
+      padding: 5px 0 35px;
+    }
+
+    .slick-slide {
+      padding: 0 5px;
+    }
+  }
+`;
+
+
+// =====================================================
+// SLIDE
+// =====================================================
+
+const ReviewSlide = styled.div`
+  width: 100%;
+
+  height: 100%;
+
+  box-sizing: border-box;
+`;
+
+
+// =====================================================
+// REVIEW CARD
+// =====================================================
+
+const ReviewCard = styled.article`
+  position: relative;
+
+  width: 100%;
+
+  height: 510px;
 
   overflow: hidden;
 
-  ${({ $expanded }) =>
-    !$expanded &&
-    `
-      -webkit-line-clamp: 5;
-    `}
-`;
-
-const ReadMore = styled.button`
-  align-self: flex-start;
-
-  margin-top: 8px;
-
-  padding: 0;
-
-  border: 0;
-  background: transparent;
-
-  font-family: inherit;
-
-  color: #1d1d1b;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  text-decoration: underline;
-  text-underline-offset: 3px;
-`;
-
-const Customer = styled.div`
   display: flex;
-  align-items: center;
 
-  gap: 11px;
+  flex-direction: column;
 
-  margin-top: auto;
-  padding-top: 18px;
+  background: #fff;
 
-  border-top: 1px solid #efede8;
+  border: 1px solid #e8e6e2;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+
+    border-color: #dedbd5;
+
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 550px) {
+    height: 500px;
+  }
 `;
 
-const Avatar = styled.div`
-  width: 36px;
-  height: 36px;
+
+// =====================================================
+// IMAGE
+// =====================================================
+
+const ImageWrapper = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  height: 300px;
 
   flex-shrink: 0;
 
+  overflow: hidden;
+
+  background: #f2f1ee;
+
+  cursor: pointer;
+`;
+
+
+const ReviewImage = styled.img`
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.6s ease;
+
+  ${ReviewCard}:hover & {
+    transform: scale(1.03);
+  }
+`;
+
+
+// =====================================================
+// CONTENT
+// =====================================================
+
+const ReviewContent = styled.div`
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 28px 30px 30px;
+
   display: flex;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  justify-content: flex-start;
+
+  background: #fff;
+
+  @media (max-width: 550px) {
+    padding: 24px 24px 25px;
+  }
+`;
+
+
+// =====================================================
+// REVIEW TEXT
+// =====================================================
+
+const ReviewText = styled.p`
+  margin: 18px 0 24px;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(15px, 1.2vw, 17px);
+
+  line-height: 1.7;
+
+  color: #292929;
+
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 3;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+`;
+
+
+// =====================================================
+// CUSTOMER
+// =====================================================
+
+const Customer = styled.div`
+  margin-top: auto;
+
+  padding-top: 4px;
+`;
+
+
+const CustomerName = styled.span`
+  display: block;
+
+  text-transform: capitalize;
+
+  margin-bottom: 6px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2px;
+
+  color: #1d1d1b;
+`;
+
+
+const Verified = styled.span`
+  display: flex;
+
   align-items: center;
+
+  gap: 6px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.2px;
+
+  color: #777;
+`;
+
+
+const Check = styled.span`
+  display: inline-flex;
+
+  align-items: center;
+
   justify-content: center;
 
+  width: 15px;
+
+  height: 15px;
+
+  flex-shrink: 0;
+
   border-radius: 50%;
+
+  font-size: 9px;
 
   background: #1d1d1b;
 
   color: #fff;
-
-  font-size: 12px;
-  font-weight: 600;
 `;
 
-const CustomerInfo = styled.div`
-  min-width: 0;
-`;
 
-const CustomerName = styled.div`
-  overflow: hidden;
+// =====================================================
+// VIEW ALL BUTTON
+// =====================================================
+
+const ViewAllButton = styled.button`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 55px auto 0;
+
+  padding: 14px 28px;
+
+  border: 1px solid #1d1d1b;
+
+  background: transparent;
 
   color: #1d1d1b;
 
   font-size: 12px;
-  font-weight: 600;
 
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-transform: capitalize;
-`;
+  font-weight: 500;
 
-const CustomerDate = styled.div`
-  margin-top: 3px;
+  letter-spacing: 1px;
 
-  color: #999;
+  text-transform: uppercase;
 
-  font-size: 10px;
-`;
+  cursor: pointer;
 
-/* =============================================================
-   EMPTY STATE
-============================================================= */
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 
-const EmptyState = styled.div`
-  min-height: 380px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  padding: 50px 20px;
-
-  border: 1px solid #eceae5;
-
-  background: #fff;
-`;
-
-const EmptyIcon = styled.div`
-  margin-bottom: 20px;
-
-  font-size: 28px;
-
-  color: #aaa;
-`;
-
-const EmptyTitle = styled.h2`
-  margin: 0;
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 28px;
-  font-weight: 400;
-
-  color: #1d1d1b;
-`;
-
-const EmptyText = styled.p`
-  max-width: 420px;
-
-  margin: 12px 0 0;
-
-  color: #888;
-
-  font-size: 13px;
-  line-height: 1.7;
-`;
-
-/* =============================================================
-   MATERIAL UI PAGINATION
-============================================================= */
-
-const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-
-  margin-top: 70px;
-
-  .MuiPagination-root {
-    direction: ltr;
-  }
-
-  .MuiPaginationItem-root {
-    min-width: 38px;
-    height: 38px;
-
-    border-radius: 0;
-
-    color: #555;
-
-    font-family: inherit;
-    font-size: 12px;
-
-    transition:
-      background 0.25s ease,
-      color 0.25s ease;
-  }
-
-  .MuiPaginationItem-root:hover {
+  &:hover {
     background: #1d1d1b;
+
     color: #fff;
+
+    transform: translateY(-2px);
   }
 
-  .MuiPaginationItem-root.Mui-selected {
-    background: #1d1d1b;
-    color: #fff;
+  &:active {
+    transform: translateY(0);
   }
 
-  .MuiPaginationItem-root.Mui-selected:hover {
-    background: #1d1d1b;
-  }
+  @media (max-width: 550px) {
+    margin-top: 45px;
 
-  @media (max-width: 500px) {
-    .MuiPaginationItem-root {
-      min-width: 34px;
-      height: 34px;
-    }
+    padding: 13px 24px;
+
+    font-size: 11px;
   }
 `;
 
-/* =============================================================
-   SKELETON
-============================================================= */
 
-const SkeletonImage = styled.div`
-  height: 300px;
-  min-height: 300px;
+const Arrow = styled.span`
+  display: inline-block;
 
-  background: linear-gradient(
-    90deg,
-    #eeeae3 25%,
-    #f7f5f0 50%,
-    #eeeae3 75%
-  );
+  font-size: 16px;
 
-  background-size: 200% 100%;
+  line-height: 1;
 
-  animation: shimmer 1.5s infinite;
+  transition:
+    transform 0.3s ease;
 
-  @keyframes shimmer {
-    0% {
-      background-position: 200% 0;
-    }
-
-    100% {
-      background-position: -200% 0;
-    }
+  ${ViewAllButton}:hover & {
+    transform: translateX(4px);
   }
 `;
-
-const SkeletonStars = styled.div`
-  display: flex;
-
-  gap: 4px;
-
-  margin-bottom: 15px;
-`;
-
-const SkeletonStar = styled.div`
-  width: 13px;
-  height: 13px;
-
-  border-radius: 2px;
-
-  background: #e9e6df;
-
-  animation: pulse 1.5s ease-in-out infinite;
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 0.45;
-    }
-
-    50% {
-      opacity: 1;
-    }
-  }
-`;
-
-const SkeletonText = styled.div`
-  width: ${({ large }) =>
-    large ? "85%" : "70%"};
-
-  height: 10px;
-
-  margin-bottom: 10px;
-
-  border-radius: 3px;
-
-  background: #eeeae3;
-
-  animation: pulseText 1.5s ease-in-out infinite;
-
-  @keyframes pulseText {
-    0%,
-    100% {
-      opacity: 0.45;
-    }
-
-    50% {
-      opacity: 1;
-    }
-  }
-`;
-
-const SkeletonBottom = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 11px;
-
-  margin-top: auto;
-  padding-top: 18px;
-
-  border-top: 1px solid #efede8;
-`;
-
-const SkeletonAvatar = styled.div`
-  width: 36px;
-  height: 36px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: #eeeae3;
-
-  animation: pulseAvatar 1.5s ease-in-out infinite;
-
-  @keyframes pulseAvatar {
-    0%,
-    100% {
-      opacity: 0.45;
-    }
-
-    50% {
-      opacity: 1;
-    }
-  }
-`;
-
-const SkeletonSmall = styled.div`
-  width: ${({ short }) =>
-    short ? "60px" : "100px"};
-
-  height: 7px;
-
-  margin-bottom: 6px;
-
-  border-radius: 3px;
-
-  background: #eeeae3;
-
-  animation: pulseSmall 1.5s ease-in-out infinite;
-
-  @keyframes pulseSmall {
-    0%,
-    100% {
-      opacity: 0.45;
-    }
-
-    50% {
-      opacity: 1;
-    }
-  }
-`;
-
