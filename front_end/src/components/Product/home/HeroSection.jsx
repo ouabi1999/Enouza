@@ -62,7 +62,7 @@ export default function HeroSection() {
             <HeroImage
               src={imageUrl}
               alt={t("heroSection.title")}
-              fetchPriority="high"
+              fetchpriority="high"
               width="700"
               height="620"
             />

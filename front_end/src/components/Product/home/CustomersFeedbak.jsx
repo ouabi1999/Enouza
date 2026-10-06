@@ -122,73 +122,73 @@ const navigate = useNavigate();
 
                 return (
                   <ReviewSlide key={item.id}>
-                    <ReviewCard>
+                   <ReviewCard>
+  {/* IMAGE */}
+  <ImageWrapper onClick={() => setRate(item, 0)}>
+    <ReviewImage
+      src={
+        item.review?.images?.length > 0
+          ? optimizeCloudinaryImage(item.review.images[0], 700)
+          : optimizeCloudinaryImage(
+              "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png",
+              700
+            )
+      }
+      alt="Customer review"
+      loading="lazy"
+      decoding="async"
+      width="700"
+      height="700"
+    />
+  </ImageWrapper>
 
-                      {/* IMAGE */}
+  {/* CONTENT */}
+  <ReviewContent>
 
-                      {item.review?.images?.length > 0 ? (
-                        <ImageWrapper>
-                          <ReviewImage
-                            src={optimizeCloudinaryImage(item.review.images[0], 700)}
-                            alt="Customer review"
-                            loading="lazy"
-                            decoding="async"
-                            width="700"
-                            height="500"
-                            onClick={() => setRate(item, 0)}
-                          />
-                        </ImageWrapper>
-                      ) : <ImageWrapper>
+    {/* RATING + VERIFIED */}
+    <RatingRow>
+      <ReviewRating
+        aria-label={`${item.stars} out of 5 stars`}
+      >
+        {"★".repeat(item.stars || 0)}
+      </ReviewRating>
 
-                        <ReviewImage
-                          src={optimizeCloudinaryImage(
-                            "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png",
-                            700
-                          )}
-                          alt="Customer review"
-                          loading="lazy"
-                          decoding="async"
-                          width="700"
-                          height="500"
-                          onClick={() => setRate(item, 0)}
-                        />
-                      </ImageWrapper>}
+      <Verified>
+        <Check />
+        {t("customersFeedback.verifiedPurchase")}
+      </Verified>
+    </RatingRow>
 
-                      {/* CONTENT */}
+    {/* REVIEW */}
+    <ReviewText>
+      {item.review?.text || ""}
+    </ReviewText>
 
-                      <ReviewContent>
+    {/* CUSTOMER */}
+    <Customer>
+      <CustomerAvatar>
+        {item.user?.firstName?.charAt(0) || "C"}
+      </CustomerAvatar>
 
-                        <Stars
-                          aria-label={`${item.stars} out of 5 stars`}
-                        >
-                          {"★".repeat(item.stars || 0)}
-                        </Stars>
+      <CustomerInfo>
+        <CustomerName>
+          {item.user?.firstName
+            ? `${item.user.firstName} ${
+                item.user?.lastName?.slice(0, 1) || ""
+              }.`
+            : "Customer"}
+        </CustomerName>
 
-                        <ReviewText>
-                          {item.review?.text || ""}
+        <CustomerDate>
+          {item.created_at
+            ? new Date(item.created_at).toLocaleDateString("en-GB")
+            : ""}
+        </CustomerDate>
+      </CustomerInfo>
+    </Customer>
 
-                        </ReviewText>
-
-
-                        <Customer>
-                          <CustomerName>
-                            {item.user?.firstName
-                              ? `${item.user.firstName} ${item.user?.lastName?.slice(0, 1) + "." || ""}`
-                              : "Customer"}
-                          </CustomerName>
-
-                          <Verified>
-                            <Check>✓</Check>
-
-                            {t(
-                              "customersFeedback.verifiedPurchase"
-                            )}
-                          </Verified>
-                        </Customer>
-
-                      </ReviewContent>
-
-                    </ReviewCard>
+  </ReviewContent>
+</ReviewCard>
                   </ReviewSlide>
 
                 );
@@ -214,19 +214,21 @@ const navigate = useNavigate();
 };
 
 export default CustomersFeedback;
-
+/* =========================
+   SECTION
+========================= */
+// =====================================================
+// SECTION
+// =====================================================
 
 const Section = styled.section`
   width: 100%;
-
-  padding: 110px 20px 120px;
-
+  padding: 90px 20px 100px;
   background: #faf9f7;
-
   box-sizing: border-box;
 
   @media (max-width: 550px) {
-    padding: 80px 18px 90px;
+    padding: 70px 16px 80px;
   }
 `;
 
@@ -237,11 +239,8 @@ const Section = styled.section`
 
 const Container = styled.div`
   width: 100%;
-
   max-width: 1280px;
-
   margin: 0 auto;
-
   box-sizing: border-box;
 `;
 
@@ -251,10 +250,9 @@ const Container = styled.div`
 // =====================================================
 
 const Header = styled.div`
+  width: 100%;
   max-width: 700px;
-
   margin: 0 auto 65px;
-
   text-align: center;
 
   @media (max-width: 550px) {
@@ -262,55 +260,41 @@ const Header = styled.div`
   }
 `;
 
-
 const Eyebrow = styled.span`
   display: block;
-
   margin-bottom: 18px;
 
   font-size: 11px;
-
   font-weight: 600;
-
   letter-spacing: 2.5px;
-
   text-transform: uppercase;
 
   color: #777;
 `;
 
-
 const Title = styled.h2`
   margin: 0;
 
   font-family: Georgia, serif;
-
   font-size: clamp(36px, 5vw, 58px);
-
   font-weight: 400;
-
   line-height: 1.1;
-
   letter-spacing: -0.5px;
 
   color: #1d1d1b;
 `;
 
-
 const Description = styled.p`
   max-width: 560px;
-
   margin: 24px auto 32px;
 
   font-size: 16px;
-
   line-height: 1.7;
 
   color: #666;
 
   @media (max-width: 550px) {
     margin-top: 20px;
-
     font-size: 14px;
   }
 `;
@@ -322,38 +306,29 @@ const Description = styled.p`
 
 const Rating = styled.div`
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 14px;
 `;
 
-
 const RatingNumber = styled.strong`
   font-family: Georgia, serif;
 
   font-size: 32px;
-
   font-weight: 400;
-
   line-height: 1;
 
   color: #1d1d1b;
 `;
 
-
 const RatingContent = styled.div`
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
 
   gap: 4px;
 `;
-
 
 const Stars = styled.span`
   display: block;
@@ -361,16 +336,12 @@ const Stars = styled.span`
   color: #c9a35c;
 
   font-size: 15px;
-
   line-height: 1;
-
   letter-spacing: 3px;
 `;
 
-
 const RatingText = styled.span`
   font-size: 12px;
-
   color: #777;
 `;
 
@@ -381,7 +352,6 @@ const RatingText = styled.span`
 
 const Reviews = styled.div`
   width: 100%;
-
   margin: 0 auto;
 
   box-sizing: border-box;
@@ -402,7 +372,6 @@ const Reviews = styled.div`
 
   .slick-track {
     display: flex;
-
     align-items: stretch;
   }
 
@@ -420,19 +389,16 @@ const Reviews = styled.div`
 
   .slick-dots {
     bottom: -15px;
-
     height: 10px;
   }
 
   .slick-dots li {
     width: 18px;
-
     margin: 0 2px;
   }
 
   .slick-dots li button {
     width: 18px;
-
     padding: 0;
   }
 
@@ -452,7 +418,6 @@ const Reviews = styled.div`
 
   .slick-dots li.slick-active button:before {
     color: #c9a35c;
-
     opacity: 1;
   }
 
@@ -479,7 +444,6 @@ const Reviews = styled.div`
   @media (max-width: 550px) {
     .slick-list {
       margin: 0;
-
       padding: 5px 0 35px;
     }
 
@@ -496,7 +460,6 @@ const Reviews = styled.div`
 
 const ReviewSlide = styled.div`
   width: 100%;
-
   height: 100%;
 
   box-sizing: border-box;
@@ -511,18 +474,16 @@ const ReviewCard = styled.article`
   position: relative;
 
   width: 100%;
-
-  height: 510px;
+  height: 600px;
 
   overflow: hidden;
 
   display: flex;
-
   flex-direction: column;
 
   background: #fff;
 
-  border: 1px solid #e8e6e2;
+  border: 1px solid #e5e3df;
 
   box-sizing: border-box;
 
@@ -532,16 +493,16 @@ const ReviewCard = styled.article`
     border-color 0.3s ease;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 
     border-color: #dedbd5;
 
     box-shadow:
-      0 18px 45px rgba(0, 0, 0, 0.08);
+      0 12px 30px rgba(0, 0, 0, 0.07);
   }
 
   @media (max-width: 550px) {
-    height: 500px;
+    height: 590px;
   }
 `;
 
@@ -554,35 +515,31 @@ const ImageWrapper = styled.div`
   position: relative;
 
   width: 100%;
-
-  height: 300px;
+  height: 350px;
 
   flex-shrink: 0;
 
   overflow: hidden;
 
-  background: #f2f1ee;
+  background: #f4f2ed;
 
   cursor: pointer;
 `;
-
 
 const ReviewImage = styled.img`
   display: block;
 
   width: 100%;
-
   height: 100%;
 
   object-fit: cover;
 
   cursor: pointer;
 
-  transition:
-    transform 0.6s ease;
+  transition: transform 0.5s ease;
 
   ${ReviewCard}:hover & {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 `;
 
@@ -596,21 +553,47 @@ const ReviewContent = styled.div`
 
   min-height: 0;
 
-  padding: 28px 30px 30px;
+  padding: 28px 28px 24px;
 
   display: flex;
-
   flex-direction: column;
-
-  box-sizing: border-box;
-
-  justify-content: flex-start;
 
   background: #fff;
 
+  box-sizing: border-box;
+
   @media (max-width: 550px) {
-    padding: 24px 24px 25px;
+    padding: 24px 22px 22px;
   }
+`;
+
+
+// =====================================================
+// REVIEW RATING ROW
+// =====================================================
+
+const RatingRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 12px;
+`;
+
+const ReviewRating = styled.div`
+  display: flex;
+  align-items: center;
+
+  color: #111;
+
+  font-size: 16px;
+  line-height: 1;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
 `;
 
 
@@ -619,25 +602,61 @@ const ReviewContent = styled.div`
 // =====================================================
 
 const ReviewText = styled.p`
-  margin: 18px 0 24px;
+  margin: 22px 0 18px;
 
-  font-family: Georgia, serif;
+  font-family: Arial, sans-serif;
 
-  font-size: clamp(15px, 1.2vw, 17px);
+  font-size: 14px;
+  line-height: 1.75;
 
-  line-height: 1.7;
-
-  color: #292929;
+  color: #303030;
 
   display: -webkit-box;
 
   -webkit-box-orient: vertical;
-
   -webkit-line-clamp: 3;
 
   overflow: hidden;
 
   text-overflow: ellipsis;
+`;
+
+
+// =====================================================
+// VERIFIED PURCHASE
+// =====================================================
+
+const Verified = styled.span`
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.8px;
+
+  color: #777;
+
+  white-space: nowrap;
+`;
+
+const Check = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #777;
+
+  color: transparent;
 `;
 
 
@@ -648,74 +667,75 @@ const ReviewText = styled.p`
 const Customer = styled.div`
   margin-top: auto;
 
-  padding-top: 4px;
-`;
+  padding-top: 18px;
 
+  border-top: 1px solid #e7e5e1;
 
-const CustomerName = styled.span`
-  display: block;
-
-  text-transform: capitalize;
-
-  margin-bottom: 6px;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.2px;
-
-  color: #1d1d1b;
-`;
-
-
-const Verified = styled.span`
   display: flex;
-
   align-items: center;
 
-  gap: 6px;
-
-  font-size: 11px;
-
-  letter-spacing: 0.2px;
-
-  color: #777;
+  gap: 14px;
 `;
 
-
-const Check = styled.span`
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 15px;
-
-  height: 15px;
+const CustomerAvatar = styled.div`
+  width: 42px;
+  height: 42px;
 
   flex-shrink: 0;
 
   border-radius: 50%;
 
-  font-size: 9px;
-
   background: #1d1d1b;
-
   color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+`;
+
+const CustomerInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 0;
+`;
+
+const CustomerName = styled.span`
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #171717;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const CustomerDate = styled.span`
+  display: block;
+
+  font-size: 11px;
+
+  color: #999;
 `;
 
 
 // =====================================================
-// VIEW ALL BUTTON
+// VIEW ALL REVIEWS BUTTON
 // =====================================================
 
 const ViewAllButton = styled.button`
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 12px;
@@ -731,7 +751,6 @@ const ViewAllButton = styled.button`
   color: #1d1d1b;
 
   font-size: 12px;
-
   font-weight: 500;
 
   letter-spacing: 1px;
@@ -767,15 +786,17 @@ const ViewAllButton = styled.button`
 `;
 
 
+// =====================================================
+// ARROW
+// =====================================================
+
 const Arrow = styled.span`
   display: inline-block;
 
   font-size: 16px;
-
   line-height: 1;
 
-  transition:
-    transform 0.3s ease;
+  transition: transform 0.3s ease;
 
   ${ViewAllButton}:hover & {
     transform: translateX(4px);

@@ -202,7 +202,7 @@ function NewArrival({
                             width="800"
                             height="976"
                             $secondary={false}
-                            fetchPriority="high"
+                            fetchpriority="high"
                           />
 
                           {/* SECONDARY IMAGE */}
@@ -214,7 +214,7 @@ function NewArrival({
                                 {width: 800}
                               )}
                               alt={`${productName} alternate view`}
-                              fetchPriority="high"
+                              fetchpriority="high"
                               width="800"
                               height="976"
                               $secondary

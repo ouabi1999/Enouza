@@ -86,8 +86,7 @@ const DesignSection = () => {
   // ========================================
   // RETURN
   // ========================================
-  const ImageuRL ="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790541531/ChatGPT_Image_Sep_27_2026_10_38_31_PM_e4ukkl.png"
-
+  const ImageuRL ="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791234356/enouza_lighting_sketch_web_zdo8oe.jpg"
 
   return (
     <DesignContainer maxWidth={false}>
@@ -108,12 +107,12 @@ const DesignSection = () => {
 
                     <div>
                       <img
-                        src= {optimizeCloudinaryImage(ImageuRL, {width: 580})}
+                        src= {optimizeCloudinaryImage(ImageuRL, {width: 1200})}
                         alt={
                          
                           "Luxury lamp DESIGN"
                         }
-                         fetchPriority="high"
+                         fetchpriority="high"
                         width="600"
                         height="580"
                         style={{
@@ -128,10 +127,29 @@ const DesignSection = () => {
                     </div>
                 
 
-              {/* ==================================
+            
+            </ImageWrapper>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                maxHeight: "600px",
+                maxWidth: "600px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: COLORS.muted,
+                }}
+              />
+            </div>
+            {/* ==================================
                   DISCOVER COLLECTION
               ================================== */}
-
+               <div className="collection-button1">
               <CollectionButton
                 dir={
                   i18n.dir() === "rtl"
@@ -155,24 +173,7 @@ const DesignSection = () => {
                   <ArrowForwardIcon />
                 </Arrow>
               </CollectionButton>
-            </ImageWrapper>
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                maxHeight: "600px",
-                maxWidth: "600px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: COLORS.muted,
-                }}
-              />
-            </div>
+              </div>
         </Grid>
 
         {/* ==================================
@@ -260,6 +261,34 @@ const DesignSection = () => {
               </PrincipleContent>
             </DesignPrinciple>
           ))}
+            {/* ==================================
+                  DISCOVER COLLECTION
+              ================================== */}
+               <div className="collection-button2">
+              <CollectionButton
+                dir={
+                  i18n.dir() === "rtl"
+                    ? "rtl"
+                    : "ltr"
+                }
+                as={Link}
+                to="/about-us"
+              >
+                {t(
+                  "designSection.catlabel",
+                  {
+                    defaultValue:
+                      "Discover our brand",
+                  }
+                )}
+
+                <Arrow
+                  $rtl={i18n.dir() === "rtl"}
+                >
+                  <ArrowForwardIcon />
+                </Arrow>
+              </CollectionButton>
+              </div>
         </Grid>
       </DesignGrid>
     </DesignContainer>
@@ -309,8 +338,32 @@ const DesignContainer = styled(Container)`
     pointer-events: none;
   }
 
+
+ .collection-button1{
+      display:flex;
+      justify-content:center;
+      padding-top:20px;
+
+  
+  }
+
+  .collection-button2{
+      display:none;
+
+  }
+
   @media (max-width: 900px) {
-    padding: 6rem 1.5rem !important;
+      .collection-button1{
+      display:flex;
+      justify-content:center;
+      
+      }
+       .collection-button2{
+      display:none;
+    
+      
+      }
+           
   }
 
   @media (max-width: 600px) {
@@ -320,6 +373,8 @@ const DesignContainer = styled(Container)`
   @media (max-width: 420px) {
     padding: 4rem 0.75rem !important;
   }
+
+ 
 `;
 
 // ==========================================
@@ -386,17 +441,16 @@ const Arrow = styled.span`
 `;
 
 const CollectionButton = styled(Link)`
- position: absolute;
-  left: 7%;
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   padding:10px 15px;
   bottom: 20px;
   display: inline-flex;
   align-items: center;
+ 
   gap: 9px;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
-  background: #0000004f;
+  background: #00000000;
  
   font-wieght:500;
     font-size: 0.7rem;
@@ -418,22 +472,8 @@ const CollectionButton = styled(Link)`
     outline-offset: 5px;
   }
 
-  @media (max-width: 700px) {
-    bottom: 20px;
 
-    padding: 12px 16px;
-    font-size: 0.68rem;
-    left:50%;
-    transform: translateX(-50%);
-
-  }
-
-  @media (max-width: 420px) {
-    bottom: 15px;
-
-    padding: 11px 14px;
-    font-size: 0.65rem;
-  }
+ 
 `;
 // ==========================================
 // DESIGN PRINCIPLE

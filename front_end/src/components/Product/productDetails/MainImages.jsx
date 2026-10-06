@@ -219,7 +219,7 @@ function MainImages(props) {
   src={activeImage}
   alt={productData?.name || "Product"}
   loading="eager"
-  fetchPriority="high"
+  fetchpriority="high"
   decoding="async"
   width="1200"
   height="1200"

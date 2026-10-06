@@ -61,7 +61,7 @@ const CollectionSection = () => {
                 alt={t(
                   `collectionSection.categories.${collection.key}.title`
                 )}
-                fetchPriority="high"
+                fetchpriority="high"
               />
 
               <Overlay />

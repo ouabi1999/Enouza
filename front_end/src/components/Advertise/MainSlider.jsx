@@ -47,7 +47,7 @@ const MainSlider = () => {
           width="1200"
           height="675"
           className="poster"
-          fetchPriority="high"
+          fetchpriority="high"
         />
  
       <Overlay>

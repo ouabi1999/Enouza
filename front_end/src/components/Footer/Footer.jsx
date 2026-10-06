@@ -48,16 +48,18 @@ const Footer = () => {
         <FooterGrid>
           {/* BRAND */}
 
-          <BrandSection >
-            <BrandLogo  dir="ltr">
-            <img src="../enouza_logo_black.png" alt="logo" style={{width:"29px"}}/>
+          <BrandSection>
+            <BrandLogo>
+            <bdi style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+            <img src="../enouza_logo_black.png" alt="logo" style={{height:"26px"}}/>
+           
             <span > NOUZA</span>
+            </bdi>
             </BrandLogo>
 
             <BrandDescription>
               {t("footer.brand.description")}
             </BrandDescription>
-
             <BrandAccent />
           </BrandSection>
 
