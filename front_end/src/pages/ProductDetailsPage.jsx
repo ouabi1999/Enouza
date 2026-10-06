@@ -9,7 +9,7 @@ import ProductLayout from "../components/Product/ProductLayout";
 import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
 import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
 
-import { addToCart, buyNowItem } from "../features/cartSlice";
+import { addToCart, buyNowItem, setIsCartOpen } from "../features/cartSlice";
 import { getProductDetails, setProductDetails } from "../features/productDetails_slice";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -17,9 +17,9 @@ import PageNoteFound from "../../common/PageNoteFound";
 import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
+import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
 
 function ProductDetailsPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { slug } = useParams();
   const { t } = useTranslation();
@@ -32,8 +32,9 @@ function ProductDetailsPage() {
   const [isPopUpShippingOpen, setIsPopUpShippingOpen] =
     useState(false);
 
-  const [shippingMethodIndex, setShippingMethodIndex] =
-    useState(0);
+  const [shippingMethodIndex, setShippingMethodIndex] = useState(0);
+  const isOpen = useSelector(state => state.cart.isOpen)
+  const dispatch = useDispatch()
 
   /* =========================
      SHIPPING DEFAULTS
@@ -137,7 +138,6 @@ useEffect(() => {
   }, [slug]);
 
 
-
   // filter by similar products
   const get_similar_products = async (category) => {
     try {
@@ -147,7 +147,7 @@ useEffect(() => {
           per_page: 6,
         },
       });
-      console.log(response.data)
+
       const products = response.data?.results || [];
        if (products.length > 1){
          setSimilarProducts(
@@ -242,6 +242,7 @@ useEffect(() => {
     name
   ) => {
     if (!selectedSku) return;
+        dispatch(setIsCartOpen(!isOpen))
 
     const alreadyExists = cartItems?.some(
       (item) =>
@@ -250,9 +251,7 @@ useEffect(() => {
     );
 
     if (alreadyExists) {
-      toast.success(
-        t("purchaseOptions.item_already_in_cart")
-      );
+     
 
       return;
     }
@@ -286,10 +285,6 @@ useEffect(() => {
         price,
         subtotal: price * quantity,
       })
-    );
-
-    toast.success(
-      t("purchaseOptions.item_has_been_added")
     );
   };
 
@@ -338,7 +333,10 @@ useEffect(() => {
   /* =========================
     PAGE STATES
  ========================= */
+const onClose = ()=>{
+      dispatch(setIsCartOpen(!isOpen))
 
+}
  
 
   if (isNotFound) {
@@ -373,6 +371,7 @@ useEffect(() => {
         <ProductDetailsSkeleton/>
       ) : (
         <>
+        <SlideOutShoppingCart isOpen={isOpen} onClose={onClose}/>
       <SEO
         title={productData?.name?.en || "Luxury Lamp"}
         description={productData?.description?.en}
@@ -427,9 +426,11 @@ useEffect(() => {
           shippingInfo={shippingInfo}
         />
       )}
-      <NewArrival products={similarProducts} name="mayAlsoLike" isAuto={false} />
+        <NewArrival products={similarProducts} name="mayAlsoLike" isAuto={false} />
       </>
       )}
+     
+      
     </Page>
 
   );

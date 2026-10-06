@@ -164,14 +164,7 @@ const [isColorActive, setIsColorActive] =
 }
 
 export default ProductLayout;
-const COLORS = {
-  cream: "#f8efdd",
-  white: "#FFFFFF",
-  ink: "#1D1C1A",
-  muted: "#77736B",
-  gold: "#B39A76",
-  border: "#E4DED4",
-};
+
 
 
 /* =========================================================
@@ -189,7 +182,7 @@ const Section = styled.section`
   }
 
   @media (max-width: 600px) {
-    padding: 20px 20px 0;
+    padding: 0 20px 0;
   }
 `;
 

@@ -516,7 +516,7 @@ function DropDownMenuLang(props) {
                           key={`${country.value}-${index}`}
                           value={country.value}
                         >
-                          {country.label}
+                          {t(`countries.${country.value}`)}
                         </option>
                       )
                     )}

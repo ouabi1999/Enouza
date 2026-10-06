@@ -567,7 +567,7 @@ const ProductImg = styled.div`
   align-items: center;
 
   justify-content: center;
-
+  
   @media (max-width: 1100px) {
     height: min(620px, 72vw);
 
@@ -579,11 +579,14 @@ const ProductImg = styled.div`
 
     width: 100%;
 
-    height: auto;
+    height: 420px;
 
     min-height: 0;
+     width: calc(100% + 40px);
+  margin-left: -20px;
 
-    aspect-ratio: 1 / 1;
+
+    
   }
 `;
 

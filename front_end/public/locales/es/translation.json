@@ -24,8 +24,11 @@
     "checkout": "Pagar",
     "orderSuccess": "Pedido realizado"
   },
+  "shoppingCart": {
+    "freeExpressTo": "Envío exprés gratis a"
+  },
   "homePage": {
-    "new":"Nuevo",
+    "new": "Nuevo",
     "mayAlsoLike": "También te puede interesar",
     "newArrival": "Novedades",
     "welcomeMessage": "Bienvenido a nuestra tienda",
@@ -35,18 +38,17 @@
     "specialOffers": "Ofertas",
     "buyerTrustServices": "Nuestros servicios",
     "freeShipping_offer": "Envío gratis desde $50",
-     "money_Back": "Garantía",
+    "money_Back": "Garantía",
     "safe_reliable_payments": "Pagos seguros",
     "support_24_7": "Atención al cliente 24/7",
     "secure_Payment": "Pago seguro",
     "easy_Returns": "Devoluciones fáciles",
-    
     "More_to_love": "Seguro que te gusta",
     "more_products": "Más productos",
     "best_sellers": "Más vendidos"
   },
-  "mainSlider":{
-     "title": "La iluminación, seleccionada de otra manera.",
+  "mainSlider": {
+    "title": "La iluminación, seleccionada de otra manera.",
     "description": "Una cuidada colección de iluminación escultural, creada para transformar la atmósfera de cada espacio.",
     "welcome": "Bienvenido a ENOUZA."
   },
@@ -62,10 +64,10 @@
     "quantity": "Cant.",
     "outOfStock": "Agotado",
     "inStock": "En stock",
-    "Soldout":  "Agotado"
+    "Soldout": "Agotado"
   },
   "purchaseOptions": {
-    "business_days":"Días hábiles",
+    "business_days": "Días hábiles",
     "Ship_to": "Enviar a",
     "Language": "Idioma",
     "Currency": "Moneda",
@@ -89,23 +91,19 @@
       "text": "No compartimos tus datos con terceros sin tu consentimiento. Protegemos tu privacidad y mantenemos tus datos seguros."
     }
   },
-  
   "heroSection": {
     "title": "Luz hecha para encajar",
     "description": "Iluminación cuidadosamente seleccionada que aporta profundidad, calidez y carácter a los espacios que llamas hogar.",
     "detailDesign": "Donde el Detalle se Une al Diseño",
     "ctaLabel": "Explora la colección",
     "curated": "SELECCIONADO",
-  "curated_description": "Elegido cuidadosamente para espacios con intención.",
-
-  "refined": "REFINADO",
-  "refined_description": "Formas elegantes, depuradas hasta lo esencial.",
-
-  "atmospheric": "ATMOSFÉRICO",
-  "atmospheric_description": "Luz diseñada para transformar el ambiente.",
-
-  "distinctive": "DISTINTIVO",
-  "distinctive_description": "Piezas con un carácter más allá de lo convencional.",
+    "curated_description": "Elegido cuidadosamente para espacios con intención.",
+    "refined": "REFINADO",
+    "refined_description": "Formas elegantes, depuradas hasta lo esencial.",
+    "atmospheric": "ATMOSFÉRICO",
+    "atmospheric_description": "Luz diseñada para transformar el ambiente.",
+    "distinctive": "DISTINTIVO",
+    "distinctive_description": "Piezas con un carácter más allá de lo convencional.",
     "stats": {
       "rated": {
         "value": "4.9★",
@@ -121,8 +119,6 @@
       }
     }
   },
-
-  
   "ctaSection": {
     "eyebrow": "ATENCIÓN AL CLIENTE ENOUZA",
     "titleLeft": "Estamos aquí para ayudarte.",
@@ -143,236 +139,203 @@
       }
     }
   },
-
-
-"matricsSection": {
-  "why_us": "LA DIFERENCIA ENOUZA",
-  "title": "Cada pieza, cuidadosamente seleccionada.",
-  "description": "Cada pieza de ENOUZA se selecciona por su diseño, sus materiales y su capacidad para aportar calidez y carácter a los espacios que habitamos."
-},
-"inspirationPage": {
-  "hero": {
-    "catlabel": "EL DIARIO DE ENOUZA",
-    "title": "Un mundo de luz hermosa.",
-    "description": "Descubre interiores, ideas de iluminación y momentos especiales que inspiran nuestra forma de vivir."
+  "matricsSection": {
+    "why_us": "LA DIFERENCIA ENOUZA",
+    "title": "Cada pieza, cuidadosamente seleccionada.",
+    "description": "Cada pieza de ENOUZA se selecciona por su diseño, sus materiales y su capacidad para aportar calidez y carácter a los espacios que habitamos."
   },
-
-  "intro": {
-    "catlabel": "ENCUENTRA TU INSPIRACIÓN",
-    "title": "Espacios definidos por la luz.",
-    "description": "La iluminación adecuada puede transformar la sensación de una estancia. Explora nuestra selección de interiores y descubre formas cuidadas de aportar calidez, ambiente y carácter a tu hogar."
+  "inspirationPage": {
+    "hero": {
+      "catlabel": "EL DIARIO DE ENOUZA",
+      "title": "Un mundo de luz hermosa.",
+      "description": "Descubre interiores, ideas de iluminación y momentos especiales que inspiran nuestra forma de vivir."
+    },
+    "intro": {
+      "catlabel": "ENCUENTRA TU INSPIRACIÓN",
+      "title": "Espacios definidos por la luz.",
+      "description": "La iluminación adecuada puede transformar la sensación de una estancia. Explora nuestra selección de interiores y descubre formas cuidadas de aportar calidez, ambiente y carácter a tu hogar."
+    },
+    "spaces": {
+      "catlabel": "EXPLORA POR ESPACIO",
+      "title": "Luz para cada estancia.",
+      "items": {
+        "livingRoom": {
+          "title": "Salones",
+          "description": "Crea un ambiente cálido y acogedor con una iluminación diseñada para la vida cotidiana."
+        },
+        "diningRoom": {
+          "title": "Comedores",
+          "description": "Crea el ambiente perfecto con una iluminación cuidada sobre la mesa y en toda la estancia."
+        },
+        "bedroom": {
+          "title": "Dormitorios",
+          "description": "Una iluminación suave e íntima diseñada para crear un dormitorio tranquilo y armonioso."
+        }
+      }
+    },
+    "explore": "Explorar",
+    "statement": {
+      "catlabel": "EL ARTE DE LA LUZ",
+      "title": "La luz es lo que da carácter a un espacio.",
+      "description": "Desde un rincón tranquilo hasta una estancia pensada para compartir, la iluminación transforma la forma en que vivimos los espacios que nos rodean."
+    },
+    "ideas": {
+      "catlabel": "IDEAS DE ILUMINACIÓN",
+      "title": "Formas de iluminar con belleza.",
+      "items": {
+        "ambientLighting": {
+          "title": "Iluminación Ambiental",
+          "description": "Crea una base de luz suave que haga que la estancia se sienta cálida, equilibrada y acogedora."
+        },
+        "statementLighting": {
+          "title": "Iluminación Protagonista",
+          "description": "Deja que una pieza distintiva forme parte de la arquitectura y del carácter de la estancia."
+        },
+        "layeredLighting": {
+          "title": "Iluminación por Capas",
+          "description": "Combina diferentes fuentes de luz para crear profundidad, ambiente y versatilidad."
+        }
+      }
+    },
+    "editorial": {
+      "catlabel": "EDITORIAL ENOUZA",
+      "title": "Diseñada para los momentos que importan.",
+      "description": "Descubre una iluminación que aporta calidez y carácter a los espacios cotidianos que llamamos hogar.",
+      "link": "Comprar Iluminación"
+    },
+    "newsletter": {
+      "catlabel": "SIGUE INSPIRÁNDOTE",
+      "title": "Lleva más belleza a tu hogar.",
+      "description": "Descubre nuevas lámparas, interiores e inspiración de Enouza.",
+      "button": "Unirse a Enouza"
+    }
   },
-
-  "spaces": {
-    "catlabel": "EXPLORA POR ESPACIO",
-    "title": "Luz para cada estancia.",
-    "items": {
-      "livingRoom": {
-        "title": "Salones",
-        "description": "Crea un ambiente cálido y acogedor con una iluminación diseñada para la vida cotidiana."
+  "designSection": {
+    "title": "El arte de la luz",
+    "catlabel": "DESCUBRE LA MARCA",
+    "principles": {
+      "minimalism": {
+        "title": "Simplicidad con intención",
+        "description": "Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
       },
-      "diningRoom": {
-        "title": "Comedores",
-        "description": "Crea el ambiente perfecto con una iluminación cuidada sobre la mesa y en toda la estancia."
+      "materials": {
+        "title": "Materiales con carácter",
+        "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter y la profundidad que aportan a un espacio."
       },
-      "bedroom": {
-        "title": "Dormitorios",
-        "description": "Una iluminación suave e íntima diseñada para crear un dormitorio tranquilo y armonioso."
+      "ambient": {
+        "title": "Luz que crea atmósfera",
+        "description": "Entendemos la luz como parte del interior: una forma de suavizar un espacio, crear profundidad y transformar cómo se siente."
       }
     }
   },
-
-  "explore": "Explorar",
-
-  "statement": {
-    "catlabel": "EL ARTE DE LA LUZ",
-    "title": "La luz es lo que da carácter a un espacio.",
-    "description": "Desde un rincón tranquilo hasta una estancia pensada para compartir, la iluminación transforma la forma en que vivimos los espacios que nos rodean."
-  },
-
-  "ideas": {
-    "catlabel": "IDEAS DE ILUMINACIÓN",
-    "title": "Formas de iluminar con belleza.",
-    "items": {
-      "ambientLighting": {
-        "title": "Iluminación Ambiental",
-        "description": "Crea una base de luz suave que haga que la estancia se sienta cálida, equilibrada y acogedora."
-      },
-      "statementLighting": {
-        "title": "Iluminación Protagonista",
-        "description": "Deja que una pieza distintiva forme parte de la arquitectura y del carácter de la estancia."
-      },
-      "layeredLighting": {
-        "title": "Iluminación por Capas",
-        "description": "Combina diferentes fuentes de luz para crear profundidad, ambiente y versatilidad."
-      }
-    }
-  },
-
-  "editorial": {
-    "catlabel": "EDITORIAL ENOUZA",
-    "title": "Diseñada para los momentos que importan.",
-    "description": "Descubre una iluminación que aporta calidez y carácter a los espacios cotidianos que llamamos hogar.",
-    "link": "Comprar Iluminación"
-  },
-
-  "newsletter": {
-    "catlabel": "SIGUE INSPIRÁNDOTE",
-    "title": "Lleva más belleza a tu hogar.",
-    "description": "Descubre nuevas lámparas, interiores e inspiración de Enouza.",
-    "button": "Unirse a Enouza"
-  }
-},
-  
- "designSection": {
-  "title": "El arte de la luz",
-"catlabel": "DESCUBRE LA MARCA",
-
-  "principles": {
-  "minimalism": {
-    "title": "Simplicidad con intención",
-    "description": "Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
-  },
-  "materials": {
-    "title": "Materiales con carácter",
-    "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter y la profundidad que aportan a un espacio."
-  },
-  "ambient": {
-    "title": "Luz que crea atmósfera",
-    "description": "Entendemos la luz como parte del interior: una forma de suavizar un espacio, crear profundidad y transformar cómo se siente."
-  }
-}
-},
   "collectionSection": {
-  "title": "Descubre nuestra colección.",
-  "catlabel": "EXPLORA",
-
-  "categories": {
-    "wall_lamps": {
-      "title": "Lámparas de Pared",
-      "description": "Iluminación elegante diseñada para aportar profundidad, calidez y carácter a tus paredes."
-    },
-
-    "pendant_lights": {
-      "title": "Lámparas Colgantes",
-      "description": "Piezas distintivas diseñadas para crear un punto focal refinado sobre mesas de comedor, islas de cocina y espacios de estar."
-    },
-
-    "table_lamps": {
-      "title": "Lámparas de Mesa",
-      "description": "Iluminación escultórica que aporta calidez, ambiente y una elegancia sutil a tu interior."
-    },
-
-    "ceiling_lamps": {
-      "title": "Lámparas de Techo",
-      "description": "Iluminación refinada diseñada para crear atmósfera y completar el carácter de una estancia."
-    }
-  }
-},
-
-"aboutus": {
-  "seo": {
-    "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
-    "description": "Descubre Enouza, una marca de iluminación cuidadosamente seleccionada que reúne piezas refinadas y distintivas para interiores con carácter."
-  },
-
-  "hero": {
-    "eyebrow": "DESCUBRE ENOUZA",
-    "title": "Luz que encuentra su lugar.",
-    "description": "Iluminación refinada para espacios cálidos y cuidadosamente concebidos."
-  },
-
-  "story": {
-    "eyebrow": "NUESTRA HISTORIA",
-    "title": "Iluminación con sentido de lugar.",
-    "lead": "Creemos que la iluminación es mucho más que iluminar.",
-    "text": "Da forma a la atmósfera de una estancia, dirige la atención hacia los detalles que importan y transforma la manera en que sentimos un espacio.",
-    "text2": "Enouza nació de esta idea: descubrir y reunir piezas de iluminación que se sientan cuidadosamente elegidas, distintivas y naturalmente integradas en su entorno."
-  },
-
-  "statement": {
-    "title": "Creemos que la luz adecuada lo cambia todo.",
-    "description": "Una luz suave puede aportar calidez a una estancia. Una forma escultórica puede convertirse en el punto focal. Y la pieza adecuada puede hacer que un espacio se sienta, sencillamente, más tuyo."
-  },
-
-  "approach": {
-    "eyebrow": "EL ENFOQUE DE ENOUZA",
-    "title": "Diseñado con intención.",
-
-    "curated": {
-      "title": "Seleccionado",
-      "description": "Piezas cuidadosamente elegidas para espacios bien concebidos."
-    },
-
-    "refined": {
-      "title": "Refinado",
-      "description": "Formas elegantes depuradas hasta lo esencial."
-    },
-
-    "atmospheric": {
-      "title": "Atmosférico",
-      "description": "Luz diseñada para crear y transformar el ambiente."
-    },
-
-    "distinctive": {
-      "title": "Distintivo",
-      "description": "Piezas con un carácter que va más allá de lo convencional."
+    "title": "Descubre nuestra colección.",
+    "catlabel": "EXPLORA",
+    "categories": {
+      "wall_lamps": {
+        "title": "Lámparas de Pared",
+        "description": "Iluminación elegante diseñada para aportar profundidad, calidez y carácter a tus paredes."
+      },
+      "pendant_lights": {
+        "title": "Lámparas Colgantes",
+        "description": "Piezas distintivas diseñadas para crear un punto focal refinado sobre mesas de comedor, islas de cocina y espacios de estar."
+      },
+      "table_lamps": {
+        "title": "Lámparas de Mesa",
+        "description": "Iluminación escultórica que aporta calidez, ambiente y una elegancia sutil a tu interior."
+      },
+      "ceiling_lamps": {
+        "title": "Lámparas de Techo",
+        "description": "Iluminación refinada diseñada para crear atmósfera y completar el carácter de una estancia."
+      }
     }
   },
-
-  "selection": {
-    "eyebrow": "LO QUE GUÍA NUESTRA SELECCIÓN",
-    "title": "Elegidas por algo más que su apariencia.",
-
-    "form": {
-      "title": "Forma",
-      "description": "Proporciones equilibradas y siluetas distintivas que se integran de forma natural en un interior."
+  "aboutus": {
+    "seo": {
+      "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
+      "description": "Descubre Enouza, una marca de iluminación cuidadosamente seleccionada que reúne piezas refinadas y distintivas para interiores con carácter."
     },
-
-    "material": {
-      "title": "Material",
-      "description": "Mármol, vidrio, metal, tejidos y acabados elegidos por su carácter visual y táctil."
+    "hero": {
+      "eyebrow": "DESCUBRE ENOUZA",
+      "title": "Luz que encuentra su lugar.",
+      "description": "Iluminación refinada para espacios cálidos y cuidadosamente concebidos."
     },
-
-    "light": {
-      "title": "Luz",
-      "description": "Iluminación que aporta calidez, profundidad y atmósfera, en lugar de limitarse a llenar una estancia de luz."
+    "story": {
+      "eyebrow": "NUESTRA HISTORIA",
+      "title": "Iluminación con sentido de lugar.",
+      "lead": "Creemos que la iluminación es mucho más que iluminar.",
+      "text": "Da forma a la atmósfera de una estancia, dirige la atención hacia los detalles que importan y transforma la manera en que sentimos un espacio.",
+      "text2": "Enouza nació de esta idea: descubrir y reunir piezas de iluminación que se sientan cuidadosamente elegidas, distintivas y naturalmente integradas en su entorno."
+    },
+    "statement": {
+      "title": "Creemos que la luz adecuada lo cambia todo.",
+      "description": "Una luz suave puede aportar calidez a una estancia. Una forma escultórica puede convertirse en el punto focal. Y la pieza adecuada puede hacer que un espacio se sienta, sencillamente, más tuyo."
+    },
+    "approach": {
+      "eyebrow": "EL ENFOQUE DE ENOUZA",
+      "title": "Diseñado con intención.",
+      "curated": {
+        "title": "Seleccionado",
+        "description": "Piezas cuidadosamente elegidas para espacios bien concebidos."
+      },
+      "refined": {
+        "title": "Refinado",
+        "description": "Formas elegantes depuradas hasta lo esencial."
+      },
+      "atmospheric": {
+        "title": "Atmosférico",
+        "description": "Luz diseñada para crear y transformar el ambiente."
+      },
+      "distinctive": {
+        "title": "Distintivo",
+        "description": "Piezas con un carácter que va más allá de lo convencional."
+      }
+    },
+    "selection": {
+      "eyebrow": "LO QUE GUÍA NUESTRA SELECCIÓN",
+      "title": "Elegidas por algo más que su apariencia.",
+      "form": {
+        "title": "Forma",
+        "description": "Proporciones equilibradas y siluetas distintivas que se integran de forma natural en un interior."
+      },
+      "material": {
+        "title": "Material",
+        "description": "Mármol, vidrio, metal, tejidos y acabados elegidos por su carácter visual y táctil."
+      },
+      "light": {
+        "title": "Luz",
+        "description": "Iluminación que aporta calidez, profundidad y atmósfera, en lugar de limitarse a llenar una estancia de luz."
+      }
+    },
+    "promise": {
+      "eyebrow": "EL COMPROMISO DE ENOUZA",
+      "title": "Elegido con cuidado. Presentado con belleza.",
+      "description": "Seleccionamos cuidadosamente cada pieza que incorporamos a Enouza, prestando atención al diseño, los materiales, las proporciones y la atmósfera que crea."
+    },
+    "final": {
+      "eyebrow": "LA COLECCIÓN",
+      "title": "Encuentra la luz que pertenece a tu espacio.",
+      "description": "Explora la colección Enouza y descubre piezas seleccionadas para complementar tu forma de vivir.",
+      "cta": "Explorar la colección"
     }
   },
-
-  "promise": {
-    "eyebrow": "EL COMPROMISO DE ENOUZA",
-    "title": "Elegido con cuidado. Presentado con belleza.",
-    "description": "Seleccionamos cuidadosamente cada pieza que incorporamos a Enouza, prestando atención al diseño, los materiales, las proporciones y la atmósfera que crea."
+  "customersFeedback": {
+    "eyebrow": "LA EXPERIENCIA ENOUZA",
+    "title": "Amado por hogares de todo el mundo.",
+    "description": "Hogares reales. Experiencias reales.",
+    "ratingText": "Basado en las opiniones de nuestros clientes",
+    "verifiedPurchase": "Compra verificada",
+    "back": "Volver",
+    "review": "reseña",
+    "reviews": "reseñas",
+    "noReviews": "Aún no hay reseñas",
+    "noReviewsDescription": "Actualmente no hay reseñas de clientes para mostrar.",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "viewAllReviews": "Ver todas las reseñas"
   },
-
-  "final": {
-    "eyebrow": "LA COLECCIÓN",
-    "title": "Encuentra la luz que pertenece a tu espacio.",
-    "description": "Explora la colección Enouza y descubre piezas seleccionadas para complementar tu forma de vivir.",
-    "cta": "Explorar la colección"
-  }
-},
-
-"customersFeedback": {
-  "eyebrow": "LA EXPERIENCIA ENOUZA",
-  "title": "Amado por hogares de todo el mundo.",
-  "description": "Hogares reales. Experiencias reales.",
-  "ratingText": "Basado en las opiniones de nuestros clientes",
-  "verifiedPurchase": "Compra verificada",
-
-  "back": "Volver",
-  "review": "reseña",
-  "reviews": "reseñas",
-  "noReviews": "Aún no hay reseñas",
-  "noReviewsDescription": "Actualmente no hay reseñas de clientes para mostrar.",
-  "previousPage": "Página anterior",
-  "nextPage": "Página siguiente",
-  "viewAllReviews": "Ver todas las reseñas"
-},
-
-"filterPage":{
-   "clearAll": "Limpiar todo",
+  "filterPage": {
+    "clearAll": "Limpiar todo",
     "applyFilters": "Aplicar filtros",
     "priceRange": "Rango de precios",
     "brand": "Marca",
@@ -382,50 +345,49 @@
     "inStock": "En stock",
     "outOfStock": "Agotado",
     "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto.",
-    "collection_description": "Descubre una iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio." ,
-     "collection": "COLECCIÓN ENOUZA",
-      "discover": "DESCUBRE"
+    "collection_description": "Descubre una iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio.",
+    "collection": "COLECCIÓN ENOUZA",
+    "discover": "DESCUBRE"
   },
   "customer_reviews": {
-      "title": "Opiniones de clientes",
-      "verified_purchase": "Compra verificada",
-      "no_reviews": "Aún no hay opiniones",
-      "image_unavailable": "Imagen no disponible",
-      "customer": "Cliente",
-      "review_image": "Imagen de la reseña",
-      "previous_image": "Imagen anterior",
-      "next_image": "Imagen siguiente",
-      "close": "Cerrar",
-      "view_image": "Ver imagen",
-      "rating": "Valoración",
-      "reviews": "Opiniones",
-      "enouza_review": "Reseña de ENOUZA",
-      "description": "Descripción del producto",
-      "customer_rating": "Valoración de los clientes",
-      "customer_reviews": "Opiniones de los clientes",
-      "customer_review": "Reseña del cliente"
-    },
+    "title": "Opiniones de clientes",
+    "verified_purchase": "Compra verificada",
+    "no_reviews": "Aún no hay opiniones",
+    "image_unavailable": "Imagen no disponible",
+    "customer": "Cliente",
+    "review_image": "Imagen de la reseña",
+    "previous_image": "Imagen anterior",
+    "next_image": "Imagen siguiente",
+    "close": "Cerrar",
+    "view_image": "Ver imagen",
+    "rating": "Valoración",
+    "reviews": "Opiniones",
+    "enouza_review": "Reseña de ENOUZA",
+    "description": "Descripción del producto",
+    "customer_rating": "Valoración de los clientes",
+    "customer_reviews": "Opiniones de los clientes",
+    "customer_review": "Reseña del cliente"
+  },
   "productInfo": {
-    "product_details":"Detalles del producto",
+    "product_details": "Detalles del producto",
     "view_full_image": "VER IMAGEN COMPLETA",
     "purchase_information": "Información de compra",
     "secure_purchase_premium_quality": "Compra segura y calidad premium",
     "save": "ahorrar",
-    "Emitting Color":"Color Emisor",
-    "Lampshade Color":"Color de la pantalla",
-    "Body Color":"Color del cuerpo",
+    "Emitting Color": "Color Emisor",
+    "Lampshade Color": "Color de la pantalla",
+    "Body Color": "Color del cuerpo",
     "Color": "Color",
     "Color Name": "Color",
     "Colour": "Color",
     "Color Classification": "Clasificación de color",
-    "Is Customized":"Personalizado",
+    "Is Customized": "Personalizado",
     "Size": "Talla",
     "Sizes": "Tallas",
     "Item Length": "Longitud",
     "Item Width": "Ancho",
     "Item Height": "Altura",
     "Dimensions": "Dimensiones",
-
     "Sd Card Memory": "Memoria SD",
     "Memory": "Memoria",
     "Memory Size": "Tamaño de memoria",
@@ -434,7 +396,6 @@
     "ROM": "ROM",
     "RAM": "RAM",
     "Capacity": "Capacidad",
-
     "Plug Type": "Tipo de enchufe",
     "Power Plug": "Enchufe de alimentación",
     "Socket Type": "Tipo de toma",
@@ -446,27 +407,22 @@
     "Ship From": "Enviar desde",
     "Warehouse": "Almacén",
     "Origin": "Origen",
-
     "Bundle": "Paquete",
     "Sale by Pack": "Venta por paquete",
     "Pack": "Pack",
     "Set": "Conjunto",
     "Package": "Paquete",
     "Quantity": "Cantidad",
-
     "Model": "Modelo",
     "Compatible Model": "Modelos compatibles",
     "Version": "Versión",
     "Edition": "Edición",
     "Variant": "Variante",
-
     "Material": "Material",
     "Fabric": "Tela",
     "Fit": "Ajuste",
     "Pattern": "Patrón",
     "Sleeve Length": "Longitud de manga",
-
-    
     "Frequency": "Frecuencia",
     "Resolution": "Resolución",
     "Interface": "Interfaz",
@@ -496,10 +452,10 @@
     "two_stars": "Estrellas",
     "give_us_your_feedback": "Danos tu opinión",
     "led_ambient_lighting": "Ambiental",
-  "phone_mounts_holders": "Monturas para teléfonos",
-  "organizers_storage": "Organizadores ",
-  "comfort_accessories": "Comodidad y accesorios",
-  "air_fresheners_scents": "Ambientadores y fragancias",
+    "phone_mounts_holders": "Monturas para teléfonos",
+    "organizers_storage": "Organizadores ",
+    "comfort_accessories": "Comodidad y accesorios",
+    "air_fresheners_scents": "Ambientadores y fragancias",
     "table_lamps": "Lámparas de Mesa",
     "floor_lamps": "Lámparas de Pie",
     "wall_lamps": "Apliques de Pared",
@@ -508,7 +464,6 @@
     "bedside_lamps": "Lámparas de Mesita de Noche",
     "desk_office_lamps": "Lámparas de Escritorio y Oficina",
     "outdoor_lighting": "Iluminación Exterior"
-    
   },
   "buyerTrustServices": {
     "freeShipping": {
@@ -572,10 +527,12 @@
     "total": "Total"
   },
   "footer": {
-     "brand": {
+    "brand": {
       "description": "Piezas cuidadosamente seleccionadas para aportar calidez, elegancia y personalidad a tu espacio."
     },
-    "payment": { "secure": "Pagos seguros" },
+    "payment": {
+      "secure": "Pagos seguros"
+    },
     "followUs": {
       "title": "Síguenos",
       "facebook": "Facebook",
@@ -612,33 +569,27 @@
       "copyright": ""
     }
   },
-  
- "trust": {
-  "secureCheckout": "Pago seguro",
-
-  "freeShipping": {
-    "title": "Envío gratuito",
-    "text": "Envío gratuito en todos los pedidos"
+  "trust": {
+    "secureCheckout": "Pago seguro",
+    "freeShipping": {
+      "title": "Envío gratuito",
+      "text": "Envío gratuito en todos los pedidos"
+    },
+    "fastDelivery": {
+      "title": "Envío internacional",
+      "text": "Entrega internacional en 5–15 días"
+    },
+    "returns": {
+      "title": "Devoluciones en 100 días",
+      "text": "Devoluciones fáciles durante 100 días"
+    },
+    "warranty": {
+      "title": "Garantía de 3 años",
+      "text": "Diseñado para una calidad duradera"
+    },
+    "shopWithConfidence": "Compra con confianza"
   },
-
-  "fastDelivery": {
-    "title": "Envío internacional",
-    "text": "Entrega internacional en 5–15 días"
-  },
-
-  "returns": {
-    "title": "Devoluciones en 100 días",
-    "text": "Devoluciones fáciles durante 100 días"
-  },
-
-  "warranty": {
-    "title": "Garantía de 3 años",
-    "text": "Diseñado para una calidad duradera"
-  },
-
-  "shopWithConfidence": "Compra con confianza"
-},
-"checkout": {
+  "checkout": {
     "loggedInContinue": "Tu cuenta está lista. Continúa para introducir tus datos de facturación."
   },
   "orderSuccess": {
@@ -651,8 +602,8 @@
     "selectShippingMethod": "Seleccionar método de envío",
     "discoverCollection": "DESCUBRIR LA COLECCIÓN",
     "payNow": "Pagar ahora",
-    "days":"Días",
-    "day":"Día",
+    "days": "Días",
+    "day": "Día",
     "loading": "Cargando...",
     "error": "¡Ups! Algo salió mal.",
     "tryAgain": "Inténtalo de nuevo",
@@ -692,7 +643,6 @@
     "proceedToCheckout": "Ir a pagar",
     "noItemsInCart": "Tu carrito está vacío",
     "noItemsInWishlist": "Tu lista está vacía",
-
     "viewCart": "Ver carrito",
     "viewWishlist": "Ver lista",
     "myAccount": "Mi cuenta",
@@ -844,15 +794,13 @@
     "send": "Enviar",
     "enter_message": "Escribe tu mensaje",
     "message_sent": "Mensaje enviado",
-    "message":"Mensage",
-
+    "message": "Mensage",
     "myProfile": "Mi perfil",
     "chat": "Chat",
     "helpCenter": "Ayuda",
     "from": "De",
     "member_since": "Miembro desde",
-      "pleaseSelectShippingMethod": "Por favor, selecciona un método de envío.",
-
+    "pleaseSelectShippingMethod": "Por favor, selecciona un método de envío.",
     "please_confirm_your_password": "Confirma tu contraseña",
     "please_enter_your_new_password": "Ingresa nueva contraseña",
     "please_enter_your_email": "Ingresa tu correo",
@@ -870,8 +818,6 @@
     "invalid_discount_code": "Código de descuento no válido",
     "discount_code_applied": "Código de descuento aplicado",
     "discount": "Descuento"
-    
-    
   },
   "success": {
     "subscribed_to_newsletter": "¡Gracias por suscribirte a nuestro boletín!",
@@ -936,11 +882,10 @@
     "please_enter_your_zip_code": "Ingresa código postal",
     "please_enter_your_phone": "Ingresa teléfono",
     "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
-
-  "page_not_found": "Página no encontrada",
-  "page_not_found_description": "La página que buscas no existe."
-
+    "page_not_found": "Página no encontrada",
+    "page_not_found_description": "La página que buscas no existe."
   },
+  
   "languages": {
     "en": "Inglés",
     "es": "Español",
@@ -1206,5 +1151,4 @@
     "ZM": "Zambia",
     "ZW": "Zimbabue"
   }
-
 }

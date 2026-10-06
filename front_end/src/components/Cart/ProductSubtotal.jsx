@@ -128,7 +128,7 @@ const Summary = styled.div`
 
   box-sizing: border-box;
 
-  padding: 32px;
+  padding: 15px 32px;
 
   background: #fff;
 

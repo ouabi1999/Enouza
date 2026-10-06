@@ -201,7 +201,7 @@ function FooterPreferences() {
 
               {selectedCountry && (
                 <SelectedText>
-                  {selectedCountry}
+                     {t(`countries.${country}`)}
                 </SelectedText>
               )}
 
@@ -291,7 +291,8 @@ function FooterPreferences() {
                           key={index}
                           value={item.value}
                         >
-                          {item.label}
+                        {t(`countries.${item.value}`)}
+
                         </option>
                       )
                     )}

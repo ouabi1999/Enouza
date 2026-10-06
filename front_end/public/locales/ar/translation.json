@@ -24,6 +24,9 @@
     "checkout": "إتمام الشراء",
     "orderSuccess": "تم الطلب"
   },
+  "shoppingCart": {
+  "freeExpressTo": "شحن سريع مجاني إلى"
+},
   "homePage": {
     "new":"جديد",
     "mayAlsoLike": "قد يعجبك أيضًا",

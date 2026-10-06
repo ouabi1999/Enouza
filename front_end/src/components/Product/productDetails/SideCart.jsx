@@ -11,10 +11,11 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useTranslation } from "react-i18next";
 import {useSelector } from "react-redux";
 
-
 import ProductTrustBanner from "./ProductsTrustBanner";
+import FixedAddBuyButtons from "./FixedAddBuyButtons";
 
 function SideCart(props) {
+  const purchaseRef = useRef(null);
 
 
   const productData = useSelector((state) => state.product.productData);
@@ -236,7 +237,7 @@ function SideCart(props) {
           PURCHASE BUTTONS
       ===================================================== */}
 
-      <PurchaseSection>
+      <PurchaseSection ref=  {purchaseRef}>
         <BuyButton
           dir={i18n.dir() === "ltr" ? "ltr" : "rtl"}
           className={!available ? "out-of-stock" : ""}
@@ -277,7 +278,15 @@ function SideCart(props) {
           <span>{t("common.addToCart")}</span>
         </AddButton>
       </PurchaseSection>
-
+      <FixedAddBuyButtons
+      currentSku={ currentSku}
+  productData ={ productData}
+  shippingInfo = {shippingInfo}
+  buy_Now_item ={buy_Now_item}
+   add_item_to_cart = {add_item_to_cart}
+  purchaseRef = {purchaseRef}
+      
+      />
       {/* =====================================================
           TRUST FOOTER
       ===================================================== */}
@@ -784,6 +793,7 @@ const Warning = styled.span`
 ========================================================= */
 
 const PurchaseSection = styled.div`
+  
   display: grid;
 
   grid-template-columns: 1fr 1fr;

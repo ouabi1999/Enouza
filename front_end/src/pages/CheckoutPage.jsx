@@ -16,7 +16,7 @@ export const FormContext = createContext();
 function CheckoutPage() {
   const cartItems =  useSelector((state) => state.cart.cartItems)
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [total, setTotal] = useState(cartItems.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2))
+  const [total, setTotal] = useState(cartItems?.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)) || 0
   const navigate = useNavigate()
   
   useEffect(() => {

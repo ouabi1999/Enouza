@@ -24,6 +24,11 @@
     "checkout": "Checkout",
     "orderSuccess": "Order Placed"
   },
+
+ "shoppingCart": {
+  "freeExpressTo": "Free Express to"
+},
+
   "homePage": {
     "new":"New",
     "welcomeMessage": "Welcome to our store",
