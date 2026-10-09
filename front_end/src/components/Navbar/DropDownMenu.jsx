@@ -61,7 +61,7 @@ function DropDownMenu(props) {
             {/* FAQ */}
             <MenuLink
               onClick={props.openProfileMenu}
-              to="/help-center"
+              to="/faq"
             >
               <LiveHelpIcon className="icon" />
 
