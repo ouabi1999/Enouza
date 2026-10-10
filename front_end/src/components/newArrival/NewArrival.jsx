@@ -554,7 +554,7 @@ const SaveLabel = styled.span`
   padding: 0 10px;
   overflow: hidden;
 
-  background: #ba915c;
+  background: #a88556;
   
   color: #ffffff;
 

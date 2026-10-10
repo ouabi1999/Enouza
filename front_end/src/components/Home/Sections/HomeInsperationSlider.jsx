@@ -91,7 +91,7 @@ function HomeInsperationSlider() {
         ============================ */}
         <SectionHeaderRow>
           <Header>
-            <Title>{t("homePage.homeInsperation")}</Title>
+            <Title >{t("homePage.homeInsperation")}</Title>
           </Header>
 
 
@@ -415,6 +415,7 @@ const SectionHeaderRow = styled.div`
   min-height: 42px;
   margin-bottom: 28px;
 
+
   @media (max-width: 600px) {
     margin-bottom: 24px;
   }
@@ -434,9 +435,8 @@ const Title = styled.h2`
 
   color: #9b815f;
 
-  font-family: Arial, sans-serif;
-
   font-size: clamp(30px, 2.5vw, 50px);
+  font-family: "DM Sans, sans-serif";
 
   font-weight: 400;
 
@@ -697,7 +697,7 @@ const ImageWrapper = styled.div`
 
 
 
-  aspect-ratio: 0.82;
+  aspect-ratio: 0.75;
 
 
 

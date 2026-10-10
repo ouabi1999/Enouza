@@ -115,7 +115,7 @@ const Header = styled.div`
 const Eyebrow = styled.div`
   color: #9b815f;
   font-family: Arial, sans-serif;
-  font-size: clamp(35px, 2vw, 50px);
+  font-size: clamp(22px, 2vw, 50px);
   letter-spacing: 3px;
   margin-bottom: 18px;
 `;
