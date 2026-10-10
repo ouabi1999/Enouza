@@ -276,7 +276,7 @@ const Title = styled.h2`
   margin: 0;
 
   font-family: Georgia, serif;
-  font-size: clamp(36px, 5vw, 58px);
+  font-size: clamp(36px, 3vw, 50px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.5px;

@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { optimizeCloudinaryImage } from "../../utilis/cloudinary";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import CurrencyPrice from "../../../common/CurrencyPrice";
 
@@ -23,56 +22,39 @@ function NewArrival({
 
   const isArabic = i18n.dir() === "rtl";
 
-
-
   return (
     <Section dir="ltr">
       <Container>
+        {/* HEADER + NAVIGATION */}
+        <SectionHeaderRow>
+          <Header>
+            <Title>{t(`homePage.${name}`)}</Title>
+          </Header>
 
-        {/* ============================
-            HEADER
-        ============================ */}
+          <NavigationArea>
+            <button
+              ref={prevRef}
+              type="button"
+              className="best-sellers-prev"
+              aria-label="Previous products"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <Arrow $direction="prev" />
+            </button>
 
-        <Header>
-          <Title>
-            {t(`homePage.${name}`)}
-          </Title>
-        </Header>
+            <button
+              ref={nextRef}
+              type="button"
+              className="best-sellers-next"
+              aria-label="Next products"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <Arrow $direction="next" />
+            </button>
+          </NavigationArea>
+        </SectionHeaderRow>
 
-        {/* ============================
-            NAVIGATION
-        ============================ */}
-
-        <NavigationArea>
-          <button
-            ref={prevRef}
-            type="button"
-            className="best-sellers-prev"
-            aria-label="Previous products"
-            onClick={() => {
-              swiperRef.current?.slidePrev();
-            }}
-          >
-            <Arrow $direction="prev" />
-          </button>
-
-          <button
-            ref={nextRef}
-            type="button"
-            className="best-sellers-next"
-            aria-label="Next products"
-            onClick={() => {
-              swiperRef.current?.slideNext();
-            }}
-          >
-            <Arrow $direction="next" />
-          </button>
-        </NavigationArea>
-
-        {/* ============================
-            PRODUCTS
-        ============================ */}
-
+        {/* PRODUCTS */}
         <SwiperWrapper>
           <Swiper
             className="mySwiper"
@@ -96,22 +78,18 @@ function NewArrival({
                 slidesPerView: 1.6,
                 spaceBetween: 18,
               },
-
               600: {
                 slidesPerView: 2,
                 spaceBetween: 20,
               },
-
               768: {
                 slidesPerView: 3,
                 spaceBetween: 22,
               },
-
               1024: {
                 slidesPerView: 4,
                 spaceBetween: 24,
               },
-
               1440: {
                 slidesPerView: 4,
                 spaceBetween: 28,
@@ -119,7 +97,7 @@ function NewArrival({
             }}
           >
             {products.length > 0 ? (
-              products.map((item, index) => {
+              products.map((item) => {
                 const mainSku = item.skuInfo?.[0];
 
                 const image =
@@ -137,20 +115,6 @@ function NewArrival({
                   item.name?.[i18n.language] ||
                   item.name?.en ||
                   "ENOUZA Lamp";
-
-                const ratings = item.ratings || [];
-
-                const avgRating =
-                  ratings.length > 0
-                    ? (
-                        ratings.reduce(
-                          (total, rating) =>
-                            total +
-                            Number(rating.stars || 0),
-                          0
-                        ) / ratings.length
-                      ).toFixed(1)
-                    : null;
 
                 const sellingPrice = Number(
                   mainSku?.sellingPrice || 0
@@ -181,50 +145,38 @@ function NewArrival({
                 return (
                   <SwiperSlide key={item.id}>
                     <ProductCard>
-
-                      {/* ============================
-                          IMAGE
-                      ============================ */}
-
                       <ProductLink
                         to={`/product/${item.slug}`}
                       >
                         <ImageWrapper>
-
                           {/* PRIMARY IMAGE */}
-
                           <ProductImage
                             src={optimizeCloudinaryImage(
                               image,
-                              {width: 800}
+                              { width: 800 }
                             )}
                             alt={productName}
                             width="800"
                             height="976"
                             $secondary={false}
-                            fetchpriority="high"
+                            fetchPriority="high"
                           />
 
                           {/* SECONDARY IMAGE */}
-
                           {secondaryImage && (
                             <ProductImage
                               src={optimizeCloudinaryImage(
                                 secondaryImage,
-                                {width: 800}
+                                { width: 800 }
                               )}
                               alt={`${productName} alternate view`}
-                              fetchpriority="high"
                               width="800"
                               height="976"
                               $secondary
                             />
                           )}
 
-                          {/* ============================
-                              TOP LABELS
-                          ============================ */}
-
+                          {/* PRODUCT LABELS */}
                           <ProductLabels
                             $isArabic={isArabic}
                           >
@@ -236,28 +188,15 @@ function NewArrival({
 
                             {label && (
                               <Label>
-                                {t(
-                                  `homePage.${label}`
-                                )}
+                                {t(`homePage.${label}`)}
                               </Label>
                             )}
                           </ProductLabels>
-
-                         
-
-                        
-
-                         
-
                         </ImageWrapper>
                       </ProductLink>
 
-                      {/* ============================
-                          CENTERED PRODUCT INFO
-                      ============================ */}
-
+                      {/* PRODUCT INFORMATION */}
                       <ProductInfo>
-
                         <ProductName>
                           {productName}
                         </ProductName>
@@ -277,31 +216,13 @@ function NewArrival({
                             </ComparePrice>
                           )}
                         </PriceGroup>
-                       {/*  {avgRating && (
-                          <Rating>
-                            <StarIcon />
-
-                            <span>
-                              {avgRating}
-                            </span>
-
-                            <ReviewCount>
-                              {ratings.length}
-                            </ReviewCount>
-                          </Rating>
-                        )}
-                        */}
 
                         {hasFreeShipping && (
                           <Shipping>
-                            {t(
-                              "common.free_shipping"
-                            )}
+                            {t("common.free_shipping")}
                           </Shipping>
                         )}
-
                       </ProductInfo>
-
                     </ProductCard>
                   </SwiperSlide>
                 );
@@ -311,7 +232,6 @@ function NewArrival({
                 {[1, 2, 3, 4, 5].map((item) => (
                   <SwiperSlide key={item}>
                     <SkeletonCard>
-
                       <SkeletonImage />
 
                       <SkeletonInfo>
@@ -322,7 +242,6 @@ function NewArrival({
                           <SkeletonRating />
                         </SkeletonBottom>
                       </SkeletonInfo>
-
                     </SkeletonCard>
                   </SwiperSlide>
                 ))}
@@ -330,14 +249,12 @@ function NewArrival({
             )}
           </Swiper>
         </SwiperWrapper>
-
       </Container>
     </Section>
   );
 }
 
 export default NewArrival;
-
 
 /* =========================================================
    SECTION
@@ -346,10 +263,13 @@ export default NewArrival;
 const Section = styled.section`
   width: 100%;
   background: #f7f5f0;
-  padding: 96px 0 105px;
+  padding: 70px 0 105px;
   overflow: hidden;
-`;
 
+  @media (max-width: 600px) {
+    padding: 60px 0 70px;
+  }
+`;
 
 /* =========================================================
    CONTAINER
@@ -364,79 +284,79 @@ const Container = styled.div`
   }
 `;
 
-
 /* =========================================================
    HEADER
+   Title centered independently of the arrows
 ========================================================= */
 
-const Header = styled.div`
+const SectionHeaderRow = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 28px;
 
-  margin-bottom: 34px;
+  @media (max-width: 600px) {
+    margin-bottom: 24px;
+  }
 `;
 
-
-const Title = styled.h2`
-  margin: 0;
-
-  color: #25221f;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(2rem, 3vw, 3.2rem);
-
-  font-weight: 400;
-
-  line-height: 1.05;
-
-  letter-spacing: -0.045em;
-
+const Header = styled.div`
+  width: min(700px, 100%);
+  margin: 0 auto;
   text-align: center;
 `;
 
+const Title = styled.h2`
+  width: 100%;
+  margin: 0;
+  color: #00000;
+  font-family: Arial, sans-serif;
+  font-size: clamp(30px, 2.5vw, 50px);
+  font-weight: 400;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+
+  @media (max-width: 600px) {
+    font-size: clamp(25px, 6vw, 35px);
+    letter-spacing: 1.8px;
+  }
+`;
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 const NavigationArea = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   gap: 8px;
-
-  margin-bottom: 20px;
-
+  margin: 0;
   direction: ltr;
 
   button {
     position: relative;
-
+    flex-shrink: 0;
     width: 42px;
     height: 42px;
-
     padding: 0;
-
     border: 1px solid #d4cec5;
-
     border-radius: 50%;
-
     background: transparent;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
-
     color: #25221f;
-
     transition:
       background 0.35s ease,
       border-color 0.35s ease,
@@ -446,13 +366,17 @@ const NavigationArea = styled.div`
     &:hover {
       background: #25221f;
       border-color: #25221f;
-      color: #ffffff;
-
+      color: #fff;
       transform: translateY(-2px);
     }
 
     &:active {
       transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #9b815f;
+      outline-offset: 3px;
     }
   }
 
@@ -461,7 +385,6 @@ const NavigationArea = styled.div`
   }
 `;
 
-
 /* =========================================================
    ARROW
 ========================================================= */
@@ -469,7 +392,6 @@ const NavigationArea = styled.div`
 const Arrow = styled.span`
   width: 7px;
   height: 7px;
-
   border-top: 1px solid currentColor;
   border-right: 1px solid currentColor;
 
@@ -483,7 +405,6 @@ const Arrow = styled.span`
       ? "margin-left: 3px;"
       : "margin-right: 3px;"}
 `;
-
 
 /* =========================================================
    SWIPER
@@ -512,7 +433,6 @@ const SwiperWrapper = styled.div`
   }
 `;
 
-
 /* =========================================================
    PRODUCT
 ========================================================= */
@@ -522,14 +442,11 @@ const ProductCard = styled.article`
   position: relative;
 `;
 
-
 const ProductLink = styled(Link)`
   display: block;
-
   color: inherit;
   text-decoration: none;
 `;
-
 
 /* =========================================================
    IMAGE
@@ -537,31 +454,20 @@ const ProductLink = styled(Link)`
 
 const ImageWrapper = styled.div`
   position: relative;
-
   width: 100%;
-
   aspect-ratio: 0.82;
-
   overflow: hidden;
-
   background: #ebe7df;
-
   isolation: isolate;
-
   cursor: pointer;
 `;
 
-
 const ProductImage = styled.img`
   position: absolute;
-
   inset: 0;
-
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 
   transition:
@@ -591,13 +497,11 @@ const ProductImage = styled.img`
 
     ${ProductCard}:hover & {
       transform: none;
-
       opacity: ${({ $secondary }) =>
         $secondary ? 0 : 1};
     }
   }
 `;
-
 
 /* =========================================================
    PRODUCT LABELS
@@ -605,7 +509,6 @@ const ProductImage = styled.img`
 
 const ProductLabels = styled.div`
   position: absolute;
-
   top: 15px;
 
   ${({ $isArabic }) =>
@@ -618,114 +521,44 @@ const ProductLabels = styled.div`
       `}
 
   display: flex;
-
   align-items: center;
-
   gap: 7px;
-
   z-index: 4;
-
   pointer-events: none;
 `;
-
 
 const Label = styled.span`
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
   min-height: 25px;
-
   padding: 0 10px;
-
   background: rgba(37, 34, 31, 0.94);
-
   color: #ffffff;
-
   font-family: Arial, sans-serif;
-
   font-size: 0.58rem;
-
   font-weight: 500;
-
   letter-spacing: 0.11em;
-
   line-height: 1;
-
   text-transform: uppercase;
-
   white-space: nowrap;
 `;
-
 
 const SaveLabel = styled.span`
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
   min-height: 25px;
-
   padding: 0 10px;
-
   background: #ad9270;
-
   color: #ffffff;
-
   font-family: Arial, sans-serif;
-
   font-size: 0.58rem;
-
   font-weight: 500;
-
   letter-spacing: 0.09em;
-
   line-height: 1;
-
   white-space: nowrap;
 `;
-
-
-
-
-/* =========================================================
-   PRODUCT INDEX
-========================================================= */
-
-const ProductIndex = styled.span`
-  position: absolute;
-
-  right: 15px;
-  bottom: 14px;
-
-  z-index: 3;
-
-  color: rgba(255, 255, 255, 0.85);
-
-  font-family: Arial, sans-serif;
-
-  font-size: 0.55rem;
-
-  font-weight: 400;
-
-  letter-spacing: 0.12em;
-
-  mix-blend-mode: difference;
-
-  pointer-events: none;
-
-  transition: opacity 0.3s ease;
-
-  ${ProductCard}:hover & {
-    opacity: 0;
-  }
-
-  @media (max-width: 768px) {
-    opacity: 0.8;
-  }
-`;
-
 
 /* =========================================================
    PRODUCT INFO
@@ -733,39 +566,23 @@ const ProductIndex = styled.span`
 
 const ProductInfo = styled.div`
   padding-top: 20px;
-
   text-align: center;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 `;
 
-
 const ProductName = styled.h3`
   margin: 0;
-
   max-width: 95%;
-
   color: #292622;
-
-  font-family:
-    Arial,
-    sans-serif;
-
+  font-family: Arial, sans-serif;
   font-size: 0.82rem;
-
   font-weight: 500;
-
   line-height: 1.5;
-
   letter-spacing: 0.005em;
-
   text-align: center;
 `;
-
 
 /* =========================================================
    PRICE
@@ -773,92 +590,29 @@ const ProductName = styled.h3`
 
 const PriceGroup = styled.div`
   display: flex;
-
   align-items: baseline;
-
   justify-content: center;
-
   gap: 9px;
-
   margin-top: 9px;
 `;
-
 
 const CurrentPrice = styled.span`
   color: #25221f;
-
-  font-family:
-    Arial,
-    sans-serif;
-
+  font-family: Arial, sans-serif;
   font-size: 0.82rem;
-
   font-weight: 600;
-
   letter-spacing: 0.01em;
-
   white-space: nowrap;
 `;
-
 
 const ComparePrice = styled.span`
   color: #aaa39b;
-
-  font-family:
-    Arial,
-    sans-serif;
-
+  font-family: Arial, sans-serif;
   font-size: 0.68rem;
-
   font-weight: 400;
-
   text-decoration: line-through;
-
   white-space: nowrap;
 `;
-
-
-/* =========================================================
-   RATING
-========================================================= */
-
-const Rating = styled.div`
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 4px;
-
-  margin-top: 9px;
-
-  color: #777067;
-
-  font-family: Arial, sans-serif;
-
-  font-size: 0.62rem;
-
-  svg {
-    width: 11px;
-    height: 11px;
-
-    color: #a58c68;
-  }
-`;
-
-
-const ReviewCount = styled.span`
-  color: #aaa29a;
-
-  &::before {
-    content: "(";
-  }
-
-  &::after {
-    content: ")";
-  }
-`;
-
 
 /* =========================================================
    SHIPPING
@@ -866,39 +620,26 @@ const ReviewCount = styled.span`
 
 const Shipping = styled.div`
   margin-top: 7px;
-
   color: #918980;
-
-  font-family:
-    Arial,
-    sans-serif;
-
+  font-family: Arial, sans-serif;
   font-size: 0.59rem;
-
   font-weight: 400;
-
   letter-spacing: 0.045em;
-
   text-transform: uppercase;
 `;
 
-
 /* =========================================================
-   SKELETON
+   SKELETON LOADING
 ========================================================= */
 
 const SkeletonCard = styled.div`
   width: 100%;
 `;
 
-
 const SkeletonImage = styled.div`
   width: 100%;
-
   aspect-ratio: 0.82;
-
   background: #e9e5de;
-
   animation: pulse 1.7s ease-in-out infinite;
 
   @keyframes pulse {
@@ -916,53 +657,35 @@ const SkeletonImage = styled.div`
   }
 `;
 
-
 const SkeletonInfo = styled.div`
   padding-top: 20px;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 `;
-
 
 const SkeletonName = styled.div`
   width: 62%;
-
   height: 10px;
-
   background: #e2ddd5;
 `;
-
 
 const SkeletonBottom = styled.div`
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 14px;
-
   margin-top: 13px;
 `;
 
-
 const SkeletonPrice = styled.div`
   width: 65px;
-
   height: 9px;
-
   background: #e2ddd5;
 `;
 
-
 const SkeletonRating = styled.div`
   width: 38px;
-
   height: 9px;
-
   background: #e2ddd5;
 `;

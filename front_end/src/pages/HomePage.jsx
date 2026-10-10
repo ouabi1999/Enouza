@@ -8,13 +8,14 @@ import styled from "styled-components";
 import ApiInstance from "../../common/baseUrl";
 import AdvertiseMain from "../components/Advertise/AdvertiseMain.jsx";
 import { useTranslation } from "react-i18next";
-import HeroSection from "../components/Product/home/HeroSection.jsx";
-import DesignSection from "../components/Product/home/DesignSection.jsx";
-import CTASection from "../components/Product/home/CTASection.jsx";
-import MatricsSection from "../components/Product/home/MatricsSection.jsx";
-import CustomersFeedback from "../components/Product/home/CustomersFeedbak.jsx";
+import HeroSection from "../components/Home/Sections/HeroSection.jsx";
+import DesignSection from "../components/Home/Sections/DesignSection.jsx";
+import CTASection from "../components/Home/Sections/CTASection.jsx";
+import MatricsSection from "../components/Home/Sections/MatricsSection.jsx";
+import CustomersFeedback from "../components/Home/Sections/CustomersFeedbak.jsx";
 import SEO from "../components/SEO/SEO.jsx";
-import CollectionSection from "../components/Product/home/CollectionSection.jsx";
+import CollectionSection from "../components/Home/Sections/CollectionSection.jsx";
+import HomeInsperationSlider from "../components/Home/Sections/HomeInsperationSlider.jsx";
 
 const NewArrival = lazy(() =>
   import("../components/newArrival/NewArrival.jsx")
@@ -101,26 +102,7 @@ function HomePage() {
       <AdvertiseMain />
 
       <HeroSection />
-
-      <SectionPlaceholder>
-        <Suspense fallback={null}>
-          <NewArrival
-            products={bestSellersProducts}
-            name="best_sellers"
-            label="bestSellers"
-            isAuto={false}
-            isLoading={isLoading}
-          />
-        </Suspense>
-      </SectionPlaceholder>
-
-      <CollectionSection />
-
-      <DesignSection />
-
-      <MatricsSection />
-
-      <SectionPlaceholder>
+        <SectionPlaceholder>
         <Suspense fallback={null}>
           <NewArrival
             products={newArrivalProducts}
@@ -131,10 +113,30 @@ function HomePage() {
           />
         </Suspense>
       </SectionPlaceholder>
+    
+
+      <CollectionSection />
+
+      <DesignSection />
+
+      <HomeInsperationSlider/>
+         <SectionPlaceholder>
+        <Suspense fallback={null}>
+          <NewArrival
+            products={bestSellersProducts}
+            name="best_sellers"
+            label="bestSellers"
+            isAuto={false}
+            isLoading={isLoading}
+          />
+        </Suspense>
+      </SectionPlaceholder>
+     
 
       <CustomersFeedback />
 
       <CTASection />
+      
     </Container>
   );
 }

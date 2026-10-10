@@ -17,7 +17,8 @@ const MainSlider = () => {
   const posterUrl =
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790529844/ChatGPT_Image_Sep_27_2026_07_23_04_PM_csaple.png";
 
- 
+  const videoUrl2 = "https://res.cloudinary.com/dzpzy1o1y/video/upload/v1786567618/About_iiabi5.mp4"
+
 
 
 
@@ -25,7 +26,7 @@ const MainSlider = () => {
   return (
     <Container>
         <video
-        className="video"
+        className="mobile-video"
           ref={videoRef}
           autoPlay
           muted
@@ -38,17 +39,22 @@ const MainSlider = () => {
           <source src={optimizeCloudinaryVideo(videoUrl)} type="video/mp4" />
         </video>
    
-      <Poster
-        src={optimizeCloudinaryImage(
-          posterUrl, {width: 1820}
-         
-        )}
-          alt="Enouza luxury home lighting and interior design"
-          width="1200"
-          height="675"
-          className="poster"
-          fetchpriority="high"
-        />
+      <Poster>
+        <video
+        className="desktop-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={optimizeCloudinaryImage(posterUrl, {width: 1820})}
+          aria-label="Enouza luxury home lighting and interior design"
+        >
+          <source src={optimizeCloudinaryVideo(videoUrl2)} type="video/mp4" />
+        </video>
+      </Poster>
+       
+      
  
       <Overlay>
         <h1>{t("mainSlider.title")}</h1>
@@ -76,12 +82,12 @@ const Container = styled.div`
   min-width: 200px;
   height: 550px;
   overflow: hidden;
-  video{
+  .mobile-video{
     display:none;
    
   }
 
-  img {
+  .desktop-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -97,10 +103,10 @@ const Container = styled.div`
     min-width: 290px;
     height: 450px;
 
-    img{
+    .desktop-video{
     display:none;
     }
-    video{
+    .mobile-video{
     display:block;
      width: 100%;
     height: 100%;
@@ -109,7 +115,7 @@ const Container = styled.div`
   }
 `;
 
-const Poster = styled.img`
+const Poster = styled.div`
   width: 100%;
   height: 100%;
   object-fit: cover;
