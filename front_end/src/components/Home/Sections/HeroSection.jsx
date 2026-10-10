@@ -444,8 +444,9 @@ const ShopButton = styled(Link)`
   transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
 
   &:hover {
-    color: #000000;
     border-color: #000000;
+      color: #ffffff;
+
     gap: 12px; /* optional: makes arrow move on hover */
   }
 
