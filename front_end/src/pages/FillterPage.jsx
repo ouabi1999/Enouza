@@ -5,11 +5,9 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import ApiInstance from "../../common/baseUrl";
-import CollectionProducts from "../components/Home/sections/CollectionProducts";
+import CollectionProducts from "../components/Home/Sections/CollectionProducts"
 import {
-  toggleCategory,
   setSort,
-  resetFilters,
 } from "../features/filterSlice";
 import Skeleton from "@mui/material/Skeleton";
 import { useTranslation } from "react-i18next";
