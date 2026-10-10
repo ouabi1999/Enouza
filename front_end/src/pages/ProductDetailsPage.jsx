@@ -5,9 +5,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO/SEO";
-import ProductLayout from "../components/Product/ProductLayout";
-import AboutProductLayout from "../components/Product/aboutProduct/AboutProductLayout";
-import PopUpShoppingMethod from "../components/Product/productDetails/PopUpShoppingMethod";
+import ProductLayout from "../components/Home/ProductLayout";
+import AboutProductLayout from "../components/Home/aboutProduct/AboutProductLayout";
+import PopUpShoppingMethod from "../components/Home/productDetails/PopUpShoppingMethod";
 
 import { addToCart, buyNowItem, setIsCartOpen } from "../features/cartSlice";
 import { getProductDetails, setProductDetails } from "../features/productDetails_slice";
@@ -375,7 +375,7 @@ const onClose = ()=>{
       <SEO
         title={productData?.name?.en || "Luxury Lamp"}
         description={productData?.description?.en}
-        canonical={`/product/${slug}`}
+        canonical={`/Home/${slug}`}
         image={productData?.multimediaInfo?.main_image}
         productData={productData}
       />
