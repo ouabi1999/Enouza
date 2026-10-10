@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import ApiInstance from "../../common/baseUrl";
-import CollectionProducts from "../components/Product/home/CollectionProducts";
+import CollectionProducts from "../components/Home/sections/CollectionProducts";
 import {
   toggleCategory,
   setSort,
