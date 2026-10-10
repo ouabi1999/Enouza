@@ -82,49 +82,7 @@ function SideCart(props) {
       <Section>
 
 
-        {/* SHIPPING METHOD */}
-
-        <ShippingRow>
-          <ShippingLeft>
-            <IconBox>
-              <LocalShippingOutlinedIcon />
-            </IconBox>
-
-            <ShippingContent>
-
-
-              <ShippingValue>
-                {productData?.available_shipping?.length > 0 ? (
-                  Number(
-                    productData?.available_shipping[
-                      shippingMethodIndex
-                    ]?.cost
-                  ) === 0
-                    ? t("purchaseOptions.free_Shipping")
-                    : productData?.available_shipping[
-                      shippingMethodIndex
-                    ]?.methodName
-                ) : shippingInfo?.cost <= 0 ? (
-                  t("purchaseOptions.free_Shipping")
-                ) : (
-                  shippingInfo?.methodName
-                )}
-              </ShippingValue>
-            </ShippingContent>
-          </ShippingLeft>
-
-          {/*
-          <ShippingChangeButton 
-            type="button"
-            onClick={() =>
-              setIsPopUpShippingOpen(!isPopUpShippingOpen)
-            }
-            aria-label="Change shipping method"
-          >
-            <ArrowForwardIosOutlinedIcon />
-          </ShippingChangeButton>
-          */}
-        </ShippingRow>
+       
 
 
         {/* DELIVERY DATE */}
@@ -132,7 +90,8 @@ function SideCart(props) {
         <ShippingRow>
           <ShippingLeft>
             <IconBox>
-              <DeliveryDiningIcon />
+              <LocalShippingOutlinedIcon />
+
             </IconBox>
 
             <ShippingContent>
@@ -141,7 +100,7 @@ function SideCart(props) {
               </SmallLabel>
 
               <ShippingValue>
-                5-7 {t("purchaseOptions.business_days")}
+                5-10 {t("purchaseOptions.business_days")}
               </ShippingValue>
             </ShippingContent>
           </ShippingLeft>
@@ -177,7 +136,11 @@ function SideCart(props) {
       <QuantitySection>
         <QuantityHeader>
           <QuantityTitle>
+                        <IconBox>
+
             <AutoAwesomeMotionOutlinedIcon />
+                        </IconBox>
+
 
             <span>{t("purchaseOptions.Quantity")}</span>
           </QuantityTitle>

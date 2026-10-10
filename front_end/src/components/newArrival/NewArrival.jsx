@@ -544,21 +544,77 @@ const Label = styled.span`
   white-space: nowrap;
 `;
 
+
 const SaveLabel = styled.span`
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 25px;
   padding: 0 10px;
-  background: #ad9270;
+  overflow: hidden;
+
+  background: #ba915c;
+  
   color: #ffffff;
+
   font-family: Arial, sans-serif;
   font-size: 0.58rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.09em;
   line-height: 1;
   white-space: nowrap;
+
+  box-shadow: 0 2px 7px rgba(100, 76, 43, 0.12);
+  animation: saveLabelPulse 2.4s ease-in-out infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -120%;
+    width: 70%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.48) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: saveLabelShine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes saveLabelPulse {
+    0%, 100% {
+      box-shadow: 0 2px 7px rgba(100, 76, 43, 0.12);
+    }
+    50% {
+      box-shadow: 0 3px 12px rgba(173, 146, 112, 0.38);
+    }
+  }
+
+  @keyframes saveLabelShine {
+    0%, 25% {
+      left: -120%;
+    }
+    65%, 100% {
+      left: 160%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+
+    &::after {
+      animation: none;
+      display: none;
+    }
+  }
 `;
+
 
 /* =========================================================
    PRODUCT INFO

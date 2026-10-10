@@ -1232,29 +1232,75 @@ const ComparePrice = styled.span`
   }
 `;
 
+
 const SaveBadge = styled.span`
+  position: relative;
   display: inline-flex;
-
   align-items: center;
-
+  justify-content: center;
+  overflow: hidden;
   padding: 4px 8px;
 
   background: #9b815f;
-
-  color: white;
+  color: #ffffff;
 
   font-size: 0.63rem;
-
   font-weight: 600;
-
   line-height: 1.3;
-
   letter-spacing: 0.04em;
-
   text-transform: uppercase;
-
   white-space: nowrap;
+
+  /* Soft, continuous attention glow */
+  animation: saveBadgeGlow 2.2s ease-in-out infinite;
+
+  /* Moving light reflection */
+  &::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+    transform: skewX(-22deg);
+    animation: saveBadgeShine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes saveBadgeGlow {
+    0%, 100% {
+      box-shadow: 0 0 0 rgba(155, 129, 95, 0);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(155, 129, 95, 0.38);
+    }
+  }
+
+  @keyframes saveBadgeShine {
+    0%, 15% {
+      left: -80%;
+    }
+    55%, 100% {
+      left: 140%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+
+    &::after {
+      animation: none;
+      display: none;
+    }
+  }
 `;
+
 
 const PriceNote = styled.div`
   display: flex;
