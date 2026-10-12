@@ -224,6 +224,8 @@ setFormData({
     const data = new FormData();
    
     formData.tags?.forEach((tag) => data.append("tags", tag));
+    data.append("slug", formData.slug);
+
 
     formData.ali_express_ratings?.forEach((rating) =>
       data.append("ali_express_ratings", JSON.stringify(rating))
