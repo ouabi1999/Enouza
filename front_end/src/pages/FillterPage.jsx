@@ -1,17 +1,23 @@
+
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-//import { categoryList } from "../../common/categoryList";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
-import ApiInstance from "../../common/baseUrl";
-import CollectionProducts from "../components/Home/Sections/CollectionProducts"
-import {
-  setSort,
-} from "../features/filterSlice";
 import Skeleton from "@mui/material/Skeleton";
 import { useTranslation } from "react-i18next";
+
+import ApiInstance from "../../common/baseUrl";
+import CollectionProducts from "../components/Home/Sections/CollectionProducts";
+import { setSort } from "../features/filterSlice";
 import SEO from "../components/SEO/SEO";
+
+/* ============================================================
+   HEADER IMAGE
+============================================================ */
+
+const cover_image =
+  "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790529844/ChatGPT_Image_Sep_27_2026_07_23_04_PM_csaple.png";
 
 /* ============================================================
    ANIMATIONS
@@ -62,44 +68,74 @@ export default function FilterPageStyled() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
-  const fetchProducts = () => {
-    setIsLoading(true);
+  /* ============================================================
+     FETCH PRODUCTS
+  ============================================================ */
 
-    ApiInstance.get("product-search/", {
-  params: {
-    search: search || "",
-    category: categories?.join(",") || "",
-    sort: sort || "best_match",
-    page: count,
-    per_page: 12,
-  },
-})
-      .then((response) => {
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchProducts = async () => {
+      setIsLoading(true);
+
+      try {
+        const response = await ApiInstance.get("product-search/", {
+          params: {
+            search: search || "",
+            category: categories?.join(",") || "",
+            sort: sort || "best_match",
+            page: count,
+            per_page: 12,
+          },
+        });
+
+        if (!isMounted) return;
+
         setProductsList(response.data.results || []);
         setTotalPages(response.data.total_pages || 0);
-      })
-      .catch((error) => {
-        console.error(error);
+      } catch (error) {
+        if (!isMounted) return;
+
+        console.error("Error fetching products:", error);
         setProductsList([]);
         setTotalPages(0);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
 
-  useEffect(()=>{
-      window.scrollTo({top:0, left:0, behavior:"auto"})
-  },[count])
-  
-  useEffect(() => {
     fetchProducts();
+
+    return () => {
+      isMounted = false;
+    };
   }, [search, categories, sort, count]);
 
-  /* Reset pagination when filters change */
+  /* ============================================================
+     RESET PAGINATION WHEN FILTERS CHANGE
+  ============================================================ */
+
   useEffect(() => {
     setCount(1);
   }, [search, categories, sort]);
+
+  /* ============================================================
+     SCROLL TO TOP WHEN PAGE CHANGES
+  ============================================================ */
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  }, [count]);
+
+  /* ============================================================
+     PRICE ARROW
+  ============================================================ */
 
   const getPriceArrow = () => {
     if (sort === "price_asc") return "↑";
@@ -110,12 +146,13 @@ export default function FilterPageStyled() {
   return (
     <Page dir={i18n.dir()}>
       <SEO
-  title="Lamps and Home Lighting Collection | Enouza"
-  description="Explore Enouza's curated collection of luxury lamps and premium home lighting, including elegant table lamps, wall lamps, and statement lighting."
-  canonical="/collections"
-/>
+        title="Lamps and Home Lighting Collection | Enouza"
+        description="Explore Enouza's curated collection of luxury lamps and premium home lighting, including elegant table lamps, wall lamps, and statement lighting."
+        canonical="/collections"
+      />
+
       {/* =====================================================
-          HEADER
+          COLLECTION HEADER
       ===================================================== */}
 
       <CollectionHeader
@@ -138,7 +175,7 @@ export default function FilterPageStyled() {
       </CollectionHeader>
 
       {/* =====================================================
-          CONTROLS
+          SORT CONTROLS
       ===================================================== */}
 
       <ControlsSection
@@ -147,73 +184,34 @@ export default function FilterPageStyled() {
         initial="hidden"
         animate="visible"
       >
-           
         <ControlsInner>
-          {/* CATEGORY
-          <CategoryControls>
-            <FilterTitle>
-              {t("common.category")}
-            </FilterTitle>
-  
-            <CategoryArea>
-              <CategoryList>
-                {categoryList.map((cat) => (
-                  <CheckboxRow key={cat.value}>
-                    <input
-                      type="checkbox"
-                      checked={categories.includes(cat.value)}
-                      onChange={() =>
-                        dispatch(toggleCategory(cat.value))
-                      }
-                    />
-
-                    <span>
-                      {t(`productInfo.${cat.value}`)}
-                    </span>
-                  </CheckboxRow>
-                ))}
-              </CategoryList>
-            </CategoryArea>
-
-            <ResetButton
-              type="button"
-              onClick={() => dispatch(resetFilters())}
-            >
-              {t("common.reset")}
-            </ResetButton>
-          </CategoryControls>
-            */}
           <SortWrapper>
-            <SortLabel>
-              {t("common.sortBy")}
-            </SortLabel>
+            <SortLabel>{t("common.sortBy")}</SortLabel>
 
             <SortBarContainer>
               <SortButton
+                type="button"
                 $active={sort === "best_match"}
-                onClick={() =>
-                  dispatch(setSort("best_match"))
-                }
+                onClick={() => dispatch(setSort("best_match"))}
               >
                 {t("common.bestMatch")}
               </SortButton>
 
               <SortButton
+                type="button"
                 $active={sort === "orders"}
-                onClick={() =>
-                  dispatch(setSort("orders"))
-                }
+                onClick={() => dispatch(setSort("orders"))}
               >
                 {t("common.orders")}
               </SortButton>
 
               <SortButton
+                type="button"
                 $active={
                   sort === "price_asc" ||
                   sort === "price_desc"
                 }
                 onClick={() =>
-                 
                   dispatch(
                     setSort(
                       sort === "price_asc"
@@ -227,11 +225,7 @@ export default function FilterPageStyled() {
 
                 <SortArrow
                   $direction={
-                    sort === "price_asc"
-                      ? "price_asc"
-                      : sort === "price_desc"
-                      ? "price_desc"
-                      : "idle"
+                    sort === "price_desc" ? "desc" : "asc"
                   }
                 >
                   {getPriceArrow()}
@@ -285,7 +279,7 @@ export default function FilterPageStyled() {
             initial="hidden"
             animate="visible"
           >
-            <CollectionProducts 
+            <CollectionProducts
               columsNumber={4}
               products={productsList}
               placeItems="center"
@@ -352,104 +346,171 @@ const Page = styled.main`
 `;
 
 /* ============================================================
-   HEADER
+   FULL-WIDTH COLLECTION HEADER
 ============================================================ */
 
 const CollectionHeader = styled.header`
-  width: 100%;
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  max-width: 100vw;
+
+  /* Extend beyond Page's horizontal padding */
+  margin-left: calc(50% - 50vw);
+
+  height: 500px;
   padding: 88px 20px 58px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   box-sizing: border-box;
-
+  overflow: hidden;
   text-align: center;
-  border-bottom: 1px solid rgba(22, 21, 19, 0.07);
 
-  @media (max-width: 700px) {
-    padding: 62px 12px 42px;
+  background-image:
+    linear-gradient(
+      180deg,
+      
+      rgba(20, 18, 15, 0.2) 100%
+    ),
+    url("${cover_image}");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+  @media (max-width: 768px) {
+    height: 340px;
+    padding: 62px 18px 42px;
   }
 
   @media (max-width: 480px) {
-    padding: 52px 8px 36px;
-  }
-`;
-
-const Eyebrow = styled.span`
-  display: block;
-  margin-bottom: 18px;
-
-  color: #ad8d63;
-
-  font-family: Arial, sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
-
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-
-  @media (max-width: 480px) {
-    font-size: 0.56rem;
-    letter-spacing: 0.25em;
-  }
-`;
-
-const CollectionTitle = styled.h1`
-  margin: 0;
-
-  color: #161513;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 400;
-
-  letter-spacing: -0.035em;
-  line-height: 1.02;
-
-  text-transform: uppercase;
-
-  @media (max-width: 600px) {
-    font-size: 2.65rem;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 2.35rem;
-  }
-`;
-
-const HeaderLine = styled.div`
-  width: 46px;
-  height: 1px;
-
-  margin: 26px auto 0;
-
-  background: #ad8d63;
-`;
-
-const CollectionDescription = styled.p`
-  width: min(100%, 590px);
-
-  margin: 22px auto 0;
-
-  color: #65615b;
-
-  font-family: Arial, sans-serif;
-  font-size: 0.78rem;
-  font-weight: 300;
-
-  line-height: 1.8;
-  letter-spacing: 0.015em;
-
-  @media (max-width: 600px) {
-    font-size: 0.72rem;
-    line-height: 1.75;
+    height: 270px;
+    padding: 48px 14px 32px;
   }
 `;
 
 /* ============================================================
-   CONTROLS
+   HEADER EYEBROW
+============================================================ */
+
+const Eyebrow = styled.span`
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  margin-bottom: 18px;
+
+  color: #e7c99b;
+
+  font-family: Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+  line-height: 1.6;
+  text-transform: uppercase;
+
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+
+  @media (max-width: 480px) {
+    margin-bottom: 13px;
+    font-size: 0.57rem;
+    letter-spacing: 0.23em;
+  }
+`;
+
+/* ============================================================
+   HEADER TITLE
+============================================================ */
+
+const CollectionTitle = styled.h1`
+  position: relative;
+  z-index: 1;
+
+  max-width: 100%;
+  margin: 0;
+
+  color: #fffaf2;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  text-transform: uppercase;
+  text-wrap: balance;
+
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 600px) {
+    font-size: clamp(2rem, 7.5vw, 2.65rem);
+  }
+
+  @media (max-width: 400px) {
+    font-size: 2rem;
+  }
+`;
+
+/* ============================================================
+   HEADER DECORATIVE LINE
+============================================================ */
+
+const HeaderLine = styled.div`
+  position: relative;
+  z-index: 1;
+
+  width: 46px;
+  height: 1px;
+  flex-shrink: 0;
+
+  margin: 24px auto 0;
+
+  background: #d6b583;
+`;
+
+/* ============================================================
+   HEADER DESCRIPTION
+============================================================ */
+
+const CollectionDescription = styled.p`
+  position: relative;
+  z-index: 1;
+
+  width: min(100%, 590px);
+  margin: 20px auto 0;
+
+  color: rgba(255, 250, 242, 0.94);
+
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 600px) {
+    max-width: 440px;
+    margin-top: 16px;
+    font-size: 0.72rem;
+    line-height: 1.7;
+  }
+`;
+
+/* ============================================================
+   SORT CONTROLS SECTION
 ============================================================ */
 
 const ControlsSection = styled.section`
   width: 100%;
-
   padding: 24px 0;
 
   border-bottom: 1px solid rgba(22, 21, 19, 0.07);
@@ -466,222 +527,6 @@ const ControlsInner = styled.div`
   gap: 18px;
 `;
 
-/* CATEGORY ROW */
-
-const CategoryControls = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 20px;
-
-  min-width: 0;
-
-  @media (max-width: 800px) {
-    gap: 14px;
-  }
-
-  @media (max-width: 620px) {
-    flex-wrap: wrap;
-    row-gap: 12px;
-  }
-`;
-
-const FilterTitle = styled.h3`
-  flex-shrink: 0;
-  margin: 0;
-
-  color: #22201d;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-
-  white-space: nowrap;
-
-  @media (max-width: 480px) {
-    width: 100%;
-    text-align: center;
-    font-size: 0.68rem;
-  }
-`;
-
-const CategoryArea = styled.div`
-  position: relative;
-
-  min-width: 0;
-  max-width: 900px;
-  width: min(100%, 900px);
-
-  overflow: hidden;
-
-  @media (max-width: 620px) {
-    width: calc(100% - 70px);
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    max-width: 100%;
-  }
-`;
-
-const CategoryList = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 26px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  
-
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media (max-width: 900px) {
-    justify-content: flex-start;
-    gap: 22px;
-  }
-
-  @media (max-width: 480px) {
-    gap: 18px;
-  }
-`;
-
-const CheckboxRow = styled.label`
-  display: inline-flex;
-  align-items: center;
-
-  flex-shrink: 0;
-
-  gap: 8px;
-
-  padding: 3px 0;
-
-  color: #73706a;
-
-  font-family: Arial, sans-serif;
-  font-size: 0.69rem;
-  font-weight: 400;
-
-  letter-spacing: 0.025em;
-
-  white-space: nowrap;
-
-  cursor: pointer;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-
-  border-bottom: 1px solid transparent;
-
-  input {
-    appearance: none;
-
-    position: relative;
-
-    width: 14px;
-    height: 14px;
-
-    flex-shrink: 0;
-
-    margin: 0;
-
-    border: 1px solid #c9c5bd;
-    border-radius: 50%;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    transition:
-      border-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  input::after {
-    content: "";
-
-    position: absolute;
-
-    width: 4px;
-    height: 4px;
-
-    top: 50%;
-    left: 50%;
-
-    border-radius: 50%;
-
-    background: #161513;
-
-    transform: translate(-50%, -50%) scale(0);
-
-    transition: transform 0.2s ease;
-  }
-
-  input:checked {
-    border-color: #161513;
-  }
-
-  input:checked::after {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  &:hover {
-    color: #161513;
-    border-bottom-color: #ad8d63;
-  }
-`;
-
-const ResetButton = styled.button`
-  flex-shrink: 0;
-
-  padding: 0;
-
-  border: none;
-  border-bottom: 1px dotted transparent;
-
-  background: transparent;
-
-  color: #121212;
-
-  font-family: Arial, sans-serif;
-  font-size: 0.6rem;
-  font-weight: 400;
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-
-  cursor: pointer;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-
-  &:hover {
-    color: #161513;
-    border-bottom-color: #ad8d63;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.58rem;
-  }
-`;
-
 /* ============================================================
    SORT
 ============================================================ */
@@ -692,17 +537,14 @@ const SortWrapper = styled.div`
   justify-content: flex-end;
 
   gap: 12px;
-
   width: 100%;
 
   color: #88837b;
-
   font-family: Arial, sans-serif;
 
   @media (max-width: 480px) {
     gap: 8px;
-      justify-content: center;
-
+    justify-content: center;
   }
 `;
 
@@ -716,7 +558,6 @@ const SortLabel = styled.span`
 
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
   white-space: nowrap;
 `;
 
@@ -726,25 +567,19 @@ const SortBarContainer = styled.div`
   justify-content: center;
 
   gap: 3px;
-
   padding: 3px;
 
   border: 1px solid rgba(22, 21, 19, 0.07);
   border-radius: 30px;
 
   background: rgba(255, 255, 255, 0.55);
-
   box-shadow: 0 2px 12px rgba(22, 21, 19, 0.025);
-
   backdrop-filter: blur(8px);
 
   @media (max-width: 480px) {
     max-width: calc(100vw - 90px);
-
     overflow-x: auto;
-
     justify-content: flex-start;
-
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -759,9 +594,7 @@ const SortButton = styled.button`
   justify-content: center;
 
   flex-shrink: 0;
-
   min-height: 28px;
-
   padding: 7px 14px;
 
   border: none;
@@ -774,14 +607,11 @@ const SortButton = styled.button`
     $active ? "#faf8f5" : "#77736d"};
 
   font-family: Arial, sans-serif;
-
   font-size: 0.6rem;
   font-weight: ${({ $active }) => ($active ? 500 : 400)};
 
   letter-spacing: 0.035em;
-
   line-height: 1;
-
   white-space: nowrap;
 
   cursor: pointer;
@@ -795,9 +625,7 @@ const SortButton = styled.button`
       $active ? "#faf8f5" : "#161513"};
 
     background: ${({ $active }) =>
-      $active
-        ? "#161513"
-        : "rgba(22, 21, 19, 0.055)"};
+      $active ? "#161513" : "rgba(22, 21, 19, 0.055)"};
   }
 
   @media (max-width: 480px) {
@@ -818,9 +646,7 @@ const SortArrow = styled.span`
   transition: transform 0.25s ease;
 
   transform: ${({ $direction }) =>
-    $direction === "desc"
-      ? "rotate(180deg)"
-      : "rotate(0deg)"};
+    $direction === "desc" ? "rotate(180deg)" : "rotate(0deg)"};
 `;
 
 /* ============================================================
@@ -829,7 +655,6 @@ const SortArrow = styled.span`
 
 const ProductsSection = styled.section`
   width: 100%;
-
   padding-top: 42px;
 
   @media (max-width: 700px) {
@@ -848,13 +673,10 @@ const ProductGridWrapper = styled.div`
 const SkeletonGrid = styled.div`
   width: 100%;
   max-width: 1200px;
-
   margin: 0 auto;
 
   display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
   gap: 30px 20px;
 
   @media (max-width: 1100px) {
@@ -863,25 +685,20 @@ const SkeletonGrid = styled.div`
 
   @media (max-width: 700px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 22px 10px;
   }
 `;
 
 const SkeletonCard = styled.div`
   width: 100%;
-
   overflow: hidden;
-
   background: #faf8f5;
 
   .skeleton-image {
     width: 100%;
-
     aspect-ratio: 1 / 1;
 
     background: #ebe7e0;
-
     border-radius: 0;
   }
 `;
@@ -904,12 +721,10 @@ const EmptyState = styled.div`
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
   text-align: center;
-
   background: rgba(250, 248, 245, 0.5);
 `;
 
@@ -919,25 +734,20 @@ const EmptyLogo = styled.span`
   color: #ad8d63;
 
   font-family: Arial, sans-serif;
-
   font-size: 0.68rem;
   font-weight: 500;
-
   letter-spacing: 0.4em;
 `;
 
 const EmptyTitle = styled.p`
   max-width: 420px;
-
   margin: 0;
 
   color: #3a3936;
 
   font-family: "Playfair Display", Georgia, serif;
-
   font-size: 1.25rem;
   font-weight: 400;
-
   line-height: 1.7;
 
   @media (max-width: 480px) {
@@ -949,7 +759,6 @@ const EmptyTitle = styled.p`
 const EmptyLine = styled.div`
   width: 36px;
   height: 1px;
-
   margin-top: 24px;
 
   background: #ad8d63;
@@ -980,7 +789,6 @@ const PaginationWrapper = styled.div`
   .MuiPaginationItem-root {
     min-width: 32px;
     height: 32px;
-
     margin: 0;
 
     border-radius: 2px;
@@ -1006,7 +814,6 @@ const PaginationWrapper = styled.div`
 
   .MuiPaginationItem-root.Mui-selected {
     color: #faf8f5;
-
     background: #161513;
 
     &:hover {
@@ -1026,7 +833,6 @@ const PaginationWrapper = styled.div`
     .MuiPaginationItem-root {
       min-width: 29px;
       height: 29px;
-
       font-size: 0.61rem;
     }
   }

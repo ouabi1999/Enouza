@@ -13,8 +13,9 @@ import SEO from "../components/SEO/SEO";
 /* =========================================================
    ENOUZA COLORS
 ========================================================= */
-
-const COLORS = {
+ const cover_image = "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png"
+const cover_image_2 = "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651525/enouza/products/imgi_33_BRONZE_PRODUCT_PAGE_4_bxanev.jpg"
+ const COLORS = {
   background: "#F7F5F0",
   white: "#FFFFFF",
   text: "#1D1C1A",
@@ -87,9 +88,7 @@ const AboutUs = () => {
 
       <Hero>
         <HeroInner>
-          <HeroEyebrow>
-            {t("aboutus.hero.eyebrow")}
-          </HeroEyebrow>
+          
 
           <HeroTitle>
             {t("aboutus.hero.title")}
@@ -336,7 +335,7 @@ const Eyebrow = styled.span`
 
   margin-bottom: 14px;
 
-  color: #a8895e;
+  color: #cb9d47;
 
   font-family:
     "Helvetica Neue",
@@ -381,6 +380,18 @@ const Hero = styled.section`
     );
 
   text-align: center;
+  background-image:
+    linear-gradient(
+      180deg,
+      
+      rgba(20, 18, 15, 0.2) 100%
+    ),
+    url("${cover_image}");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 
   @media (max-width: 768px) {
     min-height: auto;
@@ -395,7 +406,6 @@ const Hero = styled.section`
 const HeroInner = styled.div`
   width: 100%;
   max-width: 720px;
-
   margin: 0 auto;
 `;
 
@@ -437,7 +447,7 @@ const HeroDescription = styled.p`
 
   margin: 24px auto 0;
 
-  color: #68625a;
+  color: #ffffff;
 
   font-size: 14px;
   line-height: 1.7;
@@ -458,9 +468,9 @@ const HeroLine = styled.span`
   width: 38px;
   height: 1px;
 
-  margin: 27px auto 0;
+  margin: 10px auto 0;
 
-  background: #ad9067;
+  background: #ffffff;
 
   @media (max-width: 600px) {
     margin-top: 23px;
@@ -599,8 +609,19 @@ const StoryText = styled.p`
 
 const StatementSection = styled.section`
   padding: 100px 24px;
+   height:50vh;
+background-image:
+    linear-gradient(
+      180deg,
+      
+      rgba(20, 18, 15, 0.2) 100%
+    ),
+    url("${cover_image_2}");
 
-  background: ${COLORS.dark};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 
   color: ${COLORS.background};
 
@@ -666,7 +687,7 @@ const StatementDescription = styled.p`
 
   margin: 22px auto 0;
 
-  color: rgba(247, 245, 240, 0.65);
+  color: rgba(247, 245, 240, 0.88);
 
   font-size: 14px;
   line-height: 1.8;
