@@ -473,7 +473,6 @@ const NavigationArea = styled.div`
   margin: 0;
 
   direction: ltr;
-  z-index: 2;
 
 
 
