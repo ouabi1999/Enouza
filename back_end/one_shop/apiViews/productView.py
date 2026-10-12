@@ -321,8 +321,8 @@ class OrderCreateView(APIView):
 
 class RatingView(APIView):
     def get(self, request):
-        current_page = int(request.GET.get("currentPage", 1))
-        per_page = int(request.GET.get("per_page", 15))
+        current_page = int(request.GET.get("page", 1))
+        per_page = int(request.GET.get("page_size", 15))
         start = int(request.GET.get("start", 0))
         ratings = Rating.objects.all()
         paginator = Paginator(ratings, per_page)
