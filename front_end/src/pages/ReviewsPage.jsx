@@ -44,8 +44,8 @@ useEffect(() => {
     try {
       const response = await ApiInstance.get("ratings/", {
         params: {
-          page: currentPage,
-          page_size: PAGE_SIZE,
+          currentPage: currentPage,
+          per_page: PAGE_SIZE,
         },
       });
 
