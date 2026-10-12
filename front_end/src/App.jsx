@@ -19,7 +19,9 @@ import styled from "styled-components";
 import BuyerTrustServices from "./components/Services/BuyerTrustServices";
 import NavBar from "./components/Navbar/NavBar";
 import Footer from "./components/Footer/Footer";
-import CheckoutPage from  "./pages/CheckoutPage"
+import CheckoutPage from  "./pages/CheckoutPage";
+import  ShoppingCart from "./components/Cart/ShoppingCart";
+
 import "./App.css";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -61,9 +63,7 @@ const ProductDetailsPage  = React.lazy(() =>
 );
 
 
-const ShoppingCart = React.lazy(() =>
-  import("./components/Cart/ShoppingCart")
-);
+
 
 const UserProfile = React.lazy(() =>
   import("./pages/UserProfile")
