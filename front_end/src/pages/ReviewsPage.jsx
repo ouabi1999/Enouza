@@ -34,66 +34,57 @@ const ReviewsPage = () => {
      FETCH REVIEWS
   ========================================================= */
 
-  useEffect(() => {
-    let mounted = true;
+ 
+useEffect(() => {
+  let mounted = true;
 
-    const fetchReviews = async () => {
-      setLoading(true);
+  const fetchReviews = async () => {
+    setLoading(true);
 
-      try {
-        const response = await ApiInstance.get(
-          `ratings/?page=${currentPage}&page_size=${PAGE_SIZE}`
-        );
+    try {
+      const response = await ApiInstance.get("ratings/", {
+        params: {
+          page: currentPage,
+          page_size: PAGE_SIZE,
+        },
+      });
 
-        if (!mounted) return;
+      if (!mounted) return;
 
-        /*
-          Django REST Framework pagination returns:
+      const data = response.data;
+      const results = Array.isArray(data?.results)
+        ? data.results
+        : [];
 
-          {
-            count: 35,
-            next: "...",
-            previous: null,
-            results: [...]
-          }
-        */
+      const count = Number(data?.count) || 0;
 
-        const data = response.data;
+      setReviews(results);
+      setTotalReviews(count);
+      setTotalPages(
+        Math.max(1, Math.ceil(count / PAGE_SIZE))
+      );
+    } catch (error) {
+      if (!mounted) return;
 
-        const results = Array.isArray(data)
-          ? data
-          : Array.isArray(data?.results)
-          ? data.results
-          : [];
+      console.error("Ratings error:", error);
 
-        const count = Array.isArray(data)
-          ? data.length
-          : Number(data?.count) || 0;
-
-        setReviews(results);
-        setTotalReviews(count);
-        setTotalPages(Math.max(1, Math.ceil(count / PAGE_SIZE)));
-      } catch (error) {
-        console.error("Ratings error:", error);
-
-        if (!mounted) return;
-
-        setReviews([]);
-        setTotalReviews(0);
-        setTotalPages(1);
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+      setReviews([]);
+      setTotalReviews(0);
+      setTotalPages(1);
+    } finally {
+      if (mounted) {
+        setLoading(false);
       }
-    };
+    }
+  };
 
-    fetchReviews();
+  fetchReviews();
 
-    return () => {
-      mounted = false;
-    };
-  }, [currentPage]);
+  return () => {
+    mounted = false;
+  };
+}, [currentPage]);
+
    /* =========================
        RESET SCROLL
     ========================= */
@@ -684,9 +675,8 @@ const ImageCount = styled.span`
 `;
 
 const NoImage = styled.div`
-  height: 300px;
   min-height: 300px;
-
+ width:100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -698,14 +688,16 @@ const NoImage = styled.div`
       #e9e6df
     );
     img{
-    width:100%;
+     display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
     }
 `;
 
-const NoImageIcon = styled.span`
-  font-size: 28px;
-  color: #aaa;
-`;
+
 
 /* =============================================================
    REVIEW CONTENT
