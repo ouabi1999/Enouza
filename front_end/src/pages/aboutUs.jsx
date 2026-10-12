@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -10,34 +11,33 @@ import DiamondOutlined from "@mui/icons-material/DiamondOutlined";
 
 import SEO from "../components/SEO/SEO";
 
-/* =========================================================
-   ENOUZA COLORS
-========================================================= */
- const cover_image = "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png"
-const cover_image_2 = "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651525/enouza/products/imgi_33_BRONZE_PRODUCT_PAGE_4_bxanev.jpg"
- const COLORS = {
+
+
+const images = {
+  story:
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789772276/enouza/products/cf9x7hm6kfetpdhrqusc.png",
+  statement:
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651525/enouza/products/imgi_33_BRONZE_PRODUCT_PAGE_4_bxanev.jpg",
+  approach:
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789953779/nano-banana-free-nano-pro-YNPdWDr2s_UIcMMIM73VTQ_cctocy.png",
+  selection:
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789759246/wz8kkye0zyrbrhnpc5qx.png",
+  promise:
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477153/enouza/products/uxdsswoykxmqdb37195t.png",
+};
+
+const COLORS = {
   background: "#F7F5F0",
-  white: "#FFFFFF",
-  text: "#1D1C1A",
-  muted: "#77736B",
+  text: "#292723",
+  muted: "#777168",
   gold: "#B39A76",
-  softGold: "#DED4C4",
   border: "#E4DED4",
   dark: "#292723",
 };
 
-/* =========================================================
-   ABOUT US
-========================================================= */
-
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
-
   const isArabic = i18n.language?.startsWith("ar");
-
-  /* =====================================================
-     SCROLL TO TOP
-  ===================================================== */
 
   useEffect(() => {
     window.scrollTo({
@@ -46,10 +46,6 @@ const AboutUs = () => {
       behavior: "auto",
     });
   }, []);
-
-  /* =====================================================
-     FEATURES
-  ===================================================== */
 
   const features = [
     {
@@ -74,6 +70,24 @@ const AboutUs = () => {
     },
   ];
 
+  const selectionItems = [
+    {
+      number: "01",
+      title: t("aboutus.selection.form.title"),
+      description: t("aboutus.selection.form.description"),
+    },
+    {
+      number: "02",
+      title: t("aboutus.selection.material.title"),
+      description: t("aboutus.selection.material.description"),
+    },
+    {
+      number: "03",
+      title: t("aboutus.selection.light.title"),
+      description: t("aboutus.selection.light.description"),
+    },
+  ];
+
   return (
     <Page dir={isArabic ? "rtl" : "ltr"}>
       <SEO
@@ -82,206 +96,195 @@ const AboutUs = () => {
         canonical="/about-us"
       />
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <Hero>
-        <HeroInner>
-          
-
-          <HeroTitle>
-            {t("aboutus.hero.title")}
-          </HeroTitle>
-
-          <HeroDescription>
-            {t("aboutus.hero.description")}
-          </HeroDescription>
-
-          <HeroLine />
-        </HeroInner>
-      </Hero>
-
-      {/* =====================================================
-          STORY
-      ===================================================== */}
-
-      <StorySection>
-        <StoryGrid>
-          <StoryIntro>
+      
+      {/* 01 — TEXT LEFT / IMAGE RIGHT */}
+      <SplitSection>
+        <SplitInner>
+          <SplitContent $rtl={isArabic}>
             <Eyebrow>
               {t("aboutus.story.eyebrow")}
             </Eyebrow>
 
-            <StoryTitle>
+            <SectionTitle>
               {t("aboutus.story.title")}
-            </StoryTitle>
-          </StoryIntro>
+            </SectionTitle>
 
-          <StoryContent>
-            <StoryLead>
+            <Lead>
               {t("aboutus.story.lead")}
-            </StoryLead>
+            </Lead>
 
-            <StoryText>
+            <BodyText>
               {t("aboutus.story.text")}
-            </StoryText>
+            </BodyText>
 
-            <StoryText>
+            <BodyText>
               {t("aboutus.story.text2")}
-            </StoryText>
-          </StoryContent>
-        </StoryGrid>
-      </StorySection>
+            </BodyText>
+          </SplitContent>
 
-      {/* =====================================================
-          BRAND STATEMENT
-      ===================================================== */}
+          <ImageFrame>
+            <SectionImage
+              src={images.story}
+              alt={t("aboutus.story.title")}
+              loading="lazy"
+            />
+            <ImageIndex>01 / 05</ImageIndex>
+          </ImageFrame>
+        </SplitInner>
+      </SplitSection>
 
-      <StatementSection>
-        <StatementInner>
-          <StatementMark>✦</StatementMark>
+      {/* 02 — IMAGE LEFT / TEXT RIGHT */}
+      <SplitSection $reverse $tinted>
+        <SplitInner $reverse>
+          <ImageFrame>
+            <SectionImage
+              src={images.statement}
+              alt={t("aboutus.statement.title")}
+              loading="lazy"
+            />
+            <ImageIndex>02 / 05</ImageIndex>
+          </ImageFrame>
 
-          <Statement>
-            {t("aboutus.statement.title")}
-          </Statement>
+          <SplitContent $rtl={isArabic}>
+            <Eyebrow>
+              {t("aboutus.statement.title")}
+            </Eyebrow>
 
-          <StatementDescription>
-            {t("aboutus.statement.description")}
-          </StatementDescription>
-        </StatementInner>
-      </StatementSection>
+            <SectionTitle>
+              {t("aboutus.statement.title")}
+            </SectionTitle>
 
-      {/* =====================================================
-          ENOUZA APPROACH
-      ===================================================== */}
+            <Lead>
+              {t("aboutus.statement.description")}
+            </Lead>
+          </SplitContent>
+        </SplitInner>
+      </SplitSection>
 
-      <ApproachSection>
-        <SectionHeader>
-          <Eyebrow>
-            {t("aboutus.approach.eyebrow")}
-          </Eyebrow>
+      {/* 03 — TEXT LEFT / IMAGE RIGHT */}
+      <SplitSection>
+        <SplitInner>
+          <SplitContent $rtl={isArabic}>
+            <Eyebrow>
+              {t("aboutus.approach.eyebrow")}
+            </Eyebrow>
 
-          <SectionTitle>
-            {t("aboutus.approach.title")}
-          </SectionTitle>
-        </SectionHeader>
+            <SectionTitle>
+              {t("aboutus.approach.title")}
+            </SectionTitle>
 
-        <FeaturesGrid>
-          {features.map((feature, index) => (
-            <Feature key={index}>
-              <IconCircle>
-                <FeatureIcon>
-                  {React.cloneElement(feature.icon, {
-                    fontSize: "inherit",
-                  })}
-                </FeatureIcon>
-              </IconCircle>
+            <FeatureList>
+              {features.map((feature, index) => (
+                <Feature key={index}>
+                  <FeatureIcon>
+                    {React.cloneElement(feature.icon, {
+                      fontSize: "inherit",
+                    })}
+                  </FeatureIcon>
 
-              <FeatureTitle>
-                {feature.title}
-              </FeatureTitle>
+                  <FeatureCopy>
+                    <FeatureTitle>
+                      {feature.title}
+                    </FeatureTitle>
 
-              <FeatureDescription>
-                {feature.description}
-              </FeatureDescription>
-            </Feature>
-          ))}
-        </FeaturesGrid>
-      </ApproachSection>
+                    <FeatureDescription>
+                      {feature.description}
+                    </FeatureDescription>
+                  </FeatureCopy>
+                </Feature>
+              ))}
+            </FeatureList>
+          </SplitContent>
 
-      {/* =====================================================
-          SELECTION
-      ===================================================== */}
+          <ImageFrame>
+            <SectionImage
+              src={images.approach}
+              alt={t("aboutus.approach.title")}
+              loading="lazy"
+            />
+            <ImageIndex>03 / 05</ImageIndex>
+          </ImageFrame>
+        </SplitInner>
+      </SplitSection>
 
-      <SelectionSection>
-        <SelectionHeader>
-          <Eyebrow>
-            {t("aboutus.selection.eyebrow")}
-          </Eyebrow>
+      {/* 04 — IMAGE LEFT / TEXT RIGHT */}
+      <SplitSection $reverse $tinted>
+        <SplitInner $reverse>
+          <ImageFrame>
+            <SectionImage
+              src={images.selection}
+              alt={t("aboutus.selection.title")}
+              loading="lazy"
+            />
+            <ImageIndex>04 / 05</ImageIndex>
+          </ImageFrame>
 
-          <SelectionTitle>
-            {t("aboutus.selection.title")}
-          </SelectionTitle>
-        </SelectionHeader>
+          <SplitContent $rtl={isArabic}>
+            <Eyebrow>
+              {t("aboutus.selection.eyebrow")}
+            </Eyebrow>
 
-        <SelectionList>
-          {/* 01 */}
-          <SelectionItem>
-            <SelectionNumber>01</SelectionNumber>
+            <SectionTitle>
+              {t("aboutus.selection.title")}
+            </SectionTitle>
 
-            <SelectionContent>
-              <SelectionItemTitle>
-                {t("aboutus.selection.form.title")}
-              </SelectionItemTitle>
+            <SelectionList>
+              {selectionItems.map((item) => (
+                <SelectionItem key={item.number}>
+                  <SelectionNumber>
+                    {item.number}
+                  </SelectionNumber>
 
-              <SelectionText>
-                {t("aboutus.selection.form.description")}
-              </SelectionText>
-            </SelectionContent>
-          </SelectionItem>
+                  <SelectionCopy>
+                    <SelectionTitle>
+                      {item.title}
+                    </SelectionTitle>
 
-          {/* 02 */}
-          <SelectionItem>
-            <SelectionNumber>02</SelectionNumber>
+                    <BodyText>
+                      {item.description}
+                    </BodyText>
+                  </SelectionCopy>
+                </SelectionItem>
+              ))}
+            </SelectionList>
+          </SplitContent>
+        </SplitInner>
+      </SplitSection>
 
-            <SelectionContent>
-              <SelectionItemTitle>
-                {t("aboutus.selection.material.title")}
-              </SelectionItemTitle>
+      {/* 05 — TEXT LEFT / IMAGE RIGHT */}
+      <SplitSection>
+        <SplitInner>
+          <SplitContent $rtl={isArabic}>
+            <Eyebrow>
+              {t("aboutus.promise.eyebrow")}
+            </Eyebrow>
 
-              <SelectionText>
-                {t("aboutus.selection.material.description")}
-              </SelectionText>
-            </SelectionContent>
-          </SelectionItem>
+            <SectionTitle>
+              {t("aboutus.promise.title")}
+            </SectionTitle>
 
-          {/* 03 */}
-          <SelectionItem>
-            <SelectionNumber>03</SelectionNumber>
+            <Lead>
+              {t("aboutus.promise.description")}
+            </Lead>
+          </SplitContent>
 
-            <SelectionContent>
-              <SelectionItemTitle>
-                {t("aboutus.selection.light.title")}
-              </SelectionItemTitle>
+          <ImageFrame>
+            <SectionImage
+              src={images.promise}
+              alt={t("aboutus.promise.title")}
+              loading="lazy"
+            />
+            <ImageIndex>05 / 05</ImageIndex>
+          </ImageFrame>
+        </SplitInner>
+      </SplitSection>
 
-              <SelectionText>
-                {t("aboutus.selection.light.description")}
-              </SelectionText>
-            </SelectionContent>
-          </SelectionItem>
-        </SelectionList>
-      </SelectionSection>
-
-      {/* =====================================================
-          PROMISE
-      ===================================================== */}
-
-      <PromiseSection>
-        <PromiseInner>
-          <Eyebrow>
-            {t("aboutus.promise.eyebrow")}
-          </Eyebrow>
-
-          <PromiseTitle>
-            {t("aboutus.promise.title")}
-          </PromiseTitle>
-
-          <PromiseText>
-            {t("aboutus.promise.description")}
-          </PromiseText>
-        </PromiseInner>
-      </PromiseSection>
-
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-
+      {/* FINAL CTA */}
       <FinalSection>
-        <FinalInner>
-          <FinalEyebrow>
+        <FinalInner $rtl={isArabic}>
+          <Eyebrow>
             {t("aboutus.final.eyebrow")}
-          </FinalEyebrow>
+          </Eyebrow>
 
           <FinalTitle>
             {t("aboutus.final.title")}
@@ -292,13 +295,8 @@ const AboutUs = () => {
           </FinalText>
 
           <CollectionLink to="/collections">
-            <span>
-              {t("aboutus.final.cta")}
-            </span>
-
-            <Arrow>
-              {isArabic ? "←" : "→"}
-            </Arrow>
+            <span>{t("aboutus.final.cta")}</span>
+            <Arrow>{isArabic ? "←" : "→"}</Arrow>
           </CollectionLink>
         </FinalInner>
       </FinalSection>
@@ -308,290 +306,160 @@ const AboutUs = () => {
 
 export default AboutUs;
 
-/* =========================================================
-   PAGE
-========================================================= */
+/* PAGE */
 
 const Page = styled.main`
   width: 100%;
   overflow: hidden;
-
   background: ${COLORS.background};
   color: ${COLORS.text};
-
-  font-family:
-    "Jost",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
+  font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
 `;
 
-/* =========================================================
-   SHARED EYEBROW
-========================================================= */
+
+
+
+
+
+
+/* ALTERNATING SECTIONS */
+
+const SplitSection = styled.section`
+  padding: clamp(64px, 8vw, 120px) 7vw;
+  background: ${({ $tinted }) =>
+    $tinted ? "#ECE8E0" : COLORS.background};
+
+  @media (max-width: 768px) {
+    padding: 64px 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 48px 20px;
+  }
+`;
+
+const SplitInner = styled.div`
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  grid-template-areas: ${({ $reverse }) =>
+    $reverse ? '"image content"' : '"content image"'};
+  gap: clamp(40px, 7vw, 110px);
+  align-items: center;
+
+  @media (max-width: 800px) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "image"
+      "content";
+    gap: 32px;
+  }
+`;
+
+const SplitContent = styled.div`
+  grid-area: content;
+  min-width: 0;
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
+  text-align: ${({ $rtl }) => ($rtl ? "right" : "left")};
+`;
+
+const ImageFrame = styled.figure`
+  position: relative;
+  grid-area: image;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #e9e3d9;
+  aspect-ratio: 4 / 4.7;
+
+  @media (max-width: 800px) {
+    aspect-ratio: 5 / 4;
+  }
+
+  @media (max-width: 480px) {
+    aspect-ratio: 4 / 3.6;
+  }
+`;
+
+const SectionImage = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  ${ImageFrame}:hover & {
+    transform: scale(1.035);
+  }
+`;
+
+const ImageIndex = styled.figcaption`
+  position: absolute;
+  bottom: 18px;
+  inset-inline-end: 18px;
+  padding: 9px 12px;
+  color: #fff;
+  background: rgba(35, 32, 28, 0.68);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  backdrop-filter: blur(8px);
+`;
+
+/* TYPOGRAPHY */
 
 const Eyebrow = styled.span`
   display: block;
-
-  margin-bottom: 14px;
-
-  color: #cb9d47;
-
-  font-family:
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  font-size: 9px;
+  margin-bottom: 18px;
+  color: #a8895e;
+  font-size: 10px;
   font-weight: 600;
-
-  letter-spacing: 0.22em;
-  line-height: 1.4;
-
+  letter-spacing: 0.2em;
+  line-height: 1.5;
   text-transform: uppercase;
 
   @media (max-width: 600px) {
     margin-bottom: 12px;
-
-    font-size: 8px;
-    letter-spacing: 0.18em;
+    font-size: 9px;
   }
 `;
 
-/* =========================================================
-   HERO
-========================================================= */
-
-const Hero = styled.section`
-  min-height: 58vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 100px 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #f9f7f3 0%,
-      #f1eee7 55%,
-      #e9e3da 100%
-    );
-
-  text-align: center;
-  background-image:
-    linear-gradient(
-      180deg,
-      
-      rgba(20, 18, 15, 0.2) 100%
-    ),
-    url("${cover_image}");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-
-  @media (max-width: 768px) {
-    min-height: auto;
-    padding: 72px 22px 76px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 62px 20px 66px;
-  }
-`;
-
-const HeroInner = styled.div`
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-`;
-
-const HeroEyebrow = styled(Eyebrow)`
-  margin-bottom: 20px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 17px;
-  }
-`;
-
-const HeroTitle = styled.h1`
-  margin: 0;
-
-  color: #211f1c;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
+const SectionTitle = styled.h2`
+  max-width: 560px;
+  margin: 0 0 25px;
+  color: ${COLORS.text};
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.3rem, 4.2vw, 4rem);
   font-weight: 400;
-
-  line-height: 0.98;
-  letter-spacing: -0.045em;
-
-  @media (max-width: 600px) {
-    max-width: 390px;
-    margin-inline: auto;
-
-    font-size: clamp(2.6rem, 12vw, 3.65rem);
-    line-height: 1;
-  }
-`;
-
-const HeroDescription = styled.p`
-  max-width: 480px;
-
-  margin: 24px auto 0;
-
-  color: #ffffff;
-
-  font-size: 14px;
-  line-height: 1.7;
-
-  @media (max-width: 600px) {
-    max-width: 360px;
-
-    margin-top: 20px;
-
-    font-size: 13px;
-    line-height: 1.7;
-  }
-`;
-
-const HeroLine = styled.span`
-  display: block;
-
-  width: 38px;
-  height: 1px;
-
-  margin: 10px auto 0;
-
-  background: #ffffff;
-
-  @media (max-width: 600px) {
-    margin-top: 23px;
-  }
-`;
-
-/* =========================================================
-   STORY
-========================================================= */
-
-const StorySection = styled.section`
-  padding: 100px 7vw;
-
-  background: ${COLORS.background};
-
-  @media (max-width: 768px) {
-    padding: 70px 24px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 64px 20px;
-  }
-`;
-
-const StoryGrid = styled.div`
-  width: 100%;
-  max-width: 1080px;
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(240px, 0.8fr)
-    minmax(0, 1.2fr);
-
-  gap: clamp(45px, 8vw, 110px);
-
-  align-items: start;
-
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-
-    gap: 30px;
-  }
-`;
-
-const StoryIntro = styled.div`
-  position: static;
-`;
-
-const StoryTitle = styled.h2`
-  max-width: 390px;
-
-  margin: 0;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2rem,
-    3.5vw,
-    3.2rem
-  );
-
-  font-weight: 400;
-
   line-height: 1.08;
-  letter-spacing: -0.03em;
-
-  @media (max-width: 600px) {
-    max-width: 100%;
-
-    font-size: clamp(
-      2rem,
-      9vw,
-      2.8rem
-    );
-  }
-`;
-
-const StoryContent = styled.div`
-  max-width: 570px;
+  letter-spacing: -0.04em;
 
   @media (max-width: 800px) {
     max-width: 650px;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(2rem, 9vw, 2.8rem);
   }
 `;
 
-const StoryLead = styled.p`
+const Lead = styled.p`
   margin: 0 0 20px;
-
-  color: #302d29;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    1.15rem,
-    1.8vw,
-    1.45rem
-  );
-
+  color: #39352f;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
   font-weight: 400;
-
-  line-height: 1.45;
+  line-height: 1.55;
 `;
 
-const StoryText = styled.p`
+const BodyText = styled.p`
   margin: 0 0 16px;
-
-  color: #6b655d;
-
+  color: ${COLORS.muted};
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.9;
 
   &:last-child {
     margin-bottom: 0;
@@ -603,682 +471,171 @@ const StoryText = styled.p`
   }
 `;
 
-/* =========================================================
-   STATEMENT
-========================================================= */
+/* APPROACH FEATURES */
 
-const StatementSection = styled.section`
-  padding: 100px 24px;
-   height:50vh;
-background-image:
-    linear-gradient(
-      180deg,
-      
-      rgba(20, 18, 15, 0.2) 100%
-    ),
-    url("${cover_image_2}");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-
-  color: ${COLORS.background};
-
-  text-align: center;
-
-  @media (max-width: 600px) {
-    padding: 76px 22px;
-  }
-`;
-
-const StatementInner = styled.div`
-  max-width: 700px;
-
-  margin: 0 auto;
-`;
-
-const StatementMark = styled.div`
-  margin-bottom: 22px;
-
-  color: #b89a6b;
-
-  font-size: 12px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 18px;
-  }
-`;
-
-const Statement = styled.h2`
-  max-width: 680px;
-
-  margin: 0 auto;
-
-  color: ${COLORS.background};
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2rem,
-    4vw,
-    3.6rem
-  );
-
-  font-weight: 400;
-
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-
-  @media (max-width: 600px) {
-    font-size: clamp(
-      2rem,
-      9vw,
-      2.8rem
-    );
-  }
-`;
-
-const StatementDescription = styled.p`
-  max-width: 510px;
-
-  margin: 22px auto 0;
-
-  color: rgba(247, 245, 240, 0.88);
-
-  font-size: 14px;
-  line-height: 1.8;
-
-  @media (max-width: 600px) {
-    margin-top: 18px;
-
-    font-size: 13px;
-    line-height: 1.75;
-  }
-`;
-
-/* =========================================================
-   ENOUZA APPROACH
-========================================================= */
-
-const ApproachSection = styled.section`
-  padding: 100px 7vw 105px;
-
-  background: ${COLORS.background};
-
-  @media (max-width: 768px) {
-    padding: 72px 22px 78px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 64px 20px 68px;
-  }
-`;
-
-const SectionHeader = styled.div`
-  width: 100%;
-  max-width: 1080px;
-
-  margin: 0 auto 52px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 40px;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  max-width: 540px;
-
-  margin: 0;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2rem,
-    3.8vw,
-    3.5rem
-  );
-
-  font-weight: 400;
-
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-
-  @media (max-width: 600px) {
-    max-width: 100%;
-
-    font-size: clamp(
-      2rem,
-      10vw,
-      2.75rem
-    );
-  }
-`;
-
-const FeaturesGrid = styled.div`
-  width: 100%;
-  max-width: 1080px;
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  gap: 32px;
-
-  @media (max-width: 900px) {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 48px 24px;
-  }
-
-  @media (max-width: 520px) {
-    gap: 38px 16px;
-  }
+const FeatureList = styled.div`
+  margin-top: 32px;
+  border-top: 1px solid ${COLORS.border};
 `;
 
 const Feature = styled.article`
-  min-width: 0;
-
   display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
-
-  @media (min-width: 901px) {
-    padding: 0 12px;
-  }
-`;
-
-const IconCircle = styled.div`
-  width: 68px;
-  height: 68px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 21px;
-
-  border: 1px solid rgba(179, 154, 118, 0.8);
-
-  border-radius: 40%;
-
-  color: #a8895e;
-
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-
-  @media (hover: hover) {
-    ${Feature}:hover & {
-      transform: translateY(-3px);
-
-      background: #292723;
-      border-color: #292723;
-
-      color: #f7f5f0;
-    }
-  }
-
-  @media (max-width: 520px) {
-    width: 58px;
-    height: 58px;
-
-    margin-bottom: 16px;
-  }
+  align-items: flex-start;
+  gap: 16px;
+  padding: 19px 0;
+  border-bottom: 1px solid ${COLORS.border};
 `;
 
 const FeatureIcon = styled.div`
   display: flex;
+  flex: 0 0 38px;
   align-items: center;
   justify-content: center;
-
-  font-size: 19px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid ${COLORS.gold};
+  border-radius: 50%;
+  color: #a8895e;
+  font-size: 17px;
 
   svg {
     font-size: inherit;
   }
+`;
 
-  @media (max-width: 520px) {
-    font-size: 17px;
-  }
+const FeatureCopy = styled.div`
+  flex: 1;
+  min-width: 0;
 `;
 
 const FeatureTitle = styled.h3`
-  margin: 0;
-
+  margin: 0 0 6px;
   color: ${COLORS.text};
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: 0.8rem;
-  font-weight: 500;
-
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 19px;
+  font-weight: 400;
   line-height: 1.35;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-
-  @media (max-width: 520px) {
-    font-size: 0.72rem;
-
-    letter-spacing: 0.1em;
-  }
 `;
 
 const FeatureDescription = styled.p`
-  width: 100%;
-  max-width: 190px;
-
-  margin: 10px auto 0;
-
-  color: #777168;
-
-  font-family:
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  font-size: 0.72rem;
-  font-weight: 400;
-
-  line-height: 1.65;
-
-  @media (max-width: 520px) {
-    max-width: 145px;
-
-    margin-top: 8px;
-
-    font-size: 0.67rem;
-    line-height: 1.55;
-  }
-`;
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-const SelectionSection = styled.section`
-  padding: 100px 7vw;
-
-  background: #ece8e0;
-
-  @media (max-width: 768px) {
-    padding: 70px 22px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 64px 20px;
-  }
-`;
-
-const SelectionHeader = styled.div`
-  max-width: 1080px;
-
-  margin: 0 auto 45px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 35px;
-  }
-`;
-
-const SelectionTitle = styled.h2`
-  max-width: 570px;
-
   margin: 0;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2rem,
-    3.8vw,
-    3.5rem
-  );
-
-  font-weight: 400;
-
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-
-  @media (max-width: 600px) {
-    max-width: 100%;
-
-    font-size: clamp(
-      2rem,
-      10vw,
-      2.75rem
-    );
-  }
+  color: ${COLORS.muted};
+  font-size: 12px;
+  line-height: 1.75;
 `;
+
+/* SELECTION */
 
 const SelectionList = styled.div`
-  max-width: 1080px;
-
-  margin: 0 auto;
-
-  border-top: 1px solid
-    rgba(41, 39, 35, 0.18);
+  margin-top: 30px;
+  border-top: 1px solid rgba(41, 39, 35, 0.2);
 `;
 
-const SelectionItem = styled.div`
+const SelectionItem = styled.article`
   display: grid;
-
-  grid-template-columns: 65px 1fr;
-
-  gap: 25px;
-
-  padding: 27px 0;
-
-  border-bottom: 1px solid
-    rgba(41, 39, 35, 0.18);
-
-  @media (max-width: 600px) {
-    grid-template-columns: 40px 1fr;
-
-    gap: 15px;
-
-    padding: 23px 0;
-  }
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 15px;
+  padding: 23px 0;
+  border-bottom: 1px solid rgba(41, 39, 35, 0.2);
 `;
 
 const SelectionNumber = styled.span`
-  padding-top: 3px;
-
+  padding-top: 4px;
   color: #a8895e;
-
-  font-size: 9px;
-
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
 `;
 
-const SelectionContent = styled.div`
-  display: grid;
-
-  grid-template-columns:
-    minmax(150px, 0.5fr)
-    minmax(0, 1fr);
-
-  gap: 30px;
-
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr;
-
-    gap: 7px;
-  }
+const SelectionCopy = styled.div`
+  min-width: 0;
 `;
 
-const SelectionItemTitle = styled.h3`
-  margin: 0;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
+const SelectionTitle = styled.h3`
+  margin: 0 0 9px;
+  color: ${COLORS.text};
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 21px;
   font-weight: 400;
-
-  line-height: 1.2;
-
-  @media (max-width: 600px) {
-    font-size: 19px;
-  }
+  line-height: 1.3;
 `;
 
-const SelectionText = styled.p`
-  max-width: 480px;
-
-  margin: 0;
-
-  color: #6b655d;
-
-  font-size: 13px;
-  line-height: 1.7;
-
-  @media (max-width: 600px) {
-    font-size: 12px;
-    line-height: 1.7;
-  }
-`;
-
-/* =========================================================
-   PROMISE
-========================================================= */
-
-const PromiseSection = styled.section`
-  padding: 105px 24px;
-
-  background: ${COLORS.background};
-
-  text-align: center;
-
-  @media (max-width: 600px) {
-    padding: 76px 22px;
-  }
-`;
-
-const PromiseInner = styled.div`
-  max-width: 650px;
-
-  margin: 0 auto;
-`;
-
-const PromiseTitle = styled.h2`
-  max-width: 620px;
-
-  margin: 0 auto;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2rem,
-    4vw,
-    3.6rem
-  );
-
-  font-weight: 400;
-
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-
-  @media (max-width: 600px) {
-    font-size: clamp(
-      2rem,
-      9vw,
-      2.8rem
-    );
-  }
-`;
-
-const PromiseText = styled.p`
-  max-width: 500px;
-
-  margin: 20px auto 0;
-
-  color: #6b655d;
-
-  font-size: 14px;
-  line-height: 1.8;
-
-  @media (max-width: 600px) {
-    margin-top: 17px;
-
-    font-size: 13px;
-    line-height: 1.75;
-  }
-`;
-
-/* =========================================================
-   FINAL CTA
-========================================================= */
+/* FINAL CTA */
 
 const FinalSection = styled.section`
-  padding: 95px 24px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e9e3d9,
-      #f5f2ec
-    );
-
+  padding: clamp(70px, 9vw, 120px) 24px;
+  background: linear-gradient(135deg, #e9e3d9, #f5f2ec);
   text-align: center;
 
   @media (max-width: 600px) {
-    padding: 70px 22px;
+    padding: 72px 22px;
   }
 `;
 
 const FinalInner = styled.div`
-  max-width: 720px;
-
+  max-width: 760px;
   margin: 0 auto;
-`;
-
-const FinalEyebrow = styled(Eyebrow)`
-  margin-bottom: 18px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 15px;
-  }
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
 `;
 
 const FinalTitle = styled.h2`
-  max-width: 700px;
-
+  max-width: 720px;
   margin: 0 auto;
-
-  color: #292723;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    2.2rem,
-    4.5vw,
-    4rem
-  );
-
+  color: ${COLORS.text};
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
-
   line-height: 1.05;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
 
   @media (max-width: 600px) {
-    font-size: clamp(
-      2.2rem,
-      10vw,
-      3rem
-    );
-
-    line-height: 1.05;
+    font-size: clamp(2.3rem, 10vw, 3.2rem);
   }
 `;
 
 const FinalText = styled.p`
-  max-width: 480px;
-
-  margin: 20px auto 28px;
-
-  color: #6b655d;
-
+  max-width: 500px;
+  margin: 22px auto 30px;
+  color: ${COLORS.muted};
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.8;
 
   @media (max-width: 600px) {
-    margin: 18px auto 25px;
-
     font-size: 13px;
-    line-height: 1.7;
   }
 `;
 
 const CollectionLink = styled(Link)`
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 12px;
-
-  min-height: 46px;
-
-  padding: 0 24px;
-
-  background: #292723;
-
-  color: #f7f5f0;
-
+  gap: 13px;
+  min-height: 48px;
+  padding: 0 25px;
+  background: ${COLORS.dark};
+  color: ${COLORS.background};
   text-decoration: none;
-
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
-
-  letter-spacing: 0.15em;
-
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-
   transition:
     background 0.25s ease,
     gap 0.25s ease,
     transform 0.25s ease;
 
   &:hover {
+    gap: 18px;
     background: #a8895e;
-
-    gap: 16px;
-
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 
-  &:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 600px) {
-    min-height: 44px;
-
-    padding: 0 20px;
-
-    font-size: 8px;
+  &:focus-visible {
+    outline: 2px solid ${COLORS.gold};
+    outline-offset: 4px;
   }
 `;
 
 const Arrow = styled.span`
-  font-size: 14px;
-
+  font-size: 15px;
   line-height: 1;
 `;
