@@ -19,7 +19,7 @@ import styled from "styled-components";
 import BuyerTrustServices from "./components/Services/BuyerTrustServices";
 import NavBar from "./components/Navbar/NavBar";
 import Footer from "./components/Footer/Footer";
-
+import CheckoutPage from  "./pages/CheckoutPage"
 import "./App.css";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -83,9 +83,7 @@ const Notifications = React.lazy(() =>
   import("./components/user_Dashboard/Notifications")
 );
 
-const CheckoutPage = React.lazy(() =>
-  import("./pages/CheckoutPage")
-);
+
 
 const OrderSuccess = React.lazy(() =>
   import("./components/checkout/OrderSuccsess")
