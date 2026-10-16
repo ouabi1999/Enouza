@@ -121,7 +121,7 @@ class ProductView(APIView):
         # SAVE PRODUCT
         # --------------------------------------------------
 
-        serializer = ProductSerializer(data=data)
+        serializer = ProductDetailsSerializer(data=data)
 
         if serializer.is_valid():
 
