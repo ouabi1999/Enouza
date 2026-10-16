@@ -1,14 +1,15 @@
-
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
+
 import StarIcon from "@mui/icons-material/Star";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
+
 import { useTranslation } from "react-i18next";
 
 import SideCart from "./SideCart";
 import CurrencyPrice from "../../../../common/CurrencyPrice";
-import { colors } from "../../../utilis/colors"
+
 function ProductInfo({
   productData,
   ratings,
@@ -502,28 +503,45 @@ function ProductInfo({
 
 export default ProductInfo;
 
+
+/* =========================================================
+   MAIN
+========================================================= */
+
 const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
+
   padding: 4px 10px 35px;
-  color: ${colors.text};
+
+  color: #202020;
 
   @media (max-width: 600px) {
     padding: 5px 5px 25px;
   }
 `;
 
+
+/* =========================================================
+   PRODUCT HEADER
+========================================================= */
+
 const ProductHeader = styled.div`
   padding-bottom: 18px;
-  border-bottom: 1px solid ${colors.border};
+
+  border-bottom: 1px solid #e9e3da;
 `;
 
 const Eyebrow = styled.div`
   margin-bottom: 9px;
+
   font-size: 0.68rem;
   font-weight: 600;
+
   letter-spacing: 0.18em;
-  color: ${colors.accent};
+
+  color: #9b815f;
+
   text-transform: uppercase;
 
   @media (max-width: 600px) {
@@ -533,37 +551,62 @@ const Eyebrow = styled.div`
 
 const ProductTitle = styled.h1`
   margin: 0;
+
   max-width: 720px;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: clamp(
+    1.35rem,
+    2.2vw,
+    2rem
+  );
+
   font-weight: 500;
+
   line-height: 1.3;
+
   letter-spacing: -0.025em;
-  color: ${colors.primary};
+
+  color: #181818;
 `;
+
+
+/* =========================================================
+   RATING
+========================================================= */
 
 const RatingRow = styled.div`
   display: flex;
   align-items: center;
+
   flex-wrap: wrap;
+
   gap: 8px;
+
   margin-top: 13px;
 `;
 
 const Stars = styled.div`
   display: inline-flex;
   align-items: center;
+
   gap: 2px;
 
   svg {
     display: block;
+
     width: 16px;
     height: 16px;
-    color: ${colors.border};
+
+    color: #d8d2ca;
   }
 
   svg.active {
-    color: ${colors.accent};
+    color: #b59771;
   }
 
   @media (max-width: 600px) {
@@ -578,8 +621,10 @@ const Stars = styled.div`
 
 const RatingNumber = styled.span`
   font-size: 0.75rem;
+
   font-weight: 600;
-  color: ${colors.primary};
+
+  color: #333;
 
   @media (max-width: 600px) {
     font-size: 0.72rem;
@@ -589,52 +634,66 @@ const RatingNumber = styled.span`
 const RatingDivider = styled.span`
   width: 1px;
   height: 13px;
+
   flex: 0 0 1px;
-  background: ${colors.border};
+
+  background: #d8d2ca;
 `;
 
 const RatingCount = styled.button`
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-family: inherit;
   font-size: 0.72rem;
+  background:none;
   line-height: 1.4;
-  color: ${colors.textSecondary};
-  cursor: pointer;
 
-  &:hover {
-    color: ${colors.secondary};
-    text-decoration: underline;
-  }
+  color: #817c75;
 
   @media (max-width: 600px) {
     font-size: 0.7rem;
   }
 `;
 
+
+/* =========================================================
+   PRICE
+========================================================= */
+
 const PriceBlock = styled.div`
   padding: 18px 0 17px;
-  border-bottom: 1px solid ${colors.border};
+
+  border-bottom: 1px solid #e9e3da;
+  
 `;
 
 const PriceLine = styled.div`
   display: flex;
+
   align-items: center;
+  
   flex-wrap: wrap;
+
   gap: 11px;
 `;
 
 const ProductPrice = styled.span`
-  font-size: clamp(1.55rem, 2.4vw, 2rem);
+
+  font-size: clamp(
+    1.55rem,
+    2.4vw,
+    2rem
+  );
+
   font-weight: 600;
+
   letter-spacing: -0.02em;
-  color: ${colors.primary};
+
+  color: #181818;
 `;
 
 const ComparePrice = styled.span`
   font-size: 0.86rem;
-  color: ${colors.textSecondary};
+
+  color: #99928a;
+
   text-decoration: line-through;
 
   @media (max-width: 600px) {
@@ -642,41 +701,109 @@ const ComparePrice = styled.span`
   }
 `;
 
+
 const SaveBadge = styled.span`
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
   padding: 4px 8px;
-  background: ${colors.accent};
-  color: ${colors.primary};
-  border-radius: 2px;
+
+  background: #9b815f;
+  color: #ffffff;
+
   font-size: 0.63rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
+
+  /* Soft, continuous attention glow */
+  animation: saveBadgeGlow 2.2s ease-in-out infinite;
+
+  /* Moving light reflection */
+  &::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+    transform: skewX(-22deg);
+    animation: saveBadgeShine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes saveBadgeGlow {
+    0%, 100% {
+      box-shadow: 0 0 0 rgba(155, 129, 95, 0);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(155, 129, 95, 0.38);
+    }
+  }
+
+  @keyframes saveBadgeShine {
+    0%, 15% {
+      left: -80%;
+    }
+    55%, 100% {
+      left: 140%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+
+    &::after {
+      animation: none;
+      display: none;
+    }
+  }
 `;
+
 
 const PriceNote = styled.div`
   display: flex;
+
   align-items: center;
+
   gap: 5px;
+
   margin-top: 9px;
-  color: ${colors.textSecondary};
+
+  color: #888178;
+
   font-size: 0.68rem;
+
   line-height: 1.45;
 
   svg {
     width: 14px;
     height: 14px;
+
     flex: 0 0 14px;
-    color: ${colors.accent};
+
+    color: #9b815f;
   }
 
   @media (max-width: 600px) {
     font-size: 0.67rem;
   }
 `;
+
+
+/* =========================================================
+   ATTRIBUTES
+========================================================= */
 
 const AttributesWrapper = styled.div`
   padding: 3px 0 0;
@@ -688,17 +815,25 @@ const ProductAttribute = styled.div`
 
 const AttributeHeader = styled.div`
   display: flex;
+
   align-items: baseline;
+
   gap: 10px;
+
   margin-bottom: 11px;
 `;
 
 const AttributeTitle = styled.span`
   font-size: 0.76rem;
+
   font-weight: 600;
+
   line-height: 1.4;
-  color: ${colors.primary};
+
+  color: #282828;
+
   letter-spacing: 0.03em;
+
   text-transform: uppercase;
 
   @media (max-width: 600px) {
@@ -708,12 +843,18 @@ const AttributeTitle = styled.span`
 
 const SelectedValue = styled.span`
   max-width: 50%;
+
   overflow: hidden;
+
   text-overflow: ellipsis;
+
   white-space: nowrap;
+
   font-size: 0.7rem;
+
   line-height: 1.4;
-  color: ${colors.textSecondary};
+
+  color: #918980;
 
   @media (max-width: 600px) {
     font-size: 0.68rem;
@@ -722,10 +863,15 @@ const SelectedValue = styled.span`
 
 const AttributeValues = styled.div`
   display: flex;
+
   align-items: flex-start;
+
   flex-wrap: wrap;
+
   gap: 8px;
 `;
+
+
 /* =========================================================
    NORMAL ATTRIBUTE
 ========================================================= */
@@ -826,28 +972,44 @@ const ColorItem = styled.button`
     outline-offset: 3px;
   }
 `;
+
 const ColorImageWrapper = styled.div`
   position: relative;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   width: 58px;
   height: 58px;
+
   padding: 3px;
+
   border: 1px solid
-    ${({ $active }) => ($active ? colors.accent : colors.border)};
-  border-radius: 2px;
-  background: ${colors.surface};
+    ${({ $active }) =>
+    $active
+      ? "#9b815f"
+      : "#ddd7ce"};
+
+  background: #fff;
+
   transition: border-color 180ms ease;
 
   &::after {
     content: "";
+
     position: absolute;
+
     inset: 1px;
-    border: ${({ $active }) =>
-      $active
-        ? `1px solid ${colors.accent}`
-        : "1px solid transparent"};
+
+    border:
+      ${({ $active }) =>
+    $active
+      ? "1px solid #9b815f"
+      : "1px solid transparent"};
+
     pointer-events: none;
   }
 `;
@@ -855,37 +1017,59 @@ const ColorImageWrapper = styled.div`
 const ColorImage = styled.img`
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  background: ${colors.background};
+
+  background: #f5f2ed;
+
   display: block;
 `;
 
+
+/* =========================================================
+   PURCHASE INFORMATION
+========================================================= */
+
 const PurchaseInformation = styled.section`
   margin-top: 8px;
+
   padding-top: 2px;
 `;
 
 const PurchaseHeading = styled.div`
   display: flex;
+
   align-items: center;
+
   gap: 12px;
+
   margin: 3px 0 0;
-  color: ${colors.primary};
+
+  color: #262626;
+
   font-size: 0.72rem;
+
   font-weight: 600;
+
   line-height: 1.4;
+
   letter-spacing: 0.14em;
+
   text-transform: uppercase;
 
   &::after {
     content: "";
+
     flex: 1;
+
     height: 1px;
-    background: ${colors.border};
+
+    background: #e8e1d8;
   }
 
   @media (max-width: 600px) {
     font-size: 0.68rem;
+
     letter-spacing: 0.11em;
   }
 `;
