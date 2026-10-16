@@ -54,7 +54,7 @@ export default function adminProducts(props) {
                   </div>
 
                   <div className="product-price">
-                    <span>US ${product.skuInfo[0].sellingPrice}</span>
+                    <span>US ${product.skuInfo[0]?.sellingPrice ? product.skuInfo[0].sellingPrice: 0 }</span>
                   </div>
                   <div className="product-quantity">
                     <span>{product.quantity} Piece</span>

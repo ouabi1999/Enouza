@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -42,164 +42,164 @@ function ProductManagement(props) {
   }
   );
 
-useEffect(() => {
-  if (!productData) return;
+  useEffect(() => {
+    if (!productData) return;
 
-  const skuInfo = (
-    productData.ae_item_sku_info_dtos || []
-  ).map((sku, index) => {
-    const attributes = {};
+    const skuInfo = (
+      productData.ae_item_sku_info_dtos || []
+    ).map((sku, index) => {
+      const attributes = {};
 
-    (sku.ae_sku_property_dtos || []).forEach((attr) => {
-      const propertyName =
-        attr.sku_property_name?.trim() ||
-        `Option ${index + 1}`;
+      (sku.ae_sku_property_dtos || []).forEach((attr) => {
+        const propertyName =
+          attr.sku_property_name?.trim() ||
+          `Option ${index + 1}`;
 
-      attributes[propertyName] = {
-        value: attr.sku_property_value || "",
-        image: attr.sku_image || null,
+        attributes[propertyName] = {
+          value: attr.sku_property_value || "",
+          image: attr.sku_image || null,
 
-        propertyId:
-          attr.sku_property_id || null,
+          propertyId:
+            attr.sku_property_id || null,
 
-        valueId:
-          attr.property_value_id || null,
+          valueId:
+            attr.property_value_id || null,
 
-        definitionName:
-          attr.property_value_definition_name || "",
+          definitionName:
+            attr.property_value_definition_name || "",
+        };
+      });
+
+      /*
+       * Find the attribute that owns the variant image.
+       */
+      const colorAttribute = Object.entries(attributes)
+        .find(([, attribute]) => {
+          return Boolean(attribute?.image);
+        });
+
+      const colorKey = colorAttribute
+        ? colorAttribute[0]
+        : null;
+
+      const cost =
+        Number(sku.offer_sale_price) || 0;
+
+      const sellingPrice = Number(
+        (cost * (1 + sellingMarkUp)).toFixed(2)
+      );
+
+      const comparePrice = Number(
+        (
+          sellingPrice *
+          (1 + compareMarkUp)
+        ).toFixed(2)
+      );
+
+      return {
+        id:
+          typeof crypto !== "undefined" &&
+            crypto.randomUUID
+            ? crypto.randomUUID()
+            : `variant-${Date.now()}-${index}-${Math.random()
+              .toString(36)
+              .substring(2, 8)}`,
+
+        sku_attr: sku.sku_attr || "",
+
+        attributes,
+
+        colorKey,
+
+        cost,
+        sellingPrice,
+        comparePrice,
+
+        profitPrice: Number(
+          (sellingPrice - cost).toFixed(2)
+        ),
+
+        available_stock:
+          Number(sku.sku_available_stock) || 0,
       };
     });
 
     /*
-     * Find the attribute that owns the variant image.
+     * =========================================================
+     * NORMALIZE MULTIMEDIA
+     * =========================================================
+     *
+     * image_urls will ALWAYS become an array.
+     *
+     * Supports both:
+     *
+     * "image1;image2;image3"
+     *
+     * and:
+     *
+     * ["image1", "image2", "image3"]
      */
-    const colorAttribute = Object.entries(attributes)
-      .find(([, attribute]) => {
-        return Boolean(attribute?.image);
-      });
 
-    const colorKey = colorAttribute
-      ? colorAttribute[0]
-      : null;
+    const multimedia = productData.ae_multimedia_info_dto || {};
 
-    const cost =
-      Number(sku.offer_sale_price) || 0;
+    let imageUrls = multimedia.image_urls;
 
-    const sellingPrice = Number(
-      (cost * (1 + sellingMarkUp)).toFixed(2)
-    );
+    if (Array.isArray(imageUrls)) {
+      imageUrls = imageUrls.filter(
+        (url) =>
+          typeof url === "string" &&
+          url.trim() !== ""
+      );
+    } else if (typeof imageUrls === "string") {
+      imageUrls = imageUrls
+        .split(";").filter(Boolean);
+    } else {
+      imageUrls = [];
+    }
 
-    const comparePrice = Number(
-      (
-        sellingPrice *
-        (1 + compareMarkUp)
-      ).toFixed(2)
-    );
+    /*
+     * =========================================================
+     * SET FORM DATA
+     * =========================================================
+     */
 
-    return {
-      id:
-        typeof crypto !== "undefined" &&
-        crypto.randomUUID
-          ? crypto.randomUUID()
-          : `variant-${Date.now()}-${index}-${Math.random()
-              .toString(36)
-              .substring(2, 8)}`,
+    setFormData((prev) => ({
+      ...prev,
 
-      sku_attr: sku.sku_attr || "",
-
-      attributes,
-
-      colorKey,
-
-      cost,
-      sellingPrice,
-      comparePrice,
-
-      profitPrice: Number(
-        (sellingPrice - cost).toFixed(2)
-      ),
-
-      available_stock:
-        Number(sku.sku_available_stock) || 0,
-    };
-  });
-
-  /*
-   * =========================================================
-   * NORMALIZE MULTIMEDIA
-   * =========================================================
-   *
-   * image_urls will ALWAYS become an array.
-   *
-   * Supports both:
-   *
-   * "image1;image2;image3"
-   *
-   * and:
-   *
-   * ["image1", "image2", "image3"]
-   */
-
-  const multimedia =  productData.ae_multimedia_info_dto || {};
-
-  let imageUrls = multimedia.image_urls;
-
-  if (Array.isArray(imageUrls)) {
-    imageUrls = imageUrls.filter(
-      (url) =>
-        typeof url === "string" &&
-        url.trim() !== ""
-    );
-  } else if (typeof imageUrls === "string") {
-    imageUrls = imageUrls
-      .split(";").filter(Boolean);
-  } else {
-    imageUrls = [];
-  }
-
-  /*
-   * =========================================================
-   * SET FORM DATA
-   * =========================================================
-   */
-
-  setFormData((prev) => ({
-    ...prev,
-
-    product_id:
-      productData.ae_item_base_info_dto?.product_id ||
-      "",
-
-    name: {
-      ...prev.name,
-
-      en:
-        productData.ae_item_base_info_dto?.subject ||
+      product_id:
+        productData.ae_item_base_info_dto?.product_id ||
         "",
-    },
-    
 
-    /*
-     * Keep every SKU combination exactly as
-     * AliExpress returned it.
-     */
-    skuInfo,
+      name: {
+        ...prev.name,
 
-    /*
-     * Normalize multimediaInfo.
-     */
-    multimediaInfo: {
-      ...multimedia,
+        en:
+          productData.ae_item_base_info_dto?.subject ||
+          "",
+      },
 
-      image_urls: imageUrls,
-    },
 
-    
-  }));
-}, [
-  productData,
- 
-]);
+      /*
+       * Keep every SKU combination exactly as
+       * AliExpress returned it.
+       */
+      skuInfo,
+
+      /*
+       * Normalize multimediaInfo.
+       */
+      multimediaInfo: {
+        ...multimedia,
+
+        image_urls: imageUrls,
+      },
+
+
+    }));
+  }, [
+    productData,
+
+  ]);
 
 
 
@@ -209,20 +209,20 @@ useEffect(() => {
 
 
   useEffect(() => {
-  if (!isEditProductOn || !EditProduct) return;
+    if (!isEditProductOn || !EditProduct) return;
 
-setFormData({
-  ...EditProduct,
-  main_image: EditProduct.multimediaInfo.main_image,
-  mainImagePreview:EditProduct.multimediaInfo.main_image,
-});
+    setFormData({
+      ...EditProduct,
+      main_image: EditProduct.multimediaInfo.main_image,
+      mainImagePreview: EditProduct.multimediaInfo.main_image,
+    });
 
-}, [isEditProductOn, EditProduct]);
+  }, [isEditProductOn, EditProduct]);
 
   /// send products info to the backend
   const product_submit = (value) => {
     const data = new FormData();
-   
+
     formData.tags?.forEach((tag) => data.append("tags", tag));
     data.append("slug", formData.slug);
 
@@ -231,11 +231,20 @@ setFormData({
       data.append("ali_express_ratings", JSON.stringify(rating))
     );
 
-    formData.additionalImageFiles?.forEach((image) => {
-    if (image?.file instanceof File) {
+    formData.multimediaInfo?.image_urls?.forEach((image) => {
+      if (image?.file instanceof File) {
         data.append("additionalImageFiles", image.file);
-    }
-});
+      }
+    });
+
+    const multimediaInfo = {
+      ...formData.multimediaInfo,
+      image_urls: (formData.multimediaInfo?.image_urls || []).filter(
+        (image) => typeof image === "string"
+      ),
+    };
+
+    data.append("multimediaInfo", JSON.stringify(multimediaInfo));
 
     data.append("available_shipping", JSON.stringify(formData.available_shipping))
 
@@ -243,8 +252,8 @@ setFormData({
     data.append("specifications", JSON.stringify(formData.specifications));
     // Append `main_image` as a file if it exists
     data.append("main_image", formData.main_image);
-   
- console.log(formData.main_image)
+
+    console.log(formData.main_image)
 
 
     data.append("skuInfo", JSON.stringify(formData.skuInfo));
@@ -254,7 +263,6 @@ setFormData({
     // Append individual fields
     data.append("name", JSON.stringify(formData.name));
     data.append("description", JSON.stringify(formData.description));
-    data.append("multimediaInfo", JSON.stringify(formData.multimediaInfo));
     data.append("brand", formData.brand);
     data.append("product_id", formData.product_id);
 
@@ -274,7 +282,7 @@ setFormData({
     formData.seo?.forEach((seoItem) =>
       data.append("seo", JSON.stringify(seoItem))
     );
-    
+
 
     // Append all data from formData to FormData
     setLoading(true);

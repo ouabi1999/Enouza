@@ -17,13 +17,13 @@ const CollectionSection = () => {
       link: "/collections?category=wall_lamps",
     },
     {
-      key: "pendant_lights",
-      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789772276/enouza/products/cf9x7hm6kfetpdhrqusc.png",
-      link: "/collections?category=pendant_lights",
+      key: "mirrors",
+      image: "https://ae01.alicdn.com/kf/Sc04db29c5d1443d2885a8ecf0a6ff950f.jpg",
+      link: "/collections?category=mirrors",
     },
     {
       key: "table_lamps",
-      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477155/enouza/products/rjhymixoknxkfjpywh2c.png",
+      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789820414/enouza/products/jpxlalafq9zdygzqqe3f.png",
       link: "/collections?category=table_lamps",
     },
     /*

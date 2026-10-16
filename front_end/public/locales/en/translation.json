@@ -255,6 +255,14 @@
   "catlabel": "EXPLORE",
 
   "categories": {
+    "table_lamps": {
+      "title": "Table Lamps",
+      "description": "Sculptural lighting that brings warmth, atmosphere, and understated elegance to your interior."
+    },
+    "floor_lamps": {
+      "title": "Floor Lamps",
+      "description": "Statement lighting that combines refined design with ambient illumination to elevate your living space."
+    },
     "wall_lamps": {
       "title": "Wall Lamps",
       "description": "Elegant lighting designed to add depth, warmth, and character to your walls."
@@ -263,16 +271,29 @@
       "title": "Pendant Lights",
       "description": "Distinctive pieces designed to create a refined focal point above dining tables, kitchen islands, and living spaces."
     },
-    "table_lamps": {
-      "title": "Table Lamps",
-      "description": "Sculptural lighting that brings warmth, atmosphere, and understated elegance to your interior."
-    },
-    "ceiling_lamps": {
-      "title": "Ceiling Lamps",
+    "ceiling_lights": {
+      "title": "Ceiling Lights",
       "description": "Refined overhead lighting created to shape the atmosphere and complete the character of a room."
+    },
+    "bedside_lamps": {
+      "title": "Bedside Lamps",
+      "description": "Soft, inviting lighting designed to bring comfort and quiet sophistication to your bedside."
+    },
+    "desk_office_lamps": {
+      "title": "Desk & Office Lamps",
+      "description": "Thoughtfully designed task lighting that balances everyday functionality with a polished, contemporary aesthetic."
+    },
+    "outdoor_lighting": {
+      "title": "Outdoor Lighting",
+      "description": "Beautifully crafted lighting that brings warmth, elegance, and atmosphere to outdoor spaces."
+    },
+    "mirrors": {
+      "title": "Mirrors",
+      "description": "Elegant mirrors that enhance natural light, create a sense of space, and bring a refined finishing touch to your interior."
     }
   }
 },
+
 
  "customersFeedback": {
   "eyebrow": "THE ENOUZA EXPERIENCE",

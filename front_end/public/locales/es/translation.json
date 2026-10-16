@@ -233,24 +233,44 @@
     "title": "Descubre nuestra colección.",
     "catlabel": "EXPLORA",
     "categories": {
-      "wall_lamps": {
-        "title": "Lámparas de Pared",
-        "description": "Iluminación elegante diseñada para aportar profundidad, calidez y carácter a tus paredes."
-      },
-      "pendant_lights": {
-        "title": "Lámparas Colgantes",
-        "description": "Piezas distintivas diseñadas para crear un punto focal refinado sobre mesas de comedor, islas de cocina y espacios de estar."
-      },
-      "table_lamps": {
-        "title": "Lámparas de Mesa",
-        "description": "Iluminación escultórica que aporta calidez, ambiente y una elegancia sutil a tu interior."
-      },
-      "ceiling_lamps": {
-        "title": "Lámparas de Techo",
-        "description": "Iluminación refinada diseñada para crear atmósfera y completar el carácter de una estancia."
-      }
+    "table_lamps": {
+      "title": "Lámparas de Mesa",
+      "description": "Diseños escultóricos que aportan calidez, ambiente y una elegancia sutil a tus espacios interiores."
+    },
+    "floor_lamps": {
+      "title": "Lámparas de Pie",
+      "description": "Piezas de iluminación protagonistas que combinan un diseño refinado con una luz ambiental para realzar tu espacio."
+    },
+    "wall_lamps": {
+      "title": "Apliques de Pared",
+      "description": "Iluminación elegante diseñada para aportar profundidad, calidez y personalidad a tus paredes."
+    },
+    "pendant_lights": {
+      "title": "Lámparas Colgantes",
+      "description": "Piezas distintivas que crean un punto focal sofisticado sobre mesas de comedor, islas de cocina y espacios de estar."
+    },
+    "ceiling_lights": {
+      "title": "Lámparas de Techo",
+      "description": "Iluminación superior refinada que crea ambiente y completa el carácter de cada estancia."
+    },
+    "bedside_lamps": {
+      "title": "Lámparas de Mesilla",
+      "description": "Iluminación suave y acogedora que aporta confort y una sofisticación discreta a tu mesilla de noche."
+    },
+    "desk_office_lamps": {
+      "title": "Lámparas de Escritorio y Oficina",
+      "description": "Iluminación funcional con un diseño cuidado que combina la practicidad diaria con una estética contemporánea y elegante."
+    },
+    "outdoor_lighting": {
+      "title": "Iluminación Exterior",
+      "description": "Piezas de iluminación cuidadosamente diseñadas para aportar calidez, elegancia y ambiente a tus espacios exteriores."
+    },
+    "mirrors": {
+      "title": "Espejos",
+      "description": "Espejos elegantes que potencian la luz natural, crean una mayor sensación de amplitud y aportan un acabado sofisticado a tu interior."
     }
-  },
+  }
+},
   "aboutus": {
     "seo": {
       "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
