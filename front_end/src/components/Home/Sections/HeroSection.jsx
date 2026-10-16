@@ -46,9 +46,6 @@ export default function HeroSection() {
 
           <Description>{t("heroSection.description")}</Description>
 
-          <QualityTitle>
-            enouza
-          </QualityTitle>
           <DecorationLine />
 
 

@@ -12,9 +12,9 @@ const CollectionSection = () => {
 
   const collections = [
     {
-      key: "wall_lamps",
-      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790005276/nano-banana-free-nano-pro-6JWakrel8kripcoDnlxNnx_jzugzs.png",
-      link: "/collections?category=wall_lamps",
+      key: "pendant_lights",
+      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1792184091/siyumffca8thxnwaqbkj.jpg",
+      link: "/collections?category=pendant_lights",
     },
     {
       key: "mirrors",
