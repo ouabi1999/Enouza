@@ -66,7 +66,7 @@ export default function HeroSection() {
 
             {/* SHOP BUTTON */}
             <ShopButton
-              to={`/product/${product.slug})}`} $rtl={isRTL}
+              to={`/product/${product.slug}`} $rtl={isRTL}
               dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}
             >
               <span>{t("heroSection.ctaLabel")}</span>
