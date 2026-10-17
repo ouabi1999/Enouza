@@ -59,20 +59,12 @@ const ReviewsPage = () => {
         */
 
         const data = response.data;
+        
 
-        const results = Array.isArray(data)
-          ? data
-          : Array.isArray(data?.results)
-          ? data.results
-          : [];
-
-        const count = Array.isArray(data)
-          ? data.length
-          : Number(data?.count) || 0;
-
-        setReviews(results);
-        setTotalReviews(count);
-        setTotalPages(Math.max(1, Math.ceil(count / PAGE_SIZE)));
+        setReviews(data.results);
+        setTotalReviews(data.count);
+        setTotalPages(data.total_pages);
+        
       } catch (error) {
         console.error("Ratings error:", error);
 
@@ -412,23 +404,20 @@ const ReviewsPage = () => {
         {/* =====================================================
             MATERIAL UI PAGINATION
         ===================================================== */}
-
-        {!loading && totalPages > 1 && (
-          <PaginationWrapper>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={changePage}
-              color="standard"
-              shape="rounded"
-              siblingCount={1}
-              boundaryCount={1}
-              aria-label={t(
-                "customersFeedback.pagination"
-              )}
-            />
-          </PaginationWrapper>
-        )}
+{!loading && reviews.length > 0 && totalPages > 1 && (
+  <PaginationWrapper>
+    <Pagination
+      count={totalPages}
+      page={Math.min(currentPage, totalPages)}
+      onChange={changePage}
+      color="standard"
+      shape="rounded"
+      siblingCount={1}
+      boundaryCount={1}
+      aria-label={t("customersFeedback.pagination")}
+    />
+  </PaginationWrapper>
+)}
       </ReviewsSection>
 
       {/* =====================================================

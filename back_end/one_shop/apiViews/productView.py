@@ -283,18 +283,36 @@ class OrderCreateView(APIView):
         return Response(serializer.data)
 
 
+
+
 class RatingView(APIView):
     def get(self, request):
-        current_page = int(request.GET.get("page", 1))
-        per_page = int(request.GET.get("page_size", 15))
-        start = int(request.GET.get("start", 0))
-        ratings = Rating.objects.all()
+        try:
+            current_page = max(1, int(request.GET.get("page", 1)))
+            per_page = max(1, min(100, int(request.GET.get("page_size", 15))))
+        except (ValueError, TypeError):
+            return Response(
+                {"error": "Invalid pagination parameters."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        ratings = Rating.objects.all().order_by("-id")
+
         paginator = Paginator(ratings, per_page)
         page = paginator.get_page(current_page)
 
         serializer = RatingSerializer(page.object_list, many=True)
 
-        return Response(serializer.data)
+        return Response({
+            "count": paginator.count,
+            "total_pages": paginator.num_pages,
+            "current_page": page.number,
+            "page_size": per_page,
+            "next": page.next_page_number() if page.has_next() else None,
+            "previous": page.previous_page_number() if page.has_previous() else None,
+            "results": serializer.data,
+        })
+
 
     def post(self, request):
         data = request.data.copy()
