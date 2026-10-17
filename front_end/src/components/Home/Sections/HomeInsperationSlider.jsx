@@ -39,6 +39,7 @@ function HomeInsperationSlider() {
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651541/enouza/products/imgi_71_749432644_18122195843504741_8870022788877468262_n_yl4kfw.jpg",
 
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651540/enouza/products/imgi_544_VIOLA_MARBLE_PRODUCT_PAGE_1_f3b00d2e-295e-4c78-aa94-b6b977a3974f_ecpmtq.jpg",
+    "https://ae01.alicdn.com/kf/S4eafdf83ed9b4fbc9abb47c4618ef6fc3.jpg",
 
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651539/enouza/products/imgi_509_VIOLA_MARBLE_PRODUCT_PAGE_4_d3b71aa0-0cc4-4fd0-afda-7c2ebc5fc876_z9ittr.jpg",
 
@@ -59,7 +60,7 @@ function HomeInsperationSlider() {
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651524/enouza/products/imgi_762_ugc_section_new_content_5_nc0v9w.jpg",
 
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651410/enouza/products/imgi_31_32cd18dfefbb4435967166bb971aff4a.thumbnail.0000000000_rtyliu.jpg",
-
+     
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651409/enouza/products/imgi_15_Aurie_PDP_Sep_2_b1niom.jpg"
 
   ];
