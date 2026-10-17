@@ -43,7 +43,7 @@ const navigate = useNavigate();
 
   // 4. Fetch data (unchanged)
   useEffect(() => {
-    ApiInstance.get("ratings/")
+    ApiInstance.get("ratings/?page=1&page_size=14")
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Ratings error:", err));
   }, []);

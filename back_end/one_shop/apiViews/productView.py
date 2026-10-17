@@ -289,7 +289,7 @@ class RatingView(APIView):
     def get(self, request):
         try:
             current_page = max(1, int(request.GET.get("page", 1)))
-            per_page = max(1, min(100, int(request.GET.get("page_size", 15))))
+            per_page = max(1, min(100, int(request.GET.get("page_size", 14))))
         except (ValueError, TypeError):
             return Response(
                 {"error": "Invalid pagination parameters."},
