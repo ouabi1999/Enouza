@@ -44,7 +44,7 @@ const navigate = useNavigate();
   // 4. Fetch data (unchanged)
   useEffect(() => {
     ApiInstance.get("ratings/?page=1&page_size=14")
-      .then((res) => setReviews(res.data))
+      .then((res) => setReviews(res.data.results))
       .catch((err) => console.error("Ratings error:", err));
   }, []);
 
@@ -77,6 +77,22 @@ const navigate = useNavigate();
       `/image/upload/f_auto,q_auto,w_${width}/`
     );
   };
+
+
+     let sum_stars = reviews?.length > 0 ? reviews?.reduce((total, value) => {
+         return total += value.stars
+      }, 0):""
+
+  const stars = Array(5).fill(0);
+  const ratingList = Array.isArray(reviews) ? reviews : [];
+  const ratingCount = ratingList.length;
+
+  const averageRating =
+    ratingCount > 0
+      ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
+      : "0.0";
+
+  const roundedRating = Math.round(Number(averageRating));
   return (
     <Section>
       <Container>
@@ -101,9 +117,15 @@ const navigate = useNavigate();
             <RatingNumber>4.9</RatingNumber>
 
             <RatingContent>
-              <Stars aria-label="5 out of 5 stars">
-                ★★★★★
-              </Stars>
+              <Stars aria-label="5 out of 5 stars" >
+              {stars.map((_, index) =>(
+                  <span key={index} className="active" >
+                         ★
+                  </span>
+                 
+                 
+                ))}
+                </Stars>
 
               <RatingText>
                 {t("customersFeedback.ratingText")}
@@ -150,7 +172,17 @@ const navigate = useNavigate();
       <ReviewRating
         aria-label={`${item.stars} out of 5 stars`}
       >
-        {"★".repeat(item.stars || 0)}
+         {stars.map((_, index) =>(
+          <span
+                         key={index}
+        className={index < roundedRating ? "active" : ""}
+      >
+        ★
+      </span>
+
+                 
+                 
+                ))}
       </ReviewRating>
 
       <Verified>
@@ -310,6 +342,9 @@ const Rating = styled.div`
   justify-content: center;
 
   gap: 14px;
+  .active{
+  color: #4bdd26;
+  }
 `;
 
 const RatingNumber = styled.strong`
