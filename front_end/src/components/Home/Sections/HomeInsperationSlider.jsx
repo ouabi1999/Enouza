@@ -35,6 +35,7 @@ function HomeInsperationSlider() {
 
 
   const images = [
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789485019/enouza/products/bcen5jen6ltxsuz2rr2u.png",
 
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651541/enouza/products/imgi_71_749432644_18122195843504741_8870022788877468262_n_yl4kfw.jpg",
 
