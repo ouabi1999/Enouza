@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -9,68 +10,159 @@ import { useNavigate } from "react-router-dom";
 import ApiInstance from "../../../../common/baseUrl";
 import ReviewImagePopup from "../aboutProduct/reviews/ReviewImagePopup";
 
+const PAGE_SIZE = 14;
+
+const PLACEHOLDER_IMAGE =
+  "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png";
 
 const CustomersFeedback = () => {
-  const [reviews, setReviews] = useState([]);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const [reviews, setReviews] = useState([]);
   const [expanded, setExpanded] = useState(false);
+
   const [selected, setSelected] = useState({
     id: null,
     index: null,
   });
-  const [review, setReview] = useState({})
-const navigate = useNavigate();
-  // 1. Helper function to determine slides based on width
+
+  const [review, setReview] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  /* =========================================================
+     RESPONSIVE SLIDER
+  ========================================================= */
+
   const getSlidesToShow = () => {
+    if (typeof window === "undefined") return 4;
+
     if (window.innerWidth < 550) return 1;
     if (window.innerWidth < 800) return 2;
     if (window.innerWidth < 1100) return 3;
+
     return 4;
   };
 
-  // 2. State to hold the current number
-  const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow());
+  const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow);
 
-  // 3. Update state on resize
   useEffect(() => {
     const handleResize = () => {
       setSlidesToShow(getSlidesToShow());
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  // 4. Fetch data (unchanged)
+  /* =========================================================
+     FETCH REVIEWS
+  ========================================================= */
+
   useEffect(() => {
-    ApiInstance.get("ratings/?page=1&page_size=14")
-      .then((res) => setReviews(res.data.results))
-      .catch((err) => console.error("Ratings error:", err));
+    let mounted = true;
+
+    const fetchReviews = async () => {
+      setLoading(true);
+
+      try {
+        const response = await ApiInstance.get("ratings/", {
+          params: {
+            page: 1,
+            page_size: PAGE_SIZE,
+          },
+        });
+
+        if (!mounted) return;
+
+        const data = response.data;
+
+        // Support both paginated and plain-array responses.
+        const fetchedReviews = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.results)
+            ? data.results
+            : [];
+
+        setReviews(fetchedReviews);
+      } catch (error) {
+        if (!mounted) return;
+
+        console.error(
+          "Ratings error:",
+          error.response?.data || error.message
+        );
+
+        setReviews([]);
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchReviews();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  // 5. Settings - REMOVE the 'responsive' array entirely
+  /* =========================================================
+     SLIDER SETTINGS
+  ========================================================= */
+
   const settings = {
     dots: true,
-    infinite: reviews.length > slidesToShow, // Use dynamic variable
-    autoplay: true,
-    autoplaySpeed: 2500,
-    speed: 600,
-    slidesToShow: slidesToShow, // 👈 Dynamic
-    slidesToScroll: 1, // Keep this 1 so it doesn't skip slides
+    infinite: reviews.length > slidesToShow,
+    autoplay: reviews.length > slidesToShow,
+    autoplaySpeed: 3500,
+    speed: 500,
+    slidesToShow,
+    slidesToScroll: 1,
     arrows: false,
     pauseOnHover: true,
-    // responsive: []  // ❌ DELETE THIS LINE
+    pauseOnFocus: true,
+    swipeToSlide: true,
+    adaptiveHeight: false,
   };
-  const setRate = (item, index) => {
-    setExpanded(true)
-    setReview(item)
-    setSelected({ id: item.id, index: index },)
-    console.log(review, expanded)
-  }
+
+  /* =========================================================
+     OPEN REVIEW IMAGE POPUP
+  ========================================================= */
+
+  const setRate = (item, index = 0) => {
+    setReview(item);
+    setSelected({
+      id: item.id,
+      index,
+    });
+    setExpanded(true);
+  };
+
+  /* =========================================================
+     CLOUDINARY IMAGE OPTIMIZATION
+  ========================================================= */
 
   const optimizeCloudinaryImage = (url, width = 700) => {
-    if (!url?.includes("res.cloudinary.com")) return url;
-    if (!url.includes("/image/upload/")) return url;
+    if (!url || typeof url !== "string") {
+      return PLACEHOLDER_IMAGE;
+    }
+
+    if (
+      !url.includes("res.cloudinary.com") ||
+      !url.includes("/image/upload/")
+    ) {
+      return url;
+    }
+
+    // Avoid adding Cloudinary transformations twice.
+    if (/\/image\/upload\/[^/]*f_auto/.test(url)) {
+      return url;
+    }
 
     return url.replace(
       "/image/upload/",
@@ -78,180 +170,285 @@ const navigate = useNavigate();
     );
   };
 
+  /* =========================================================
+     RATING CALCULATIONS
+  ========================================================= */
 
-     let sum_stars = reviews?.length > 0 ? reviews?.reduce((total, value) => {
-         return total += value.stars
-      }, 0):""
+  const validRatings = reviews
+    .map((item) => Number(item?.stars))
+    .filter(
+      (rating) =>
+        Number.isFinite(rating) &&
+        rating >= 1 &&
+        rating <= 5
+    );
 
-  const stars = Array(5).fill(0);
-  const ratingList = Array.isArray(reviews) ? reviews : [];
-  const ratingCount = ratingList.length;
+  const ratingCount = validRatings.length;
 
   const averageRating =
     ratingCount > 0
-      ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
+      ? (
+          validRatings.reduce((total, rating) => total + rating, 0) /
+          ratingCount
+        ).toFixed(1)
       : "0.0";
 
   const roundedRating = Math.round(Number(averageRating));
+
+  const stars = [1, 2, 3, 4, 5];
+
+  /* =========================================================
+     RENDER
+  ========================================================= */
+
   return (
     <Section>
       <Container>
-
         {/* HEADER */}
 
         <Header>
           <Eyebrow>
-            <bdi>
-              {t("customersFeedback.eyebrow")}
-            </bdi>
+            <bdi>{t("customersFeedback.eyebrow")}</bdi>
           </Eyebrow>
+
           <Title>
-            {t("customersFeedback.title")}
+            <bdi>{t("customersFeedback.title")}</bdi>
           </Title>
 
           <Description>
-            {t("customersFeedback.description")}
+            <bdi>{t("customersFeedback.description")}</bdi>
           </Description>
 
-          <Rating>
-            <RatingNumber>4.9</RatingNumber>
+          {!loading && reviews.length > 0 && (
+            <Rating>
+              <RatingNumber>{averageRating}</RatingNumber>
 
-            <RatingContent>
-              <Stars aria-label="5 out of 5 stars" >
-              {stars.map((_, index) =>(
-                  <span key={index} className="active" >
-                         ★
-                  </span>
-                 
-                 
-                ))}
+              <RatingContent>
+                <Stars
+                  aria-label={`${averageRating} out of 5 stars`}
+                >
+                  {stars.map((star) => (
+                    <span
+                      key={star}
+                      className={
+                        star <= roundedRating ? "active" : ""
+                      }
+                    >
+                      ★
+                    </span>
+                  ))}
                 </Stars>
 
-              <RatingText>
-                {t("customersFeedback.ratingText")}
-              </RatingText>
-            </RatingContent>
-          </Rating>
+                <RatingText>
+                  {t("customersFeedback.ratingText")}
+                </RatingText>
+              </RatingContent>
+            </Rating>
+          )}
         </Header>
 
         {/* REVIEWS */}
 
-        {reviews.length > 0 && (
+        {loading ? (
+          <LoadingState aria-live="polite">
+            <LoadingSpinner />
+            <LoadingText>
+              {t("customersFeedback.loading", {
+                defaultValue: "Loading reviews...",
+              })}
+            </LoadingText>
+          </LoadingState>
+        ) : reviews.length > 0 ? (
           <Reviews>
             <Slider {...settings}>
-              {reviews.map((item, index) => {
+              {reviews.map((item) => {
+                const rating = Number(item?.stars) || 0;
 
+                const reviewImages = Array.isArray(
+                  item?.review?.images
+                )
+                  ? item.review.images.filter(
+                      (image) => typeof image === "string" && image
+                    )
+                  : [];
+
+                const firstImage =
+                  reviewImages.length > 0
+                    ? reviewImages[0]
+                    : PLACEHOLDER_IMAGE;
+
+                const firstName =
+                  typeof item?.user?.firstName === "string"
+                    ? item.user.firstName.trim()
+                    : "";
+
+                const lastName =
+                  typeof item?.user?.lastName === "string"
+                    ? item.user.lastName.trim()
+                    : "";
+
+                const customerName = firstName
+                  ? `${firstName} ${lastName.slice(0, 1)}${
+                      lastName ? "." : ""
+                    }`
+                  : "Customer";
 
                 return (
                   <ReviewSlide key={item.id}>
-                   <ReviewCard>
-  {/* IMAGE */}
-  <ImageWrapper onClick={() => setRate(item, 0)}>
-    <ReviewImage
-      src={
-        item.review?.images?.length > 0
-          ? optimizeCloudinaryImage(item.review.images[0], 700)
-          : optimizeCloudinaryImage(
-              "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1786734712/ChatGPT_Image_Aug_14_2026_09_11_32_PM_lok4wr.png",
-              700
-            )
-      }
-      alt="Customer review"
-      loading="lazy"
-      decoding="async"
-      width="700"
-      height="700"
-    />
-  </ImageWrapper>
+                    <ReviewCard>
+                      {/* IMAGE */}
 
-  {/* CONTENT */}
-  <ReviewContent>
+                      <ImageWrapper
+                        onClick={() => setRate(item, 0)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="View customer review images"
+                        onKeyDown={(event) => {
+                          if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                          ) {
+                            event.preventDefault();
+                            setRate(item, 0);
+                          }
+                        }}
+                      >
+                        <ReviewImage
+                          src={optimizeCloudinaryImage(
+                            firstImage,
+                            700
+                          )}
+                          alt={`Customer review by ${customerName}`}
+                          loading="lazy"
+                          decoding="async"
+                          width="700"
+                          height="700"
+                          onError={(event) => {
+                            if (
+                              event.currentTarget.src !==
+                              PLACEHOLDER_IMAGE
+                            ) {
+                              event.currentTarget.src =
+                                PLACEHOLDER_IMAGE;
+                            }
+                          }}
+                        />
 
-    {/* RATING + VERIFIED */}
-    <RatingRow>
-      <ReviewRating
-        aria-label={`${item.stars} out of 5 stars`}
-      >
-         {stars.map((_, index) =>(
-          <span
-                         key={index}
-        className={index < roundedRating ? "active" : ""}
-      >
-        ★
-      </span>
+                        {reviewImages.length > 1 && (
+                          <ImageCount>
+                            +{reviewImages.length - 1}
+                          </ImageCount>
+                        )}
+                      </ImageWrapper>
 
-                 
-                 
-                ))}
-      </ReviewRating>
+                      {/* CONTENT */}
 
-      <Verified>
-        <Check />
-        {t("customersFeedback.verifiedPurchase")}
-      </Verified>
-    </RatingRow>
+                      <ReviewContent>
+                        {/* RATING + VERIFIED */}
 
-    {/* REVIEW */}
-    <ReviewText>
-      {item.review?.text || ""}
-    </ReviewText>
+                        <RatingRow>
+                          <ReviewRating
+                            aria-label={`${rating} out of 5 stars`}
+                          >
+                            {stars.map((star) => (
+                              <span
+                                key={star}
+                                className={`star ${
+                                  star <= rating ? "active" : ""
+                                }`}
+                              >
+                                ★
+                              </span>
+                            ))}
 
-    {/* CUSTOMER */}
-    <Customer>
-      <CustomerAvatar>
-        {item.user?.firstName?.charAt(0) || "C"}
-      </CustomerAvatar>
+                            <RatingScore>
+                              {rating}/5
+                            </RatingScore>
+                          </ReviewRating>
 
-      <CustomerInfo>
-        <CustomerName>
-          {item.user?.firstName
-            ? `${item.user.firstName} ${
-                item.user?.lastName?.slice(0, 1) || ""
-              }.`
-            : "Customer"}
-        </CustomerName>
+                          <Verified>
+                            <Check aria-hidden="true">✓</Check>
 
-        <CustomerDate>
-          {item.created_at
-            ? new Date(item.created_at).toLocaleDateString("en-GB")
-            : ""}
-        </CustomerDate>
-      </CustomerInfo>
-    </Customer>
+                            <bdi>
+                              {t(
+                                "customersFeedback.verifiedPurchase"
+                              )}
+                            </bdi>
+                          </Verified>
+                        </RatingRow>
 
-  </ReviewContent>
-</ReviewCard>
+                        {/* REVIEW TEXT */}
+
+                        <ReviewText>
+                          {item?.review?.text || ""}
+                        </ReviewText>
+
+                        {/* CUSTOMER */}
+
+                        <Customer>
+                          <CustomerAvatar>
+                            {customerName.charAt(0).toUpperCase()}
+                          </CustomerAvatar>
+
+                          <CustomerInfo>
+                            <CustomerName>
+                              {customerName}
+                            </CustomerName>
+
+                            <CustomerDate>
+                              {item?.created_at
+                                ? new Date(
+                                    item.created_at
+                                  ).toLocaleDateString("en-GB")
+                                : ""}
+                            </CustomerDate>
+                          </CustomerInfo>
+                        </Customer>
+                      </ReviewContent>
+                    </ReviewCard>
                   </ReviewSlide>
-
                 );
-
-
               })}
             </Slider>
-            {expanded === true && (
-              <ReviewImagePopup rate={review} selected={selected} setSelected={setSelected} />
+
+            {/* REVIEW IMAGE POPUP */}
+
+            {expanded && selected.id !== null && (
+              <ReviewImagePopup
+                rate={review}
+                selected={selected}
+                setSelected={setSelected}
+              />
             )}
-
           </Reviews>
+        ) : (
+          <EmptyState>
+            <EmptyTitle>
+              {t("customersFeedback.noReviews")}
+            </EmptyTitle>
+
+            <EmptyDescription>
+              {t("customersFeedback.noReviewsDescription")}
+            </EmptyDescription>
+          </EmptyState>
         )}
-
       </Container>
-      <ViewAllButton onClick={() => navigate("/reviews")}>
-  {t("customersFeedback.viewAllReviews")}
-  <Arrow>→</Arrow>
-</ViewAllButton>
 
+      {/* VIEW ALL REVIEWS */}
+
+      <ViewAllButton onClick={() => navigate("/reviews")}>
+        {t("customersFeedback.viewAllReviews")}
+        <Arrow aria-hidden="true">→</Arrow>
+      </ViewAllButton>
     </Section>
   );
 };
 
 export default CustomersFeedback;
-/* =========================
+
+/* =========================================================
    SECTION
-========================= */
-// =====================================================
-// SECTION
-// =====================================================
+========================================================= */
 
 const Section = styled.section`
   width: 100%;
@@ -264,10 +461,9 @@ const Section = styled.section`
   }
 `;
 
-
-// =====================================================
-// CONTAINER
-// =====================================================
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 const Container = styled.div`
   width: 100%;
@@ -276,10 +472,9 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-
-// =====================================================
-// HEADER
-// =====================================================
+/* =========================================================
+   HEADER
+========================================================= */
 
 const Header = styled.div`
   width: 100%;
@@ -295,34 +490,28 @@ const Header = styled.div`
 const Eyebrow = styled.span`
   display: block;
   margin-bottom: 18px;
-
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-
   color: #777;
 `;
 
 const Title = styled.h2`
   margin: 0;
-
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(36px, 3vw, 50px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.5px;
-
   color: #1d1d1b;
 `;
 
 const Description = styled.p`
   max-width: 560px;
   margin: 24px auto 32px;
-
   font-size: 16px;
   line-height: 1.7;
-
   color: #666;
 
   @media (max-width: 550px) {
@@ -331,29 +520,22 @@ const Description = styled.p`
   }
 `;
 
-
-// =====================================================
-// RATING
-// =====================================================
+/* =========================================================
+   AVERAGE RATING
+========================================================= */
 
 const Rating = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 14px;
-  .active{
-  color: #4bdd26;
-  }
 `;
 
 const RatingNumber = styled.strong`
-  font-family: Georgia, serif;
-
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 32px;
   font-weight: 400;
   line-height: 1;
-
   color: #1d1d1b;
 `;
 
@@ -361,18 +543,24 @@ const RatingContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  gap: 4px;
+  gap: 6px;
 `;
 
-const Stars = styled.span`
-  display: block;
-
-  color: #c9a35c;
-
+const Stars = styled.div`
+  display: flex;
+  gap: 3px;
   font-size: 15px;
   line-height: 1;
-  letter-spacing: 3px;
+
+  span {
+    color: #d8d5ce;
+  }
+
+  span.active {
+    color: #38745B;
+
+
+  }
 `;
 
 const RatingText = styled.span`
@@ -380,15 +568,13 @@ const RatingText = styled.span`
   color: #777;
 `;
 
-
-// =====================================================
-// REVIEWS SLIDER
-// =====================================================
+/* =========================================================
+   REVIEWS SLIDER
+========================================================= */
 
 const Reviews = styled.div`
   width: 100%;
   margin: 0 auto;
-
   box-sizing: border-box;
 
   .slick-slider {
@@ -397,11 +583,8 @@ const Reviews = styled.div`
 
   .slick-list {
     width: 100%;
-
     margin: 0 -10px;
-
     padding: 10px 0 35px;
-
     overflow: hidden;
   }
 
@@ -412,9 +595,7 @@ const Reviews = styled.div`
 
   .slick-slide {
     height: auto;
-
     padding: 0 10px;
-
     box-sizing: border-box;
   }
 
@@ -439,13 +620,9 @@ const Reviews = styled.div`
 
   .slick-dots li button:before {
     width: 18px;
-
     font-size: 7px;
-
     color: #1d1d1b;
-
     opacity: 0.22;
-
     transition:
       opacity 0.25s ease,
       color 0.25s ease;
@@ -488,38 +665,29 @@ const Reviews = styled.div`
   }
 `;
 
-
-// =====================================================
-// SLIDE
-// =====================================================
+/* =========================================================
+   SLIDE
+========================================================= */
 
 const ReviewSlide = styled.div`
   width: 100%;
   height: 100%;
-
   box-sizing: border-box;
 `;
 
-
-// =====================================================
-// REVIEW CARD
-// =====================================================
+/* =========================================================
+   REVIEW CARD
+========================================================= */
 
 const ReviewCard = styled.article`
   position: relative;
-
   width: 100%;
   height: 600px;
-
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
-
   background: #fff;
-
   border: 1px solid #e5e3df;
-
   box-sizing: border-box;
 
   transition:
@@ -529,11 +697,8 @@ const ReviewCard = styled.article`
 
   &:hover {
     transform: translateY(-3px);
-
     border-color: #dedbd5;
-
-    box-shadow:
-      0 12px 30px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
   }
 
   @media (max-width: 550px) {
@@ -541,36 +706,31 @@ const ReviewCard = styled.article`
   }
 `;
 
-
-// =====================================================
-// IMAGE
-// =====================================================
+/* =========================================================
+   IMAGE
+========================================================= */
 
 const ImageWrapper = styled.div`
   position: relative;
-
   width: 100%;
   height: 350px;
-
   flex-shrink: 0;
-
   overflow: hidden;
-
   background: #f4f2ed;
-
   cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid #c9a35c;
+    outline-offset: -3px;
+  }
 `;
 
 const ReviewImage = styled.img`
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   cursor: pointer;
-
   transition: transform 0.5s ease;
 
   ${ReviewCard}:hover & {
@@ -578,23 +738,34 @@ const ReviewImage = styled.img`
   }
 `;
 
+const ImageCount = styled.span`
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 28px;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1d1d1b;
+  font-size: 11px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+`;
 
-// =====================================================
-// CONTENT
-// =====================================================
+/* =========================================================
+   REVIEW CONTENT
+========================================================= */
 
 const ReviewContent = styled.div`
   flex: 1;
-
   min-height: 0;
-
   padding: 28px 28px 24px;
-
   display: flex;
   flex-direction: column;
-
   background: #fff;
-
   box-sizing: border-box;
 
   @media (max-width: 550px) {
@@ -602,78 +773,56 @@ const ReviewContent = styled.div`
   }
 `;
 
-
-// =====================================================
-// REVIEW RATING ROW
-// =====================================================
+/* =========================================================
+   RATING ROW
+========================================================= */
 
 const RatingRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-
   gap: 12px;
 `;
 
 const ReviewRating = styled.div`
   display: flex;
   align-items: center;
-
-  color: #111;
-
+  gap: 2px;
   font-size: 16px;
   line-height: 1;
-
-  letter-spacing: 1px;
-
   white-space: nowrap;
+  flex-shrink: 0;
+
+  .star {
+    color: #d8d5ce;
+  }
+
+  .star.active {
+    color: #38745B;
+  }
 `;
 
-
-// =====================================================
-// REVIEW TEXT
-// =====================================================
-
-const ReviewText = styled.p`
-  margin: 22px 0 18px;
-
-  font-family: Arial, sans-serif;
-
-  font-size: 14px;
-  line-height: 1.75;
-
-  color: #303030;
-
-  display: -webkit-box;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
+const RatingScore = styled.span`
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #555;
 `;
 
-
-// =====================================================
-// VERIFIED PURCHASE
-// =====================================================
+/* =========================================================
+   VERIFIED PURCHASE
+========================================================= */
 
 const Verified = styled.span`
   display: flex;
   align-items: center;
-
   gap: 7px;
-
   font-size: 10px;
   font-weight: 600;
-
   letter-spacing: 0.8px;
-
   color: #777;
-
   white-space: nowrap;
 `;
 
@@ -681,75 +830,73 @@ const Check = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  width: 7px;
-  height: 7px;
-
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-
   border-radius: 50%;
-
-  background: #777;
-
-  color: transparent;
+  background: #e9e5dc;
+  color: #6f654e;
+  font-size: 10px;
 `;
 
+/* =========================================================
+   REVIEW TEXT
+========================================================= */
 
-// =====================================================
-// CUSTOMER
-// =====================================================
+const ReviewText = styled.p`
+  margin: 22px 0 18px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #303030;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
 
 const Customer = styled.div`
   margin-top: auto;
-
   padding-top: 18px;
-
   border-top: 1px solid #e7e5e1;
-
   display: flex;
   align-items: center;
-
   gap: 14px;
 `;
 
 const CustomerAvatar = styled.div`
   width: 42px;
   height: 42px;
-
   flex-shrink: 0;
-
   border-radius: 50%;
-
   background: #1d1d1b;
   color: #fff;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 14px;
   font-weight: 600;
-
   text-transform: uppercase;
 `;
 
 const CustomerInfo = styled.div`
   display: flex;
   flex-direction: column;
-
   gap: 4px;
-
   min-width: 0;
 `;
 
 const CustomerName = styled.span`
   display: block;
-
   font-size: 14px;
   font-weight: 600;
-
   color: #171717;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -757,41 +904,98 @@ const CustomerName = styled.span`
 
 const CustomerDate = styled.span`
   display: block;
-
   font-size: 11px;
-
   color: #999;
 `;
 
+/* =========================================================
+   LOADING
+========================================================= */
 
-// =====================================================
-// VIEW ALL REVIEWS BUTTON
-// =====================================================
+const LoadingState = styled.div`
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+`;
+
+const LoadingSpinner = styled.div`
+  width: 30px;
+  height: 30px;
+  border: 2px solid #e5e0d5;
+  border-top-color: #c9a35c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 2s;
+  }
+`;
+
+const LoadingText = styled.p`
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+`;
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+const EmptyState = styled.div`
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px solid #eceae5;
+  background: #fff;
+`;
+
+const EmptyTitle = styled.h3`
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #1d1d1b;
+`;
+
+const EmptyDescription = styled.p`
+  max-width: 420px;
+  margin: 12px 0 0;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+`;
+
+/* =========================================================
+   VIEW ALL REVIEWS
+========================================================= */
 
 const ViewAllButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 12px;
-
   margin: 55px auto 0;
-
   padding: 14px 28px;
-
   border: 1px solid #1d1d1b;
-
   background: transparent;
-
   color: #1d1d1b;
-
   font-size: 12px;
   font-weight: 500;
-
   letter-spacing: 1px;
-
   text-transform: uppercase;
-
   cursor: pointer;
 
   transition:
@@ -801,9 +1005,7 @@ const ViewAllButton = styled.button`
 
   &:hover {
     background: #1d1d1b;
-
     color: #fff;
-
     transform: translateY(-2px);
   }
 
@@ -811,26 +1013,22 @@ const ViewAllButton = styled.button`
     transform: translateY(0);
   }
 
+  &:focus-visible {
+    outline: 2px solid #c9a35c;
+    outline-offset: 4px;
+  }
+
   @media (max-width: 550px) {
     margin-top: 45px;
-
     padding: 13px 24px;
-
     font-size: 11px;
   }
 `;
 
-
-// =====================================================
-// ARROW
-// =====================================================
-
 const Arrow = styled.span`
   display: inline-block;
-
   font-size: 16px;
   line-height: 1;
-
   transition: transform 0.3s ease;
 
   ${ViewAllButton}:hover & {
