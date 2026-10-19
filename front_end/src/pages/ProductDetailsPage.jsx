@@ -57,7 +57,10 @@ function ProductDetailsPage() {
     methodName: t("purchaseOptions.free_Shipping"),
   });
 
-
+  const selectedCurrency = useSelector(
+     (state) => state.currency.selectedCurrency
+   );
+   
   ///the product details
   const productData = useSelector(
     (state) => state.product.productData
@@ -100,7 +103,7 @@ function ProductDetailsPage() {
     if (typeof window.gtag !== "function") return;
 
     window.gtag("event", "view_item", {
-      currency: "USD",
+      currency: selectedCurrency,
       value: price,
       items: [
         {
@@ -262,7 +265,7 @@ useEffect(() => {
     // GA4 — Add to Cart
     if (typeof window.gtag === "function") {
       window.gtag("event", "add_to_cart", {
-        currency: "USD",
+        currency: selectedCurrency,
         value: price * quantity,
         items: [
           {

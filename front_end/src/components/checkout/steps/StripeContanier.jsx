@@ -102,7 +102,7 @@ export default function StripeContanier({ t, i18n }) {
     if (!cartItems?.length) return;
 
     window.gtag("event", "add_payment_info", {
-      currency: "USD",
+      currency: selectedCurrency ,
       value: Number(formData?.totalPrice || 0),
 
       items: cartItems.map((item) => ({
