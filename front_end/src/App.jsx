@@ -1,6 +1,7 @@
 import React, {
   useEffect,
   useState,
+  useRef,
   Suspense,
   createContext,
 } from "react";
@@ -216,6 +217,7 @@ function App() {
 
   const [searchValue, setSearchValue] =
     useState("");
+   const footerRef = useRef(null);
 
   const [formData, setFormData] = useState({
     logistics_address: {
@@ -309,7 +311,7 @@ function App() {
                       value={searchValue}
                     />
 
-                    <Footer />
+                    <Footer  footerRef =  {footerRef}/>
                   </>
                 }
               >
@@ -337,7 +339,7 @@ function App() {
                 <Route
                   path="product/:slug"
                   element={
-                    <ProductDetailsPage />
+                    <ProductDetailsPage footerRef = {footerRef} />
                   }
                 />
 

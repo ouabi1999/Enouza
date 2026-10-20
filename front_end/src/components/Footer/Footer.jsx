@@ -7,13 +7,13 @@ import PaymentMethods from "../../../common/PaymentMethods";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import FooterPreferences from "./FooterPreferences";
 
-const Footer = () => {
+const Footer = ({footerRef}) => {
   const { t, i18n } = useTranslation();
 
   const isRTL = i18n.dir() === "rtl";
 
   return (
-    <FooterContainer  >
+    <FooterContainer ref = {footerRef}>
       {/* =====================================================
           NEWSLETTER
       ===================================================== */}

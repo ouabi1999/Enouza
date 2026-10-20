@@ -16,6 +16,7 @@ import FixedAddBuyButtons from "./FixedAddBuyButtons";
 
 function SideCart(props) {
   const purchaseRef = useRef(null);
+ 
 
 
   const productData = useSelector((state) => state.product.productData);
@@ -36,9 +37,10 @@ function SideCart(props) {
     add_item_to_cart,
     buy_Now_item,
   
-    shippingMethodIndex,
     currentSku,
     setShippingInfo,
+    footerRef
+
   } = props;
 
  const available = currentSku?.available_stock ? currentSku?.available_stock : ""
@@ -248,6 +250,9 @@ function SideCart(props) {
   buy_Now_item ={buy_Now_item}
    add_item_to_cart = {add_item_to_cart}
   purchaseRef = {purchaseRef}
+  bottomRef = {footerRef}
+
+  
       
       />
       {/* =====================================================
@@ -276,20 +281,6 @@ const SecureCheckout = styled.div`
   text-align: center;
 `;
 
-const SecureImage = styled.img`
-  display: block;
-
-  width: 100%;
-
-  max-width: 600px;
-
-  height: auto;
-
-  margin: 0 auto;
-
-  opacity: 0.9;
-  border-radius:8px;
-`;
 
 /* =========================================================
    MAIN CONTAINER
@@ -318,74 +309,6 @@ const Section = styled.div`
   border-bottom: 1px solid #e9e4dc;
 `;
 
-const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 15px;
-
-  margin-bottom: 16px;
-`;
-
-const SectionTitle = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  font-size: 0.82rem;
-  font-weight: 600;
-
-  color: #252525;
-
-  .section-icon {
-    font-size: 18px;
-    color: #9b815f;
-  }
-`;
-
-const CountrySelector = styled.div`
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  gap: 6px;
-
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-
-    border: 0;
-    outline: 0;
-
-    background: transparent;
-
-    padding: 3px 18px 3px 2px;
-
-    max-width: 100px;
-
-    font-size: 0.78rem;
-    color: #333;
-
-    cursor: pointer;
-  }
-`;
-
-const ArrowDown = styled.span`
-  position: absolute;
-
-  right: 2px;
-
-  pointer-events: none;
-
-  font-size: 14px;
-
-  color: #777;
-
-  transform: translateY(-2px);
-`;
 
 /* =========================================================
    SHIPPING ROW
@@ -469,71 +392,7 @@ const ShippingValue = styled.span`
   color: #2b2b2b;
 `;
 
-const ShippingChangeButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  flex-shrink: 0;
-
-  width: 30px;
-  height: 30px;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #777;
-
-  cursor: pointer;
-
-  transition:
-    color 180ms ease,
-    transform 180ms ease;
-
-  svg {
-    font-size: 15px;
-  }
-
-  &:hover {
-    color: #9b815f;
-
-    transform: translateX(2px);
-  }
-`;
-
-const DeliveryBadge = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 5px;
-
-  flex-shrink: 0;
-
-  padding: 5px 8px;
-
-  border: 1px solid #e5ded4;
-
-  border-radius: 20px;
-
-  background: #faf8f5;
-
-  color: #777;
-
-  font-size: 0.62rem;
-
-  white-space: nowrap;
-
-  span {
-    color: #9b815f;
-
-    font-weight: 700;
-  }
-
-  @media (max-width: 480px) {
-    display: none;
-  }
-`;
 
 /* =========================================================
    SECURITY
@@ -789,29 +648,27 @@ const PurchaseSection = styled.div`
   }
 `;
 
+
 const BuyButton = styled.button`
   position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 8px;
 
+  width: 100%;
   min-height: 50px;
+  padding: 12px 18px;
 
   border: 1px solid #9b815f;
-
   border-radius: 3px;
 
   background: #9b815f;
-
   color: #fff;
 
   font-size: 0.79rem;
-
   font-weight: 600;
-
   letter-spacing: 0.04em;
 
   cursor: pointer;
@@ -823,13 +680,12 @@ const BuyButton = styled.button`
 
   svg {
     font-size: 14px;
-
+    flex-shrink: 0;
     transition: transform 180ms ease;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #876e50;
-
     border-color: #876e50;
 
     svg {
@@ -837,107 +693,88 @@ const BuyButton = styled.button`
     }
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.99);
   }
-    &:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
- 
+
+  &:focus-visible {
+    outline: 2px solid #9b815f;
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 46px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    svg {
+      transition: none;
+    }
+  }
 `;
 
 const AddButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
   min-height: 50px;
+  padding: 12px 18px;
 
   border: 1px solid #252525;
-
   border-radius: 3px;
 
   background: #252525;
-
   color: #fff;
 
   font-size: 0.79rem;
-
   font-weight: 600;
-
   letter-spacing: 0.04em;
 
   cursor: pointer;
 
   transition:
     background 180ms ease,
-    border-color 180ms ease;
+    border-color 180ms ease,
+    transform 180ms ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #111;
-
     border-color: #111;
   }
-     &:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-`;
 
-/* =========================================================
-   TRUST FOOTER
-========================================================= */
+  &:active:not(:disabled) {
+    transform: scale(0.99);
+  }
 
-const TrustFooter = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &:focus-visible {
+    outline: 2px solid #9b815f;
+    outline-offset: 3px;
+  }
 
-  flex-wrap: wrap;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-  gap: 7px;
+  @media (max-width: 480px) {
+    min-height: 46px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
 
-  margin-top: 15px;
-
-  padding-top: 13px;
-
-  border-top: 1px solid #eeeae4;
-
-  color: #8b867f;
-
-  font-size: 0.64rem;
-
-  line-height: 1.5;
-
-  text-align: center;
-`;
-
-const TrustItem = styled.div`
-  display: flex;
-  align-items: center;
-
-  gap: 5px;
-`;
-
-const TrustCheck = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 15px;
-  height: 15px;
-
-  border: 1px solid #b09a7c;
-
-  border-radius: 50%;
-
-  color: #9b815f;
-
-  font-size: 9px;
-`;
-
-const TrustDivider = styled.span`
-  width: 3px;
-  height: 3px;
-
-  border-radius: 50%;
-
-  background: #cfc8bf;
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 `;

@@ -268,6 +268,7 @@ const TrustGrid = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  place-content:center;
 `;
 
 const TrustItem = styled.div`

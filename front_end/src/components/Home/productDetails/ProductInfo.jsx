@@ -16,7 +16,6 @@ function ProductInfo({
   sum_stars,
   selectedAttributes,
   setSelectedAttributes,
-  availableAttributes,
   setAvailableAttributes,
   currentSku,
   setCurrentSku,
@@ -33,6 +32,9 @@ function ProductInfo({
   isPopUpShippingOpen,
   shippingMethodIndex,
   setShippingInfo,
+              footerRef
+
+  
 }) {
   const { t, i18n } = useTranslation();
   const skuInfo = Array.isArray(productData?.skuInfo)
@@ -495,6 +497,8 @@ function ProductInfo({
           shippingMethodIndex={shippingMethodIndex}
           currentSku={currentSku}
           setShippingInfo={setShippingInfo}
+          footerRef = {footerRef}
+
         />
       </PurchaseInformation>
     </Container>

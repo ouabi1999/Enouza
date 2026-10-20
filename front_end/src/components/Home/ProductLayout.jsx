@@ -28,6 +28,7 @@ function ProductLayout({
   isPopUpShippingOpen,
 
   shippingMethodIndex,
+  footerRef
 }) {
   const productData = useSelector(
     (state) => state.product.productData
@@ -155,6 +156,7 @@ const [isColorActive, setIsColorActive] =
             setShippingInfo={
               setShippingInfo
             }
+            footerRef = {footerRef}
           />
         </InfoSide>
 

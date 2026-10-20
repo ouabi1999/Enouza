@@ -19,7 +19,7 @@ import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
 
-function ProductDetailsPage() {
+function ProductDetailsPage({footerRef}) {
   const navigate = useNavigate();
   const { slug } = useParams();
   const { t } = useTranslation();
@@ -407,6 +407,7 @@ const onClose = ()=>{
           shippingMethodIndex={
             shippingMethodIndex
           }
+          footerRef
         />
       </ProductSection>
 

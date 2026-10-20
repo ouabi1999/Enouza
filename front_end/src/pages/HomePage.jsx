@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import HeroSection from "../components/Home/Sections/HeroSection.jsx";
 import DesignSection from "../components/Home/Sections/DesignSection.jsx";
 import CTASection from "../components/Home/Sections/CTASection.jsx";
-import MatricsSection from "../components/Home/Sections/MatricsSection.jsx";
 import CustomersFeedback from "../components/Home/Sections/CustomersFeedbak.jsx";
 import SEO from "../components/SEO/SEO.jsx";
 import CollectionSection from "../components/Home/Sections/CollectionSection.jsx";
