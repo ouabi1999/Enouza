@@ -19,8 +19,6 @@ function UserServices() {
       icon: VerifiedUserIcon,
       text: t("trust.secureCheckout"),
     },
-    
-   
     {
       icon: LocalShippingIcon,
       text: t("trust.freeShipping.text"),
@@ -41,68 +39,39 @@ function UserServices() {
         <Track
           $rtl={isRTL}
           animate={{
-            x: isRTL
-              ? ["-50%", "0%"]
-              : ["0%", "-50%"],
+            x: isRTL ? ["-50%", "0%"] : ["0%", "-50%"],
           }}
           transition={{
-            duration: 24,
+            duration: 28,
             ease: "linear",
             repeat: Infinity,
             repeatType: "loop",
           }}
         >
-          {/* =================================================
-              FIRST GROUP
-          ================================================= */}
+          {[0, 1].map((groupIndex) => (
+            <Group
+              key={groupIndex}
+              $rtl={isRTL}
+              aria-hidden={groupIndex === 1 ? "true" : undefined}
+            >
+              {services.map((service, index) => {
+                const Icon = service.icon;
 
-          <Group $rtl={isRTL}>
-            {services.map((service, index) => {
-              const Icon = service.icon;
+                return (
+                  <React.Fragment key={`${groupIndex}-${index}`}>
+                    <Service>
+                      <Icon className="service-icon" />
+                      <span>{service.text}</span>
+                    </Service>
 
-              return (
-                <React.Fragment key={`first-${index}`}>
-                  <Service>
-                    <Icon className="service-icon" />
-
-                    <span>{service.text}</span>
-                  </Service>
-
-                  <Separator aria-hidden="true">
-                    <span />
-                  </Separator>
-                </React.Fragment>
-              );
-            })}
-          </Group>
-
-          {/* =================================================
-              SECOND GROUP
-              Exact duplicate for seamless infinite loop
-          ================================================= */}
-
-          <Group
-            $rtl={isRTL}
-            aria-hidden="true"
-          >
-            {services.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
-                <React.Fragment key={`second-${index}`}>
-                  <Service>
-                    <Icon className="service-icon" />
-
-                    <span>{service.text}</span>
-                  </Service>
-
-                  <Separator aria-hidden="true">
-                    <span />
-                  </Separator>
-                </React.Fragment>
-              );
-            })}
-          </Group>
+                    <Separator aria-hidden="true">
+                      <span />
+                    </Separator>
+                  </React.Fragment>
+                );
+              })}
+            </Group>
+          ))}
         </Track>
       </Viewport>
     </Container>
@@ -111,31 +80,34 @@ function UserServices() {
 
 export default UserServices;
 
-
 /* =========================================================
-   CONTAINER
+   CONTAINER — ORIGINAL HEIGHT PRESERVED
 ========================================================= */
 
 const Container = styled.div`
-  position: -webkit-sticky;
   position: sticky;
-
   top: 0;
   z-index: 2;
 
   width: 100%;
   height: 34px;
+  min-height: 34px;
 
   overflow: hidden;
 
-  background: #353531;
+  background: #292925;
 
   display: flex;
   align-items: center;
 
   box-sizing: border-box;
-`;
 
+  border-bottom: 1px solid rgba(194, 164, 118, 0.3);
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+`;
 
 /* =========================================================
    VIEWPORT
@@ -153,8 +125,46 @@ const Viewport = styled.div`
   align-items: center;
 
   box-sizing: border-box;
-`;
 
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 24px;
+
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    inset-inline-start: 0;
+    background: linear-gradient(
+      to right,
+      #292925,
+      transparent
+    );
+  }
+
+  &::after {
+    inset-inline-end: 0;
+    background: linear-gradient(
+      to left,
+      #292925,
+      transparent
+    );
+  }
+
+  @media (max-width: 600px) {
+    &::before,
+    &::after {
+      width: 10px;
+    }
+  }
+`;
 
 /* =========================================================
    TRACK
@@ -166,13 +176,11 @@ const Track = styled(motion.div)`
 
   width: max-content;
   min-width: max-content;
-
   height: 100%;
 
   flex-shrink: 0;
 
-  direction: ${({ $rtl }) =>
-    $rtl ? "rtl" : "ltr"};
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
 
   will-change: transform;
 
@@ -180,8 +188,11 @@ const Track = styled(motion.div)`
 
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-`;
 
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+`;
 
 /* =========================================================
    GROUP
@@ -197,22 +208,24 @@ const Group = styled.div`
 
   display: flex;
   align-items: center;
-
   justify-content: space-between;
 
   box-sizing: border-box;
 
   padding: 0 50px;
 
-  direction: ${({ $rtl }) =>
-    $rtl ? "rtl" : "ltr"};
+  direction: ${({ $rtl }) => ($rtl ? "rtl" : "ltr")};
 
-  @media only screen and (max-width: 816px) {
+  @media (max-width: 816px) {
     width: max(100vw, 1000px);
     min-width: max(100vw, 1000px);
+    padding: 0 28px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
   }
 `;
-
 
 /* =========================================================
    SERVICE
@@ -234,17 +247,15 @@ const Service = styled.div`
 
   white-space: nowrap;
 
-  
-
-  color: #ffffff;
+  color: #f8f5ef;
 
   .service-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 
-    flex: 0 0 18px;
+    flex: 0 0 16px;
 
-    color: #ffffff;
+    color: #c6a779;
 
     margin-inline-end: 7px;
   }
@@ -255,22 +266,35 @@ const Service = styled.div`
     width: max-content;
     min-width: max-content;
 
-    font-size: 12px;
-
+    font-size: 11.5px;
+    font-weight: 500;
 
     line-height: 1;
+    letter-spacing: 0.25px;
 
-    letter-spacing: 0.2px;
-
-    color: #ffffff;
+    color: #f8f5ef;
 
     white-space: nowrap;
   }
+
+  @media (max-width: 600px) {
+    .service-icon {
+      width: 15px;
+      height: 15px;
+      flex-basis: 15px;
+
+      margin-inline-end: 6px;
+    }
+
+    span {
+      font-size: 11px;
+      letter-spacing: 0.1px;
+    }
+  }
 `;
 
-
 /* =========================================================
-   SEPARATOR / DOT
+   SEPARATOR
 ========================================================= */
 
 const Separator = styled.div`
@@ -297,8 +321,14 @@ const Separator = styled.div`
 
     border-radius: 50%;
 
-    background: #ffffff;
+    background: #c6a779;
 
     transform: translateY(-0.5px);
+  }
+
+  @media (max-width: 600px) {
+    width: 26px;
+    min-width: 26px;
+    flex-basis: 26px;
   }
 `;
