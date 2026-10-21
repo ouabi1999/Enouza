@@ -346,7 +346,7 @@ function ProductInfo({
               />
             ))}
           </Stars>
-
+  
           <RatingNumber>{averageRating}</RatingNumber>
 
           {ratingCount > 0 && (
@@ -366,7 +366,9 @@ function ProductInfo({
               </RatingCount>
             </>
           )}
+          <RatingCount>{productData.isHero ? ` ${t("common.orders")} (850)`:""}</RatingCount>
         </RatingRow>
+      
       </ProductHeader>
 
       <PriceBlock>
