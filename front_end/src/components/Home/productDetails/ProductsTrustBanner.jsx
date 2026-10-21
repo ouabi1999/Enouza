@@ -247,13 +247,13 @@ const PaymentIcon = styled.img`
   flex-shrink: 0;
 
   @media (max-width: 700px) {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
   }
 
   @media (max-width: 360px) {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
 `;
 

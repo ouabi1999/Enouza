@@ -328,7 +328,6 @@ export default CollectionProducts;
 
 const ProductContainer = styled.div`
   width: 100%;
-
   font-family: Arial, sans-serif;
 
   .grid-container {
@@ -382,15 +381,15 @@ const ProductContainer = styled.div`
 
       gap: 25px 10px;
 
-      padding: 6px;
     }
   }
 
   @media (max-width: 490px) {
+  
     .grid-container {
-      gap: 22px 7px;
+       width:100%;
+      gap: 25px 7px;
 
-      padding: 4px;
     }
   }
 `;

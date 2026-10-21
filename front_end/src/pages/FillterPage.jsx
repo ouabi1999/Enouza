@@ -8,7 +8,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { useTranslation } from "react-i18next";
 
 import ApiInstance from "../../common/baseUrl";
-import CollectionProducts from "../components/Home/Sections/CollectionProducts";
+import CollectionProducts from "../components/Home/sections/CollectionProducts.jsx";
 import { setSort } from "../features/filterSlice";
 import SEO from "../components/SEO/SEO";
 
