@@ -69,7 +69,7 @@ export default function HeroSection() {
               to={`/product/${product.slug}`} $rtl={isRTL}
               dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}
             >
-              <span>{t("heroSection.ctaLabel")}</span>
+              <span>{t("common.discover")}</span>
 
               <Arrow $rtl={isRTL} >
                 <ArrowForwardIcon />

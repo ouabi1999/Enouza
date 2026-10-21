@@ -251,7 +251,7 @@ const ShopNowButton = styled(Link)`
   font-size: 12px;
   letter-spacing: 1px;
 
-  z-index: 2;
+  z-index: 1;
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);

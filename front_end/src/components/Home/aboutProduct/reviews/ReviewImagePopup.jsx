@@ -130,8 +130,8 @@ export default function ReviewImagePopup({ rate, selected, setSelected }) {
                     </SmallText>
                   )}
 
-                  <SmallText>
-                    {getCustomerName(rate)}
+                  <SmallText style={{textTransform:"capitalize"}}>
+                    {getCustomerName(rate)}.
                   </SmallText>
 
                   <SmallText>{formatReviewDate(rate.created_at)}</SmallText>
@@ -179,7 +179,7 @@ function getRating(rate) {
 
 function getCustomerName(rate) {
   const firstName = rate?.user?.firstName?.trim() || "";
-  const lastName = rate?.user?.lastName?.trim() || "";
+  const lastName = rate?.user?.lastName?.trim().slice(0, 2) || "";
 
   const name = [firstName, lastName].filter(Boolean).join(" ");
 
