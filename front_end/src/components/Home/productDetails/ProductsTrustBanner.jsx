@@ -8,7 +8,7 @@ import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOu
 import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import ReplayIcon from "@mui/icons-material/Replay";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
-
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 
 const ProductTrustBanner = () => {
@@ -113,11 +113,11 @@ const ProductTrustBanner = () => {
 
         <TrustItem>
           <IconWrapper>
-            <Inventory2OutlinedIcon className="icons" aria-hidden="true" />
+            <AttachMoneyIcon className="icons" aria-hidden="true" />
           </IconWrapper>
 
           <TrustTitle>
-            {t("trust.fastDelivery.title")}
+            {t("buyerTrustServices.moneyBack.title")}
           </TrustTitle>
         </TrustItem>
 
