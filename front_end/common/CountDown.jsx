@@ -127,7 +127,7 @@ const Badge = styled.div`
   border: 1px solid #e8dfcc;
   border-radius: 3px;
 
-  color: #987b46;
+  color: #e12f23;
   font-family: inherit;
   line-height: 1;
   white-space: nowrap;
@@ -145,7 +145,7 @@ const OfferIndicator = styled.span`
   height: 5px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #b49a64;
+  background: #e12f23;
 
   @media (max-width: 480px) {
     width: 4px;
@@ -154,7 +154,7 @@ const OfferIndicator = styled.span`
 `;
 
 const OfferLabel = styled.span`
-  color: #75603b;
+  color: #e12f23;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.65px;
@@ -206,7 +206,7 @@ const Time = styled.span`
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.15px;
-  color: #8a7040;
+  color: #e12f23;
 
   @media (max-width: 480px) {
     gap: 2px;
