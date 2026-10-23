@@ -334,9 +334,9 @@ function ProductInfo({
         }}>
 
         <Eyebrow>
-          {!productData?.category
+          {productData?.category
             ? t(`productInfo.${productData.category}`)
-            : "ESONRA COLLECTION"}
+            : "ENOUZA COLLECTION"}
         </Eyebrow>
 
           <Countdown  targetDate="2026-10-21T23:59:59"
@@ -551,7 +551,7 @@ const Eyebrow = styled.div`
   margin-bottom: 9px;
   font-size: 0.68rem;
   font-weight: 600;
-
+  text-wrap:nowrap;
   letter-spacing: 0.18em;
 
   color: #9b815f;
