@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO/SEO";
 import ProductLayout from "../components/Home/ProductLayout";

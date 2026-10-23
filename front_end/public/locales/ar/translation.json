@@ -1,5 +1,18 @@
 {
   "header": {},
+   "countdownSection": {
+    "specialOffer": "عرض خاص",
+    "offerEndsIn": "ينتهي العرض خلال",
+    "days": "أيام",
+    "hours": "ساعات",
+    "minutes": "دقائق",
+    "seconds": "ثوانٍ",
+    "offerExpired": "انتهى العرض",
+    "limitedTimeOffer": "عرض لفترة محدودة",
+    "description": "استفد من هذا العرض الحصري قبل انتهائه.",
+    "shopNow": "تسوق الآن",
+    "ariaLabel": "الوقت المتبقي لهذا العرض الخاص"
+  },
   "menu": {
     "login": "تسجيل الدخول",
     "searchPlaceholder": "ابحث...",

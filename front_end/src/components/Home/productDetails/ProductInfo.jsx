@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 
 import SideCart from "./SideCart";
 import CurrencyPrice from "../../../../common/CurrencyPrice";
+import Countdown from "../../../../common/CountDown";
 
 function ProductInfo({
   productData,
@@ -329,11 +330,20 @@ function ProductInfo({
   return (
     <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
       <ProductHeader>
+        <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline", marginBottom:"20px"
+        }}>
+
         <Eyebrow>
           {!productData?.category
             ? t(`productInfo.${productData.category}`)
             : "ESONRA COLLECTION"}
         </Eyebrow>
+
+          <Countdown  targetDate="2026-10-21T23:59:59"
+                 title="specialOffer"/>
+        </div>
+
+
 
         <ProductTitle>{productName}</ProductTitle>
 
@@ -534,13 +544,11 @@ const Container = styled.div`
 
 const ProductHeader = styled.div`
   padding-bottom: 18px;
-
   border-bottom: 1px solid #e9e3da;
 `;
 
 const Eyebrow = styled.div`
   margin-bottom: 9px;
-
   font-size: 0.68rem;
   font-weight: 600;
 

@@ -1,5 +1,20 @@
 {
   "header": {},
+
+  "countdownSection": {
+    "specialOffer": "Oferta especial",
+    "offerEndsIn": "LA OFERTA TERMINA EN",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "offerExpired": "La oferta ha terminado",
+    "limitedTimeOffer": "Oferta por tiempo limitado",
+    "description": "Aprovecha esta oferta exclusiva antes de que termine.",
+    "shopNow": "Comprar ahora",
+    "ariaLabel": "Tiempo restante para esta oferta especial"
+  },
+  
   "menu": {
     "login": "Iniciar sesión",
     "searchPlaceholder": "Buscar...",

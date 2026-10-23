@@ -1,5 +1,20 @@
 {
   "header": {},
+
+  "countdownSection": {
+    "specialOffer": "Special Offer",
+    "offerEndsIn": "OFFER ENDS IN",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "offerExpired": "Offer has ended",
+    "limitedTimeOffer": "Limited-Time Offer",
+    "description": "Enjoy this exclusive offer before time runs out.",
+    "shopNow": "Shop Now",
+    "ariaLabel": "Time remaining for this special offer"
+  },
+
   "menu": {
     "login": "Log In",
     "searchPlaceholder": "Search...",
@@ -250,6 +265,7 @@
   }
   }
 },
+
   "collectionSection": {
   "title": "Discover Our Collection.",
   "catlabel": "EXPLORE",
