@@ -305,7 +305,7 @@ const IconWrapper = styled.div`
     margin-bottom: 10px;
 
     .icons {
-      font-size: 20px;
+      font-size: 26px;
     }
   }
 `;
@@ -326,6 +326,6 @@ const TrustTitle = styled.div`
   color: #45413d;
 
   @media (max-width: 600px) {
-    font-size: 8px;
+    font-size: 9px;
   }
 `;

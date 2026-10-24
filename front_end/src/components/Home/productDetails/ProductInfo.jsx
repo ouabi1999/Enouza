@@ -328,21 +328,12 @@ function ProductInfo({
   return (
     <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
       <ProductHeader>
-        <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline", marginBottom:"20px"
-        }}>
-{/*
-        <Eyebrow>
-          {productData?.category
-            ? t(`productInfo.${productData.category}`)
-            : "ENOUZA COLLECTION"}
-        </Eyebrow>
-*/}
-          <Countdown title="specialOffer" />
-        </div>
+       
 
 
 
         <ProductTitle>{productName}</ProductTitle>
+         
 
         <RatingRow>
           {ratingCount > 0 && averageRating !== null && (
@@ -376,6 +367,11 @@ function ProductInfo({
       </ProductHeader>
 
       <PriceBlock>
+        <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline" , marginBottom:"9px"
+        }}>
+
+          <Countdown title="specialOffer" />
+        </div>
         <PriceLine>
           <ProductPrice>
             <CurrencyPrice price={sellingPrice} />
@@ -537,7 +533,6 @@ const Container = styled.div`
 ========================================================= */
 
 const ProductHeader = styled.div`
-  padding-bottom: 18px;
   border-bottom: 1px solid #e9e3da;
 `;
 
@@ -595,7 +590,7 @@ const RatingRow = styled.div`
 
   gap: 8px;
 
-  margin-top: 13px;
+  margin: 13px 0;
 `;
 
 const Stars = styled.div`
@@ -722,7 +717,7 @@ const SaveBadge = styled.span`
   overflow: hidden;
   padding: 4px 8px;
 
-  background: #b8905d;
+  background: #99774a;
   color: #ffffff;
 
   font-size: 0.63rem;
