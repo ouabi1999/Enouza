@@ -282,7 +282,6 @@ trackAddToCart({
         subtotal: price * quantity,
       })
     );
-          console.log(cartItems)
 
   };
 
@@ -301,7 +300,7 @@ trackAddToCart({
     const price = Number(
       selectedSku.sellingPrice
     );
-    
+
    trackBeginCheckout({
   productId: productId,
   name: name?.en || "Luxury Lamp",

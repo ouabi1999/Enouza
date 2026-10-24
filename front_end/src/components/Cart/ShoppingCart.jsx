@@ -107,10 +107,16 @@ function ShoppingCart() {
                 item?.name?.en ||
                 "";
 
-              const image =
-                item?.selectedSku?.attributes?.[
-                  item?.selectedSku?.colorKey
-                ]?.image;
+                  const attributes = item?.selectedSku?.attributes || {};
+
+const image =
+  Object.values(attributes).find(
+    (attribute) => attribute?.image || attribute?.sku_image
+  )?.image ||
+  Object.values(attributes).find(
+    (attribute) => attribute?.sku_image
+  )?.sku_image ||
+  "";
 
               return (
                 <ProductContainer
