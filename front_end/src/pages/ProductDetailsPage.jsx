@@ -307,7 +307,7 @@ useEffect(() => {
     );
     if (typeof window.gtag === "function") {
       window.gtag("event", "begin_checkout", {
-        currency: "USD",
+        currency: selectedCurrency,
         value: price * quantity,
         items:[{
           item_id: productId || item?.id,
