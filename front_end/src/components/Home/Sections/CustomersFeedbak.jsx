@@ -629,7 +629,8 @@ const Reviews = styled.div`
   }
 
   .slick-dots li.slick-active button:before {
-    color: #c9a35c;
+    color: #38745B;
+
     opacity: 1;
   }
 

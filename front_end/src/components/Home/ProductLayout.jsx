@@ -235,7 +235,7 @@ const ImageSide = styled.div`
 
   box-sizing: border-box;
   position: sticky;
-  top: 75px;
+  top: 95px;
 
   align-self: start;
 

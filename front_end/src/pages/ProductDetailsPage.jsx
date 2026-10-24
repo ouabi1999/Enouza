@@ -181,7 +181,7 @@ useEffect(() => {
       currentSku?.available_stock || 0
     );
 
-    if (quantity < stock && quantity < 5) {
+    if (quantity < stock) {
       setQuantity((prev) => prev + 1);
       setMaxOrderWorning(false);
       return;

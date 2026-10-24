@@ -285,29 +285,27 @@ function ProductInfo({
   const averageRating =
     ratingCount > 0
       ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
-      : "0.0";
+      : null;
 
-  const roundedRating = Math.round(Number(averageRating));
+  const roundedRating = averageRating === null
+    ? 0
+    : Math.round(Number(averageRating));
 
   const sellingPrice =
     Number(currentSku?.sellingPrice) > 0
-      ? currentSku.sellingPrice
-      : productData?.price;
+      ? Number(currentSku.sellingPrice)
+      : Number(productData?.price) || 0;
 
+  // Assumes productData.discount stores the original/comparison price,
+  // as in the existing component. Adjust this fallback if it stores a discount amount.
   const comparePrice =
     Number(currentSku?.comparePrice) > 0
-      ? currentSku.comparePrice
-      : productData?.discount;
+      ? Number(currentSku.comparePrice)
+      : Number(productData?.discount) || 0;
 
   const savePercentage =
-    Number(currentSku?.comparePrice) > 0 &&
-    Number(currentSku?.sellingPrice) > 0
-      ? (
-          ((Number(currentSku.comparePrice) -
-            Number(currentSku.sellingPrice)) /
-            Number(currentSku.comparePrice)) *
-          100
-        ).toFixed(0)
+    comparePrice > sellingPrice && sellingPrice > 0
+      ? Math.round(((comparePrice - sellingPrice) / comparePrice) * 100)
       : null;
 
   const getSelectedDisplayValue = (attributeName) => {
@@ -332,15 +330,14 @@ function ProductInfo({
       <ProductHeader>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline", marginBottom:"20px"
         }}>
-
+{/*
         <Eyebrow>
           {productData?.category
             ? t(`productInfo.${productData.category}`)
             : "ENOUZA COLLECTION"}
         </Eyebrow>
-
-          <Countdown  targetDate="2026-10-21T23:59:59"
-                 title="specialOffer"/>
+*/}
+          <Countdown title="specialOffer" />
         </div>
 
 
@@ -348,35 +345,32 @@ function ProductInfo({
         <ProductTitle>{productName}</ProductTitle>
 
         <RatingRow>
-          <Stars aria-label={`${averageRating} out of 5 stars`}>
-            {stars.map((_, index) => (
-              <StarIcon
-                key={index}
-                className={index < roundedRating ? "active" : ""}
-              />
-            ))}
-          </Stars>
-  
-          <RatingNumber>{averageRating}</RatingNumber>
-
-          {ratingCount > 0 && (
+          {ratingCount > 0 && averageRating !== null && (
             <>
+              <Stars aria-label={`${averageRating} out of 5 stars`}>
+                {stars.map((_, index) => (
+                  <StarIcon
+                    key={index}
+                    className={index < roundedRating ? "active" : ""}
+                  />
+                ))}
+              </Stars>
+
+              <RatingNumber>{averageRating}</RatingNumber>
               <RatingDivider />
               <RatingCount type="button" onClick={handleReviewsClick}>
                 {ratingCount === 1
-                  ? t(
-                      "customer_reviews.customer_review",
-                      "Customer Review"
-                    )
-                  : t(
-                      "customer_reviews.customer_reviews",
-                      "Customer Reviews"
-                    )}{" "}
-                ({ratingCount})
+                  ? t("customer_reviews.customer_review", "Customer Review")
+                  : t("customer_reviews.customer_reviews", "Customer Reviews")} ({ratingCount})
               </RatingCount>
             </>
           )}
-          <RatingCount>{productData.isHero ? ` ${t("common.orders")} (850)`:""}</RatingCount>
+
+          {productData?.isHero && (
+            <RatingCount as="span">
+              {t("common.orders")} (850)
+            </RatingCount>
+          )}
         </RatingRow>
       
       </ProductHeader>
@@ -387,15 +381,15 @@ function ProductInfo({
             <CurrencyPrice price={sellingPrice} />
           </ProductPrice>
 
-          {comparePrice && (
+          {comparePrice > sellingPrice && sellingPrice > 0 && (
             <ComparePrice>
               <CurrencyPrice price={comparePrice} />
             </ComparePrice>
           )}
 
-          {comparePrice > 0 && (
+          {savePercentage !== null && (
             <SaveBadge dir={i18n.language === "ar" ? "rtl" : "ltr"}>
-              {t("productInfo.save")}{" "}
+              {t("productInfo.save")} {" "}
               <bdi style={{ margin: "0 2px" }}>{savePercentage}%</bdi>
             </SaveBadge>
           )}
@@ -620,7 +614,7 @@ const Stars = styled.div`
   }
 
   svg.active {
-    color: #b59771;
+    color: #d1a367;
   }
 
   @media (max-width: 600px) {
@@ -655,11 +649,15 @@ const RatingDivider = styled.span`
 `;
 
 const RatingCount = styled.button`
+  padding: 0;
+  border: 0;
+  font-family: inherit;
   font-size: 0.72rem;
-  background:none;
+  background: none;
   line-height: 1.4;
-
+  text-align: start;
   color: #817c75;
+  cursor: ${({ as }) => (as === "span" ? "default" : "pointer")};
 
   @media (max-width: 600px) {
     font-size: 0.7rem;
@@ -724,7 +722,7 @@ const SaveBadge = styled.span`
   overflow: hidden;
   padding: 4px 8px;
 
-  background: #9b815f;
+  background: #b8905d;
   color: #ffffff;
 
   font-size: 0.63rem;

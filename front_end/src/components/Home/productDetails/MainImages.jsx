@@ -71,8 +71,7 @@ function MainImages(props) {
     currentSku?.skuImage ||
     Object.values(currentSku?.attributes || {})
       .map((attribute) => attribute?.sku_image || attribute?.image)
-      .find(Boolean) ||
-    "";
+      .find(Boolean) || "";
 
   // Use the selected SKU's image without relying on colorKey.
   const showSelectedSkuImage = Boolean(isColorActive && selectedSkuImage);
@@ -102,8 +101,6 @@ function MainImages(props) {
   const openFullscreen = () => {
 
     if (!activeImage) return;
-
-
 
     setIsFullscreen(true);
 
@@ -550,6 +547,7 @@ function MainImages(props) {
                 BOTTOM RIGHT VIEW BUTTON
 
             ================================================= */}
+              
 
 
 
@@ -562,16 +560,16 @@ function MainImages(props) {
               aria-label="View image fullscreen"
 
             >
-
-              <FullscreenIcon />
-
-
-
               <ViewText>
 
                 {t("common.view")}
 
               </ViewText>
+
+<FullscreenIcon />
+
+
+              
 
             </FullscreenButton>
 
@@ -1164,35 +1162,29 @@ const ProgressBar = styled.span`
 
 const FullscreenButton = styled.button`
   position: absolute;
-
   left: 15px;
-
   bottom: 15px;
-
-  z-index: 1;
+  z-index: 10;
 
   display: flex;
-
   align-items: center;
-
+  justify-content: center;
   gap: 8px;
 
-  height: 34px;
+  min-height: 44px;
+  padding: 0 12px;
 
-  padding: 0 11px;
-
-  border: 1px solid rgba(26, 25, 23, 0.12);
-
-    background: rgba(232, 241, 241, 0.13);
-
+  border: 1px solid rgba(26, 25, 23, 0.15);
+  background: rgba(247, 245, 240, 0.9);
 
   backdrop-filter: blur(10px);
-
   -webkit-backdrop-filter: blur(10px);
 
   color: #1a1917;
-
   cursor: pointer;
+
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   transition:
     background 0.25s ease,
@@ -1201,27 +1193,35 @@ const FullscreenButton = styled.button`
 
   svg {
     font-size: 17px;
+    flex-shrink: 0;
   }
 
   &:hover {
     background: #aa8f5a;
     color: #ffffff;
-  
+  }
 
-    transform: translateY(-1px);
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #aa8f5a;
+    outline-offset: 3px;
   }
 
   @media (max-width: 768px) {
-\
-
-    height: 20px;
-
-    padding: 0 4px;
-
+    min-height: 44px;
+    padding: 0 12px;
     gap: 6px;
+  }
+
+  @media (max-width: 500px) {
+    min-width: 44px;
+    padding: 0 10px;
 
     svg {
-      font-size: 16px;
+      font-size: 19px;
     }
   }
 `;
