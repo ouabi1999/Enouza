@@ -17,7 +17,7 @@ import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
-import { trackAddToCart,  trackBeginCheckout } from "../utilis/analytics"
+import { trackAddToCart,  trackBeginCheckout, trackViewItem } from "../utilis/analytics"
 function ProductDetailsPage({footerRef}) {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -99,20 +99,9 @@ function ProductDetailsPage({footerRef}) {
 
 
 
-    if (typeof window.gtag !== "function") return;
 
-    window.gtag("event", "view_item", {
-      currency: selectedCurrency,
-      value: price,
-      items: [
-        {
-          item_id: productData?.product_id || productData.id,
-          item_name: productData?.name?.en || "Luxury Lamp",
-          price: price,
-          quantity: 1,
-        },
-      ],
-    });
+    
+
 
     viewedProductRef.current = productData.id;
   }, [productData]);
@@ -137,6 +126,14 @@ useEffect(() => {
       left: 0,
       behavior: "auto",
     });
+
+       trackViewItem({
+    productId:  productData?.id,
+    name: productData?.name?.en || "luxuy lamp",
+    price,
+    currency: selectedCurrency,
+    category: productData?.category,
+  });
   }, [slug]);
 
 
@@ -264,7 +261,7 @@ useEffect(() => {
     // GA4 — Add to Cart
 
 trackAddToCart({
-  productId: productData?.id || productId,
+  productId: productId,
   name: productData?.name?.en ||  "Luxury Lamp",
   price,
   quantity,

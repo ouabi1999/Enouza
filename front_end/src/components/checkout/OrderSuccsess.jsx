@@ -6,6 +6,8 @@ import SEO from "../SEO/SEO";
 
 const OrderSuccess = () => {
   const { t } = useTranslation();
+
+  
   return (
     <SuccessContainer>
       <SEO title="Order Confirmation" />

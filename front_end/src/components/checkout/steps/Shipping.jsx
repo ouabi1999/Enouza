@@ -15,6 +15,7 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import { FormContext } from "../../../pages/CheckoutPage";
 import { OrderContext } from "../../../App";
 import CurrencyPrice from "../../../../common/CurrencyPrice";
+import { trackAddShippingInfo } from "../../../utilis/analytics"
 
 
 /* =====================================================
@@ -169,38 +170,30 @@ const Shipping = forwardRef(({ t }, ref) => {
      VALIDATE + NEXT STEP
   ===================================================== */
 
-  const submitShipping = () => {
-
+const submitShipping = () => {
   if (!formData?.shippingMethod) {
     setInputRequired(true);
     return false;
   }
 
-  const shippingPrice = Number(
-    formData.shippingPrice || 0
-  );
+  const shippingPrice = Number(formData.shippingPrice || 0);
 
   const totalPrice = Math.round(
-    (
-      Number(total) +
-      shippingPrice
-    ) * 100
+    (Number(total) + shippingPrice) * 100
   );
 
-  // GA4 — Shipping Information
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "add_shipping_info", {
-      currency: selectedCurrency,
-      value: totalPrice / 100,
-      shipping: shippingPrice,
-      items: formData.cartItems?.map((item) => ({
-        item_id: item?.selectedSku?.sku_attr || item?.id,
-        item_name: item?.name?.en || "Luxury Lamp",
-        price: Number(item?.price || 0),
-        quantity: Number(item?.quantity || 1),
-      })),
-    });
-  }
+  // Centralized GA4 shipping information tracking
+  trackAddShippingInfo({
+    currency: selectedCurrency,
+    value: totalPrice / 100,
+    shipping: shippingPrice,
+    items: (formData.cartItems || []).map((item) => ({
+      productId: item?.selectedSku?.sku_attr || item?.product_id || item?.id,
+      name: item?.name?.en || "Luxury Lamp",
+      price: Number(item?.price || 0),
+      quantity: Number(item?.quantity || 1),
+    })),
+  });
 
   setFormData((prev) => ({
     ...prev,
@@ -211,7 +204,6 @@ const Shipping = forwardRef(({ t }, ref) => {
 
   return true;
 };
-
 
   /* =====================================================
      EXPOSE FUNCTION TO STEPS COMPONENT

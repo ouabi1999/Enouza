@@ -52,7 +52,16 @@ function SlideOutShoppingCart({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+ useEffect(() => {
+    if (typeof window.gtag !== "function") return;
 
+    window.gtag("event", "view_cart", {
+      currency: "USD",
+      value,
+      items,
+    });
+ }, [])
+ 
   return (
     <Overlay>
 

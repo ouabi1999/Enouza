@@ -28,8 +28,6 @@ function ShoppingCart() {
   useEffect(() => {
     if (!cartItems?.length) return;
 
-    if (typeof window.gtag !== "function") return;
-
     const items = cartItems.map((item) => ({
       item_id: item?.selectedSku?.sku_attr || item?.id,
       item_name:
@@ -44,17 +42,20 @@ function ShoppingCart() {
       0
     );
 
-    window.gtag("event", "view_cart", {
-      currency: "USD",
-      value,
-      items,
-    });
+    
   }, [cartItems]);
 
   useLayoutEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
+    });
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", "view_cart", {
+      currency: "USD",
+      value,
+      items,
     });
   }, []);
 
