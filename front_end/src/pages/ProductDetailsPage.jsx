@@ -17,7 +17,7 @@ import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
-import { trackAddToCart } from "../utilis/analytics"
+import { trackAddToCart,  trackBeginCheckout } from "../utilis/analytics"
 function ProductDetailsPage({footerRef}) {
   const navigate = useNavigate();
   const { slug } = useParams();

@@ -23,7 +23,7 @@ import CurrencyPrice from "../../../common/CurrencyPrice";
 import ProductSubtotalSlideOut from "./ProductSubtotalSlideOut";
 
 
-function SlideOutShoppingCart({ isOpen , onClose }) {
+function SlideOutShoppingCart({ isOpen, onClose }) {
   const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation();
@@ -105,10 +105,17 @@ function SlideOutShoppingCart({ isOpen , onClose }) {
                       item?.name?.en ||
                       "";
 
+                    const attributes = item?.selectedSku?.attributes || {};
+
                     const image =
-                      item?.selectedSku?.attributes?.[
-                        item?.selectedSku?.colorKey
-                      ]?.image;
+                      Object.values(attributes).find(
+                        (attribute) => attribute?.image || attribute?.sku_image
+                      )?.image ||
+                      Object.values(attributes).find(
+                        (attribute) => attribute?.sku_image
+                      )?.sku_image ||
+                      "";
+
 
 
                     return (
