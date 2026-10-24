@@ -17,7 +17,7 @@ import NewArrival from "../components/newArrival/NewArrival";
 import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
-
+import { trackAddToCart } from "../utilis/analytics"
 function ProductDetailsPage({footerRef}) {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -262,20 +262,14 @@ useEffect(() => {
       selectedSku.sellingPrice
     );
     // GA4 — Add to Cart
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "add_to_cart", {
-        currency: selectedCurrency,
-        value: price * quantity,
-        items: [
-          {
-            item_id: productData?.product_id || productId,
-            item_name: productData?.name?.en || name,
-            price: price,
-            quantity: quantity,
-          },
-        ],
-      });
-    }
+
+trackAddToCart({
+  productId: productData?.id || productId,
+  name: productData?.name?.en ||  "Luxury Lamp",
+  price,
+  quantity,
+  currency: selectedCurrency,
+});
 
     dispatch(
       addToCart({
@@ -288,6 +282,8 @@ useEffect(() => {
         subtotal: price * quantity,
       })
     );
+          console.log(cartItems)
+
   };
 
   /* =========================
@@ -305,18 +301,14 @@ useEffect(() => {
     const price = Number(
       selectedSku.sellingPrice
     );
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "begin_checkout", {
-        currency: selectedCurrency,
-        value: price * quantity,
-        items:[{
-          item_id: productId || item?.id,
-          item_name: name?.en || "Luxury Lamp",
-          price: price || 0,
-          quantity: quantity || 1,
-      }],
-      });
-    }
+    
+   trackBeginCheckout({
+  productId: productId,
+  name: name?.en || "Luxury Lamp",
+  price,
+  quantity,
+  currency: selectedCurrency,
+});
     dispatch(
       buyNowItem({
         id: productId,
