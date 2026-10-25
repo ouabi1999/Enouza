@@ -255,13 +255,14 @@ const handlePageChange = (page) => {
 
       {!loading && totalReviews > 0 && totalPages > 1 && (
         <Pagination aria-label={translate("pagination", "Review pages")}>
+          <bdi>
           <PaginationInfo>
-           
-            <PaginationCount>
-              {totalReviews} {translate("reviews", "reviews")}
-            </PaginationCount>
+            {t("common.page", "Page")} {" "}
+            <strong>{currentPage}</strong> {" "}
+            {t("common.of", "of")} {" "}
+            <strong>{totalPages}</strong>
           </PaginationInfo>
-
+</bdi>
           <PaginationControls>
             <PaginationButton
               type="button"
