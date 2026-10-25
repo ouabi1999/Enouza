@@ -93,22 +93,31 @@ export const AliExpressRating= ({ product }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await ApiInstance.post('ratings/', {
-        ...formData,
-      });
-      
-      toast.success('Rating submitted successfully!');
-      setFormData({
-        stars: 0,
-        review: { text: '', images: [] },
-        user: { firstName: '', lastName:"",  avatar: '', country: '', countryCode: '' }
-      });
-    } catch (error) {
-      toast.error('Failed to submit rating');
-    }
-  };
+  e.preventDefault();
+
+  try {
+    await ApiInstance.post('ratings/', formData);
+
+    toast.success('Rating submitted successfully!');
+
+    setFormData({
+      stars: 1,
+      product: product?.id,
+      review: { text: '', images: [] },
+      user: {
+        firstName: '',
+        lastName: '',
+        avatar: '',
+        country: '',
+        countryCode: '',
+      },
+    });
+
+    setImageUrl('');
+  } catch (error) {
+    toast.error('Failed to submit rating');
+  }
+};
 
   return (
     <FormContainer>
