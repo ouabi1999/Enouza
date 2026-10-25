@@ -11,14 +11,13 @@ function Ratings({
   oneStar = 0,
   sum_stars = 0,
   ratings = [],
+  productData = []
 }) {
   const { t, i18n } = useTranslation();
 
-  const totalReviews = Array.isArray(ratings) ? ratings.length : 0;
-  const average =
-    totalReviews > 0
-      ? (Number(sum_stars || 0) / totalReviews).toFixed(1)
-      : "0.0";
+  const totalReviews =  productData?.ratings_count 
+  const average = Number(productData?.average_rating).toFixed(1) || 0 
+
 
   const rows = [
     { value: 5, count: Number(fiveStars) || 0 },

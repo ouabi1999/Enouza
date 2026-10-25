@@ -279,7 +279,7 @@ function ProductInfo({
   const stars = Array(5).fill(0);
   const ratingCount = productData?.ratings_count;
 
-  const averageRating = productData?.average_rating || 0 
+  const averageRating = Number(productData?.average_rating).toFixed(1) || 0 
 
 
   const sellingPrice =
