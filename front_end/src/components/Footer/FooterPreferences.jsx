@@ -79,10 +79,12 @@ function FooterPreferences() {
 
   const COUNTRY_CURRENCY_MAP = {
     US: "USD",
+    CA: "CAD", // Canada 🇨🇦
     ES: "EUR",
     GB: "GBP",
     AE: "AED",
     SA: "SAR",
+    MA: "MAD",
   };
 
   // ==========================================================
@@ -362,6 +364,10 @@ function FooterPreferences() {
                       USD — US Dollar
                     </option>
 
+                    <option value="CAD">
+                      CAD — Canadian Dollar
+                    </option>
+
                     <option value="EUR">
                       EUR — Euro
                     </option>
@@ -377,6 +383,7 @@ function FooterPreferences() {
                     <option value="SAR">
                       SAR — Saudi Riyal
                     </option>
+
                   </select>
                 </SelectWrapper>
               </Field>

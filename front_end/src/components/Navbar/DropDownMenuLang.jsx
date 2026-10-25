@@ -63,6 +63,7 @@ function DropDownMenuLang(props) {
 
   const COUNTRY_CURRENCY_MAP = {
     US: "USD",
+    CA: "CAD", // Canada 🇨🇦
     ES: "EUR",
     GB: "GBP",
     AE: "AED",
@@ -468,13 +469,13 @@ function DropDownMenuLang(props) {
 
       {props.isLangMenuOpen && (
         <ClickAwayListener
-  mouseEvent="onClick"
-  touchEvent="onTouchEnd"
-  onClickAway={() => {
-    props.setIsLangMenuOpen(false);
-  }}
->
-          <Dropdown  dir="ltr">
+          mouseEvent="onClick"
+          touchEvent="onTouchEnd"
+          onClickAway={() => {
+            props.setIsLangMenuOpen(false);
+          }}
+        >
+          <Dropdown dir="ltr">
             {/* HEADER */}
 
             <DropdownHeader>
@@ -580,6 +581,10 @@ function DropDownMenuLang(props) {
                       USD — US Dollar
                     </option>
 
+                    <option value="CAD">
+                      CAD — Canadian Dollar
+                    </option>
+
                     <option value="EUR">
                       EUR — Euro
                     </option>
@@ -596,9 +601,10 @@ function DropDownMenuLang(props) {
                       SAR — Saudi Riyal
                     </option>
 
-                    <option value="MAD">
-                      MAD — Moroccan Dirham
-                    </option>
+                   
+
+
+
                   </select>
 
                   <SelectArrow>
