@@ -10,8 +10,8 @@ import styled from "styled-components";
 // Update this date when launching a new promotion.
 // Deadline: October 31, 2026, at 23:59:59 in Spain (CET).
 const OFFER_DEADLINE = new Date(
-  "2026-10-31T23:59:59+01:00"
-).getTime();
+  "2026-10-28T23:59:59+01:00"
+).getTime();;
 
 const Countdown = ({ title = "specialOffer" }) => {
   const [timeLeft, setTimeLeft] = useState(null);
