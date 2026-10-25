@@ -41,7 +41,6 @@ function ProductInfo({
     ? productData.skuInfo
     : [];
 
-  const [searchParams] = useSearchParams();
   const skuIndexParam = 1;
   const initialSkuIndex =
     skuIndexParam !== null ? Number(skuIndexParam) : null;
@@ -282,9 +281,6 @@ function ProductInfo({
 
   const averageRating = productData?.average_rating || 0 
 
-  const roundedRating = averageRating === null
-    ? 0
-    : Math.round(Number(averageRating));
 
   const sellingPrice =
     Number(currentSku?.sellingPrice) > 0
@@ -338,7 +334,7 @@ function ProductInfo({
                 {stars.map((_, index) => (
                   <StarIcon
                     key={index}
-                    className={index < roundedRating ? "active" : ""}
+                    className={index < averageRating? "active" : ""}
                   />
                 ))}
               </Stars>
