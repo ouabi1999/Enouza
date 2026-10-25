@@ -6,11 +6,12 @@ export const getProductDetails = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await ApiInstance.get(`/product/${id}`);
-
+       console.log(response.data)
       return {
         data: response.data,
         notFound: false,
       };
+      
     } catch (error) {
       console.log("PRODUCT REQUEST ERROR:", error);
       console.log("HTTP STATUS:", error.response?.status);

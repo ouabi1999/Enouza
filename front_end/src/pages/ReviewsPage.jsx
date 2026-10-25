@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 
 import ApiInstance from "../../common/baseUrl";
@@ -9,7 +9,6 @@ import ReviewImagePopup from "../components/Home/aboutProduct/reviews/ReviewImag
 import { optimizeCloudinaryImage } from "../utilis/cloudinary";
 const ReviewsPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [reviews, setReviews] = useState([]);
@@ -98,9 +97,10 @@ const ReviewsPage = () => {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: "auto",
+        behavior: "smooth",
       });
     }, [currentPage]);
+    
 
   /* =========================================================
      PAGE CHANGE

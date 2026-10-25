@@ -11,7 +11,6 @@ function Feedback(props) {
 
     
     const [hoverValue, setHoverValue] = useState(null)
-    const user = useSelector(state => state.auth.user)
 
 
     const {handelRatingSubmit , setComment, required , set_star_rating, isLoading, star_rating , comment, t} = props;

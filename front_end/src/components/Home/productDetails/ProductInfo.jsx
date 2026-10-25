@@ -13,8 +13,7 @@ import Countdown from "../../../../common/CountDown";
 
 function ProductInfo({
   productData,
-  ratings,
-  sum_stars,
+  
   selectedAttributes,
   setSelectedAttributes,
   setAvailableAttributes,
@@ -279,13 +278,9 @@ function ProductInfo({
     "Product";
 
   const stars = Array(5).fill(0);
-  const ratingList = Array.isArray(ratings) ? ratings : [];
-  const ratingCount = ratingList.length;
+  const ratingCount = productData?.ratings_count;
 
-  const averageRating =
-    ratingCount > 0
-      ? (Number(sum_stars || 0) / ratingCount).toFixed(1)
-      : null;
+  const averageRating = productData?.average_rating || 0 
 
   const roundedRating = averageRating === null
     ? 0
@@ -325,6 +320,7 @@ function ProductInfo({
     });
   };
 
+ 
   return (
     <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
       <ProductHeader>

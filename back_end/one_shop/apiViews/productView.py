@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.db.models import Avg, Count, Value
 from django.db.models.functions import Coalesce
 from django.utils.text import slugify
+from rest_framework.pagination import PageNumberPagination
 
 from ..serializer import (
     ProductSerializer,
@@ -153,8 +154,16 @@ class ProductDetailsView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, pk=None):
-        product = get_object_or_404(Products, slug=pk)
+        product = get_object_or_404(
+            Products.objects.annotate(
+                average_rating=Avg("user_ratings__stars"),
+                ratings_count=Count("user_ratings")
+            ),
+            slug=pk
+        )
+
         serializer = ProductDetailsSerializer(product)
+
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk=None):
@@ -283,6 +292,33 @@ class OrderCreateView(APIView):
         return Response(serializer.data)
 
 
+
+
+class ProductRatingsView(APIView):
+
+    def get(self, request):
+        product_id = request.query_params.get("product_id")
+
+        if not product_id:
+            return Response(
+                {"error": "product_id is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        ratings = Rating.objects.filter(
+            product_id=product_id
+        ).order_by("-created_at", "-id")
+
+        paginator = PageNumberPagination()
+        paginator.page_size = 12
+        paginator.page_size_query_param = "page_size"
+        paginator.max_page_size = 100
+
+        page = paginator.paginate_queryset(ratings, request)
+
+        serializer = RatingSerializer(page, many=True)
+
+        return paginator.get_paginated_response(serializer.data)
 
 
 class RatingView(APIView):
