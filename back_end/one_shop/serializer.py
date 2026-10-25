@@ -230,6 +230,11 @@ class ProductDetailsSerializer(serializers.ModelSerializer):
     read_only_fields = ["id", "release_date"]
     average_rating = serializers.FloatField(read_only=True, allow_null=True)
     ratings_count = serializers.IntegerField(read_only=True)
+    five_star_count = serializers.IntegerField(read_only=True)
+    four_star_count = serializers.IntegerField(read_only=True)
+    three_star_count = serializers.IntegerField(read_only=True)
+    two_star_count = serializers.IntegerField(read_only=True)
+    one_star_count = serializers.IntegerField(read_only=True)
    
 
     class Meta:

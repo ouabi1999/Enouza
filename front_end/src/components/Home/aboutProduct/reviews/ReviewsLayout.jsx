@@ -6,7 +6,6 @@ import ApiInstance from '../../../../../common/baseUrl'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import Ratings from './Ratings'
-import { useSearchParams } from "react-router-dom";
 
 function ReviewsLayout() {
   const productData = useSelector(state => state.product.productData)
@@ -30,25 +29,13 @@ function ReviewsLayout() {
   const [star_rating, set_star_rating] = useState(1);
   const [ratings, setRatings] = useState([])
 
-  const fiveStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 5).reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
-  const twoStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 2).reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
-  const fourStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 4).reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
-  const threeStars = ratings?.length > 0 ? ratings?.filter(item => item.stars === 3).reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
-  const oneStar = ratings?.length > 0 ? ratings?.filter(item => item.stars === 1).reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
+const fiveStars = productData?.five_star_count ?? 0;
+const fourStars = productData?.four_star_count ?? 0;
+const threeStars = productData?.three_star_count ?? 0;
+const twoStars = productData?.two_star_count ?? 0;
+const oneStar = productData?.one_star_count ?? 0;
 
-  let sum_stars = ratings?.length > 0 ? ratings?.reduce((total, value) => {
-    return total += value.stars
-  }, 0) : ""
+let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
 
 
   const handelRatingSubmit = (event) => {

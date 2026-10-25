@@ -10,7 +10,6 @@ function Ratings({
   twoStars = 0,
   oneStar = 0,
   sum_stars = 0,
-  ratings = [],
   productData = []
 }) {
   const { t, i18n } = useTranslation();

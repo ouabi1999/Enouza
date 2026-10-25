@@ -150,6 +150,13 @@ class ProductView(APIView):
         )
 
 
+from django.db.models import Avg, Count, Q
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
 class ProductDetailsView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
@@ -157,9 +164,14 @@ class ProductDetailsView(APIView):
         product = get_object_or_404(
             Products.objects.annotate(
                 average_rating=Avg("user_ratings__stars"),
-                ratings_count=Count("user_ratings")
+                ratings_count=Count("user_ratings"),
+                five_star_count=Count("user_ratings", filter=Q(user_ratings__stars=5)),
+                four_star_count=Count("user_ratings", filter=Q(user_ratings__stars=4)),
+                three_star_count=Count("user_ratings", filter=Q(user_ratings__stars=3)),
+                two_star_count=Count("user_ratings", filter=Q(user_ratings__stars=2)),
+                one_star_count=Count("user_ratings", filter=Q(user_ratings__stars=1)),
             ),
-            slug=pk
+            slug=pk,
         )
 
         serializer = ProductDetailsSerializer(product)
@@ -292,8 +304,6 @@ class OrderCreateView(APIView):
         return Response(serializer.data)
 
 
-
-
 class ProductRatingsView(APIView):
 
     def get(self, request):
@@ -301,13 +311,12 @@ class ProductRatingsView(APIView):
 
         if not product_id:
             return Response(
-                {"error": "product_id is required"},
-                status=status.HTTP_400_BAD_REQUEST
+                {"error": "product_id is required"}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        ratings = Rating.objects.filter(
-            product_id=product_id
-        ).order_by("-created_at", "-id")
+        ratings = Rating.objects.filter(product_id=product_id).order_by(
+            "-created_at", "-id"
+        )
 
         paginator = PageNumberPagination()
         paginator.page_size = 12
@@ -329,7 +338,7 @@ class RatingView(APIView):
         except (ValueError, TypeError):
             return Response(
                 {"error": "Invalid pagination parameters."},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         ratings = Rating.objects.all().order_by("-id")
@@ -339,16 +348,19 @@ class RatingView(APIView):
 
         serializer = RatingSerializer(page.object_list, many=True)
 
-        return Response({
-            "count": paginator.count,
-            "total_pages": paginator.num_pages,
-            "current_page": page.number,
-            "page_size": per_page,
-            "next": page.next_page_number() if page.has_next() else None,
-            "previous": page.previous_page_number() if page.has_previous() else None,
-            "results": serializer.data,
-        })
-
+        return Response(
+            {
+                "count": paginator.count,
+                "total_pages": paginator.num_pages,
+                "current_page": page.number,
+                "page_size": per_page,
+                "next": page.next_page_number() if page.has_next() else None,
+                "previous": (
+                    page.previous_page_number() if page.has_previous() else None
+                ),
+                "results": serializer.data,
+            }
+        )
 
     def post(self, request):
         data = request.data.copy()
