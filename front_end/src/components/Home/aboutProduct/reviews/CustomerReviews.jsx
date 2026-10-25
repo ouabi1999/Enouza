@@ -256,10 +256,7 @@ const handlePageChange = (page) => {
       {!loading && totalReviews > 0 && totalPages > 1 && (
         <Pagination aria-label={translate("pagination", "Review pages")}>
           <PaginationInfo>
-            {translate("showing_page", "Page")} {" "}
-            <strong>{currentPage}</strong> {" "}
-            {translate("of", "of")} {" "}
-            <strong>{totalPages}</strong>
+           
             <PaginationCount>
               {totalReviews} {translate("reviews", "reviews")}
             </PaginationCount>
@@ -272,8 +269,8 @@ const handlePageChange = (page) => {
               onClick={() => handlePageChange(currentPage - 1)}
               aria-label={translate("previous_page", "Previous page")}
             >
-              <span aria-hidden="true">{i18n?.language === "ar" ? "→" : "←"}</span>
-              <span>{translate("previous", "Previous")}</span>
+              <span aria-hidden="true">{i18n?.language[0] === "ar" ? "→" : "←"}</span>
+              <span>{t("common.previous", "Previous")}</span>
             </PaginationButton>
 
             <PageNumber aria-current="page">{currentPage}</PageNumber>
@@ -282,10 +279,10 @@ const handlePageChange = (page) => {
               type="button"
               disabled={currentPage >= totalPages || loading}
               onClick={() => handlePageChange(currentPage + 1)}
-              aria-label={translate("next_page", "Next page")}
+              aria-label={t("next_page", "Next page")}
             >
-              <span>{translate("next", "Next")}</span>
-              <span aria-hidden="true">{i18n?.language === "ar" ? "←" : "→"}</span>
+              <span>{t("common.next", "Next")}</span>
+              <span aria-hidden="true">{i18n?.language[0] === "ar" ? "←" : "→"}</span>
             </PaginationButton>
           </PaginationControls>
         </Pagination>
