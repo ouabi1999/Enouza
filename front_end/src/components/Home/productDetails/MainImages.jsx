@@ -80,8 +80,8 @@ function MainImages(props) {
   const activeImage = showSelectedSkuImage
     ? selectedSkuImage
     : isPicsDetailsActive
-      ? images[0]
-      : images[picsDetailsIndex];
+      ? images[picsDetailsIndex]
+      : images[0];
 
   const currentIndex = showSelectedSkuImage
     ? 0

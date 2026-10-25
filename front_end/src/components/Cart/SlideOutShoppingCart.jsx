@@ -21,6 +21,7 @@ import EmptyCart from "./EmptyCart";
 import CurrencyPrice from "../../../common/CurrencyPrice";
 
 import ProductSubtotalSlideOut from "./ProductSubtotalSlideOut";
+import { trackViewCart } from "../../utilis/analytics";
 
 
 function SlideOutShoppingCart({ isOpen, onClose }) {
@@ -31,8 +32,24 @@ function SlideOutShoppingCart({ isOpen, onClose }) {
   const cartItems = useSelector(
     (state) => state.cart.cartItems
   );
+  const selectedCurrency = useSelector(state => state.currency.selectedCurrency)
 
+useEffect(() => {
+  if (!cartItems?.length) return;
 
+  trackViewCart({
+    currency: selectedCurrency,
+    items: cartItems.map((item) => ({
+      productId:
+        item?.selectedSku?.sku_attr ||
+        item?.product_id ||
+        item?.id,
+      name: item?.name?.en || "Luxury Lamp",
+      price: Number(item?.price || 0),
+      quantity: Number(item?.quantity || 1),
+    })),
+  });
+}, [cartItems, selectedCurrency]);
   useEffect(() => {
     if (!isOpen) return;
 
@@ -52,15 +69,7 @@ function SlideOutShoppingCart({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
- useEffect(() => {
-    if (typeof window.gtag !== "function") return;
 
-    window.gtag("event", "view_cart", {
-      currency: "USD",
-      value,
-      items,
-    });
- }, [])
  
   return (
     <Overlay>

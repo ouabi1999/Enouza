@@ -43,7 +43,7 @@ function ProductInfo({
     : [];
 
   const [searchParams] = useSearchParams();
-  const skuIndexParam = searchParams.get("index");
+  const skuIndexParam = 1;
   const initialSkuIndex =
     skuIndexParam !== null ? Number(skuIndexParam) : null;
 

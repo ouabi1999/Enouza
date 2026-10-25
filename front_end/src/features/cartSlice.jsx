@@ -57,11 +57,10 @@ export const cart_Slice = createSlice({
       const cartItems = JSON.parse(window.localStorage.getItem("cartItems"));
       cartItems.map((item, index) => {
         if (index === action.payload) {
-          if (item.quantity < 5) {
             item.quantity += 1
             item.subtotal += item.price
             item.price = item.price
-          }
+          
         }
         state.cartItems = cartItems
         window.localStorage.setItem("cartItems", JSON.stringify(cartItems))
