@@ -13,7 +13,7 @@ const CollectionSection = () => {
   const collections = [
     {
       key: "pendant_lights",
-      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1792184091/siyumffca8thxnwaqbkj.jpg",
+      image: "https://sc04.alicdn.com/kf/Hb7b209b8ca4d4a58afb4a71b3176b56ep.jpg",
       link: "/collections?category=pendant_lights",
     },
     {
