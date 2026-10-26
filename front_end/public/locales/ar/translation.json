@@ -1,6 +1,7 @@
 {
   "header": {},
-   "countdownSection": {
+
+  "countdownSection": {
     "specialOffer": "عرض خاص",
     "offerEndsIn": "ينتهي العرض خلال",
     "days": "أيام",
@@ -9,15 +10,16 @@
     "seconds": "ثوانٍ",
     "offerExpired": "انتهى العرض",
     "limitedTimeOffer": "عرض لفترة محدودة",
-    "description": "استفد من هذا العرض الحصري قبل انتهائه.",
+    "description": "استمتع بهذا العرض الحصري قبل انتهاء الوقت.",
     "shopNow": "تسوق الآن",
     "ariaLabel": "الوقت المتبقي لهذا العرض الخاص"
   },
+
   "menu": {
     "login": "تسجيل الدخول",
-    "searchPlaceholder": "ابحث...",
+    "searchPlaceholder": "بحث...",
     "cart": "السلة",
-    "wishlist": "المفضلة",
+    "wishlist": "قائمة الرغبات",
     "profile": "الملف الشخصي",
     "logout": "تسجيل الخروج",
     "dashboard": "لوحة التحكم",
@@ -28,108 +30,105 @@
     "aboutUs": "من نحن",
     "privacyPolicy": "الخصوصية",
     "termsOfService": "الشروط",
-    "refundPolicy": "سياسة الاسترجاع",
+    "refundPolicy": "الاسترداد",
     "shippingPolicy": "الشحن",
     "helpCenter": "المساعدة",
     "myOrders": "طلباتي",
-    "notifications": "الإشعارات",
+    "notifications": "التنبيهات",
     "shoppingCart": "السلة",
     "checkout": "إتمام الشراء",
-    "orderSuccess": "تم الطلب"
+    "orderSuccess": "تم تقديم الطلب"
   },
+
   "shoppingCart": {
-  "freeExpressTo": "شحن سريع مجاني إلى"
-},
+    "freeExpressTo": "شحن سريع مجاني إلى"
+  },
+
   "homePage": {
-    "homeInsperation": "مساحات ملهمة",
-    "new":"جديد",
+    "homeInsperation": "مساحات تُلهم",
+    "new": "جديد",
+    "welcomeMessage": "مرحبًا بكم في متجرنا",
+    "featuredProducts": "مميزة",
     "mayAlsoLike": "قد يعجبك أيضًا",
     "newArrival": "وصل حديثًا",
-    "welcomeMessage": "مرحباً بك في متجرنا",
-    "featuredProducts": "منتجات مميزة",
-    "newArrivals": "وصل حديثاً",
-    "bestSellers": "الأكثر مبيعاً",
-    "specialOffers": "عروض خاصة",
+    "bestSellers": "الأكثر مبيعًا",
+    "specialOffers": "عروض",
     "buyerTrustServices": "خدماتنا",
-    "freeShipping_offer": "شحن مجاني فوق 50$",
-    "support_24_7": "دعم 24/7",
-    "money_Back": "ضمان استرجاع المال",
+    "freeShipping_offer": "شحن مجاني للطلبات فوق 50$",
+    "support_24_7": "مساعدة 24/7",
+    "money_Back": "استرداد الأموال",
     "secure_Payment": "دفع آمن",
     "easy_Returns": "إرجاع سهل",
-    "safe_reliable_payments": "دفع موثوق",
-    "More_to_love":"المزيد مما تحب",
-    "more_products":"المزيد من المنتجات",
-    "best_sellers":"الأكثر مبيعاً"
+    "safe_reliable_payments": "مدفوعات آمنة",
+    "More_to_love": "المزيد لتحبه",
+    "more_products": "المزيد من المنتجات",
+    "best_sellers": "الأكثر مبيعًا"
   },
-  "mainSlider":{
-    "title": "إضاءة مختارة برؤية مختلفة.",
-    "description": "مجموعة مختارة بعناية من قطع الإضاءة النحتية، صُممت لتحوّل أجواء كل مساحة.",
-    "welcome": "مرحبًا بكم في ENOUZA."
+  "mainSlider": {
+    "title": "إضاءة، منتقاة بشكل مختلف.",
+    "description": "مجموعة مدروسة من الإضاءة النحتية، صُممت لتحويل أجواء كل مساحة.",
+    "welcome": "مرحبًا بكم في إينوزا."
   },
-
-
   "productPage": {
-    "addToCart": "أضف للسلة",
-    "buyNow": "اشتري الآن",
-    "productDescription": "الوصف",
+    "addToCart": "أضف إلى السلة",
+    "buyNow": "اشترِ الآن",
+    "productDescription": "التفاصيل",
     "customerReviews": "التقييمات",
-    "ratings": "الدرجات",
+    "ratings": "التقييمات",
     "specifications": "المواصفات",
-    "relatedProducts": "منتجات مشابهة",
-    "stockAvailability": "التوفر",
+    "relatedProducts": "قد يعجبك",
+    "stockAvailability": "المخزون",
     "quantity": "الكمية",
     "outOfStock": "غير متوفر",
     "inStock": "متوفر",
-     "soldOut": "نفد من المخزون"
+    "soldOut": "نفد"
   },
   "purchaseOptions": {
-      "business_days": "أيام العمل",
-
+    "business_days": "أيام العمل",
     "Ship_to": "الشحن إلى",
     "Language": "اللغة",
     "Currency": "العملة",
     "Help_Center": "المساعدة",
-    "Sell_on_OurPlatform": "بع معنا",
-    "Download_Our_App": "حمّل التطبيق",
+    "Sell_on_OurPlatform": "بِع معنا",
+    "Download_Our_App": "حمّل تطبيقنا",
     "Follow_Us": "تابعنا",
     "Contact_Us": "اتصل بنا",
     "free_Shipping": "شحن مجاني",
-    "available": "متوفرة الآن",
+    "available": "متوفر",
     "Delivrey": "التوصيل",
     "Quantity": "الكمية",
-    "max-order-warning": "الحد الأقصى للطلب هو 5",
-    "available_shipping_methods": "طرق الشحن المتاحة",
+    "max-order-warning": "تم الوصول إلى الحد الأقصى للطلب",
+    "available_shipping_methods": "طرق الشحن",
     "item_has_been_added": "تمت إضافة المنتج إلى السلة",
     "item_already_in_cart": "المنتج موجود بالفعل في السلة",
     "item_has_been_removed": "تمت إزالة المنتج من السلة",
     "days": "أيام",
     "Security_&_Privacy": {
-      "header": "الأمان والخصوصية",
-      "text": "لا نشارك بياناتك الشخصية مع أي طرف ثالث بدون موافقتك. نحن نحمي خصوصيتك ونبقي بياناتك الشخصية آمنة ومحمية."
+      "header": "الخصوصية",
+      "text": "نحن لا نشارك بياناتك الشخصية مع أي طرف ثالث دون موافقتك. نحن نحمي خصوصيتك ونحافظ على أمان بياناتك الشخصية."
     }
   },
-  
-  
+
   "heroSection": {
-    "title": "إضاءة صُممت لتنسجم.",
-    "description": "إضاءة مختارة بعناية تضفي العمق والدفء والطابع المميز على المساحات التي تنتمي إليها.",
-    "ctaLabel": "اكتشف المجموعة",
-    "detailDesign": "حيث تلتقي التفاصيل بالتصميم",
-     "curated": "منتقى",
-  "curated_description": "مختار بعناية لمساحات مدروسة التفاصيل.",
+    "title": "ضوء، صُنع لينتمي",
+    "description": "إضاءة منتقاة بعناية تمنح العمق والدفء والطابع للمساحات التي تسميها منزلك.",
+    "ctaLabel": "استكشف المجموعة",
+    "detailDesign": "حيث يلتقي التفصيل بالتصميم",
+    "curated": "منتقاة",
+    "curated_description": "منتقاة بعناية للمساحات المدروسة.",
 
-  "refined": "متقن",
-  "refined_description": "أشكال أنيقة صُقلت حتى جوهرها.",
+    "refined": "مُتقنة",
+    "refined_description": "أشكال أنيقة، متقنة إلى جوهرها.",
 
-  "atmospheric": "آسر",
-  "atmospheric_description": "إضاءة صُممت لتشكّل أجواء المكان.",
+    "atmospheric": "مُفعمة بالأجواء",
+    "atmospheric_description": "ضوء مصمم لتشكيل المزاج.",
 
-  "distinctive": "متفرّد",
-  "distinctive_description": "قطع تحمل طابعًا يتجاوز المألوف.",
+    "distinctive": "مميزة",
+    "distinctive_description": "قطع بطابع يتجاوز المألوف.",
     "stats": {
       "rated": {
         "value": "4.9★",
-        "label": "بتقييم عملائنا"
+        "label": "تقييم العملاء"
       },
       "satisfaction": {
         "value": "98%",
@@ -137,377 +136,278 @@
       },
       "reviews": {
         "value": "100+",
-        "label": "مراجعات موثقة"
+        "label": "تقييمات موثقة"
       }
     }
   },
 
-
- "matricsSection": {
-  "why_us": "تميّز ENOUZA",
-  "title": "كل قطعة، مختارة بعناية.",
-  "description": "نختار كل قطعة من ENOUZA بعناية لما تتميز به من تصميم وخامات وقدرتها على إضافة الدفء والطابع المميز إلى المساحات التي نعيش فيها."
-   },
-  
   "ctaSection": {
-    "eyebrow": "خدمة عملاء ENOUZA",
-    "titleLeft": "نحن هنا لمساعدتك.",
-    "description": "هل لديك سؤال حول أحد المنتجات أو طلبك أو التوصيل؟ فريق خدمة العملاء لدينا هنا لمساعدتك.",
-    "button": "تواصل معنا",
+    "eyebrow": "خدمة عملاء إينوزا",
+    "titleLeft": "نحن هنا للمساعدة.",
+    "description": "هل لديك سؤال حول منتج أو طلبك أو التوصيل؟ فريق خدمة العملاء لدينا هنا لمساعدتك.",
+    "button": "اتصل بنا",
     "supportEyebrow": "دعم العملاء",
-    "titleRight": "نقدم لك المساعدة عندما تحتاج إليها.",
-    "supportDescription": "إذا كانت لديك أي أسئلة حول طلبك أو مجموعتنا، تواصل معنا وسيسعد فريقنا بمساعدتك.",
+    "titleRight": "قليل من المساعدة، عندما تحتاجها.",
+    "supportDescription": "للاستفسارات حول طلبك أو مجموعتنا، اتصل بنا وسيسعد فريقنا بمساعدتك.",
     "contact": {
       "email": {
         "title": "البريد الإلكتروني",
-        "description": "للاستفسارات والأسئلة العامة."
+        "description": "للأسئلة والاستفسارات العامة."
       },
       "support": {
         "title": "خدمة العملاء عبر الإنترنت",
         "details": "دعم العملاء",
-        "description": "نحن هنا لمساعدتك وتوفير تجربة تسوق مميزة."
+        "description": "نحن هنا لمساعدتك في تجربة التسوق الخاصة بك."
       }
     }
   },
 
-"collectionSection": {
-  "title": "اكتشف مجموعتنا.",
-  "catlabel":"اكتشف",
+  "matricsSection": {
+    "why_us": "الفرق مع إينوزا",
+    "title": "كل قطعة، مختارة بعناية.",
+    "description": "كل قطعة من إينوزا مختارة لشكلها وموادها وقدرتها على جلب الدفء والطابع للمساحات التي نعيش فيها."
+  },
+  "inspirationPage": {
+    "hero": {
+      "catlabel": "مجلة إينوزا",
+      "title": "عالم من الضوء الجميل.",
+      "description": "اكتشف التصاميم الداخلية وأفكار الإضاءة واللحظات الهادئة التي تُلهم طريقة حياتنا."
+    },
 
-  "categories": {
-    "table_lamps": {
-      "title": "مصابيح الطاولة",
-      "description": "مصابيح بتصاميم فنية تضفي الدفء والأجواء الهادئة والأناقة البسيطة على مساحتك الداخلية."
+    "intro": {
+      "catlabel": "اعثر على إلهامك",
+      "title": "مساحات تشكّلها الإضاءة.",
+      "description": "الإضاءة الصحيحة يمكنها تغيير شعور الغرفة. استكشف مجموعتنا من التصاميم الداخلية واكتشف طرقًا مدروسة لجلب الدفء والأجواء والطابع إلى منزلك."
     },
-    "floor_lamps": {
-      "title": "مصابيح أرضية",
-      "description": "مصابيح مميزة تجمع بين التصميم الراقي والإضاءة المحيطية لإضفاء لمسة من الفخامة على مساحة معيشتك."
+
+    "spaces": {
+      "catlabel": "استكشف حسب المساحة",
+      "title": "إضاءة لكل غرفة.",
+      "items": {
+        "livingRoom": {
+          "title": "غرف المعيشة",
+          "description": "أنشئ أجواء دافئة وجاذبة مع إضاءة مصممة للحياة اليومية."
+        },
+        "diningRoom": {
+          "title": "غرف الطعام",
+          "description": "اضبط المزاج مع إضاءة مدروسة فوق الطاولة وفي جميع أنحاء الغرفة."
+        },
+        "bedroom": {
+          "title": "غرف النوم",
+          "description": "إضاءة ناعمة وحميمية مصممة لجعل غرفة النوم تشعر بالهدوء والسهولة."
+        }
+      }
     },
-    "wall_lamps": {
-      "title": "مصابيح جدارية",
-      "description": "إضاءة أنيقة تضفي على جدرانك عمقًا ودفئًا وطابعًا مميزًا."
+
+    "explore": "استكشف",
+
+    "statement": {
+      "catlabel": "فن الضوء",
+      "title": "الضوء هو ما يمنح المساحة شعورها.",
+      "description": "من زاوية هادئة إلى غرفة مخصصة للتجمع، تشكّل الإضاءة كيفية تجربتنا للمساحات من حولنا."
     },
-    "pendant_lights": {
-      "title": "مصابيح معلّقة",
-      "description": "قطع إضاءة مميزة تشكّل نقطة محورية راقية فوق طاولات الطعام وجزر المطابخ وفي مساحات المعيشة."
+
+    "ideas": {
+      "catlabel": "أفكار الإضاءة",
+      "title": "طرق للإضاءة الجميلة.",
+      "items": {
+        "ambientLighting": {
+          "title": "الإضاءة المحيطة",
+          "description": "أنشئ أساسًا ناعمًا من الضوء يجعل الغرفة تشعر بالدفء والتوازن والترحيب."
+        },
+        "statementLighting": {
+          "title": "الإضاءة المميزة",
+          "description": "دع قطعة مميزة تصبح جزءًا من هندسة الغرفة وطابعها."
+        },
+        "layeredLighting": {
+          "title": "الإضاءة متعددة الطبقات",
+          "description": "اجمع بين مصادر مختلفة من الضوء لخلق العمق والأجواء والمرونة."
+        }
+      }
     },
-    "ceiling_lights": {
-      "title": "مصابيح السقف",
-      "description": "إضاءة علوية راقية تضفي أجواء مميزة وتكمل الطابع الجمالي لكل غرفة."
+
+    "editorial": {
+      "catlabel": "تحرير إينوزا",
+      "title": "مصممة للحظات التي تهم.",
+      "description": "استكشف إضاءة تمنح الدفء والطابع للمساحات اليومية التي نسميها منزلنا.",
+      "link": "تسوق الإضاءة"
     },
-    "bedside_lamps": {
-      "title": "مصابيح بجانب السرير",
-      "description": "إضاءة ناعمة ومريحة تضفي لمسة من الراحة والرقي الهادئ على مساحة بجانب سريرك."
-    },
-    "desk_office_lamps": {
-      "title": "مصابيح المكتب والعمل",
-      "description": "إضاءة عملية بتصاميم مدروسة تجمع بين الاستخدام اليومي والمظهر العصري الأنيق."
-    },
-    "outdoor_lighting": {
-      "title": "إضاءة خارجية",
-      "description": "مصابيح مصممة بعناية تضفي الدفء والأناقة والأجواء المميزة على المساحات الخارجية."
-    },
-    "mirrors": {
-      "title": "المرايا",
-      "description": "مرايا أنيقة تعزز الضوء الطبيعي، وتمنح المساحات إحساسًا بالاتساع، وتضيف لمسة نهائية راقية إلى ديكور منزلك."
+
+    "newsletter": {
+      "catlabel": "ابقَ مُلهمًا",
+      "title": "اجلب المزيد من الجمال إلى منزلك.",
+      "description": "اكتشف إضاءة جديدة وتصاميم داخلية وإلهامًا من إينوزا.",
+      "button": "انضم إلى إينوزا"
     }
-  }
-
-},
-"inspirationPage": {
-  "hero": {
-    "catlabel": "مجلة ENOUZA",
-    "title": "عالم من الضوء الجميل.",
-    "description": "اكتشف تصاميم داخلية وأفكارًا للإضاءة ولحظات هادئة تلهم أسلوب حياتنا."
   },
 
-  "intro": {
-    "catlabel": "اكتشف إلهامك",
-    "title": "مساحات تصنعها الإضاءة.",
-    "description": "يمكن للإضاءة المناسبة أن تغيّر إحساس المكان بالكامل. اكتشف مجموعة من المساحات الداخلية وأفكارًا مدروسة لإضافة الدفء والأجواء والشخصية إلى منزلك."
-  },
-
-  "spaces": {
-    "catlabel": "اكتشف حسب المساحة",
-    "title": "إضاءة لكل غرفة.",
-    "items": {
-      "livingRoom": {
-        "title": "غرف المعيشة",
-        "description": "اصنع أجواءً دافئة وترحيبية مع إضاءة مصممة للحياة اليومية."
+  "designSection": {
+    "title": "فن الضوء",
+    "catlabel": "اكتشف العلامة التجارية",
+    "principles": {
+      "minimalism": {
+        "title": "مدروس بهدوء",
+        "description": "خطوط نظيفة وتناسب متوازن وظلال مقيدة تسمح لكل قطعة بالانتماء الطبيعي إلى محيطها."
       },
-      "diningRoom": {
-        "title": "غرف الطعام",
-        "description": "اصنع الأجواء المناسبة مع إضاءة مدروسة فوق الطاولة وفي مختلف أنحاء الغرفة."
+      "materials": {
+        "title": "مختارة للطابع",
+        "description": "الرخام والزجاج والمعدن والقماش مختارة للطابع والعمق الذي تمنحه للمساحة."
       },
-      "bedroom": {
-        "title": "غرف النوم",
-        "description": "إضاءة ناعمة وحميمية مصممة لتمنح غرفة النوم أجواءً هادئة ومريحة."
+      "ambient": {
+        "title": "ضوء بأجواء",
+        "description": "نرى الضوء كجزء من التصميم الداخلي — طريقة لتلطيف الغرفة وخلق العمق وتشكيل شعور المساحة."
       }
     }
   },
 
-  "explore": "استكشف",
+  "collectionSection": {
+    "title": "اكتشف مجموعتنا.",
+    "catlabel": "استكشف",
 
-  "statement": {
-    "catlabel": "فن الإضاءة",
-    "title": "الضوء هو ما يمنح المكان إحساسه الخاص.",
-    "description": "من زاوية هادئة إلى مساحة مخصصة للاجتماع، تشكل الإضاءة الطريقة التي نعيش بها المساحات من حولنا."
-  },
-
-  "ideas": {
-    "catlabel": "أفكار للإضاءة",
-    "title": "طرق لإضاءة منزلك بجمال.",
-    "items": {
-      "ambientLighting": {
-        "title": "الإضاءة المحيطية",
-        "description": "اصنع قاعدة من الضوء الناعم التي تمنح الغرفة إحساسًا بالدفء والتوازن والترحيب."
+    "categories": {
+      "table_lamps": {
+        "title": "مصابيح الطاولة",
+        "description": "إضاءة نحتية تمنح الدفء والأجواء والأناقة الهادئة لتصميمك الداخلي."
       },
-      "statementLighting": {
-        "title": "الإضاءة المميزة",
-        "description": "اجعل قطعة مميزة جزءًا من هندسة المكان وشخصيته."
+      "floor_lamps": {
+        "title": "مصابيح الأرضية",
+        "description": "إضاءة مميزة تجمع بين التصميم المتقن والإضاءة المحيطة لرفع مستوى مساحة معيشتك."
       },
-      "layeredLighting": {
-        "title": "الإضاءة متعددة الطبقات",
-        "description": "اجمع بين مصادر مختلفة للضوء لخلق العمق والأجواء والمرونة."
+      "wall_lamps": {
+        "title": "مصابيح الحائط",
+        "description": "إضاءة أنيقة مصممة لإضافة العمق والدفء والطابع إلى جدرانك."
+      },
+      "pendant_lights": {
+        "title": "المصابيح المعلقة",
+        "description": "قطع مميزة مصممة لخلق نقطة تركيز متقنة فوق طاولات الطعام وجزر المطابخ ومساحات المعيشة."
+      },
+      "ceiling_lights": {
+        "title": "مصابيح السقف",
+        "description": "إضاءة علوية متقنة مصممة لتشكيل الأجواء وإكمال طابع الغرفة."
+      },
+      "bedside_lamps": {
+        "title": "مصابيح السرير",
+        "description": "إضاءة ناعمة وجاذبة مصممة لجلب الراحة والرقي الهادئ إلى بجانب سريرك."
+      },
+      "desk_office_lamps": {
+        "title": "مصابيح المكتب والدراسة",
+        "description": "إضاءة عمل مدروسة توازن بين الوظيفة اليومية والجمالية العصرية المصقولة."
+      },
+      "outdoor_lighting": {
+        "title": "إضاءة خارجية",
+        "description": "إضاءة مصنوعة بجمال تمنح الدفء والأناقة والأجواء للمساحات الخارجية."
+      },
+      "mirrors": {
+        "title": "المرايا",
+        "description": "مرايا أنيقة تعزز الضوء الطبيعي وتخلق إحساسًا بالمساحة وتمنح لمسة نهائية متقنة لتصميمك الداخلي."
       }
     }
   },
 
-  "editorial": {
-    "catlabel": "مجلة ENOUZA",
-    "title": "مصممة للحظات التي تستحق.",
-    "description": "اكتشف إضاءة تضيف الدفء والشخصية إلى المساحات اليومية التي نسميها منزلًا.",
-    "link": "تسوق الإضاءة"
+  "customersFeedback": {
+    "eyebrow": "تجربة إينوزا",
+    "title": "محبوبة من أصحاب المنازل حول العالم.",
+    "description": "منازل حقيقية. تجارب حقيقية.",
+    "ratingText": "بناءً على تقييمات العملاء",
+    "verifiedPurchase": "شراء موثق",
+
+    "back": "رجوع",
+    "review": "تقييم",
+    "reviews": "تقييمات",
+    "noReviews": "لا توجد تقييمات بعد",
+    "noReviewsDescription": "لا توجد حاليًا تقييمات عملاء للعرض.",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية",
+    "viewAllReviews": "عرض جميع التقييمات"
   },
 
-  "newsletter": {
-    "catlabel": "ابقَ مستوحى",
-    "title": "أضف المزيد من الجمال إلى منزلك.",
-    "description": "اكتشف أحدث الإضاءات والتصاميم الداخلية وأفكار الإلهام من Enouza.",
-    "button": "انضم إلى Enouza"
-  }
-},
-
-"aboutus": {
-  "seo": {
-    "title": "عن Enouza | إضاءة راقية وتصميم داخلي",
-    "description": "اكتشف Enouza، علامة متخصصة في الإضاءة المختارة بعناية، تقدم قطعًا راقية ومميزة لمساحات داخلية متناسقة."
-  },
-
-  "hero": {
-    "eyebrow": "اكتشف ENOUZA",
-    "title": "ضوءٌ يجد مكانه.",
-    "description": "إضاءة راقية لمساحات دافئة ومتناسقة بعناية."
-  },
-
-  "story": {
-    "eyebrow": "قصتنا",
-    "title": "إضاءة تحمل إحساسًا بالمكان.",
-    "lead": "نؤمن بأن الإضاءة أكثر من مجرد إنارة.",
-    "text": "فهي تشكل أجواء الغرفة، وتلفت الانتباه إلى التفاصيل التي تستحق الاهتمام، وتغيّر الطريقة التي نشعر بها تجاه المكان.",
-    "text2": "نشأت Enouza من هذه الفكرة — لاكتشاف وجمع قطع إضاءة تبدو مدروسة، مميزة، ومنسجمة بطبيعتها مع المساحات التي تحتضنها."
-  },
-
-  "statement": {
-    "title": "نؤمن بأن الإضاءة المناسبة تغيّر كل شيء.",
-    "description": "قد يضفي الضوء الهادئ نعومة على الغرفة. وقد يصبح التصميم النحتي نقطة محورية فيها. وأحيانًا، تكفي القطعة المناسبة لتجعل المكان أكثر تعبيرًا عنك."
-  },
-
-  "approach": {
-    "eyebrow": "نهج ENOUZA",
-    "title": "مصمّم بعناية وهدف.",
-
-    "curated": {
-      "title": "منتقاة",
-      "description": "مختارة بعناية للمساحات المتناسقة والمدروسة."
-    },
-
-    "refined": {
-      "title": "راقية",
-      "description": "أشكال أنيقة صُقلت لتصل إلى جوهرها."
-    },
-
-    "atmospheric": {
-      "title": "حالمة",
-      "description": "إضاءة مصممة لتشكيل الأجواء والمزاج."
-    },
-
-    "distinctive": {
-      "title": "مميزة",
-      "description": "قطع تحمل طابعًا خاصًا يتجاوز المألوف."
-    }
-  },
-
-  "selection": {
-    "eyebrow": "ما يوجّه اختياراتنا",
-    "title": "نختارها لأكثر من مجرد مظهرها.",
-
-    "form": {
-      "title": "الشكل",
-      "description": "نسب متوازنة وتصاميم مميزة تنسجم بشكل طبيعي مع المساحات الداخلية."
-    },
-
-    "material": {
-      "title": "الخامة",
-      "description": "رخام، زجاج، معدن، أقمشة وتشطيبات نختارها لما تتميز به من حضور بصري وملمس خاص."
-    },
-
-    "light": {
-      "title": "الضوء",
-      "description": "إضاءة تضفي الدفء والعمق والأجواء، بدلًا من مجرد ملء الغرفة بالضوء."
-    }
-  },
-
-  "promise": {
-    "eyebrow": "وعد ENOUZA",
-    "title": "مختارة بعناية. مقدّمة بجمال.",
-    "description": "نختار بعناية كل قطعة نقدمها في Enouza، مع اهتمام خاص بالتصميم والخامات والنسب والأجواء التي تخلقها."
-  },
-
-  "final": {
-    "eyebrow": "المجموعة",
-    "title": "اكتشف الضوء الذي ينتمي إلى مساحتك.",
-    "description": "استكشف مجموعة Enouza واكتشف قطعًا مختارة لتنسجم مع أسلوب حياتك.",
-    "cta": "اكتشف المجموعة"
-  }
-},
-
-"designSection": {
-  "title": "فن الإضاءة",
-"catlabel": "اكتشف العلامة التجارية",
-
-  "principles": {
-  "minimalism": {
-    "title": "بساطة مدروسة",
-    "description": "خطوط نظيفة، ونِسَب متوازنة، وأشكال هادئة تتيح لكل قطعة أن تنسجم طبيعيًا مع محيطها."
-  },
-  "materials": {
-    "title": "مواد تحمل طابعًا مميزًا",
-    "description": "نختار الرخام والزجاج والمعادن والأقمشة لما تضيفه من طابع وعمق إلى المكان."
-  },
-  "ambient": {
-    "title": "إضاءة تصنع الأجواء",
-    "description": "نرى الضوء جزءًا من التصميم الداخلي؛ وسيلة لتلطيف المكان، وإضافة العمق، وصناعة إحساسه."
-  }
-}
-},
-
-"customersFeedback": {
-  "eyebrow": "تجربة ENOUZA",
-  "title": "محبوب من أصحاب المنازل حول العالم.",
-  "description": "منازل حقيقية. تجارب حقيقية.",
-  "ratingText": "بناءً على تقييمات العملاء",
-  "verifiedPurchase": "عملية شراء موثّقة",
-
-  "back": "رجوع",
-  "review": "تقييم",
-  "reviews": "تقييمات",
-  "noReviews": "لا توجد تقييمات بعد",
-  "noReviewsDescription": "لا توجد حالياً تقييمات من العملاء لعرضها.",
-  "previousPage": "الصفحة السابقة",
-  "nextPage": "الصفحة التالية",
-  "viewAllReviews": "عرض جميع التقييمات"
-},
-"filterPage":{
-  "clear_all": "مسح الكل",
-    "apply_filters": "تطبيق الفلاتر",
-    "price_range": "نطاق السعر",
-    "brand": "العلامة",
-    "category": "القسم",
+  "filterPage": {
+    "category": "الفئة",
+    "brand": "العلامة التجارية",
+    "priceRange": "نطاق السعر",
     "rating": "التقييم",
-    "availability": "التوفر",
-    "sort_by": "ترتيب حسب",
-    "reset_filters": "إعادة تعيين الفلاتر",
-    "search_did_not_match": "عذراً، بحثك لم يطابق أي منتجات. حاول مرة أخرى.",
-   "collection_description": "اكتشف إضاءة راقية صُممت لتضفي الدفء والشخصية والأناقة الخالدة على كل مساحة.",
-   "collection": "مجموعة ENOUZA",
-   "discover": "اكتشف"
- },
-"customer_reviews": {
-      "enouza_review": "تقييم ENOUZA",
-      "title": "آراء العملاء",
-      "verified_purchase": "شراء موثّق",
-      "no_reviews": "لا توجد تقييمات بعد",
-      "image_unavailable": "الصورة غير متاحة",
-      "customer": "عميل",
-      "review_image": "صورة التقييم",
-      "previous_image": "الصورة السابقة",
-      "next_image": "الصورة التالية",
-      "close": "إغلاق",
-      "view_image": "عرض الصورة",
-      "rating": "التقييم",
-      "reviews": "التقييمات",
-      "description": "وصف المنتج",
-      "customer_rating": "تقييم العملاء",
-  "customer_reviews": "آراء العملاء",
-  "customer_review": "تقييم العميل"
-
-    },
+    "applyFilters": "تطبيق الفلاتر",
+    "clearFilters": "مسح الفلاتر",
+    "search_did_not_match": "عذرًا، بحثك لم يتطابق مع أي منتجات.",
+    "collection_description": "اكتشف إضاءة متقنة مصممة لجلب الدفء والطابع والأناقة الخالدة إلى كل مساحة.",
+    "collection": "مجموعة إينوزا",
+    "discover": "اكتشف"
+  },
+  "customer_reviews": {
+    "title": "تقييمات العملاء",
+    "verified_purchase": "شراء موثق",
+    "no_reviews": "لا توجد تقييمات بعد",
+    "image_unavailable": "الصورة غير متاحة",
+    "customer": "عميل",
+    "review_image": "صورة التقييم",
+    "previous_image": "الصورة السابقة",
+    "next_image": "الصورة التالية",
+    "close": "إغلاق",
+    "view_image": "عرض الصورة",
+    "rating": "التقييم",
+    "reviews": "التقييمات",
+    "enouza_review": "تقييم إينوزا",
+    "description": "وصف المنتج",
+    "customer_rating": "تقييم العميل",
+    "customer_reviews": "تقييمات العملاء",
+    "customer_review": "تقييم العميل"
+  },
   "productInfo": {
-    "view_full_image": "عرض الصورة كاملة",
     "product_details": "تفاصيل المنتج",
+
+    "view_full_image": "عرض الصورة الكاملة",
     "purchase_information": "معلومات الشراء",
-    "secure_purchase_premium_quality": "شراء آمن وجودة فاخرة",
+    "secure_purchase_premium_quality": "شراء آمن وجودة عالية",
     "save": "وفّر",
-    "Lampshade Color":"لون غطاء المصباح",
-    "Body Color" : "لون الهيكل",
+    "Emitting Color": "لون الإضاءة",
+    "Lampshade Color": "لون غطاء المصباح",
+    "Body Color": "لون الهيكل",
     "Color": "اللون",
     "Color Name": "اللون",
-    "Emitting Color":"لون باعث للضوء",
     "Colour": "اللون",
     "Color Classification": "تصنيف اللون",
-
     "Size": "المقاس",
     "Sizes": "المقاسات",
-    "Item Length": "الطول",
-    "Item Width": "العرض",
-    "Item Height": "الارتفاع",
+    "Item Length": "طول المنتج",
+    "Item Width": "عرض المنتج",
+    "Item Height": "ارتفاع المنتج",
     "Dimensions": "الأبعاد",
-
-    "Sd Card Memory": "سعة بطاقة الذاكرة",
+    "Is Customized": "مخصص",
+    "Sd Card Memory": "ذاكرة بطاقة SD",
+    "Color Temperature": "درجة حرارة اللون",
     "Memory": "الذاكرة",
     "Memory Size": "حجم الذاكرة",
-    "Storage": "سعة التخزين",
+    "Storage": "التخزين",
     "Internal Storage": "التخزين الداخلي",
-    "ROM": "ذاكرة ROM",
-    "RAM": "ذاكرة RAM",
+    "ROM": "ROM",
+    "RAM": "RAM",
     "Capacity": "السعة",
-
     "Plug Type": "نوع القابس",
     "Power Plug": "قابس الطاقة",
     "Socket Type": "نوع المقبس",
     "Power Specification": "مواصفات الطاقة",
-    "Voltage": "الجهد الكهربائي",
-    "Wattage": "القدرة الكهربائية",
-    "is Customized":"مُخصّص",
-     "Color Temperature": "درجة حرارة اللون",
-    
-    "Ships From": "الشحن من",
+    "Voltage": "الجهد",
+    "Wattage": "القدرة",
+    "Ships From": "يُشحن من",
     "Ship From": "يُشحن من",
     "Warehouse": "المستودع",
-    "Origin": "بلد المنشأ",
-
-    "Bundle": "حزمة",
-    "Sale by Pack": "يباع بالحزمة",
-    "Pack": "عبوة",
+    "Origin": "المنشأ",
+    "Bundle": "الحزمة",
+    "Sale by Pack": "البيع بالحزمة",
+    "Pack": "حزمة",
     "Set": "طقم",
-    "Package": "العبوة",
+    "Package": "الحزمة",
     "Quantity": "الكمية",
-
-    
-    "Model": "الموديل",
-    "Compatible Model": "الموديلات المتوافقة",
+    "Model": "الطراز",
+    "Compatible Model": "الطراز المتوافق",
     "Version": "الإصدار",
-    "Edition": "النسخة",
-    "Variant": "النوع",
-
-    
-    "Material": "الخامة",
+    "Edition": "الطبعة",
+    "Variant": "النسخة",
+    "Material": "المادة",
     "Fabric": "القماش",
-    "Fit": "القياس",
-    "Pattern": "النقشة",
+    "Fit": "المقاس",
+    "Pattern": "النمط",
     "Sleeve Length": "طول الكم",
-
     "Frequency": "التردد",
     "Resolution": "الدقة",
     "Interface": "الواجهة",
@@ -518,88 +418,85 @@
     "reviews": "التقييمات",
     "CostumerReviews": "تقييمات العملاء",
     "noReviews": "لا توجد تقييمات بعد",
-    "writeReview": "اكتب تقييم",
+    "writeReview": "اكتب تقييمًا",
     "submitReview": "إرسال التقييم",
     "rating": "التقييم",
     "comment": "التعليق",
-    "reviewSubmitted": "تم إرسال تقييمك",
-    "reviewPending": "تقييمك قيد المراجعة",
+    "reviewSubmitted": "تم إرسال التقييم",
+    "reviewPending": "تقييمك قيد الموافقة",
     "size": "المقاس",
     "color": "اللون",
     "material": "المادة",
-    "brand": "العلامة",
-    "model": "الموديل",
-    "order": "طلب",
-    "all_from_verified_purchases": "جميع التقييمات من مشتريات موثوقة",
-    "stars": "نجوم",
+    "brand": "العلامة التجارية",
+    "model": "الطراز",
+    "order": "الطلب",
+    "all_from_verified_purchases": "جميعها من عمليات شراء موثقة",
     "star": "نجمة",
-    "one_star": "نجمة واحدة",
+    "stars": "نجوم",
+    "one_star": "نجمة",
     "two_stars": "نجمتان",
     "give_us_your_feedback": "أعطنا رأيك",
-    "led_ambient_lighting": "الإضاءة المحيطية",
-  "phone_mounts_holders":"حوامل الهواتف",
-  "organizers_storage": "منظمات التخزين ",
-  "comfort_accessories": "الراحة والإكسسوارات",
-  "air_fresheners_scents": "معطرات الهواء ",
-   "table_lamps": "مصابيح الطاولة",
+    "led_ambient_lighting": "الإضاءة المحيطة",
+    "phone_mounts_holders": "حاملات الهاتف",
+    "organizers_storage": "المنظمات والتخزين",
+    "comfort_accessories": "الراحة والإكسسوارات",
+    "air_fresheners_scents": "معطرات الهواء",
+    "table_lamps": "مصابيح الطاولة",
     "floor_lamps": "مصابيح الأرضية",
-    "wall_lamps": "مصابيح الجدران",
+    "wall_lamps": "مصابيح الحائط",
     "pendant_lights": "المصابيح المعلقة",
     "ceiling_lights": "مصابيح السقف",
-    "bedside_lamps": "مصابيح بجانب السرير",
-    "desk_office_lamps": "مصابيح المكتب والعمل",
-    "outdoor_lighting": "الإضاءة الخارجية"
+    "bedside_lamps": "مصابيح السرير",
+    "desk_office_lamps": "مصابيح المكتب والدراسة",
+    "outdoor_lighting": "إضاءة خارجية"
   },
   "buyerTrustServices": {
     "freeShipping": {
       "title": "شحن مجاني",
-      "description": "استمتع بالشحن المجاني على الطلبات التي تزيد عن 50$."
+      "description": "للطلبات فوق 50$"
     },
     "support24_7": {
       "title": "دعم 24/7",
-      "description": "فريق دعم العملاء لدينا متاح على مدار الساعة لمساعدتك."
+      "description": "نحن هنا للمساعدة"
     },
     "moneyBack": {
-      "title": "ضمان استرجاع المال",
-      "description": "رضاك مضمون مع سياسة استرجاع سهلة خلال 30 يومًا."
+      "title": "استرداد الأموال",
+      "description": "ضمان 30 يومًا"
     },
     "safe_Payment": {
       "title": "دفع آمن",
-      "description": "نستخدم تقنيات التشفير المتقدمة لضمان أمان معاملاتك."
+      "description": "ادفع بأكثر طرق الدفع شيوعًا وأمانًا في العالم."
     },
     "easyReturns": {
       "title": "إرجاع سهل",
-      "description": "عملية إرجاع بسيطة وخالية من المتاعب في غضون 30 يومًا من الشراء."
-    },
-    "safeReliablePayments": {
-      "title": "دفع موثوق",
-      "description": "طرق دفع آمنة وموثوقة لحماية معلوماتك المالية."
-    },
-    "worldwide_shipping": {
-      "title": "شحن عالمي",
-      "description": "توصيل سريع وموثوق إلى باب منزلك، في أي مكان في العالم."
+      "description": "إرجاع بدون متاعب"
     },
     "help_center": {
       "title": "مركز المساعدة",
       "description": "مساعدة على مدار الساعة لتجربة تسوق سلسة."
     },
+    "worldwide_shipping": {
+      "title": "شحن عالمي",
+      "description": "توصيل سريع وموثوق إلى باب منزلك، في أي مكان في العالم."
+    },
     "Shop_with_confidence": {
       "title": "تسوق بثقة",
-      "description": "رضاك هو أولويتنا. استمتع بتجربة تسوق آمنة وإرجاع سهل."
+      "description": "رضاك هو أولويتنا. استمتع بتسوق آمن وإرجاع سهل."
     }
   },
+
   "profile": {
-    "my_profile": "ملفي",
-    "edit_your_name": "تعديل اسمك",
-    "edit_your_email": "تعديل بريدك الإلكتروني",
+    "my_profile": "ملفي الشخصي",
     "enouza_faq": "الأسئلة الشائعة",
-    "edit_your_profile": "تعديل ملفك الشخصي",
+    "edit_your_name": "تعديل الاسم",
+    "edit_your_email": "تعديل البريد الإلكتروني",
+    "edit_your_profile": "تعديل الملف الشخصي",
     "change_your_password": "تغيير كلمة المرور",
     "edit_your_gender": "تعديل الجنس",
     "edit_your_birthdate": "تعديل تاريخ الميلاد",
     "update_your_address": "تحديث العنوان",
-    "manage_your_orders": "إدارة طلباتك",
-    "view_your_wishlist": "عرض المفضلة",
+    "manage_your_orders": "إدارة الطلبات",
+    "view_your_wishlist": "عرض قائمة الرغبات",
     "start_shopping": "ابدأ التسوق",
     "you_havent_placed_any_orders_yet": "لم تقم بأي طلبات بعد",
     "processing": "قيد المعالجة",
@@ -607,8 +504,8 @@
     "tracking_number": "رقم التتبع",
     "not_available": "غير متاح",
     "shippingMethod": "طريقة الشحن",
-    "order_placed_on": "تم الطلب في",
-    "order_id": "رقم الطلب",
+    "order_placed_on": "تم تقديم الطلب في",
+    "order_id": "معرف الطلب",
     "payment_method": "طريقة الدفع",
     "Credit_Debit_card": "بطاقة ائتمان/خصم",
     "subtotal": "المجموع الفرعي",
@@ -616,24 +513,13 @@
     "total": "الإجمالي"
   },
   "footer": {
-    "payment": { "secure": "دفع آمن" },
-    "newsletter": {
-      "title": "النشرة الإخبارية",
-      "description": "اشترك للحصول على آخر التحديثات والعروض الخاصة.",
-      "placeholder": "أدخل بريدك الإلكتروني",
-      "subscribeButton": "اشترك",
-      "all_rights_reserved": "جميع الحقوق محفوظة",
-      "copyright": ".حقوق النشر",
-      "successMessage": "تم الاشتراك بنجاح!",
-      "errorMessage": "حدث خطأ أثناء الاشتراك. حاول مرة أخرى.",
-      "eyebrow": "مجموعة ENOUZA"
-    },
     "brand": {
-      "description": "قطع مختارة بعناية لتضفي الدفء والأناقة والطابع المميز على مساحتك."
+      "description": "قطع منتقاة بعناية مصممة لجلب الدفء والأناقة والطابع إلى مساحتك."
     },
+    "payment": { "secure": "مدفوعات آمنة" },
     "followUs": {
       "title": "تابعنا",
-      "facebook": "فايسبوك",
+      "facebook": "فيسبوك",
       "instagram": "إنستغرام",
       "twitter": "تويتر",
       "tiktok": "تيك توك"
@@ -642,191 +528,302 @@
       "title": "السياسات",
       "privacyPolicy": "سياسة الخصوصية",
       "termsOfService": "شروط الخدمة",
-      "refundPolicy": "سياسة الاسترجاع",
+      "refundPolicy": "سياسة الاسترداد",
       "shippingPolicy": "سياسة الشحن"
     },
     "help": {
+      "enouza_faq_description": "اعثر على إجابات للأسئلة التي نتلقاها كثيرًا.",
       "title": "المساعدة",
       "faq": "الأسئلة الشائعة",
       "contactUs": "اتصل بنا",
       "aboutUs": "من نحن",
       "shipping": "الشحن",
-      "returns": "الاسترجاع",
-      "contact_note": "يسعدنا مساعدتك. تواصل مع فريقنا وسنكون هنا لخدمتك.",
-      "enouza_faq_description": "اعثر على إجابات للأسئلة التي نتلقاها بشكل متكرر."
-     }
+      "returns": "الإرجاع",
+      "contact_note": "نحن هنا لمساعدتك. تواصل معنا بأي أسئلة أو استفسارات."
+    },
+    "newsletter": {
+      "title": "النشرة البريدية",
+      "description": "اشترك للحصول على تحديثات حول المنتجات والعروض الجديدة",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "subscribeButton": "اشترك",
+      "successMessage": "تم الاشتراك بنجاح",
+      "errorMessage": "فشل الاشتراك",
+      "copyright": "حقوق النشر",
+      "all_rights_reserved": "جميع الحقوق محفوظة.",
+      "eyebrow": "مجموعة إينوزا"
+    }
   },
-  
-"trust": {
-  "secureCheckout": "دفع آمن",
-
-  "freeShipping": {
-    "title": "شحن مجاني",
-    "text": "شحن مجاني على جميع الطلبات"
+  "policies": {
+    "title": "السياسات",
+    "privacyPolicy": {
+      "title": "الخصوصية"
+    },
+    "termsOfService": {
+      "title": "الشروط"
+    },
+    "refundPolicy": {
+      "title": "الاسترداد"
+    },
+    "shippingPolicy": {
+      "title": "الشحن"
+    },
+    "aboutUs": {
+      "title": "من نحن"
+    }
   },
 
-  "fastDelivery": {
-    "title": "توصيل دولي",
-    "text": "توصيل دولي خلال 5–15 يومًا"
-  },
+  "trust": {
+    "secureCheckout": "دفع آمن",
 
-  "returns": {
-    "title": "إرجاع خلال 100 يوم",
-    "text": "إرجاع سهل خلال 100 يوم"
-  },
+    "freeShipping": {
+      "title": "شحن مجاني",
+      "text": "شحن مجاني على جميع الطلبات"
+    },
 
-  "warranty": {
-    "title": "ضمان لمدة 3 سنوات",
-    "text": "مصمم بجودة تدوم طويلاً"
-  },
+    "fastDelivery": {
+      "title": "توصيل عالمي",
+      "text": "توصيل دولي في 5–15 يومًا"
+    },
 
-  "shopWithConfidence": "تسوّق بثقة"
-},
+    "returns": {
+      "title": "إرجاع لمدة 100 يوم",
+      "text": "إرجاع سهل خلال 100 يوم"
+    },
+
+    "warranty": {
+      "title": "ضمان 3 سنوات",
+      "text": "مصنوع لجودة تدوم"
+    },
+
+    "shopWithConfidence": "تسوق بثقة"
+  },
 
   "orderSuccess": {
-    "orderPlacedSuccessfully": "🎉 تم تقديم طلبك بنجاح! 🎉",
+    "orderPlacedSuccessfully": "🎉 تم تقديم الطلب بنجاح! 🎉",
     "orderProcessingMessage": "شكرًا لتسوقك معنا. طلبك قيد المعالجة.",
-    "backToHome": "العودة إلى الصفحة الرئيسية"
+    "backToHome": "العودة إلى الرئيسية"
   },
   "checkout": {
-    "loggedInContinue": "حسابك جاهز. تابع لإدخال تفاصيل الفوترة الخاصة بك."
+    "loggedInContinue": "حسابك جاهز. تابع لإدخال تفاصيل الفاتورة."
   },
+
+  "aboutus": {
+    "seo": {
+      "title": "عن إينوزا | إضاءة متقنة وتصميم داخلي",
+      "description": "اكتشف إينوزا، علامة إضاءة منتقاة تقدم قطعًا متقنة ومميزة للتصاميم الداخلية المدروسة."
+    },
+
+    "hero": {
+      "eyebrow": "اكتشف إينوزا",
+      "title": "ضوء، صُنع لينتمي.",
+      "description": "إضاءة متقنة لمساحات دافئة ومدروسة."
+    },
+
+    "story": {
+      "eyebrow": "قصتنا",
+      "title": "إضاءة بإحساس بالمكان.",
+      "lead": "نؤمن أن الإضاءة أكثر من مجرد إضاءة.",
+      "text": "إنها تشكّل أجواء الغرفة، وتلفت الانتباه إلى التفاصيل التي تهم، وتغيّر شعور المساحة.",
+      "text2": "أُنشئت إينوزا حول هذه الفكرة — لاكتشاف وجمع قطع إضاءة تشعر بأنها مدروسة ومميزة وطبيعية في محيطها."
+    },
+
+    "statement": {
+      "title": "نؤمن أن الضوء الصحيح يغيّر كل شيء.",
+      "description": "توهج هادئ يمكنه تلطيف الغرفة. شكل نحتي يمكنه أن يصبح نقطة تركيز. القطعة الصحيحة يمكنها ببساطة أن تجعل المساحة تشعر بأنها أكثر ملكًا لك."
+    },
+
+    "approach": {
+      "eyebrow": "نهج إينوزا",
+      "title": "مصمم بنية.",
+      "curated": {
+        "title": "منتقاة",
+        "description": "منتقاة بعناية للمساحات المدروسة."
+      },
+      "refined": {
+        "title": "مُتقنة",
+        "description": "أشكال أنيقة، متقنة إلى جوهرها."
+      },
+      "atmospheric": {
+        "title": "مُفعمة بالأجواء",
+        "description": "ضوء مصمم لتشكيل المزاج."
+      },
+      "distinctive": {
+        "title": "مميزة",
+        "description": "قطع بطابع يتجاوز المألوف."
+      }
+    },
+
+    "selection": {
+      "eyebrow": "ما يوجه اختيارنا",
+      "title": "مختارة لأكثر من المظهر.",
+      "form": {
+        "title": "الشكل",
+        "description": "تناسب متوازن وظلال مميزة تشعر بأنها طبيعية داخل التصميم الداخلي."
+      },
+      "material": {
+        "title": "المادة",
+        "description": "الرخام والزجاج والمعدن والقماش والتشطيبات مختارة لطابعها البصري والملموس."
+      },
+      "light": {
+        "title": "الضوء",
+        "description": "إضاءة تخلق الدفء والعمق والأجواء بدلًا من مجرد ملء الغرفة."
+      }
+    },
+
+    "promise": {
+      "eyebrow": "وعد إينوزا",
+      "title": "مختارة بعناية. مقدمة بجمال.",
+      "description": "نختار بعناية كل قطعة نجلبها إلى إينوزا، مع الاهتمام بالتصميم والمواد والتناسب والأجواء التي تخلقها."
+    },
+
+    "final": {
+      "eyebrow": "المجموعة",
+      "title": "اعثر على الضوء الذي ينتمي إلى مساحتك.",
+      "description": "استكشف مجموعة إينوزا واكتشف قطعًا مختارة لتكمل طريقة حياتك.",
+      "cta": "استكشف المجموعة"
+    }
+  },
+
   "common": {
     "phoneNumber": "رقم الهاتف",
     "selectShippingMethod": "اختر طريقة الشحن",
     "discoverCollection": "اكتشف المجموعة",
+    "payNow": "ادفع الآن",
     "days": "أيام",
     "day": "يوم",
-    "loading": "جاري التحميل...",
-    "error": "حدث خطأ، حاول مرة أخرى",
-    "success": "تم بنجاح",
+    "loading": "جارٍ التحميل...",
+    "error": "عذرًا! حدث خطأ ما.",
+    "tryAgain": "حاول مرة أخرى",
+    "success": "تم!",
     "submit": "إرسال",
     "cancel": "إلغاء",
     "edit": "تعديل",
     "delete": "حذف",
+    "update": "تحديث",
+    "view": "عرض",
+    "free_shipping": "شحن مجاني",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sortBy": "ترتيب حسب:",
+    "view_more": "عرض المزيد",
+    "discover": "اكتشف",
+    "bestMatch": "أفضل تطابق",
+    "resetFilters": "إعادة تعيين الفلاتر",
+    "category": "الفئة",
+    "priceLowToHigh": "السعر: من الأقل إلى الأعلى",
+    "priceHighToLow": "السعر: من الأعلى إلى الأقل",
+    "newestFirst": "الأحدث",
+    "oldestFirst": "الأقدم",
+    "buyNow": "اشترِ الآن",
+    "addToCart": "أضف إلى السلة",
+    "shopping_cart": "سلة التسوق",
+    "addToWishlist": "أضف إلى قائمة الرغبات",
+    "removeFromWishlist": "إزالة من قائمة الرغبات",
+    "viewDetails": "التفاصيل",
+    "checkout": "إتمام الشراء",
+    "placeOrder": "تقديم الطلب",
+    "orderSummary": "الملخص",
+    "total": "الإجمالي",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "tax": "الضريبة",
+    "grandTotal": "الإجمالي الكلي",
+    "continueShopping": "متابعة التسوق",
+    "proceedToCheckout": "إتمام الشراء",
+    "noItemsInCart": "سلتك فارغة",
+    "noItemsInWishlist": "قائمة رغباتك فارغة",
+    "viewCart": "عرض السلة",
+    "viewWishlist": "عرض قائمة الرغبات",
+    "myAccount": "حسابي",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "you_are_logged_in": "أنت مسجل الدخول",
+    "register": "تسجيل",
+    "signin": "تسجيل الدخول",
+    "payment": "الدفع",
     "next": "التالي",
     "previous": "السابق",
     "confirm": "تأكيد",
     "yes": "نعم",
     "no": "لا",
+    "checkout_as_guest": "إتمام الشراء كضيف دون الحاجة لتسجيل الدخول.",
+    "saving_address": "استخدم هذا العنوان لتفاصيل الدفع",
     "saveChanges": "حفظ التغييرات",
-    "checkout_as_guest": "الدفع كضيف. لا حاجة لتسجيل الدخول.",
-    "update": "تحديث",
-    "view": "عرض",
-    "search": "بحث",
-    "filter": "تصفية",
-    "sortBy": "ترتيب حسب:",
-    "resetFilters": "إعادة تعيين الفلاتر",
-    "category": "التصنيف",
-    "bestMatch": "الأفضل تطابقاً",
-    "priceLowToHigh": "السعر: من الأقل للأعلى",
-    "priceHighToLow": "السعر: من الأعلى للأقل",
-    "newestFirst": "الأحدث أولاً",
-    "oldestFirst": "الأقدم أولاً",
-    "buyNow": "اشتري الآن",
-    "payNow": "ادفع الآن",
-    "addToCart": "أضف للسلة",
-    "addToWishlist": "أضف للمفضلة",
-    "removeFromWishlist": "إزالة من المفضلة",
-    "viewDetails": "التفاصيل",
-    "checkout": "إتمام الشراء",
-    "placeOrder": "إتمام الطلب",
-    "orderSummary": "ملخص الطلب",
-    "total": "المجموع",
-    "subtotal": "المجموع الفرعي",
-    "shipping": "الشحن",
-    "tax": "الضريبة",
-    "grandTotal": "المجموع الكلي",
-    "continueShopping": "متابعة التسوق",
-    "shopping_cart": "السلة",
-    "proceedToCheckout": "إتمام الشراء",
-    "noItemsInCart": "السلة فارغة",
-    "noItemsInWishlist": "المفضلة فارغة",
-    "viewCart": "عرض السلة",
-    "viewWishlist": "عرض المفضلة",
-    "myAccount": "حسابي",
-    "logout": "تسجيل الخروج",
-    "login": "تسجيل الدخول",
-    "you_are_logged_in": "أنت مسجل الدخول",
-    "signin": "تسجيل",
-    "payment": "الدفع",
-    "register": "إنشاء حساب",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "confirmPassword": "تأكيد كلمة المرور",
     "firstName": "الاسم الأول",
-    "lastName": "الاسم الأخير",
+    "lastName": "اسم العائلة",
     "address": "العنوان",
     "city": "المدينة",
-    "state": "المنطقة",
+    "state": "الولاية",
     "zipCode": "الرمز البريدي",
     "country": "الدولة",
     "phone": "الهاتف",
     "save": "حفظ",
     "reset": "إعادة تعيين",
-    "saving_address": "استخدم هذا العنوان لتفاصيل الدفع",
     "changePassword": "تغيير كلمة المرور",
     "oldPassword": "كلمة المرور القديمة",
     "newPassword": "كلمة المرور الجديدة",
-    "confirmNewPassword": "تأكيد الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
     "dashboard": "لوحة التحكم",
     "orders": "الطلبات",
     "orderDetails": "تفاصيل الطلب",
-    "accountDetails": "معلومات الحساب",
+    "accountDetails": "الحساب",
     "editAccount": "تعديل الحساب",
     "myOrders": "طلباتي",
     "orderHistory": "سجل الطلبات",
     "trackOrder": "تتبع الطلب",
-    "orderStatus": "حالة الطلب",
+    "orderStatus": "الحالة",
     "pending": "قيد الانتظار",
-    "processing": "جارٍ المعالجة",
+    "processing": "قيد المعالجة",
     "shipped": "تم الشحن",
-    "delivered": "تم التسليم",
-    "cancelled": "أُلغيت",
-    "returnRequested": "طلب استرجاع",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغي",
+    "returnRequested": "تم طلب الإرجاع",
     "returned": "تم الإرجاع",
-    "reviewProduct": "أضف تقييم",
-    "writeAReview": "اكتب مراجعة",
+    "reviewProduct": "تقييم المنتج",
+    "writeAReview": "اكتب تقييمًا",
     "rating": "التقييم",
     "comment": "التعليق",
-    "submitReview": "إرسال المراجعة",
-    "noReviewsYet": "لا توجد مراجعات",
-    "relatedProducts": "منتجات مشابهة",
+    "submitReview": "إرسال التقييم",
+    "noReviewsYet": "لا توجد تقييمات بعد",
+    "relatedProducts": "قد يعجبك",
     "continue": "متابعة",
     "back": "رجوع",
     "home": "الرئيسية",
     "shop": "المتجر",
-    "categories": "الأقسام",
-    "allCategories": "جميع الأقسام",
-    "brands": "العلامات",
-    "allBrands": "كل العلامات",
+    "categories": "الفئات",
+    "allCategories": "جميع الفئات",
+    "brands": "العلامات التجارية",
+    "allBrands": "جميع العلامات التجارية",
     "price": "السعر",
     "apply": "تطبيق",
     "clear": "مسح",
     "viewMore": "المزيد",
     "viewLess": "أقل",
     "noResultsFound": "لا توجد نتائج",
-    "tryDifferentKeywords": "جرّب كلمات أخرى",
-    "items": "منتجات",
-    "item": "منتج",
+    "tryDifferentKeywords": "جرّب بحثًا آخر",
+    "items": "عناصر",
+    "item": "عنصر",
     "of": "من",
     "results": "نتائج",
     "perPage": "لكل صفحة",
     "page": "صفحة",
-    "loadingMore": "جاري التحميل...",
-    "noMoreItems": "لا مزيد من المنتجات",
-    "welcome": "مرحباً",
-    "thankYou": "شكراً لك",
+    "loadingMore": "جارٍ التحميل...",
+    "noMoreItems": "لا مزيد من العناصر",
+    "welcome": "مرحبًا",
+    "thankYou": "شكرًا",
     "forVisiting": "لزيارتك",
-    "seeYouSoon": "نراك قريباً",
+    "seeYouSoon": "نراك قريبًا",
     "contactSupport": "اتصل بالدعم",
     "needHelp": "تحتاج مساعدة؟",
     "faq": "الأسئلة الشائعة",
     "terms": "الشروط",
     "privacy": "الخصوصية",
-    "cookies": "الكوكيز",
+    "cookies": "ملفات تعريف الارتباط",
     "rightsReserved": "جميع الحقوق محفوظة",
-    "developedBy": "تم التطوير بواسطة",
+    "developedBy": "تطوير",
     "version": "الإصدار",
     "language": "اللغة",
     "currency": "العملة",
@@ -834,103 +831,102 @@
     "selectCurrency": "اختر العملة",
     "darkMode": "الوضع الداكن",
     "lightMode": "الوضع الفاتح",
-    "autoMode": "وضع تلقائي",
-    "theme": "السمة",
+    "autoMode": "الوضع التلقائي",
+    "theme": "المظهر",
     "notifications": "الإشعارات",
     "markAllAsRead": "تحديد الكل كمقروء",
     "viewAll": "عرض الكل",
-    "noNewNotifications": "! لا إشعارات جديدة",
+    "noNewNotifications": "ليس لديك إشعارات!",
+    "NewNotifications": "لديك إشعار جديد",
     "new": "جديد",
-    "discover": "اكتشف",
-    "view_more": "عرض المزيد",
     "read": "مقروء",
     "unread": "غير مقروء",
     "profile": "الملف الشخصي",
-    "editProfile": "تعديل الملف",
-    "changeAvatar": "تغيير الصورة",
-    "myWishlist": "مفضلتي",
+    "editProfile": "تعديل الملف الشخصي",
+    "changeAvatar": "تغيير الصورة الرمزية",
+    "myWishlist": "قائمة رغباتي",
     "myCart": "سلتي",
-    "checkoutNow": "ادفع الآن",
-    "applyCoupon": "استخدام كوبون",
-    "enterCouponCode":"أدخل رمز الخصم",
+    "checkoutNow": "إتمام الشراء الآن",
+    "applyCoupon": "تطبيق الكوبون",
+    "enterCouponCode": "أدخل الكوبون",
     "removeCoupon": "إزالة الكوبون",
     "couponApplied": "تم تطبيق الكوبون",
     "invalidCoupon": "كوبون غير صالح",
     "shippingAddress": "عنوان الشحن",
     "billingAddress": "العنوان",
-    "sameAsShipping": "مثل الشحن",
-    "paymentMethod": "طريقة الدفع",
-    "selectPaymentMethod": "اختر طريقة الدفع",
-    "placeYourOrder": "إتمام الطلب",
-    "orderPlaced": "تم الطلب",
-    "thankYouForYourOrder": "شكراً لطلبك!",
-    "orderNumber": "رقم الطلب",
-    "trackYourOrder": "تتبع طلبك",
-    "Hello": "مرحباً",
+    "sameAsShipping": "نفس عنوان الشحن",
+    "paymentMethod": "الدفع",
+    "selectPaymentMethod": "اختر الدفع",
+    "placeYourOrder": "تقديم الطلب",
+    "orderPlaced": "تم تقديم الطلب",
+    "thankYouForYourOrder": "شكرًا لطلبك!",
+    "orderNumber": "طلب #",
+    "trackYourOrder": "تتبع الطلب",
+    "Hello": "مرحبًا",
     "create_an_account": "إنشاء حساب",
-    "already_have_an_account": "هل لديك حساب؟",
+    "already_have_an_account": "لديك حساب؟",
     "forgot_password": "نسيت كلمة المرور؟",
     "gender": "الجنس",
     "male": "ذكر",
     "female": "أنثى",
-    "By_clicking_Sign_up_I_agree_to_the": "بالضغط على تسجيل، أوافق على",
-    "password_reset_text": "أدخل بريدك المسجل وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+    "By_clicking_Sign_up_I_agree_to_the": "بالتسجيل، أنت توافق على",
+    "password_reset_text": "أدخل عنوان البريد الإلكتروني الموثق لحسابك وسنرسل لك رابط إعادة تعيين كلمة المرور.",
     "send_password_reset_link": "إرسال",
     "reset_your_password": "إعادة تعيين كلمة المرور",
-    "reset_password": "إعادة تعيين",
-    "reset_password_text": "قم بتغيير كلمة المرور هنا.",
+    "reset_password": "إعادة تعيين كلمة المرور",
+    "reset_password_text": "حدّث كلمة المرور هنا.",
     "new_password": "كلمة المرور الجديدة",
     "old_password": "كلمة المرور القديمة",
     "confirm_password": "تأكيد كلمة المرور",
-    "free_shipping": "الشحن المجاني",
-    
+    "error_old_password_incorrect": "كلمة المرور القديمة خاطئة",
     "select_country": "اختر الدولة",
-    "text": "نص",
-    "text_field_required": "حقل النص مطلوب",
+    "please_confirm_your_password": "أكد كلمة المرور",
+    "please_enter_your_new_password": "أدخل كلمة المرور الجديدة",
+    "please_enter_your_email": "أدخل بريدك الإلكتروني",
+    "please_enter_your_password": "أدخل كلمة المرور",
+    "please_enter_your_first_name": "أدخل اسمك الأول",
+    "please_enter_your_last_name": "أدخل اسم العائلة",
+    "please_enter_your_address": "أدخل عنوانك",
+    "please_enter_your_city": "أدخل مدينتك",
+    "please_enter_your_state": "أدخل ولايتك",
+    "please_enter_your_country": "اختر دولتك",
+    "please_enter_your_zip_code": "أدخل الرمز البريدي",
+    "please_enter_your_phone": "أدخل رقم هاتفك",
+    "please_enter_your_birthdate": "أدخل تاريخ ميلادك",
+    "pleaseSelectShippingMethod": "يرجى اختيار طريقة الشحن.",
+    "please_enter_coupon_code": "يرجى إدخال رمز الكوبون",
+    "invalid_discount_code": "رمز خصم غير صالح",
+    "discount_code_applied": "تم تطبيق رمز الخصم",
+    "discount": "الخصم",
+    "error_invalid_birthdate": "لا يمكن أن يكون تاريخ الميلاد في المستقبل",
+    "error_max_name_characters": "الاسم طويل جدًا",
+    "error_min_password_characters": "كلمة المرور قصيرة جدًا",
+    "error_required_gender": "الجنس مطلوب",
+    "required": "مطلوب",
+    "text_field_required": "هذا الحقل مطلوب",
     "send": "إرسال",
     "enter_message": "أدخل الرسالة",
     "message_sent": "تم إرسال الرسالة",
     "message": "الرسالة",
-    "myProfile": "ملفي",
-    "chat": "الدردشة مع الدعم",
-    "helpCenter": "المساعدة",
-    "from": "من",
+    "myProfile": "ملفي الشخصي",
+    "chat": "الدردشة",
+    "helpCenter": "مركز المساعدة",
     "member_since": "عضو منذ",
-    "tryAgain": "حاول مرة أخرى",
-      "pleaseSelectShippingMethod": "يرجى اختيار طريقة الشحن",
-
-    "please_confirm_your_password": "أكّد كلمة المرور",
-    "please_enter_your_new_password": "أدخل كلمة المرور الجديدة",
-    "please_enter_your_email": "أدخل بريدك",
-    "please_enter_your_password": "أدخل كلمة المرور",
-    "please_enter_your_first_name": "أدخل الاسم الشخصي",
-    "please_enter_your_last_name": "أدخل الاسم العائلي",
-    "please_enter_your_address": "أدخل العنوان",
-    "please_enter_your_city": "أدخل المدينة",
-    "please_enter_your_state": "أدخل المنطقة",
-    "please_enter_your_country": "أدخل الدولة",
-    "please_enter_your_zip_code": "أدخل الرمز البريدي",
-    "please_enter_your_phone": "أدخل رقم الهاتف",
-    "please_enter_your_birthdate": "أدخل تاريخ الميلاد",
-    "please_enter_coupon_code": "يرجى إدخال رمز الخصم",
-    "invalid_discount_code": "رمز الخصم غير صالح",
-    "discount_code_applied": "تم تطبيق رمز الخصم",
-    "discount": "الخصم"
-    
+    "from": "من"
   },
   "success": {
-    "subscribed_to_newsletter": "شكرًا لاشتراكك في النشرة الإخبارية!",
+    "subscribed_to_newsletter": "شكرًا لاشتراكك في نشرتنا البريدية!",
     "message_sent_successfully": "تم إرسال رسالتك بنجاح!",
     "profile_updated_successfully": "تم تحديث ملفك الشخصي بنجاح!",
     "password_changed_successfully": "تم تغيير كلمة المرور بنجاح!",
     "order_placed_successfully": "تم تقديم طلبك بنجاح!",
-    "review_submitted_successfully": "شكرًا على تقييمك!",
+    "review_submitted_successfully": "شكرًا لتقييمك!",
     "item_added_to_cart": "تمت إضافة المنتج إلى السلة!",
     "item_removed_from_cart": "تمت إزالة المنتج من السلة!",
     "item_added_to_wishlist": "تمت إضافة المنتج إلى قائمة الرغبات!",
     "item_removed_from_wishlist": "تمت إزالة المنتج من قائمة الرغبات!",
-    "coupon_applied_successfully": "تم تطبيق القسيمة بنجاح!",
-    "coupon_removed_successfully": "تمت إزالة القسيمة بنجاح!",
+    "coupon_applied_successfully": "تم تطبيق الكوبون بنجاح!",
+    "coupon_removed_successfully": "تمت إزالة الكوبون بنجاح!",
     "saved": "تم الحفظ",
     "deleted": "تم الحذف",
     "updated": "تم التحديث",
@@ -942,84 +938,124 @@
     "password_reset_successful": "تمت إعادة تعيين كلمة المرور بنجاح",
     "success_logged_in": "تم تسجيل الدخول",
     "success_account_created": "تم إنشاء الحساب",
-    "success_password_reset_link_sent": "تم الإرسال",
-    "success_password_reset": "تم التغيير",
-    "success_profile_updated": "تم التحديث",
+    "success_password_reset_link_sent": "تم إرسال الرابط",
+    "success_password_reset": "تمت إعادة تعيين كلمة المرور",
+    "success_profile_updated": "تم تحديث الملف الشخصي",
     "success_password_changed": "تم تغيير كلمة المرور"
   },
   "errors": {
-
-    "error_old_password_incorrect": "كلمة المرور القديمة خاطئة",
-    "text_field_required": "حقل النص مطلوب",
-    "error_password_dont_match": "كلمات المرور غير متطابقة",
-    "error_email_already_exists": "البريد مسجل مسبقاً",
-    "error_email_not_exists": "البريد غير موجود",
-    "error_invalid_credentials": "بيانات غير صحيحة",
-    "error_account_disabled": "الحساب معطل",
-    "error_too_many_requests": "محاولات كثيرة، حاول لاحقاً",
-    "error_weak_password": "كلمة المرور ضعيفة",
-    "error_invalid_email": "البريد غير صحيح",
-    "error_user_not_found": "المستخدم غير موجود",
-    "error_network_request_failed": "فشل الاتصال",
-    "error_something_went_wrong": "حدث خطأ",
-    "error_invalid_verification_code": "رمز غير صحيح",
-    "error_verification_code_expired": "الرمز منتهي",
-    "error_no_internet_connection": "لا يوجد اتصال",
-    "network_error": "خطأ في الشبكة. يرجى التحقق من الاتصال.",
+    "network_error": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
     "unknown_error": "خطأ غير معروف. يرجى المحاولة مرة أخرى.",
-    "form_error": "خطأ في النموذج. يرجى مراجعة الحقول.",
+    "form_error": "خطأ في النموذج. يرجى التحقق من الحقول.",
     "unauthorized": "غير مصرح. يرجى تسجيل الدخول.",
-    "forbidden": "ممنوع. ليس لديك إذن للقيام بهذا الإجراء.",
-    "not_found": "غير موجود. المورد المطلوب غير متاح.",
+    "forbidden": "ممنوع. ليس لديك إذن لهذا الإجراء.",
+    "not_found": "غير موجود. المورد المطلوب غير موجود.",
     "server_error": "خطأ في الخادم. يرجى المحاولة لاحقًا.",
     "timeout": "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.",
     "conflict": "تعارض. المورد موجود بالفعل.",
     "bad_request": "طلب غير صالح. يرجى التحقق من البيانات المرسلة.",
     "validation_error": "خطأ في التحقق. يرجى تصحيح الأخطاء في النموذج.",
     "item_out_of_stock": "المنتج غير متوفر. لا يمكن إضافته إلى السلة.",
-    "error_invalid_birthdate": "تاريخ الميلاد غير صحيح",
-    "error_max_name_characters": "الاسم طويل جداً",
-    "error_min_password_characters": "كلمة المرور قصيرة جداً",
-    "error_required_gender": "الجنس مطلوب",
+    "error_password_dont_match": "كلمات المرور غير متطابقة",
+    "error_email_already_exists": "البريد الإلكتروني موجود بالفعل",
+    "error_email_not_exists": "البريد الإلكتروني غير موجود",
+    "error_invalid_credentials": "بريد إلكتروني أو كلمة مرور غير صالحة",
+    "error_account_disabled": "الحساب معطل",
+    "error_too_many_requests": "محاولات كثيرة جدًا. حاول لاحقًا",
+    "error_weak_password": "كلمة المرور ضعيفة جدًا",
+    "error_invalid_email": "بريد إلكتروني غير صالح",
+    "error_user_not_found": "المستخدم غير موجود",
+    "error_network_request_failed": "خطأ في الشبكة",
+    "error_something_went_wrong": "حدث خطأ ما",
+    "error_invalid_verification_code": "رمز غير صالح",
+    "error_verification_code_expired": "انتهت صلاحية الرمز",
+    "error_no_internet_connection": "لا يوجد إنترنت",
+    "error_old_password_incorrect": "كلمة المرور القديمة خاطئة",
     "error_gender_must_be_defined": "يجب تحديد الجنس",
-    "required": "مطلوب",
-    "please_confirm_your_password": "أكّد كلمة المرور",
+    "please_confirm_your_password": "أكد كلمة المرور",
     "please_enter_your_new_password": "أدخل كلمة المرور الجديدة",
-    "please_enter_your_email": "أدخل بريدك",
+    "please_enter_your_email": "أدخل بريدك الإلكتروني",
     "please_enter_your_password": "أدخل كلمة المرور",
-    "please_enter_your_first_name": "أدخل الاسم الشخصي",
-    "please_enter_your_last_name": "أدخل الاسم العائلي",
-    "please_enter_your_address": "أدخل العنوان",
-    "please_enter_your_city": "أدخل المدينة",
-    "please_enter_your_state": "أدخل المنطقة",
-    "please_enter_your_country": "أدخل الدولة",
+    "please_enter_your_first_name": "أدخل اسمك الأول",
+    "please_enter_your_last_name": "أدخل اسم العائلة",
+    "please_enter_your_address": "أدخل عنوانك",
+    "please_enter_your_city": "أدخل مدينتك",
+    "please_enter_your_state": "أدخل ولايتك",
+    "please_enter_your_country": "اختر دولتك",
     "please_enter_your_zip_code": "أدخل الرمز البريدي",
-    "please_enter_your_phone": "أدخل الهاتف",
-    "please_enter_your_birthdate": "أدخل تاريخ الميلاد",
-    
-  "page_not_found": "الصفحة غير موجودة",
-  "page_not_found_description": "الصفحة التي تبحث عنها غير موجودة."
+    "please_enter_your_phone": "أدخل هاتفك",
+    "please_enter_your_birthdate": "أدخل تاريخ ميلادك",
+    "error_invalid_birthdate": "لا يمكن أن يكون تاريخ الميلاد في المستقبل",
+    "error_max_name_characters": "الاسم طويل جدًا",
+    "error_min_password_characters": "كلمة المرور قصيرة جدًا",
+    "error_required_gender": "الجنس مطلوب",
+    "required": "مطلوب",
 
-
+    "page_not_found": "الصفحة غير موجودة",
+    "page_not_found_description": "الصفحة التي تبحث عنها غير موجودة."
   },
-  
+  "currencies": {
+  "USD": "دولار أمريكي",
+  "EUR": "يورو",
+  "GBP": "جنيه إسترليني",
+  "SAR": "ريال سعودي",
+  "AED": "درهم إماراتي",
+  "EGP": "جنيه مصري",
+  "MAD": "درهم مغربي",
+  "DZD": "دينار جزائري",
+  "TND": "دينار تونسي",
+  "QAR": "ريال قطري",
+  "KWD": "دينار كويتي",
+  "BHD": "دينار بحريني",
+  "OMR": "ريال عماني",
+  "JOD": "دينار أردني",
+  "IQD": "دينار عراقي",
+  "LBP": "ليرة لبنانية",
+  "SEK": "كرونة سويدية",
+  "NOK": "كرونة نرويجية",
+  "DKK": "كرونة دنماركية",
+  "CHF": "فرنك سويسري",
+  "CAD": "دولار كندي",
+  "AUD": "دولار أسترالي",
+  "NZD": "دولار نيوزيلندي",
+  "JPY": "ين ياباني",
+  "CNY": "يوان صيني",
+  "INR": "روبية هندية",
+  "KRW": "وون كوري جنوبي",
+  "TRY": "ليرة تركية",
+  "MXN": "بيزو مكسيكي",
+  "BRL": "ريال برازيلي",
+  "ARS": "بيزو أرجنتيني",
+  "CLP": "بيزو تشيلي",
+  "COP": "بيزو كولومبي",
+  "PEN": "سول بيروفي",
+  "PLN": "زلوتي بولندي",
+  "CZK": "كرونة تشيكية",
+  "HUF": "فورنت هنغاري",
+  "RON": "ليو روماني",
+  "ZAR": "راند جنوب أفريقي"
+},
   "languages": {
-    "en": "الإنجليزية",
-    "ar": "العربية",
-    "es": "الإسبانية",
-    "fr": "الفرنسية",
-    "de": "الألمانية",
-    "it": "الإيطالية",
-    "pt": "البرتغالية",
-    "ru": "الروسية",
-    "zh": "الصينية",
-    "ja": "اليابانية",
-    "ko": "الكورية",
-    "hi": "الهندية"
-  },
+  "en": "الإنجليزية",
+  "es": "الإسبانية",
+  "fr": "الفرنسية",
+  "de": "الألمانية",
+  "sv": "السويدية",
+  "it": "الإيطالية",
+  "pt": "البرتغالية",
+  "zh": "الصينية",
+  "ja": "اليابانية",
+  "ko": "الكورية",
+  "ru": "الروسية",
+  "ar": "العربية",
+  "hi": "الهندية",
+  "tr": "التركية",
+  "nl": "الهولندية",
+  "pl": "البولندية"
+},
   "countries": {
     "AF": "أفغانستان",
-    "AX": "جزر آلاند",
+    "AX": "جزر أولاند",
     "AL": "ألبانيا",
     "DZ": "الجزائر",
     "AS": "ساموا الأمريكية",
@@ -1034,11 +1070,11 @@
     "AU": "أستراليا",
     "AT": "النمسا",
     "AZ": "أذربيجان",
-    "BS": "جزر البهاما",
+    "BS": "الباهاما",
     "BH": "البحرين",
     "BD": "بنغلاديش",
-    "BB": "بربادوس",
-    "BY": "بيلاروس",
+    "BB": "باربادوس",
+    "BY": "بيلاروسيا",
     "BE": "بلجيكا",
     "BZ": "بليز",
     "BJ": "بنين",
@@ -1050,7 +1086,7 @@
     "BW": "بوتسوانا",
     "BV": "جزيرة بوفيه",
     "BR": "البرازيل",
-    "IO": "الإقليم البريطاني في المحيط الهندي",
+    "IO": "إقليم المحيط الهندي البريطاني",
     "BN": "بروناي",
     "BG": "بلغاريا",
     "BF": "بوركينا فاسو",
@@ -1078,7 +1114,7 @@
     "CY": "قبرص",
     "CZ": "التشيك",
     "CI": "ساحل العاج",
-    "DK": "الدانمرك",
+    "DK": "الدنمارك",
     "DJ": "جيبوتي",
     "DM": "دومينيكا",
     "DO": "جمهورية الدومينيكان",
@@ -1097,7 +1133,7 @@
     "FR": "فرنسا",
     "GF": "غويانا الفرنسية",
     "PF": "بولينيزيا الفرنسية",
-    "TF": "الأقاليم الجنوبية الفرنسية",
+    "TF": "الأراضي الفرنسية الجنوبية",
     "GA": "الغابون",
     "GM": "غامبيا",
     "GE": "جورجيا",
@@ -1116,9 +1152,9 @@
     "GY": "غيانا",
     "HT": "هايتي",
     "HM": "جزيرة هيرد وجزر ماكدونالد",
-    "VA": "الفاتيكان",
+    "VA": "مدينة الفاتيكان",
     "HN": "هندوراس",
-    "HK": "هونغ كونغ الصينية (منطقة إدارية خاصة)",
+    "HK": "هونغ كونغ SAR الصين",
     "HU": "هنغاريا",
     "IS": "آيسلندا",
     "IN": "الهند",
@@ -1149,15 +1185,15 @@
     "LI": "ليختنشتاين",
     "LT": "ليتوانيا",
     "LU": "لوكسمبورغ",
-    "MO": "منطقة ماكاو الإدارية الخاصة",
+    "MO": "مكاو SAR الصين",
     "MG": "مدغشقر",
-    "MW": "ملاوي",
+    "MW": "مالاوي",
     "MY": "ماليزيا",
-    "MV": "جزر المالديف",
+    "MV": "المالديف",
     "ML": "مالي",
     "MT": "مالطا",
     "MH": "جزر مارشال",
-    "MQ": "جزر المارتينيك",
+    "MQ": "مارتينيك",
     "MR": "موريتانيا",
     "MU": "موريشيوس",
     "YT": "مايوت",
@@ -1167,7 +1203,7 @@
     "MC": "موناكو",
     "MN": "منغوليا",
     "ME": "الجبل الأسود",
-    "MS": "مونتسرات",
+    "MS": "مونتسيرات",
     "MA": "المغرب",
     "MZ": "موزمبيق",
     "MM": "ميانمار (بورما)",
@@ -1180,12 +1216,12 @@
     "NI": "نيكاراغوا",
     "NE": "النيجر",
     "NG": "نيجيريا",
-    "NU": "نيوي",
+    "NU": "نييوي",
     "NF": "جزيرة نورفولك",
     "MK": "مقدونيا الشمالية",
     "MP": "جزر ماريانا الشمالية",
     "NO": "النرويج",
-    "OM": "عُمان",
+    "OM": "عمان",
     "PK": "باكستان",
     "PW": "بالاو",
     "PS": "الأراضي الفلسطينية",
@@ -1202,14 +1238,14 @@
     "RO": "رومانيا",
     "RU": "روسيا",
     "RW": "رواندا",
-    "RE": "روينيون",
+    "RE": "ريونيون",
     "BL": "سان بارتليمي",
     "SH": "سانت هيلينا",
     "KN": "سانت كيتس ونيفيس",
     "LC": "سانت لوسيا",
-    "MF": "سان مارتن",
-    "PM": "سان بيير ومكويلون",
-    "VC": "سانت فنسنت وجزر غرينادين",
+    "MF": "سانت مارتن",
+    "PM": "سان بيير وميكلون",
+    "VC": "سانت فينسنت والغرينادين",
     "WS": "ساموا",
     "SM": "سان مارينو",
     "ST": "ساو تومي وبرينسيبي",
@@ -1219,7 +1255,7 @@
     "SC": "سيشل",
     "SL": "سيراليون",
     "SG": "سنغافورة",
-    "SX": "سانت مارتن",
+    "SX": "سينت مارتن",
     "SK": "سلوفاكيا",
     "SI": "سلوفينيا",
     "SB": "جزر سليمان",
@@ -1239,7 +1275,7 @@
     "TJ": "طاجيكستان",
     "TZ": "تنزانيا",
     "TH": "تايلاند",
-    "TL": "تيمور - ليشتي",
+    "TL": "تيمور-ليشتي",
     "TG": "توغو",
     "TK": "توكيلاو",
     "TO": "تونغا",
@@ -1247,7 +1283,7 @@
     "TN": "تونس",
     "TR": "تركيا",
     "TM": "تركمانستان",
-    "TC": "جزر توركس وكايكوس",
+    "TC": "جزر تركس وكايكوس",
     "TV": "توفالو",
     "UG": "أوغندا",
     "UA": "أوكرانيا",
@@ -1255,18 +1291,437 @@
     "GB": "المملكة المتحدة",
     "UM": "جزر الولايات المتحدة النائية",
     "US": "الولايات المتحدة",
-    "UY": "أورغواي",
+    "UY": "أوروغواي",
     "UZ": "أوزبكستان",
     "VU": "فانواتو",
     "VE": "فنزويلا",
     "VN": "فيتنام",
     "VG": "جزر فيرجن البريطانية",
     "VI": "جزر فيرجن الأمريكية",
-    "WF": "جزر والس وفوتونا",
+    "WF": "واليس وفوتونا",
     "EH": "الصحراء الغربية",
     "YE": "اليمن",
     "ZM": "زامبيا",
     "ZW": "زيمبابوي"
+  },
+
+  "about": {
+    "title": "من نحن",
+    "metaDescription": "اكتشف مصابيح إينوزا الفاخرة وإضاءة المصممين والمصابيح الداخلية الممتازة. ارفع مستوى منزلك مع مصابيح أرضية عصرية راقية ومصابيح طاولة أنيقة وإضاءة زخرفية مصنوعة يدويًا.",
+
+    "intro": "في إينوزا، نؤمن أن الإضاءة أكثر من مجرد إضاءة — إنها تجربة.",
+    "passion": "شغفنا هو خلق مساحات تشعر بالدفء والرقي والخلود. لهذا ننتقي بعناية مصابيح فاخرة تجمع بين التصميم العصري والمواد الممتازة والحرفية الاستثنائية. كل قطعة في مجموعتنا مختارة لرفع مستوى منزلك، وليس فقط إضاءته.",
+    "visionTitle": "رؤيتنا",
+    "visionText": "نهدف إلى إعادة تعريف الإضاءة اليومية من خلال تقديم قطع مميزة تجلب الأناقة والراحة والطابع إلى أي غرفة. من غرف النوم المريحة إلى مساحات المعيشة الراقية، مصابيحنا مصممة لتحويل الأجواء.",
+    "qualityTitle": "جودة يمكنك الوثوق بها",
+    "qualityText": "نعمل عن كثب مع مصنعين ومصممين موثوقين يشاركوننا التزامنا بالجودة. كل مصباح مختار لمتانته وقيمته الجمالية واهتمامه بالتفاصيل — لأن الفخامة يجب أن تُشعر، وليس فقط تُرى.",
+    "whyTitle": "لماذا تختار إينوزا؟",
+    "why": {
+      "items": [
+        "تصاميم فاخرة منتقاة",
+        "مواد ممتازة وأنماط خالدة",
+        "تجربة تسوق آمنة",
+        "تغليف دقيق وتوصيل موثوق",
+        "دعم عملاء مخصص"
+      ]
+    },
+    "modernTitle": "مصمم للحياة العصرية",
+    "modernText": "تمزج مجموعتنا بين الاتجاهات المعاصرة والأناقة الكلاسيكية، مما يجعل مصابيحنا مثالية للمنازل العصرية والشقق والتصاميم الداخلية الفاخرة. سواء كنت تبحث عن مصباح أرضي مميز أو توهج محيطي خفي، تقدم إينوزا ضوءًا يعكس أسلوبك.",
+    "closing": "شكرًا لاختيارك إينوزا — حيث يلتقي الضوء بالفخامة."
+  },
+  "privacyPolicy": {
+    "seoTitle": "إينوزا - سياسة الخصوصية",
+    "title": "سياسة الخصوصية",
+    "intro": "تصف سياسة الخصوصية هذه كيف يقوم Enouza.com (\"الموقع\" أو \"نحن\") بجمع واستخدام والكشف عن معلوماتك الشخصية عند زيارتك أو إجراء عملية شراء من الموقع.",
+    "collectingPersonalInfo": {
+      "title": "جمع المعلومات الشخصية",
+      "description": "عند زيارتك للموقع، نجمع معلومات معينة عن جهازك وتفاعلك مع الموقع والمعلومات اللازمة لمعالجة مشترياتك. قد نجمع أيضًا معلومات إضافية إذا اتصلت بنا للحصول على دعم العملاء. في سياسة الخصوصية هذه، نشير إلى أي معلومات يمكنها تحديد فرد بشكل فريد (بما في ذلك المعلومات أدناه) باسم \"المعلومات الشخصية\"."
+    },
+    "deviceInfo": {
+      "title": "معلومات الجهاز",
+      "examples": "أمثلة على المعلومات الشخصية التي يتم جمعها: إصدار متصفح الويب، عنوان IP، المنطقة الزمنية، معلومات ملفات تعريف الارتباط، المواقع أو المنتجات التي تشاهدها، مصطلحات البحث، وكيفية تفاعلك مع الموقع.",
+      "purpose": "الغرض من الجمع: تحميل الموقع بدقة لك وإجراء تحليلات حول استخدام الموقع لتحسين موقعنا.",
+      "source": "مصدر الجمع: يتم جمعها تلقائيًا عند وصولك إلى موقعنا باستخدام ملفات تعريف الارتباط وملفات السجل وإشارات الويب والعلامات أو البكسل.",
+      "disclosure": "الكشف لغرض تجاري: تتم مشاركتها مع معالجنا إينوزا."
+    },
+    "orderInfo": {
+      "title": "معلومات الطلب",
+      "examples": "أمثلة على المعلومات الشخصية التي يتم جمعها: الاسم، عنوان الفاتورة، عنوان الشحن، معلومات الدفع، عنوان البريد الإلكتروني، ورقم الهاتف.",
+      "purpose": "الغرض من الجمع: تزويدك بالمنتجات أو الخدمات، معالجة معلومات الدفع، ترتيب الشحن، تقديم الفواتير أو تأكيدات الطلب، التواصل معك، فحص الطلبات بحثًا عن المخاطر أو الاحتيال، وتقديم الإعلانات أو المعلومات وفقًا لتفضيلاتك.",
+      "source": "مصدر الجمع: يتم جمعها منك.",
+      "disclosure": "الكشف لغرض تجاري: تتم مشاركتها مع معالجنا إينوزا."
+    },
+    "customerSupportInfo": {
+      "title": "معلومات دعم العملاء",
+      "examples": "أمثلة على المعلومات الشخصية التي يتم جمعها: الاسم، عنوان الفاتورة، عنوان الشحن، معلومات الدفع، عنوان البريد الإلكتروني، ورقم الهاتف.",
+      "purpose": "الغرض من الجمع: تقديم دعم العملاء.",
+      "source": "مصدر الجمع: يتم جمعها منك."
+    },
+    "sharingPersonalInfo": {
+      "title": "مشاركة المعلومات الشخصية",
+      "text": "نشارك معلوماتك الشخصية مع مزودي الخدمات لمساعدتنا في تقديم خدماتنا والوفاء بعقودنا معك، كما هو موضح أعلاه. على سبيل المثال، قد نشارك معلوماتك الشخصية للامتثال للقوانين واللوائح المعمول بها، أو الاستجابة لأوامر الاستدعاء أو أوامر التفتيش أو الطلبات القانونية الأخرى، أو لحماية حقوقنا بطريقة أخرى."
+    },
+    "behavioralAdvertising": {
+      "title": "الإعلانات السلوكية",
+      "text": "نستخدم معلوماتك الشخصية لتزويدك بإعلانات مستهدفة أو اتصالات تسويقية نعتقد أنها قد تكون محل اهتمامك. على سبيل المثال، نستخدم Google Analytics لفهم كيفية استخدام العملاء للموقع. المزيد حول استخدام Google للمعلومات الشخصية: https://policies.google.com/privacy. إلغاء الاشتراك: https://tools.google.com/dlpage/gaoptout. نشارك أيضًا معلومات حول استخدامك للموقع والإعلانات مع شركاء الإعلان."
+    },
+    "usingPersonalInfo": {
+      "title": "استخدام المعلومات الشخصية",
+      "text": "نستخدم معلوماتك الشخصية لتقديم خدماتنا، بما في ذلك عرض المنتجات للبيع، معالجة المدفوعات، الشحن وتنفيذ الطلبات، وإبقائك على اطلاع بالمنتجات والخدمات والعروض الجديدة."
+    },
+    "lawfulBasis": {
+      "title": "الأساس القانوني",
+      "text": "إذا كنت مقيمًا في المنطقة الاقتصادية الأوروبية، فإننا نعالج معلوماتك الشخصية وفقًا للأساس القانوني التالي: موافقتك، تنفيذ عقد، التزامات قانونية، مصالح حيوية، مهام المصلحة العامة، أو مصالح مشروعة لا تتجاوز حقوقك الأساسية."
+    },
+    "retention": {
+      "title": "الاحتفاظ",
+      "text": "عند تقديم طلب من خلال الموقع، نحتفظ بمعلوماتك الشخصية ما لم وحتى تطلب منا محوها."
+    },
+    "automaticDecisionMaking": {
+      "title": "اتخاذ القرارات التلقائية",
+      "text": "إذا كنت مقيمًا في المنطقة الاقتصادية الأوروبية، لديك الحق في الاعتراض على اتخاذ القرارات الآلية (بما في ذلك التنميط) ذات التأثير القانوني أو الكبير. يستخدم معالجنا قرارات آلية محدودة لمنع الاحتيال، مثل قوائم الحظر المؤقتة لعناوين IP أو بطاقات الائتمان."
+    },
+    "yourRights": {
+      "title": "حقوقك",
+      "gdpr": "يحق لمقيمي المنطقة الاقتصادية الأوروبية الوصول إلى معلوماتهم الشخصية ونقلها وتصحيحها وتحديثها أو محوها. اتصل بنا لممارسة هذه الحقوق.",
+      "ccpa": "يحق لمقيمي كاليفورنيا الوصول ('الحق في المعرفة') ونقل وتصحيح وتحديث أو محو معلوماتهم الشخصية. يمكنك تعيين وكيل معتمد لتقديم الطلبات."
+    },
+    "cookies": {
+      "title": "ملفات تعريف الارتباط",
+      "text": "ملفات تعريف الارتباط هي قطع صغيرة من المعلومات يتم تنزيلها على جهازك عند زيارة موقعنا. نستخدم ملفات تعريف ارتباط وظيفية وأداء وإعلانية ووسائل التواصل الاجتماعي لتعزيز تجربة التصفح الخاصة بك وتذكر التفضيلات."
+    },
+    "doNotTrack": {
+      "title": "عدم التتبع",
+      "text": "نظرًا لعدم وجود استجابة صناعية متسقة لإشارات 'عدم التتبع'، فإننا لا نغير ممارسات جمع البيانات الخاصة بنا إذا تم اكتشاف مثل هذه الإشارة في متصفحك."
+    },
+    "changes": {
+      "title": "التغييرات",
+      "text": "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر لتعكس التغييرات في الممارسات أو لأسباب قانونية أو تنظيمية أو تشغيلية."
+    },
+    "contact": {
+      "title": "الاتصال",
+      "text": "لمزيد من المعلومات حول ممارسات الخصوصية الخاصة بنا أو الأسئلة أو الشكاوى، اتصل بنا عبر البريد الإلكتروني على hello@enouza.com."
+    },
+    "lastUpdated": "آخر تحديث: 15 يونيو 2022"
+  },
+
+  "returnPolicy": {
+    "seoTitle": "إينوزا - سياسة الإرجاع",
+    "title": "سياسة الإرجاع والاسترداد",
+    "returns": {
+      "heading": "الإرجاع:",
+      "text": "ببساطة، يمكنك إرجاع البضائع للحصول على استرداد فقط إذا كان المنتج في حالة جديدة تمامًا وغير مفتوح، بما في ذلك العبوة الأصلية والملحقات. نعلم أن هذا يبدو متطرفًا بعض الشيء، ولكن بدون هذا الشرط، لن نتمكن من تقديم أسعارنا المذهلة. سنحترم عمليات الاسترداد للمنتجات غير المفتوحة حتى 15 - 25 يومًا من استلامك للمنتج. سيتم إصدار جميع عمليات الاسترداد إلى طريقة الدفع الأصلية وقد تستغرق من 7 إلى 10 أيام عمل للتطبيق."
+    },
+    "rejectedRefunds": {
+      "heading": "سيتم رفض استردادك إذا تم إرجاع منتجاتك بسبب المشكلات التالية:",
+      "items": [
+        "إذا كنت ترغب في إرجاع منتجك بسبب تلف في صندوق المنتج الأصلي.",
+        "إذا تم فتح المنتج الذي أعدته وإزالة ختمه.",
+        "المنتجات ذات مشاكل الطلاء التجميلية الطفيفة لأشكال الجوائز لأن هذه متوقعة."
+      ]
+    },
+    "exceptions": {
+      "heading": "الاستثناءات / المنتجات غير القابلة للإرجاع:",
+      "text": "الطلبات المسبقة هي مبيعات نهائية وغير قابلة للإرجاع بمجرد شحنها. إذا استلمت منتجًا معيبًا، يرجى الاتصال بنا للحصول على معلومات حول الاتصال بالمصنع. المنتجات ذات عيوب الصندوق والعيوب العامة. يرجى الاتصال بنا إذا كانت لديك أسئلة أو مخاوف حول منتجك المحدد."
+    },
+    "returnShipping": {
+      "heading": "شحن الإرجاع:",
+      "text": "لإرجاع منتج، يرجى الاتصال بدعم العملاء لدينا مع رقم طلبك وسبب الإرجاع. سيتم تزويدك بملصق إرجاع إذا تمت الموافقة على طلب الإرجاع الخاص بك."
+    },
+    "damagesIssues": {
+      "heading": "الأضرار والمشكلات",
+      "text": "يرجى فحص طلبك عند الاستلام والاتصال بنا فورًا إذا كان المنتج معيبًا أو تالفًا أو إذا استلمت المنتج الخطأ حتى نتمكن من تقييم المشكلة وإصلاحها."
+    },
+    "refunds": {
+      "heading": "المبالغ المستردة",
+      "text": "سنخطرك بمجرد استلامنا وفحصنا للإرجاع، ونخبرك ما إذا تمت الموافقة على الاسترداد. إذا تمت الموافقة، سيتم استرداد المبلغ تلقائيًا إلى طريقة الدفع الأصلية. تذكر أنه قد يستغرق بعض الوقت حتى يقوم البنك أو شركة بطاقة الائتمان بمعالجة ونشر المبلغ المسترد."
+    }
+  },
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "ما هي سياسة الإرجاع الخاصة بكم؟",
+      "answer": {
+        "paragraphe": [
+          "إذا كنت ترغب في إرجاع طلبك لأي سبب، فنحن هنا للمساعدة دون متاعب! نقدم عمليات إرجاع خلال 30 يومًا من الشراء. يمكنك إرجاع منتجك للحصول على استرداد إلى طريقة الدفع الأصلية إذا لم يلبِّ المنتج توقعاتك. ستتم معالجة المبلغ المسترد إلى طريقة الدفع الأصلية خلال 5-10 أيام عمل."
+        ],
+        "list": [
+          "منتجات التصفية هي مبيعات نهائية ولا يمكن إرجاعها أو استبدالها.",
+          "يجب أن تتضمن المنتجات المرتجعة معلومات التعريف وأن يتم إرجاعها في عبوة المنتج الأصلية.",
+          "يجب ألا تحتوي المنتجات المرتجعة على علامات تآكل أو استخدام مرئية.",
+          "لن يتم استرداد تكلفة الشحن إلا إذا تم إرسال منتج خاطئ أو تالف إليك.",
+          "لن يتم توفير ملصق إرجاع مدفوع مسبقًا إلا إذا تم إرسال المنتج الخطأ، أو تلف المنتج أثناء النقل.",
+          "نحن لا نعالج عمليات استبدال الملابس. إذا لم يناسبك المنتج الذي اشتريته، يرجى إرجاعه للحصول على استرداد. يمكنك بعد ذلك تقديم طلب جديد للمقاس المطلوب. لمزيد من المعلومات وملصقات RMA، يرجى الاتصال بفريق خدمة العملاء لدينا."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "كيف يتم إرجاع المنتج؟",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "قم بتسجيل الدخول إلى حساب إينوزا الخاص بك واتصل بفريق خدمة العملاء لدينا.",
+          "قدم أكبر قدر ممكن من المعلومات حول المنتجات التي ترغب في إرجاعها أو استبدالها من طلبك.",
+          "يجب ألا تحتوي المنتجات المرتجعة على علامات تآكل أو استخدام مرئية.",
+          "اطبع ملصق الشحن المدفوع مسبقًا الذي ستستلمه عبر البريد الإلكتروني.",
+          "يرجى ملاحظة أنه لن يتم توفير ملصق إرجاع مدفوع مسبقًا إلا إذا تم إرسال المنتج الخطأ، أو تلف المنتج أثناء النقل.",
+          "أرسل جميع المنتجات إلينا باستخدام الملصق المقدم."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "وصل منتجي تالفًا! ماذا يجب أن أفعل؟",
+      "answer": {
+        "paragraphe": [
+          "عذرًا أيها الجامعون! نحن نتفهم كم هو مخيب للآمال تلقي منتج تالف - خاصة منتج انتظرته لأشهر! للأسف، تحدث الأخطاء وقد تتلف المنتجات أثناء النقل. في حالة حدوث ذلك، يرجى الاتصال بنا مع صور للمنتج التالف وسنستبدله أو نصدر استردادًا جزئيًا أو كليًا. رضاك هو أولويتنا رقم 1!"
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "ما هي المنتجات المستثناة من سياسة الإرجاع؟",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "المنتجات الرقمية، بما في ذلك العضويات وبطاقات الهدايا، غير مؤهلة للاسترداد أو الإرجاع. إذا واجهت أي مشكلة في الوصول إلى منتج رقمي أو استخدامه، يرجى الاتصال بنا وسنكون سعداء بمساعدتك.",
+          "المنتجات المشتراة كجزء من عروض التصفية أو البيع النهائي قد لا تكون مؤهلة للإرجاع، إلا حيث يقتضي القانون ذلك.",
+          "المنتجات التي تم استخدامها أو تركيبها أو تعديلها بعد التسليم قد لا تكون مؤهلة للإرجاع، اعتمادًا على حالة المنتج وسياسة الإرجاع الخاصة بنا.",
+          "إذا وصل منتجك تالفًا أو به عيب، يرجى الاتصال بنا في أقرب وقت ممكن حتى نتمكن من مساعدتك وإيجاد حل مناسب.",
+          "قد تنطبق شروط إضافية على منتجات معينة وسيتم الإشارة إليها في صفحة المنتج المعنية حيثما ينطبق ذلك."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "منتجي به عيب / أجزاء مفقودة. ماذا يجب أن أفعل؟",
+      "answer": {
+        "paragraphe": [
+          "اتصل بنا مباشرة مع صور وشرح للعيب.",
+          "يرجى ملاحظة: منتجات الفيديو المنزلية ليست مضمونة لتأتي مع غطاء."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "ما هي سياسة الاسترداد الخاصة بكم؟",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "بعد إلغاء طلب أو معالجة إرجاع، سيتم إصدار استردادك إلى طريقة الدفع الأصلية.",
+          "عند اكتمال إرجاعك، ستتم معالجة الاسترداد خلال 1-5 أيام عمل.",
+          "بعد معالجة الاسترداد، يرجى السماح بـ 3-5 أيام عمل لاسترداد PayPal و3-10 أيام عمل لجميع طرق الدفع الأخرى.",
+          "سنخطرك عبر البريد الإلكتروني عندما يتم إصدار استردادك.",
+          "سيتم إصدار استرداد كامل حتى إذا تم استخدام بطاقة هدايا رقمية من متجر إينوزا كدفع كامل أو جزئي للطلب.",
+          "يمكن إلغاء الطلب واسترداده على الفور إذا لم يبدأ الطرد بعد في المعالجة للشحن.",
+          "بمجرد أن يبدأ الطرد في المعالجة للشحن، يجب تسليمه إلى وجهته وإعادته إلى إينوزا قبل إصدار استرداد. يرجى الاتصال بفريق خدمة العملاء لدينا للحصول على معلومات أكثر تفصيلاً."
+        ]
+      }
+    }
+  ],
+
+  "shipping": {
+    "seoTitle": "إينوزا - سياسة الشحن",
+    "title": "سياسة الشحن",
+    "intro": "نقدم شحنًا عالميًا مجانيًا على جميع منتجاتنا، ونوصل إلى كل دولة تقريبًا في العالم.",
+    "deliveryTime": {
+      "title": "وقت التسليم المقدر",
+      "description": "يستغرق التوصيل عادةً من 5 إلى 15 يوم عمل، بحد أقصى 30 يوم عمل اعتمادًا على الوجهة."
+    },
+    "tracking": {
+      "title": "تتبع طلبك",
+      "description": "عند الشحن، ستستلم بريدًا إلكترونيًا برقم تتبع. قد يتم شحن المنتجات بشكل منفصل لأسباب لوجستية."
+    },
+    "customFees": {
+      "title": "الرسوم الجمركية",
+      "description": "أي رسوم جمركية يتم تكبدها عند الشحن ليست مسؤوليتنا."
+    },
+    "lostOrDelayedPackages": {
+      "title": "الطرود المفقودة أو المتأخرة",
+      "description": "إذا فُقد طردك أو تأخر، يرجى الاتصال بنا مع معلومات طلبك."
+    },
+    "contact": {
+      "title": "الاتصال",
+      "description": "إذا كانت لديك أي أسئلة أخرى حول الشحن، اتصل بنا على hello@enouza.com"
+    }
+  },
+
+  "shippingFaq": [
+    {
+      "id": 1,
+      "question": "كم تكلفة الشحن؟",
+      "answer": {
+        "paragraphe": [
+          "تختلف تكاليف الشحن الدولي حسب الوجهة. إليك تفصيل تكاليف الشحن لكل وجهة:"
+        ],
+        "list": [
+          "كندا: 0$ - 19.99$",
+          "أوروبا: 0$ - 40$",
+          "أستراليا: 0$ - 43.99$",
+          "عالميًا: شحن مجاني لبعض المنتجات"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "ماذا يحدث إذا فُقد طردي أثناء النقل؟",
+      "answer": {
+        "paragraphe": [
+          "إذا ظهر أن الطرد تم تسليمه ولكنك لم تستلمه، يرجى الاتصال بالناقل وإخطارنا خلال 30 يومًا من تاريخ التسليم.",
+          "إذا تم تحديد أن الطرد فُقد بسبب خطأ في التسليم من قبل الناقل، سنستبدل طلبك.",
+          "إذا فُقد الطرد بسبب عنوان غير مكتمل أو غير صحيح، فلا يمكننا تقديم استرداد أو استبدال — العملاء مسؤولون عن التأكد من صحة عنوان الشحن الخاص بهم في وقت الشراء. إذا تم إرجاع الطرد إلينا، ستحتاج إلى دفع رسوم شحن إضافية لإعادة إرساله.",
+          "إذا وجدت أن عنوان الشحن الخاص بك غير صحيح أو تغير منذ تقديم طلبك، يرجى إخطارنا برقم/معرف طلبك والعنوان المحدث."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 3,
+      "question": "متى سيتم شحن طلبي؟",
+      "answer": {
+        "paragraphe": [
+          "ستتم معالجة طلبك خلال أيام العمل العادية (الاثنين إلى الجمعة، باستثناء العطلات).",
+          "إذا كان المنتج في المخزون، ستتم معالجة طلبك خلال 1 إلى 5 أيام عمل. سيختلف وقت التسليم بعد المعالجة بناءً على عنوان الشحن. حاليًا، تتراوح أوقات التسليم بين 5 إلى 15 يوم عمل.",
+          "بمجرد شحن منتج، ستستلم بريدًا إلكترونيًا بمعلومات التتبع. في بعض الحالات الخاصة، قد لا تكون أرقام التتبع متاحة."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "هل سأستلم طلبي في طرود متعددة؟",
+      "answer": {
+        "paragraphe": [
+          "إذا اشتريت منتجات متوفرة في المخزون يتم شحنها من مستودعات مختلفة، ستستلم شحنات متعددة."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 5,
+      "question": "كيف يتم حساب أسعار الشحن؟",
+      "answer": {
+        "paragraphe": [
+          "يتم حساب رسوم الشحن أثناء إتمام الشراء. يمكنك إضافة منتجات إلى سلتك، والمتابعة إلى إتمام الشراء، وإدخال عنوان الشحن الخاص بك لرؤية تكلفة الشحن لطلبك."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "ما هي سياسة الاسترداد الخاصة بكم؟",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "بعد إلغاء طلب أو معالجة إرجاع، سيتم إصدار استرداد إلى طريقة الدفع الأصلية.",
+          "بمجرد اكتمال عملية الإرجاع، ستتم معالجة الاسترداد خلال 1-5 أيام عمل.",
+          "بعد معالجة الاسترداد، يرجى السماح بـ 3-5 أيام عمل لاسترداد PayPal، و3-10 أيام عمل لجميع طرق الدفع الأخرى.",
+          "سنخطرك عبر البريد الإلكتروني بمجرد إصدار الاسترداد.",
+          "سيتم إصدار استرداد كامل حتى إذا تم استخدام بطاقة هدايا رقمية من متجر إينوزا كدفع كامل أو جزئي للطلب.",
+          "يمكن إلغاء الطلب واسترداده على الفور إذا لم يبدأ الطرد بعد في المعالجة للشحن.",
+          "بمجرد أن يبدأ الطرد في المعالجة للشحن، يجب تسليمه إلى وجهته وإعادته إلى إينوزا قبل إصدار استرداد. يرجى الاتصال بفريق خدمة العملاء لدينا للحصول على معلومات أكثر تفصيلاً."
+        ]
+      }
+    }
+  ],
+  "terms": {
+    "seoTitle": "إينوزا - شروط الخدمة",
+    "title": "شروط الخدمة",
+    "overview": {
+      "title": "نظرة عامة",
+      "p1": "يتم تشغيل هذا الموقع بواسطة إينوزا. في جميع أنحاء الموقع، تشير المصطلحات \"نحن\" و\"لنا\" و\"خاصتنا\" إلى إينوزا. تقدم إينوزا هذا الموقع، بما في ذلك جميع المعلومات والأدوات والخدمات المتاحة من هذا الموقع لك، المستخدم، بشرط قبولك لجميع الشروط والأحكام والسياسات والإشعارات المذكورة هنا.",
+      "p2": "من خلال زيارة موقعنا و/أو شراء شيء منا، فإنك تشارك في \"الخدمة\" الخاصة بنا وتوافق على الالتزام بالشروط والأحكام التالية (\"شروط الخدمة\"، \"الشروط\")، بما في ذلك تلك الشروط والأحكام الإضافية والسياسات المشار إليها هنا و/أو المتاحة عبر الارتباط التشعبي. تنطبق شروط الخدمة هذه على جميع مستخدمي الموقع، بما في ذلك على سبيل المثال لا الحصر المستخدمين الذين هم متصفحون وبائعون وعملاء وتجار و/أو مساهمون في المحتوى.",
+      "p3": "يرجى قراءة شروط الخدمة هذه بعناية قبل الوصول إلى موقعنا الإلكتروني أو استخدامه. من خلال الوصول إلى أي جزء من الموقع أو استخدامه، فإنك توافق على الالتزام بشروط الخدمة هذه. إذا كنت لا توافق على جميع الشروط والأحكام الواردة في هذه الاتفاقية، فلا يجوز لك الوصول إلى الموقع الإلكتروني أو استخدام أي خدمات. إذا كانت شروط الخدمة هذه تعتبر عرضًا، فإن القبول يقتصر صراحةً على شروط الخدمة هذه.",
+      "p4": "أي ميزات أو أدوات جديدة تُضاف إلى المتجر الحالي تخضع أيضًا لشروط الخدمة. يمكنك مراجعة أحدث إصدار من شروط الخدمة في أي وقت على هذه الصفحة. نحتفظ بالحق في تحديث أو تغيير أو استبدال أي جزء من شروط الخدمة هذه عن طريق نشر التحديثات و/أو التغييرات على موقعنا الإلكتروني. تقع على عاتقك مسؤولية التحقق من هذه الصفحة بشكل دوري لمعرفة التغييرات. يشكل استمرارك في استخدام أو الوصول إلى الموقع الإلكتروني بعد نشر أي تغييرات قبولًا لتلك التغييرات."
+    },
+    "sections": {
+      "section1": {
+        "title": "القسم 1 - شروط المتجر الإلكتروني",
+        "text": "بالموافقة على شروط الخدمة هذه، فإنك تقر بأنك بلغت سن الرشد على الأقل في ولايتك أو مقاطعتك محل الإقامة، أو أنك بلغت سن الرشد في ولايتك أو مقاطعتك محل الإقامة وقد منحتنا موافقتك للسماح لأي من معاليك القُصر باستخدام هذا الموقع. لا يجوز لك استخدام منتجاتنا لأي غرض غير قانوني أو غير مصرح به ولا يجوز لك، في استخدام الخدمة، انتهاك أي قوانين في ولايتك القضائية (بما في ذلك على سبيل المثال لا الحصر قوانين حقوق النشر). يجب ألا ترسل أي ديدان أو فيروسات أو أي رمز ذي طبيعة مدمرة. سيؤدي انتهاك أو خرق أي من الشروط إلى إنهاء خدماتك فورًا."
+      },
+      "section2": {
+        "title": "القسم 2 - الشروط العامة",
+        "text": "نحتفظ بالحق في رفض الخدمة لأي شخص لأي سبب في أي وقت. أنت تفهم أن المحتوى الخاص بك (باستثناء معلومات بطاقة الائتمان) قد يتم نقله دون تشفير ويتضمن (أ) عمليات إرسال عبر شبكات مختلفة؛ و(ب) تغييرات للتوافق والتكيف مع المتطلبات التقنية للشبكات أو الأجهزة المتصلة. يتم دائمًا تشفير معلومات بطاقة الائتمان أثناء النقل عبر الشبكات. توافق على عدم إعادة إنتاج أو تكرار أو نسخ أو بيع أو إعادة بيع أو استغلال أي جزء من الخدمة، أو استخدام الخدمة، أو الوصول إلى الخدمة أو أي اتصال على الموقع الإلكتروني الذي يتم من خلاله تقديم الخدمة، دون إذن كتابي صريح منا. العناوين المستخدمة في هذه الاتفاقية مدرجة للراحة فقط ولن تحد أو تؤثر بطريقة أخرى على هذه الشروط."
+      },
+      "section3": {
+        "title": "القسم 3 - دقة واكتمال وحداثة المعلومات",
+        "text": "نحن لسنا مسؤولين إذا كانت المعلومات المتاحة على هذا الموقع غير دقيقة أو كاملة أو حديثة. يتم توفير المواد الموجودة على هذا الموقع للحصول على معلومات عامة فقط ولا ينبغي الاعتماد عليها أو استخدامها كأساس وحيد لاتخاذ القرارات دون استشارة مصادر معلومات أولية أو أكثر دقة أو اكتمالاً أو حداثة. أي اعتماد على المواد الموجودة على هذا الموقع هو على مسؤوليتك الخاصة. قد يحتوي هذا الموقع على بعض المعلومات التاريخية. المعلومات التاريخية، بالضرورة، ليست حديثة ويتم توفيرها للرجوع إليها فقط. نحتفظ بالحق في تعديل محتويات هذا الموقع في أي وقت، لكن ليس لدينا أي التزام بتحديث أي معلومات على موقعنا. توافق على أن مسؤوليتك هي مراقبة التغييرات على موقعنا."
+      },
+      "section4": {
+        "title": "القسم 4 - التعديلات على الخدمة والأسعار",
+        "text": "تخضع أسعار منتجاتنا للتغيير دون إشعار. نحتفظ بالحق في أي وقت في تعديل أو إيقاف الخدمة (أو أي جزء أو محتوى منها) دون إشعار في أي وقت. لن نكون مسؤولين تجاهك أو تجاه أي طرف ثالث عن أي تعديل أو تغيير في السعر أو تعليق أو إيقاف للخدمة."
+      },
+      "section5": {
+        "title": "القسم 5 - المنتجات أو الخدمات (إن وجدت)",
+        "text": "قد تكون بعض المنتجات أو الخدمات متاحة حصريًا عبر الإنترنت من خلال الموقع الإلكتروني. قد تكون لهذه المنتجات أو الخدمات كميات محدودة وتخضع للإرجاع أو الاستبدال فقط وفقًا لسياسة الإرجاع الخاصة بنا. بذلنا كل جهد ممكن لعرض ألوان وصور منتجاتنا التي تظهر في المتجر بأكبر قدر ممكن من الدقة. لا يمكننا ضمان أن عرض شاشة الكمبيوتر الخاصة بك لأي لون سيكون دقيقًا. نحتفظ بالحق ولكننا لسنا ملزمين بتقييد مبيعات منتجاتنا أو خدماتنا لأي شخص أو منطقة جغرافية أو ولاية قضائية. قد نمارس هذا الحق على أساس كل حالة على حدة. نحتفظ بالحق في تحديد كميات أي منتجات أو خدمات نقدمها. جميع أوصاف المنتجات أو أسعار المنتجات تخضع للتغيير في أي وقت دون إشعار، وفقًا لتقديرنا وحده. نحتفظ بالحق في إيقاف أي منتج في أي وقت. أي عرض لأي منتج أو خدمة يتم تقديمه على هذا الموقع باطل حيثما كان محظورًا. لا نضمن أن جودة أي منتجات أو خدمات أو معلومات أو مواد أخرى تم شراؤها أو الحصول عليها من قبلك ستلبي توقعاتك، أو أن أي أخطاء في الخدمة سيتم تصحيحها."
+      },
+      "section6": {
+        "title": "القسم 6 - دقة الفواتير ومعلومات الحساب",
+        "text": "نحتفظ بالحق في رفض أي طلب تقدمه لنا. يمكننا، وفقًا لتقديرنا الوحيد، تحديد أو إلغاء الكميات المشتراة لكل شخص أو لكل أسرة أو لكل طلب. قد تشمل هذه القيود الطلبات المقدمة من أو بموجب نفس حساب العميل، ونفس بطاقة الائتمان، و/أو الطلبات التي تستخدم نفس عنوان الفاتورة و/أو الشحن. في حالة إجراء تغيير على طلب أو إلغائه، قد نحاول إخطارك عن طريق الاتصال بالبريد الإلكتروني و/أو عنوان الفاتورة/رقم الهاتف المقدم في وقت تقديم الطلب. نحتفظ بالحق في تحديد أو حظر الطلبات التي، في حكمنا الوحيد، يبدو أنها مقدمة من تجار أو بائعين أو موزعين. توافق على تقديم معلومات شراء وحساب حالية وكاملة ودقيقة لجميع المشتريات التي تتم في متجرنا. توافق على تحديث حسابك والمعلومات الأخرى بسرعة، بما في ذلك عنوان بريدك الإلكتروني وأرقام بطاقات الائتمان وتواريخ انتهاء صلاحيتها حتى نتمكن من إكمال معاملاتك والاتصال بك حسب الحاجة."
+      },
+      "section7": {
+        "title": "القسم 7 - سياسة الإرجاع",
+        "text": "لمزيد من التفاصيل، يرجى مراجعة سياسة الإرجاع الخاصة بنا."
+      },
+      "section8": {
+        "title": "القسم 8 - الأدوات الاختيارية",
+        "text": "قد نمنحك الوصول إلى أدوات طرف ثالث لا نراقبها ولا نتحكم فيها ولا نملك أي مدخلات بشأنها. تقر وتوافق على أننا نوفر الوصول إلى هذه الأدوات \"كما هي\" و\"حسب التوفر\" دون أي ضمانات أو تمثيلات أو شروط من أي نوع ودون أي تأييد. لن نتحمل أي مسؤولية من أي نوع تنشأ عن أو تتعلق باستخدامك لأدوات طرف ثالث اختيارية. أي استخدام من قبلك للأدوات الاختيارية المقدمة عبر الموقع هو بالكامل على مسؤوليتك وتقديرك ويجب عليك التأكد من أنك على دراية بشروط تقديم الأدوات من قبل مزودي الطرف الثالث المعنيين والموافقة عليها. قد نقدم أيضًا، في المستقبل، خدمات و/أو ميزات جديدة عبر الموقع الإلكتروني (بما في ذلك إصدار أدوات وموارد جديدة). تخضع هذه الميزات و/أو الخدمات الجديدة أيضًا لشروط الخدمة هذه."
+      },
+      "section9": {
+        "title": "القسم 9 - روابط الطرف الثالث",
+        "text": "قد يتضمن محتوى أو منتجات أو خدمات معينة متاحة عبر خدمتنا مواد من أطراف ثالثة. قد توجهك روابط الطرف الثالث على هذا الموقع إلى مواقع طرف ثالث غير تابعة لنا. نحن لسنا مسؤولين عن فحص أو تقييم المحتوى أو الدقة ولا نضمن ولن نتحمل أي مسؤولية عن أي مواد أو مواقع طرف ثالث، أو عن أي مواد أو منتجات أو خدمات أخرى لأطراف ثالثة. نحن لسنا مسؤولين عن أي ضرر أو أضرار تتعلق بشراء أو استخدام السلع أو الخدمات أو الموارد أو المحتوى أو أي معاملات أخرى تتم فيما يتعلق بأي مواقع طرف ثالث. يرجى مراجعة سياسات وممارسات الطرف الثالث بعناية والتأكد من فهمها قبل المشاركة في أي معاملة. يجب توجيه الشكاوى أو المطالبات أو المخاوف أو الأسئلة المتعلقة بمنتجات الطرف الثالث إلى الطرف الثالث."
+      },
+      "section10": {
+        "title": "القسم 10 - تعليقات المستخدمين والملاحظات والمساهمات الأخرى",
+        "text": "إذا قمت، بناءً على طلبنا، بإرسال مساهمات محددة معينة (على سبيل المثال، مشاركات المسابقات) أو دون طلب منا بإرسال أفكار إبداعية أو اقتراحات أو مقترحات أو خطط أو مواد أخرى، سواء عبر الإنترنت أو بالبريد الإلكتروني أو بالبريد العادي أو بخلاف ذلك (يُشار إليها مجتمعة بـ 'التعليقات')، فإنك توافق على أنه يجوز لنا، في أي وقت، دون قيود، تحرير أو نسخ أو نشر أو توزيع أو ترجمة واستخدام أي تعليقات ترسلها إلينا بأي وسيلة أخرى. نحن لسنا ولن نكون ملزمين (1) بالحفاظ على أي تعليقات في سرية؛ (2) بدفع تعويض عن أي تعليقات؛ أو (3) بالرد على أي تعليقات. يجوز لنا، ولكن ليس لدينا التزام، بمراقبة أو تحرير أو إزالة المحتوى الذي نحدده وفقًا لتقديرنا الوحيد على أنه غير قانوني أو مسيء أو مهدد أو تشهيري أو افترائي أو إباحي أو فاحش أو غير مقبول بطريقة أخرى أو ينتهك الملكية الفكرية لأي طرف أو شروط الخدمة هذه. توافق على أن تعليقاتك لن تنتهك أي حقوق لأي طرف ثالث، بما في ذلك حقوق النشر أو العلامات التجارية أو الخصوصية أو الشخصية أو حقوق شخصية أو ملكية أخرى. كما توافق على أن تعليقاتك لن تحتوي على مواد تشهيرية أو غير قانونية بأي شكل آخر أو مسيئة أو فاحشة، أو تحتوي على أي فيروس كمبيوتر أو برامج ضارة أخرى يمكنها بأي شكل من الأشكال التأثير على تشغيل الخدمة أو أي موقع إلكتروني ذي صلة. لا يجوز لك استخدام عنوان بريد إلكتروني مزيف، أو التظاهر بأنك شخص آخر غير نفسك، أو تضليلنا أو تضليل أطراف ثالثة بطريقة أخرى بشأن مصدر أي تعليقات. أنت المسؤول الوحيد عن أي تعليقات تقدمها ودقتها. نحن لا نتحمل أي مسؤولية عن أي تعليقات نشرتها أنت أو أي طرف ثالث."
+      },
+      "section11": {
+        "title": "القسم 11 - المعلومات الشخصية",
+        "text": "يخضع تقديمك للمعلومات الشخصية من خلال المتجر لسياسة الخصوصية الخاصة بنا."
+      },
+      "section12": {
+        "title": "القسم 12 - الأخطاء وعدم الدقة والإغفالات",
+        "text": "في بعض الأحيان قد تكون هناك معلومات على موقعنا أو في الخدمة تحتوي على أخطاء مطبعية أو عدم دقة أو إغفالات قد تتعلق بأوصاف المنتجات أو التسعير أو العروض الترويجية أو العروض أو رسوم شحن المنتجات أو أوقات العبور والتوفر. نحتفظ بالحق في تصحيح أي أخطاء أو عدم دقة أو إغفالات، وتغيير أو تحديث المعلومات أو إلغاء الطلبات إذا كانت أي معلومات في الخدمة أو على أي موقع إلكتروني ذي صلة غير دقيقة في أي وقت دون إشعار مسبق (بما في ذلك بعد تقديم طلبك). لا نتعهد بأي التزام بتحديث أو تعديل أو توضيح المعلومات في الخدمة أو على أي موقع إلكتروني ذي صلة، بما في ذلك على سبيل المثال لا الحصر معلومات التسعير، باستثناء ما يقتضيه القانون. لا ينبغي اعتبار أي تاريخ تحديث أو تحديث محدد مطبق في الخدمة أو على أي موقع إلكتروني ذي صلة مؤشرًا على أن جميع المعلومات في الخدمة أو على أي موقع إلكتروني ذي صلة قد تم تعديلها أو تحديثها."
+      },
+      "section13": {
+        "title": "القسم 13 - الاستخدامات المحظورة",
+        "text": "بالإضافة إلى المحظورات الأخرى المنصوص عليها في شروط الخدمة، يُحظر عليك استخدام الموقع أو محتواه: (أ) لأي غرض غير قانوني؛ (ب) للتماس من الآخرين للقيام أو المشاركة في أي أعمال غير قانونية؛ (ج) لانتهاك أي لوائح أو قواعد أو قوانين أو مراسيم دولية أو فيدرالية أو إقليمية أو حكومية أو محلية؛ (د) للتعدي على أو انتهاك حقوق الملكية الفكرية الخاصة بنا أو حقوق الملكية الفكرية للآخرين؛ (هـ) للتحرش أو الإساءة أو الإهانة أو الإضرار أو التشهير أو القذف أو التقليل من الشأن أو الترهيب أو التمييز على أساس الجنس أو التوجه الجنسي أو الدين أو العرق أو الإثنية أو العمر أو الأصل القومي أو الإعاقة؛ (و) لتقديم معلومات كاذبة أو مضللة؛ (ز) لتحميل أو نقل فيروسات أو أي نوع آخر من التعليمات البرمجية الضارة التي ستُستخدم أو قد تُستخدم بأي شكل من الأشكال التي تؤثر على وظائف أو تشغيل الخدمة أو أي موقع إلكتروني ذي صلة أو مواقع أخرى أو الإنترنت؛ (ح) لجمع أو تتبع المعلومات الشخصية للآخرين؛ (ط) لإرسال البريد العشوائي أو التصيد أو الاحتيال أو الذريعة أو العنكبوت أو الزحف أو الكشط؛ (ي) لأي غرض فاحش أو غير أخلاقي؛ أو (ك) للتدخل في أو التحايل على ميزات الأمان في الخدمة أو أي موقع إلكتروني ذي صلة أو مواقع أخرى أو الإنترنت. نحتفظ بالحق في إنهاء استخدامك للخدمة أو أي موقع إلكتروني ذي صلة لانتهاك أي من الاستخدامات المحظورة."
+      },
+      "section14": {
+        "title": "القسم 14 - إخلاء المسؤولية عن الضمانات؛ تحديد المسؤولية",
+        "text": "نحن لا نضمن أو نمثل أو نضمن أن استخدامك لخدمتنا سيكون دون انقطاع أو في الوقت المناسب أو آمنًا أو خاليًا من الأخطاء. نحن لا نضمن أن النتائج التي قد يتم الحصول عليها من استخدام الخدمة ستكون دقيقة أو موثوقة. توافق على أنه من وقت لآخر قد نقوم بإزالة الخدمة لفترات زمنية غير محددة أو إلغاء الخدمة في أي وقت، دون إشعار لك. توافق صراحةً على أن استخدامك لـ، أو عدم قدرتك على استخدام، الخدمة هو على مسؤوليتك وحدك. يتم تقديم الخدمة وجميع المنتجات والخدمات المسلمة إليك من خلال الخدمة (باستثناء ما هو منصوص عليه صراحةً من قبلنا) 'كما هي' و'حسب التوفر' لاستخدامك، دون أي تمثيل أو ضمانات أو شروط من أي نوع، سواء صريحة أو ضمنية، بما في ذلك جميع الضمانات أو الشروط الضمنية للقابلية للتسويق أو الجودة التجارية أو الملاءمة لغرض معين أو المتانة أو الملكية أو عدم الانتهاك. لا تتحمل إينوزا أو مديريها أو مسؤوليها أو موظفيها أو الشركات التابعة لها أو وكلائها أو المقاولين أو المتدربين أو الموردين أو مزودي الخدمة أو المرخصين في أي حال من الأحوال المسؤولية عن أي إصابة أو خسارة أو مطالبة أو أي أضرار مباشرة أو غير مباشرة أو عرضية أو تأديبية أو خاصة أو تبعية من أي نوع، بما في ذلك على سبيل المثال لا الحصر الأرباح المفقودة أو الإيرادات المفقودة أو المدخرات المفقودة أو فقدان البيانات أو تكاليف الاستبدال أو أي أضرار مماثلة، سواء كانت قائمة على العقد أو الضرر (بما في ذلك الإهمال) أو المسؤولية الصارمة أو غير ذلك، الناشئة عن استخدامك لأي من الخدمة أو أي منتجات تم الحصول عليها باستخدام الخدمة، أو لأي مطالبة أخرى تتعلق بأي شكل من الأشكال باستخدامك للخدمة أو أي منتج، بما في ذلك على سبيل المثال لا الحصر أي أخطاء أو إغفالات في أي محتوى، أو أي خسارة أو ضرر من أي نوع تم تكبدها نتيجة لاستخدام الخدمة أو أي محتوى (أو منتج) تم نشره أو نقله أو إتاحته بأي شكل آخر عبر الخدمة، حتى لو تم إخطارهم بإمكانية ذلك. نظرًا لأن بعض الولايات أو الولايات القضائية لا تسمح باستبعاد أو تحديد المسؤولية عن الأضرار التبعية أو العرضية، في مثل هذه الولايات أو الولايات القضائية، ستكون مسؤوليتنا محدودة إلى أقصى حد يسمح به القانون."
+      },
+      "section15": {
+        "title": "القسم 15 - التعويض",
+        "text": "توافق على تعويض والدفاع عن وحماية إينوزا وشركتنا الأم والشركات التابعة لها والشركاء والمسؤولين والمديرين والوكلاء والمقاولين والمرخصين ومزودي الخدمة والمقاولين من الباطن والموردين والمتدربين والموظفين، من أي مطالبة أو طلب، بما في ذلك أتعاب المحاماة المعقولة، المقدمة من أي طرف ثالث بسبب أو الناشئة عن خرقك لشروط الخدمة هذه أو المستندات التي تدمجها بالإشارة أو انتهاكك لأي قانون أو حقوق طرف ثالث."
+      },
+      "section16": {
+        "title": "القسم 16 - قابلية الفصل",
+        "text": "في حالة تحديد أن أي حكم من شروط الخدمة هذه غير قانوني أو باطل أو غير قابل للتنفيذ، فإن هذا الحكم سيظل مع ذلك قابلاً للتنفيذ إلى أقصى حد يسمح به القانون المعمول به، وسيُعتبر الجزء غير القابل للتنفيذ منفصلاً عن شروط الخدمة هذه، ولن يؤثر هذا التحديد على صلاحية وقابلية تنفيذ أي أحكام أخرى متبقية."
+      },
+      "section17": {
+        "title": "القسم 17 - الإنهاء",
+        "text": "تستمر التزامات ومسؤوليات الأطراف المتكبدة قبل تاريخ الإنهاء بعد إنهاء هذه الاتفاقية لجميع الأغراض. تكون شروط الخدمة هذه سارية ما لم وحتى يتم إنهاؤها من قبلك أو من قبلنا. يمكنك إنهاء شروط الخدمة هذه في أي وقت بإخطارنا بأنك لم تعد ترغب في استخدام خدماتنا، أو عندما تتوقف عن استخدام موقعنا. إذا رأينا، وفقًا لحكمنا الوحيد، أنك فشلت، أو نشك في أنك فشلت، في الامتثال لأي بند أو حكم من شروط الخدمة هذه، يجوز لنا أيضًا إنهاء هذه الاتفاقية في أي وقت دون إشعار وستظل مسؤولاً عن جميع المبالغ المستحقة حتى تاريخ الإنهاء بما في ذلك؛ و/أو وفقًا لذلك قد نمنعك من الوصول إلى خدماتنا (أو أي جزء منها)."
+      },
+      "section18": {
+        "title": "القسم 18 - الاتفاقية الكاملة",
+        "text": "لا يشكل فشلنا في ممارسة أو إنفاذ أي حق أو حكم من شروط الخدمة هذه تنازلاً عن هذا الحق أو الحكم. تشكل شروط الخدمة هذه وأي سياسات أو قواعد تشغيل ننشرها على هذا الموقع أو فيما يتعلق بالخدمة الاتفاقية والتفاهم الكاملين بينك وبيننا وتحكم استخدامك للخدمة، وتحل محل أي اتفاقيات واتصالات ومقترحات سابقة أو معاصرة، سواء شفهية أو كتابية، بينك وبيننا (بما في ذلك على سبيل المثال لا الحصر أي إصدارات سابقة من شروط الخدمة). لا يجوز تفسير أي غموض في تفسير شروط الخدمة هذه ضد الطرف الصائغ."
+      },
+      "section19": {
+        "title": "القسم 19 - القانون الحاكم",
+        "text": "تخضع شروط الخدمة هذه وأي اتفاقيات منفصلة نقدم بموجبها الخدمات لك وتُفسر وفقًا لقوانين الولايات المتحدة."
+      },
+      "section20": {
+        "title": "القسم 20 - التغييرات على شروط الخدمة",
+        "text": "يمكنك مراجعة أحدث إصدار من شروط الخدمة في أي وقت على هذه الصفحة. نحتفظ بالحق، وفقًا لتقديرنا الوحيد، في تحديث أو تغيير أو استبدال أي جزء من شروط الخدمة هذه عن طريق نشر التحديثات والتغييرات على موقعنا الإلكتروني. تقع على عاتقك مسؤولية التحقق من موقعنا الإلكتروني بشكل دوري لمعرفة التغييرات."
+      },
+      "section21": {
+        "title": "القسم 21 - معلومات الاتصال",
+        "text": "يجب إرسال الأسئلة حول شروط الخدمة إلينا على hello@enouza.com"
+      }
+    }
   }
- 
 }

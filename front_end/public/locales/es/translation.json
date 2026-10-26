@@ -2,455 +2,404 @@
   "header": {},
 
   "countdownSection": {
-    "specialOffer": "Oferta especial",
+    "specialOffer": "Oferta Especial",
     "offerEndsIn": "LA OFERTA TERMINA EN",
     "days": "Días",
     "hours": "Horas",
     "minutes": "Minutos",
     "seconds": "Segundos",
     "offerExpired": "La oferta ha terminado",
-    "limitedTimeOffer": "Oferta por tiempo limitado",
-    "description": "Aprovecha esta oferta exclusiva antes de que termine.",
-    "shopNow": "Comprar ahora",
+    "limitedTimeOffer": "Oferta por Tiempo Limitado",
+    "description": "Disfruta de esta oferta exclusiva antes de que se acabe el tiempo.",
+    "shopNow": "Comprar Ahora",
     "ariaLabel": "Tiempo restante para esta oferta especial"
   },
-  
+
   "menu": {
-    "login": "Iniciar sesión",
+    "login": "Iniciar Sesión",
     "searchPlaceholder": "Buscar...",
     "cart": "Carrito",
-    "wishlist": "Lista de deseos",
+    "wishlist": "Lista de Deseos",
     "profile": "Perfil",
-    "logout": "Cerrar sesión",
+    "logout": "Cerrar Sesión",
     "dashboard": "Panel",
     "adminDashboard": "Admin",
-    "userDashboard": "Mi panel",
+    "userDashboard": "Mi Panel",
     "home": "Inicio",
     "contactUs": "Contacto",
-    "aboutUs": "Acerca",
+    "aboutUs": "Nosotros",
     "privacyPolicy": "Privacidad",
     "termsOfService": "Términos",
     "refundPolicy": "Reembolsos",
     "shippingPolicy": "Envíos",
     "helpCenter": "Ayuda",
-    "myOrders": "Mis pedidos",
+    "myOrders": "Mis Pedidos",
     "notifications": "Alertas",
     "shoppingCart": "Carrito",
     "checkout": "Pagar",
-    "orderSuccess": "Pedido realizado"
+    "orderSuccess": "Pedido Realizado"
   },
+
   "shoppingCart": {
-    "freeExpressTo": "Envío exprés gratis a"
+    "freeExpressTo": "Envío Exprés Gratis a"
   },
+
   "homePage": {
-    "homeInsperation": "Espacios que inspiran",
+    "homeInsperation": "Espacios que Inspiran",
     "new": "Nuevo",
-    "mayAlsoLike": "También te puede interesar",
-    "newArrival": "Novedades",
     "welcomeMessage": "Bienvenido a nuestra tienda",
     "featuredProducts": "Destacados",
-    "newArrivals": "Nuevos",
-    "bestSellers": "Más vendido",
+    "mayAlsoLike": "También te Puede Gustar",
+    "newArrival": "Novedades",
+    "bestSellers": "Más Vendidos",
     "specialOffers": "Ofertas",
-    "buyerTrustServices": "Nuestros servicios",
-    "freeShipping_offer": "Envío gratis desde $50",
-    "money_Back": "Garantía",
-    "safe_reliable_payments": "Pagos seguros",
-    "support_24_7": "Atención al cliente 24/7",
-    "secure_Payment": "Pago seguro",
-    "easy_Returns": "Devoluciones fáciles",
-    "More_to_love": "Seguro que te gusta",
-    "more_products": "Más productos",
-    "best_sellers": "Más vendidos"
+    "buyerTrustServices": "Nuestros Servicios",
+    "freeShipping_offer": "Envío gratis en pedidos superiores a $50",
+    "support_24_7": "Ayuda 24/7",
+    "money_Back": "Devolución de Dinero",
+    "secure_Payment": "Pago Seguro",
+    "easy_Returns": "Devoluciones Fáciles",
+    "safe_reliable_payments": "Pagos Seguros",
+    "More_to_love": "Más para Amar",
+    "more_products": "Más Productos",
+    "best_sellers": "Más Vendidos"
   },
   "mainSlider": {
-    "title": "La iluminación, seleccionada de otra manera.",
-    "description": "Una cuidada colección de iluminación escultural, creada para transformar la atmósfera de cada espacio.",
+    "title": "Iluminación, Curada de Forma Diferente.",
+    "description": "Una colección cuidadosamente seleccionada de iluminación escultural, creada para transformar la atmósfera de cada espacio.",
     "welcome": "Bienvenido a ENOUZA."
   },
   "productPage": {
-    "addToCart": "Añadir al carrito",
-    "buyNow": "Comprar ahora",
+    "addToCart": "Añadir al Carrito",
+    "buyNow": "Comprar Ahora",
     "productDescription": "Detalles",
     "customerReviews": "Reseñas",
     "ratings": "Valoraciones",
     "specifications": "Especificaciones",
-    "relatedProducts": "Te puede gustar",
+    "relatedProducts": "Te Puede Gustar",
     "stockAvailability": "Stock",
     "quantity": "Cant.",
     "outOfStock": "Agotado",
-    "inStock": "En stock",
-    "Soldout": "Agotado"
+    "inStock": "En Stock",
+    "soldOut": "Vendido"
   },
   "purchaseOptions": {
-    "business_days": "Días hábiles",
+    "business_days": "Días Hábiles",
     "Ship_to": "Enviar a",
     "Language": "Idioma",
     "Currency": "Moneda",
     "Help_Center": "Ayuda",
-    "Sell_on_OurPlatform": "Vende con nosotros",
-    "Download_Our_App": "Descarga la app",
+    "Sell_on_OurPlatform": "Vende con Nosotros",
+    "Download_Our_App": "Descarga Nuestra App",
     "Follow_Us": "Síguenos",
     "Contact_Us": "Contacto",
-    "free_Shipping": "Envío gratis",
+    "free_Shipping": "Envío Gratis",
     "available": "Disponible",
     "Delivrey": "Entrega",
     "Quantity": "Cantidad",
-    "max-order-warning": "El pedido máximo es 5",
-    "available_shipping_methods": "Métodos de envío",
+    "max-order-warning": "Límite máximo de pedido alcanzado",
+    "available_shipping_methods": "Métodos de Envío",
     "item_has_been_added": "Artículo añadido al carrito",
-    "item_already_in_cart": "Artículo ya en el carrito",
+    "item_already_in_cart": "El artículo ya está en el carrito",
     "item_has_been_removed": "Artículo eliminado del carrito",
     "days": "Días",
     "Security_&_Privacy": {
       "header": "Privacidad",
-      "text": "No compartimos tus datos con terceros sin tu consentimiento. Protegemos tu privacidad y mantenemos tus datos seguros."
+      "text": "No compartimos tus datos personales con terceros sin tu consentimiento. Protegemos tu privacidad y mantenemos tus datos personales seguros."
     }
   },
+
   "heroSection": {
-    "title": "Luz hecha para encajar",
+    "title": "Luz, Hecha para Pertenecer",
     "description": "Iluminación cuidadosamente seleccionada que aporta profundidad, calidez y carácter a los espacios que llamas hogar.",
-    "detailDesign": "Donde el Detalle se Une al Diseño",
-    "ctaLabel": "Explora la colección",
-    "curated": "SELECCIONADO",
-    "curated_description": "Elegido cuidadosamente para espacios con intención.",
+    "ctaLabel": "Explorar la Colección",
+    "detailDesign": "Donde el Detalle se Encuentra con el Diseño",
+    "curated": "CURADO",
+    "curated_description": "Cuidadosamente seleccionado para espacios considerados.",
+
     "refined": "REFINADO",
-    "refined_description": "Formas elegantes, depuradas hasta lo esencial.",
+    "refined_description": "Formas elegantes, refinadas a lo esencial.",
+
     "atmospheric": "ATMOSFÉRICO",
-    "atmospheric_description": "Luz diseñada para transformar el ambiente.",
+    "atmospheric_description": "Luz diseñada para moldear el ambiente.",
+
     "distinctive": "DISTINTIVO",
-    "distinctive_description": "Piezas con un carácter más allá de lo convencional.",
+    "distinctive_description": "Piezas con carácter más allá de lo ordinario.",
     "stats": {
       "rated": {
         "value": "4.9★",
-        "label": "Valorado por nuestros clientes"
+        "label": "Valorado por Clientes"
       },
       "satisfaction": {
         "value": "98%",
-        "label": "Satisfacción del cliente"
+        "label": "Satisfacción del Cliente"
       },
       "reviews": {
         "value": "100+",
-        "label": "Reseñas verificadas"
+        "label": "Reseñas Verificadas"
       }
     }
   },
+
   "ctaSection": {
     "eyebrow": "ATENCIÓN AL CLIENTE ENOUZA",
-    "titleLeft": "Estamos aquí para ayudarte.",
+    "titleLeft": "Estamos aquí para ayudar.",
     "description": "¿Tienes alguna pregunta sobre un producto, tu pedido o la entrega? Nuestro equipo de atención al cliente está aquí para ayudarte.",
     "button": "Contáctanos",
-    "supportEyebrow": "ATENCIÓN AL CLIENTE",
-    "titleRight": "Un poco de ayuda, cuando la necesites.",
-    "supportDescription": "Si tienes alguna pregunta sobre tu pedido o nuestra colección, ponte en contacto con nosotros y estaremos encantados de ayudarte.",
+    "supportEyebrow": "SOPORTE AL CLIENTE",
+    "titleRight": "Un poco de ayuda, cuando la necesitas.",
+    "supportDescription": "Para preguntas sobre tu pedido o nuestra colección, contáctanos y nuestro equipo estará encantado de ayudarte.",
     "contact": {
       "email": {
-        "title": "Correo electrónico",
+        "title": "Correo Electrónico",
         "description": "Para preguntas generales y consultas."
       },
       "support": {
-        "title": "Atención al cliente online",
-        "details": "Servicio de atención al cliente",
+        "title": "Atención al Cliente en Línea",
+        "details": "Soporte al Cliente",
         "description": "Estamos aquí para ayudarte con tu experiencia de compra."
       }
     }
   },
+
   "matricsSection": {
     "why_us": "LA DIFERENCIA ENOUZA",
-    "title": "Cada pieza, cuidadosamente seleccionada.",
-    "description": "Cada pieza de ENOUZA se selecciona por su diseño, sus materiales y su capacidad para aportar calidez y carácter a los espacios que habitamos."
+    "title": "Cada pieza, cuidadosamente elegida.",
+    "description": "Cada pieza de ENOUZA es seleccionada por su forma, materiales y capacidad de aportar calidez y carácter a los espacios en los que vivimos."
   },
   "inspirationPage": {
     "hero": {
-      "catlabel": "EL DIARIO DE ENOUZA",
+      "catlabel": "EL DIARIO ENOUZA",
       "title": "Un mundo de luz hermosa.",
-      "description": "Descubre interiores, ideas de iluminación y momentos especiales que inspiran nuestra forma de vivir."
+      "description": "Descubre interiores, ideas de iluminación y momentos tranquilos que inspiran nuestra forma de vivir."
     },
+
     "intro": {
       "catlabel": "ENCUENTRA TU INSPIRACIÓN",
-      "title": "Espacios definidos por la luz.",
-      "description": "La iluminación adecuada puede transformar la sensación de una estancia. Explora nuestra selección de interiores y descubre formas cuidadas de aportar calidez, ambiente y carácter a tu hogar."
+      "title": "Espacios moldeados por la luz.",
+      "description": "La luz adecuada puede cambiar la sensación de una habitación. Explora nuestra colección de interiores y descubre formas cuidadosas de aportar calidez, atmósfera y carácter a tu hogar."
     },
+
     "spaces": {
       "catlabel": "EXPLORA POR ESPACIO",
-      "title": "Luz para cada estancia.",
+      "title": "Luz para cada habitación.",
       "items": {
         "livingRoom": {
           "title": "Salones",
-          "description": "Crea un ambiente cálido y acogedor con una iluminación diseñada para la vida cotidiana."
+          "description": "Crea una atmósfera cálida y acogedora con iluminación diseñada para la vida cotidiana."
         },
         "diningRoom": {
           "title": "Comedores",
-          "description": "Crea el ambiente perfecto con una iluminación cuidada sobre la mesa y en toda la estancia."
+          "description": "Establece el ambiente con iluminación cuidada sobre la mesa y en toda la habitación."
         },
         "bedroom": {
           "title": "Dormitorios",
-          "description": "Una iluminación suave e íntima diseñada para crear un dormitorio tranquilo y armonioso."
+          "description": "Iluminación suave e íntima diseñada para que el dormitorio se sienta tranquilo y natural."
         }
       }
     },
+
     "explore": "Explorar",
+
     "statement": {
       "catlabel": "EL ARTE DE LA LUZ",
-      "title": "La luz es lo que da carácter a un espacio.",
-      "description": "Desde un rincón tranquilo hasta una estancia pensada para compartir, la iluminación transforma la forma en que vivimos los espacios que nos rodean."
+      "title": "La luz es lo que da sentimiento a un espacio.",
+      "description": "Desde un rincón tranquilo hasta una habitación para reunirse, la iluminación moldea cómo experimentamos los espacios que nos rodean."
     },
+
     "ideas": {
       "catlabel": "IDEAS DE ILUMINACIÓN",
-      "title": "Formas de iluminar con belleza.",
+      "title": "Formas de iluminar bellamente.",
       "items": {
         "ambientLighting": {
           "title": "Iluminación Ambiental",
-          "description": "Crea una base de luz suave que haga que la estancia se sienta cálida, equilibrada y acogedora."
+          "description": "Crea una base suave de luz que haga que una habitación se sienta cálida, equilibrada y acogedora."
         },
         "statementLighting": {
-          "title": "Iluminación Protagonista",
-          "description": "Deja que una pieza distintiva forme parte de la arquitectura y del carácter de la estancia."
+          "title": "Iluminación de Declaración",
+          "description": "Deja que una lámpara distintiva se convierta en parte de la arquitectura y el carácter de la habitación."
         },
         "layeredLighting": {
           "title": "Iluminación por Capas",
-          "description": "Combina diferentes fuentes de luz para crear profundidad, ambiente y versatilidad."
+          "description": "Combina diferentes fuentes de luz para crear profundidad, atmósfera y flexibilidad."
         }
       }
     },
+
     "editorial": {
       "catlabel": "EDITORIAL ENOUZA",
-      "title": "Diseñada para los momentos que importan.",
-      "description": "Descubre una iluminación que aporta calidez y carácter a los espacios cotidianos que llamamos hogar.",
+      "title": "Diseñado para los momentos que importan.",
+      "description": "Explora iluminación que aporta calidez y carácter a los espacios cotidianos que llamamos hogar.",
       "link": "Comprar Iluminación"
     },
+
     "newsletter": {
-      "catlabel": "SIGUE INSPIRÁNDOTE",
-      "title": "Lleva más belleza a tu hogar.",
-      "description": "Descubre nuevas lámparas, interiores e inspiración de Enouza.",
-      "button": "Unirse a Enouza"
+      "catlabel": "MANTENTE INSPIRADO",
+      "title": "Lleva más belleza a casa.",
+      "description": "Descubre nueva iluminación, interiores e inspiración de Enouza.",
+      "button": "Únete a Enouza"
     }
   },
+
   "designSection": {
-    "title": "El arte de la luz",
+    "title": "El Arte de la Luz",
     "catlabel": "DESCUBRE LA MARCA",
     "principles": {
       "minimalism": {
-        "title": "Simplicidad con intención",
-        "description": "Líneas limpias, proporciones equilibradas y siluetas sobrias permiten que cada pieza se integre de forma natural en su entorno."
+        "title": "Silenciosamente Considerado",
+        "description": "Líneas limpias, proporciones equilibradas y siluetas contenidas permiten que cada pieza pertenezca naturalmente a su entorno."
       },
       "materials": {
-        "title": "Materiales con carácter",
-        "description": "Elegimos mármol, vidrio, metal y tejidos por el carácter y la profundidad que aportan a un espacio."
+        "title": "Elegido por su Carácter",
+        "description": "Mármol, vidrio, metal y tela son seleccionados por el carácter y la profundidad que aportan a un espacio."
       },
       "ambient": {
-        "title": "Luz que crea atmósfera",
-        "description": "Entendemos la luz como parte del interior: una forma de suavizar un espacio, crear profundidad y transformar cómo se siente."
+        "title": "Luz con Atmósfera",
+        "description": "Vemos la luz como parte del interior — una forma de suavizar una habitación, crear profundidad y moldear cómo se siente un espacio."
       }
     }
   },
+
   "collectionSection": {
-    "title": "Descubre nuestra colección.",
-    "catlabel": "EXPLORA",
+    "title": "Descubre Nuestra Colección.",
+    "catlabel": "EXPLORAR",
+
     "categories": {
-    "table_lamps": {
-      "title": "Lámparas de Mesa",
-      "description": "Diseños escultóricos que aportan calidez, ambiente y una elegancia sutil a tus espacios interiores."
-    },
-    "floor_lamps": {
-      "title": "Lámparas de Pie",
-      "description": "Piezas de iluminación protagonistas que combinan un diseño refinado con una luz ambiental para realzar tu espacio."
-    },
-    "wall_lamps": {
-      "title": "Apliques de Pared",
-      "description": "Iluminación elegante diseñada para aportar profundidad, calidez y personalidad a tus paredes."
-    },
-    "pendant_lights": {
-      "title": "Lámparas Colgantes",
-      "description": "Piezas distintivas que crean un punto focal sofisticado sobre mesas de comedor, islas de cocina y espacios de estar."
-    },
-    "ceiling_lights": {
-      "title": "Lámparas de Techo",
-      "description": "Iluminación superior refinada que crea ambiente y completa el carácter de cada estancia."
-    },
-    "bedside_lamps": {
-      "title": "Lámparas de Mesilla",
-      "description": "Iluminación suave y acogedora que aporta confort y una sofisticación discreta a tu mesilla de noche."
-    },
-    "desk_office_lamps": {
-      "title": "Lámparas de Escritorio y Oficina",
-      "description": "Iluminación funcional con un diseño cuidado que combina la practicidad diaria con una estética contemporánea y elegante."
-    },
-    "outdoor_lighting": {
-      "title": "Iluminación Exterior",
-      "description": "Piezas de iluminación cuidadosamente diseñadas para aportar calidez, elegancia y ambiente a tus espacios exteriores."
-    },
-    "mirrors": {
-      "title": "Espejos",
-      "description": "Espejos elegantes que potencian la luz natural, crean una mayor sensación de amplitud y aportan un acabado sofisticado a tu interior."
-    }
-  }
-},
-  "aboutus": {
-    "seo": {
-      "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
-      "description": "Descubre Enouza, una marca de iluminación cuidadosamente seleccionada que reúne piezas refinadas y distintivas para interiores con carácter."
-    },
-    "hero": {
-      "eyebrow": "DESCUBRE ENOUZA",
-      "title": "Luz que encuentra su lugar.",
-      "description": "Iluminación refinada para espacios cálidos y cuidadosamente concebidos."
-    },
-    "story": {
-      "eyebrow": "NUESTRA HISTORIA",
-      "title": "Iluminación con sentido de lugar.",
-      "lead": "Creemos que la iluminación es mucho más que iluminar.",
-      "text": "Da forma a la atmósfera de una estancia, dirige la atención hacia los detalles que importan y transforma la manera en que sentimos un espacio.",
-      "text2": "Enouza nació de esta idea: descubrir y reunir piezas de iluminación que se sientan cuidadosamente elegidas, distintivas y naturalmente integradas en su entorno."
-    },
-    "statement": {
-      "title": "Creemos que la luz adecuada lo cambia todo.",
-      "description": "Una luz suave puede aportar calidez a una estancia. Una forma escultórica puede convertirse en el punto focal. Y la pieza adecuada puede hacer que un espacio se sienta, sencillamente, más tuyo."
-    },
-    "approach": {
-      "eyebrow": "EL ENFOQUE DE ENOUZA",
-      "title": "Diseñado con intención.",
-      "curated": {
-        "title": "Seleccionado",
-        "description": "Piezas cuidadosamente elegidas para espacios bien concebidos."
+      "table_lamps": {
+        "title": "Lámparas de Mesa",
+        "description": "Iluminación escultural que aporta calidez, atmósfera y elegancia discreta a tu interior."
       },
-      "refined": {
-        "title": "Refinado",
-        "description": "Formas elegantes depuradas hasta lo esencial."
+      "floor_lamps": {
+        "title": "Lámparas de Pie",
+        "description": "Iluminación de declaración que combina diseño refinado con iluminación ambiental para elevar tu sala de estar."
       },
-      "atmospheric": {
-        "title": "Atmosférico",
-        "description": "Luz diseñada para crear y transformar el ambiente."
+      "wall_lamps": {
+        "title": "Apliques de Pared",
+        "description": "Iluminación elegante diseñada para aportar profundidad, calidez y carácter a tus paredes."
       },
-      "distinctive": {
-        "title": "Distintivo",
-        "description": "Piezas con un carácter que va más allá de lo convencional."
+      "pendant_lights": {
+        "title": "Lámparas Colgantes",
+        "description": "Piezas distintivas diseñadas para crear un punto focal refinado sobre mesas de comedor, islas de cocina y salas de estar."
+      },
+      "ceiling_lights": {
+        "title": "Plafones",
+        "description": "Iluminación de techo refinada creada para moldear la atmósfera y completar el carácter de una habitación."
+      },
+      "bedside_lamps": {
+        "title": "Lámparas de Mesita de Noche",
+        "description": "Iluminación suave y acogedora diseñada para aportar comodidad y sofisticación tranquila a tu mesita de noche."
+      },
+      "desk_office_lamps": {
+        "title": "Lámparas de Escritorio y Oficina",
+        "description": "Iluminación de trabajo cuidadosamente diseñada que equilibra la funcionalidad cotidiana con una estética pulida y contemporánea."
+      },
+      "outdoor_lighting": {
+        "title": "Iluminación Exterior",
+        "description": "Iluminación bellamente elaborada que aporta calidez, elegancia y atmósfera a los espacios exteriores."
+      },
+      "mirrors": {
+        "title": "Espejos",
+        "description": "Espejos elegantes que realzan la luz natural, crean una sensación de espacio y aportan un toque final refinado a tu interior."
       }
-    },
-    "selection": {
-      "eyebrow": "LO QUE GUÍA NUESTRA SELECCIÓN",
-      "title": "Elegidas por algo más que su apariencia.",
-      "form": {
-        "title": "Forma",
-        "description": "Proporciones equilibradas y siluetas distintivas que se integran de forma natural en un interior."
-      },
-      "material": {
-        "title": "Material",
-        "description": "Mármol, vidrio, metal, tejidos y acabados elegidos por su carácter visual y táctil."
-      },
-      "light": {
-        "title": "Luz",
-        "description": "Iluminación que aporta calidez, profundidad y atmósfera, en lugar de limitarse a llenar una estancia de luz."
-      }
-    },
-    "promise": {
-      "eyebrow": "EL COMPROMISO DE ENOUZA",
-      "title": "Elegido con cuidado. Presentado con belleza.",
-      "description": "Seleccionamos cuidadosamente cada pieza que incorporamos a Enouza, prestando atención al diseño, los materiales, las proporciones y la atmósfera que crea."
-    },
-    "final": {
-      "eyebrow": "LA COLECCIÓN",
-      "title": "Encuentra la luz que pertenece a tu espacio.",
-      "description": "Explora la colección Enouza y descubre piezas seleccionadas para complementar tu forma de vivir.",
-      "cta": "Explorar la colección"
     }
   },
+
   "customersFeedback": {
     "eyebrow": "LA EXPERIENCIA ENOUZA",
-    "title": "Amado por hogares de todo el mundo.",
+    "title": "Amado por propietarios de todo el mundo.",
     "description": "Hogares reales. Experiencias reales.",
-    "ratingText": "Basado en las opiniones de nuestros clientes",
-    "verifiedPurchase": "Compra verificada",
-    "back": "Volver",
+    "ratingText": "Basado en reseñas de clientes",
+    "verifiedPurchase": "Compra Verificada",
+
+    "back": "Atrás",
     "review": "reseña",
     "reviews": "reseñas",
     "noReviews": "Aún no hay reseñas",
     "noReviewsDescription": "Actualmente no hay reseñas de clientes para mostrar.",
     "previousPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "viewAllReviews": "Ver todas las reseñas"
+    "viewAllReviews": "Ver Todas las Reseñas"
   },
+
   "filterPage": {
-    "clearAll": "Limpiar todo",
-    "applyFilters": "Aplicar filtros",
-    "priceRange": "Rango de precios",
-    "brand": "Marca",
     "category": "Categoría",
+    "brand": "Marca",
+    "priceRange": "Rango de Precio",
     "rating": "Valoración",
-    "availability": "Disponibilidad",
-    "inStock": "En stock",
-    "outOfStock": "Agotado",
+    "applyFilters": "Aplicar Filtros",
+    "clearFilters": "Limpiar Filtros",
     "search_did_not_match": "Lo sentimos, tu búsqueda no coincidió con ningún producto.",
-    "collection_description": "Descubre una iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio.",
+    "collection_description": "Descubre iluminación refinada diseñada para aportar calidez, carácter y elegancia atemporal a cada espacio.",
     "collection": "COLECCIÓN ENOUZA",
-    "discover": "DESCUBRE"
+    "discover": "DESCUBRIR"
   },
   "customer_reviews": {
-    "title": "Opiniones de clientes",
-    "verified_purchase": "Compra verificada",
-    "no_reviews": "Aún no hay opiniones",
+    "title": "Reseñas de Clientes",
+    "verified_purchase": "Compra Verificada",
+    "no_reviews": "Aún no hay reseñas",
     "image_unavailable": "Imagen no disponible",
     "customer": "Cliente",
-    "review_image": "Imagen de la reseña",
+    "review_image": "Imagen de reseña",
     "previous_image": "Imagen anterior",
     "next_image": "Imagen siguiente",
     "close": "Cerrar",
     "view_image": "Ver imagen",
     "rating": "Valoración",
-    "reviews": "Opiniones",
-    "enouza_review": "Reseña de ENOUZA",
-    "description": "Descripción del producto",
-    "customer_rating": "Valoración de los clientes",
-    "customer_reviews": "Opiniones de los clientes",
-    "customer_review": "Reseña del cliente"
+    "reviews": "Reseñas",
+    "enouza_review": "RESEÑA ENOUZA",
+    "description": "Descripción del Producto",
+    "customer_rating": "Valoración del Cliente",
+    "customer_reviews": "Reseñas de Clientes",
+    "customer_review": "Reseña del Cliente"
   },
   "productInfo": {
     "product_details": "Detalles del producto",
+
     "view_full_image": "VER IMAGEN COMPLETA",
     "purchase_information": "Información de compra",
     "secure_purchase_premium_quality": "Compra segura y calidad premium",
-    "save": "ahorrar",
-    "Emitting Color": "Color Emisor",
-    "Lampshade Color": "Color de la pantalla",
-    "Body Color": "Color del cuerpo",
+    "save": "guardar",
+    "Emitting Color": "Color de Emisión",
+    "Lampshade Color": "Color de Pantalla",
+    "Body Color": "Color del Cuerpo",
     "Color": "Color",
     "Color Name": "Color",
     "Colour": "Color",
-    "Color Classification": "Clasificación de color",
-    "Is Customized": "Personalizado",
-    "Size": "Talla",
-    "Sizes": "Tallas",
-    "Item Length": "Longitud",
-    "Item Width": "Ancho",
-    "Item Height": "Altura",
+    "Color Classification": "Clasificación de Color",
+    "Size": "Tamaño",
+    "Sizes": "Tamaños",
+    "Item Length": "Longitud del Artículo",
+    "Item Width": "Ancho del Artículo",
+    "Item Height": "Altura del Artículo",
     "Dimensions": "Dimensiones",
-    "Sd Card Memory": "Memoria SD",
+    "Is Customized": "Personalizado",
+    "Sd Card Memory": "Memoria de Tarjeta SD",
+    "Color Temperature": "Temperatura de Color",
     "Memory": "Memoria",
-    "Memory Size": "Tamaño de memoria",
+    "Memory Size": "Tamaño de Memoria",
     "Storage": "Almacenamiento",
-    "Internal Storage": "Almacenamiento interno",
+    "Internal Storage": "Almacenamiento Interno",
     "ROM": "ROM",
     "RAM": "RAM",
     "Capacity": "Capacidad",
-    "Plug Type": "Tipo de enchufe",
-    "Power Plug": "Enchufe de alimentación",
-    "Socket Type": "Tipo de toma",
-    "Power Specification": "Especificación de energía",
+    "Plug Type": "Tipo de Enchufe",
+    "Power Plug": "Enchufe de Alimentación",
+    "Socket Type": "Tipo de Casquillo",
+    "Power Specification": "Especificación de Potencia",
     "Voltage": "Voltaje",
     "Wattage": "Potencia",
-    "Color Temperature": "Temperatura de color",
-    "Ships From": "Enviado desde",
-    "Ship From": "Enviar desde",
+    "Ships From": "Enviado Desde",
+    "Ship From": "Enviado Desde",
     "Warehouse": "Almacén",
     "Origin": "Origen",
     "Bundle": "Paquete",
-    "Sale by Pack": "Venta por paquete",
-    "Pack": "Pack",
+    "Sale by Pack": "Venta por Paquete",
+    "Pack": "Paquete",
     "Set": "Conjunto",
     "Package": "Paquete",
     "Quantity": "Cantidad",
     "Model": "Modelo",
-    "Compatible Model": "Modelos compatibles",
+    "Compatible Model": "Modelo Compatible",
     "Version": "Versión",
     "Edition": "Edición",
     "Variant": "Variante",
@@ -458,7 +407,7 @@
     "Fabric": "Tela",
     "Fit": "Ajuste",
     "Pattern": "Patrón",
-    "Sleeve Length": "Longitud de manga",
+    "Sleeve Length": "Longitud de Manga",
     "Frequency": "Frecuencia",
     "Resolution": "Resolución",
     "Interface": "Interfaz",
@@ -467,96 +416,97 @@
     "description": "Descripción",
     "specifications": "Especificaciones",
     "reviews": "Reseñas",
-    "CostumerReviews": "Reseñas de clientes",
-    "noReviews": "Sin reseñas",
-    "writeReview": "Escribir reseña",
-    "submitReview": "Enviar reseña",
+    "CostumerReviews": "Reseñas de Clientes",
+    "noReviews": "Aún no hay reseñas",
+    "writeReview": "Escribir una Reseña",
+    "submitReview": "Enviar Reseña",
     "rating": "Valoración",
     "comment": "Comentario",
     "reviewSubmitted": "Reseña enviada",
-    "reviewPending": "Reseña pendiente",
-    "size": "Talla",
+    "reviewPending": "Tu reseña está pendiente de aprobación",
+    "size": "Tamaño",
     "color": "Color",
     "material": "Material",
     "brand": "Marca",
     "model": "Modelo",
-    "order": "Ordenar",
-    "all_from_verified_purchases": "Solo de compras verificadas",
-    "stars": "Estrellas",
-    "star": "Estrella",
-    "one_star": "Estrella",
-    "two_stars": "Estrellas",
+    "order": "Pedido",
+    "all_from_verified_purchases": "Todas de compras verificadas",
+    "star": "estrella",
+    "stars": "estrellas",
+    "one_star": "estrella",
+    "two_stars": "estrellas",
     "give_us_your_feedback": "Danos tu opinión",
-    "led_ambient_lighting": "Ambiental",
-    "phone_mounts_holders": "Monturas para teléfonos",
-    "organizers_storage": "Organizadores ",
-    "comfort_accessories": "Comodidad y accesorios",
-    "air_fresheners_scents": "Ambientadores y fragancias",
+    "led_ambient_lighting": "Iluminación Ambiental",
+    "phone_mounts_holders": "Soportes para Teléfono",
+    "organizers_storage": "Organizadores y Almacenamiento",
+    "comfort_accessories": "Confort y Accesorios",
+    "air_fresheners_scents": "Ambientadores",
     "table_lamps": "Lámparas de Mesa",
     "floor_lamps": "Lámparas de Pie",
     "wall_lamps": "Apliques de Pared",
     "pendant_lights": "Lámparas Colgantes",
-    "ceiling_lights": "Lámparas de Techo",
+    "ceiling_lights": "Plafones",
     "bedside_lamps": "Lámparas de Mesita de Noche",
     "desk_office_lamps": "Lámparas de Escritorio y Oficina",
     "outdoor_lighting": "Iluminación Exterior"
   },
   "buyerTrustServices": {
     "freeShipping": {
-      "title": "Envío gratis",
-      "description": "Envío gratis en pedidos superiores a $50"
+      "title": "Envío Gratis",
+      "description": "En pedidos superiores a $50"
     },
     "support24_7": {
       "title": "Soporte 24/7",
-      "description": "Estamos aquí para ayudarte en cualquier momento"
+      "description": "Estamos aquí para ayudar"
     },
     "moneyBack": {
-      "title": "Garantía",
-      "description": "30 días de garantía de devolución de dinero"
+      "title": "Devolución de Dinero",
+      "description": "Garantía de 30 días"
     },
     "safe_Payment": {
-      "title": "Pago seguro",
-      "description": "Paga con los métodos más populares y seguros."
+      "title": "Pago Seguro",
+      "description": "Paga con los métodos de pago más populares y seguros del mundo."
     },
     "easyReturns": {
-      "title": "Devoluciones fáciles",
-      "description": "Devoluciones sencillas y sin complicaciones"
+      "title": "Devoluciones Fáciles",
+      "description": "Devoluciones sin complicaciones"
     },
     "help_center": {
-      "title": "Centro de ayuda",
+      "title": "Centro de Ayuda",
       "description": "Asistencia las 24 horas para una experiencia de compra fluida."
     },
     "worldwide_shipping": {
-      "title": "Envío mundial",
-      "description": "Entregamos en más de 100 países y territorios."
+      "title": "Envío Mundial",
+      "description": "Entrega rápida y confiable en tu puerta, en cualquier parte del mundo."
     },
     "Shop_with_confidence": {
-      "title": "Compra con confianza",
-      "description": "Tu satisfacción es nuestra prioridad. Compra con tranquilidad."
+      "title": "Compra con Confianza",
+      "description": "Tu satisfacción es nuestra prioridad. Disfruta de compras seguras y devoluciones fáciles."
     }
   },
+
   "profile": {
-    "my_profile": "Mi perfil",
-    "edit_your_email": "Editar tu correo",
-    "enouza_faq": "Preguntas frecuentes",
-    "edit_your_profile": "Editar tu perfil",
-    "edit_your_name": "Editar tu nombre",
-    "change_your_password": "Cambiar tu contraseña",
-    "edit_your_gender": "Editar tu género",
-    "edit_your_birthdate": "Editar tu fecha de nacimiento",
-    "update_your_address": "Actualizar tu dirección",
-    "manage_your_orders": "Gestionar tus pedidos",
-    "view_your_wishlist": "Ver tu lista de deseos",
+    "my_profile": "Mi Perfil",
+    "enouza_faq": "Preguntas Frecuentes",
+    "edit_your_name": "Editar Nombre",
+    "edit_your_email": "Editar Correo",
+    "edit_your_profile": "Editar Perfil",
+    "change_your_password": "Cambiar Contraseña",
+    "edit_your_gender": "Editar Género",
+    "edit_your_birthdate": "Editar Fecha de Nacimiento",
+    "update_your_address": "Actualizar Dirección",
+    "manage_your_orders": "Gestionar Pedidos",
+    "view_your_wishlist": "Ver Lista de Deseos",
+    "start_shopping": "Empezar a Comprar",
     "you_havent_placed_any_orders_yet": "Aún no has realizado ningún pedido",
-    "start_shopping": "Comenzar a comprar",
     "processing": "Procesando",
     "order_take_between": "El pedido puede tardar entre",
     "tracking_number": "Número de seguimiento",
     "not_available": "No disponible",
-    "shippingMethod": "Método de envío",
+    "shippingMethod": "Método de Envío",
     "order_placed_on": "Pedido realizado el",
-    "order_id": "ID del pedido",
-    "payment_method": "Método de pago",
+    "order_id": "ID del Pedido",
+    "payment_method": "Método de Pago",
     "Credit_Debit_card": "Tarjeta de crédito/débito",
     "subtotal": "Subtotal",
     "shipping": "Envío",
@@ -564,11 +514,9 @@
   },
   "footer": {
     "brand": {
-      "description": "Piezas cuidadosamente seleccionadas para aportar calidez, elegancia y personalidad a tu espacio."
+      "description": "Piezas cuidadosamente seleccionadas diseñadas para aportar calidez, elegancia y carácter a tu espacio."
     },
-    "payment": {
-      "secure": "Pagos seguros"
-    },
+    "payment": { "secure": "Pagos seguros" },
     "followUs": {
       "title": "Síguenos",
       "facebook": "Facebook",
@@ -580,172 +528,275 @@
       "title": "Políticas",
       "privacyPolicy": "Política de privacidad",
       "termsOfService": "Términos de servicio",
-      "refundPolicy": "Política de reembolso",
-      "shippingPolicy": "Política de envío"
+      "refundPolicy": "Política de reembolsos",
+      "shippingPolicy": "Política de envíos"
     },
     "help": {
+      "enouza_faq_description": "Encuentra respuestas a las preguntas que recibimos con más frecuencia.",
       "title": "Ayuda",
-      "faq": "Preguntas",
-      "contactUs": "Contacto",
-      "aboutUs": "Acerca",
-      "shipping": "Envío",
+      "faq": "Preguntas Frecuentes",
+      "contactUs": "Contáctanos",
+      "aboutUs": "Sobre nosotros",
+      "shipping": "Envíos",
       "returns": "Devoluciones",
-      "contact_note": "¿Tienes preguntas? Estamos aquí para ayudarte.",
-      "enouza_faq_description": "Encuentra respuestas a las preguntas que recibimos con más frecuencia."
+      "contact_note": "Estamos aquí para ayudarte. Comunícate con cualquier pregunta o inquietud."
     },
     "newsletter": {
-      "eyebrow": "COLECCIÓN ENOUZA",
       "title": "Boletín",
-      "description": "Suscríbete para recibir ofertas y novedades.",
-      "placeholder": "Tu correo",
-      "successMessage": "¡Gracias por suscribirte!",
-      "errorMessage": "Error al suscribirse. Intenta de nuevo.",
+      "description": "Suscríbete para recibir actualizaciones sobre nuevos productos y ofertas",
+      "placeholder": "Ingresa tu correo electrónico",
       "subscribeButton": "Suscribirse",
+      "successMessage": "Suscripción exitosa",
+      "errorMessage": "Error en la suscripción",
+      "copyright": "copyright",
       "all_rights_reserved": "Todos los derechos reservados.",
-      "copyright": ""
+      "eyebrow": "COLECCIÓN ENOUZA"
     }
   },
-  "trust": {
-    "secureCheckout": "Pago seguro",
-    "freeShipping": {
-      "title": "Envío gratuito",
-      "text": "Envío gratuito en todos los pedidos"
+  "policies": {
+    "title": "Políticas",
+    "privacyPolicy": {
+      "title": "Privacidad"
     },
+    "termsOfService": {
+      "title": "Términos"
+    },
+    "refundPolicy": {
+      "title": "Reembolsos"
+    },
+    "shippingPolicy": {
+      "title": "Envíos"
+    },
+    "aboutUs": {
+      "title": "Nosotros"
+    }
+  },
+
+  "trust": {
+    "secureCheckout": "Pago Seguro",
+
+    "freeShipping": {
+      "title": "Envío Gratis",
+      "text": "Envío gratis en todos los pedidos"
+    },
+
     "fastDelivery": {
-      "title": "Envío internacional",
+      "title": "Entrega Mundial",
       "text": "Entrega internacional en 5–15 días"
     },
+
     "returns": {
-      "title": "Devoluciones en 100 días",
-      "text": "Devoluciones fáciles durante 100 días"
+      "title": "Devoluciones de 100 Días",
+      "text": "Devoluciones fáciles dentro de 100 días"
     },
+
     "warranty": {
-      "title": "Garantía de 3 años",
-      "text": "Diseñado para una calidad duradera"
+      "title": "Garantía de 3 Años",
+      "text": "Elaborado para una calidad duradera"
     },
-    "shopWithConfidence": "Compra con confianza"
+
+    "shopWithConfidence": "Compra con Confianza"
+  },
+
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 ¡Pedido Realizado con Éxito! 🎉",
+    "orderProcessingMessage": "Gracias por comprar con nosotros. Tu pedido está siendo procesado.",
+    "backToHome": "Volver al Inicio"
   },
   "checkout": {
-    "loggedInContinue": "Tu cuenta está lista. Continúa para introducir tus datos de facturación."
+    "loggedInContinue": "Tu cuenta está lista. Continúa para ingresar tus datos de facturación."
   },
-  "orderSuccess": {
-    "orderPlacedSuccessfully": "🎉 ¡Pedido realizado con éxito! 🎉",
-    "orderProcessingMessage": "Gracias por comprar con nosotros. Tu pedido está siendo procesado.",
-    "backToHome": "Volver al inicio"
+
+  "aboutus": {
+    "seo": {
+      "title": "Sobre Enouza | Iluminación Refinada y Diseño de Interiores",
+      "description": "Descubre Enouza, una marca de iluminación curada que aporta piezas refinadas y distintivas a interiores considerados."
+    },
+
+    "hero": {
+      "eyebrow": "DESCUBRE ENOUZA",
+      "title": "Luz, Hecha para Pertenecer.",
+      "description": "Iluminación refinada para espacios cálidos y considerados."
+    },
+
+    "story": {
+      "eyebrow": "NUESTRA HISTORIA",
+      "title": "Iluminación con sentido de pertenencia.",
+      "lead": "Creemos que la iluminación es más que iluminación.",
+      "text": "Moldea la atmósfera de una habitación, llama la atención sobre los detalles que importan y cambia cómo se siente un espacio.",
+      "text2": "Enouza fue creada en torno a esta idea — descubrir y reunir piezas de iluminación que se sientan consideradas, distintivas y naturalmente en casa dentro de su entorno."
+    },
+
+    "statement": {
+      "title": "Creemos que la luz adecuada lo cambia todo.",
+      "description": "Un brillo silencioso puede suavizar una habitación. Una forma escultural puede convertirse en un punto focal. La pieza adecuada simplemente puede hacer que un espacio se sienta más como tuyo."
+    },
+
+    "approach": {
+      "eyebrow": "EL ENFOQUE ENOUZA",
+      "title": "Diseñado con intención.",
+      "curated": {
+        "title": "Curado",
+        "description": "Cuidadosamente seleccionado para espacios considerados."
+      },
+      "refined": {
+        "title": "Refinado",
+        "description": "Formas elegantes, refinadas a lo esencial."
+      },
+      "atmospheric": {
+        "title": "Atmosférico",
+        "description": "Luz diseñada para moldear el ambiente."
+      },
+      "distinctive": {
+        "title": "Distintivo",
+        "description": "Piezas con carácter más allá de lo ordinario."
+      }
+    },
+
+    "selection": {
+      "eyebrow": "LO QUE GUÍA NUESTRA SELECCIÓN",
+      "title": "Elegido por más que apariencia.",
+      "form": {
+        "title": "Forma",
+        "description": "Proporciones equilibradas y siluetas distintivas que se sienten naturales dentro de un interior."
+      },
+      "material": {
+        "title": "Material",
+        "description": "Mármol, vidrio, metal, tela y acabados elegidos por su carácter visual y táctil."
+      },
+      "light": {
+        "title": "Luz",
+        "description": "Iluminación que crea calidez, profundidad y atmósfera en lugar de simplemente llenar una habitación."
+      }
+    },
+
+    "promise": {
+      "eyebrow": "LA PROMESA ENOUZA",
+      "title": "Cuidadosamente elegido. Bellamente presentado.",
+      "description": "Seleccionamos cuidadosamente cada pieza que traemos a Enouza, con atención al diseño, materiales, proporciones y la atmósfera que crea."
+    },
+
+    "final": {
+      "eyebrow": "LA COLECCIÓN",
+      "title": "Encuentra la luz que pertenece a tu espacio.",
+      "description": "Explora la colección Enouza y descubre piezas elegidas para complementar tu forma de vivir.",
+      "cta": "Explorar la Colección"
+    }
   },
+
   "common": {
-    "phoneNumber": "Número de teléfono",
-    "selectShippingMethod": "Seleccionar método de envío",
-    "discoverCollection": "DESCUBRIR LA COLECCIÓN",
-    "payNow": "Pagar ahora",
-    "days": "Días",
-    "day": "Día",
+    "phoneNumber": "Número de Teléfono",
+    "selectShippingMethod": "Seleccionar Método de Envío",
+    "discoverCollection": "DESCUBRIR COLECCIÓN",
+    "payNow": "Pagar Ahora",
+    "days": "días",
+    "day": "día",
     "loading": "Cargando...",
     "error": "¡Ups! Algo salió mal.",
-    "tryAgain": "Inténtalo de nuevo",
-    "success": "¡Listo!",
+    "tryAgain": "Intentar de Nuevo",
+    "success": "¡Hecho!",
     "submit": "Enviar",
     "cancel": "Cancelar",
     "edit": "Editar",
     "delete": "Eliminar",
     "update": "Actualizar",
     "view": "Ver",
+    "free_shipping": "Envío Gratis",
     "search": "Buscar",
     "filter": "Filtrar",
     "sortBy": "Ordenar por:",
-    "bestMatch": "Relevancia",
-    "priceLowToHigh": "Precio: menor a mayor",
-    "priceHighToLow": "Precio: mayor a menor",
-    "resetFilters": "Restablecer filtros",
-    "category": "Categoría",
-    "newestFirst": "Más nuevos",
-    "oldestFirst": "Más antiguos",
-    "buyNow": "Comprar ahora",
+    "view_more": "Ver Más",
     "discover": "Descubrir",
-    "addToCart": "Añadir al carrito",
-    "addToWishlist": "Añadir a la lista",
-    "removeFromWishlist": "Quitar de la lista",
+    "bestMatch": "Mejor Coincidencia",
+    "resetFilters": "Restablecer Filtros",
+    "category": "Categoría",
+    "priceLowToHigh": "Precio: Menor a Mayor",
+    "priceHighToLow": "Precio: Mayor a Menor",
+    "newestFirst": "Más Reciente",
+    "oldestFirst": "Más Antiguo",
+    "buyNow": "Comprar Ahora",
+    "addToCart": "Añadir al Carrito",
+    "shopping_cart": "Carrito de Compras",
+    "addToWishlist": "Añadir a Lista de Deseos",
+    "removeFromWishlist": "Quitar de Lista de Deseos",
     "viewDetails": "Detalles",
     "checkout": "Pagar",
-    "shopping_cart": "Carrito",
-    "placeOrder": "Hacer pedido",
+    "placeOrder": "Realizar Pedido",
     "orderSummary": "Resumen",
     "total": "Total",
     "subtotal": "Subtotal",
     "shipping": "Envío",
-    "tax": "Impuestos",
-    "grandTotal": "Total final",
-    "continueShopping": "Seguir comprando",
-    "proceedToCheckout": "Ir a pagar",
+    "tax": "Impuesto",
+    "grandTotal": "Total General",
+    "continueShopping": "Continuar Comprando",
+    "proceedToCheckout": "Pagar",
     "noItemsInCart": "Tu carrito está vacío",
-    "noItemsInWishlist": "Tu lista está vacía",
-    "viewCart": "Ver carrito",
-    "viewWishlist": "Ver lista",
-    "myAccount": "Mi cuenta",
-    "logout": "salir",
-    "login": "Iniciar",
+    "noItemsInWishlist": "Tu lista de deseos está vacía",
+    "viewCart": "Ver Carrito",
+    "viewWishlist": "Ver Lista de Deseos",
+    "myAccount": "Mi Cuenta",
+    "logout": "Cerrar Sesión",
+    "login": "Iniciar Sesión",
+    "you_are_logged_in": "Has iniciado sesión",
     "register": "Registrarse",
-    "signin": "Iniciar",
+    "signin": "Iniciar Sesión",
     "payment": "Pago",
     "next": "Siguiente",
     "previous": "Anterior",
     "confirm": "Confirmar",
     "yes": "Sí",
     "no": "No",
-    "checkout_as_guest": "Pagar como invitado",
-    "you_are_logged_in": "Has iniciado sesión",
-    "saving_address": "Usar esta dirección para el pago",
-    "saveChanges": "Guardar cambios",
-    "email": "Correo",
+    "checkout_as_guest": "pagar como invitado sin necesidad de iniciar sesión.",
+    "saving_address": "Usar esta dirección para los datos de pago",
+    "saveChanges": "Guardar Cambios",
+    "email": "Correo Electrónico",
     "password": "Contraseña",
-    "confirmPassword": "Confirmar contraseña",
+    "confirmPassword": "Confirmar Contraseña",
     "firstName": "Nombre",
     "lastName": "Apellido",
     "address": "Dirección",
     "city": "Ciudad",
     "state": "Estado",
-    "zipCode": "Código postal",
+    "zipCode": "Código Postal",
     "country": "País",
     "phone": "Teléfono",
     "save": "Guardar",
     "reset": "Restablecer",
-    "changePassword": "Cambiar contraseña",
-    "oldPassword": "Contraseña anterior",
-    "newPassword": "Nueva contraseña",
-    "confirmNewPassword": "Confirmar nueva contraseña",
+    "changePassword": "Cambiar Contraseña",
+    "oldPassword": "Contraseña Anterior",
+    "newPassword": "Nueva Contraseña",
+    "confirmNewPassword": "Confirmar Nueva Contraseña",
     "dashboard": "Panel",
     "orders": "Pedidos",
-    "orderDetails": "Detalles del pedido",
+    "orderDetails": "Detalles del Pedido",
     "accountDetails": "Cuenta",
-    "editAccount": "Editar cuenta",
-    "myOrders": "Mis pedidos",
-    "orderHistory": "Historial",
-    "trackOrder": "Rastrear pedido",
+    "editAccount": "Editar Cuenta",
+    "myOrders": "Mis Pedidos",
+    "orderHistory": "Historial de Pedidos",
+    "trackOrder": "Seguir Pedido",
     "orderStatus": "Estado",
     "pending": "Pendiente",
     "processing": "Procesando",
     "shipped": "Enviado",
     "delivered": "Entregado",
-    "free_shipping": "Envío gratuito",
     "cancelled": "Cancelado",
-    "returnRequested": "Devolución solicitada",
+    "returnRequested": "Devolución Solicitada",
     "returned": "Devuelto",
-    "view_more": "Ver Más",
-    "reviewProduct": "Opinar",
-    "writeAReview": "Escribir reseña",
+    "reviewProduct": "Reseñar Producto",
+    "writeAReview": "Escribir una Reseña",
     "rating": "Valoración",
     "comment": "Comentario",
-    "submitReview": "Enviar reseña",
-    "noReviewsYet": "Sin reseñas aún",
-    "relatedProducts": "Te puede gustar",
+    "submitReview": "Enviar Reseña",
+    "noReviewsYet": "Aún no hay reseñas",
+    "relatedProducts": "Te Puede Gustar",
     "continue": "Continuar",
     "back": "Atrás",
     "home": "Inicio",
     "shop": "Tienda",
     "categories": "Categorías",
-    "allCategories": "Todas las categorías",
+    "allCategories": "Todas las Categorías",
     "brands": "Marcas",
-    "allBrands": "Todas las marcas",
+    "allBrands": "Todas las Marcas",
     "price": "Precio",
     "apply": "Aplicar",
     "clear": "Limpiar",
@@ -757,117 +808,125 @@
     "item": "Artículo",
     "of": "de",
     "results": "Resultados",
-    "perPage": "Por página",
+    "perPage": "Por Página",
     "page": "Página",
-    "loadingMore": "Cargando más...",
+    "loadingMore": "Cargando...",
     "noMoreItems": "No hay más artículos",
     "welcome": "Bienvenido",
     "thankYou": "Gracias",
     "forVisiting": "por visitarnos",
-    "seeYouSoon": "Nos vemos pronto",
-    "contactSupport": "Contactar soporte",
+    "seeYouSoon": "Hasta pronto",
+    "contactSupport": "Contactar Soporte",
     "needHelp": "¿Necesitas ayuda?",
-    "faq": "Faq",
+    "faq": "Preguntas Frecuentes",
     "terms": "Términos",
     "privacy": "Privacidad",
     "cookies": "Cookies",
     "rightsReserved": "Todos los derechos reservados",
-    "developedBy": "Desarrollado por",
+    "developedBy": "Creado por",
     "version": "Versión",
     "language": "Idioma",
     "currency": "Moneda",
-    "selectLanguage": "Elige idioma",
-    "selectCurrency": "Elige moneda",
-    "darkMode": "Modo oscuro",
-    "lightMode": "Modo claro",
-    "autoMode": "Modo automático",
+    "selectLanguage": "Elegir Idioma",
+    "selectCurrency": "Elegir Moneda",
+    "darkMode": "Modo Oscuro",
+    "lightMode": "Modo Claro",
+    "autoMode": "Modo Automático",
     "theme": "Tema",
-    "notifications": "Alertas",
+    "notifications": "Notificaciones",
     "markAllAsRead": "Marcar todo como leído",
-    "viewAll": "Ver todo",
-    "noNewNotifications": "Sin alertas nuevas !",
+    "viewAll": "Ver Todo",
+    "noNewNotifications": "¡No tienes notificaciones!",
+    "NewNotifications": "Tienes una nueva notificación",
     "new": "Nuevo",
     "read": "Leído",
     "unread": "No leído",
     "profile": "Perfil",
-    "editProfile": "Editar perfil",
-    "changeAvatar": "Cambiar avatar",
-    "myWishlist": "Mi lista",
-    "myCart": "Mi carrito",
-    "checkoutNow": "Pagar ahora",
-    "applyCoupon": "Aplicar cupón",
-    "enterCouponCode": "Código de cupón",
-    "removeCoupon": "Quitar cupón",
+    "editProfile": "Editar Perfil",
+    "changeAvatar": "Cambiar Avatar",
+    "myWishlist": "Mi Lista de Deseos",
+    "myCart": "Mi Carrito",
+    "checkoutNow": "Pagar Ahora",
+    "applyCoupon": "Aplicar Cupón",
+    "enterCouponCode": "Ingresa el cupón",
+    "removeCoupon": "Eliminar Cupón",
     "couponApplied": "Cupón aplicado",
     "invalidCoupon": "Cupón inválido",
-    "shippingAddress": "Dirección de envío",
+    "shippingAddress": "Dirección de Envío",
     "billingAddress": "Dirección",
-    "sameAsShipping": "Igual que envío",
+    "sameAsShipping": "Igual que la de envío",
     "paymentMethod": "Pago",
-    "selectPaymentMethod": "Elige pago",
-    "placeYourOrder": "Hacer pedido",
-    "orderPlaced": "Pedido realizado",
+    "selectPaymentMethod": "Elegir pago",
+    "placeYourOrder": "Realizar Pedido",
+    "orderPlaced": "Pedido Realizado",
     "thankYouForYourOrder": "¡Gracias por tu pedido!",
     "orderNumber": "Pedido #",
-    "trackYourOrder": "Rastrear pedido",
+    "trackYourOrder": "Seguir Pedido",
     "Hello": "Hola",
-    "create_an_account": "Crear cuenta",
-    "already_have_an_account": "¿Ya tienes cuenta?",
-    "forgot_password": "¿Olvidaste la contraseña?",
+    "create_an_account": "Crear Cuenta",
+    "already_have_an_account": "¿Ya tienes una cuenta?",
+    "forgot_password": "¿Olvidaste tu contraseña?",
     "gender": "Género",
-    "male": "Hombre",
-    "female": "Mujer",
-    "By_clicking_Sign_up_I_agree_to_the": "Al registrarte aceptas",
-    "password_reset_text": "Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.",
+    "male": "Masculino",
+    "female": "Femenino",
+    "By_clicking_Sign_up_I_agree_to_the": "Al registrarte, aceptas los",
+    "password_reset_text": "Ingresa la dirección de correo electrónico verificada de tu cuenta y te enviaremos un enlace para restablecer la contraseña.",
     "send_password_reset_link": "Enviar",
-    "reset_your_password": "Restablecer contraseña",
-    "reset_password": "Restablecer contraseña",
-    "reset_password_text": "Cambia tu contraseña aquí.",
-    "new_password": "Nueva contraseña",
-    "old_password": "Contraseña anterior",
-    "confirm_password": "Confirmar contraseña",
-    "select_country": "Selecciona país",
-    "send": "Enviar",
-    "enter_message": "Escribe tu mensaje",
-    "message_sent": "Mensaje enviado",
-    "message": "Mensage",
-    "myProfile": "Mi perfil",
-    "chat": "Chat",
-    "helpCenter": "Ayuda",
-    "from": "De",
-    "member_since": "Miembro desde",
-    "pleaseSelectShippingMethod": "Por favor, selecciona un método de envío.",
+    "reset_your_password": "Restablecer Contraseña",
+    "reset_password": "Restablecer Contraseña",
+    "reset_password_text": "Actualiza tu contraseña aquí.",
+    "new_password": "Nueva Contraseña",
+    "old_password": "Contraseña Anterior",
+    "confirm_password": "Confirmar Contraseña",
+    "error_old_password_incorrect": "La contraseña anterior es incorrecta",
+    "select_country": "Seleccionar País",
     "please_confirm_your_password": "Confirma tu contraseña",
-    "please_enter_your_new_password": "Ingresa nueva contraseña",
-    "please_enter_your_email": "Ingresa tu correo",
+    "please_enter_your_new_password": "Ingresa la nueva contraseña",
+    "please_enter_your_email": "Ingresa tu correo electrónico",
     "please_enter_your_password": "Ingresa tu contraseña",
-    "please_enter_your_first_name": "Ingresa nombre",
-    "please_enter_your_last_name": "Ingresa apellido",
-    "please_enter_your_address": "Ingresa dirección",
-    "please_enter_your_city": "Ingresa ciudad",
-    "please_enter_your_state": "Ingresa estado",
-    "please_enter_your_country": "Selecciona país",
-    "please_enter_your_zip_code": "Ingresa código postal",
-    "please_enter_your_phone": "Ingresa número de teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
-    "please_enter_coupon_code": "Por favor, introduce un código de descuento",
-    "invalid_discount_code": "Código de descuento no válido",
+    "please_enter_your_first_name": "Ingresa tu nombre",
+    "please_enter_your_last_name": "Ingresa tu apellido",
+    "please_enter_your_address": "Ingresa tu dirección",
+    "please_enter_your_city": "Ingresa tu ciudad",
+    "please_enter_your_state": "Ingresa tu estado",
+    "please_enter_your_country": "Selecciona tu país",
+    "please_enter_your_zip_code": "Ingresa tu código postal",
+    "please_enter_your_phone": "Ingresa tu número de teléfono",
+    "please_enter_your_birthdate": "Ingresa tu fecha de nacimiento",
+    "pleaseSelectShippingMethod": "Por favor selecciona un método de envío.",
+    "please_enter_coupon_code": "Por favor ingresa un código de cupón",
+    "invalid_discount_code": "Código de descuento inválido",
     "discount_code_applied": "Código de descuento aplicado",
-    "discount": "Descuento"
+    "discount": "Descuento",
+    "error_invalid_birthdate": "La fecha de nacimiento no puede ser futura",
+    "error_max_name_characters": "Nombre demasiado largo",
+    "error_min_password_characters": "Contraseña demasiado corta",
+    "error_required_gender": "El género es obligatorio",
+    "required": "Obligatorio",
+    "text_field_required": "Este campo es obligatorio",
+    "send": "Enviar",
+    "enter_message": "Ingresa un mensaje",
+    "message_sent": "Mensaje enviado",
+    "message": "Mensaje",
+    "myProfile": "Mi Perfil",
+    "chat": "Chat",
+    "helpCenter": "Centro de Ayuda",
+    "member_since": "Miembro desde",
+    "from": "Desde"
   },
   "success": {
     "subscribed_to_newsletter": "¡Gracias por suscribirte a nuestro boletín!",
-    "message_sent_successfully": "¡Tu mensaje se ha enviado con éxito!",
-    "profile_updated_successfully": "¡Tu perfil se ha actualizado con éxito!",
-    "password_changed_successfully": "¡Tu contraseña se ha cambiado con éxito!",
-    "order_placed_successfully": "¡Tu pedido se ha realizado con éxito!",
+    "message_sent_successfully": "¡Tu mensaje ha sido enviado exitosamente!",
+    "profile_updated_successfully": "¡Tu perfil ha sido actualizado exitosamente!",
+    "password_changed_successfully": "¡Tu contraseña ha sido cambiada exitosamente!",
+    "order_placed_successfully": "¡Tu pedido ha sido realizado exitosamente!",
     "review_submitted_successfully": "¡Gracias por tu reseña!",
     "item_added_to_cart": "¡Artículo añadido al carrito!",
     "item_removed_from_cart": "¡Artículo eliminado del carrito!",
     "item_added_to_wishlist": "¡Artículo añadido a la lista de deseos!",
     "item_removed_from_wishlist": "¡Artículo eliminado de la lista de deseos!",
-    "coupon_applied_successfully": "¡Cupón aplicado con éxito!",
-    "coupon_removed_successfully": "¡Cupón eliminado con éxito!",
+    "coupon_applied_successfully": "¡Cupón aplicado exitosamente!",
+    "coupon_removed_successfully": "¡Cupón eliminado exitosamente!",
     "saved": "Guardado",
     "deleted": "Eliminado",
     "updated": "Actualizado",
@@ -876,69 +935,127 @@
     "logged_out": "Sesión cerrada",
     "registered": "Registrado",
     "password_reset_link_sent": "Enlace de restablecimiento de contraseña enviado",
-    "password_reset_successful": "Restablecimiento de contraseña exitoso",
+    "password_reset_successful": "Contraseña restablecida exitosamente",
     "success_logged_in": "Sesión iniciada",
     "success_account_created": "Cuenta creada",
     "success_password_reset_link_sent": "Enlace enviado",
-    "success_password_reset": "Contraseña cambiada",
+    "success_password_reset": "Contraseña restablecida",
     "success_profile_updated": "Perfil actualizado",
-    "success_password_changed": "Contraseña actualizada"
+    "success_password_changed": "Contraseña cambiada"
   },
   "errors": {
-    "network_error": "Error de red. Por favor, revisa tu conexión.",
-    "unknown_error": "Error desconocido. Por favor, inténtalo de nuevo.",
-    "form_error": "Error en el formulario. Por favor, revisa los campos.",
-    "unauthorized": "No autorizado. Por favor, inicia sesión.",
+    "network_error": "Error de red. Por favor verifica tu conexión.",
+    "unknown_error": "Error desconocido. Por favor intenta de nuevo.",
+    "form_error": "Error en el formulario. Por favor verifica los campos.",
+    "unauthorized": "No autorizado. Por favor inicia sesión.",
     "forbidden": "Prohibido. No tienes permiso para esta acción.",
     "not_found": "No encontrado. El recurso solicitado no existe.",
-    "server_error": "Error del servidor. Por favor, inténtalo más tarde.",
-    "timeout": "Tiempo de espera agotado. Por favor, inténtalo de nuevo.",
+    "server_error": "Error del servidor. Por favor intenta más tarde.",
+    "timeout": "Tiempo de espera agotado. Por favor intenta de nuevo.",
     "conflict": "Conflicto. El recurso ya existe.",
-    "bad_request": "Solicitud incorrecta. Por favor, revisa los datos enviados.",
-    "validation_error": "Error de validación. Por favor, corrige los errores en el formulario.",
+    "bad_request": "Solicitud incorrecta. Por favor verifica los datos enviados.",
+    "validation_error": "Error de validación. Por favor corrige los errores en el formulario.",
     "item_out_of_stock": "Artículo agotado. No se puede añadir al carrito.",
-    "error_invalid_birthdate": "Fecha inválida",
-    "error_max_name_characters": "Nombre muy largo",
-    "error_min_password_characters": "Contraseña muy corta",
-    "error_required_gender": "Género requerido",
-    "error_old_password_incorrect": "Contraseña anterior incorrecta",
-    "error_gender_must_be_defined": "El género debe ser definido",
-    "required": "Requerido",
-    "text_field_required": "El campo es requerido",
+    "error_password_dont_match": "Las contraseñas no coinciden",
+    "error_email_already_exists": "El correo electrónico ya existe",
+    "error_email_not_exists": "Correo electrónico no encontrado",
+    "error_invalid_credentials": "Correo electrónico o contraseña inválidos",
+    "error_account_disabled": "Cuenta deshabilitada",
+    "error_too_many_requests": "Demasiados intentos. Intenta más tarde",
+    "error_weak_password": "Contraseña demasiado débil",
+    "error_invalid_email": "Correo electrónico inválido",
+    "error_user_not_found": "Usuario no encontrado",
+    "error_network_request_failed": "Error de red",
+    "error_something_went_wrong": "Algo salió mal",
+    "error_invalid_verification_code": "Código inválido",
+    "error_verification_code_expired": "Código expirado",
+    "error_no_internet_connection": "Sin internet",
+    "error_old_password_incorrect": "La contraseña anterior es incorrecta",
+    "error_gender_must_be_defined": "el género debe estar definido",
     "please_confirm_your_password": "Confirma tu contraseña",
-    "please_enter_your_new_password": "Ingresa nueva contraseña",
-    "please_enter_your_email": "Ingresa tu correo",
+    "please_enter_your_new_password": "Ingresa la nueva contraseña",
+    "please_enter_your_email": "Ingresa tu correo electrónico",
     "please_enter_your_password": "Ingresa tu contraseña",
-    "please_enter_your_first_name": "Ingresa nombre",
-    "please_enter_your_last_name": "Ingresa apellido",
-    "please_enter_your_address": "Ingresa dirección",
-    "please_enter_your_city": "Ingresa ciudad",
-    "please_enter_your_state": "Ingresa estado",
-    "please_enter_your_country": "Selecciona país",
-    "please_enter_your_zip_code": "Ingresa código postal",
-    "please_enter_your_phone": "Ingresa teléfono",
-    "please_enter_your_birthdate": "Ingresa fecha de nacimiento",
-    "page_not_found": "Página no encontrada",
+    "please_enter_your_first_name": "Ingresa tu nombre",
+    "please_enter_your_last_name": "Ingresa tu apellido",
+    "please_enter_your_address": "Ingresa tu dirección",
+    "please_enter_your_city": "Ingresa tu ciudad",
+    "please_enter_your_state": "Ingresa tu estado",
+    "please_enter_your_country": "Selecciona tu país",
+    "please_enter_your_zip_code": "Ingresa tu código postal",
+    "please_enter_your_phone": "Ingresa tu teléfono",
+    "please_enter_your_birthdate": "Ingresa tu fecha de nacimiento",
+    "error_invalid_birthdate": "La fecha de nacimiento no puede ser futura",
+    "error_max_name_characters": "Nombre demasiado largo",
+    "error_min_password_characters": "Contraseña demasiado corta",
+    "error_required_gender": "El género es obligatorio",
+    "required": "Obligatorio",
+
+    "page_not_found": "Página No Encontrada",
     "page_not_found_description": "La página que buscas no existe."
   },
-  
   "languages": {
-    "en": "Inglés",
-    "es": "Español",
-    "fr": "Francés",
-    "de": "Alemán",
-    "it": "Italiano",
-    "pt": "Portugués",
-    "zh": "Chino",
-    "ja": "Japonés",
-    "ko": "Coreano",
-    "ru": "Ruso",
-    "ar": "Árabe",
-    "hi": "Hindi"
-  },
+  "en": "Inglés",
+  "es": "Español",
+  "fr": "Francés",
+  "de": "Alemán",
+  "sv": "Sueco",
+  "it": "Italiano",
+  "pt": "Portugués",
+  "zh": "Chino",
+  "ja": "Japonés",
+  "ko": "Coreano",
+  "ru": "Ruso",
+  "ar": "Árabe",
+  "hi": "Hindi",
+  "tr": "Turco",
+  "nl": "Neerlandés",
+  "pl": "Polaco"
+},
+"currencies": {
+  "USD": "Dólar estadounidense",
+  "EUR": "Euro",
+  "GBP": "Libra esterlina",
+  "SAR": "Riyal saudí",
+  "AED": "Dírham de los EAU",
+  "EGP": "Libra egipcia",
+  "MAD": "Dírham marroquí",
+  "DZD": "Dinar argelino",
+  "TND": "Dinar tunecino",
+  "QAR": "Riyal catarí",
+  "KWD": "Dinar kuwaití",
+  "BHD": "Dinar bareiní",
+  "OMR": "Rial omaní",
+  "JOD": "Dinar jordano",
+  "IQD": "Dinar iraquí",
+  "LBP": "Libra libanesa",
+  "SEK": "Corona sueca",
+  "NOK": "Corona noruega",
+  "DKK": "Corona danesa",
+  "CHF": "Franco suizo",
+  "CAD": "Dólar canadiense",
+  "AUD": "Dólar australiano",
+  "NZD": "Dólar neozelandés",
+  "JPY": "Yen japonés",
+  "CNY": "Yuan chino",
+  "INR": "Rupia india",
+  "KRW": "Won surcoreano",
+  "TRY": "Lira turca",
+  "MXN": "Peso mexicano",
+  "BRL": "Real brasileño",
+  "ARS": "Peso argentino",
+  "CLP": "Peso chileno",
+  "COP": "Peso colombiano",
+  "PEN": "Sol peruano",
+  "PLN": "Zloty polaco",
+  "CZK": "Corona checa",
+  "HUF": "Forinto húngaro",
+  "RON": "Leu rumano",
+  "ZAR": "Rand sudafricano"
+},
   "countries": {
     "AF": "Afganistán",
-    "AX": "Islas Aland",
+    "AX": "Islas Åland",
     "AL": "Albania",
     "DZ": "Argelia",
     "AS": "Samoa Americana",
@@ -964,7 +1081,7 @@
     "BM": "Bermudas",
     "BT": "Bután",
     "BO": "Bolivia",
-    "BQ": "Caribe neerlandés",
+    "BQ": "Caribe Neerlandés",
     "BA": "Bosnia y Herzegovina",
     "BW": "Botsuana",
     "BV": "Isla Bouvet",
@@ -984,11 +1101,11 @@
     "CL": "Chile",
     "CN": "China",
     "CX": "Isla de Navidad",
-    "CC": "Islas Cocos",
+    "CC": "Islas Cocos (Keeling)",
     "CO": "Colombia",
     "KM": "Comoras",
-    "CG": "Congo",
-    "CD": "República Democrática del Congo",
+    "CG": "Congo - Brazzaville",
+    "CD": "Congo - Kinshasa",
     "CK": "Islas Cook",
     "CR": "Costa Rica",
     "HR": "Croacia",
@@ -1029,7 +1146,7 @@
     "GP": "Guadalupe",
     "GU": "Guam",
     "GT": "Guatemala",
-    "GG": "Guernesey",
+    "GG": "Guernsey",
     "GN": "Guinea",
     "GW": "Guinea-Bisáu",
     "GY": "Guyana",
@@ -1037,7 +1154,7 @@
     "HM": "Islas Heard y McDonald",
     "VA": "Ciudad del Vaticano",
     "HN": "Honduras",
-    "HK": "RAE de Hong Kong (China)",
+    "HK": "Hong Kong SAR China",
     "HU": "Hungría",
     "IS": "Islandia",
     "IN": "India",
@@ -1068,12 +1185,12 @@
     "LI": "Liechtenstein",
     "LT": "Lituania",
     "LU": "Luxemburgo",
-    "MO": "RAE de Macao (China)",
+    "MO": "Macao SAR China",
     "MG": "Madagascar",
     "MW": "Malaui",
     "MY": "Malasia",
     "MV": "Maldivas",
-    "ML": "Mali",
+    "ML": "Malí",
     "MT": "Malta",
     "MH": "Islas Marshall",
     "MQ": "Martinica",
@@ -1132,7 +1249,7 @@
     "WS": "Samoa",
     "SM": "San Marino",
     "ST": "Santo Tomé y Príncipe",
-    "SA": "Arabia Saudí",
+    "SA": "Arabia Saudita",
     "SN": "Senegal",
     "RS": "Serbia",
     "SC": "Seychelles",
@@ -1144,7 +1261,7 @@
     "SB": "Islas Salomón",
     "SO": "Somalia",
     "ZA": "Sudáfrica",
-    "GS": "Islas Georgia del Sur y Sandwich del Sur",
+    "GS": "Georgia del Sur y las Islas Sandwich del Sur",
     "SS": "Sudán del Sur",
     "ES": "España",
     "LK": "Sri Lanka",
@@ -1172,7 +1289,7 @@
     "UA": "Ucrania",
     "AE": "Emiratos Árabes Unidos",
     "GB": "Reino Unido",
-    "UM": "Islas menores alejadas de EE. UU.",
+    "UM": "Islas Ultramarinas Menores de EE. UU.",
     "US": "Estados Unidos",
     "UY": "Uruguay",
     "UZ": "Uzbekistán",
@@ -1186,5 +1303,425 @@
     "YE": "Yemen",
     "ZM": "Zambia",
     "ZW": "Zimbabue"
+  },
+
+  "about": {
+    "title": "Sobre Nosotros",
+    "metaDescription": "Descubre las lámparas de lujo Enouza, iluminación de diseñador y lámparas interiores premium. Eleva tu hogar con lámparas de pie modernas de alta gama, lámparas de mesa elegantes e iluminación decorativa artesanal.",
+
+    "intro": "En Enouza, creemos que la iluminación es más que iluminación — es una experiencia.",
+    "passion": "Nuestra pasión es crear espacios que se sientan cálidos, refinados y atemporales. Por eso seleccionamos cuidadosamente lámparas de lujo que combinan diseño moderno, materiales premium y artesanía excepcional. Cada pieza de nuestra colección está elegida para elevar tu hogar, no solo iluminarlo.",
+    "visionTitle": "Nuestra Visión",
+    "visionText": "Nuestro objetivo es redefinir la iluminación cotidiana ofreciendo piezas de declaración que aporten elegancia, comodidad y carácter a cualquier habitación. Desde acogedores dormitorios hasta sofisticados espacios de estar, nuestras lámparas están diseñadas para transformar atmósferas.",
+    "qualityTitle": "Calidad en la que Puedes Confiar",
+    "qualityText": "Trabajamos estrechamente con fabricantes y diseñadores de confianza que comparten nuestro compromiso con la calidad. Cada lámpara es seleccionada por su durabilidad, valor estético y atención al detalle — porque el lujo debe sentirse, no solo verse.",
+    "whyTitle": "¿Por Qué Elegir Enouza?",
+    "why": {
+      "items": [
+        "Diseños de lujo curados",
+        "Materiales premium y estilos atemporales",
+        "Experiencia de compra segura",
+        "Empaquetado cuidadoso y entrega confiable",
+        "Soporte al cliente dedicado"
+      ]
+    },
+    "modernTitle": "Diseñado para la Vida Moderna",
+    "modernText": "Nuestra colección combina tendencias contemporáneas con elegancia clásica, haciendo que nuestras lámparas sean perfectas para hogares modernos, apartamentos e interiores de lujo. Ya sea que busques una lámpara de pie de declaración o un sutil brillo ambiental, Enouza aporta luz que refleja tu estilo.",
+    "closing": "Gracias por elegir Enouza — donde la luz se encuentra con el lujo."
+  },
+  "privacyPolicy": {
+    "seoTitle": "Enouza - Política de Privacidad",
+    "title": "Política de Privacidad",
+    "intro": "Esta Política de Privacidad describe cómo Enouza.com (el “Sitio” o “nosotros”) recopila, utiliza y divulga tu Información Personal cuando visitas o realizas una compra en el Sitio.",
+    "collectingPersonalInfo": {
+      "title": "Recopilación de Información Personal",
+      "description": "Cuando visitas el Sitio, recopilamos cierta información sobre tu dispositivo, tu interacción con el Sitio y la información necesaria para procesar tus compras. También podemos recopilar información adicional si nos contactas para soporte al cliente. En esta Política de Privacidad, nos referimos a cualquier información que pueda identificar de manera única a un individuo (incluida la información a continuación) como 'Información Personal'."
+    },
+    "deviceInfo": {
+      "title": "Información del Dispositivo",
+      "examples": "Ejemplos de Información Personal recopilada: versión del navegador web, dirección IP, zona horaria, información de cookies, sitios o productos que ves, términos de búsqueda y cómo interactúas con el Sitio.",
+      "purpose": "Propósito de la recopilación: cargar el Sitio con precisión para ti y realizar análisis sobre el uso del Sitio para optimizar nuestro Sitio.",
+      "source": "Fuente de la recopilación: recopilada automáticamente cuando accedes a nuestro Sitio utilizando cookies, archivos de registro, balizas web, etiquetas o píxeles.",
+      "disclosure": "Divulgación con fines comerciales: compartida con nuestro procesador Enouza."
+    },
+    "orderInfo": {
+      "title": "Información del Pedido",
+      "examples": "Ejemplos de Información Personal recopilada: nombre, dirección de facturación, dirección de envío, información de pago, dirección de correo electrónico y número de teléfono.",
+      "purpose": "Propósito de la recopilación: proporcionarte productos o servicios, procesar información de pago, organizar el envío, proporcionar facturas o confirmaciones de pedidos, comunicarnos contigo, filtrar pedidos por riesgo o fraude, y proporcionar publicidad o información de acuerdo con tus preferencias.",
+      "source": "Fuente de la recopilación: recopilada de ti.",
+      "disclosure": "Divulgación con fines comerciales: compartida con nuestro procesador Enouza."
+    },
+    "customerSupportInfo": {
+      "title": "Información de Soporte al Cliente",
+      "examples": "Ejemplos de Información Personal recopilada: nombre, dirección de facturación, dirección de envío, información de pago, dirección de correo electrónico y número de teléfono.",
+      "purpose": "Propósito de la recopilación: proporcionar soporte al cliente.",
+      "source": "Fuente de la recopilación: recopilada de ti."
+    },
+    "sharingPersonalInfo": {
+      "title": "Compartir Información Personal",
+      "text": "Compartimos tu Información Personal con proveedores de servicios para ayudarnos a proporcionar nuestros servicios y cumplir nuestros contratos contigo, como se describe anteriormente. Por ejemplo, podemos compartir tu Información Personal para cumplir con las leyes y regulaciones aplicables, responder a citaciones, órdenes de registro u otras solicitudes legales, o para proteger nuestros derechos."
+    },
+    "behavioralAdvertising": {
+      "title": "Publicidad Conductual",
+      "text": "Utilizamos tu Información Personal para proporcionarte anuncios dirigidos o comunicaciones de marketing que creemos que pueden ser de tu interés. Por ejemplo, utilizamos Google Analytics para entender cómo los clientes usan el Sitio. Más sobre el uso de Información Personal de Google: https://policies.google.com/privacy. Exclusión: https://tools.google.com/dlpage/gaoptout. También compartimos información sobre tu uso del Sitio y anuncios con socios publicitarios."
+    },
+    "usingPersonalInfo": {
+      "title": "Uso de la Información Personal",
+      "text": "Utilizamos tu Información Personal para proporcionar nuestros servicios, incluida la oferta de productos en venta, el procesamiento de pagos, el envío y cumplimiento de pedidos, y mantenerte informado sobre nuevos productos, servicios y ofertas."
+    },
+    "lawfulBasis": {
+      "title": "Base Legal",
+      "text": "Si eres residente del EEE, procesamos tu información personal bajo las siguientes bases legales: tu consentimiento, ejecución de un contrato, obligaciones legales, intereses vitales, tareas de interés público o intereses legítimos que no anulen tus derechos fundamentales."
+    },
+    "retention": {
+      "title": "Retención",
+      "text": "Cuando realizas un pedido a través del Sitio, conservamos tu Información Personal a menos y hasta que nos pidas que la borremos."
+    },
+    "automaticDecisionMaking": {
+      "title": "Toma de Decisiones Automatizada",
+      "text": "Si eres residente del EEE, tienes derecho a oponerte a la toma de decisiones automatizada (incluido el perfilado) con efecto legal o significativo. Nuestro procesador utiliza decisiones automatizadas limitadas para prevenir fraudes, como listas de denegación temporal para IP o tarjetas de crédito."
+    },
+    "yourRights": {
+      "title": "Tus Derechos",
+      "gdpr": "Los residentes del EEE tienen derecho a acceder, portar, corregir, actualizar o borrar su Información Personal. Contáctanos para ejercer estos derechos.",
+      "ccpa": "Los residentes de California tienen derecho a acceder ('Derecho a Saber'), portar, corregir, actualizar o borrar su Información Personal. Puedes designar un agente autorizado para enviar solicitudes."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text": "Las cookies son pequeñas piezas de información que se descargan en tu dispositivo al visitar nuestro Sitio. Utilizamos cookies funcionales, de rendimiento, publicitarias y de redes sociales para mejorar tu experiencia de navegación y recordar preferencias."
+    },
+    "doNotTrack": {
+      "title": "No Rastrear",
+      "text": "Dado que no existe una respuesta consistente de la industria a las señales de 'No Rastrear', no alteramos nuestras prácticas de recopilación de datos si se detecta dicha señal en tu navegador."
+    },
+    "changes": {
+      "title": "Cambios",
+      "text": "Podemos actualizar esta Política de Privacidad de vez en cuando para reflejar cambios en las prácticas o por razones legales, regulatorias u operativas."
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "Para obtener más información sobre nuestras prácticas de privacidad, preguntas o quejas, contáctanos por correo electrónico a hello@enouza.com."
+    },
+    "lastUpdated": "Última actualización: 15 de junio de 2022"
+  },
+
+  "returnPolicy": {
+    "seoTitle": "Enouza - Política de Devoluciones",
+    "title": "Política de Devoluciones y Reembolsos",
+    "returns": {
+      "heading": "Devoluciones:",
+      "text": "En pocas palabras, puedes devolver mercancía para un reembolso SOLO si el artículo está en CONDICIÓN COMPLETAMENTE NUEVA Y SIN ABRIR, incluido su embalaje original y accesorios. Sabemos que esto parece un poco extremo, pero sin esta estipulación, no podríamos ofrecer nuestros increíbles precios. Honraremos los reembolsos de artículos sin abrir hasta 15 - 25 días desde que recibiste tu producto. Todos los reembolsos se emitirán al método de pago original y pueden tardar de 7 a 10 días hábiles en aplicarse."
+    },
+    "rejectedRefunds": {
+      "heading": "Tu reembolso será rechazado si tus artículos son devueltos debido a los siguientes problemas:",
+      "items": [
+        "Si deseas devolver tu producto debido a daños en la caja original del artículo.",
+        "Si el producto que devolviste ha sido abierto y desprecintado.",
+        "Artículos con problemas menores de pintura cosmética para figuras de premio, ya que estos son de esperar."
+      ]
+    },
+    "exceptions": {
+      "heading": "Excepciones / Artículos No Reembolsables:",
+      "text": "Los pedidos anticipados son ventas finales y no son reembolsables una vez enviados. Si recibes un producto defectuoso, contáctanos para obtener información sobre cómo contactar al fabricante. Artículos con imperfecciones en la caja y defectos generales. Contáctanos si tienes preguntas o inquietudes sobre tu artículo específico."
+    },
+    "returnShipping": {
+      "heading": "Envío de Devolución:",
+      "text": "Para devolver un producto, contacta a nuestro soporte al cliente con tu número de pedido y motivo de devolución. Se te proporcionará una etiqueta de devolución si tu solicitud de devolución es aprobada."
+    },
+    "damagesIssues": {
+      "heading": "Daños y Problemas",
+      "text": "Inspecciona tu pedido al recibirlo y contáctanos inmediatamente si el artículo está defectuoso, dañado o si recibiste el artículo incorrecto para que podamos evaluar el problema y solucionarlo."
+    },
+    "refunds": {
+      "heading": "Reembolsos",
+      "text": "Te notificaremos una vez que hayamos recibido e inspeccionado tu devolución, y te informaremos si el reembolso fue aprobado. Si es aprobado, se te reembolsará automáticamente en tu método de pago original. Recuerda que puede tomar algún tiempo para que tu banco o compañía de tarjeta de crédito procese y publique el reembolso."
+    }
+  },
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "¿Cuál es su política de devoluciones?",
+      "answer": {
+        "paragraphe": [
+          "Si deseas devolver tu pedido por cualquier motivo, ¡estamos aquí para ayudar sin complicaciones! Ofrecemos devoluciones dentro de los 30 días posteriores a la compra. Puedes devolver tu producto para un reembolso al método de pago original si el producto no cumplió con tus expectativas. El reembolso se procesará de vuelta a su forma de pago original dentro de 5-10 días hábiles."
+        ],
+        "list": [
+          "Los artículos en liquidación son ventas finales y no se pueden devolver ni cambiar.",
+          "Los artículos devueltos deben incluir información de identificación y devolverse en el embalaje original del producto.",
+          "Los artículos devueltos no deben tener signos visibles de desgaste o uso.",
+          "El costo de envío no será reembolsado a menos que se te haya enviado un artículo incorrecto o dañado.",
+          "No se proporcionará una etiqueta de devolución prepagada a menos que se haya enviado el artículo incorrecto o el artículo se haya dañado en tránsito.",
+          "No procesamos cambios de ropa. Si el artículo que compraste no te queda bien, devuélvelo para un reembolso. Luego puedes realizar un nuevo pedido para tu talla deseada. Para más información y etiquetas RMA, contacta a nuestro Equipo de Servicio al Cliente."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "¿Cómo se devuelve un producto?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Inicia sesión en tu cuenta de Enouza y contacta a nuestro Equipo de Servicio al Cliente.",
+          "Proporciona la mayor cantidad de información posible sobre los productos que deseas devolver o cambiar de tu pedido.",
+          "Los artículos devueltos no deben tener signos visibles de desgaste o uso.",
+          "Imprime la etiqueta de envío prepagada que recibirás por correo electrónico.",
+          "Ten en cuenta que no se proporcionará una etiqueta de devolución prepagada a menos que se haya enviado el artículo incorrecto o el artículo se haya dañado en tránsito.",
+          "Envíanos todos los artículos de vuelta usando la etiqueta proporcionada."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "¡Mi producto llegó dañado! ¿Qué debo hacer?",
+      "answer": {
+        "paragraphe": [
+          "¡Lo sentimos, coleccionistas! Entendemos lo decepcionante que es recibir un artículo dañado — ¡especialmente un artículo que has esperado meses! Desafortunadamente, ocurren errores y los productos pueden dañarse durante el tránsito. En caso de que esto suceda, contáctanos con fotos del artículo dañado y lo reemplazaremos o emitiremos un reembolso parcial o total. ¡Tu satisfacción es nuestra prioridad #1!"
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "¿Qué productos están excluidos de la política de devoluciones?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Los productos digitales, incluidas las membresías y las tarjetas de regalo, no son elegibles para reembolsos o devoluciones. Si experimentas algún problema para acceder o usar un producto digital, contáctanos y estaremos encantados de ayudarte.",
+          "Los productos comprados como parte de promociones de liquidación o venta final pueden no ser elegibles para devolución, excepto cuando lo exija la ley.",
+          "Los productos que hayan sido usados, instalados o modificados después de la entrega pueden no ser elegibles para devolución, dependiendo de la condición del producto y nuestra política de devoluciones.",
+          "Si tu producto llega dañado o tiene un defecto, contáctanos lo antes posible para que podamos ayudarte y encontrar una solución adecuada.",
+          "Pueden aplicarse condiciones adicionales a ciertos productos y se indicarán en la página del producto correspondiente cuando corresponda."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "Mi producto tiene un defecto / faltan piezas. ¿Qué debo hacer?",
+      "answer": {
+        "paragraphe": [
+          "Contáctanos directamente con fotos y explicación del defecto.",
+          "Ten en cuenta: los productos de video doméstico no están garantizados de incluir una funda."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "¿Cuál es su política de reembolsos?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Después de que se cancele un pedido o se procese una devolución, tu reembolso se emitirá a su forma de pago original.",
+          "Al completar tu devolución, se procesará un reembolso dentro de 1-5 días hábiles.",
+          "Después de que se haya procesado un reembolso, permite 3-5 días hábiles para reembolsos de PayPal y 3-10 días hábiles para todos los demás métodos de pago.",
+          "Te notificaremos por correo electrónico cuando se haya emitido tu reembolso.",
+          "Se emitirá un reembolso completo incluso si se utilizó una Tarjeta de Regalo Digital de Enouza Store como pago total o parcial del pedido.",
+          "Un pedido puede cancelarse y reembolsarse inmediatamente si el paquete aún no ha comenzado a procesarse para su envío.",
+          "Una vez que un paquete comienza a procesarse para su envío, deberá entregarse a su destino y devolverse a Enouza antes de que se pueda emitir un reembolso. Contacta a nuestro Equipo de Servicio al Cliente para obtener información más detallada."
+        ]
+      }
+    }
+  ],
+
+  "shipping": {
+    "seoTitle": "Enouza - Política de Envíos",
+    "title": "Política de Envíos",
+    "intro": "Ofrecemos envío gratis mundial en todos nuestros productos, y enviamos a casi todos los países del mundo.",
+    "deliveryTime": {
+      "title": "Tiempo de Entrega Estimado",
+      "description": "La entrega suele tardar de 5 a 15 días hábiles, con un máximo de 30 días hábiles dependiendo del destino."
+    },
+    "tracking": {
+      "title": "Seguimiento de tu Pedido",
+      "description": "Al enviar, recibirás un correo electrónico con un número de seguimiento. Los artículos pueden enviarse por separado por razones logísticas."
+    },
+    "customFees": {
+      "title": "Tarifas Aduaneras",
+      "description": "Cualquier tarifa aduanera incurrida al enviar no es nuestra responsabilidad."
+    },
+    "lostOrDelayedPackages": {
+      "title": "Paquetes Perdidos o Retrasados",
+      "description": "Si tu paquete se pierde o se retrasa, contáctanos con la información de tu pedido."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Si tienes más preguntas sobre el envío, contáctanos en hello@enouza.com"
+    }
+  },
+
+  "shippingFaq": [
+    {
+      "id": 1,
+      "question": "¿Cuánto cuesta el envío?",
+      "answer": {
+        "paragraphe": [
+          "Los costos de envío internacional varían según el destino. Aquí hay un desglose de los costos de envío para cada destino:"
+        ],
+        "list": [
+          "Canadá: $0 - $19.99",
+          "Europa: $0 - $40",
+          "Australia: $0 - $43.99",
+          "Mundial: Envío gratis para algunos productos"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "¿Qué pasa si mi paquete se pierde en tránsito?",
+      "answer": {
+        "paragraphe": [
+          "Si un paquete se muestra como entregado pero no lo has recibido, contacta al transportista y notifícanos dentro de los 30 días posteriores a la fecha de entrega.",
+          "Si se determina que el paquete se perdió debido a un error de entrega del transportista, reemplazaremos tu pedido.",
+          "Si el paquete se pierde debido a una dirección incompleta o incorrecta, no podemos ofrecer un reembolso o cambio — los clientes son responsables de asegurarse de que su dirección de envío sea correcta al momento de la compra. Si el paquete nos es devuelto, deberás pagar una tarifa de envío adicional para reenviarlo.",
+          "Si descubres que tu dirección de envío es incorrecta o ha cambiado desde que realizaste tu pedido, notifícanos con tu número/ID de pedido y la dirección actualizada."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 3,
+      "question": "¿Cuándo se enviará mi pedido?",
+      "answer": {
+        "paragraphe": [
+          "Tu pedido se procesará durante días hábiles normales (lunes a viernes, excluyendo festivos).",
+          "Si un artículo está en stock, tu pedido se procesará dentro de 1 a 5 días hábiles. El tiempo de entrega después del procesamiento variará según la dirección de envío. Actualmente, los tiempos de entrega oscilan entre 5 y 15 días hábiles.",
+          "Una vez que un artículo se envía, recibirás un correo electrónico con información de seguimiento. En algunos casos especiales, los números de seguimiento pueden no estar disponibles."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "¿Recibiré mi pedido en múltiples paquetes?",
+      "answer": {
+        "paragraphe": [
+          "Si compras artículos en stock enviados desde diferentes almacenes, recibirás múltiples envíos."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 5,
+      "question": "¿Cómo se calculan los precios de envío?",
+      "answer": {
+        "paragraphe": [
+          "Los cargos de envío se calculan durante el pago. Puedes añadir artículos a tu carrito, proceder al pago e ingresar tu dirección de envío para ver el costo de envío de tu pedido."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "¿Cuál es su política de reembolsos?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Después de que se cancele un pedido o se procese una devolución, se emitirá un reembolso al método de pago original.",
+          "Una vez completado el proceso de devolución, el reembolso se procesará dentro de 1-5 días hábiles.",
+          "Después de que se procese el reembolso, permite 3-5 días hábiles para reembolsos de PayPal, y 3-10 días hábiles para todos los demás métodos de pago.",
+          "Te notificaremos por correo electrónico una vez que se haya emitido el reembolso.",
+          "Se emitirá un reembolso completo incluso si se utilizó una Tarjeta de Regalo Digital de Enouza Store como pago total o parcial del pedido.",
+          "Un pedido puede cancelarse y reembolsarse inmediatamente si el paquete aún no ha comenzado a procesarse para su envío.",
+          "Una vez que un paquete comienza a procesarse para su envío, debe entregarse a su destino y devolverse a Enouza antes de que se pueda emitir un reembolso. Contacta a nuestro equipo de Servicio al Cliente para obtener información más detallada."
+        ]
+      }
+    }
+  ],
+  "terms": {
+    "seoTitle": "Enouza - Términos de Servicio",
+    "title": "Términos de Servicio",
+    "overview": {
+      "title": "Resumen",
+      "p1": "Este sitio web es operado por Enouza. A lo largo del sitio, los términos “nosotros”, “nos” y “nuestro” se refieren a Enouza. Enouza ofrece este sitio web, incluida toda la información, herramientas y servicios disponibles en este sitio para ti, el usuario, condicionado a tu aceptación de todos los términos, condiciones, políticas y avisos aquí establecidos.",
+      "p2": "Al visitar nuestro sitio y/o comprar algo de nosotros, participas en nuestro “Servicio” y aceptas estar sujeto a los siguientes términos y condiciones (“Términos de Servicio”, “Términos”), incluidos los términos y condiciones adicionales y las políticas a las que se hace referencia aquí y/o disponibles por hipervínculo. Estos Términos de Servicio se aplican a todos los usuarios del sitio, incluidos, entre otros, los usuarios que son navegadores, vendedores, clientes, comerciantes y/o contribuyentes de contenido.",
+      "p3": "Por favor, lee estos Términos de Servicio cuidadosamente antes de acceder o usar nuestro sitio web. Al acceder o usar cualquier parte del sitio, aceptas estar sujeto a estos Términos de Servicio. Si no estás de acuerdo con todos los términos y condiciones de este acuerdo, no podrás acceder al sitio web ni utilizar ningún servicio. Si estos Términos de Servicio se consideran una oferta, la aceptación se limita expresamente a estos Términos de Servicio.",
+      "p4": "Cualquier nueva función o herramienta que se añada a la tienda actual también estará sujeta a los Términos de Servicio. Puedes revisar la versión más actual de los Términos de Servicio en cualquier momento en esta página. Nos reservamos el derecho de actualizar, cambiar o reemplazar cualquier parte de estos Términos de Servicio publicando actualizaciones y/o cambios en nuestro sitio web. Es tu responsabilidad revisar esta página periódicamente para ver los cambios. Tu uso o acceso continuo al sitio web después de la publicación de cualquier cambio constituye la aceptación de esos cambios."
+    },
+    "sections": {
+      "section1": {
+        "title": "Sección 1 - Términos de la Tienda en Línea",
+        "text": "Al aceptar estos Términos de Servicio, declaras que tienes al menos la mayoría de edad en tu estado o provincia de residencia, o que tienes la mayoría de edad en tu estado o provincia de residencia y nos has dado tu consentimiento para permitir que cualquiera de tus dependientes menores use este sitio. No puedes usar nuestros productos para ningún propósito ilegal o no autorizado ni puedes, en el uso del Servicio, violar ninguna ley en tu jurisdicción (incluidas, entre otras, las leyes de derechos de autor). No debes transmitir ningún gusano o virus ni ningún código de naturaleza destructiva. Un incumplimiento o violación de cualquiera de los Términos resultará en la terminación inmediata de tus Servicios."
+      },
+      "section2": {
+        "title": "Sección 2 - Condiciones Generales",
+        "text": "Nos reservamos el derecho de rechazar el servicio a cualquier persona por cualquier motivo en cualquier momento. Entiendes que tu contenido (sin incluir la información de la tarjeta de crédito) puede transferirse sin cifrar e implicar (a) transmisiones a través de varias redes; y (b) cambios para cumplir y adaptarse a los requisitos técnicos de las redes o dispositivos de conexión. La información de la tarjeta de crédito siempre se cifra durante la transferencia a través de redes. Aceptas no reproducir, duplicar, copiar, vender, revender o explotar cualquier parte del Servicio, el uso del Servicio o el acceso al Servicio o cualquier contacto en el sitio web a través del cual se proporciona el servicio, sin nuestro permiso expreso por escrito. Los encabezados utilizados en este acuerdo se incluyen solo para conveniencia y no limitarán ni afectarán de otra manera estos Términos."
+      },
+      "section3": {
+        "title": "Sección 3 - Precisión, Integridad y Actualidad de la Información",
+        "text": "No somos responsables si la información disponible en este sitio no es precisa, completa o actual. El material de este sitio se proporciona solo para información general y no debe confiarse ni usarse como la única base para tomar decisiones sin consultar fuentes de información primarias, más precisas, completas o actuales. Cualquier confianza en el material de este sitio es bajo tu propio riesgo. Este sitio puede contener cierta información histórica. La información histórica, necesariamente, no es actual y se proporciona solo como referencia. Nos reservamos el derecho de modificar el contenido de este sitio en cualquier momento, pero no tenemos la obligación de actualizar ninguna información en nuestro sitio. Aceptas que es tu responsabilidad monitorear los cambios en nuestro sitio."
+      },
+      "section4": {
+        "title": "Sección 4 - Modificaciones al Servicio y Precios",
+        "text": "Los precios de nuestros productos están sujetos a cambios sin previo aviso. Nos reservamos el derecho en cualquier momento de modificar o discontinuar el Servicio (o cualquier parte o contenido del mismo) sin previo aviso en cualquier momento. No seremos responsables ante ti ni ante ningún tercero por cualquier modificación, cambio de precio, suspensión o interrupción del Servicio."
+      },
+      "section5": {
+        "title": "Sección 5 - Productos o Servicios (si corresponde)",
+        "text": "Ciertos productos o servicios pueden estar disponibles exclusivamente en línea a través del sitio web. Estos productos o servicios pueden tener cantidades limitadas y están sujetos a devolución o cambio solo de acuerdo con nuestra Política de Devoluciones. Hemos hecho todo lo posible para mostrar con la mayor precisión posible los colores e imágenes de nuestros productos que aparecen en la tienda. No podemos garantizar que la pantalla de tu monitor muestre ningún color con precisión. Nos reservamos el derecho pero no estamos obligados a limitar las ventas de nuestros productos o Servicios a cualquier persona, región geográfica o jurisdicción. Podemos ejercer este derecho caso por caso. Nos reservamos el derecho de limitar las cantidades de cualquier producto o servicio que ofrecemos. Todas las descripciones de productos o precios de productos están sujetas a cambios en cualquier momento sin previo aviso, a nuestra entera discreción. Nos reservamos el derecho de discontinuar cualquier producto en cualquier momento. Cualquier oferta de cualquier producto o servicio realizada en este sitio es nula donde esté prohibida. No garantizamos que la calidad de cualquier producto, servicio, información u otro material comprado u obtenido por ti cumpla con tus expectativas, o que cualquier error en el Servicio se corrija."
+      },
+      "section6": {
+        "title": "Sección 6 - Precisión de Facturación e Información de la Cuenta",
+        "text": "Nos reservamos el derecho de rechazar cualquier pedido que nos hagas. Podemos, a nuestra entera discreción, limitar o cancelar cantidades compradas por persona, por hogar o por pedido. Estas restricciones pueden incluir pedidos realizados por o bajo la misma cuenta de cliente, la misma tarjeta de crédito y/o pedidos que utilicen la misma dirección de facturación y/o envío. En caso de que hagamos un cambio o cancelemos un pedido, podemos intentar notificarte contactando el correo electrónico y/o la dirección de facturación/teléfono proporcionados en el momento en que se realizó el pedido. Nos reservamos el derecho de limitar o prohibir pedidos que, a nuestro juicio exclusivo, parezcan ser realizados por distribuidores, revendedores o concesionarios. Aceptas proporcionar información de compra y cuenta actual, completa y precisa para todas las compras realizadas en nuestra tienda. Aceptas actualizar rápidamente tu cuenta y otra información, incluida tu dirección de correo electrónico y números de tarjeta de crédito y fechas de vencimiento para que podamos completar tus transacciones y contactarte según sea necesario."
+      },
+      "section7": {
+        "title": "Sección 7 - Política de Devoluciones",
+        "text": "Para más detalles, revisa nuestra Política de Devoluciones."
+      },
+      "section8": {
+        "title": "Sección 8 - Herramientas Opcionales",
+        "text": "Podemos proporcionarte acceso a herramientas de terceros sobre las cuales no monitoreamos ni tenemos control o participación. Reconoces y aceptas que proporcionamos acceso a dichas herramientas “tal cual” y “según disponibilidad” sin garantías, representaciones o condiciones de ningún tipo y sin ningún respaldo. No tendremos ninguna responsabilidad derivada o relacionada con tu uso de herramientas opcionales de terceros. Cualquier uso por tu parte de herramientas opcionales ofrecidas a través del sitio es completamente bajo tu propio riesgo y discreción y debes asegurarte de estar familiarizado y aprobar los términos bajo los cuales las herramientas son proporcionadas por los proveedores terceros relevantes. También podemos, en el futuro, ofrecer nuevos servicios y/o funciones a través del sitio web (incluido el lanzamiento de nuevas herramientas y recursos). Dichas nuevas funciones y/o servicios también estarán sujetos a estos Términos de Servicio."
+      },
+      "section9": {
+        "title": "Sección 9 - Enlaces de Terceros",
+        "text": "Cierto contenido, productos y servicios disponibles a través de nuestro Servicio pueden incluir materiales de terceros. Los enlaces de terceros en este sitio pueden dirigirte a sitios web de terceros que no están afiliados con nosotros. No somos responsables de examinar o evaluar el contenido o la precisión y no garantizamos y no tendremos ninguna responsabilidad por cualquier material o sitio web de terceros, o por cualquier otro material, producto o servicio de terceros. No somos responsables de ningún daño o perjuicio relacionado con la compra o uso de bienes, servicios, recursos, contenido o cualquier otra transacción realizada en relación con cualquier sitio web de terceros. Revisa cuidadosamente las políticas y prácticas de terceros y asegúrate de entenderlas antes de participar en cualquier transacción. Las quejas, reclamos, inquietudes o preguntas sobre productos de terceros deben dirigirse al tercero."
+      },
+      "section10": {
+        "title": "Sección 10 - Comentarios de Usuarios, Comentarios y Otras Presentaciones",
+        "text": "Si a nuestra solicitud, envías ciertas presentaciones específicas (por ejemplo, entradas de concursos) o sin una solicitud nuestra envías ideas creativas, sugerencias, propuestas, planes u otros materiales, ya sea en línea, por correo electrónico, por correo postal o de otra manera (colectivamente, 'comentarios'), aceptas que podemos, en cualquier momento, sin restricciones, editar, copiar, publicar, distribuir, traducir y usar de otra manera en cualquier medio cualquier comentario que nos envíes. No estamos ni estaremos obligados (1) a mantener ningún comentario en confidencialidad; (2) a pagar compensación por ningún comentario; o (3) a responder a ningún comentario. Podemos, pero no tenemos la obligación de, monitorear, editar o eliminar contenido que determinemos a nuestra entera discreción que es ilegal, ofensivo, amenazante, difamatorio, calumnioso, pornográfico, obsceno o de otra manera objetable o que viola la propiedad intelectual de cualquier parte o estos Términos de Servicio. Aceptas que tus comentarios no violarán ningún derecho de ningún tercero, incluidos derechos de autor, marcas registradas, privacidad, personalidad u otros derechos personales o de propiedad. Además, aceptas que tus comentarios no contendrán material difamatorio o de otra manera ilegal, abusivo u obsceno, ni contendrán ningún virus informático u otro malware que pueda afectar de alguna manera la operación del Servicio o cualquier sitio web relacionado. No puedes usar una dirección de correo electrónico falsa, hacerte pasar por otra persona o de otra manera engañarnos a nosotros o a terceros en cuanto al origen de cualquier comentario. Eres el único responsable de cualquier comentario que hagas y de su precisión. No asumimos ninguna responsabilidad por ningún comentario publicado por ti o por cualquier tercero."
+      },
+      "section11": {
+        "title": "Sección 11 - Información Personal",
+        "text": "Tu envío de información personal a través de la tienda se rige por nuestra Política de Privacidad."
+      },
+      "section12": {
+        "title": "Sección 12 - Errores, Inexactitudes y Omisiones",
+        "text": "Ocasionalmente puede haber información en nuestro sitio o en el Servicio que contenga errores tipográficos, inexactitudes u omisiones que puedan relacionarse con descripciones de productos, precios, promociones, ofertas, cargos de envío de productos, tiempos de tránsito y disponibilidad. Nos reservamos el derecho de corregir cualquier error, inexactitud u omisión, y de cambiar o actualizar información o cancelar pedidos si cualquier información en el Servicio o en cualquier sitio web relacionado es inexacta en cualquier momento sin previo aviso (incluso después de que hayas enviado tu pedido). No asumimos ninguna obligación de actualizar, modificar o aclarar información en el Servicio o en cualquier sitio web relacionado, incluida, entre otras, la información de precios, excepto según lo exija la ley. Ninguna fecha de actualización o renovación especificada aplicada en el Servicio o en cualquier sitio web relacionado debe tomarse para indicar que toda la información en el Servicio o en cualquier sitio web relacionado ha sido modificada o actualizada."
+      },
+      "section13": {
+        "title": "Sección 13 - Usos Prohibidos",
+        "text": "Además de otras prohibiciones establecidas en los Términos de Servicio, se te prohíbe usar el sitio o su contenido: (a) para cualquier propósito ilegal; (b) para solicitar a otros que realicen o participen en cualquier acto ilegal; (c) para violar cualquier regulación, regla, ley u ordenanza internacional, federal, provincial o estatal, o local; (d) para infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de otros; (e) para acosar, abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o discriminar por motivos de género, orientación sexual, religión, etnia, raza, edad, origen nacional o discapacidad; (f) para enviar información falsa o engañosa; (g) para cargar o transmitir virus o cualquier otro tipo de código malicioso que se utilizará o puede usarse de alguna manera que afecte la funcionalidad u operación del Servicio o de cualquier sitio web relacionado, otros sitios web o Internet; (h) para recopilar o rastrear la información personal de otros; (i) para enviar spam, phishing, pharming, pretexto, spider, rastreo o scraping; (j) para cualquier propósito obsceno o inmoral; o (k) para interferir o eludir las características de seguridad del Servicio o de cualquier sitio web relacionado, otros sitios web o Internet. Nos reservamos el derecho de terminar tu uso del Servicio o de cualquier sitio web relacionado por violar cualquiera de los usos prohibidos."
+      },
+      "section14": {
+        "title": "Sección 14 - Renuncia de Garantías; Limitación de Responsabilidad",
+        "text": "No garantizamos, representamos ni garantizamos que tu uso de nuestro servicio será ininterrumpido, oportuno, seguro o libre de errores. No garantizamos que los resultados que puedan obtenerse del uso del servicio sean precisos o confiables. Aceptas que de vez en cuando podemos eliminar el servicio por períodos de tiempo indefinidos o cancelar el servicio en cualquier momento, sin previo aviso. Aceptas expresamente que tu uso de, o incapacidad de usar, el servicio es bajo tu propio riesgo. El servicio y todos los productos y servicios entregados a ti a través del servicio son (excepto según lo expresamente establecido por nosotros) proporcionados 'tal cual' y 'según disponibilidad' para tu uso, sin ninguna representación, garantía o condición de ningún tipo, ya sea expresa o implícita, incluidas todas las garantías o condiciones implícitas de comerciabilidad, calidad comercial, idoneidad para un propósito particular, durabilidad, título y no infracción. En ningún caso Enouza, nuestros directores, funcionarios, empleados, afiliados, agentes, contratistas, pasantes, proveedores, proveedores de servicios o licenciantes serán responsables de ninguna lesión, pérdida, reclamo o cualquier daño directo, indirecto, incidental, punitivo, especial o consecuente de cualquier tipo, incluidos, entre otros, pérdida de beneficios, pérdida de ingresos, pérdida de ahorros, pérdida de datos, costos de reemplazo o cualquier daño similar, ya sea basado en contrato, agravio (incluida negligencia), responsabilidad estricta o de otra manera, que surja de tu uso de cualquiera de los servicios o cualquier producto adquirido usando el servicio, o por cualquier otro reclamo relacionado de alguna manera con tu uso del servicio o cualquier producto, incluidos, entre otros, cualquier error u omisión en cualquier contenido, o cualquier pérdida o daño de cualquier tipo incurrido como resultado del uso del servicio o cualquier contenido (o producto) publicado, transmitido o puesto a disposición de otra manera a través del servicio, incluso si se advierte de su posibilidad. Debido a que algunos estados o jurisdicciones no permiten la exclusión o la limitación de responsabilidad por daños consecuentes o incidentales, en dichos estados o jurisdicciones, nuestra responsabilidad se limitará a la medida máxima permitida por la ley."
+      },
+      "section15": {
+        "title": "Sección 15 - Indemnización",
+        "text": "Aceptas indemnizar, defender y mantener indemne a Enouza y a nuestra matriz, subsidiarias, afiliados, socios, funcionarios, directores, agentes, contratistas, licenciantes, proveedores de servicios, subcontratistas, proveedores, pasantes y empleados, de cualquier reclamo o demanda, incluidos honorarios razonables de abogados, realizados por cualquier tercero debido a o que surja de tu incumplimiento de estos Términos de Servicio o los documentos que incorporan por referencia o tu violación de cualquier ley o los derechos de un tercero."
+      },
+      "section16": {
+        "title": "Sección 16 - Divisibilidad",
+        "text": "En caso de que cualquier disposición de estos Términos de Servicio se determine que es ilegal, nula o inaplicable, dicha disposición será no obstante exigible en la medida máxima permitida por la ley aplicable, y la porción inaplicable se considerará separada de estos Términos de Servicio, dicha determinación no afectará la validez y exigibilidad de cualquier otra disposición restante."
+      },
+      "section17": {
+        "title": "Sección 17 - Terminación",
+        "text": "Las obligaciones y responsabilidades de las partes incurridas antes de la fecha de terminación sobrevivirán a la terminación de este acuerdo para todos los propósitos. Estos Términos de Servicio son efectivos a menos y hasta que sean terminados por ti o por nosotros. Puedes terminar estos Términos de Servicio en cualquier momento notificándonos que ya no deseas usar nuestros Servicios, o cuando dejes de usar nuestro sitio. Si a nuestro juicio exclusivo no cumples, o sospechamos que no has cumplido, con cualquier término o disposición de estos Términos de Servicio, también podemos terminar este acuerdo en cualquier momento sin previo aviso y seguirás siendo responsable de todos los montos adeudados hasta la fecha de terminación inclusive; y/o en consecuencia podemos negarte el acceso a nuestros Servicios (o cualquier parte de los mismos)."
+      },
+      "section18": {
+        "title": "Sección 18 - Acuerdo Completo",
+        "text": "El hecho de que no ejerzamos o hagamos cumplir cualquier derecho o disposición de estos Términos de Servicio no constituirá una renuncia a dicho derecho o disposición. Estos Términos de Servicio y cualquier política o regla de operación publicada por nosotros en este sitio o con respecto al Servicio constituyen el acuerdo y entendimiento completo entre tú y nosotros y rigen tu uso del Servicio, reemplazando cualquier acuerdo, comunicación y propuesta previos o contemporáneos, ya sean orales o escritos, entre tú y nosotros (incluidos, entre otros, cualquier versión anterior de los Términos de Servicio). Cualquier ambigüedad en la interpretación de estos Términos de Servicio no se interpretará en contra de la parte redactora."
+      },
+      "section19": {
+        "title": "Sección 19 - Ley Aplicable",
+        "text": "Estos Términos de Servicio y cualquier acuerdo separado mediante el cual te proporcionamos Servicios se regirán e interpretarán de acuerdo con las leyes de los Estados Unidos."
+      },
+      "section20": {
+        "title": "Sección 20 - Cambios a los Términos de Servicio",
+        "text": "Puedes revisar la versión más actual de los Términos de Servicio en cualquier momento en esta página. Nos reservamos el derecho, a nuestra entera discreción, de actualizar, cambiar o reemplazar cualquier parte de estos Términos de Servicio publicando actualizaciones y cambios en nuestro sitio web. Es tu responsabilidad revisar nuestro sitio web periódicamente para ver los cambios."
+      },
+      "section21": {
+        "title": "Sección 21 - Información de Contacto",
+        "text": "Las preguntas sobre los Términos de Servicio deben enviarse a hello@enouza.com"
+      }
+    }
   }
 }

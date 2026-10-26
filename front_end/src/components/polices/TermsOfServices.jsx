@@ -4,9 +4,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import SEO from "../../components/SEO/SEO";
 function TermsOfServices() {
-  const { t, i18n } = useTranslation("terms", {
-    returnObjects: true,
-  });
+  const { t, i18n } = useTranslation();
 
   useLayoutEffect(() => {
     window.scrollTo({

@@ -1,0 +1,1728 @@
+{
+  "header": {},
+
+  "countdownSection": {
+    "specialOffer": "Sonderangebot",
+    "offerEndsIn": "ANGEBOT ENDET IN",
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden",
+    "offerExpired": "Das Angebot ist beendet",
+    "limitedTimeOffer": "Zeitlich Begrenztes Angebot",
+    "description": "Genießen Sie dieses exklusive Angebot, bevor die Zeit abläuft.",
+    "shopNow": "Jetzt Einkaufen",
+    "ariaLabel": "Verbleibende Zeit für dieses Sonderangebot"
+  },
+
+  "menu": {
+    "login": "Anmelden",
+    "searchPlaceholder": "Suchen...",
+    "cart": "Warenkorb",
+    "wishlist": "Wunschliste",
+    "profile": "Profil",
+    "logout": "Abmelden",
+    "dashboard": "Dashboard",
+    "adminDashboard": "Admin",
+    "userDashboard": "Mein Dashboard",
+    "home": "Startseite",
+    "contactUs": "Kontakt",
+    "aboutUs": "Über Uns",
+    "privacyPolicy": "Datenschutz",
+    "termsOfService": "Bedingungen",
+    "refundPolicy": "Rückerstattungen",
+    "shippingPolicy": "Versand",
+    "helpCenter": "Hilfe",
+    "myOrders": "Meine Bestellungen",
+    "notifications": "Benachrichtigungen",
+    "shoppingCart": "Warenkorb",
+    "checkout": "Zur Kasse",
+    "orderSuccess": "Bestellung Aufgegeben"
+  },
+
+  "shoppingCart": {
+    "freeExpressTo": "Kostenloser Expressversand nach"
+  },
+
+  "homePage": {
+    "homeInsperation": "Räume, die Inspirieren",
+    "new": "Neu",
+    "welcomeMessage": "Willkommen in unserem Shop",
+    "featuredProducts": "Empfohlen",
+    "mayAlsoLike": "Das Könnte Ihnen Auch Gefallen",
+    "newArrival": "Neuheiten",
+    "bestSellers": "Bestseller",
+    "specialOffers": "Angebote",
+    "buyerTrustServices": "Unsere Services",
+    "freeShipping_offer": "Kostenloser Versand ab 50$",
+    "support_24_7": "24/7 Hilfe",
+    "money_Back": "Geld Zurück",
+    "secure_Payment": "Sichere Zahlung",
+    "easy_Returns": "Einfache Rücksendungen",
+    "safe_reliable_payments": "Sichere Zahlungen",
+    "More_to_love": "Mehr zum Lieben",
+    "more_products": "Weitere Produkte",
+    "best_sellers": "Bestseller"
+  },
+  "mainSlider": {
+    "title": "Beleuchtung, Anders Kuratiert.",
+    "description": "Eine durchdachte Kollektion skulpturaler Beleuchtung, geschaffen, um die Atmosphäre jedes Raumes zu verwandeln.",
+    "welcome": "Willkommen bei ENOUZA."
+  },
+  "productPage": {
+    "addToCart": "In den Warenkorb",
+    "buyNow": "Jetzt Kaufen",
+    "productDescription": "Details",
+    "customerReviews": "Bewertungen",
+    "ratings": "Bewertungen",
+    "specifications": "Spezifikationen",
+    "relatedProducts": "Das Könnte Ihnen Gefallen",
+    "stockAvailability": "Bestand",
+    "quantity": "Menge",
+    "outOfStock": "Nicht Vorrätig",
+    "inStock": "Auf Lager",
+    "soldOut": "Ausverkauft"
+  },
+  "purchaseOptions": {
+    "business_days": "Werktage",
+    "Ship_to": "Versand nach",
+    "Language": "Sprache",
+    "Currency": "Währung",
+    "Help_Center": "Hilfe",
+    "Sell_on_OurPlatform": "Bei Uns Verkaufen",
+    "Download_Our_App": "Unsere App Herunterladen",
+    "Follow_Us": "Folgen Sie Uns",
+    "Contact_Us": "Kontakt",
+    "free_Shipping": "Kostenloser Versand",
+    "available": "Verfügbar",
+    "Delivrey": "Lieferung",
+    "Quantity": "Menge",
+    "max-order-warning": "Maximale Bestellmenge erreicht",
+    "available_shipping_methods": "Versandmethoden",
+    "item_has_been_added": "Artikel zum Warenkorb hinzugefügt",
+    "item_already_in_cart": "Artikel bereits im Warenkorb",
+    "item_has_been_removed": "Artikel aus dem Warenkorb entfernt",
+    "days": "Tage",
+    "Security_&_Privacy": {
+      "header": "Datenschutz",
+      "text": "Wir geben Ihre persönlichen Daten nicht ohne Ihre Zustimmung an Dritte weiter. Wir schützen Ihre Privatsphäre und bewahren Ihre persönlichen Daten sicher auf."
+    }
+  },
+
+  "heroSection": {
+    "title": "Licht, das Dazugehört",
+    "description": "Sorgfältig ausgewählte Beleuchtung, die Tiefe, Wärme und Charakter in die Räume bringt, die Sie Ihr Zuhause nennen.",
+    "ctaLabel": "Die Kollektion Entdecken",
+    "detailDesign": "Wo Detail auf Design Trifft",
+    "curated": "KURATIERT",
+    "curated_description": "Sorgfältig ausgewählt für durchdachte Räume.",
+
+    "refined": "VERFEINERT",
+    "refined_description": "Elegante Formen, verfeinert auf das Wesentliche.",
+
+    "atmospheric": "ATMOSPHÄRISCH",
+    "atmospheric_description": "Licht, das die Stimmung formt.",
+
+    "distinctive": "UNVERWECHSELBAR",
+    "distinctive_description": "Stücke mit Charakter jenseits des Gewöhnlichen.",
+    "stats": {
+      "rated": {
+        "value": "4.9★",
+        "label": "Von Kunden Bewertet"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Kundenzufriedenheit"
+      },
+      "reviews": {
+        "value": "100+",
+        "label": "Verifizierte Bewertungen"
+      }
+    }
+  },
+
+  "ctaSection": {
+    "eyebrow": "ENOUZA KUNDENSERVICE",
+    "titleLeft": "Wir sind hier, um zu helfen.",
+    "description": "Haben Sie eine Frage zu einem Produkt, Ihrer Bestellung oder der Lieferung? Unser Kundenservice-Team ist hier, um Ihnen zu helfen.",
+    "button": "Kontaktieren Sie Uns",
+    "supportEyebrow": "KUNDENSUPPORT",
+    "titleRight": "Ein wenig Hilfe, wenn Sie sie brauchen.",
+    "supportDescription": "Bei Fragen zu Ihrer Bestellung oder unserer Kollektion kontaktieren Sie uns und unser Team hilft Ihnen gerne weiter.",
+    "contact": {
+      "email": {
+        "title": "E-Mail",
+        "description": "Für allgemeine Fragen und Anfragen."
+      },
+      "support": {
+        "title": "Online-Kundenservice",
+        "details": "Kundensupport",
+        "description": "Wir sind hier, um Ihnen bei Ihrem Einkaufserlebnis zu helfen."
+      }
+    }
+  },
+
+  "matricsSection": {
+    "why_us": "DER ENOUZA-UNTERSCHIED",
+    "title": "Jedes Stück, sorgfältig ausgewählt.",
+    "description": "Jedes ENOUZA-Stück wird nach seiner Form, seinen Materialien und seiner Fähigkeit ausgewählt, Wärme und Charakter in die Räume zu bringen, in denen wir leben."
+  },
+  "inspirationPage": {
+    "hero": {
+      "catlabel": "DAS ENOUZA-JOURNAL",
+      "title": "Eine Welt des schönen Lichts.",
+      "description": "Entdecken Sie Interieurs, Beleuchtungsideen und stille Momente, die unsere Art zu leben inspirieren."
+    },
+
+    "intro": {
+      "catlabel": "FINDEN SIE IHRE INSPIRATION",
+      "title": "Räume, geformt durch Licht.",
+      "description": "Das richtige Licht kann das Gefühl eines Raumes verändern. Erkunden Sie unsere Sammlung von Interieurs und entdecken Sie durchdachte Wege, Wärme, Atmosphäre und Charakter in Ihr Zuhause zu bringen."
+    },
+
+    "spaces": {
+      "catlabel": "NACH RAUM ENTDECKEN",
+      "title": "Licht für jeden Raum.",
+      "items": {
+        "livingRoom": {
+          "title": "Wohnzimmer",
+          "description": "Schaffen Sie eine warme und einladende Atmosphäre mit Beleuchtung, die für das tägliche Leben konzipiert ist."
+        },
+        "diningRoom": {
+          "title": "Esszimmer",
+          "description": "Setzen Sie die Stimmung mit durchdachter Beleuchtung über dem Tisch und im gesamten Raum."
+        },
+        "bedroom": {
+          "title": "Schlafzimmer",
+          "description": "Sanfte, intime Beleuchtung, die das Schlafzimmer ruhig und mühelos wirken lässt."
+        }
+      }
+    },
+
+    "explore": "Entdecken",
+
+    "statement": {
+      "catlabel": "DIE KUNST DES LICHTS",
+      "title": "Licht ist das, was einem Raum sein Gefühl gibt.",
+      "description": "Von einer stillen Ecke bis zu einem Raum zum Zusammensein – Beleuchtung prägt, wie wir die Räume um uns herum erleben."
+    },
+
+    "ideas": {
+      "catlabel": "BELEUCHTUNGSIDEEN",
+      "title": "Wege, schön zu beleuchten.",
+      "items": {
+        "ambientLighting": {
+          "title": "Ambientebeleuchtung",
+          "description": "Schaffen Sie eine sanfte Lichtbasis, die einen Raum warm, ausgewogen und einladend wirken lässt."
+        },
+        "statementLighting": {
+          "title": "Statement-Beleuchtung",
+          "description": "Lassen Sie ein unverwechselbares Leuchtmittel Teil der Architektur und des Charakters des Raumes werden."
+        },
+        "layeredLighting": {
+          "title": "Mehrschichtige Beleuchtung",
+          "description": "Kombinieren Sie verschiedene Lichtquellen, um Tiefe, Atmosphäre und Flexibilität zu schaffen."
+        }
+      }
+    },
+
+    "editorial": {
+      "catlabel": "ENOUZA EDITORIAL",
+      "title": "Gestaltet für die Momente, die zählen.",
+      "description": "Entdecken Sie Beleuchtung, die Wärme und Charakter in die alltäglichen Räume bringt, die wir unser Zuhause nennen.",
+      "link": "Beleuchtung Kaufen"
+    },
+
+    "newsletter": {
+      "catlabel": "BLEIBEN SIE INSPIRIERT",
+      "title": "Bringen Sie mehr Schönheit nach Hause.",
+      "description": "Entdecken Sie neue Beleuchtung, Interieurs und Inspiration von Enouza.",
+      "button": "Enouza Beitreten"
+    }
+  },
+
+  "designSection": {
+    "title": "Die Kunst des Lichts",
+    "catlabel": "DIE MARKE ENTDECKEN",
+    "principles": {
+      "minimalism": {
+        "title": "Leise Durchdacht",
+        "description": "Klare Linien, ausgewogene Proportionen und zurückhaltende Silhouetten ermöglichen es jedem Stück, natürlich in seine Umgebung zu passen."
+      },
+      "materials": {
+        "title": "Für Charakter Ausgewählt",
+        "description": "Marmor, Glas, Metall und Stoff werden für den Charakter und die Tiefe ausgewählt, die sie einem Raum verleihen."
+      },
+      "ambient": {
+        "title": "Licht mit Atmosphäre",
+        "description": "Wir sehen Licht als Teil des Interieurs — eine Möglichkeit, einen Raum zu erweichen, Tiefe zu schaffen und zu formen, wie sich ein Raum anfühlt."
+      }
+    }
+  },
+
+  "collectionSection": {
+    "title": "Entdecken Sie Unsere Kollektion.",
+    "catlabel": "ENTDECKEN",
+
+    "categories": {
+      "table_lamps": {
+        "title": "Tischlampen",
+        "description": "Skulpturale Beleuchtung, die Wärme, Atmosphäre und dezente Eleganz in Ihr Interieur bringt."
+      },
+      "floor_lamps": {
+        "title": "Stehlampen",
+        "description": "Statement-Beleuchtung, die raffiniertes Design mit Ambientebeleuchtung kombiniert, um Ihren Wohnraum zu erhöhen."
+      },
+      "wall_lamps": {
+        "title": "Wandleuchten",
+        "description": "Elegante Beleuchtung, die Tiefe, Wärme und Charakter an Ihre Wände bringt."
+      },
+      "pendant_lights": {
+        "title": "Hängelampen",
+        "description": "Unverwechselbare Stücke, die einen raffinierten Blickpunkt über Esstischen, Kücheninseln und Wohnbereichen schaffen."
+      },
+      "ceiling_lights": {
+        "title": "Deckenleuchten",
+        "description": "Raffinierte Deckenbeleuchtung, die die Atmosphäre formt und den Charakter eines Raumes vervollständigt."
+      },
+      "bedside_lamps": {
+        "title": "Nachttischlampen",
+        "description": "Sanfte, einladende Beleuchtung, die Komfort und ruhige Raffinesse an Ihr Bett bringt."
+      },
+      "desk_office_lamps": {
+        "title": "Schreibtisch- & Bürolampen",
+        "description": "Durchdachte Arbeitsbeleuchtung, die Alltagsfunktionalität mit einer polierten, zeitgenössischen Ästhetik ausbalanciert."
+      },
+      "outdoor_lighting": {
+        "title": "Außenbeleuchtung",
+        "description": "Wunderschön gefertigte Beleuchtung, die Wärme, Eleganz und Atmosphäre in Außenbereiche bringt."
+      },
+      "mirrors": {
+        "title": "Spiegel",
+        "description": "Elegante Spiegel, die natürliches Licht verstärken, ein Raumgefühl schaffen und Ihrem Interieur eine raffinierte letzte Note verleihen."
+      }
+    }
+  },
+
+  "customersFeedback": {
+    "eyebrow": "DAS ENOUZA-ERLEBNIS",
+    "title": "Geliebt von Hausbesitzern weltweit.",
+    "description": "Echte Häuser. Echte Erfahrungen.",
+    "ratingText": "Basierend auf Kundenbewertungen",
+    "verifiedPurchase": "Verifizierter Kauf",
+
+    "back": "Zurück",
+    "review": "Bewertung",
+    "reviews": "Bewertungen",
+    "noReviews": "Noch keine Bewertungen",
+    "noReviewsDescription": "Derzeit sind keine Kundenbewertungen zum Anzeigen vorhanden.",
+    "previousPage": "Vorherige Seite",
+    "nextPage": "Nächste Seite",
+    "viewAllReviews": "Alle Bewertungen Ansehen"
+  },
+
+  "filterPage": {
+    "category": "Kategorie",
+    "brand": "Marke",
+    "priceRange": "Preisspanne",
+    "rating": "Bewertung",
+    "applyFilters": "Filter Anwenden",
+    "clearFilters": "Filter Löschen",
+    "search_did_not_match": "Entschuldigung, Ihre Suche hat keine Produkte gefunden.",
+    "collection_description": "Entdecken Sie raffinierte Beleuchtung, die Wärme, Charakter und zeitlose Eleganz in jeden Raum bringt.",
+    "collection": "ENOUZA KOLLEKTION",
+    "discover": "ENTDECKEN"
+  },
+  "customer_reviews": {
+    "title": "Kundenbewertungen",
+    "verified_purchase": "Verifizierter Kauf",
+    "no_reviews": "Noch keine Bewertungen",
+    "image_unavailable": "Bild nicht verfügbar",
+    "customer": "Kunde",
+    "review_image": "Bewertungsbild",
+    "previous_image": "Vorheriges Bild",
+    "next_image": "Nächstes Bild",
+    "close": "Schließen",
+    "view_image": "Bild Ansehen",
+    "rating": "Bewertung",
+    "reviews": "Bewertungen",
+    "enouza_review": "ENOUZA-BEWERTUNG",
+    "description": "Produktbeschreibung",
+    "customer_rating": "Kundenbewertung",
+    "customer_reviews": "Kundenbewertungen",
+    "customer_review": "Kundenbewertung"
+  },
+  "productInfo": {
+    "product_details": "Produktdetails",
+
+    "view_full_image": "VOLLBILD ANSEHEN",
+    "purchase_information": "Kaufinformationen",
+    "secure_purchase_premium_quality": "Sicherer Kauf & Premium-Qualität",
+    "save": "sparen",
+    "Emitting Color": "Lichtfarbe",
+    "Lampshade Color": "Lampenschirmfarbe",
+    "Body Color": "Gehäusefarbe",
+    "Color": "Farbe",
+    "Color Name": "Farbe",
+    "Colour": "Farbe",
+    "Color Classification": "Farbklassifizierung",
+    "Size": "Größe",
+    "Sizes": "Größen",
+    "Item Length": "Artikel Länge",
+    "Item Width": "Artikel Breite",
+    "Item Height": "Artikel Höhe",
+    "Dimensions": "Abmessungen",
+    "Is Customized": "Individuell Angefertigt",
+    "Sd Card Memory": "SD-Kartenspeicher",
+    "Color Temperature": "Farbtemperatur",
+    "Memory": "Speicher",
+    "Memory Size": "Speichergröße",
+    "Storage": "Speicher",
+    "Internal Storage": "Interner Speicher",
+    "ROM": "ROM",
+    "RAM": "RAM",
+    "Capacity": "Kapazität",
+    "Plug Type": "Steckertyp",
+    "Power Plug": "Netzstecker",
+    "Socket Type": "Fassungstyp",
+    "Power Specification": "Leistungsspezifikation",
+    "Voltage": "Spannung",
+    "Wattage": "Wattzahl",
+    "Ships From": "Versand aus",
+    "Ship From": "Versand aus",
+    "Warehouse": "Lager",
+    "Origin": "Herkunft",
+    "Bundle": "Bündel",
+    "Sale by Pack": "Verkauf pro Packung",
+    "Pack": "Packung",
+    "Set": "Set",
+    "Package": "Paket",
+    "Quantity": "Menge",
+    "Model": "Modell",
+    "Compatible Model": "Kompatibles Modell",
+    "Version": "Version",
+    "Edition": "Ausgabe",
+    "Variant": "Variante",
+    "Material": "Material",
+    "Fabric": "Stoff",
+    "Fit": "Passform",
+    "Pattern": "Muster",
+    "Sleeve Length": "Ärmellänge",
+    "Frequency": "Frequenz",
+    "Resolution": "Auflösung",
+    "Interface": "Schnittstelle",
+    "Speed": "Geschwindigkeit",
+    "Power": "Leistung",
+    "description": "Beschreibung",
+    "specifications": "Spezifikationen",
+    "reviews": "Bewertungen",
+    "CostumerReviews": "Kundenbewertungen",
+    "noReviews": "Noch keine Bewertungen",
+    "writeReview": "Bewertung Schreiben",
+    "submitReview": "Bewertung Absenden",
+    "rating": "Bewertung",
+    "comment": "Kommentar",
+    "reviewSubmitted": "Bewertung abgesendet",
+    "reviewPending": "Ihre Bewertung wartet auf Genehmigung",
+    "size": "Größe",
+    "color": "Farbe",
+    "material": "Material",
+    "brand": "Marke",
+    "model": "Modell",
+    "order": "Bestellung",
+    "all_from_verified_purchases": "Alle aus verifizierten Käufen",
+    "star": "Stern",
+    "stars": "Sterne",
+    "one_star": "Stern",
+    "two_stars": "Sterne",
+    "give_us_your_feedback": "Geben Sie uns Ihr Feedback",
+    "led_ambient_lighting": "Ambientebeleuchtung",
+    "phone_mounts_holders": "Telefonhalterungen",
+    "organizers_storage": "Organizer & Aufbewahrung",
+    "comfort_accessories": "Komfort & Zubehör",
+    "air_fresheners_scents": "Lufterfrischer",
+    "table_lamps": "Tischlampen",
+    "floor_lamps": "Stehlampen",
+    "wall_lamps": "Wandleuchten",
+    "pendant_lights": "Hängelampen",
+    "ceiling_lights": "Deckenleuchten",
+    "bedside_lamps": "Nachttischlampen",
+    "desk_office_lamps": "Schreibtisch- & Bürolampen",
+    "outdoor_lighting": "Außenbeleuchtung"
+  },
+  "buyerTrustServices": {
+    "freeShipping": {
+      "title": "Kostenloser Versand",
+      "description": "Bei Bestellungen über 50$"
+    },
+    "support24_7": {
+      "title": "24/7 Support",
+      "description": "Wir sind hier, um zu helfen"
+    },
+    "moneyBack": {
+      "title": "Geld Zurück",
+      "description": "30-Tage-Garantie"
+    },
+    "safe_Payment": {
+      "title": "Sichere Zahlung",
+      "description": "Zahlen Sie mit den beliebtesten und sichersten Zahlungsmethoden der Welt."
+    },
+    "easyReturns": {
+      "title": "Einfache Rücksendungen",
+      "description": "Problemlose Rücksendungen"
+    },
+    "help_center": {
+      "title": "Hilfezentrum",
+      "description": "Rund um die Uhr Unterstützung für ein reibungsloses Einkaufserlebnis."
+    },
+    "worldwide_shipping": {
+      "title": "Weltweiter Versand",
+      "description": "Schnelle und zuverlässige Lieferung an Ihre Haustür, überall auf der Welt."
+    },
+    "Shop_with_confidence": {
+      "title": "Kaufen Sie mit Vertrauen",
+      "description": "Ihre Zufriedenheit ist unsere Priorität. Genießen Sie sicheres Einkaufen und einfache Rücksendungen."
+    }
+  },
+
+  "profile": {
+    "my_profile": "Mein Profil",
+    "enouza_faq": "FAQ",
+    "edit_your_name": "Namen Bearbeiten",
+    "edit_your_email": "E-Mail Bearbeiten",
+    "edit_your_profile": "Profil Bearbeiten",
+    "change_your_password": "Passwort Ändern",
+    "edit_your_gender": "Geschlecht Bearbeiten",
+    "edit_your_birthdate": "Geburtsdatum Bearbeiten",
+    "update_your_address": "Adresse Aktualisieren",
+    "manage_your_orders": "Bestellungen Verwalten",
+    "view_your_wishlist": "Wunschliste Ansehen",
+    "start_shopping": "Einkaufen Starten",
+    "you_havent_placed_any_orders_yet": "Sie haben noch keine Bestellungen aufgegeben",
+    "processing": "In Bearbeitung",
+    "order_take_between": "Die Bestellung kann zwischen dauern",
+    "tracking_number": "Sendungsnummer",
+    "not_available": "Nicht verfügbar",
+    "shippingMethod": "Versandmethode",
+    "order_placed_on": "Bestellung aufgegeben am",
+    "order_id": "Bestell-ID",
+    "payment_method": "Zahlungsmethode",
+    "Credit_Debit_card": "Kredit-/Debitkarte",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "total": "Gesamt"
+  },
+  "footer": {
+    "brand": {
+      "description": "Sorgfältig ausgewählte Stücke, die Wärme, Eleganz und Charakter in Ihren Raum bringen."
+    },
+    "payment": { "secure": "Sichere Zahlungen" },
+    "followUs": {
+      "title": "Folgen Sie uns",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "tiktok": "TikTok"
+    },
+    "policies": {
+      "title": "Richtlinien",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "refundPolicy": "Rückerstattungsrichtlinie",
+      "shippingPolicy": "Versandrichtlinie"
+    },
+    "help": {
+      "enouza_faq_description": "Finden Sie Antworten auf die Fragen, die wir am häufigsten erhalten.",
+      "title": "Hilfe",
+      "faq": "FAQ",
+      "contactUs": "Kontaktieren Sie uns",
+      "aboutUs": "Über uns",
+      "shipping": "Versand",
+      "returns": "Rücksendungen",
+      "contact_note": "Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns bei Fragen oder Bedenken."
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Abonnieren Sie Updates zu neuen Produkten und Angeboten",
+      "placeholder": "Geben Sie Ihre E-Mail ein",
+      "subscribeButton": "Abonnieren",
+      "successMessage": "Erfolgreich abonniert",
+      "errorMessage": "Abonnement fehlgeschlagen",
+      "copyright": "Urheberrecht",
+      "all_rights_reserved": "Alle Rechte vorbehalten.",
+      "eyebrow": "ENOUZA KOLLEKTION"
+    }
+  },
+  "policies": {
+    "title": "Richtlinien",
+    "privacyPolicy": {
+      "title": "Datenschutz"
+    },
+    "termsOfService": {
+      "title": "Bedingungen"
+    },
+    "refundPolicy": {
+      "title": "Rückerstattungen"
+    },
+    "shippingPolicy": {
+      "title": "Versand"
+    },
+    "aboutUs": {
+      "title": "Über Uns"
+    }
+  },
+
+  "trust": {
+    "secureCheckout": "Sichere Kasse",
+
+    "freeShipping": {
+      "title": "Kostenloser Versand",
+      "text": "Kostenloser Versand für alle Bestellungen"
+    },
+
+    "fastDelivery": {
+      "title": "Weltweite Lieferung",
+      "text": "Internationale Lieferung in 5–15 Tagen"
+    },
+
+    "returns": {
+      "title": "100-Tage-Rückgabe",
+      "text": "Einfache Rücksendungen innerhalb von 100 Tagen"
+    },
+
+    "warranty": {
+      "title": "3-Jahres-Garantie",
+      "text": "Gefertigt für dauerhafte Qualität"
+    },
+
+    "shopWithConfidence": "Kaufen Sie mit Vertrauen"
+  },
+
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 Bestellung Erfolgreich Aufgegeben! 🎉",
+    "orderProcessingMessage": "Vielen Dank für Ihren Einkauf bei uns. Ihre Bestellung wird bearbeitet.",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "checkout": {
+    "loggedInContinue": "Ihr Konto ist bereit. Fahren Sie fort, um Ihre Rechnungsdaten einzugeben."
+  },
+
+  "aboutus": {
+    "seo": {
+      "title": "Über Enouza | Raffinierte Beleuchtung & Innendesign",
+      "description": "Entdecken Sie Enouza, eine kuratierte Beleuchtungsmarke, die raffinierte, unverwechselbare Stücke in durchdachte Interieurs bringt."
+    },
+
+    "hero": {
+      "eyebrow": "ENOUZA ENTDECKEN",
+      "title": "Licht, das Dazugehört.",
+      "description": "Raffinierte Beleuchtung für warme, durchdachte Räume."
+    },
+
+    "story": {
+      "eyebrow": "UNSERE GESCHICHTE",
+      "title": "Beleuchtung mit einem Gefühl für den Ort.",
+      "lead": "Wir glauben, dass Beleuchtung mehr als nur Beleuchtung ist.",
+      "text": "Sie formt die Atmosphäre eines Raumes, lenkt die Aufmerksamkeit auf die Details, die zählen, und verändert, wie sich ein Raum anfühlt.",
+      "text2": "Enouza wurde um diese Idee herum gegründet — Beleuchtungsstücke zu entdecken und zusammenzubringen, die sich durchdacht, unverwechselbar und natürlich in ihrer Umgebung zu Hause anfühlen."
+    },
+
+    "statement": {
+      "title": "Wir glauben, dass das richtige Licht alles verändert.",
+      "description": "Ein stilles Leuchten kann einen Raum erweichen. Eine skulpturale Form kann zum Blickpunkt werden. Das richtige Stück kann einen Raum einfach mehr wie Ihren eigenen wirken lassen."
+    },
+
+    "approach": {
+      "eyebrow": "DER ENOUZA-ANSATZ",
+      "title": "Mit Absicht Gestaltet.",
+      "curated": {
+        "title": "Kuratiert",
+        "description": "Sorgfältig ausgewählt für durchdachte Räume."
+      },
+      "refined": {
+        "title": "Verfeinert",
+        "description": "Elegante Formen, verfeinert auf das Wesentliche."
+      },
+      "atmospheric": {
+        "title": "Atmosphärisch",
+        "description": "Licht, das die Stimmung formt."
+      },
+      "distinctive": {
+        "title": "Unverwechselbar",
+        "description": "Stücke mit Charakter jenseits des Gewöhnlichen."
+      }
+    },
+
+    "selection": {
+      "eyebrow": "WAS UNSERE AUSWAHL LEITET",
+      "title": "Ausgewählt für mehr als das Aussehen.",
+      "form": {
+        "title": "Form",
+        "description": "Ausgewogene Proportionen und unverwechselbare Silhouetten, die sich in einem Interieur natürlich anfühlen."
+      },
+      "material": {
+        "title": "Material",
+        "description": "Marmor, Glas, Metall, Stoff und Oberflächen, ausgewählt für ihren visuellen und haptischen Charakter."
+      },
+      "light": {
+        "title": "Licht",
+        "description": "Beleuchtung, die Wärme, Tiefe und Atmosphäre schafft, anstatt einen Raum nur zu füllen."
+      }
+    },
+
+    "promise": {
+      "eyebrow": "DAS ENOUZA-VERSPRECHEN",
+      "title": "Sorgfältig ausgewählt. Wunderschön präsentiert.",
+      "description": "Wir wählen jedes Stück, das wir zu Enouza bringen, sorgfältig aus, mit Aufmerksamkeit für Design, Materialien, Proportionen und die Atmosphäre, die es schafft."
+    },
+
+    "final": {
+      "eyebrow": "DIE KOLLEKTION",
+      "title": "Finden Sie das Licht, das in Ihren Raum gehört.",
+      "description": "Entdecken Sie die Enouza-Kollektion und finden Sie Stücke, die ausgewählt wurden, um Ihre Lebensweise zu ergänzen.",
+      "cta": "Die Kollektion Entdecken"
+    }
+  },
+
+  "common": {
+    "phoneNumber": "Telefonnummer",
+    "selectShippingMethod": "Versandmethode Auswählen",
+    "discoverCollection": "KOLLEKTION ENTDECKEN",
+    "payNow": "Jetzt Bezahlen",
+    "days": "Tage",
+    "day": "Tag",
+    "loading": "Wird geladen...",
+    "error": "Hoppla! Etwas ist schief gelaufen.",
+    "tryAgain": "Erneut Versuchen",
+    "success": "Fertig!",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "update": "Aktualisieren",
+    "view": "Ansehen",
+    "free_shipping": "Kostenloser Versand",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sortBy": "Sortieren nach:",
+    "view_more": "Mehr Ansehen",
+    "discover": "Entdecken",
+    "bestMatch": "Beste Übereinstimmung",
+    "resetFilters": "Filter Zurücksetzen",
+    "category": "Kategorie",
+    "priceLowToHigh": "Preis: Aufsteigend",
+    "priceHighToLow": "Preis: Absteigend",
+    "newestFirst": "Neueste",
+    "oldestFirst": "Älteste",
+    "buyNow": "Jetzt Kaufen",
+    "addToCart": "In den Warenkorb",
+    "shopping_cart": "Warenkorb",
+    "addToWishlist": "Zur Wunschliste Hinzufügen",
+    "removeFromWishlist": "Von Wunschliste Entfernen",
+    "viewDetails": "Details",
+    "checkout": "Zur Kasse",
+    "placeOrder": "Bestellung Aufgeben",
+    "orderSummary": "Zusammenfassung",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "tax": "Steuer",
+    "grandTotal": "Gesamtsumme",
+    "continueShopping": "Weiter Einkaufen",
+    "proceedToCheckout": "Zur Kasse",
+    "noItemsInCart": "Ihr Warenkorb ist leer",
+    "noItemsInWishlist": "Ihre Wunschliste ist leer",
+    "viewCart": "Warenkorb Ansehen",
+    "viewWishlist": "Wunschliste Ansehen",
+    "myAccount": "Mein Konto",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "you_are_logged_in": "Sie sind angemeldet",
+    "register": "Registrieren",
+    "signin": "Anmelden",
+    "payment": "Zahlung",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "checkout_as_guest": "als Gast zur Kasse gehen, keine Anmeldung erforderlich.",
+    "saving_address": "Diese Adresse für Zahlungsdetails verwenden",
+    "saveChanges": "Änderungen Speichern",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort Bestätigen",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "address": "Adresse",
+    "city": "Stadt",
+    "state": "Bundesland",
+    "zipCode": "PLZ",
+    "country": "Land",
+    "phone": "Telefon",
+    "save": "Speichern",
+    "reset": "Zurücksetzen",
+    "changePassword": "Passwort Ändern",
+    "oldPassword": "Altes Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmNewPassword": "Neues Passwort Bestätigen",
+    "dashboard": "Dashboard",
+    "orders": "Bestellungen",
+    "orderDetails": "Bestelldetails",
+    "accountDetails": "Konto",
+    "editAccount": "Konto Bearbeiten",
+    "myOrders": "Meine Bestellungen",
+    "orderHistory": "Bestellverlauf",
+    "trackOrder": "Bestellung Verfolgen",
+    "orderStatus": "Status",
+    "pending": "Ausstehend",
+    "processing": "In Bearbeitung",
+    "shipped": "Versandt",
+    "delivered": "Geliefert",
+    "cancelled": "Storniert",
+    "returnRequested": "Rücksendung Angefordert",
+    "returned": "Zurückgesendet",
+    "reviewProduct": "Produkt Bewerten",
+    "writeAReview": "Bewertung Schreiben",
+    "rating": "Bewertung",
+    "comment": "Kommentar",
+    "submitReview": "Bewertung Absenden",
+    "noReviewsYet": "Noch keine Bewertungen",
+    "relatedProducts": "Das Könnte Ihnen Gefallen",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "home": "Startseite",
+    "shop": "Shop",
+    "categories": "Kategorien",
+    "allCategories": "Alle Kategorien",
+    "brands": "Marken",
+    "allBrands": "Alle Marken",
+    "price": "Preis",
+    "apply": "Anwenden",
+    "clear": "Löschen",
+    "viewMore": "Mehr",
+    "viewLess": "Weniger",
+    "noResultsFound": "Keine Ergebnisse",
+    "tryDifferentKeywords": "Versuchen Sie eine andere Suche",
+    "items": "Artikel",
+    "item": "Artikel",
+    "of": "von",
+    "results": "Ergebnisse",
+    "perPage": "Pro Seite",
+    "page": "Seite",
+    "loadingMore": "Wird geladen...",
+    "noMoreItems": "Keine weiteren Artikel",
+    "welcome": "Willkommen",
+    "thankYou": "Danke",
+    "forVisiting": "für Ihren Besuch",
+    "seeYouSoon": "Bis bald",
+    "contactSupport": "Support Kontaktieren",
+    "needHelp": "Brauchen Sie Hilfe?",
+    "faq": "FAQ",
+    "terms": "Bedingungen",
+    "privacy": "Datenschutz",
+    "cookies": "Cookies",
+    "rightsReserved": "Alle Rechte vorbehalten",
+    "developedBy": "Erstellt von",
+    "version": "Version",
+    "language": "Sprache",
+    "currency": "Währung",
+    "selectLanguage": "Sprache Wählen",
+    "selectCurrency": "Währung Wählen",
+    "darkMode": "Dunkelmodus",
+    "lightMode": "Hellmodus",
+    "autoMode": "Automatikmodus",
+    "theme": "Design",
+    "notifications": "Benachrichtigungen",
+    "markAllAsRead": "Alle als gelesen markieren",
+    "viewAll": "Alle Ansehen",
+    "noNewNotifications": "Sie haben keine Benachrichtigungen!",
+    "NewNotifications": "Sie haben eine neue Benachrichtigung",
+    "new": "Neu",
+    "read": "Gelesen",
+    "unread": "Ungelesen",
+    "profile": "Profil",
+    "editProfile": "Profil Bearbeiten",
+    "changeAvatar": "Avatar Ändern",
+    "myWishlist": "Meine Wunschliste",
+    "myCart": "Mein Warenkorb",
+    "checkoutNow": "Jetzt zur Kasse",
+    "applyCoupon": "Gutschein Anwenden",
+    "enterCouponCode": "Gutschein eingeben",
+    "removeCoupon": "Gutschein Entfernen",
+    "couponApplied": "Gutschein angewendet",
+    "invalidCoupon": "Ungültiger Gutschein",
+    "shippingAddress": "Lieferadresse",
+    "billingAddress": "Adresse",
+    "sameAsShipping": "Wie Lieferadresse",
+    "paymentMethod": "Zahlung",
+    "selectPaymentMethod": "Zahlung wählen",
+    "placeYourOrder": "Bestellung Aufgeben",
+    "orderPlaced": "Bestellung Aufgegeben",
+    "thankYouForYourOrder": "Danke für Ihre Bestellung!",
+    "orderNumber": "Bestellung Nr.",
+    "trackYourOrder": "Bestellung Verfolgen",
+    "Hello": "Hallo",
+    "create_an_account": "Konto Erstellen",
+    "already_have_an_account": "Haben Sie ein Konto?",
+    "forgot_password": "Passwort Vergessen?",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "By_clicking_Sign_up_I_agree_to_the": "Mit der Registrierung stimmen Sie zu",
+    "password_reset_text": "Geben Sie die verifizierte E-Mail-Adresse Ihres Benutzerkontos ein und wir senden Ihnen einen Link zum Zurücksetzen des Passworts.",
+    "send_password_reset_link": "Senden",
+    "reset_your_password": "Passwort Zurücksetzen",
+    "reset_password": "Passwort Zurücksetzen",
+    "reset_password_text": "Aktualisieren Sie Ihr Passwort hier.",
+    "new_password": "Neues Passwort",
+    "old_password": "Altes Passwort",
+    "confirm_password": "Passwort Bestätigen",
+    "error_old_password_incorrect": "Altes Passwort ist falsch",
+    "select_country": "Land Auswählen",
+    "please_confirm_your_password": "Bestätigen Sie Ihr Passwort",
+    "please_enter_your_new_password": "Geben Sie das neue Passwort ein",
+    "please_enter_your_email": "Geben Sie Ihre E-Mail ein",
+    "please_enter_your_password": "Geben Sie Ihr Passwort ein",
+    "please_enter_your_first_name": "Geben Sie Ihren Vornamen ein",
+    "please_enter_your_last_name": "Geben Sie Ihren Nachnamen ein",
+    "please_enter_your_address": "Geben Sie Ihre Adresse ein",
+    "please_enter_your_city": "Geben Sie Ihre Stadt ein",
+    "please_enter_your_state": "Geben Sie Ihr Bundesland ein",
+    "please_enter_your_country": "Wählen Sie Ihr Land",
+    "please_enter_your_zip_code": "Geben Sie Ihre PLZ ein",
+    "please_enter_your_phone": "Geben Sie Ihre Telefonnummer ein",
+    "please_enter_your_birthdate": "Geben Sie Ihr Geburtsdatum ein",
+    "pleaseSelectShippingMethod": "Bitte wählen Sie eine Versandmethode.",
+    "please_enter_coupon_code": "Bitte geben Sie einen Gutscheincode ein",
+    "invalid_discount_code": "Ungültiger Rabattcode",
+    "discount_code_applied": "Rabattcode angewendet",
+    "discount": "Rabatt",
+    "error_invalid_birthdate": "Das Geburtsdatum darf nicht in der Zukunft liegen",
+    "error_max_name_characters": "Name zu lang",
+    "error_min_password_characters": "Passwort zu kurz",
+    "error_required_gender": "Geschlecht ist erforderlich",
+    "required": "Erforderlich",
+    "text_field_required": "Dieses Feld ist erforderlich",
+    "send": "Senden",
+    "enter_message": "Nachricht eingeben",
+    "message_sent": "Nachricht gesendet",
+    "message": "Nachricht",
+    "myProfile": "Mein Profil",
+    "chat": "Chat",
+    "helpCenter": "Hilfezentrum",
+    "member_since": "Mitglied seit",
+    "from": "Von"
+  },
+  "success": {
+    "subscribed_to_newsletter": "Vielen Dank für Ihr Abonnement unseres Newsletters!",
+    "message_sent_successfully": "Ihre Nachricht wurde erfolgreich gesendet!",
+    "profile_updated_successfully": "Ihr Profil wurde erfolgreich aktualisiert!",
+    "password_changed_successfully": "Ihr Passwort wurde erfolgreich geändert!",
+    "order_placed_successfully": "Ihre Bestellung wurde erfolgreich aufgegeben!",
+    "review_submitted_successfully": "Vielen Dank für Ihre Bewertung!",
+    "item_added_to_cart": "Artikel zum Warenkorb hinzugefügt!",
+    "item_removed_from_cart": "Artikel aus dem Warenkorb entfernt!",
+    "item_added_to_wishlist": "Artikel zur Wunschliste hinzugefügt!",
+    "item_removed_from_wishlist": "Artikel von der Wunschliste entfernt!",
+    "coupon_applied_successfully": "Gutschein erfolgreich angewendet!",
+    "coupon_removed_successfully": "Gutschein erfolgreich entfernt!",
+    "saved": "Gespeichert",
+    "deleted": "Gelöscht",
+    "updated": "Aktualisiert",
+    "submitted": "Abgesendet",
+    "logged_in": "Angemeldet",
+    "logged_out": "Abgemeldet",
+    "registered": "Registriert",
+    "password_reset_link_sent": "Link zum Zurücksetzen des Passworts gesendet",
+    "password_reset_successful": "Passwort erfolgreich zurückgesetzt",
+    "success_logged_in": "Angemeldet",
+    "success_account_created": "Konto erstellt",
+    "success_password_reset_link_sent": "Link gesendet",
+    "success_password_reset": "Passwort zurückgesetzt",
+    "success_profile_updated": "Profil aktualisiert",
+    "success_password_changed": "Passwort geändert"
+  },
+  "errors": {
+    "network_error": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+    "unknown_error": "Unbekannter Fehler. Bitte versuchen Sie es erneut.",
+    "form_error": "Formularfehler. Bitte überprüfen Sie die Felder.",
+    "unauthorized": "Nicht autorisiert. Bitte melden Sie sich an.",
+    "forbidden": "Verboten. Sie haben keine Berechtigung für diese Aktion.",
+    "not_found": "Nicht gefunden. Die angeforderte Ressource existiert nicht.",
+    "server_error": "Serverfehler. Bitte versuchen Sie es später erneut.",
+    "timeout": "Zeitüberschreitung der Anforderung. Bitte versuchen Sie es erneut.",
+    "conflict": "Konflikt. Die Ressource existiert bereits.",
+    "bad_request": "Ungültige Anforderung. Bitte überprüfen Sie die übermittelten Daten.",
+    "validation_error": "Validierungsfehler. Bitte korrigieren Sie die Fehler im Formular.",
+    "item_out_of_stock": "Artikel nicht vorrätig. Kann nicht zum Warenkorb hinzugefügt werden.",
+    "error_password_dont_match": "Passwörter stimmen nicht überein",
+    "error_email_already_exists": "E-Mail existiert bereits",
+    "error_email_not_exists": "E-Mail nicht gefunden",
+    "error_invalid_credentials": "Ungültige E-Mail oder Passwort",
+    "error_account_disabled": "Konto deaktiviert",
+    "error_too_many_requests": "Zu viele Versuche. Versuchen Sie es später",
+    "error_weak_password": "Passwort zu schwach",
+    "error_invalid_email": "Ungültige E-Mail",
+    "error_user_not_found": "Benutzer nicht gefunden",
+    "error_network_request_failed": "Netzwerkfehler",
+    "error_something_went_wrong": "Etwas ist schief gelaufen",
+    "error_invalid_verification_code": "Ungültiger Code",
+    "error_verification_code_expired": "Code abgelaufen",
+    "error_no_internet_connection": "Kein Internet",
+    "error_old_password_incorrect": "Altes Passwort ist falsch",
+    "error_gender_must_be_defined": "Geschlecht muss definiert werden",
+    "please_confirm_your_password": "Bestätigen Sie Ihr Passwort",
+    "please_enter_your_new_password": "Geben Sie das neue Passwort ein",
+    "please_enter_your_email": "Geben Sie Ihre E-Mail ein",
+    "please_enter_your_password": "Geben Sie Ihr Passwort ein",
+    "please_enter_your_first_name": "Geben Sie Ihren Vornamen ein",
+    "please_enter_your_last_name": "Geben Sie Ihren Nachnamen ein",
+    "please_enter_your_address": "Geben Sie Ihre Adresse ein",
+    "please_enter_your_city": "Geben Sie Ihre Stadt ein",
+    "please_enter_your_state": "Geben Sie Ihr Bundesland ein",
+    "please_enter_your_country": "Wählen Sie Ihr Land",
+    "please_enter_your_zip_code": "Geben Sie Ihre PLZ ein",
+    "please_enter_your_phone": "Geben Sie Ihr Telefon ein",
+    "please_enter_your_birthdate": "Geben Sie Ihr Geburtsdatum ein",
+    "error_invalid_birthdate": "Das Geburtsdatum darf nicht in der Zukunft liegen",
+    "error_max_name_characters": "Name zu lang",
+    "error_min_password_characters": "Passwort zu kurz",
+    "error_required_gender": "Geschlecht ist erforderlich",
+    "required": "Erforderlich",
+
+    "page_not_found": "Seite Nicht Gefunden",
+    "page_not_found_description": "Die gesuchte Seite existiert nicht."
+  },
+ "languages": {
+  "en": "Englisch",
+  "es": "Spanisch",
+  "fr": "Französisch",
+  "de": "Deutsch",
+  "sv": "Schwedisch",
+  "it": "Italienisch",
+  "pt": "Portugiesisch",
+  "zh": "Chinesisch",
+  "ja": "Japanisch",
+  "ko": "Koreanisch",
+  "ru": "Russisch",
+  "ar": "Arabisch",
+  "hi": "Hindi",
+  "tr": "Türkisch",
+  "nl": "Niederländisch",
+  "pl": "Polnisch"
+},
+"currencies": {
+  "USD": "US-Dollar",
+  "EUR": "Euro",
+  "GBP": "Britisches Pfund",
+  "SAR": "Saudi-Riyal",
+  "AED": "VAE-Dirham",
+  "EGP": "Ägyptisches Pfund",
+  "MAD": "Marokkanischer Dirham",
+  "DZD": "Algerischer Dinar",
+  "TND": "Tunesischer Dinar",
+  "QAR": "Katar-Riyal",
+  "KWD": "Kuwait-Dinar",
+  "BHD": "Bahrain-Dinar",
+  "OMR": "Omanischer Rial",
+  "JOD": "Jordanischer Dinar",
+  "IQD": "Irakischer Dinar",
+  "LBP": "Libanesisches Pfund",
+  "SEK": "Schwedische Krone",
+  "NOK": "Norwegische Krone",
+  "DKK": "Dänische Krone",
+  "CHF": "Schweizer Franken",
+  "CAD": "Kanadischer Dollar",
+  "AUD": "Australischer Dollar",
+  "NZD": "Neuseeland-Dollar",
+  "JPY": "Japanischer Yen",
+  "CNY": "Chinesischer Yuan",
+  "INR": "Indische Rupie",
+  "KRW": "Südkoreanischer Won",
+  "TRY": "Türkische Lira",
+  "MXN": "Mexikanischer Peso",
+  "BRL": "Brasilianischer Real",
+  "ARS": "Argentinischer Peso",
+  "CLP": "Chilenischer Peso",
+  "COP": "Kolumbianischer Peso",
+  "PEN": "Peruanischer Sol",
+  "PLN": "Polnischer Złoty",
+  "CZK": "Tschechische Krone",
+  "HUF": "Ungarischer Forint",
+  "RON": "Rumänischer Leu",
+  "ZAR": "Südafrikanischer Rand"
+},
+
+  "countries": {
+    "AF": "Afghanistan",
+    "AX": "Ålandinseln",
+    "AL": "Albanien",
+    "DZ": "Algerien",
+    "AS": "Amerikanisch-Samoa",
+    "AD": "Andorra",
+    "AO": "Angola",
+    "AI": "Anguilla",
+    "AQ": "Antarktis",
+    "AG": "Antigua und Barbuda",
+    "AR": "Argentinien",
+    "AM": "Armenien",
+    "AW": "Aruba",
+    "AU": "Australien",
+    "AT": "Österreich",
+    "AZ": "Aserbaidschan",
+    "BS": "Bahamas",
+    "BH": "Bahrain",
+    "BD": "Bangladesch",
+    "BB": "Barbados",
+    "BY": "Belarus",
+    "BE": "Belgien",
+    "BZ": "Belize",
+    "BJ": "Benin",
+    "BM": "Bermuda",
+    "BT": "Bhutan",
+    "BO": "Bolivien",
+    "BQ": "Karibische Niederlande",
+    "BA": "Bosnien und Herzegowina",
+    "BW": "Botswana",
+    "BV": "Bouvetinsel",
+    "BR": "Brasilien",
+    "IO": "Britisches Territorium im Indischen Ozean",
+    "BN": "Brunei",
+    "BG": "Bulgarien",
+    "BF": "Burkina Faso",
+    "BI": "Burundi",
+    "CV": "Kap Verde",
+    "KH": "Kambodscha",
+    "CM": "Kamerun",
+    "CA": "Kanada",
+    "KY": "Kaimaninseln",
+    "CF": "Zentralafrikanische Republik",
+    "TD": "Tschad",
+    "CL": "Chile",
+    "CN": "China",
+    "CX": "Weihnachtsinsel",
+    "CC": "Kokosinseln (Keelinginseln)",
+    "CO": "Kolumbien",
+    "KM": "Komoren",
+    "CG": "Kongo - Brazzaville",
+    "CD": "Kongo - Kinshasa",
+    "CK": "Cookinseln",
+    "CR": "Costa Rica",
+    "HR": "Kroatien",
+    "CU": "Kuba",
+    "CW": "Curaçao",
+    "CY": "Zypern",
+    "CZ": "Tschechien",
+    "CI": "Côte d’Ivoire",
+    "DK": "Dänemark",
+    "DJ": "Dschibuti",
+    "DM": "Dominica",
+    "DO": "Dominikanische Republik",
+    "EC": "Ecuador",
+    "EG": "Ägypten",
+    "SV": "El Salvador",
+    "GQ": "Äquatorialguinea",
+    "ER": "Eritrea",
+    "EE": "Estland",
+    "SZ": "Eswatini",
+    "ET": "Äthiopien",
+    "FK": "Falklandinseln",
+    "FO": "Färöer",
+    "FJ": "Fidschi",
+    "FI": "Finnland",
+    "FR": "Frankreich",
+    "GF": "Französisch-Guayana",
+    "PF": "Französisch-Polynesien",
+    "TF": "Französische Süd- und Antarktisgebiete",
+    "GA": "Gabun",
+    "GM": "Gambia",
+    "GE": "Georgien",
+    "DE": "Deutschland",
+    "GH": "Ghana",
+    "GI": "Gibraltar",
+    "GR": "Griechenland",
+    "GL": "Grönland",
+    "GD": "Grenada",
+    "GP": "Guadeloupe",
+    "GU": "Guam",
+    "GT": "Guatemala",
+    "GG": "Guernsey",
+    "GN": "Guinea",
+    "GW": "Guinea-Bissau",
+    "GY": "Guyana",
+    "HT": "Haiti",
+    "HM": "Heard und McDonaldinseln",
+    "VA": "Vatikanstadt",
+    "HN": "Honduras",
+    "HK": "Hongkong SAR China",
+    "HU": "Ungarn",
+    "IS": "Island",
+    "IN": "Indien",
+    "ID": "Indonesien",
+    "IR": "Iran",
+    "IQ": "Irak",
+    "IE": "Irland",
+    "IM": "Isle of Man",
+    "IL": "Israel",
+    "IT": "Italien",
+    "JM": "Jamaika",
+    "JP": "Japan",
+    "JE": "Jersey",
+    "JO": "Jordanien",
+    "KZ": "Kasachstan",
+    "KE": "Kenia",
+    "KI": "Kiribati",
+    "KP": "Nordkorea",
+    "KR": "Südkorea",
+    "KW": "Kuwait",
+    "KG": "Kirgisistan",
+    "LA": "Laos",
+    "LV": "Lettland",
+    "LB": "Libanon",
+    "LS": "Lesotho",
+    "LR": "Liberia",
+    "LY": "Libyen",
+    "LI": "Liechtenstein",
+    "LT": "Litauen",
+    "LU": "Luxemburg",
+    "MO": "Macau SAR China",
+    "MG": "Madagaskar",
+    "MW": "Malawi",
+    "MY": "Malaysia",
+    "MV": "Malediven",
+    "ML": "Mali",
+    "MT": "Malta",
+    "MH": "Marshallinseln",
+    "MQ": "Martinique",
+    "MR": "Mauretanien",
+    "MU": "Mauritius",
+    "YT": "Mayotte",
+    "MX": "Mexiko",
+    "FM": "Mikronesien",
+    "MD": "Republik Moldau",
+    "MC": "Monaco",
+    "MN": "Mongolei",
+    "ME": "Montenegro",
+    "MS": "Montserrat",
+    "MA": "Marokko",
+    "MZ": "Mosambik",
+    "MM": "Myanmar (Burma)",
+    "NA": "Namibia",
+    "NR": "Nauru",
+    "NP": "Nepal",
+    "NL": "Niederlande",
+    "NC": "Neukaledonien",
+    "NZ": "Neuseeland",
+    "NI": "Nicaragua",
+    "NE": "Niger",
+    "NG": "Nigeria",
+    "NU": "Niue",
+    "NF": "Norfolkinsel",
+    "MK": "Nordmazedonien",
+    "MP": "Nördliche Marianen",
+    "NO": "Norwegen",
+    "OM": "Oman",
+    "PK": "Pakistan",
+    "PW": "Palau",
+    "PS": "Palästinensische Autonomiegebiete",
+    "PA": "Panama",
+    "PG": "Papua-Neuguinea",
+    "PY": "Paraguay",
+    "PE": "Peru",
+    "PH": "Philippinen",
+    "PN": "Pitcairninseln",
+    "PL": "Polen",
+    "PT": "Portugal",
+    "PR": "Puerto Rico",
+    "QA": "Katar",
+    "RO": "Rumänien",
+    "RU": "Russland",
+    "RW": "Ruanda",
+    "RE": "Réunion",
+    "BL": "St. Barthélemy",
+    "SH": "St. Helena",
+    "KN": "St. Kitts und Nevis",
+    "LC": "St. Lucia",
+    "MF": "St. Martin",
+    "PM": "St. Pierre und Miquelon",
+    "VC": "St. Vincent und die Grenadinen",
+    "WS": "Samoa",
+    "SM": "San Marino",
+    "ST": "São Tomé und Príncipe",
+    "SA": "Saudi-Arabien",
+    "SN": "Senegal",
+    "RS": "Serbien",
+    "SC": "Seychellen",
+    "SL": "Sierra Leone",
+    "SG": "Singapur",
+    "SX": "Sint Maarten",
+    "SK": "Slowakei",
+    "SI": "Slowenien",
+    "SB": "Salomonen",
+    "SO": "Somalia",
+    "ZA": "Südafrika",
+    "GS": "Südgeorgien und die Südlichen Sandwichinseln",
+    "SS": "Südsudan",
+    "ES": "Spanien",
+    "LK": "Sri Lanka",
+    "SD": "Sudan",
+    "SR": "Suriname",
+    "SJ": "Spitzbergen und Jan Mayen",
+    "SE": "Schweden",
+    "CH": "Schweiz",
+    "SY": "Syrien",
+    "TW": "Taiwan",
+    "TJ": "Tadschikistan",
+    "TZ": "Tansania",
+    "TH": "Thailand",
+    "TL": "Timor-Leste",
+    "TG": "Togo",
+    "TK": "Tokelau",
+    "TO": "Tonga",
+    "TT": "Trinidad und Tobago",
+    "TN": "Tunesien",
+    "TR": "Türkei",
+    "TM": "Turkmenistan",
+    "TC": "Turks- und Caicosinseln",
+    "TV": "Tuvalu",
+    "UG": "Uganda",
+    "UA": "Ukraine",
+    "AE": "Vereinigte Arabische Emirate",
+    "GB": "Vereinigtes Königreich",
+    "UM": "Amerikanische Überseeinseln",
+    "US": "Vereinigte Staaten",
+    "UY": "Uruguay",
+    "UZ": "Usbekistan",
+    "VU": "Vanuatu",
+    "VE": "Venezuela",
+    "VN": "Vietnam",
+    "VG": "Britische Jungferninseln",
+    "VI": "Amerikanische Jungferninseln",
+    "WF": "Wallis und Futuna",
+    "EH": "Westsahara",
+    "YE": "Jemen",
+    "ZM": "Sambia",
+    "ZW": "Simbabwe"
+  },
+
+  "about": {
+    "title": "Über Uns",
+    "metaDescription": "Entdecken Sie Enouza Luxuslampen, Designerbeleuchtung und Premium-Innenlampen. Werten Sie Ihr Zuhause mit hochwertigen modernen Stehlampen, eleganten Tischlampen und handgefertigter dekorativer Beleuchtung auf.",
+
+    "intro": "Bei Enouza glauben wir, dass Beleuchtung mehr als nur Beleuchtung ist — sie ist ein Erlebnis.",
+    "passion": "Unsere Leidenschaft ist es, Räume zu schaffen, die sich warm, raffiniert und zeitlos anfühlen. Deshalb kuratieren wir sorgfältig Luxuslampen, die modernes Design, Premium-Materialien und außergewöhnliche Handwerkskunst vereinen. Jedes Stück in unserer Kollektion ist ausgewählt, um Ihr Zuhause aufzuwerten, nicht nur zu beleuchten.",
+    "visionTitle": "Unsere Vision",
+    "visionText": "Wir wollen die alltägliche Beleuchtung neu definieren, indem wir Statement-Stücke anbieten, die Eleganz, Komfort und Charakter in jeden Raum bringen. Von gemütlichen Schlafzimmern bis zu sophisticated Wohnbereichen — unsere Lampen sind darauf ausgelegt, Atmosphären zu verwandeln.",
+    "qualityTitle": "Qualität, der Sie Vertrauen Können",
+    "qualityText": "Wir arbeiten eng mit vertrauenswürdigen Herstellern und Designern zusammen, die unser Engagement für Qualität teilen. Jede Lampe wird nach ihrer Haltbarkeit, ihrem ästhetischen Wert und ihrer Liebe zum Detail ausgewählt — denn Luxus sollte gefühlt, nicht nur gesehen werden.",
+    "whyTitle": "Warum Enouza Wählen?",
+    "why": {
+      "items": [
+        "Kuratierte Luxusdesigns",
+        "Premium-Materialien & zeitlose Stile",
+        "Sicheres Einkaufserlebnis",
+        "Sorgfältig verpackt & zuverlässige Lieferung",
+        "Engagierter Kundensupport"
+      ]
+    },
+    "modernTitle": "Für Modernes Wohnen Gestaltet",
+    "modernText": "Unsere Kollektion verbindet zeitgenössische Trends mit klassischer Eleganz und macht unsere Lampen perfekt für moderne Häuser, Wohnungen und luxuriöse Interieurs. Ob Sie eine Statement-Stehlampe oder ein subtiles Ambientelicht suchen — Enouza bringt Licht, das Ihren Stil widerspiegelt.",
+    "closing": "Vielen Dank, dass Sie sich für Enouza entschieden haben — wo Licht auf Luxus trifft."
+  },
+  "privacyPolicy": {
+    "seoTitle": "Enouza - Datenschutzrichtlinie",
+    "title": "Datenschutzrichtlinie",
+    "intro": "Diese Datenschutzrichtlinie beschreibt, wie Enouza.com (die „Website“ oder „wir“) Ihre personenbezogenen Daten erfasst, verwendet und offenlegt, wenn Sie die Website besuchen oder einen Kauf tätigen.",
+    "collectingPersonalInfo": {
+      "title": "Erfassung Personenbezogener Daten",
+      "description": "Wenn Sie die Website besuchen, erfassen wir bestimmte Informationen über Ihr Gerät, Ihre Interaktion mit der Website und die Informationen, die zur Bearbeitung Ihrer Käufe erforderlich sind. Wir können auch zusätzliche Informationen erfassen, wenn Sie uns für den Kundensupport kontaktieren. In dieser Datenschutzrichtlinie bezeichnen wir alle Informationen, die eine Person eindeutig identifizieren können (einschließlich der unten aufgeführten Informationen), als „personenbezogene Daten“."
+    },
+    "deviceInfo": {
+      "title": "Geräteinformationen",
+      "examples": "Beispiele für erfasste personenbezogene Daten: Webbrowser-Version, IP-Adresse, Zeitzone, Cookie-Informationen, Websites oder Produkte, die Sie ansehen, Suchbegriffe und wie Sie mit der Website interagieren.",
+      "purpose": "Zweck der Erfassung: die Website für Sie korrekt zu laden und Analysen zur Website-Nutzung durchzuführen, um unsere Website zu optimieren.",
+      "source": "Quelle der Erfassung: automatisch erfasst, wenn Sie auf unsere Website zugreifen, mithilfe von Cookies, Protokolldateien, Web-Beacons, Tags oder Pixeln.",
+      "disclosure": "Offenlegung zu Geschäftszwecken: geteilt mit unserem Verarbeiter Enouza."
+    },
+    "orderInfo": {
+      "title": "Bestellinformationen",
+      "examples": "Beispiele für erfasste personenbezogene Daten: Name, Rechnungsadresse, Lieferadresse, Zahlungsinformationen, E-Mail-Adresse und Telefonnummer.",
+      "purpose": "Zweck der Erfassung: Ihnen Produkte oder Dienstleistungen bereitzustellen, Zahlungsinformationen zu verarbeiten, den Versand zu arrangieren, Rechnungen oder Bestellbestätigungen bereitzustellen, mit Ihnen zu kommunizieren, Bestellungen auf Risiko oder Betrug zu prüfen und Werbung oder Informationen gemäß Ihren Präferenzen bereitzustellen.",
+      "source": "Quelle der Erfassung: von Ihnen erfasst.",
+      "disclosure": "Offenlegung zu Geschäftszwecken: geteilt mit unserem Verarbeiter Enouza."
+    },
+    "customerSupportInfo": {
+      "title": "Kundensupport-Informationen",
+      "examples": "Beispiele für erfasste personenbezogene Daten: Name, Rechnungsadresse, Lieferadresse, Zahlungsinformationen, E-Mail-Adresse und Telefonnummer.",
+      "purpose": "Zweck der Erfassung: Kundensupport bereitzustellen.",
+      "source": "Quelle der Erfassung: von Ihnen erfasst."
+    },
+    "sharingPersonalInfo": {
+      "title": "Weitergabe Personenbezogener Daten",
+      "text": "Wir teilen Ihre personenbezogenen Daten mit Dienstleistern, um uns bei der Bereitstellung unserer Dienste und der Erfüllung unserer Verträge mit Ihnen zu helfen, wie oben beschrieben. Zum Beispiel können wir Ihre personenbezogenen Daten weitergeben, um geltende Gesetze und Vorschriften einzuhalten, auf Vorladungen, Durchsuchungsbefehle oder andere rechtmäßige Anfragen zu reagieren oder um unsere Rechte anderweitig zu schützen."
+    },
+    "behavioralAdvertising": {
+      "title": "Verhaltensbasierte Werbung",
+      "text": "Wir verwenden Ihre personenbezogenen Daten, um Ihnen gezielte Werbung oder Marketingmitteilungen bereitzustellen, von denen wir glauben, dass sie für Sie von Interesse sein könnten. Zum Beispiel verwenden wir Google Analytics, um zu verstehen, wie Kunden die Website nutzen. Mehr über die Verwendung personenbezogener Daten durch Google: https://policies.google.com/privacy. Opt-out: https://tools.google.com/dlpage/gaoptout. Wir teilen auch Informationen über Ihre Nutzung der Website und Anzeigen mit Werbepartnern."
+    },
+    "usingPersonalInfo": {
+      "title": "Verwendung Personenbezogener Daten",
+      "text": "Wir verwenden Ihre personenbezogenen Daten, um unsere Dienste bereitzustellen, einschließlich des Angebots von Produkten zum Verkauf, der Verarbeitung von Zahlungen, des Versands und der Erfüllung von Bestellungen und der Information über neue Produkte, Dienstleistungen und Angebote."
+    },
+    "lawfulBasis": {
+      "title": "Rechtsgrundlage",
+      "text": "Wenn Sie im EWR ansässig sind, verarbeiten wir Ihre personenbezogenen Daten auf folgenden Rechtsgrundlagen: Ihre Einwilligung, Vertragserfüllung, rechtliche Verpflichtungen, lebenswichtige Interessen, Aufgaben im öffentlichen Interesse oder berechtigte Interessen, die Ihre Grundrechte nicht überwiegen."
+    },
+    "retention": {
+      "title": "Aufbewahrung",
+      "text": "Wenn Sie eine Bestellung über die Website aufgeben, bewahren wir Ihre personenbezogenen Daten auf, es sei denn und bis Sie uns bitten, sie zu löschen."
+    },
+    "automaticDecisionMaking": {
+      "title": "Automatisierte Entscheidungsfindung",
+      "text": "Wenn Sie im EWR ansässig sind, haben Sie das Recht, der automatisierten Entscheidungsfindung (einschließlich Profiling) mit rechtlicher oder erheblicher Wirkung zu widersprechen. Unser Verarbeiter verwendet begrenzte automatisierte Entscheidungen zur Betrugsprävention, wie temporäre Sperrlisten für IPs oder Kreditkarten."
+    },
+    "yourRights": {
+      "title": "Ihre Rechte",
+      "gdpr": "EWR-Ansässige haben das Recht, auf ihre personenbezogenen Daten zuzugreifen, sie zu übertragen, zu berichtigen, zu aktualisieren oder zu löschen. Kontaktieren Sie uns, um diese Rechte auszuüben.",
+      "ccpa": "Einwohner Kaliforniens haben das Recht auf Zugang („Recht auf Wissen“), Übertragung, Berichtigung, Aktualisierung oder Löschung ihrer personenbezogenen Daten. Sie können einen autorisierten Vertreter benennen, um Anfragen einzureichen."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text": "Cookies sind kleine Informationen, die beim Besuch unserer Website auf Ihr Gerät heruntergeladen werden. Wir verwenden funktionale, Performance-, Werbe- und Social-Media-Cookies, um Ihr Surferlebnis zu verbessern und Präferenzen zu merken."
+    },
+    "doNotTrack": {
+      "title": "Do Not Track",
+      "text": "Da es keine einheitliche Branchenreaktion auf „Do Not Track“-Signale gibt, ändern wir unsere Datenerfassungspraktiken nicht, wenn ein solches Signal in Ihrem Browser erkannt wird."
+    },
+    "changes": {
+      "title": "Änderungen",
+      "text": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen der Praktiken oder aus rechtlichen, regulatorischen oder betrieblichen Gründen widerzuspiegeln."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "text": "Für weitere Informationen über unsere Datenschutzpraktiken, Fragen oder Beschwerden kontaktieren Sie uns per E-Mail an hello@enouza.com."
+    },
+    "lastUpdated": "Zuletzt aktualisiert: 15. Juni 2022"
+  },
+
+  "returnPolicy": {
+    "seoTitle": "Enouza - Rückgaberichtlinie",
+    "title": "Rückgabe- und Rückerstattungsrichtlinie",
+    "returns": {
+      "heading": "Rücksendungen:",
+      "text": "Einfach gesagt, Sie können Waren nur dann zur Rückerstattung zurücksenden, wenn der Artikel in BRANDNEUEM, UNGEÖFFNETEM ZUSTAND ist, einschließlich seiner Originalverpackung und seines Zubehörs. Wir wissen, dass dies etwas extrem erscheint, aber ohne diese Bestimmung könnten wir unsere erstaunlichen Preise nicht anbieten. Wir gewähren Rückerstattungen für ungeöffnete Artikel bis zu 15 - 25 Tage nach Erhalt Ihres Produkts. Alle Rückerstattungen werden auf Ihre ursprüngliche Zahlungsmethode zurückgezahlt und können bis zu 7-10 Werktage dauern."
+    },
+    "rejectedRefunds": {
+      "heading": "Ihre Rückerstattung wird abgelehnt, wenn Ihre Artikel aus folgenden Gründen zurückgesendet werden:",
+      "items": [
+        "Wenn Sie Ihr Produkt aufgrund von Schäden an der Originalverpackung des Artikels zurücksenden möchten.",
+        "Wenn das von Ihnen zurückgesendete Produkt geöffnet und entsiegelt wurde.",
+        "Artikel mit geringfügigen kosmetischen Lackproblemen bei Preisfiguren, da diese zu erwarten sind."
+      ]
+    },
+    "exceptions": {
+      "heading": "Ausnahmen / Nicht Rückerstattungsfähige Artikel:",
+      "text": "Vorbestellungen sind Endverkäufe und nach dem Versand nicht rückgabefähig. Wenn Sie ein defektes Produkt erhalten, kontaktieren Sie uns bitte für Informationen zur Kontaktaufnahme mit dem Hersteller. Artikel mit Verpackungsmängeln und allgemeinen Fehlern. Bitte kontaktieren Sie uns, wenn Sie Fragen oder Bedenken zu Ihrem spezifischen Artikel haben."
+    },
+    "returnShipping": {
+      "heading": "Rücksendung:",
+      "text": "Um ein Produkt zurückzusenden, kontaktieren Sie bitte unseren Kundensupport mit Ihrer Bestellnummer und dem Rücksendegrund. Ein Rücksendeetikett wird Ihnen zur Verfügung gestellt, wenn Ihre Rücksendeanfrage genehmigt wird."
+    },
+    "damagesIssues": {
+      "heading": "Schäden und Probleme",
+      "text": "Bitte überprüfen Sie Ihre Bestellung bei Erhalt und kontaktieren Sie uns sofort, wenn der Artikel defekt oder beschädigt ist oder wenn Sie den falschen Artikel erhalten haben, damit wir das Problem bewerten und beheben können."
+    },
+    "refunds": {
+      "heading": "Rückerstattungen",
+      "text": "Wir benachrichtigen Sie, sobald wir Ihre Rücksendung erhalten und geprüft haben, und teilen Ihnen mit, ob die Rückerstattung genehmigt wurde. Wenn genehmigt, wird Ihnen automatisch auf Ihre ursprüngliche Zahlungsmethode zurückerstattet. Bitte beachten Sie, dass es einige Zeit dauern kann, bis Ihre Bank oder Kreditkartengesellschaft die Rückerstattung verarbeitet und verbucht."
+    }
+  },
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "Wie lautet Ihre Rückgaberichtlinie?",
+      "answer": {
+        "paragraphe": [
+          "Wenn Sie Ihre Bestellung aus irgendeinem Grund zurückgeben möchten, sind wir gerne ohne Umstände für Sie da! Wir bieten Rücksendungen innerhalb von 30 Tagen nach dem Kauf an. Sie können Ihr Produkt zur Rückerstattung auf die ursprüngliche Zahlungsmethode zurücksenden, wenn das Produkt Ihre Erwartungen nicht erfüllt hat. Die Rückerstattung wird innerhalb von 5-10 Werktagen auf die ursprüngliche Zahlungsform bearbeitet."
+        ],
+        "list": [
+          "Ausverkaufsartikel sind Endverkäufe und können nicht zurückgegeben oder umgetauscht werden.",
+          "Zurückgesendete Artikel müssen identifizierende Informationen enthalten und in der Originalproduktverpackung zurückgesendet werden.",
+          "Zurückgesendete Artikel dürfen keine sichtbaren Anzeichen von Abnutzung oder Gebrauch aufweisen.",
+          "Die Versandkosten werden nicht erstattet, es sei denn, Ihnen wurde ein falscher oder beschädigter Artikel zugesandt.",
+          "Ein vorbezahltes Rücksendeetikett wird nicht bereitgestellt, es sei denn, der falsche Artikel wurde versandt oder der Artikel wurde während des Transports beschädigt.",
+          "Wir bearbeiten keine Kleidungsumtausche. Wenn der von Ihnen gekaufte Artikel nicht passt, senden Sie ihn bitte zur Rückerstattung zurück. Sie können dann eine neue Bestellung für Ihre gewünschte Größe aufgeben. Für weitere Informationen und RMA-Etiketten kontaktieren Sie bitte unser Kundenservice-Team."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Wie sendet man ein Produkt zurück?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Melden Sie sich in Ihrem Enouza-Konto an und kontaktieren Sie unser Kundenservice-Team.",
+          "Geben Sie so viele Informationen wie möglich über die Produkte an, die Sie aus Ihrer Bestellung zurückgeben oder umtauschen möchten.",
+          "Zurückgesendete Artikel dürfen keine sichtbaren Anzeichen von Abnutzung oder Gebrauch aufweisen.",
+          "Drucken Sie das vorbezahlte Versandetikett, das Sie per E-Mail erhalten.",
+          "Bitte beachten Sie, dass ein vorbezahltes Rücksendeetikett nicht bereitgestellt wird, es sei denn, der falsche Artikel wurde versandt oder der Artikel wurde während des Transports beschädigt.",
+          "Senden Sie alle Artikel mit dem bereitgestellten Etikett an uns zurück."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "Mein Produkt kam beschädigt an! Was soll ich tun?",
+      "answer": {
+        "paragraphe": [
+          "Entschuldigung, Sammler! Wir verstehen, wie enttäuschend es ist, einen beschädigten Artikel zu erhalten — besonders einen Artikel, auf den Sie monatelang gewartet haben! Leider passieren Fehler und Produkte können während des Transports beschädigt werden. Sollte dies der Fall sein, kontaktieren Sie uns bitte mit Fotos des beschädigten Artikels und wir werden ihn ersetzen oder eine teilweise oder vollständige Rückerstattung gewähren. Ihre Zufriedenheit ist unsere Priorität Nr. 1!"
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Welche Produkte sind von der Rückgaberichtlinie ausgeschlossen?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Digitale Produkte, einschließlich Mitgliedschaften und Geschenkkarten, sind nicht für Rückerstattungen oder Rücksendungen berechtigt. Wenn Sie Probleme beim Zugriff auf oder bei der Nutzung eines digitalen Produkts haben, kontaktieren Sie uns bitte und wir helfen Ihnen gerne.",
+          "Produkte, die im Rahmen von Ausverkaufs- oder Endverkaufsaktionen gekauft wurden, sind möglicherweise nicht rückgabeberechtigt, außer wenn gesetzlich vorgeschrieben.",
+          "Produkte, die nach der Lieferung verwendet, installiert oder verändert wurden, sind je nach Zustand des Produkts und unserer Rückgaberichtlinie möglicherweise nicht rückgabeberechtigt.",
+          "Wenn Ihr Produkt beschädigt ankommt oder einen Defekt aufweist, kontaktieren Sie uns bitte so bald wie möglich, damit wir Ihnen helfen und eine angemessene Lösung finden können.",
+          "Für bestimmte Produkte können zusätzliche Bedingungen gelten, die gegebenenfalls auf der betreffenden Produktseite angegeben werden."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "Mein Produkt hat einen Defekt / fehlende Teile. Was soll ich tun?",
+      "answer": {
+        "paragraphe": [
+          "Kontaktieren Sie uns direkt mit Fotos und einer Erklärung des Defekts.",
+          "Bitte beachten Sie: Heimvideoprodukte werden nicht garantiert mit einer Schutzhülle geliefert."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Wie lautet Ihre Rückerstattungsrichtlinie?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Nachdem eine Bestellung storniert oder eine Rücksendung bearbeitet wurde, wird Ihre Rückerstattung auf die ursprüngliche Zahlungsform ausgegeben.",
+          "Nach Abschluss Ihrer Rücksendung wird eine Rückerstattung innerhalb von 1-5 Werktagen bearbeitet.",
+          "Nach Bearbeitung einer Rückerstattung rechnen Sie bitte mit 3-5 Werktagen für PayPal-Rückerstattungen und 3-10 Werktagen für alle anderen Zahlungsmethoden.",
+          "Wir benachrichtigen Sie per E-Mail, wenn Ihre Rückerstattung ausgegeben wurde.",
+          "Eine vollständige Rückerstattung wird auch dann gewährt, wenn eine Digitale Geschenkkarte des Enouza-Shops als vollständige oder teilweise Zahlung für die Bestellung verwendet wurde.",
+          "Eine Bestellung kann storniert und sofort zurückerstattet werden, wenn das Paket noch nicht mit der Bearbeitung für den Versand begonnen hat.",
+          "Sobald ein Paket mit der Bearbeitung für den Versand beginnt, muss es an sein Ziel geliefert und an Enouza zurückgesendet werden, bevor eine Rückerstattung ausgegeben werden kann. Bitte kontaktieren Sie unser Kundenservice-Team für detailliertere Informationen."
+        ]
+      }
+    }
+  ],
+
+  "shipping": {
+    "seoTitle": "Enouza - Versandrichtlinie",
+    "title": "Versandrichtlinie",
+    "intro": "Wir bieten weltweiten kostenlosen Versand für alle unsere Produkte und liefern in fast jedes Land der Welt.",
+    "deliveryTime": {
+      "title": "Geschätzte Lieferzeit",
+      "description": "Die Lieferung dauert in der Regel 5-15 Werktage, maximal 30 Werktage je nach Zielort."
+    },
+    "tracking": {
+      "title": "Verfolgung Ihrer Bestellung",
+      "description": "Beim Versand erhalten Sie eine E-Mail mit einer Sendungsnummer. Artikel können aus logistischen Gründen separat versandt werden."
+    },
+    "customFees": {
+      "title": "Zollgebühren",
+      "description": "Alle beim Versand anfallenden Zollgebühren liegen nicht in unserer Verantwortung."
+    },
+    "lostOrDelayedPackages": {
+      "title": "Verlorene oder Verzögerte Pakete",
+      "description": "Wenn Ihr Paket verloren geht oder sich verzögert, kontaktieren Sie uns bitte mit Ihren Bestellinformationen."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Wenn Sie weitere Fragen zum Versand haben, kontaktieren Sie uns unter hello@enouza.com"
+    }
+  },
+
+  "shippingFaq": [
+    {
+      "id": 1,
+      "question": "Wie viel kostet der Versand?",
+      "answer": {
+        "paragraphe": [
+          "Die internationalen Versandkosten variieren je nach Zielort. Hier ist eine Aufschlüsselung der Versandkosten für jedes Ziel:"
+        ],
+        "list": [
+          "Kanada: 0$ - 19,99$",
+          "Europa: 0$ - 40$",
+          "Australien: 0$ - 43,99$",
+          "Weltweit: Kostenloser Versand für einige Produkte"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Was passiert, wenn mein Paket während des Transports verloren geht?",
+      "answer": {
+        "paragraphe": [
+          "Wenn ein Paket als zugestellt angezeigt wird, Sie es aber nicht erhalten haben, kontaktieren Sie bitte den Spediteur und benachrichtigen Sie uns innerhalb von 30 Tagen nach dem Zustellungsdatum.",
+          "Wenn festgestellt wird, dass das Paket aufgrund eines Zustellfehlers des Spediteurs verloren ging, ersetzen wir Ihre Bestellung.",
+          "Wenn das Paket aufgrund einer unvollständigen oder falschen Adresse verloren geht, können wir keine Rückerstattung oder keinen Umtausch anbieten — Kunden sind dafür verantwortlich, sicherzustellen, dass ihre Lieferadresse zum Zeitpunkt des Kaufs korrekt ist. Wenn das Paket an uns zurückgesandt wird, müssen Sie eine zusätzliche Versandgebühr für den erneuten Versand zahlen.",
+          "Wenn Sie feststellen, dass Ihre Lieferadresse falsch ist oder sich seit der Aufgabe Ihrer Bestellung geändert hat, benachrichtigen Sie uns bitte mit Ihrer Bestellnummer/ID und der aktualisierten Adresse."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 3,
+      "question": "Wann wird meine Bestellung versandt?",
+      "answer": {
+        "paragraphe": [
+          "Ihre Bestellung wird während normaler Werktage (Montag bis Freitag, außer Feiertage) bearbeitet.",
+          "Wenn ein Artikel auf Lager ist, wird Ihre Bestellung innerhalb von 1 bis 5 Werktagen bearbeitet. Die Lieferzeit nach der Bearbeitung variiert je nach Lieferadresse. Derzeit liegen die Lieferzeiten zwischen 5 und 15 Werktagen.",
+          "Sobald ein Artikel versandt wird, erhalten Sie eine E-Mail mit Tracking-Informationen. In einigen Sonderfällen sind möglicherweise keine Sendungsnummern verfügbar."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Erhalte ich meine Bestellung in mehreren Paketen?",
+      "answer": {
+        "paragraphe": [
+          "Wenn Sie vorrätige Artikel kaufen, die aus verschiedenen Lagern versandt werden, erhalten Sie mehrere Sendungen."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 5,
+      "question": "Wie werden die Versandpreise berechnet?",
+      "answer": {
+        "paragraphe": [
+          "Die Versandkosten werden während des Checkouts berechnet. Sie können Artikel zu Ihrem Warenkorb hinzufügen, zur Kasse gehen und Ihre Lieferadresse eingeben, um die Versandkosten für Ihre Bestellung zu sehen."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Wie lautet Ihre Rückerstattungsrichtlinie?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Nachdem eine Bestellung storniert oder eine Rücksendung bearbeitet wurde, wird eine Rückerstattung auf die ursprüngliche Zahlungsmethode ausgegeben.",
+          "Sobald der Rücksendeprozess abgeschlossen ist, wird die Rückerstattung innerhalb von 1-5 Werktagen bearbeitet.",
+          "Nach Bearbeitung der Rückerstattung rechnen Sie bitte mit 3-5 Werktagen für PayPal-Rückerstattungen und 3-10 Werktagen für alle anderen Zahlungsmethoden.",
+          "Wir benachrichtigen Sie per E-Mail, sobald die Rückerstattung ausgegeben wurde.",
+          "Eine vollständige Rückerstattung wird auch dann gewährt, wenn eine Digitale Geschenkkarte des Enouza-Shops als vollständige oder teilweise Zahlung für die Bestellung verwendet wurde.",
+          "Eine Bestellung kann storniert und sofort zurückerstattet werden, wenn das Paket noch nicht mit der Bearbeitung für den Versand begonnen hat.",
+          "Sobald ein Paket mit der Bearbeitung für den Versand beginnt, muss es an sein Ziel geliefert und an Enouza zurückgesendet werden, bevor eine Rückerstattung ausgegeben werden kann. Bitte kontaktieren Sie unser Kundenservice-Team für detailliertere Informationen."
+        ]
+      }
+    }
+  ],
+  "terms": {
+    "seoTitle": "Enouza - Nutzungsbedingungen",
+    "title": "Nutzungsbedingungen",
+    "overview": {
+      "title": "Überblick",
+      "p1": "Diese Website wird von Enouza betrieben. Auf der gesamten Website beziehen sich die Begriffe „wir“, „uns“ und „unser“ auf Enouza. Enouza bietet diese Website, einschließlich aller Informationen, Tools und Dienste, die auf dieser Website verfügbar sind, für Sie, den Benutzer, unter der Bedingung an, dass Sie alle hierin dargelegten Bedingungen, Konditionen, Richtlinien und Hinweise akzeptieren.",
+      "p2": "Durch den Besuch unserer Website und/oder den Kauf von etwas bei uns nehmen Sie an unserem „Service“ teil und erklären sich damit einverstanden, an die folgenden Bedingungen und Konditionen („Nutzungsbedingungen“, „Bedingungen“) gebunden zu sein, einschließlich der hierin und/oder per Hyperlink verfügbaren zusätzlichen Bedingungen und Richtlinien. Diese Nutzungsbedingungen gelten für alle Benutzer der Website, einschließlich, aber nicht beschränkt auf Benutzer, die Browser, Verkäufer, Kunden, Händler und/oder Inhaltsbeitragende sind.",
+      "p3": "Bitte lesen Sie diese Nutzungsbedingungen sorgfältig durch, bevor Sie auf unsere Website zugreifen oder sie nutzen. Durch den Zugriff auf oder die Nutzung eines beliebigen Teils der Website erklären Sie sich damit einverstanden, an diese Nutzungsbedingungen gebunden zu sein. Wenn Sie nicht mit allen Bedingungen und Konditionen dieser Vereinbarung einverstanden sind, dürfen Sie nicht auf die Website zugreifen oder Dienste nutzen. Wenn diese Nutzungsbedingungen als Angebot betrachtet werden, ist die Annahme ausdrücklich auf diese Nutzungsbedingungen beschränkt.",
+      "p4": "Alle neuen Funktionen oder Tools, die dem aktuellen Shop hinzugefügt werden, unterliegen ebenfalls den Nutzungsbedingungen. Sie können die aktuellste Version der Nutzungsbedingungen jederzeit auf dieser Seite einsehen. Wir behalten uns das Recht vor, jeden Teil dieser Nutzungsbedingungen zu aktualisieren, zu ändern oder zu ersetzen, indem wir Updates und/oder Änderungen auf unserer Website veröffentlichen. Es liegt in Ihrer Verantwortung, diese Seite regelmäßig auf Änderungen zu überprüfen. Ihre fortgesetzte Nutzung oder Ihr Zugriff auf die Website nach der Veröffentlichung von Änderungen stellt die Annahme dieser Änderungen dar."
+    },
+    "sections": {
+      "section1": {
+        "title": "Abschnitt 1 - Bedingungen für den Online-Shop",
+        "text": "Durch die Zustimmung zu diesen Nutzungsbedingungen erklären Sie, dass Sie mindestens das Volljährigkeitsalter in Ihrem Bundesstaat oder Ihrer Provinz Ihres Wohnsitzes erreicht haben, oder dass Sie das Volljährigkeitsalter in Ihrem Bundesstaat oder Ihrer Provinz Ihres Wohnsitzes erreicht haben und uns Ihre Zustimmung gegeben haben, einem Ihrer minderjährigen Angehörigen die Nutzung dieser Website zu gestatten. Sie dürfen unsere Produkte nicht für illegale oder nicht autorisierte Zwecke verwenden und dürfen bei der Nutzung des Dienstes keine Gesetze in Ihrer Gerichtsbarkeit verletzen (einschließlich, aber nicht beschränkt auf Urheberrechtsgesetze). Sie dürfen keine Würmer oder Viren oder Code destruktiver Natur übertragen. Ein Verstoß gegen eine der Bedingungen führt zur sofortigen Kündigung Ihrer Dienste."
+      },
+      "section2": {
+        "title": "Abschnitt 2 - Allgemeine Bedingungen",
+        "text": "Wir behalten uns das Recht vor, den Service jederzeit aus irgendeinem Grund zu verweigern. Sie verstehen, dass Ihre Inhalte (mit Ausnahme von Kreditkarteninformationen) unverschlüsselt übertragen werden können und (a) Übertragungen über verschiedene Netzwerke und (b) Änderungen zur Anpassung an die technischen Anforderungen von Verbindungsnetzwerken oder -geräten beinhalten können. Kreditkarteninformationen werden während der Übertragung über Netzwerke immer verschlüsselt. Sie erklären sich damit einverstanden, keinen Teil des Dienstes, die Nutzung des Dienstes oder den Zugriff auf den Dienst oder jeglichen Kontakt auf der Website, über die der Dienst bereitgestellt wird, ohne unsere ausdrückliche schriftliche Genehmigung zu reproduzieren, zu duplizieren, zu kopieren, zu verkaufen, weiterzuverkaufen oder zu verwerten. Die in dieser Vereinbarung verwendeten Überschriften dienen nur der Übersichtlichkeit und beschränken oder beeinflussen diese Bedingungen nicht anderweitig."
+      },
+      "section3": {
+        "title": "Abschnitt 3 - Genauigkeit, Vollständigkeit und Aktualität von Informationen",
+        "text": "Wir sind nicht verantwortlich, wenn die auf dieser Website verfügbaren Informationen nicht genau, vollständig oder aktuell sind. Das Material auf dieser Website dient nur zur allgemeinen Information und sollte nicht als alleinige Grundlage für Entscheidungen herangezogen oder verwendet werden, ohne primäre, genauere, vollständigere oder aktuellere Informationsquellen zu konsultieren. Jedes Vertrauen auf das Material auf dieser Website erfolgt auf eigenes Risiko. Diese Website kann bestimmte historische Informationen enthalten. Historische Informationen sind notwendigerweise nicht aktuell und werden nur zu Ihrer Information bereitgestellt. Wir behalten uns das Recht vor, den Inhalt dieser Website jederzeit zu ändern, sind jedoch nicht verpflichtet, Informationen auf unserer Website zu aktualisieren. Sie erklären sich damit einverstanden, dass es Ihre Verantwortung ist, Änderungen auf unserer Website zu überwachen."
+      },
+      "section4": {
+        "title": "Abschnitt 4 - Änderungen des Dienstes und der Preise",
+        "text": "Die Preise für unsere Produkte können sich ohne Vorankündigung ändern. Wir behalten uns das Recht vor, den Dienst (oder einen Teil oder Inhalt davon) jederzeit ohne Vorankündigung zu ändern oder einzustellen. Wir haften Ihnen oder Dritten gegenüber nicht für Änderungen, Preisänderungen, Aussetzungen oder Einstellungen des Dienstes."
+      },
+      "section5": {
+        "title": "Abschnitt 5 - Produkte oder Dienstleistungen (falls zutreffend)",
+        "text": "Bestimmte Produkte oder Dienstleistungen können ausschließlich online über die Website verfügbar sein. Diese Produkte oder Dienstleistungen können begrenzte Mengen haben und unterliegen der Rückgabe oder dem Umtausch nur gemäß unserer Rückgaberichtlinie. Wir haben alle Anstrengungen unternommen, die Farben und Bilder unserer Produkte, die im Shop erscheinen, so genau wie möglich darzustellen. Wir können nicht garantieren, dass die Darstellung einer Farbe auf Ihrem Computerbildschirm genau ist. Wir behalten uns das Recht vor, sind jedoch nicht verpflichtet, den Verkauf unserer Produkte oder Dienstleistungen an eine Person, eine geografische Region oder eine Gerichtsbarkeit zu beschränken. Wir können dieses Recht von Fall zu Fall ausüben. Wir behalten uns das Recht vor, die Mengen aller Produkte oder Dienstleistungen, die wir anbieten, zu begrenzen. Alle Produktbeschreibungen oder Produktpreise können sich jederzeit ohne Vorankündigung nach unserem alleinigen Ermessen ändern. Wir behalten uns das Recht vor, jedes Produkt jederzeit einzustellen. Jedes Angebot für ein Produkt oder eine Dienstleistung auf dieser Website ist nichtig, wo es verboten ist. Wir garantieren nicht, dass die Qualität von Produkten, Dienstleistungen, Informationen oder anderen Materialien, die Sie kaufen oder erhalten, Ihren Erwartungen entspricht oder dass Fehler im Dienst korrigiert werden."
+      },
+      "section6": {
+        "title": "Abschnitt 6 - Genauigkeit von Rechnungs- und Kontoinformationen",
+        "text": "Wir behalten uns das Recht vor, jede Bestellung abzulehnen, die Sie bei uns aufgeben. Wir können nach unserem alleinigen Ermessen die pro Person, pro Haushalt oder pro Bestellung gekauften Mengen begrenzen oder stornieren. Diese Einschränkungen können Bestellungen umfassen, die von oder unter demselben Kundenkonto, derselben Kreditkarte und/oder Bestellungen, die dieselbe Rechnungs- und/oder Lieferadresse verwenden, aufgegeben werden. Im Falle einer Änderung oder Stornierung einer Bestellung können wir versuchen, Sie durch Kontaktaufnahme mit der zum Zeitpunkt der Bestellung angegebenen E-Mail und/oder Rechnungsadresse/Telefonnummer zu benachrichtigen. Wir behalten uns das Recht vor, Bestellungen zu begrenzen oder zu verbieten, die nach unserem alleinigen Urteil von Händlern, Wiederverkäufern oder Distributoren aufgegeben zu werden scheinen. Sie erklären sich damit einverstanden, aktuelle, vollständige und genaue Kauf- und Kontoinformationen für alle in unserem Shop getätigten Käufe bereitzustellen. Sie erklären sich damit einverstanden, Ihr Konto und andere Informationen, einschließlich Ihrer E-Mail-Adresse und Kreditkartennummern und Ablaufdaten, umgehend zu aktualisieren, damit wir Ihre Transaktionen abschließen und Sie nach Bedarf kontaktieren können."
+      },
+      "section7": {
+        "title": "Abschnitt 7 - Rückgaberichtlinie",
+        "text": "Für weitere Details lesen Sie bitte unsere Rückgaberichtlinie."
+      },
+      "section8": {
+        "title": "Abschnitt 8 - Optionale Tools",
+        "text": "Wir können Ihnen Zugang zu Tools von Drittanbietern gewähren, die wir weder überwachen noch kontrollieren oder beeinflussen können. Sie erkennen an und erklären sich damit einverstanden, dass wir den Zugang zu solchen Tools „wie besehen“ und „wie verfügbar“ ohne jegliche Gewährleistungen, Zusicherungen oder Bedingungen jeglicher Art und ohne jegliche Billigung bereitstellen. Wir übernehmen keinerlei Haftung, die sich aus oder im Zusammenhang mit Ihrer Nutzung optionaler Tools von Drittanbietern ergibt. Jede Nutzung optionaler Tools, die über die Website angeboten werden, erfolgt ausschließlich auf Ihr eigenes Risiko und nach Ihrem Ermessen, und Sie sollten sicherstellen, dass Sie mit den Bedingungen vertraut sind, zu denen Tools vom jeweiligen Drittanbieter bereitgestellt werden, und diese genehmigen. Wir können in Zukunft auch neue Dienste und/oder Funktionen über die Website anbieten (einschließlich der Veröffentlichung neuer Tools und Ressourcen). Solche neuen Funktionen und/oder Dienste unterliegen ebenfalls diesen Nutzungsbedingungen."
+      },
+      "section9": {
+        "title": "Abschnitt 9 - Links zu Drittanbietern",
+        "text": "Bestimmte Inhalte, Produkte und Dienstleistungen, die über unseren Dienst verfügbar sind, können Materialien von Drittanbietern enthalten. Links zu Drittanbietern auf dieser Website können Sie zu Websites von Drittanbietern führen, die nicht mit uns verbunden sind. Wir sind nicht verantwortlich für die Prüfung oder Bewertung des Inhalts oder der Genauigkeit, und wir garantieren nicht und übernehmen keine Haftung oder Verantwortung für Materialien oder Websites von Drittanbietern oder für andere Materialien, Produkte oder Dienstleistungen von Drittanbietern. Wir haften nicht für Schäden oder Verluste im Zusammenhang mit dem Kauf oder der Nutzung von Waren, Dienstleistungen, Ressourcen, Inhalten oder anderen Transaktionen, die in Verbindung mit Websites von Drittanbietern getätigt werden. Bitte lesen Sie die Richtlinien und Praktiken Dritter sorgfältig durch und stellen Sie sicher, dass Sie sie verstehen, bevor Sie eine Transaktion eingehen. Beschwerden, Ansprüche, Bedenken oder Fragen zu Produkten Dritter sollten an den Dritten gerichtet werden."
+      },
+      "section10": {
+        "title": "Abschnitt 10 - Benutzerkommentare, Feedback und Andere Einsendungen",
+        "text": "Wenn Sie auf unsere Anfrage bestimmte spezifische Einsendungen (z. B. Wettbewerbsbeiträge) senden oder ohne Anfrage von uns kreative Ideen, Vorschläge, Pläne oder andere Materialien senden, sei es online, per E-Mail, per Post oder anderweitig (zusammenfassend „Kommentare“), erklären Sie sich damit einverstanden, dass wir jederzeit ohne Einschränkung alle Kommentare, die Sie uns zusenden, bearbeiten, kopieren, veröffentlichen, verbreiten, übersetzen und anderweitig in jedem Medium verwenden dürfen. Wir sind und bleiben nicht verpflichtet, (1) Kommentare vertraulich zu behandeln; (2) eine Entschädigung für Kommentare zu zahlen; oder (3) auf Kommentare zu antworten. Wir können, sind aber nicht verpflichtet, Inhalte zu überwachen, zu bearbeiten oder zu entfernen, die wir nach unserem alleinigen Ermessen als rechtswidrig, beleidigend, bedrohlich, verleumderisch, diffamierend, pornografisch, obszön oder anderweitig anstößig bestimmen oder die die geistigen Eigentumsrechte einer Partei oder diese Nutzungsbedingungen verletzen. Sie erklären sich damit einverstanden, dass Ihre Kommentare keine Rechte Dritter verletzen, einschließlich Urheberrecht, Markenrecht, Datenschutz, Persönlichkeitsrecht oder anderer persönlicher oder Eigentumsrechte. Sie erklären sich ferner damit einverstanden, dass Ihre Kommentare kein verleumderisches oder anderweitig rechtswidriges, missbräuchliches oder obszönes Material enthalten oder einen Computer-Virus oder andere Malware enthalten, die den Betrieb des Dienstes oder einer zugehörigen Website beeinträchtigen könnten. Sie dürfen keine falsche E-Mail-Adresse verwenden, sich als jemand anderes ausgeben oder uns oder Dritte über den Ursprung von Kommentaren irreführen. Sie sind allein verantwortlich für Ihre Kommentare und deren Richtigkeit. Wir übernehmen keine Verantwortung und Haftung für Kommentare, die von Ihnen oder Dritten veröffentlicht werden."
+      },
+      "section11": {
+        "title": "Abschnitt 11 - Personenbezogene Daten",
+        "text": "Ihre Übermittlung personenbezogener Daten über den Shop unterliegt unserer Datenschutzrichtlinie."
+      },
+      "section12": {
+        "title": "Abschnitt 12 - Fehler, Ungenauigkeiten und Auslassungen",
+        "text": "Gelegentlich können Informationen auf unserer Website oder im Dienst typografische Fehler, Ungenauigkeiten oder Auslassungen enthalten, die sich auf Produktbeschreibungen, Preise, Werbeaktionen, Angebote, Produktversandkosten, Transportzeiten und Verfügbarkeit beziehen. Wir behalten uns das Recht vor, Fehler, Ungenauigkeiten oder Auslassungen zu korrigieren und Informationen zu ändern oder zu aktualisieren oder Bestellungen zu stornieren, wenn Informationen im Dienst oder auf einer zugehörigen Website jederzeit ohne Vorankündigung ungenau sind (auch nachdem Sie Ihre Bestellung aufgegeben haben). Wir übernehmen keine Verpflichtung, Informationen im Dienst oder auf einer zugehörigen Website zu aktualisieren, zu ändern oder zu klären, einschließlich, aber nicht beschränkt auf Preisinformationen, außer wenn gesetzlich vorgeschrieben. Kein angegebenes Aktualisierungs- oder Aktualisierungsdatum im Dienst oder auf einer zugehörigen Website sollte als Hinweis darauf verstanden werden, dass alle Informationen im Dienst oder auf einer zugehörigen Website geändert oder aktualisiert wurden."
+      },
+      "section13": {
+        "title": "Abschnitt 13 - Verbotene Nutzungen",
+        "text": "Zusätzlich zu anderen in den Nutzungsbedingungen festgelegten Verboten ist es Ihnen untersagt, die Website oder ihre Inhalte zu nutzen: (a) für rechtswidrige Zwecke; (b) um andere zur Begehung oder Teilnahme an rechtswidrigen Handlungen aufzufordern; (c) gegen internationale, bundesstaatliche, provinzielle oder staatliche Vorschriften, Regeln, Gesetze oder lokale Verordnungen zu verstoßen; (d) unsere geistigen Eigentumsrechte oder die geistigen Eigentumsrechte anderer zu verletzen; (e) zu belästigen, zu missbrauchen, zu beleidigen, zu schädigen, zu verleumden, zu diffamieren, herabzusetzen, einzuschüchtern oder zu diskriminieren aufgrund von Geschlecht, sexueller Orientierung, Religion, ethnischer Zugehörigkeit, Rasse, Alter, nationaler Herkunft oder Behinderung; (f) falsche oder irreführende Informationen einzureichen; (g) Viren oder andere schädliche Codes hochzuladen oder zu übertragen, die die Funktionalität oder den Betrieb des Dienstes oder einer zugehörigen Website, anderer Websites oder des Internets beeinträchtigen werden oder könnten; (h) personenbezogene Daten anderer zu sammeln oder zu verfolgen; (i) zu spammen, Phishing, Pharming, Pretexting, Spidering, Crawling oder Scraping; (j) für obszöne oder unmoralische Zwecke; oder (k) die Sicherheitsfunktionen des Dienstes oder einer zugehörigen Website, anderer Websites oder des Internets zu stören oder zu umgehen. Wir behalten uns das Recht vor, Ihre Nutzung des Dienstes oder einer zugehörigen Website wegen Verstoßes gegen eine der verbotenen Nutzungen zu beenden."
+      },
+      "section14": {
+        "title": "Abschnitt 14 - Gewährleistungsausschluss; Haftungsbeschränkung",
+        "text": "Wir garantieren nicht, dass Ihre Nutzung unseres Dienstes ununterbrochen, rechtzeitig, sicher oder fehlerfrei sein wird. Wir garantieren nicht, dass die Ergebnisse, die aus der Nutzung des Dienstes erzielt werden können, genau oder zuverlässig sind. Sie erklären sich damit einverstanden, dass wir den Dienst von Zeit zu Zeit für unbestimmte Zeiträume entfernen oder den Dienst jederzeit ohne Benachrichtigung kündigen können. Sie erklären sich ausdrücklich damit einverstanden, dass Ihre Nutzung oder Unfähigkeit zur Nutzung des Dienstes auf Ihr eigenes Risiko erfolgt. Der Dienst und alle Produkte und Dienstleistungen, die Ihnen über den Dienst geliefert werden, werden (außer wie ausdrücklich von uns angegeben) „wie besehen“ und „wie verfügbar“ für Ihre Nutzung bereitgestellt, ohne jegliche Zusicherung, Gewährleistung oder Bedingung jeglicher Art, ob ausdrücklich oder stillschweigend, einschließlich aller stillschweigenden Gewährleistungen oder Bedingungen der Marktgängigkeit, der handelsüblichen Qualität, der Eignung für einen bestimmten Zweck, der Haltbarkeit, des Eigentums und der Nichtverletzung. In keinem Fall haften Enouza, unsere Direktoren, leitenden Angestellten, Mitarbeiter, verbundenen Unternehmen, Vertreter, Auftragnehmer, Praktikanten, Lieferanten, Dienstleister oder Lizenzgeber für Verletzungen, Verluste, Ansprüche oder direkte, indirekte, zufällige, strafende, besondere oder Folgeschäden jeglicher Art, einschließlich, aber nicht beschränkt auf entgangene Gewinne, entgangene Einnahmen, entgangene Einsparungen, Datenverlust, Ersatzkosten oder ähnliche Schäden, ob auf Vertrag, unerlaubter Handlung (einschließlich Fahrlässigkeit), verschuldensunabhängiger Haftung oder anderweitig beruhend, die sich aus Ihrer Nutzung eines der Dienste oder eines über den Dienst erworbenen Produkts ergeben, oder für andere Ansprüche, die in irgendeiner Weise mit Ihrer Nutzung des Dienstes oder eines Produkts zusammenhängen, einschließlich, aber nicht beschränkt auf Fehler oder Auslassungen in Inhalten oder Verluste oder Schäden jeglicher Art, die durch die Nutzung des Dienstes oder von Inhalten (oder Produkten) entstehen, die über den Dienst veröffentlicht, übertragen oder anderweitig verfügbar gemacht wurden, selbst wenn auf die Möglichkeit hingewiesen wurde. Da einige Staaten oder Gerichtsbarkeiten den Ausschluss oder die Beschränkung der Haftung für Folge- oder Nebenschäden nicht zulassen, ist unsere Haftung in solchen Staaten oder Gerichtsbarkeiten auf das gesetzlich zulässige Höchstmaß beschränkt."
+      },
+      "section15": {
+        "title": "Abschnitt 15 - Schadensersatz",
+        "text": "Sie erklären sich damit einverstanden, Enouza und unsere Muttergesellschaft, Tochtergesellschaften, verbundenen Unternehmen, Partner, leitenden Angestellten, Direktoren, Vertreter, Auftragnehmer, Lizenzgeber, Dienstleister, Unterauftragnehmer, Lieferanten, Praktikanten und Mitarbeiter von allen Ansprüchen oder Forderungen, einschließlich angemessener Anwaltskosten, freizustellen, zu verteidigen und schadlos zu halten, die von Dritten aufgrund oder infolge Ihres Verstoßes gegen diese Nutzungsbedingungen oder der darin durch Verweis einbezogenen Dokumente oder Ihrer Verletzung von Gesetzen oder Rechten Dritter geltend gemacht werden."
+      },
+      "section16": {
+        "title": "Abschnitt 16 - Salvatorische Klausel",
+        "text": "Für den Fall, dass eine Bestimmung dieser Nutzungsbedingungen als rechtswidrig, nichtig oder undurchsetzbar befunden wird, bleibt diese Bestimmung dennoch im größtmöglichen nach geltendem Recht zulässigen Umfang durchsetzbar, und der undurchsetzbare Teil gilt als von diesen Nutzungsbedingungen abgetrennt; diese Feststellung berührt nicht die Gültigkeit und Durchsetzbarkeit der übrigen Bestimmungen."
+      },
+      "section17": {
+        "title": "Abschnitt 17 - Kündigung",
+        "text": "Die vor dem Kündigungsdatum entstandenen Verpflichtungen und Haftungen der Parteien überleben die Kündigung dieser Vereinbarung für alle Zwecke. Diese Nutzungsbedingungen gelten, es sei denn und bis sie von Ihnen oder uns gekündigt werden. Sie können diese Nutzungsbedingungen jederzeit kündigen, indem Sie uns mitteilen, dass Sie unsere Dienste nicht mehr nutzen möchten, oder wenn Sie die Nutzung unserer Website einstellen. Wenn Sie nach unserem alleinigen Urteil eine Bedingung oder Bestimmung dieser Nutzungsbedingungen nicht einhalten oder wir den Verdacht haben, dass Sie dies nicht tun, können wir diese Vereinbarung auch jederzeit ohne Vorankündigung kündigen, und Sie bleiben für alle bis einschließlich des Kündigungsdatums fälligen Beträge haftbar; und/oder können Ihnen entsprechend den Zugang zu unseren Diensten (oder einem Teil davon) verweigern."
+      },
+      "section18": {
+        "title": "Abschnitt 18 - Gesamte Vereinbarung",
+        "text": "Die Tatsache, dass wir ein Recht oder eine Bestimmung dieser Nutzungsbedingungen nicht ausüben oder durchsetzen, stellt keinen Verzicht auf dieses Recht oder diese Bestimmung dar. Diese Nutzungsbedingungen und alle von uns auf dieser Website oder in Bezug auf den Dienst veröffentlichten Richtlinien oder Betriebsregeln stellen die gesamte Vereinbarung und das gesamte Verständnis zwischen Ihnen und uns dar und regeln Ihre Nutzung des Dienstes und ersetzen alle vorherigen oder gleichzeitigen Vereinbarungen, Mitteilungen und Vorschläge, ob mündlich oder schriftlich, zwischen Ihnen und uns (einschließlich, aber nicht beschränkt auf frühere Versionen der Nutzungsbedingungen). Unklarheiten bei der Auslegung dieser Nutzungsbedingungen werden nicht gegen die verfassende Partei ausgelegt."
+      },
+      "section19": {
+        "title": "Abschnitt 19 - Geltendes Recht",
+        "text": "Diese Nutzungsbedingungen und alle separaten Vereinbarungen, durch die wir Ihnen Dienste bereitstellen, unterliegen den Gesetzen der Vereinigten Staaten und werden in Übereinstimmung mit diesen ausgelegt."
+      },
+      "section20": {
+        "title": "Abschnitt 20 - Änderungen der Nutzungsbedingungen",
+        "text": "Sie können die aktuellste Version der Nutzungsbedingungen jederzeit auf dieser Seite einsehen. Wir behalten uns das Recht vor, nach unserem alleinigen Ermessen jeden Teil dieser Nutzungsbedingungen zu aktualisieren, zu ändern oder zu ersetzen, indem wir Updates und Änderungen auf unserer Website veröffentlichen. Es liegt in Ihrer Verantwortung, unsere Website regelmäßig auf Änderungen zu überprüfen."
+      },
+      "section21": {
+        "title": "Abschnitt 21 - Kontaktinformationen",
+        "text": "Fragen zu den Nutzungsbedingungen sollten an uns unter hello@enouza.com gesendet werden."
+      }
+    }
+  }
+}

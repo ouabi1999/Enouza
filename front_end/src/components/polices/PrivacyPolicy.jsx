@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import SEO from "../../components/SEO/SEO";
 function PrivacyPolicy() {
-  const { t, i18n } = useTranslation("privacy");
+  const { t, i18n } = useTranslation();
 
   useLayoutEffect(() => {
     window.scrollTo({

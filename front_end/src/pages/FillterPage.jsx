@@ -144,7 +144,7 @@ export default function FilterPageStyled() {
   };
 
   return (
-    <Page dir={i18n.dir()}>
+    <Page>
       <SEO
         title="Lamps and Home Lighting Collection | Enouza"
         description="Explore Enouza's curated collection of luxury lamps and premium home lighting, including elegant table lamps, wall lamps, and statement lighting."
@@ -161,19 +161,17 @@ export default function FilterPageStyled() {
         initial="hidden"
         animate="visible"
       >
-        <Eyebrow>{t("filterPage.collection")}</Eyebrow>
 
         <CollectionTitle>
           {t("filterPage.discover")}
         </CollectionTitle>
 
-        <HeaderLine />
-
+    <bdi>
         <CollectionDescription>
           {t("filterPage.collection_description")}
         </CollectionDescription>
+  </bdi>
       </CollectionHeader>
-
       {/* =====================================================
           SORT CONTROLS
       ===================================================== */}
@@ -186,8 +184,9 @@ export default function FilterPageStyled() {
       >
         <ControlsInner>
           <SortWrapper>
+            <bdi>
             <SortLabel>{t("common.sortBy")}</SortLabel>
-
+              </bdi>
             <SortBarContainer>
               <SortButton
                 type="button"
@@ -288,10 +287,11 @@ export default function FilterPageStyled() {
         ) : (
           <EmptyState>
             <EmptyLogo>ENOUZA</EmptyLogo>
-
+<bdi>
             <EmptyTitle>
               {t("filterPage.search_did_not_match")}
             </EmptyTitle>
+            </bdi>
 
             <EmptyLine />
           </EmptyState>
@@ -489,7 +489,7 @@ const CollectionDescription = styled.p`
   color: rgba(255, 250, 242, 0.94);
 
   font-family: Arial, sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
 
   line-height: 1.8;

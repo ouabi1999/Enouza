@@ -5,7 +5,7 @@ import data from "../../../common/countryData.json";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { setLocation } from "../../features/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import { CURRENCY_CONFIG } from "../../utilis/currencyUtils";
 import { useTranslation } from "react-i18next";
 
 import Flag from "react-world-flags";
@@ -17,7 +17,7 @@ import {
 } from "../../features/currencySlice";
 
 import { setLanguage } from "../../features/LanguagesSlice";
-
+import { COUNTRY_LANGUAGE_MAP } from "../../utilis/countryLanguagesAutoDetected";
 function DropDownMenuLang(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -52,6 +52,18 @@ function DropDownMenuLang(props) {
       label: t("languages.es"),
     },
     {
+      code: "fr",
+      label: t("languages.fr"),
+    },
+    {
+      code: "de",
+      label: t("languages.de"),
+    },
+    {
+      code: "sv",
+      label: t("languages.sv"),
+    },
+    {
       code: "ar",
       label: t("languages.ar"),
     },
@@ -68,81 +80,12 @@ function DropDownMenuLang(props) {
     GB: "GBP",
     AE: "AED",
     SA: "SAR",
-    MA: "MAD",
+
   };
 
-  /* ============================================================
-     COUNTRY → LANGUAGE
 
-     We only use languages that actually exist in the app:
-     en / es / ar
-  ============================================================ */
 
-  const COUNTRY_LANGUAGE_MAP = {
-    /* Spanish */
-    ES: "es",
-    MX: "es",
-    AR: "es",
-    CL: "es",
-    CO: "es",
-    PE: "es",
-    VE: "es",
-    UY: "es",
-    EC: "es",
-    BO: "es",
-    PY: "es",
-    CR: "es",
-    PA: "es",
-    DO: "es",
-    GT: "es",
-    HN: "es",
-    NI: "es",
-    SV: "es",
 
-    /* Arabic */
-    MA: "ar",
-    DZ: "ar",
-    TN: "ar",
-    LY: "ar",
-    EG: "ar",
-    SA: "ar",
-    AE: "ar",
-    QA: "ar",
-    KW: "ar",
-    BH: "ar",
-    OM: "ar",
-    JO: "ar",
-    LB: "ar",
-    IQ: "ar",
-    YE: "ar",
-    PS: "ar",
-    SY: "ar",
-    SD: "ar",
-
-    /* English */
-    US: "en",
-    GB: "en",
-    CA: "en",
-    AU: "en",
-    NZ: "en",
-    IE: "en",
-    DE: "en",
-    FR: "en",
-    IT: "en",
-    PT: "en",
-    NL: "en",
-    BE: "en",
-    CH: "en",
-    AT: "en",
-    SE: "en",
-    NO: "en",
-    DK: "en",
-    FI: "en",
-    JP: "en",
-    KR: "en",
-    IN: "en",
-    SG: "en",
-  };
 
   /* ============================================================
      HELPERS
@@ -572,39 +515,14 @@ function DropDownMenuLang(props) {
 
                 <SelectBox>
                   <select
-                    value={
-                      selectedCurrency || "USD"
-                    }
+                    value={selectedCurrency || "USD"}
                     onChange={handleCurrencyChange}
                   >
-                    <option value="USD">
-                      USD — US Dollar
-                    </option>
-
-                    <option value="CAD">
-                      CAD — Canadian Dollar
-                    </option>
-
-                    <option value="EUR">
-                      EUR — Euro
-                    </option>
-
-                    <option value="GBP">
-                      GBP — British Pound
-                    </option>
-
-                    <option value="AED">
-                      AED — UAE Dirham
-                    </option>
-
-                    <option value="SAR">
-                      SAR — Saudi Riyal
-                    </option>
-
-                   
-
-
-
+                    {Object.entries(CURRENCY_CONFIG).map(([code, cfg]) => (
+                      <option key={code} value={code}>
+                        {code} — {t(`currencies.${code}`)}
+                      </option>
+                    ))}
                   </select>
 
                   <SelectArrow>

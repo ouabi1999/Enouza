@@ -7,8 +7,8 @@ import SEO from "../../SEO/SEO"
 function FAQ() {
   const { t: globalT, i18n } = useTranslation();
 
-  const { t: shippingT } = useTranslation("shippingFaq");
-  const { t: returnT } = useTranslation("returnFaq");
+  const { t: shippingT } = useTranslation();
+  const { t: returnT } = useTranslation();
 
   const [activeShipping, setActiveShipping] = useState(null);
   const [activeReturn, setActiveReturn] = useState(null);

@@ -11,13 +11,14 @@ import { useTranslation } from "react-i18next";
 import data from "../../../common/countryData.json";
 
 import { setLocation } from "../../features/locationSlice";
+import { CURRENCY_CONFIG } from "../../utilis/currencyUtils";
 
 import {
   setCurrency,
   setCurrencyAutomatically,
 } from "../../features/currencySlice";
 import { setLanguage } from "../../features/LanguagesSlice";
-
+import { COUNTRY_LANGUAGE_MAP } from "../../utilis/countryLanguagesAutoDetected";
 // ============================================================
 // ENOUZA FOOTER PREFERENCES
 // ============================================================
@@ -59,33 +60,33 @@ function FooterPreferences() {
   // ==========================================================
 
   const languages = [
-    {
-      code: "en",
-      label: t("languages.en"),
-    },
-    {
-      code: "es",
-      label: t("languages.es"),
-    },
-    {
-      code: "ar",
-      label: t("languages.ar"),
-    },
-  ];
+  {
+    code: "en",
+    label: t("languages.en"),
+  },
+  {
+    code: "es",
+    label: t("languages.es"),
+  },
+  {
+    code: "fr",
+    label: t("languages.fr"),
+  },
+  {
+    code: "de",
+    label: t("languages.de"),
+  },
+  {
+    code: "sv",
+    label: t("languages.sv"),
+  },
+  {
+    code: "ar",
+    label: t("languages.ar"),
+  },
+];
 
-  // ==========================================================
-  // COUNTRY → CURRENCY
-  // ==========================================================
-
-  const COUNTRY_CURRENCY_MAP = {
-    US: "USD",
-    CA: "CAD", // Canada 🇨🇦
-    ES: "EUR",
-    GB: "GBP",
-    AE: "AED",
-    SA: "SAR",
-    MA: "MAD",
-  };
+  
 
   // ==========================================================
   // LANGUAGE
@@ -354,37 +355,16 @@ function FooterPreferences() {
                 </FieldHeader>
 
                 <SelectWrapper>
-                  <select
-                    value={selectedCurrency}
-                    onChange={
-                      handleCurrencyChange
-                    }
-                  >
-                    <option value="USD">
-                      USD — US Dollar
-                    </option>
-
-                    <option value="CAD">
-                      CAD — Canadian Dollar
-                    </option>
-
-                    <option value="EUR">
-                      EUR — Euro
-                    </option>
-
-                    <option value="GBP">
-                      GBP — British Pound
-                    </option>
-
-                    <option value="AED">
-                      AED — UAE Dirham
-                    </option>
-
-                    <option value="SAR">
-                      SAR — Saudi Riyal
-                    </option>
-
-                  </select>
+                 <select
+                                     value={selectedCurrency || "USD"}
+                                     onChange={handleCurrencyChange}
+                                   >
+                                     {Object.entries(CURRENCY_CONFIG).map(([code, cfg]) => (
+                                       <option key={code} value={code}>
+                                         {code} — {t(`currencies.${code}`)}
+                                       </option>
+                                     ))}
+                                   </select>
                 </SelectWrapper>
               </Field>
 

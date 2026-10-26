@@ -3,9 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import SEO from "../../components/SEO/SEO.jsx";
 function RefundPolicy() {
-  const { t, i18n } = useTranslation("refund", {
-    returnObjects: true,
-  });
+  const { t, i18n } = useTranslation();
 
   useLayoutEffect(() => {
     window.scrollTo({

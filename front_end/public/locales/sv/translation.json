@@ -1,0 +1,1727 @@
+{
+  "header": {},
+
+  "countdownSection": {
+    "specialOffer": "Specialerbjudande",
+    "offerEndsIn": "ERBJUDANDET SLUTAR OM",
+    "days": "Dagar",
+    "hours": "Timmar",
+    "minutes": "Minuter",
+    "seconds": "Sekunder",
+    "offerExpired": "Erbjudandet har avslutats",
+    "limitedTimeOffer": "Tidsbegränsat Erbjudande",
+    "description": "Njut av detta exklusiva erbjudande innan tiden rinner ut.",
+    "shopNow": "Handla Nu",
+    "ariaLabel": "Återstående tid för detta specialerbjudande"
+  },
+
+  "menu": {
+    "login": "Logga In",
+    "searchPlaceholder": "Sök...",
+    "cart": "Varukorg",
+    "wishlist": "Önskelista",
+    "profile": "Profil",
+    "logout": "Logga Ut",
+    "dashboard": "Instrumentpanel",
+    "adminDashboard": "Admin",
+    "userDashboard": "Min Instrumentpanel",
+    "home": "Hem",
+    "contactUs": "Kontakt",
+    "aboutUs": "Om Oss",
+    "privacyPolicy": "Integritet",
+    "termsOfService": "Villkor",
+    "refundPolicy": "Återbetalningar",
+    "shippingPolicy": "Frakt",
+    "helpCenter": "Hjälp",
+    "myOrders": "Mina Beställningar",
+    "notifications": "Aviseringar",
+    "shoppingCart": "Varukorg",
+    "checkout": "Till Kassa",
+    "orderSuccess": "Beställning Lagd"
+  },
+
+  "shoppingCart": {
+    "freeExpressTo": "Fri Expressfrakt till"
+  },
+
+  "homePage": {
+    "homeInsperation": "Utrymmen som Inspirerar",
+    "new": "Ny",
+    "welcomeMessage": "Välkommen till vår butik",
+    "featuredProducts": "Utvalda",
+    "mayAlsoLike": "Du Kanske Också Gillar",
+    "newArrival": "Nyheter",
+    "bestSellers": "Bästsäljare",
+    "specialOffers": "Erbjudanden",
+    "buyerTrustServices": "Våra Tjänster",
+    "freeShipping_offer": "Fri frakt över 50$",
+    "support_24_7": "24/7 Hjälp",
+    "money_Back": "Pengarna Tillbaka",
+    "secure_Payment": "Säker Betalning",
+    "easy_Returns": "Enkla Returer",
+    "safe_reliable_payments": "Säkra Betalningar",
+    "More_to_love": "Mer att Älska",
+    "more_products": "Fler Produkter",
+    "best_sellers": "Bästsäljare"
+  },
+  "mainSlider": {
+    "title": "Belysning, Kurerad på ett Annat Sätt.",
+    "description": "En genomtänkt kollektion av skulptural belysning, skapad för att förvandla atmosfären i varje rum.",
+    "welcome": "Välkommen till ENOUZA."
+  },
+  "productPage": {
+    "addToCart": "Lägg i Varukorg",
+    "buyNow": "Köp Nu",
+    "productDescription": "Detaljer",
+    "customerReviews": "Recensioner",
+    "ratings": "Betyg",
+    "specifications": "Specifikationer",
+    "relatedProducts": "Du Kanske Gillar",
+    "stockAvailability": "Lager",
+    "quantity": "Antal",
+    "outOfStock": "Slutsåld",
+    "inStock": "I Lager",
+    "soldOut": "Utsåld"
+  },
+  "purchaseOptions": {
+    "business_days": "Vardagar",
+    "Ship_to": "Leverera till",
+    "Language": "Språk",
+    "Currency": "Valuta",
+    "Help_Center": "Hjälp",
+    "Sell_on_OurPlatform": "Sälj hos Oss",
+    "Download_Our_App": "Ladda Ner Vår App",
+    "Follow_Us": "Följ Oss",
+    "Contact_Us": "Kontakt",
+    "free_Shipping": "Fri Frakt",
+    "available": "Tillgänglig",
+    "Delivrey": "Leverans",
+    "Quantity": "Antal",
+    "max-order-warning": "Maximal ordergräns nådd",
+    "available_shipping_methods": "Fraktmetoder",
+    "item_has_been_added": "Artikel tillagd i varukorgen",
+    "item_already_in_cart": "Artikeln finns redan i varukorgen",
+    "item_has_been_removed": "Artikel borttagen från varukorgen",
+    "days": "Dagar",
+    "Security_&_Privacy": {
+      "header": "Integritet",
+      "text": "Vi delar inte dina personuppgifter med tredje part utan ditt samtycke. Vi skyddar din integritet och håller dina personuppgifter säkra."
+    }
+  },
+
+  "heroSection": {
+    "title": "Ljus, Skapat för att Höra Hemma",
+    "description": "Omsorgsfullt utvald belysning som ger djup, värme och karaktär åt de utrymmen du kallar hem.",
+    "ctaLabel": "Utforska Kollektionen",
+    "detailDesign": "Där Detalj Möter Design",
+    "curated": "KURERAD",
+    "curated_description": "Omsorgsfullt utvald för genomtänkta utrymmen.",
+
+    "refined": "FÖRFINAD",
+    "refined_description": "Eleganta former, förfinade till det väsentliga.",
+
+    "atmospheric": "ATMOSFÄRISK",
+    "atmospheric_description": "Ljus designat för att forma stämningen.",
+
+    "distinctive": "SÄRPRÄGLAD",
+    "distinctive_description": "Delar med karaktär bortom det vanliga.",
+    "stats": {
+      "rated": {
+        "value": "4.9★",
+        "label": "Betygsatt av Kunder"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Kundnöjdhet"
+      },
+      "reviews": {
+        "value": "100+",
+        "label": "Verifierade Recensioner"
+      }
+    }
+  },
+
+  "ctaSection": {
+    "eyebrow": "ENOUZA KUNDSERVICE",
+    "titleLeft": "Vi är här för att hjälpa.",
+    "description": "Har du en fråga om en produkt, din beställning eller leverans? Vårt kundserviceteam är här för att hjälpa dig.",
+    "button": "Kontakta Oss",
+    "supportEyebrow": "KUNDSUPPORT",
+    "titleRight": "Lite hjälp, när du behöver det.",
+    "supportDescription": "För frågor om din beställning eller vår kollektion, kontakta oss och vårt team hjälper dig gärna.",
+    "contact": {
+      "email": {
+        "title": "E-post",
+        "description": "För allmänna frågor och förfrågningar."
+      },
+      "support": {
+        "title": "Kundservice Online",
+        "details": "Kundsupport",
+        "description": "Vi är här för att hjälpa dig med din shoppingupplevelse."
+      }
+    }
+  },
+
+  "matricsSection": {
+    "why_us": "ENOUZA-SKILLNADEN",
+    "title": "Varje del, omsorgsfullt utvald.",
+    "description": "Varje ENOUZA-del är utvald för sin form, sina material och sin förmåga att ge värme och karaktär åt de utrymmen vi lever i."
+  },
+  "inspirationPage": {
+    "hero": {
+      "catlabel": "ENOUZA-JOURNALEN",
+      "title": "En värld av vackert ljus.",
+      "description": "Upptäck interiörer, belysningsidéer och stilla stunder som inspirerar hur vi lever."
+    },
+
+    "intro": {
+      "catlabel": "HITTA DIN INSPIRATION",
+      "title": "Utrymmen formade av ljus.",
+      "description": "Rätt ljus kan förändra känslan i ett rum. Utforska vår kollektion av interiörer och upptäck genomtänkta sätt att föra in värme, atmosfär och karaktär i ditt hem."
+    },
+
+    "spaces": {
+      "catlabel": "UTFORSKA EFTER UTRYMME",
+      "title": "Ljus för varje rum.",
+      "items": {
+        "livingRoom": {
+          "title": "Vardagsrum",
+          "description": "Skapa en varm och inbjudande atmosfär med belysning designad för vardagslivet."
+        },
+        "diningRoom": {
+          "title": "Matsalar",
+          "description": "Sätt stämningen med genomtänkt belysning över bordet och i hela rummet."
+        },
+        "bedroom": {
+          "title": "Sovrum",
+          "description": "Mjuk, intim belysning designad för att få sovrummet att kännas lugnt och obesvärat."
+        }
+      }
+    },
+
+    "explore": "Utforska",
+
+    "statement": {
+      "catlabel": "LJUSETS KONST",
+      "title": "Ljuset är det som ger ett utrymme dess känsla.",
+      "description": "Från ett tyst hörn till ett rum gjort för att samlas i, formar belysningen hur vi upplever utrymmena omkring oss."
+    },
+
+    "ideas": {
+      "catlabel": "BELYSNINGSIDEER",
+      "title": "Sätt att belysa vackert.",
+      "items": {
+        "ambientLighting": {
+          "title": "Omgivningsbelysning",
+          "description": "Skapa en mjuk grund av ljus som får ett rum att kännas varmt, balanserat och välkomnande."
+        },
+        "statementLighting": {
+          "title": "Statement-belysning",
+          "description": "Låt en särpräglad armatur bli en del av rummets arkitektur och karaktär."
+        },
+        "layeredLighting": {
+          "title": "Skiktad Belysning",
+          "description": "Kombinera olika ljuskällor för att skapa djup, atmosfär och flexibilitet."
+        }
+      }
+    },
+
+    "editorial": {
+      "catlabel": "ENOUZA EDITORIAL",
+      "title": "Designad för stunderna som betyder något.",
+      "description": "Utforska belysning som ger värme och karaktär åt de vardagliga utrymmen vi kallar hem.",
+      "link": "Handla Belysning"
+    },
+
+    "newsletter": {
+      "catlabel": "HÅLL DIG INSPIRERAD",
+      "title": "Ta med mer skönhet hem.",
+      "description": "Upptäck ny belysning, interiörer och inspiration från Enouza.",
+      "button": "Gå Med i Enouza"
+    }
+  },
+
+  "designSection": {
+    "title": "Ljusets Konst",
+    "catlabel": "UPPTÄCK VARUMÄRKET",
+    "principles": {
+      "minimalism": {
+        "title": "Stilla Genomtänkt",
+        "description": "Rena linjer, balanserade proportioner och återhållsamma silhuetter låter varje del naturligt höra hemma i sin omgivning."
+      },
+      "materials": {
+        "title": "Utvald för Karaktär",
+        "description": "Marmor, glas, metall och tyg väljs för den karaktär och det djup de ger åt ett utrymme."
+      },
+      "ambient": {
+        "title": "Ljus med Atmosfär",
+        "description": "Vi ser ljuset som en del av interiören — ett sätt att mjuka upp ett rum, skapa djup och forma hur ett utrymme känns."
+      }
+    }
+  },
+
+  "collectionSection": {
+    "title": "Upptäck Vår Kollektion.",
+    "catlabel": "UTFORSKA",
+
+    "categories": {
+      "table_lamps": {
+        "title": "Bordslampor",
+        "description": "Skulptural belysning som ger värme, atmosfär och diskret elegans åt din interiör."
+      },
+      "floor_lamps": {
+        "title": "Golvlampor",
+        "description": "Statement-belysning som kombinerar förfinad design med omgivningsbelysning för att lyfta ditt vardagsrum."
+      },
+      "wall_lamps": {
+        "title": "Vägglampor",
+        "description": "Elegant belysning designad för att ge djup, värme och karaktär åt dina väggar."
+      },
+      "pendant_lights": {
+        "title": "Hänglampor",
+        "description": "Särpräglade delar designade för att skapa en förfinad fokalpunkt över matbord, köksöar och vardagsrum."
+      },
+      "ceiling_lights": {
+        "title": "Taklampor",
+        "description": "Förfinad takbelysning skapad för att forma atmosfären och fullända karaktären i ett rum."
+      },
+      "bedside_lamps": {
+        "title": "Sänglampor",
+        "description": "Mjuk, inbjudande belysning designad för att ge komfort och stilla sofistikering vid din säng."
+      },
+      "desk_office_lamps": {
+        "title": "Skrivbords- & Kontorslampor",
+        "description": "Genomtänkt designad arbetsbelysning som balanserar vardaglig funktionalitet med en polerad, samtida estetik."
+      },
+      "outdoor_lighting": {
+        "title": "Utomhusbelysning",
+        "description": "Vackert utformad belysning som ger värme, elegans och atmosfär åt utomhusutrymmen."
+      },
+      "mirrors": {
+        "title": "Speglar",
+        "description": "Eleganta speglar som förstärker naturligt ljus, skapar en känsla av rymd och ger en förfinad sista touch åt din interiör."
+      }
+    }
+  },
+
+  "customersFeedback": {
+    "eyebrow": "ENOUZA-UPPLEVELSEN",
+    "title": "Älskad av husägare världen över.",
+    "description": "Riktiga hem. Riktiga upplevelser.",
+    "ratingText": "Baserat på kundrecensioner",
+    "verifiedPurchase": "Verifierat Köp",
+
+    "back": "Tillbaka",
+    "review": "recension",
+    "reviews": "recensioner",
+    "noReviews": "Inga recensioner än",
+    "noReviewsDescription": "Det finns för närvarande inga kundrecensioner att visa.",
+    "previousPage": "Föregående sida",
+    "nextPage": "Nästa sida",
+    "viewAllReviews": "Visa Alla Recensioner"
+  },
+
+  "filterPage": {
+    "category": "Kategori",
+    "brand": "Varumärke",
+    "priceRange": "Prisintervall",
+    "rating": "Betyg",
+    "applyFilters": "Tillämpa Filter",
+    "clearFilters": "Rensa Filter",
+    "search_did_not_match": "Tyvärr, din sökning matchade inga produkter.",
+    "collection_description": "Upptäck förfinad belysning designad för att ge värme, karaktär och tidlös elegans åt varje utrymme.",
+    "collection": "ENOUZA-KOLLEKTIONEN",
+    "discover": "UPPTÄCK"
+  },
+  "customer_reviews": {
+    "title": "Kundrecensioner",
+    "verified_purchase": "Verifierat Köp",
+    "no_reviews": "Inga recensioner än",
+    "image_unavailable": "Bild ej tillgänglig",
+    "customer": "Kund",
+    "review_image": "Recensionsbild",
+    "previous_image": "Föregående bild",
+    "next_image": "Nästa bild",
+    "close": "Stäng",
+    "view_image": "Visa bild",
+    "rating": "Betyg",
+    "reviews": "Recensioner",
+    "enouza_review": "ENOUZA-RECENSION",
+    "description": "Produktbeskrivning",
+    "customer_rating": "Kundbetyg",
+    "customer_reviews": "Kundrecensioner",
+    "customer_review": "Kundrecension"
+  },
+  "productInfo": {
+    "product_details": "Produktdetaljer",
+
+    "view_full_image": "VISA HELA BILDEN",
+    "purchase_information": "Köpinformation",
+    "secure_purchase_premium_quality": "Säkert köp & premiumkvalitet",
+    "save": "spara",
+    "Emitting Color": "Ljusfärg",
+    "Lampshade Color": "Lampskärmsfärg",
+    "Body Color": "Kroppsfärg",
+    "Color": "Färg",
+    "Color Name": "Färg",
+    "Colour": "Färg",
+    "Color Classification": "Färgklassificering",
+    "Size": "Storlek",
+    "Sizes": "Storlekar",
+    "Item Length": "Artikelns Längd",
+    "Item Width": "Artikelns Bredd",
+    "Item Height": "Artikelns Höjd",
+    "Dimensions": "Mått",
+    "Is Customized": "Anpassad",
+    "Sd Card Memory": "SD-kortsminne",
+    "Color Temperature": "Färgtemperatur",
+    "Memory": "Minne",
+    "Memory Size": "Minnesstorlek",
+    "Storage": "Lagring",
+    "Internal Storage": "Internt Minne",
+    "ROM": "ROM",
+    "RAM": "RAM",
+    "Capacity": "Kapacitet",
+    "Plug Type": "Kontakttyp",
+    "Power Plug": "Strömkontakt",
+    "Socket Type": "Sockeltyp",
+    "Power Specification": "Effektspecifikation",
+    "Voltage": "Spänning",
+    "Wattage": "Wattal",
+    "Ships From": "Skickas Från",
+    "Ship From": "Skickas Från",
+    "Warehouse": "Lager",
+    "Origin": "Ursprung",
+    "Bundle": "Paket",
+    "Sale by Pack": "Försäljning per Paket",
+    "Pack": "Paket",
+    "Set": "Set",
+    "Package": "Paket",
+    "Quantity": "Antal",
+    "Model": "Modell",
+    "Compatible Model": "Kompatibel Modell",
+    "Version": "Version",
+    "Edition": "Utgåva",
+    "Variant": "Variant",
+    "Material": "Material",
+    "Fabric": "Tyg",
+    "Fit": "Passform",
+    "Pattern": "Mönster",
+    "Sleeve Length": "Ärmlängd",
+    "Frequency": "Frekvens",
+    "Resolution": "Upplösning",
+    "Interface": "Gränssnitt",
+    "Speed": "Hastighet",
+    "Power": "Effekt",
+    "description": "Beskrivning",
+    "specifications": "Specifikationer",
+    "reviews": "Recensioner",
+    "CostumerReviews": "Kundrecensioner",
+    "noReviews": "Inga recensioner än",
+    "writeReview": "Skriv en Recension",
+    "submitReview": "Skicka Recension",
+    "rating": "Betyg",
+    "comment": "Kommentar",
+    "reviewSubmitted": "Recension skickad",
+    "reviewPending": "Din recension väntar på godkännande",
+    "size": "Storlek",
+    "color": "Färg",
+    "material": "Material",
+    "brand": "Varumärke",
+    "model": "Modell",
+    "order": "Beställning",
+    "all_from_verified_purchases": "Alla från verifierade köp",
+    "star": "stjärna",
+    "stars": "stjärnor",
+    "one_star": "stjärna",
+    "two_stars": "stjärnor",
+    "give_us_your_feedback": "Ge oss din feedback",
+    "led_ambient_lighting": "Omgivningsbelysning",
+    "phone_mounts_holders": "Telefonhållare",
+    "organizers_storage": "Organizers & Förvaring",
+    "comfort_accessories": "Komfort & Tillbehör",
+    "air_fresheners_scents": "Luftfräschare",
+    "table_lamps": "Bordslampor",
+    "floor_lamps": "Golvlampor",
+    "wall_lamps": "Vägglampor",
+    "pendant_lights": "Hänglampor",
+    "ceiling_lights": "Taklampor",
+    "bedside_lamps": "Sänglampor",
+    "desk_office_lamps": "Skrivbords- & Kontorslampor",
+    "outdoor_lighting": "Utomhusbelysning"
+  },
+  "buyerTrustServices": {
+    "freeShipping": {
+      "title": "Fri Frakt",
+      "description": "På beställningar över 50$"
+    },
+    "support24_7": {
+      "title": "Support 24/7",
+      "description": "Vi är här för att hjälpa"
+    },
+    "moneyBack": {
+      "title": "Pengarna Tillbaka",
+      "description": "30-dagars garanti"
+    },
+    "safe_Payment": {
+      "title": "Säker Betalning",
+      "description": "Betala med världens mest populära och säkra betalningsmetoder."
+    },
+    "easyReturns": {
+      "title": "Enkla Returer",
+      "description": "Problemfria returer"
+    },
+    "help_center": {
+      "title": "Hjälpcenter",
+      "description": "Support dygnet runt för en smidig shoppingupplevelse."
+    },
+    "worldwide_shipping": {
+      "title": "Världsomspännande Frakt",
+      "description": "Snabb och pålitlig leverans till din dörr, var som helst i världen."
+    },
+    "Shop_with_confidence": {
+      "title": "Handla med Förtroende",
+      "description": "Din tillfredsställelse är vår prioritet. Njut av säker shopping och enkla returer."
+    }
+  },
+
+  "profile": {
+    "my_profile": "Min Profil",
+    "enouza_faq": "Vanliga Frågor",
+    "edit_your_name": "Redigera Namn",
+    "edit_your_email": "Redigera E-post",
+    "edit_your_profile": "Redigera Profil",
+    "change_your_password": "Byt Lösenord",
+    "edit_your_gender": "Redigera Kön",
+    "edit_your_birthdate": "Redigera Födelsedatum",
+    "update_your_address": "Uppdatera Adress",
+    "manage_your_orders": "Hantera Beställningar",
+    "view_your_wishlist": "Visa Önskelista",
+    "start_shopping": "Börja Handla",
+    "you_havent_placed_any_orders_yet": "Du har inte lagt några beställningar än",
+    "processing": "Bearbetas",
+    "order_take_between": "Beställningen kan ta mellan",
+    "tracking_number": "Spårningsnummer",
+    "not_available": "Ej tillgänglig",
+    "shippingMethod": "Fraktmetod",
+    "order_placed_on": "Beställning lagd den",
+    "order_id": "Order-ID",
+    "payment_method": "Betalningsmetod",
+    "Credit_Debit_card": "Kredit-/betalkort",
+    "subtotal": "Delsumma",
+    "shipping": "Frakt",
+    "total": "Totalt"
+  },
+  "footer": {
+    "brand": {
+      "description": "Omsorgsfullt utvalda delar designade för att ge värme, elegans och karaktär åt ditt utrymme."
+    },
+    "payment": { "secure": "Säkra betalningar" },
+    "followUs": {
+      "title": "Följ oss",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "tiktok": "TikTok"
+    },
+    "policies": {
+      "title": "Policyer",
+      "privacyPolicy": "Integritetspolicy",
+      "termsOfService": "Användarvillkor",
+      "refundPolicy": "Återbetalningspolicy",
+      "shippingPolicy": "Fraktpolicy"
+    },
+    "help": {
+      "enouza_faq_description": "Hitta svar på de frågor vi får oftast.",
+      "title": "Hjälp",
+      "faq": "Vanliga Frågor",
+      "contactUs": "Kontakta oss",
+      "aboutUs": "Om oss",
+      "shipping": "Frakt",
+      "returns": "Returer",
+      "contact_note": "Vi är här för att hjälpa dig. Hör av dig med frågor eller funderingar."
+    },
+    "newsletter": {
+      "title": "Nyhetsbrev",
+      "description": "Prenumerera för uppdateringar om nya produkter och erbjudanden",
+      "placeholder": "Ange din e-post",
+      "subscribeButton": "Prenumerera",
+      "successMessage": "Prenumeration lyckades",
+      "errorMessage": "Prenumeration misslyckades",
+      "copyright": "upphovsrätt",
+      "all_rights_reserved": "Alla rättigheter förbehållna.",
+      "eyebrow": "ENOUZA-KOLLEKTIONEN"
+    }
+  },
+  "policies": {
+    "title": "Policyer",
+    "privacyPolicy": {
+      "title": "Integritet"
+    },
+    "termsOfService": {
+      "title": "Villkor"
+    },
+    "refundPolicy": {
+      "title": "Återbetalningar"
+    },
+    "shippingPolicy": {
+      "title": "Frakt"
+    },
+    "aboutUs": {
+      "title": "Om Oss"
+    }
+  },
+
+  "trust": {
+    "secureCheckout": "Säker Kassa",
+
+    "freeShipping": {
+      "title": "Fri Frakt",
+      "text": "Fri frakt på alla beställningar"
+    },
+
+    "fastDelivery": {
+      "title": "Världsomspännande Leverans",
+      "text": "Internationell leverans inom 5–15 dagar"
+    },
+
+    "returns": {
+      "title": "100-Dagars Retur",
+      "text": "Enkla returer inom 100 dagar"
+    },
+
+    "warranty": {
+      "title": "3-Års Garanti",
+      "text": "Tillverkad för varaktig kvalitet"
+    },
+
+    "shopWithConfidence": "Handla med Förtroende"
+  },
+
+  "orderSuccess": {
+    "orderPlacedSuccessfully": "🎉 Beställning Framgångsrikt Lagd! 🎉",
+    "orderProcessingMessage": "Tack för att du handlar hos oss. Din beställning bearbetas.",
+    "backToHome": "Tillbaka till Hem"
+  },
+  "checkout": {
+    "loggedInContinue": "Ditt konto är redo. Fortsätt för att ange dina faktureringsuppgifter."
+  },
+
+  "aboutus": {
+    "seo": {
+      "title": "Om Enouza | Förfinad Belysning & Inredningsdesign",
+      "description": "Upptäck Enouza, ett kurerat belysningsvarumärke som tillför förfinade, särpräglade delar till genomtänkta interiörer."
+    },
+
+    "hero": {
+      "eyebrow": "UPPTÄCK ENOUZA",
+      "title": "Ljus, Skapat för att Höra Hemma.",
+      "description": "Förfinad belysning för varma, genomtänkta utrymmen."
+    },
+
+    "story": {
+      "eyebrow": "VÅR HISTORIA",
+      "title": "Belysning med en känsla för platsen.",
+      "lead": "Vi tror att belysning är mer än bara ljus.",
+      "text": "Det formar atmosfären i ett rum, drar uppmärksamhet till detaljerna som betyder något och förändrar hur ett utrymme känns.",
+      "text2": "Enouza skapades kring denna idé — att upptäcka och samla belysningsdelar som känns genomtänkta, särpräglade och naturligt hemma i sin omgivning."
+    },
+
+    "statement": {
+      "title": "Vi tror att rätt ljus förändrar allt.",
+      "description": "Ett stilla sken kan mjuka upp ett rum. En skulptural form kan bli en fokalpunkt. Rätt del kan helt enkelt få ett utrymme att kännas mer som ditt eget."
+    },
+
+    "approach": {
+      "eyebrow": "ENOUZA-ANSATSEN",
+      "title": "Designad med avsikt.",
+      "curated": {
+        "title": "Kurerad",
+        "description": "Omsorgsfullt utvald för genomtänkta utrymmen."
+      },
+      "refined": {
+        "title": "Förfinad",
+        "description": "Eleganta former, förfinade till det väsentliga."
+      },
+      "atmospheric": {
+        "title": "Atmosfärisk",
+        "description": "Ljus designat för att forma stämningen."
+      },
+      "distinctive": {
+        "title": "Särpräglad",
+        "description": "Delar med karaktär bortom det vanliga."
+      }
+    },
+
+    "selection": {
+      "eyebrow": "VAD SOM STYR VÅRT URVAL",
+      "title": "Utvald för mer än utseende.",
+      "form": {
+        "title": "Form",
+        "description": "Balanserade proportioner och särpräglade silhuetter som känns naturliga i en interiör."
+      },
+      "material": {
+        "title": "Material",
+        "description": "Marmor, glas, metall, tyg och ytbehandlingar valda för sin visuella och taktila karaktär."
+      },
+      "light": {
+        "title": "Ljus",
+        "description": "Belysning som skapar värme, djup och atmosfär snarare än att bara fylla ett rum."
+      }
+    },
+
+    "promise": {
+      "eyebrow": "ENOUZA-LÖFTET",
+      "title": "Omsorgsfullt utvald. Vackert presenterad.",
+      "description": "Vi väljer noggrant ut varje del vi tar till Enouza, med hänsyn till design, material, proportioner och atmosfären den skapar."
+    },
+
+    "final": {
+      "eyebrow": "KOLLEKTIONEN",
+      "title": "Hitta ljuset som hör hemma i ditt utrymme.",
+      "description": "Utforska Enouza-kollektionen och upptäck delar utvalda för att komplettera ditt sätt att leva.",
+      "cta": "Utforska Kollektionen"
+    }
+  },
+
+  "common": {
+    "phoneNumber": "Telefonnummer",
+    "selectShippingMethod": "Välj Fraktmetod",
+    "discoverCollection": "UPPTÄCK KOLLEKTION",
+    "payNow": "Betala Nu",
+    "days": "dagar",
+    "day": "dag",
+    "loading": "Laddar...",
+    "error": "Hoppsan! Något gick fel.",
+    "tryAgain": "Försök Igen",
+    "success": "Klart!",
+    "submit": "Skicka",
+    "cancel": "Avbryt",
+    "edit": "Redigera",
+    "delete": "Ta Bort",
+    "update": "Uppdatera",
+    "view": "Visa",
+    "free_shipping": "Fri Frakt",
+    "search": "Sök",
+    "filter": "Filtrera",
+    "sortBy": "Sortera efter:",
+    "view_more": "Visa Mer",
+    "discover": "Upptäck",
+    "bestMatch": "Bästa Matchning",
+    "resetFilters": "Återställ Filter",
+    "category": "Kategori",
+    "priceLowToHigh": "Pris: Lågt till Högt",
+    "priceHighToLow": "Pris: Högt till Lågt",
+    "newestFirst": "Nyast",
+    "oldestFirst": "Äldst",
+    "buyNow": "Köp Nu",
+    "addToCart": "Lägg i Varukorg",
+    "shopping_cart": "Varukorg",
+    "addToWishlist": "Lägg till i Önskelista",
+    "removeFromWishlist": "Ta bort från Önskelista",
+    "viewDetails": "Detaljer",
+    "checkout": "Till Kassa",
+    "placeOrder": "Lägg Beställning",
+    "orderSummary": "Sammanfattning",
+    "total": "Totalt",
+    "subtotal": "Delsumma",
+    "shipping": "Frakt",
+    "tax": "Skatt",
+    "grandTotal": "Totalsumma",
+    "continueShopping": "Fortsätt Handla",
+    "proceedToCheckout": "Till Kassa",
+    "noItemsInCart": "Din varukorg är tom",
+    "noItemsInWishlist": "Din önskelista är tom",
+    "viewCart": "Visa Varukorg",
+    "viewWishlist": "Visa Önskelista",
+    "myAccount": "Mitt Konto",
+    "logout": "Logga Ut",
+    "login": "Logga In",
+    "you_are_logged_in": "Du är inloggad",
+    "register": "Registrera",
+    "signin": "Logga In",
+    "payment": "Betalning",
+    "next": "Nästa",
+    "previous": "Föregående",
+    "confirm": "Bekräfta",
+    "yes": "Ja",
+    "no": "Nej",
+    "checkout_as_guest": "betala som gäst utan inloggning krävs.",
+    "saving_address": "Använd denna adress för betalningsuppgifter",
+    "saveChanges": "Spara Ändringar",
+    "email": "E-post",
+    "password": "Lösenord",
+    "confirmPassword": "Bekräfta Lösenord",
+    "firstName": "Förnamn",
+    "lastName": "Efternamn",
+    "address": "Adress",
+    "city": "Stad",
+    "state": "Län",
+    "zipCode": "Postnummer",
+    "country": "Land",
+    "phone": "Telefon",
+    "save": "Spara",
+    "reset": "Återställ",
+    "changePassword": "Byt Lösenord",
+    "oldPassword": "Gammalt Lösenord",
+    "newPassword": "Nytt Lösenord",
+    "confirmNewPassword": "Bekräfta Nytt Lösenord",
+    "dashboard": "Instrumentpanel",
+    "orders": "Beställningar",
+    "orderDetails": "Orderdetaljer",
+    "accountDetails": "Konto",
+    "editAccount": "Redigera Konto",
+    "myOrders": "Mina Beställningar",
+    "orderHistory": "Orderhistorik",
+    "trackOrder": "Spåra Beställning",
+    "orderStatus": "Status",
+    "pending": "Väntande",
+    "processing": "Bearbetas",
+    "shipped": "Skickad",
+    "delivered": "Levererad",
+    "cancelled": "Avbruten",
+    "returnRequested": "Retur Begärd",
+    "returned": "Returnerad",
+    "reviewProduct": "Recensera Produkt",
+    "writeAReview": "Skriv en Recension",
+    "rating": "Betyg",
+    "comment": "Kommentar",
+    "submitReview": "Skicka Recension",
+    "noReviewsYet": "Inga recensioner än",
+    "relatedProducts": "Du Kanske Gillar",
+    "continue": "Fortsätt",
+    "back": "Tillbaka",
+    "home": "Hem",
+    "shop": "Butik",
+    "categories": "Kategorier",
+    "allCategories": "Alla Kategorier",
+    "brands": "Varumärken",
+    "allBrands": "Alla Varumärken",
+    "price": "Pris",
+    "apply": "Tillämpa",
+    "clear": "Rensa",
+    "viewMore": "Mer",
+    "viewLess": "Mindre",
+    "noResultsFound": "Inga resultat",
+    "tryDifferentKeywords": "Prova en annan sökning",
+    "items": "Artiklar",
+    "item": "Artikel",
+    "of": "av",
+    "results": "Resultat",
+    "perPage": "Per Sida",
+    "page": "Sida",
+    "loadingMore": "Laddar...",
+    "noMoreItems": "Inga fler artiklar",
+    "welcome": "Välkommen",
+    "thankYou": "Tack",
+    "forVisiting": "för ditt besök",
+    "seeYouSoon": "Vi ses snart",
+    "contactSupport": "Kontakta Support",
+    "needHelp": "Behöver du hjälp?",
+    "faq": "Vanliga Frågor",
+    "terms": "Villkor",
+    "privacy": "Integritet",
+    "cookies": "Kakor",
+    "rightsReserved": "Alla rättigheter förbehållna",
+    "developedBy": "Skapad av",
+    "version": "Version",
+    "language": "Språk",
+    "currency": "Valuta",
+    "selectLanguage": "Välj Språk",
+    "selectCurrency": "Välj Valuta",
+    "darkMode": "Mörkt Läge",
+    "lightMode": "Ljust Läge",
+    "autoMode": "Autoläge",
+    "theme": "Tema",
+    "notifications": "Aviseringar",
+    "markAllAsRead": "Markera alla som lästa",
+    "viewAll": "Visa Alla",
+    "noNewNotifications": "Du har inga aviseringar!",
+    "NewNotifications": "Du har en ny avisering",
+    "new": "Ny",
+    "read": "Läst",
+    "unread": "Oläst",
+    "profile": "Profil",
+    "editProfile": "Redigera Profil",
+    "changeAvatar": "Byt Avatar",
+    "myWishlist": "Min Önskelista",
+    "myCart": "Min Varukorg",
+    "checkoutNow": "Till Kassa Nu",
+    "applyCoupon": "Tillämpa Kupong",
+    "enterCouponCode": "Ange kupong",
+    "removeCoupon": "Ta Bort Kupong",
+    "couponApplied": "Kupong tillämpad",
+    "invalidCoupon": "Ogiltig kupong",
+    "shippingAddress": "Leveransadress",
+    "billingAddress": "Adress",
+    "sameAsShipping": "Samma som leverans",
+    "paymentMethod": "Betalning",
+    "selectPaymentMethod": "Välj betalning",
+    "placeYourOrder": "Lägg Beställning",
+    "orderPlaced": "Beställning Lagd",
+    "thankYouForYourOrder": "Tack för din beställning!",
+    "orderNumber": "Beställning #",
+    "trackYourOrder": "Spåra Beställning",
+    "Hello": "Hej",
+    "create_an_account": "Skapa Konto",
+    "already_have_an_account": "Har du ett konto?",
+    "forgot_password": "Glömt Lösenord?",
+    "gender": "Kön",
+    "male": "Man",
+    "female": "Kvinna",
+    "By_clicking_Sign_up_I_agree_to_the": "Genom att registrera dig godkänner du",
+    "password_reset_text": "Ange din verifierade e-postadress för ditt användarkonto så skickar vi en länk för att återställa lösenordet.",
+    "send_password_reset_link": "Skicka",
+    "reset_your_password": "Återställ Lösenord",
+    "reset_password": "Återställ Lösenord",
+    "reset_password_text": "Uppdatera ditt lösenord här.",
+    "new_password": "Nytt Lösenord",
+    "old_password": "Gammalt Lösenord",
+    "confirm_password": "Bekräfta Lösenord",
+    "error_old_password_incorrect": "Gammalt lösenord är fel",
+    "select_country": "Välj Land",
+    "please_confirm_your_password": "Bekräfta ditt lösenord",
+    "please_enter_your_new_password": "Ange nytt lösenord",
+    "please_enter_your_email": "Ange din e-post",
+    "please_enter_your_password": "Ange ditt lösenord",
+    "please_enter_your_first_name": "Ange ditt förnamn",
+    "please_enter_your_last_name": "Ange ditt efternamn",
+    "please_enter_your_address": "Ange din adress",
+    "please_enter_your_city": "Ange din stad",
+    "please_enter_your_state": "Ange ditt län",
+    "please_enter_your_country": "Välj ditt land",
+    "please_enter_your_zip_code": "Ange ditt postnummer",
+    "please_enter_your_phone": "Ange ditt telefonnummer",
+    "please_enter_your_birthdate": "Ange ditt födelsedatum",
+    "pleaseSelectShippingMethod": "Välj en fraktmetod.",
+    "please_enter_coupon_code": "Ange en kupongkod",
+    "invalid_discount_code": "Ogiltig rabattkod",
+    "discount_code_applied": "Rabattkod tillämpad",
+    "discount": "Rabatt",
+    "error_invalid_birthdate": "Födelsedatumet kan inte vara i framtiden",
+    "error_max_name_characters": "Namnet är för långt",
+    "error_min_password_characters": "Lösenordet är för kort",
+    "error_required_gender": "Kön krävs",
+    "required": "Obligatoriskt",
+    "text_field_required": "Detta fält är obligatoriskt",
+    "send": "Skicka",
+    "enter_message": "Ange meddelande",
+    "message_sent": "Meddelande skickat",
+    "message": "Meddelande",
+    "myProfile": "Min Profil",
+    "chat": "Chatt",
+    "helpCenter": "Hjälpcenter",
+    "member_since": "Medlem sedan",
+    "from": "Från"
+  },
+  "success": {
+    "subscribed_to_newsletter": "Tack för att du prenumererar på vårt nyhetsbrev!",
+    "message_sent_successfully": "Ditt meddelande har skickats framgångsrikt!",
+    "profile_updated_successfully": "Din profil har uppdaterats framgångsrikt!",
+    "password_changed_successfully": "Ditt lösenord har ändrats framgångsrikt!",
+    "order_placed_successfully": "Din beställning har lagts framgångsrikt!",
+    "review_submitted_successfully": "Tack för din recension!",
+    "item_added_to_cart": "Artikel tillagd i varukorgen!",
+    "item_removed_from_cart": "Artikel borttagen från varukorgen!",
+    "item_added_to_wishlist": "Artikel tillagd i önskelistan!",
+    "item_removed_from_wishlist": "Artikel borttagen från önskelistan!",
+    "coupon_applied_successfully": "Kupong tillämpad framgångsrikt!",
+    "coupon_removed_successfully": "Kupong borttagen framgångsrikt!",
+    "saved": "Sparad",
+    "deleted": "Borttagen",
+    "updated": "Uppdaterad",
+    "submitted": "Skickad",
+    "logged_in": "Inloggad",
+    "logged_out": "Utloggad",
+    "registered": "Registrerad",
+    "password_reset_link_sent": "Länk för återställning av lösenord skickad",
+    "password_reset_successful": "Lösenordsåterställning lyckades",
+    "success_logged_in": "Inloggad",
+    "success_account_created": "Konto skapat",
+    "success_password_reset_link_sent": "Länk skickad",
+    "success_password_reset": "Lösenord återställt",
+    "success_profile_updated": "Profil uppdaterad",
+    "success_password_changed": "Lösenord ändrat"
+  },
+  "errors": {
+    "network_error": "Nätverksfel. Kontrollera din anslutning.",
+    "unknown_error": "Okänt fel. Försök igen.",
+    "form_error": "Formulärfel. Kontrollera fälten.",
+    "unauthorized": "Ej behörig. Logga in.",
+    "forbidden": "Förbjuden. Du har inte behörighet för denna åtgärd.",
+    "not_found": "Hittades inte. Den begärda resursen finns inte.",
+    "server_error": "Serverfel. Försök igen senare.",
+    "timeout": "Tidsgränsen för begäran överskreds. Försök igen.",
+    "conflict": "Konflikt. Resursen finns redan.",
+    "bad_request": "Ogiltig begäran. Kontrollera de skickade uppgifterna.",
+    "validation_error": "Valideringsfel. Korrigera felen i formuläret.",
+    "item_out_of_stock": "Artikeln är slut i lager. Kan inte läggas i varukorgen.",
+    "error_password_dont_match": "Lösenorden matchar inte",
+    "error_email_already_exists": "E-postadressen finns redan",
+    "error_email_not_exists": "E-postadressen hittades inte",
+    "error_invalid_credentials": "Ogiltig e-post eller lösenord",
+    "error_account_disabled": "Kontot är inaktiverat",
+    "error_too_many_requests": "För många försök. Försök senare",
+    "error_weak_password": "Lösenordet är för svagt",
+    "error_invalid_email": "Ogiltig e-post",
+    "error_user_not_found": "Användaren hittades inte",
+    "error_network_request_failed": "Nätverksfel",
+    "error_something_went_wrong": "Något gick fel",
+    "error_invalid_verification_code": "Ogiltig kod",
+    "error_verification_code_expired": "Koden har gått ut",
+    "error_no_internet_connection": "Ingen internetanslutning",
+    "error_old_password_incorrect": "Gammalt lösenord är fel",
+    "error_gender_must_be_defined": "kön måste anges",
+    "please_confirm_your_password": "Bekräfta ditt lösenord",
+    "please_enter_your_new_password": "Ange nytt lösenord",
+    "please_enter_your_email": "Ange din e-post",
+    "please_enter_your_password": "Ange ditt lösenord",
+    "please_enter_your_first_name": "Ange ditt förnamn",
+    "please_enter_your_last_name": "Ange ditt efternamn",
+    "please_enter_your_address": "Ange din adress",
+    "please_enter_your_city": "Ange din stad",
+    "please_enter_your_state": "Ange ditt län",
+    "please_enter_your_country": "Välj ditt land",
+    "please_enter_your_zip_code": "Ange ditt postnummer",
+    "please_enter_your_phone": "Ange ditt telefonnummer",
+    "please_enter_your_birthdate": "Ange ditt födelsedatum",
+    "error_invalid_birthdate": "Födelsedatumet kan inte vara i framtiden",
+    "error_max_name_characters": "Namnet är för långt",
+    "error_min_password_characters": "Lösenordet är för kort",
+    "error_required_gender": "Kön krävs",
+    "required": "Obligatoriskt",
+
+    "page_not_found": "Sidan Hittades Inte",
+    "page_not_found_description": "Sidan du letar efter finns inte."
+  },
+  "languages": {
+  "en": "Engelska",
+  "es": "Spanska",
+  "fr": "Franska",
+  "de": "Tyska",
+  "sv": "Svenska",
+  "it": "Italienska",
+  "pt": "Portugisiska",
+  "zh": "Kinesiska",
+  "ja": "Japanska",
+  "ko": "Koreanska",
+  "ru": "Ryska",
+  "ar": "Arabiska",
+  "hi": "Hindi",
+  "tr": "Turkiska",
+  "nl": "Nederländska",
+  "pl": "Polska"
+},
+"currencies": {
+  "USD": "Amerikansk dollar",
+  "EUR": "Euro",
+  "GBP": "Brittiskt pund",
+  "SAR": "Saudisk riyal",
+  "AED": "Emiratisk dirham",
+  "EGP": "Egyptiskt pund",
+  "MAD": "Marockansk dirham",
+  "DZD": "Algerisk dinar",
+  "TND": "Tunisisk dinar",
+  "QAR": "Qatarisk riyal",
+  "KWD": "Kuwaitisk dinar",
+  "BHD": "Bahrainsk dinar",
+  "OMR": "Omansk rial",
+  "JOD": "Jordansk dinar",
+  "IQD": "Irakisk dinar",
+  "LBP": "Libanesiskt pund",
+  "SEK": "Svensk krona",
+  "NOK": "Norsk krona",
+  "DKK": "Dansk krona",
+  "CHF": "Schweizisk franc",
+  "CAD": "Kanadensisk dollar",
+  "AUD": "Australisk dollar",
+  "NZD": "Nyzeeländsk dollar",
+  "JPY": "Japansk yen",
+  "CNY": "Kinesisk yuan",
+  "INR": "Indisk rupie",
+  "KRW": "Sydkoreansk won",
+  "TRY": "Turkisk lira",
+  "MXN": "Mexikansk peso",
+  "BRL": "Brasiliansk real",
+  "ARS": "Argentinsk peso",
+  "CLP": "Chilensk peso",
+  "COP": "Colombiansk peso",
+  "PEN": "Peruansk sol",
+  "PLN": "Polsk złoty",
+  "CZK": "Tjeckisk krona",
+  "HUF": "Ungersk forint",
+  "RON": "Rumänsk leu",
+  "ZAR": "Sydafrikansk rand"
+},
+  "countries": {
+    "AF": "Afghanistan",
+    "AX": "Åland",
+    "AL": "Albanien",
+    "DZ": "Algeriet",
+    "AS": "Amerikanska Samoa",
+    "AD": "Andorra",
+    "AO": "Angola",
+    "AI": "Anguilla",
+    "AQ": "Antarktis",
+    "AG": "Antigua och Barbuda",
+    "AR": "Argentina",
+    "AM": "Armenien",
+    "AW": "Aruba",
+    "AU": "Australien",
+    "AT": "Österrike",
+    "AZ": "Azerbajdzjan",
+    "BS": "Bahamas",
+    "BH": "Bahrain",
+    "BD": "Bangladesh",
+    "BB": "Barbados",
+    "BY": "Belarus",
+    "BE": "Belgien",
+    "BZ": "Belize",
+    "BJ": "Benin",
+    "BM": "Bermuda",
+    "BT": "Bhutan",
+    "BO": "Bolivia",
+    "BQ": "Karibiska Nederländerna",
+    "BA": "Bosnien och Hercegovina",
+    "BW": "Botswana",
+    "BV": "Bouvetön",
+    "BR": "Brasilien",
+    "IO": "Brittiska territoriet i Indiska oceanen",
+    "BN": "Brunei",
+    "BG": "Bulgarien",
+    "BF": "Burkina Faso",
+    "BI": "Burundi",
+    "CV": "Kap Verde",
+    "KH": "Kambodja",
+    "CM": "Kamerun",
+    "CA": "Kanada",
+    "KY": "Caymanöarna",
+    "CF": "Centralafrikanska republiken",
+    "TD": "Tchad",
+    "CL": "Chile",
+    "CN": "Kina",
+    "CX": "Julön",
+    "CC": "Kokosöarna (Keelingöarna)",
+    "CO": "Colombia",
+    "KM": "Komorerna",
+    "CG": "Kongo-Brazzaville",
+    "CD": "Kongo-Kinshasa",
+    "CK": "Cooköarna",
+    "CR": "Costa Rica",
+    "HR": "Kroatien",
+    "CU": "Kuba",
+    "CW": "Curaçao",
+    "CY": "Cypern",
+    "CZ": "Tjeckien",
+    "CI": "Elfenbenskusten",
+    "DK": "Danmark",
+    "DJ": "Djibouti",
+    "DM": "Dominica",
+    "DO": "Dominikanska republiken",
+    "EC": "Ecuador",
+    "EG": "Egypten",
+    "SV": "El Salvador",
+    "GQ": "Ekvatorialguinea",
+    "ER": "Eritrea",
+    "EE": "Estland",
+    "SZ": "Eswatini",
+    "ET": "Etiopien",
+    "FK": "Falklandsöarna",
+    "FO": "Färöarna",
+    "FJ": "Fiji",
+    "FI": "Finland",
+    "FR": "Frankrike",
+    "GF": "Franska Guyana",
+    "PF": "Franska Polynesien",
+    "TF": "Franska sydterritorierna",
+    "GA": "Gabon",
+    "GM": "Gambia",
+    "GE": "Georgien",
+    "DE": "Tyskland",
+    "GH": "Ghana",
+    "GI": "Gibraltar",
+    "GR": "Grekland",
+    "GL": "Grönland",
+    "GD": "Grenada",
+    "GP": "Guadeloupe",
+    "GU": "Guam",
+    "GT": "Guatemala",
+    "GG": "Guernsey",
+    "GN": "Guinea",
+    "GW": "Guinea-Bissau",
+    "GY": "Guyana",
+    "HT": "Haiti",
+    "HM": "Heardön och McDonaldöarna",
+    "VA": "Vatikanstaten",
+    "HN": "Honduras",
+    "HK": "Hongkong SAR Kina",
+    "HU": "Ungern",
+    "IS": "Island",
+    "IN": "Indien",
+    "ID": "Indonesien",
+    "IR": "Iran",
+    "IQ": "Irak",
+    "IE": "Irland",
+    "IM": "Isle of Man",
+    "IL": "Israel",
+    "IT": "Italien",
+    "JM": "Jamaica",
+    "JP": "Japan",
+    "JE": "Jersey",
+    "JO": "Jordanien",
+    "KZ": "Kazakstan",
+    "KE": "Kenya",
+    "KI": "Kiribati",
+    "KP": "Nordkorea",
+    "KR": "Sydkorea",
+    "KW": "Kuwait",
+    "KG": "Kirgizistan",
+    "LA": "Laos",
+    "LV": "Lettland",
+    "LB": "Libanon",
+    "LS": "Lesotho",
+    "LR": "Liberia",
+    "LY": "Libyen",
+    "LI": "Liechtenstein",
+    "LT": "Litauen",
+    "LU": "Luxemburg",
+    "MO": "Macao SAR Kina",
+    "MG": "Madagaskar",
+    "MW": "Malawi",
+    "MY": "Malaysia",
+    "MV": "Maldiverna",
+    "ML": "Mali",
+    "MT": "Malta",
+    "MH": "Marshallöarna",
+    "MQ": "Martinique",
+    "MR": "Mauretanien",
+    "MU": "Mauritius",
+    "YT": "Mayotte",
+    "MX": "Mexiko",
+    "FM": "Mikronesien",
+    "MD": "Moldavien",
+    "MC": "Monaco",
+    "MN": "Mongoliet",
+    "ME": "Montenegro",
+    "MS": "Montserrat",
+    "MA": "Marocko",
+    "MZ": "Moçambique",
+    "MM": "Myanmar (Burma)",
+    "NA": "Namibia",
+    "NR": "Nauru",
+    "NP": "Nepal",
+    "NL": "Nederländerna",
+    "NC": "Nya Kaledonien",
+    "NZ": "Nya Zeeland",
+    "NI": "Nicaragua",
+    "NE": "Niger",
+    "NG": "Nigeria",
+    "NU": "Niue",
+    "NF": "Norfolkön",
+    "MK": "Nordmakedonien",
+    "MP": "Nordmarianerna",
+    "NO": "Norge",
+    "OM": "Oman",
+    "PK": "Pakistan",
+    "PW": "Palau",
+    "PS": "Palestinska territorierna",
+    "PA": "Panama",
+    "PG": "Papua Nya Guinea",
+    "PY": "Paraguay",
+    "PE": "Peru",
+    "PH": "Filippinerna",
+    "PN": "Pitcairnöarna",
+    "PL": "Polen",
+    "PT": "Portugal",
+    "PR": "Puerto Rico",
+    "QA": "Qatar",
+    "RO": "Rumänien",
+    "RU": "Ryssland",
+    "RW": "Rwanda",
+    "RE": "Réunion",
+    "BL": "S:t Barthélemy",
+    "SH": "S:t Helena",
+    "KN": "S:t Kitts och Nevis",
+    "LC": "S:t Lucia",
+    "MF": "S:t Martin",
+    "PM": "S:t Pierre och Miquelon",
+    "VC": "S:t Vincent och Grenadinerna",
+    "WS": "Samoa",
+    "SM": "San Marino",
+    "ST": "São Tomé och Príncipe",
+    "SA": "Saudiarabien",
+    "SN": "Senegal",
+    "RS": "Serbien",
+    "SC": "Seychellerna",
+    "SL": "Sierra Leone",
+    "SG": "Singapore",
+    "SX": "Sint Maarten",
+    "SK": "Slovakien",
+    "SI": "Slovenien",
+    "SB": "Salomonöarna",
+    "SO": "Somalia",
+    "ZA": "Sydafrika",
+    "GS": "Sydgeorgien och Sydsandwichöarna",
+    "SS": "Sydsudan",
+    "ES": "Spanien",
+    "LK": "Sri Lanka",
+    "SD": "Sudan",
+    "SR": "Surinam",
+    "SJ": "Svalbard och Jan Mayen",
+    "SE": "Sverige",
+    "CH": "Schweiz",
+    "SY": "Syrien",
+    "TW": "Taiwan",
+    "TJ": "Tadzjikistan",
+    "TZ": "Tanzania",
+    "TH": "Thailand",
+    "TL": "Timor-Leste",
+    "TG": "Togo",
+    "TK": "Tokelau",
+    "TO": "Tonga",
+    "TT": "Trinidad och Tobago",
+    "TN": "Tunisien",
+    "TR": "Turkiet",
+    "TM": "Turkmenistan",
+    "TC": "Turks- och Caicosöarna",
+    "TV": "Tuvalu",
+    "UG": "Uganda",
+    "UA": "Ukraina",
+    "AE": "Förenade Arabemiraten",
+    "GB": "Storbritannien",
+    "UM": "USA:s yttre öar",
+    "US": "USA",
+    "UY": "Uruguay",
+    "UZ": "Uzbekistan",
+    "VU": "Vanuatu",
+    "VE": "Venezuela",
+    "VN": "Vietnam",
+    "VG": "Brittiska Jungfruöarna",
+    "VI": "Amerikanska Jungfruöarna",
+    "WF": "Wallis och Futuna",
+    "EH": "Västsahara",
+    "YE": "Jemen",
+    "ZM": "Zambia",
+    "ZW": "Zimbabwe"
+  },
+
+  "about": {
+    "title": "Om Oss",
+    "metaDescription": "Upptäck Enouza lyxlampor, designerbelysning och premium inomhuslampor. Förhöj ditt hem med exklusiva moderna golvlampor, eleganta bordslampor och handgjord dekorativ belysning.",
+
+    "intro": "På Enouza tror vi att belysning är mer än bara ljus — det är en upplevelse.",
+    "passion": "Vår passion är att skapa utrymmen som känns varma, förfinade och tidlösa. Därför kurerar vi noggrant lyxlampor som kombinerar modern design, premiummaterial och exceptionellt hantverk. Varje del i vår kollektion är utvald för att förhöja ditt hem, inte bara belysa det.",
+    "visionTitle": "Vår Vision",
+    "visionText": "Vi strävar efter att omdefiniera vardagsbelysning genom att erbjuda statement-delar som ger elegans, komfort och karaktär åt alla rum. Från mysiga sovrum till sofistikerade vardagsrum är våra lampor designade för att förvandla atmosfärer.",
+    "qualityTitle": "Kvalitet du kan Lita på",
+    "qualityText": "Vi arbetar nära pålitliga tillverkare och designers som delar vårt engagemang för kvalitet. Varje lampa är utvald för sin hållbarhet, estetiska värde och uppmärksamhet på detaljer — för lyx ska kännas, inte bara ses.",
+    "whyTitle": "Varför Välja Enouza?",
+    "why": {
+      "items": [
+        "Kurerade lyxdesigner",
+        "Premiummaterial & tidlösa stilar",
+        "Säker shoppingupplevelse",
+        "Omsorgsfullt förpackad & pålitlig leverans",
+        "Dedikerad kundsupport"
+      ]
+    },
+    "modernTitle": "Designad för Modernt Liv",
+    "modernText": "Vår kollektion blandar samtida trender med klassisk elegans, vilket gör våra lampor perfekta för moderna hem, lägenheter och lyxiga interiörer. Oavsett om du letar efter en statement-golvlampa eller ett subtilt omgivningssken, ger Enouza ljus som speglar din stil.",
+    "closing": "Tack för att du väljer Enouza — där ljus möter lyx."
+  },
+  "privacyPolicy": {
+    "seoTitle": "Enouza - Integritetspolicy",
+    "title": "Integritetspolicy",
+    "intro": "Denna integritetspolicy beskriver hur Enouza.com (\"Webbplatsen\" eller \"vi\") samlar in, använder och avslöjar dina personuppgifter när du besöker eller gör ett köp från Webbplatsen.",
+    "collectingPersonalInfo": {
+      "title": "Insamling av Personuppgifter",
+      "description": "När du besöker Webbplatsen samlar vi in viss information om din enhet, din interaktion med Webbplatsen och den information som är nödvändig för att behandla dina köp. Vi kan också samla in ytterligare information om du kontaktar oss för kundsupport. I denna integritetspolicy hänvisar vi till all information som unikt kan identifiera en individ (inklusive informationen nedan) som 'Personuppgifter'."
+    },
+    "deviceInfo": {
+      "title": "Enhetsinformation",
+      "examples": "Exempel på personuppgifter som samlas in: webbläsarversion, IP-adress, tidszon, cookieinformation, webbplatser eller produkter du tittar på, söktermer och hur du interagerar med Webbplatsen.",
+      "purpose": "Syfte med insamlingen: att ladda Webbplatsen korrekt för dig och att utföra analyser av Webbplatsens användning för att optimera vår Webbplats.",
+      "source": "Källa till insamlingen: samlas in automatiskt när du kommer åt vår Webbplats med hjälp av cookies, loggfiler, webbmarkörer, taggar eller pixlar.",
+      "disclosure": "Utlämnande i affärssyfte: delas med vår processor Enouza."
+    },
+    "orderInfo": {
+      "title": "Orderinformation",
+      "examples": "Exempel på personuppgifter som samlas in: namn, faktureringsadress, leveransadress, betalningsinformation, e-postadress och telefonnummer.",
+      "purpose": "Syfte med insamlingen: att tillhandahålla produkter eller tjänster till dig, behandla betalningsinformation, arrangera frakt, tillhandahålla fakturor eller orderbekräftelser, kommunicera med dig, granska beställningar för risk eller bedrägeri och tillhandahålla reklam eller information i linje med dina preferenser.",
+      "source": "Källa till insamlingen: insamlas från dig.",
+      "disclosure": "Utlämnande i affärssyfte: delas med vår processor Enouza."
+    },
+    "customerSupportInfo": {
+      "title": "Kundsupportinformation",
+      "examples": "Exempel på personuppgifter som samlas in: namn, faktureringsadress, leveransadress, betalningsinformation, e-postadress och telefonnummer.",
+      "purpose": "Syfte med insamlingen: att tillhandahålla kundsupport.",
+      "source": "Källa till insamlingen: insamlas från dig."
+    },
+    "sharingPersonalInfo": {
+      "title": "Delning av Personuppgifter",
+      "text": "Vi delar dina personuppgifter med tjänsteleverantörer för att hjälpa oss att tillhandahålla våra tjänster och fullgöra våra avtal med dig, enligt beskrivningen ovan. Till exempel kan vi dela dina personuppgifter för att följa tillämpliga lagar och förordningar, svara på stämningar, husrannsakningsorder eller andra lagliga förfrågningar, eller för att på annat sätt skydda våra rättigheter."
+    },
+    "behavioralAdvertising": {
+      "title": "Beteendebaserad Reklam",
+      "text": "Vi använder dina personuppgifter för att ge dig riktad reklam eller marknadskommunikation som vi tror kan vara av intresse för dig. Till exempel använder vi Google Analytics för att förstå hur kunder använder Webbplatsen. Mer om Googles användning av personuppgifter: https://policies.google.com/privacy. Avanmälan: https://tools.google.com/dlpage/gaoptout. Vi delar också information om din användning av Webbplatsen och annonser med reklampartner."
+    },
+    "usingPersonalInfo": {
+      "title": "Användning av Personuppgifter",
+      "text": "Vi använder dina personuppgifter för att tillhandahålla våra tjänster, inklusive att erbjuda produkter till försäljning, behandla betalningar, skicka och fullgöra beställningar och hålla dig uppdaterad om nya produkter, tjänster och erbjudanden."
+    },
+    "lawfulBasis": {
+      "title": "Rättslig Grund",
+      "text": "Om du är bosatt i EES behandlar vi dina personuppgifter enligt följande rättsliga grunder: ditt samtycke, fullgörande av ett avtal, rättsliga förpliktelser, vitala intressen, uppgifter av allmänt intresse eller berättigade intressen som inte åsidosätter dina grundläggande rättigheter."
+    },
+    "retention": {
+      "title": "Lagring",
+      "text": "När du lägger en beställning via Webbplatsen behåller vi dina personuppgifter om inte och tills du ber oss radera dem."
+    },
+    "automaticDecisionMaking": {
+      "title": "Automatiserat Beslutsfattande",
+      "text": "Om du är bosatt i EES har du rätt att invända mot automatiserat beslutsfattande (inklusive profilering) med rättslig eller betydande effekt. Vår processor använder begränsade automatiska beslut för att förhindra bedrägeri, såsom tillfälliga blockeringslistor för IP-adresser eller kreditkort."
+    },
+    "yourRights": {
+      "title": "Dina Rättigheter",
+      "gdpr": "EES-bosatta har rätt att få tillgång till, porta, rätta, uppdatera eller radera sina personuppgifter. Kontakta oss för att utöva dessa rättigheter.",
+      "ccpa": "Kalifornienbor har rätt att få tillgång till ('Rätt att Veta'), porta, rätta, uppdatera eller radera sina personuppgifter. Du kan utse ett auktoriserat ombud att skicka förfrågningar."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text": "Cookies är små informationsbitar som laddas ner till din enhet när du besöker vår Webbplats. Vi använder funktionella, prestanda-, reklam- och sociala medier-cookies för att förbättra din surfupplevelse och komma ihåg preferenser."
+    },
+    "doNotTrack": {
+      "title": "Spåra Inte",
+      "text": "Eftersom det inte finns något konsekvent branschsvar på 'Spåra Inte'-signaler ändrar vi inte våra datainsamlingsmetoder om en sådan signal upptäcks i din webbläsare."
+    },
+    "changes": {
+      "title": "Ändringar",
+      "text": "Vi kan uppdatera denna integritetspolicy då och då för att återspegla ändringar i praxis eller av rättsliga, regulatoriska eller operativa skäl."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "text": "För mer information om vår integritetspraxis, frågor eller klagomål, kontakta oss via e-post på hello@enouza.com."
+    },
+    "lastUpdated": "Senast uppdaterad: 15 juni 2022"
+  },
+
+  "returnPolicy": {
+    "seoTitle": "Enouza - Returpolicy",
+    "title": "Retur- och Återbetalningspolicy",
+    "returns": {
+      "heading": "Returer:",
+      "text": "Enkelt uttryckt kan du returnera varor för återbetalning ENDAST om artikeln är i HELT NYTT, OÖPPNAT SKICK, inklusive dess originalförpackning och tillbehör. Vi vet att detta verkar lite extremt, men utan denna bestämmelse skulle vi inte kunna erbjuda våra fantastiska priser. Vi hedrar återbetalningar för oöppnade artiklar upp till 15 - 25 dagar från när du har mottagit din produkt. Alla återbetalningar kommer att utfärdas till din ursprungliga betalningsmetod och kan ta upp till 7-10 arbetsdagar att tillämpas."
+    },
+    "rejectedRefunds": {
+      "heading": "Din återbetalning kommer att avvisas om dina artiklar returneras på grund av följande problem:",
+      "items": [
+        "Om du vill returnera din produkt på grund av skada på artikelns originalkartong.",
+        "Om produkten du returnerade har öppnats och förseglats.",
+        "Artiklar med mindre kosmetiska färgproblem för prisfigurer eftersom dessa förväntas."
+      ]
+    },
+    "exceptions": {
+      "heading": "Undantag / Ej Återbetalningsbara Artiklar:",
+      "text": "Förbeställningar är slutliga försäljningar och kan inte returneras när de väl har skickats. Om du får en defekt produkt, kontakta oss för information om hur du kontaktar tillverkaren. Artiklar med kartongbrister och allmänna fel. Kontakta oss om du har frågor eller funderingar kring din specifika artikel."
+    },
+    "returnShipping": {
+      "heading": "Returfrakt:",
+      "text": "För att returnera en produkt, kontakta vår kundsupport med ditt ordernummer och anledning till retur. Du kommer att förses med en returetikett om din returbegäran godkänns."
+    },
+    "damagesIssues": {
+      "heading": "Skador och Problem",
+      "text": "Inspektera din beställning vid mottagandet och kontakta oss omedelbart om artikeln är defekt, skadad eller om du fick fel artikel så att vi kan utvärdera problemet och åtgärda det."
+    },
+    "refunds": {
+      "heading": "Återbetalningar",
+      "text": "Vi meddelar dig när vi har tagit emot och inspekterat din retur, och låter dig veta om återbetalningen godkändes. Om den godkänns kommer du automatiskt att återbetalas till din ursprungliga betalningsmetod. Kom ihåg att det kan ta lite tid för din bank eller kreditkortsföretag att behandla och bokföra återbetalningen."
+    }
+  },
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "Vad är er returpolicy?",
+      "answer": {
+        "paragraphe": [
+          "Om du vill returnera din beställning av någon anledning är vi här för att hjälpa utan krångel! Vi erbjuder returer inom 30 dagar från köpet. Du kan returnera din produkt för återbetalning till den ursprungliga betalningsmetoden om produkten inte uppfyllde dina förväntningar. Återbetalningen kommer att behandlas tillbaka till dess ursprungliga betalningsform inom 5-10 arbetsdagar."
+        ],
+        "list": [
+          "Reaartiklar är slutlig försäljning och kan inte returneras eller bytas ut.",
+          "Returnerade artiklar måste innehålla identifierande information och returneras i originalproduktens förpackning.",
+          "Returnerade artiklar får inte ha några synliga tecken på slitage eller användning.",
+          "Fraktkostnaden återbetalas inte om du inte har skickats en felaktig eller skadad artikel.",
+          "En förbetald returetikett tillhandahålls inte om inte fel artikel skickades, eller artikeln skadades under transporten.",
+          "Vi behandlar inte klädbyten. Om artikeln du köpte inte passar, returnera den för återbetalning. Du kan sedan lägga en ny beställning för önskad storlek. För mer information och RMA-etiketter, kontakta vårt Kundserviceteam."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Hur returnerar man en produkt?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Logga in på ditt Enouza-konto och kontakta vårt Kundserviceteam.",
+          "Ange så mycket information som möjligt om de produkter du vill returnera eller byta ut från din beställning.",
+          "Returnerade artiklar får inte ha några synliga tecken på slitage eller användning.",
+          "Skriv ut den förbetalda fraktetiketten som du kommer att få via e-post.",
+          "Observera att en förbetald returetikett inte tillhandahålls om inte fel artikel skickades, eller artikeln skadades under transporten.",
+          "Skicka tillbaka alla artiklar till oss med den medföljande etiketten."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "Min produkt kom skadad! Vad ska jag göra?",
+      "answer": {
+        "paragraphe": [
+          "Förlåt samlare! Vi förstår hur besvikande det är att få en skadad artikel — särskilt en artikel du har väntat månader på! Tyvärr händer misstag och produkter kan skadas under transporten. Om detta händer, kontakta oss med bilder på den skadade artikeln och vi kommer att ersätta eller utfärda en partiell eller full återbetalning. Din tillfredsställelse är vår prioritet #1!"
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Vilka produkter är undantagna från returpolicyn?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "Digitala produkter, inklusive medlemskap och presentkort, är inte berättigade till återbetalningar eller returer. Om du upplever något problem med att komma åt eller använda en digital produkt, kontakta oss och vi hjälper dig gärna.",
+          "Produkter som köpts som en del av rea- eller slututförsäljningskampanjer är kanske inte berättigade till retur, förutom där lagen kräver det.",
+          "Produkter som har använts, installerats eller modifierats efter leverans är kanske inte berättigade till retur, beroende på produktens skick och vår returpolicy.",
+          "Om din produkt kommer skadad eller har en defekt, kontakta oss så snart som möjligt så att vi kan hjälpa dig och hitta en lämplig lösning.",
+          "Ytterligare villkor kan gälla för vissa produkter och kommer att anges på relevant produktsida där det är tillämpligt."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "Min produkt har en defekt / saknade delar. Vad ska jag göra?",
+      "answer": {
+        "paragraphe": [
+          "Kontakta oss direkt med bilder och förklaring av defekten.",
+          "Observera: hemvideoprodukter garanteras inte att komma med ett skyddshölje."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Vad är er återbetalningspolicy?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "När en beställning har avbrutits eller en retur har behandlats, kommer din återbetalning att utfärdas till dess ursprungliga betalningsform.",
+          "När din retur är klar kommer en återbetalning att behandlas inom 1-5 arbetsdagar.",
+          "Efter att en återbetalning har behandlats, tillåt 3-5 arbetsdagar för PayPal-återbetalningar och 3-10 arbetsdagar för alla andra betalningsmetoder.",
+          "Vi meddelar dig via e-post när din återbetalning har utfärdats.",
+          "En full återbetalning kommer att utfärdas även om ett Digitalt Presentkort från Enouza Store användes som fullständig eller partiell betalning för beställningen.",
+          "En beställning kan avbrytas och omedelbart återbetalas om paketet ännu inte har börjat behandlas för frakt.",
+          "När ett paket börjar behandlas för frakt måste det levereras till sin destination och returneras till Enouza innan en återbetalning kan utfärdas. Kontakta vårt Kundserviceteam för mer detaljerad information."
+        ]
+      }
+    }
+  ],
+
+  "shipping": {
+    "seoTitle": "Enouza - Fraktpolicy",
+    "title": "Fraktpolicy",
+    "intro": "Vi erbjuder världsomspännande gratis frakt på alla våra produkter och levererar till nästan alla länder i världen.",
+    "deliveryTime": {
+      "title": "Uppskattad Leveranstid",
+      "description": "Leverans tar vanligtvis 5-15 arbetsdagar, med maximalt 30 arbetsdagar beroende på destination."
+    },
+    "tracking": {
+      "title": "Spåra Din Beställning",
+      "description": "Vid frakt kommer du att få ett e-postmeddelande med ett spårningsnummer. Artiklar kan skickas separat av logistiska skäl."
+    },
+    "customFees": {
+      "title": "Tullavgifter",
+      "description": "Eventuella tullavgifter som uppstår vid frakt är inte vårt ansvar."
+    },
+    "lostOrDelayedPackages": {
+      "title": "Förlorade eller Försenade Paket",
+      "description": "Om ditt paket är förlorat eller försenat, kontakta oss med din orderinformation."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Om du har ytterligare frågor om frakt, kontakta oss på hello@enouza.com"
+    }
+  },
+
+  "shippingFaq": [
+    {
+      "id": 1,
+      "question": "Hur mycket kostar frakten?",
+      "answer": {
+        "paragraphe": [
+          "Internationella fraktkostnader varierar beroende på destination. Här är en uppdelning av fraktkostnaderna för varje destination:"
+        ],
+        "list": [
+          "Kanada: 0$ - 19,99$",
+          "Europa: 0$ - 40$",
+          "Australien: 0$ - 43,99$",
+          "Världen: Gratis frakt för vissa produkter"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Vad händer om mitt paket förloras under transporten?",
+      "answer": {
+        "paragraphe": [
+          "Om ett paket visas som levererat men du inte har mottagit det, kontakta transportören och meddela oss inom 30 dagar från leveransdatumet.",
+          "Om det fastställs att paketet gick förlorat på grund av ett leveransfel från transportören, kommer vi att ersätta din beställning.",
+          "Om paketet går förlorat på grund av en ofullständig eller felaktig adress kan vi inte erbjuda återbetalning eller byte — kunder ansvarar för att säkerställa att deras leveransadress är korrekt vid köptillfället. Om paketet returneras till oss måste du betala en ytterligare fraktavgift för att skicka det igen.",
+          "Om du upptäcker att din leveransadress är felaktig eller har ändrats sedan du lade din beställning, meddela oss med ditt ordernummer/ID och den uppdaterade adressen."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 3,
+      "question": "När skickas min beställning?",
+      "answer": {
+        "paragraphe": [
+          "Din beställning kommer att behandlas under normala arbetsdagar (måndag till fredag, exklusive helgdagar).",
+          "Om en artikel finns i lager kommer din beställning att behandlas inom 1 till 5 arbetsdagar. Leveranstiden efter behandling varierar beroende på leveransadressen. För närvarande ligger leveranstiderna mellan 5 och 15 arbetsdagar.",
+          "När en artikel har skickats kommer du att få ett e-postmeddelande med spårningsinformation. I vissa speciella fall kan spårningsnummer inte vara tillgängliga."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Kommer jag att få min beställning i flera paket?",
+      "answer": {
+        "paragraphe": [
+          "Om du köper artiklar i lager som skickas från olika lager kommer du att få flera leveranser."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 5,
+      "question": "Hur beräknas fraktpriserna?",
+      "answer": {
+        "paragraphe": [
+          "Fraktavgifterna beräknas vid kassan. Du kan lägga till artiklar i din varukorg, gå till kassan och ange din leveransadress för att se fraktkostnaden för din beställning."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Vad är er återbetalningspolicy?",
+      "answer": {
+        "paragraphe": [],
+        "list": [
+          "När en beställning har avbrutits eller en retur har behandlats, kommer en återbetalning att utfärdas till den ursprungliga betalningsmetoden.",
+          "När returprocessen är klar kommer återbetalningen att behandlas inom 1-5 arbetsdagar.",
+          "Efter att återbetalningen har behandlats, tillåt 3-5 arbetsdagar för PayPal-återbetalningar och 3-10 arbetsdagar för alla andra betalningsmetoder.",
+          "Vi meddelar dig via e-post när återbetalningen har utfärdats.",
+          "En full återbetalning kommer att utfärdas även om ett Digitalt Presentkort från Enouza Store användes som fullständig eller partiell betalning för beställningen.",
+          "En beställning kan avbrytas och omedelbart återbetalas om paketet ännu inte har börjat behandlas för frakt.",
+          "När ett paket börjar behandlas för frakt måste det levereras till sin destination och returneras till Enouza innan en återbetalning kan utfärdas. Kontakta vårt Kundserviceteam för mer detaljerad information."
+        ]
+      }
+    }
+  ],
+  "terms": {
+    "seoTitle": "Enouza - Användarvillkor",
+    "title": "Användarvillkor",
+    "overview": {
+      "title": "Översikt",
+      "p1": "Denna webbplats drivs av Enouza. Genom hela webbplatsen hänvisar termerna \"vi\", \"oss\" och \"vår\" till Enouza. Enouza erbjuder denna webbplats, inklusive all information, verktyg och tjänster som finns tillgängliga från denna webbplats, till dig, användaren, förutsatt att du accepterar alla villkor, bestämmelser, policyer och meddelanden som anges här.",
+      "p2": "Genom att besöka vår webbplats och/eller köpa något från oss deltar du i vår \"Tjänst\" och samtycker till att vara bunden av följande villkor (\"Användarvillkor\", \"Villkor\"), inklusive dessa ytterligare villkor och policyer som hänvisas till här och/eller är tillgängliga via hyperlänk. Dessa Användarvillkor gäller för alla användare av webbplatsen, inklusive utan begränsning användare som är webbläsare, säljare, kunder, handlare och/eller innehållsbidragsgivare.",
+      "p3": "Läs dessa Användarvillkor noggrant innan du får åtkomst till eller använder vår webbplats. Genom att få åtkomst till eller använda någon del av webbplatsen samtycker du till att vara bunden av dessa Användarvillkor. Om du inte godkänner alla villkor och bestämmelser i detta avtal får du inte få åtkomst till webbplatsen eller använda några tjänster. Om dessa Användarvillkor anses vara ett erbjudande är acceptansen uttryckligen begränsad till dessa Användarvillkor.",
+      "p4": "Alla nya funktioner eller verktyg som läggs till i den aktuella butiken ska också omfattas av Användarvillkoren. Du kan granska den mest aktuella versionen av Användarvillkoren när som helst på denna sida. Vi förbehåller oss rätten att uppdatera, ändra eller ersätta någon del av dessa Användarvillkor genom att publicera uppdateringar och/eller ändringar på vår webbplats. Det är ditt ansvar att regelbundet kontrollera denna sida för ändringar. Din fortsatta användning av eller åtkomst till webbplatsen efter publiceringen av ändringar utgör acceptans av dessa ändringar."
+    },
+    "sections": {
+      "section1": {
+        "title": "Avsnitt 1 - Villkor för Onlinebutiken",
+        "text": "Genom att godkänna dessa Användarvillkor intygar du att du är minst myndig i din stat eller provins där du är bosatt, eller att du är myndig i din stat eller provins där du är bosatt och att du har gett oss ditt samtycke att låta någon av dina minderåriga anhöriga använda denna webbplats. Du får inte använda våra produkter för något olagligt eller obehörigt syfte och du får inte, vid användning av Tjänsten, bryta mot några lagar i din jurisdiktion (inklusive men inte begränsat till upphovsrättslagar). Du får inte överföra några maskar eller virus eller någon kod av destruktiv karaktär. Ett brott mot eller en överträdelse av något av Villkoren kommer att leda till omedelbart upphörande av dina Tjänster."
+      },
+      "section2": {
+        "title": "Avsnitt 2 - Allmänna Villkor",
+        "text": "Vi förbehåller oss rätten att vägra tjänst till vem som helst av vilken anledning som helst när som helst. Du förstår att ditt innehåll (exklusive kreditkortsinformation) kan överföras okrypterat och innebära (a) överföringar över olika nätverk; och (b) ändringar för att överensstämma med och anpassa till tekniska krav för anslutningsnätverk eller enheter. Kreditkortsinformation är alltid krypterad vid överföring över nätverk. Du samtycker till att inte reproducera, duplicera, kopiera, sälja, återförsälja eller utnyttja någon del av Tjänsten, användningen av Tjänsten eller åtkomsten till Tjänsten eller någon kontakt på webbplatsen genom vilken tjänsten tillhandahålls, utan vårt uttryckliga skriftliga tillstånd. Rubrikerna som används i detta avtal är endast inkluderade för bekvämlighet och kommer inte att begränsa eller på annat sätt påverka dessa Villkor."
+      },
+      "section3": {
+        "title": "Avsnitt 3 - Noggrannhet, Fullständighet och Aktualitet av Information",
+        "text": "Vi ansvarar inte om information som görs tillgänglig på denna webbplats inte är korrekt, fullständig eller aktuell. Materialet på denna webbplats tillhandahålls endast för allmän information och bör inte åberopas eller användas som den enda grunden för att fatta beslut utan att konsultera primära, mer korrekta, mer fullständiga eller mer aktuella informationskällor. Allt förlitande på materialet på denna webbplats sker på egen risk. Denna webbplats kan innehålla viss historisk information. Historisk information är nödvändigtvis inte aktuell och tillhandahålls endast för din referens. Vi förbehåller oss rätten att ändra innehållet på denna webbplats när som helst, men vi har ingen skyldighet att uppdatera någon information på vår webbplats. Du samtycker till att det är ditt ansvar att övervaka ändringar på vår webbplats."
+      },
+      "section4": {
+        "title": "Avsnitt 4 - Ändringar av Tjänsten och Priserna",
+        "text": "Priserna för våra produkter kan ändras utan föregående meddelande. Vi förbehåller oss rätten att när som helst ändra eller avbryta Tjänsten (eller någon del eller innehåll därav) utan meddelande när som helst. Vi ska inte vara ansvariga gentemot dig eller någon tredje part för någon ändring, prisändring, avstängning eller avbrytande av Tjänsten."
+      },
+      "section5": {
+        "title": "Avsnitt 5 - Produkter eller Tjänster (i förekommande fall)",
+        "text": "Vissa produkter eller tjänster kan vara tillgängliga uteslutande online via webbplatsen. Dessa produkter eller tjänster kan ha begränsade kvantiteter och är föremål för retur eller byte endast i enlighet med vår Returpolicy. Vi har gjort alla ansträngningar för att visa färger och bilder av våra produkter som visas i butiken så korrekt som möjligt. Vi kan inte garantera att din datorskärm visar någon färg korrekt. Vi förbehåller oss rätten men är inte skyldiga att begränsa försäljningen av våra produkter eller Tjänster till någon person, geografisk region eller jurisdiktion. Vi kan utöva denna rätt från fall till fall. Vi förbehåller oss rätten att begränsa kvantiteterna av alla produkter eller tjänster vi erbjuder. Alla beskrivningar av produkter eller produktprissättning kan ändras när som helst utan meddelande, enligt vårt eget gottfinnande. Vi förbehåller oss rätten att avbryta vilken produkt som helst när som helst. Alla erbjudanden för någon produkt eller tjänst som görs på denna webbplats är ogiltiga där de är förbjudna. Vi garanterar inte att kvaliteten på några produkter, tjänster, information eller annat material som köpts eller erhållits av dig kommer att uppfylla dina förväntningar, eller att eventuella fel i Tjänsten kommer att korrigeras."
+      },
+      "section6": {
+        "title": "Avsnitt 6 - Noggrannhet av Fakturering och Kontoinformation",
+        "text": "Vi förbehåller oss rätten att vägra varje beställning du lägger hos oss. Vi kan, enligt vårt eget gottfinnande, begränsa eller avbryta kvantiteter som köpts per person, per hushåll eller per beställning. Dessa begränsningar kan inkludera beställningar som lagts av eller under samma kundkonto, samma kreditkort och/eller beställningar som använder samma fakturerings- och/eller leveransadress. I händelse av att vi gör en ändring av eller avbryter en beställning kan vi försöka meddela dig genom att kontakta e-postadressen och/eller faktureringsadressen/telefonnumret som angavs vid tidpunkten för beställningen. Vi förbehåller oss rätten att begränsa eller förbjuda beställningar som, enligt vårt eget omdöme, verkar läggas av återförsäljare, distributörer eller grossister. Du samtycker till att tillhandahålla aktuell, fullständig och korrekt köp- och kontoinformation för alla köp som görs i vår butik. Du samtycker till att snabbt uppdatera ditt konto och annan information, inklusive din e-postadress och dina kreditkortsnummer och utgångsdatum så att vi kan slutföra dina transaktioner och kontakta dig vid behov."
+      },
+      "section7": {
+        "title": "Avsnitt 7 - Returpolicy",
+        "text": "För mer information, vänligen granska vår Returpolicy."
+      },
+      "section8": {
+        "title": "Avsnitt 8 - Valfria Verktyg",
+        "text": "Vi kan ge dig tillgång till tredjepartsverktyg som vi varken övervakar eller har någon kontroll över eller insyn i. Du erkänner och samtycker till att vi tillhandahåller åtkomst till sådana verktyg \"i befintligt skick\" och \"i mån av tillgänglighet\" utan några garantier, utfästelser eller villkor av något slag och utan någon rekommendation. Vi ska inte ha något ansvar som helst som uppstår från eller relaterar till din användning av valfria tredjepartsverktyg. All användning av valfria verktyg som erbjuds via webbplatsen sker helt på din egen risk och ditt eget gottfinnande och du bör säkerställa att du är bekant med och godkänner de villkor under vilka verktyg tillhandahålls av relevanta tredjepartsleverantör(er). Vi kan också i framtiden erbjuda nya tjänster och/eller funktioner via webbplatsen (inklusive lansering av nya verktyg och resurser). Sådana nya funktioner och/eller tjänster ska också omfattas av dessa Användarvillkor."
+      },
+      "section9": {
+        "title": "Avsnitt 9 - Tredjepartslänkar",
+        "text": "Visst innehåll, vissa produkter och tjänster som är tillgängliga via vår Tjänst kan innehålla material från tredje part. Tredjepartslänkar på denna webbplats kan leda dig till tredjepartswebbplatser som inte är anslutna till oss. Vi ansvarar inte för att granska eller utvärdera innehållet eller noggrannheten och vi garanterar inte och kommer inte att ha något ansvar eller skyldighet för något tredjepartsmaterial eller några tredjepartswebbplatser, eller för något annat material, produkter eller tjänster från tredje part. Vi ansvarar inte för någon skada eller skadestånd relaterat till köp eller användning av varor, tjänster, resurser, innehåll eller några andra transaktioner som görs i samband med några tredjepartswebbplatser. Granska noggrant tredje parts policyer och praxis och se till att du förstår dem innan du ingår i någon transaktion. Klagomål, anspråk, bekymmer eller frågor om tredjepartsprodukter bör riktas till tredje part."
+      },
+      "section10": {
+        "title": "Avsnitt 10 - Användarkommentarer, Feedback och Andra Inskickningar",
+        "text": "Om du på vår begäran skickar vissa specifika inskickningar (till exempel tävlingsbidrag) eller utan begäran från oss skickar kreativa idéer, förslag, planer eller annat material, oavsett om det sker online, via e-post, per post eller på annat sätt (gemensamt 'kommentarer'), samtycker du till att vi när som helst, utan begränsning, kan redigera, kopiera, publicera, distribuera, översätta och på annat sätt använda i vilket medium som helst alla kommentarer som du skickar till oss. Vi är och ska inte vara skyldiga att (1) hålla några kommentarer konfidentiella; (2) betala ersättning för några kommentarer; eller (3) svara på några kommentarer. Vi kan, men har ingen skyldighet att, övervaka, redigera eller ta bort innehåll som vi enligt vårt eget gottfinnande bedömer är olagligt, stötande, hotfullt, ärekränkande, förtalande, pornografiskt, obscent eller på annat sätt anstötligt eller som kränker någon parts immateriella rättigheter eller dessa Användarvillkor. Du samtycker till att dina kommentarer inte kommer att kränka några rättigheter för någon tredje part, inklusive upphovsrätt, varumärke, integritet, personlighet eller andra personliga eller äganderättigheter. Du samtycker vidare till att dina kommentarer inte kommer att innehålla ärekränkande eller på annat sätt olagligt, kränkande eller obscent material, eller innehålla något datorvirus eller annan skadlig programvara som på något sätt kan påverka driften av Tjänsten eller någon relaterad webbplats. Du får inte använda en falsk e-postadress, utge dig för att vara någon annan än dig själv, eller på annat sätt vilseleda oss eller tredje part om ursprunget till några kommentarer. Du är ensam ansvarig för alla kommentarer du gör och deras noggrannhet. Vi tar inget ansvar och påtar oss inget ansvar för några kommentarer som publiceras av dig eller någon tredje part."
+      },
+      "section11": {
+        "title": "Avsnitt 11 - Personuppgifter",
+        "text": "Din inlämning av personuppgifter genom butiken styrs av vår Integritetspolicy."
+      },
+      "section12": {
+        "title": "Avsnitt 12 - Fel, Felaktigheter och Uteslutningar",
+        "text": "Ibland kan det finnas information på vår webbplats eller i Tjänsten som innehåller typografiska fel, felaktigheter eller uteslutningar som kan avse produktbeskrivningar, prissättning, kampanjer, erbjudanden, produktfraktkostnader, transittider och tillgänglighet. Vi förbehåller oss rätten att korrigera eventuella fel, felaktigheter eller uteslutningar och att ändra eller uppdatera information eller avbryta beställningar om någon information i Tjänsten eller på någon relaterad webbplats är felaktig när som helst utan föregående meddelande (inklusive efter att du har skickat din beställning). Vi åtar oss ingen skyldighet att uppdatera, ändra eller förtydliga information i Tjänsten eller på någon relaterad webbplats, inklusive utan begränsning prissättningsinformation, förutom vad lagen kräver. Inget angivet uppdaterings- eller uppdateringsdatum som tillämpas i Tjänsten eller på någon relaterad webbplats bör tas som en indikation på att all information i Tjänsten eller på någon relaterad webbplats har ändrats eller uppdaterats."
+      },
+      "section13": {
+        "title": "Avsnitt 13 - Förbjudna Användningar",
+        "text": "Utöver andra förbud som anges i Användarvillkoren är det förbjudet för dig att använda webbplatsen eller dess innehåll: (a) för något olagligt syfte; (b) för att uppmana andra att begå eller delta i olagliga handlingar; (c) för att bryta mot internationella, federala, provinsiella eller statliga föreskrifter, regler, lagar eller lokala förordningar; (d) för att göra intrång i eller kränka våra immateriella rättigheter eller andras immateriella rättigheter; (e) för att trakassera, missbruka, förolämpa, skada, ärekränka, förtala, nedsätta, hota eller diskriminera baserat på kön, sexuell läggning, religion, etnicitet, ras, ålder, nationellt ursprung eller funktionsnedsättning; (f) för att skicka in falsk eller vilseledande information; (g) för att ladda upp eller överföra virus eller någon annan typ av skadlig kod som kommer att eller kan användas på något sätt som påverkar funktionaliteten eller driften av Tjänsten eller någon relaterad webbplats, andra webbplatser eller Internet; (h) för att samla in eller spåra andras personuppgifter; (i) för att spamma, nätfiska, pharma, pretexta, spindla, crawla eller skrapa; (j) för något obscent eller omoraliskt syfte; eller (k) för att störa eller kringgå säkerhetsfunktionerna i Tjänsten eller någon relaterad webbplats, andra webbplatser eller Internet. Vi förbehåller oss rätten att avsluta din användning av Tjänsten eller någon relaterad webbplats för att ha brutit mot någon av de förbjudna användningarna."
+      },
+      "section14": {
+        "title": "Avsnitt 14 - Friskrivning från Garantier; Ansvarsbegränsning",
+        "text": "Vi garanterar, utfäster eller säkerställer inte att din användning av vår tjänst kommer att vara oavbruten, snabbt, säker eller felfri. Vi garanterar inte att de resultat som kan erhållas från användningen av tjänsten kommer att vara korrekta eller tillförlitliga. Du samtycker till att vi då och då kan ta bort tjänsten under obestämd tid eller avbryta tjänsten när som helst, utan meddelande till dig. Du samtycker uttryckligen till att din användning av, eller oförmåga att använda, tjänsten sker på egen risk. Tjänsten och alla produkter och tjänster som levereras till dig genom tjänsten tillhandahålls (utom vad som uttryckligen anges av oss) 'i befintligt skick' och 'i mån av tillgänglighet' för din användning, utan någon utfästelse, garantier eller villkor av något slag, antingen uttryckliga eller underförstådda, inklusive alla underförstådda garantier eller villkor för säljbarhet, säljbar kvalitet, lämplighet för ett visst ändamål, hållbarhet, äganderätt och icke-intrång. I inget fall ska Enouza, våra styrelseledamöter, tjänstemän, anställda, dotterbolag, agenter, entreprenörer, praktikanter, leverantörer, tjänsteleverantörer eller licensgivare vara ansvariga för någon skada, förlust, anspråk eller några direkta, indirekta, tillfälliga, straffande, speciella eller följdskador av något slag, inklusive utan begränsning förlorade vinster, förlorade intäkter, förlorade besparingar, dataförlust, ersättningskostnader eller liknande skador, oavsett om de baseras på avtal, skadestånd (inklusive vårdslöshet), strikt ansvar eller annat, som uppstår från din användning av någon av tjänsterna eller någon produkt som erhållits med hjälp av tjänsten, eller för något annat anspråk som på något sätt relaterar till din användning av tjänsten eller någon produkt, inklusive men inte begränsat till eventuella fel eller uteslutningar i något innehåll, eller någon förlust eller skada av något slag som uppstår till följd av användningen av tjänsten eller något innehåll (eller produkt) som publiceras, överförs eller på annat sätt görs tillgängligt via tjänsten, även om de har informerats om möjligheten. Eftersom vissa stater eller jurisdiktioner inte tillåter uteslutning eller begränsning av ansvar för följdskador eller tillfälliga skador, ska vårt ansvar i sådana stater eller jurisdiktioner begränsas till den maximala omfattning som lagen tillåter."
+      },
+      "section15": {
+        "title": "Avsnitt 15 - Skadeersättning",
+        "text": "Du samtycker till att skadeslösa, försvara och hålla Enouza och vårt moderbolag, dotterbolag, närstående företag, partner, tjänstemän, styrelseledamöter, agenter, entreprenörer, licensgivare, tjänsteleverantörer, underleverantörer, leverantörer, praktikanter och anställda skadeslösa från alla anspråk eller krav, inklusive rimliga advokatarvoden, som görs av någon tredje part på grund av eller som uppstår från ditt brott mot dessa Användarvillkor eller de dokument de införlivar genom hänvisning eller din överträdelse av någon lag eller någon tredje parts rättigheter."
+      },
+      "section16": {
+        "title": "Avsnitt 16 - Ogiltighet",
+        "text": "I händelse av att någon bestämmelse i dessa Användarvillkor befinns vara olaglig, ogiltig eller ogenomförbar, ska sådan bestämmelse ändå vara genomförbar i största möjliga utsträckning som tillåts enligt tillämplig lag, och den ogenomförbara delen ska anses vara avskild från dessa Användarvillkor, och sådant fastställande ska inte påverka giltigheten och genomförbarheten av några andra kvarvarande bestämmelser."
+      },
+      "section17": {
+        "title": "Avsnitt 17 - Upphörande",
+        "text": "Parteros skyldigheter och ansvar som uppkommit före upphörandedatumet ska överleva upphörandet av detta avtal för alla ändamål. Dessa Användarvillkor gäller om de inte och tills de avslutas av dig eller oss. Du kan avsluta dessa Användarvillkor när som helst genom att meddela oss att du inte längre vill använda våra Tjänster, eller när du slutar använda vår webbplats. Om du enligt vårt eget omdöme underlåter, eller vi misstänker att du har underlåtit, att följa någon bestämmelse i dessa Användarvillkor, kan vi också avsluta detta avtal när som helst utan meddelande och du kommer att förbli ansvarig för alla belopp som förfaller till och med upphörandedatumet; och/eller kan vi följaktligen neka dig åtkomst till våra Tjänster (eller någon del därav)."
+      },
+      "section18": {
+        "title": "Avsnitt 18 - Hela Avtalet",
+        "text": "Vårt underlåtande att utöva eller genomdriva någon rättighet eller bestämmelse i dessa Användarvillkor ska inte utgöra en avståelse från sådan rättighet eller bestämmelse. Dessa Användarvillkor och alla policyer eller driftregler som publiceras av oss på denna webbplats eller med avseende på Tjänsten utgör hela avtalet och förståelsen mellan dig och oss och styr din användning av Tjänsten, och ersätter alla tidigare eller samtidiga avtal, meddelanden och förslag, oavsett om de är muntliga eller skriftliga, mellan dig och oss (inklusive men inte begränsat till tidigare versioner av Användarvillkoren). Eventuella oklarheter i tolkningen av dessa Användarvillkor ska inte tolkas mot den part som utformat dem."
+      },
+      "section19": {
+        "title": "Avsnitt 19 - Tillämplig Lag",
+        "text": "Dessa Användarvillkor och eventuella separata avtal genom vilka vi tillhandahåller dig Tjänster ska styras av och tolkas i enlighet med lagarna i USA."
+      },
+      "section20": {
+        "title": "Avsnitt 20 - Ändringar av Användarvillkoren",
+        "text": "Du kan granska den mest aktuella versionen av Användarvillkoren när som helst på denna sida. Vi förbehåller oss rätten, enligt vårt eget gottfinnande, att uppdatera, ändra eller ersätta någon del av dessa Användarvillkor genom att publicera uppdateringar och ändringar på vår webbplats. Det är ditt ansvar att regelbundet kontrollera vår webbplats för ändringar."
+      },
+      "section21": {
+        "title": "Avsnitt 21 - Kontaktinformation",
+        "text": "Frågor om Användarvillkoren ska skickas till oss på hello@enouza.com"
+      }
+    }
+  }
+}
