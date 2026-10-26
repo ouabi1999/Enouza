@@ -18,7 +18,7 @@ const CollectionSection = () => {
     },
     {
       key: "mirrors",
-      image: "https://ae01.alicdn.com/kf/Sc04db29c5d1443d2885a8ecf0a6ff950f.jpg",
+      image: "https://sc04.alicdn.com/kf/Hee6d98ce7169495aa69a3be38ec78dddT.jpg",
       link: "/collections?category=mirrors",
     },
     {
