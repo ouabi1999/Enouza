@@ -264,7 +264,8 @@ trackAddToCart({
   productId: productId,
   name: productData?.name?.en ||  "Luxury Lamp",
   price,
-  quantity,
+  quantity :quantity || 1,
+
   currency: selectedCurrency,
 });
 
@@ -274,7 +275,7 @@ trackAddToCart({
         selectedSku,
         name,
         available_shipping: shipping,
-        quantity,
+        quantity :quantity || 1,
         price,
         subtotal: price * quantity,
       })
@@ -302,7 +303,7 @@ trackAddToCart({
   productId: productId,
   name: name?.en || "Luxury Lamp",
   price,
-  quantity,
+  quantity :quantity || 1,
   currency: selectedCurrency,
 });
     dispatch(
@@ -311,7 +312,7 @@ trackAddToCart({
         selectedSku,
         name,
         available_shipping: shipping,
-        quantity,
+        quantity :quantity || 1,
         price,
         subtotal: price * quantity,
       })
