@@ -351,7 +351,7 @@ function ProductInfo({
 
           {productData?.isHero && (
             <RatingCount as="span">
-              {t("common.orders")} (850)
+              {t("common.orders")} (211)
             </RatingCount>
           )}
         </RatingRow>
