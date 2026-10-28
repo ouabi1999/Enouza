@@ -63,11 +63,10 @@ const MainSlider = () => {
       <OverlayBackground />
 
       <Overlay>
-        <h1>{t("mainSlider.title")}</h1>
-
-        <span>{t("mainSlider.description")}</span>
-
         <bdi>
+        <h1>{t("mainSlider.title")}</h1>
+        <span>{t("mainSlider.description")}</span>
+         
           <h5>{t("mainSlider.welcome")}</h5>
         </bdi>
       </Overlay>

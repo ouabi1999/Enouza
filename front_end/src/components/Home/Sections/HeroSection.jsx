@@ -6,12 +6,11 @@ import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { optimizeCloudinaryImage } from "../../../utilis/cloudinary";
 import DecorationLine from "../../../../common/DecorationLine";
-import { createProductSlug } from "../../../utilis/CreateSlug";
-
 export default function HeroSection() {
   const [product, setProduct] = useState(null);
-  const { t, i18n } = useTranslation();
+  const [loading, setLoading] = useState(true);
 
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const getHeroProduct = async () => {
@@ -21,57 +20,60 @@ export default function HeroSection() {
       } catch (error) {
         setProduct(null);
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
     getHeroProduct();
   }, []);
 
-
   const imageUrl = optimizeCloudinaryImage(
     product?.multimediaInfo?.image_urls?.[2],
     { width: 620 }
   );
 
-  if (!imageUrl) return null;
-
   const isRTL = i18n.dir() === "rtl";
+
+  // Show skeleton while fetching the hero product
+  if (loading) {
+    return <HeroSkeleton $rtl={isRTL} />;
+  }
+
+  // Do not render an empty hero if the product is unavailable
+  if (!imageUrl || !product) return null;
 
   return (
     <HeroBox $rtl={isRTL}>
       <HeroContainer>
-        {/* LEFT / TEXT SIDE */}
-        <Content dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}>
+        <Content dir={isRTL ? "rtl" : "ltr"}>
           <Title>{t("heroSection.title")}</Title>
 
-          <Description>{t("heroSection.description")}</Description>
+          <Description>
+            {t("heroSection.description")}
+          </Description>
 
           <DecorationLine />
-
-
-          {/* STATS */}
-
         </Content>
 
-        {/* IMAGE SIDE */}
         <ImageSide>
           <ImageContainer>
             <HeroImage
               src={imageUrl}
               alt={t("heroSection.title")}
-              fetchpriority="high"
+              fetchPriority="high"
               width="700"
               height="620"
             />
 
-            {/* SHOP BUTTON */}
             <ShopButton
-              to={`/product/${product.slug}`} $rtl={isRTL}
-              dir={i18n.dir() === "rtl" ? "rtl" : "ltr"}
+              to={`/product/${product.slug}`}
+              $rtl={isRTL}
+              dir={isRTL ? "rtl" : "ltr"}
             >
-              <span>{t("common.discover")}</span>
+              <span>{t("countdownSection.shopNow")}</span>
 
-              <Arrow $rtl={isRTL} >
+              <Arrow $rtl={isRTL}>
                 <ArrowForwardIcon />
               </Arrow>
             </ShopButton>
@@ -82,8 +84,272 @@ export default function HeroSection() {
   );
 }
 
+/* =========================
+   HERO SKELETON
+========================= */
+const HeroSkeleton = ({ $rtl }) => {
+  const { t, i18n } = useTranslation();
+
+  return (
+    <HeroBox $rtl={$rtl} aria-busy="true">
+      <HeroContainer>
+        {/* TEXT SIDE */}
+
+        <SkeletonContent dir={i18n.dir()}>
+          <SkeletonTitle>
+            <SkeletonBase />
+            <SkeletonBase />
+            <SkeletonBase $short />
+          </SkeletonTitle>
+
+          <SkeletonDescription>
+            <SkeletonBase />
+            <SkeletonBase />
+            <SkeletonBase $short />
+          </SkeletonDescription>
+
+          <SkeletonDecoration />
+        </SkeletonContent>
+
+        {/* IMAGE SIDE */}
+
+        <SkeletonImageSide>
+          <SkeletonImageContainer>
+            <SkeletonImage />
+
+            {/* SHOP BUTTON PLACEHOLDER */}
+
+            <SkeletonShopButton>
+              <SkeletonButtonText />
+              <SkeletonButtonArrow />
+            </SkeletonShopButton>
+          </SkeletonImageContainer>
+        </SkeletonImageSide>
+      </HeroContainer>
+    </HeroBox>
+  );
+};
 
 
+/* =========================
+   SKELETON ANIMATION
+========================= */
+
+const skeletonShimmer = keyframes`
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+`;
+
+const SkeletonBase = styled.div`
+  background: linear-gradient(
+    90deg,
+    #e8e3db 25%,
+    #f5f2ed 50%,
+    #e8e3db 75%
+  );
+
+  background-size: 200% 100%;
+
+  animation: ${skeletonShimmer} 1.6s ease-in-out infinite;
+
+  border-radius: 3px;
+`;
+
+
+
+
+/* =========================
+   SKELETON TEXT
+========================= */
+
+const SkeletonContent = styled.div`
+  width: 100%;
+  max-width: 570px;
+
+  text-align: center;
+
+  @media (max-width: 900px) {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+`;
+
+const SkeletonTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 37px;
+
+  div {
+    width: 90%;
+    height: 42px;
+  }
+
+  div:nth-child(2) {
+    width: 78%;
+  }
+
+  div:nth-child(3) {
+    width: 48%;
+  }
+
+  @media (max-width: 600px) {
+    gap: 10px;
+    margin-bottom: 20px;
+
+    div {
+      height: 30px;
+    }
+  }
+`;
+
+const SkeletonDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 37px;
+
+  div {
+    width: 100%;
+    height: 12px;
+  }
+
+  div:nth-child(2) {
+    width: 90%;
+  }
+
+  div:nth-child(3) {
+    width: 65%;
+  }
+
+  @media (max-width: 600px) {
+    gap: 10px;
+    margin-bottom: 23px;
+
+    div {
+      height: 10px;
+    }
+  }
+`;
+
+const SkeletonDecoration = styled(SkeletonBase)`
+  width: 90px;
+  height: 2px;
+
+  margin: 0 auto;
+`;
+
+/* =========================
+   SKELETON IMAGE
+========================= */
+
+const SkeletonImageSide = styled.div`
+  width: 100%;
+
+  @media (max-width: 900px) {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+`;
+
+const SkeletonImageContainer = styled.div`
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ded9d0;
+
+  box-shadow:
+    0 26px 65px rgba(48, 43, 39, 0.13),
+    0 8px 22px rgba(48, 43, 39, 0.06);
+
+  @media (max-width: 600px) {
+    box-shadow:
+      0 20px 45px rgba(48, 43, 39, 0.12),
+      0 6px 18px rgba(48, 43, 39, 0.05);
+  }
+`;
+
+const SkeletonImage = styled(SkeletonBase)`
+  width: 100%;
+
+  height: clamp(470px, 46vw, 620px);
+
+  aspect-ratio: 700 / 620;
+
+  @media (max-width: 900px) {
+    height: min(68vw, 540px);
+  }
+
+  @media (max-width: 600px) {
+    height: min(115vw, 470px);
+  }
+
+  @media (max-width: 420px) {
+    height: 105vw;
+    min-height: 350px;
+  }
+`;
+
+/* =========================
+   SKELETON SHOP BUTTON
+========================= */
+
+const SkeletonShopButton = styled.div`
+  position: absolute;
+
+  right: 7%;
+  bottom: 20px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px 15px;
+
+  border: 2px solid rgba(255, 255, 255, 0.6);
+
+  background: rgba(0, 0, 0, 0.15);
+
+  z-index: 5;
+
+  @media (max-width: 700px) {
+    right: 50%;
+    transform: translateX(50%);
+
+    bottom: 30px;
+  }
+
+  @media (max-width: 420px) {
+    bottom: 24px;
+  }
+`;
+
+const SkeletonButtonText = styled(SkeletonBase)`
+  width: 75px;
+  height: 9px;
+`;
+
+const SkeletonButtonArrow = styled(SkeletonBase)`
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+`;
 
 
 /* =========================
