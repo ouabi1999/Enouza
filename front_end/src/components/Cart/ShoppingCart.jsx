@@ -25,25 +25,7 @@ function ShoppingCart() {
   );
 
   const { t, i18n } = useTranslation();
-  useEffect(() => {
-    if (!cartItems?.length) return;
-
-    const items = cartItems.map((item) => ({
-      item_id: item?.selectedSku?.sku_attr || item?.id,
-      item_name:
-        item?.name?.en || "Luxury Lamp",
-      price: Number(item?.price || 0),
-      quantity: Number(item?.quantity || 1),
-    }));
-
-    const value = items.reduce(
-      (total, item) =>
-        total + item.price * item.quantity,
-      0
-    );
-
-    
-  }, [cartItems]);
+ 
 
   useLayoutEffect(() => {
     window.scrollTo({

@@ -110,28 +110,12 @@ function Steps() {
 
   switch (activeStepIndex) {
 
-    /* ================= STEP 0 ================= */
-
-    case 0:
-
-      stepContent = !isAuth ? (
-
-        <GuestMessage>
-          {t("common.checkout_as_guest")}
-        </GuestMessage>
-
-      ) : (
-
-        <LogendIn t={t} />
-
-      );
-
-      break;
+   
 
 
     /* ================= BILLING ================= */
 
-    case 1:
+    case 0:
 
       stepContent = (
         <Billing t={t} i18n={i18n} />
@@ -142,7 +126,7 @@ function Steps() {
 
     /* ================= SHIPPING ================= */
 
-    case 2:
+    case 1:
 
       stepContent = (
         <Shipping
@@ -156,7 +140,7 @@ function Steps() {
 
     /* ================= PAYMENT ================= */
 
-    case 3:
+    case 2:
 
       stepContent = (
         <StripeContanier

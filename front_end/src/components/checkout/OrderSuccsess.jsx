@@ -2,11 +2,41 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SEO from "../SEO/SEO";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const OrderSuccess = () => {
+     const cartItems = useSelector(
+    (state) => state.cart.cartItems
+  );
+     const selectedCurrency = useSelector(
+        (state) => state.currency.selectedCurrency
+      );
+      
   const { t } = useTranslation();
-
+  const orderTotal =
+    props.cartItems?.reduce(
+      (total, item) =>
+        total + item.price * item.quantity,
+      0
+    ) || 0;
+  useEffect(() => {
+      // on order success page, after API confirms order
+trackPurchase({
+  transactionId: "ORD_12345", // required — e.g., "ORD_12345"
+  items: cartItems.map(item => ({
+    productId: item.id,
+    name: item.name,
+    price: item.price,
+    quantity: item.quantity,
+  })),
+  currency: selectedCurrency, // e.g., "USD"
+  value: orderTotal, // total order value
+  
+});
+  }, [])
+  
   
   return (
     <SuccessContainer>
