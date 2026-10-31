@@ -1737,11 +1737,25 @@
                 "text": "Questions about the Terms of Service should be sent to us at hello@enouza.com"
             }
         }
-    }
+    },
 
 
 
-
+"cookies": {
+  "title": "Your privacy matters",
+  "description": "We use cookies to improve your experience, understand how our website is used, and measure our advertising performance.",
+  "acceptAll": "Accept all",
+  "rejectOptional": "Reject optional",
+  "customize": "Customize preferences",
+  "necessary": "Necessary cookies",
+  "necessaryDescription": "Required for website functionality, cart, checkout, and security.",
+  "alwaysOn": "Always on",
+  "analytics": "Analytics",
+  "analyticsDescription": "Help us understand how visitors use our website.",
+  "marketing": "Marketing",
+  "marketingDescription": "Allow advertising measurement and personalized marketing.",
+  "savePreferences": "Save preferences"
+}
 
   
 }

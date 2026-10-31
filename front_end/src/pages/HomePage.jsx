@@ -15,6 +15,7 @@ import CustomersFeedback from "../components/Home/Sections/CustomersFeedbak.jsx"
 import SEO from "../components/SEO/SEO.jsx";
 import CollectionSection from "../components/Home/Sections/CollectionSection.jsx";
 import HomeInsperationSlider from "../components/Home/Sections/HomeInsperationSlider.jsx";
+import CookieConsent from "../components/cookieConsent/CookieConsent.jsx";
 
 const NewArrival = lazy(() =>
   import("../components/newArrival/NewArrival.jsx")
@@ -97,7 +98,7 @@ function HomePage() {
           logo: "https://www.enouza.com/assestLogo.png",
         })}
       </script>
-
+          <CookieConsent/>
       <AdvertiseMain />
 
       <HeroSection />
@@ -117,7 +118,7 @@ function HomePage() {
       <CollectionSection />
 
       <DesignSection />
-
+ 
       <HomeInsperationSlider/>
          <SectionPlaceholder>
         <Suspense fallback={null}>

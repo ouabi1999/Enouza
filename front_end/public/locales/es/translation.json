@@ -1723,5 +1723,21 @@
         "text": "Las preguntas sobre los Términos de Servicio deben enviarse a hello@enouza.com"
       }
     }
-  }
+  },
+
+  "cookies": {
+  "title": "Tu privacidad nos importa",
+  "description": "Utilizamos cookies para mejorar tu experiencia, comprender cómo se utiliza nuestro sitio web y medir el rendimiento de nuestra publicidad.",
+  "acceptAll": "Aceptar todas",
+  "rejectOptional": "Rechazar opcionales",
+  "customize": "Personalizar preferencias",
+  "necessary": "Cookies necesarias",
+  "necessaryDescription": "Son necesarias para el funcionamiento del sitio web, el carrito, el proceso de compra y la seguridad.",
+  "alwaysOn": "Siempre activas",
+  "analytics": "Analíticas",
+  "analyticsDescription": "Nos ayudan a comprender cómo los visitantes utilizan nuestro sitio web.",
+  "marketing": "Marketing",
+  "marketingDescription": "Permiten medir la eficacia de nuestra publicidad y ofrecer marketing personalizado.",
+  "savePreferences": "Guardar preferencias"
+}
 }
