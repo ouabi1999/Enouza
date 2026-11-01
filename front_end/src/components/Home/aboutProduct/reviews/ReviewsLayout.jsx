@@ -21,7 +21,7 @@ function ReviewsLayout() {
 
   const reviewsTopRef = useRef(null);
 
-  const PAGE_SIZE = 2;
+  const PAGE_SIZE = 6;
   const { t, i18n } = useTranslation()
 
   const [preveiwImages, setPreviewImages] = useState([])
