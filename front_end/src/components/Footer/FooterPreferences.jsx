@@ -18,7 +18,6 @@ import {
   setCurrencyAutomatically,
 } from "../../features/currencySlice";
 import { setLanguage } from "../../features/LanguagesSlice";
-import { COUNTRY_LANGUAGE_MAP } from "../../utilis/countryLanguagesAutoDetected";
 // ============================================================
 // ENOUZA FOOTER PREFERENCES
 // ============================================================
@@ -72,6 +71,7 @@ function FooterPreferences() {
     code: "fr",
     label: t("languages.fr"),
   },
+  /*
   {
     code: "de",
     label: t("languages.de"),
@@ -83,7 +83,7 @@ function FooterPreferences() {
   {
     code: "ar",
     label: t("languages.ar"),
-  },
+  },*/
 ];
 
   

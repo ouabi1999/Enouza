@@ -54,19 +54,8 @@ function DropDownMenuLang(props) {
     {
       code: "fr",
       label: t("languages.fr"),
-    },
-    {
-      code: "de",
-      label: t("languages.de"),
-    },
-    {
-      code: "sv",
-      label: t("languages.sv"),
-    },
-    {
-      code: "ar",
-      label: t("languages.ar"),
-    },
+    }
+    
   ];
 
   /* ============================================================
