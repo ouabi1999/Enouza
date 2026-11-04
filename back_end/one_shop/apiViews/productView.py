@@ -79,7 +79,7 @@ class ProductView(APIView):
             for image_file in additionalImageFiles:
 
                 result = cloudinary.uploader.upload(
-                    image_file, folder="enouza/products"
+                    image_file, folder="esonra/products"
                 )
 
                 image_urls.append(result["secure_url"])
@@ -223,7 +223,7 @@ class ProductDetailsView(APIView):
         if additionalImageFiles:
             for image_file in additionalImageFiles:
                 result = cloudinary.uploader.upload(
-                    image_file, folder="enouza/products"
+                    image_file, folder="esonra/products"
                 )
                 image_urls.append(result["secure_url"])
 
@@ -265,37 +265,51 @@ class DashboardProductsView(APIView):
 
 
 class OrderCreateView(APIView):
+
     def post(self, request, *args, **kwargs):
-        request_data = request.data
         try:
             with transaction.atomic():
+
+                request_data = request.data.copy()
+
                 address = {
-                    "first_name": request_data["first_name"],
-                    "last_name": request_data["last_name"],
-                    "email": request_data["email"],
-                    "address1": request_data["address1"],
-                    "address2": request_data["address2"],
-                    "phoneNumber": request_data["phoneNumber"],  # Optional field with default
-                    "city": request_data["city"],
-                    "state": request_data["state"],  # Optional field with default
-                    "country": request_data["country"],
-                    "zipcode": request_data["zipcode"],
+                    "first_name": request_data.pop("first_name"),
+                    "last_name": request_data.pop("last_name"),
+                    "email": request_data.pop("email"),
+                    "address1": request_data.pop("address1"),
+                    "city": request_data.pop("city"),
+                    "phoneNumber": request_data.pop("phoneNumber"),
+                    "state": request_data.pop("state", ""),
+                    "country": request_data.pop("country"),
+                    "zipcode": request_data.pop("zipcode"),
                 }
+
                 request_data["address"] = address
+
                 serializer = OrderSerializer(data=request_data)
 
                 if serializer.is_valid():
                     order = serializer.save()
+
                     return Response(
-                        {"message": "Order created successfully", "order_id": order},
+                        {
+                            "message": "Order created successfully",
+                            "order_id": order.id,
+                        },
                         status=status.HTTP_201_CREATED,
                     )
 
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    serializer.errors,
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
 
         except Exception as e:
+            print("Order creation error:", str(e))
+
             return Response(
-                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"error": "Failed to create order."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
     def get(self, request):

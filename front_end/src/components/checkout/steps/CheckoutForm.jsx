@@ -30,7 +30,13 @@ export default function CheckoutForm() {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const {t, i18n} = useTranslation()
   const [successOrder, setSuccessOrder] = useState(false);
-
+  
+const ordered_items =
+    cartItems?.map((item) => ({
+      id: item.id,
+      quantity: item.quantity,
+      sku_attr: item.selectedSku?.sku_attr,
+    })) || [];
   useEffect(() => {
     if (!stripe) {
       return;
@@ -99,25 +105,29 @@ export default function CheckoutForm() {
     ApiInstance.post("create-order/",
 
       {
-        user: formData.userId,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        city: formData.city,
-        address1: formData.address1,
-        address2: formData.address2,
-        zipcode: formData.zip,
-        state: formData.state,
-        country: formData.country,
-        phoneNumber: formData.phoneNumber,
-        shipping_method: formData.shippingMethod,
-        payment_method: "Cash on delivery",
-        shipping_price: formData.shippingPrice,
-        delivery_time: formData.deliveryTime,
-        total_price: formData.totalPrice,
-        currency: "usd",
-        ordered_items: JSON.stringify(cartItems),
+      user: formData.userId,
+      first_name: formData.logistics_address?.firstName,
+      last_name: formData.logistics_address?.lastName,
+
+      city: formData.logistics_address?.city,
+      address1: formData.logistics_address?.address1,
+      zipcode: formData.logistics_address?.zip,
+      state: formData.logistics_address?.state,
+      country: formData.logistics_address?.country,
+      "phoneNumber": formData.logistics_address?.phoneNumber,
+      email: formData.logistics_address?.email,
+
+      shipping_method: formData.shippingMethod,
+      payment_method: "Pay after delivery",
+      shipping_price: formData.shippingPrice,
+      delivery_time: formData.deliveryTime,
+
+      total_price: formData.totalPrice,
+      currency: "usd",
+
+      ordered_items: JSON.stringify(ordered_items),
       }
+      
     ).then((res) => {
       navigate("/order-success");
       setIsLoadingCOD(false);

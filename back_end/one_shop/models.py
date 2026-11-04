@@ -53,7 +53,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 class Products(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)  # type: ignore
-    product_id = models.CharField(max_length=100, unique=True, default=get_uuid)
+    product_id = models.CharField(max_length=100, unique=True, blank=True, null=True)
     name = models.JSONField()
     description = models.JSONField()
     brand = models.CharField(max_length=100, blank=True, null=True)
@@ -73,6 +73,8 @@ class Products(models.Model):
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     social_media_links = models.JSONField(blank=True, null=True)
     orders = models.ManyToManyField("Orders", related_name="products", blank=True)
+    supplierName = models.CharField(max_length=100, blank=True, null=True)
+    fulFillmentNetworkName = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     def __str__(self):
         if isinstance(self.name, dict):
@@ -106,6 +108,7 @@ class Address(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
+    phone_number = models.CharField(max_length=30, blank=True, null=True)
     address1 = models.CharField(max_length=255)
     address2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=100)
@@ -117,35 +120,130 @@ class Address(models.Model):
         return f"{self.address1}, {self.city}, {self.country}"
 
 
+    
 class Orders(models.Model):
-    id = models.BigAutoField(primary_key=True, unique=True)
-    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
+    id = models.BigAutoField(primary_key=True)
+
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
     ordered_items = models.JSONField()
+
     shipping_method = models.CharField(max_length=100)
     shipping_price = models.DecimalField(max_digits=10, decimal_places=2)
     delivery_time = models.CharField(max_length=100)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+
     payment_method = models.CharField(max_length=50)
-    ordered_at = models.DateField(auto_now_add=True)
-    # Association to User
+
+    order_status = models.CharField(
+        max_length=20,
+        choices=(
+            ("pending", "Pending"),
+            ("processing", "Processing"),
+            ("shipped", "Shipped"),
+            ("delivered", "Delivered"),
+            ("cancelled", "Cancelled"),
+        ),
+        default="pending"
+    )
+
+    payment_status = models.CharField(
+        max_length=20,
+        choices=(
+            ("unpaid", "Unpaid"),
+            ("pending", "Pending"),
+            ("paid", "Paid"),
+            ("failed", "Failed"),
+            ("refunded", "Refunded"),
+        ),
+        default="unpaid"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="orders",
         blank=True,
         null=True,
     )
 
     def __str__(self):
-        return f"Order {self.id} by {self.payment_method}"
+        return f"Order {self.id} - {self.payment_method}"
+    
+    
+class OrderIntegration(models.Model):
 
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        PROCESSING = "processing", "Processing"
+        SYNCED = "synced", "Synced"
+        FAILED = "failed", "Failed"
+        CANCELLED = "cancelled", "Cancelled"
+
+    order = models.ForeignKey(
+        Orders,
+        on_delete=models.PROTECT,
+        related_name="integrations"
+    )
+
+    provider = models.CharField(max_length=50)
+
+    external_order_id = models.CharField(
+        max_length=150,
+        null=True,
+        blank=True
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.PENDING
+    )
+
+    response_data = models.JSONField(
+        null=True,
+        blank=True
+    )
+
+    error_message = models.TextField(
+        null=True,
+        blank=True
+    )
+
+    synced_at = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["order", "provider"],
+                name="unique_order_provider"
+            )
+        ]
+
+    def __str__(self):
+        return f"Order {self.order_id} - {self.provider}"
 class Rating(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     stars = models.IntegerField()
     review = models.JSONField()
+
     user = models.JSONField()
     product = models.ForeignKey('Products', on_delete=models.CASCADE, related_name='user_ratings')
-    created_at = models.DateField(default=timezone.localdate)
+    created_at = models.DateField(default=timezone.now)
     def __str__(self):
         return str(self.id)
 
