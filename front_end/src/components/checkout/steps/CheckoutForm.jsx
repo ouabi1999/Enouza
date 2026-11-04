@@ -6,7 +6,6 @@ import {
 } from "@stripe/react-stripe-js";
 import styled from "styled-components";
 
-;
 import { FormContext } from "../../../pages/CheckoutPage";
 import { OrderContext } from "../../../App";
 import { useNavigate } from "react-router-dom";
@@ -110,6 +109,7 @@ export default function CheckoutForm() {
         zipcode: formData.zip,
         state: formData.state,
         country: formData.country,
+        phoneNumber: formData.phoneNumber,
         shipping_method: formData.shippingMethod,
         payment_method: "Cash on delivery",
         shipping_price: formData.shippingPrice,
