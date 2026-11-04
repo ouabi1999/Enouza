@@ -39,6 +39,7 @@ export default function StripeContanier({ t, i18n }) {
    * Create PaymentIntent
    */
   useEffect(() => {
+    
     if (paymentIntentCreated.current) return;
 
     if (!formData?.totalPrice) return;
