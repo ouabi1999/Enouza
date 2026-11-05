@@ -264,60 +264,6 @@ class DashboardProductsView(APIView):
         )
 
 
-class OrderCreateView(APIView):
-
-    def post(self, request, *args, **kwargs):
-        try:
-            with transaction.atomic():
-
-                request_data = request.data.copy()
-
-                address = {
-                    "first_name": request_data.pop("first_name"),
-                    "last_name": request_data.pop("last_name"),
-                    "email": request_data.pop("email"),
-                    "address1": request_data.pop("address1"),
-                    "city": request_data.pop("city"),
-                    "phoneNumber": request_data.pop("phoneNumber"),
-                    "state": request_data.pop("state", ""),
-                    "country": request_data.pop("country"),
-                    "zipcode": request_data.pop("zipcode"),
-                }
-
-                request_data["address"] = address
-
-                serializer = OrderSerializer(data=request_data)
-
-                if serializer.is_valid():
-                    order = serializer.save()
-
-                    return Response(
-                        {
-                            "message": "Order created successfully",
-                            "order_id": order.id,
-                        },
-                        status=status.HTTP_201_CREATED,
-                    )
-
-                return Response(
-                    serializer.errors,
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-
-        except Exception as e:
-            print("Order creation error:", str(e))
-
-            return Response(
-                {"error": "Failed to create order."},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
-
-    def get(self, request):
-        Ordersdata = Orders.objects.all()
-        serializer = OrderSerializer(Ordersdata, many=True, default=[])
-
-        return Response(serializer.data)
-
 
 class ProductRatingsView(APIView):
 
