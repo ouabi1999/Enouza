@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
-import { useSearchParams } from "react-router-dom";
 
 import StarIcon from "@mui/icons-material/Star";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
