@@ -131,8 +131,7 @@ export default function CheckoutForm() {
         total_price: formData.totalPrice,
         ordered_items: JSON.stringify(ordered_items)
       });
-
-      console.log("COD order created successfully.");
+     navigate("/order-success");
     } catch (error) {
       console.error("COD order error:", error);
 
