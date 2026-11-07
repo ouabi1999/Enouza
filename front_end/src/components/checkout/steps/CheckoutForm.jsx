@@ -151,10 +151,13 @@ export default function CheckoutForm() {
   return (
     <Container>
       {/* Header */}
+      {/*
       <div className="payment-header">
         <h3>{t("checkoutPage.paymentMethod")}</h3>
         <p>{t("checkoutPage.paymentDescription")}</p>
       </div>
+      */}
+
       {/* Payment method options */}
 {/*
       <div className="payment-options">
