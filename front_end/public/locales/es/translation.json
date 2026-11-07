@@ -14,6 +14,27 @@
     "shopNow": "Comprar Ahora",
     "ariaLabel": "Tiempo restante para esta oferta especial"
   },
+  "checkoutPage": {
+    "totalToPay": "Total a pagar",
+    "includingShipping": "Envío incluido",
+    "paymentMethod": "Método de pago",
+    "paymentDescription": "Elige cómo quieres pagar tu pedido.",
+    "creditCard": "Tarjeta de crédito o débito",
+    "creditCardDescription": "Paga de forma segura con tu tarjeta bancaria.",
+    "cashOnDelivery": "Pago contra reembolso",
+    "cashOnDeliveryDescription": "Paga en efectivo cuando recibas tu pedido.",
+    "cardDetails": "Datos de la tarjeta",
+    "payNow": "Pagar ahora",
+    "payWhenDelivered": "Paga cuando recibas tu pedido",
+    "codInformation": "Completa tu pedido ahora y paga al repartidor cuando te entregue el paquete.",
+    "confirmOrder": "Confirmar pedido",
+    "securePayment": "Tus datos de pago están protegidos y se procesan de forma segura.",
+    "paymentSuccess": "¡Pago realizado correctamente!",
+    "paymentProcessing": "Tu pago se está procesando.",
+    "paymentFailed": "No se ha podido completar el pago. Inténtalo de nuevo.",
+    "paymentError": "Ha ocurrido un error con tu pago.",
+    "orderCreationError": "No hemos podido crear tu pedido. Inténtalo de nuevo."
+  },
 
   "menu": {
     "login": "Iniciar Sesión",
