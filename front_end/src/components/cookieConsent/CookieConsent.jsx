@@ -121,7 +121,7 @@ const CookieConsent = () => {
   return (
     <Overlay>
       <Banner role="dialog" aria-modal="true">
-        <CookieIcon style={{ fontSize: 40, color: '#d6b268', marginBottom: '10px' }} />
+        <CookieIcon style={{ fontSize: 40, color: '#1d1c1a', marginBottom: '10px' }} />
 
         <Heading>
           {t("cookies.title", "Your privacy matters")}
