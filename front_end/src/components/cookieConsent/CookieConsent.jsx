@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
+import CookieIcon from '@mui/icons-material/Cookie';
 const CONSENT_KEY = "enouza_cookie_consent_v1";
 
 const DEFAULT_CONSENT = {
@@ -121,7 +121,7 @@ const CookieConsent = () => {
   return (
     <Overlay>
       <Banner role="dialog" aria-modal="true">
-        <Brand>ENOUZA</Brand>
+        <CookieIcon style={{ fontSize: 40, color: '#d6b268', marginBottom: '10px' }} />
 
         <Heading>
           {t("cookies.title", "Your privacy matters")}
