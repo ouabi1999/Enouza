@@ -257,21 +257,30 @@ const CookieConsent = () => {
 };
 
 export default CookieConsent;
-
 const Overlay = styled.div`
   position: fixed;
   z-index: 99999;
   inset: auto 0 0;
-  padding: 20px;
+  padding: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
   pointer-events: none;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
 `;
 
 const Banner = styled.div`
+  box-sizing: border-box;
   pointer-events: auto;
-  width: 100%;
-  max-width: 480px;
+  width: min(100%, 480px);
+  max-height: min(80dvh, 720px);
   margin-left: auto;
-  padding: 26px;
+  padding: clamp(18px, 4vw, 26px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: #f7f5f0;
   color: #1d1c1a;
   border: 1px solid #ded4c4;
@@ -279,8 +288,13 @@ const Banner = styled.div`
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.16);
 
   @media (max-width: 600px) {
-    max-width: 100%;
-    padding: 22px;
+    width: 100%;
+    max-height: min(75dvh, 620px);
+    border-radius: 12px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 16px;
   }
 `;
 
@@ -288,27 +302,29 @@ const Brand = styled.div`
   font-size: 13px;
   letter-spacing: 3px;
   font-weight: 600;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 `;
 
 const Heading = styled.h2`
   font-family: "Cormorant Garamond", serif;
-  font-size: 27px;
+  font-size: clamp(22px, 6vw, 27px);
+  line-height: 1.2;
   font-weight: 500;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 `;
 
 const Description = styled.p`
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: #5c5851;
-  margin: 0 0 22px;
+  margin: 0 0 18px;
+  overflow-wrap: anywhere;
 `;
 
 const Actions = styled.div`
   display: flex;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 16px;
 
   @media (max-width: 420px) {
     flex-direction: column;
@@ -316,7 +332,9 @@ const Actions = styled.div`
 `;
 
 const ActionButton = styled.button`
+  box-sizing: border-box;
   flex: 1;
+  min-width: 0;
   min-height: 44px;
   padding: 10px 14px;
   border: 1px solid #1d1c1a;
@@ -325,8 +343,11 @@ const ActionButton = styled.button`
     $primary ? "#1d1c1a" : "transparent"};
   color: ${({ $primary }) =>
     $primary ? "#ffffff" : "#1d1c1a"};
+  font: inherit;
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
   cursor: pointer;
   transition: opacity 0.2s;
 
@@ -337,27 +358,35 @@ const ActionButton = styled.button`
 
 const SettingsLink = styled.button`
   display: block;
-  margin: 18px auto 0;
-  padding: 0;
+  max-width: 100%;
+  margin: 16px auto 0;
+  padding: 6px;
   border: 0;
   background: transparent;
   color: #1d1c1a;
   text-decoration: underline;
+  font: inherit;
   font-size: 12px;
+  line-height: 1.4;
   cursor: pointer;
 `;
 
 const Preferences = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 `;
 
 const Preference = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
+
+  > div {
+    min-width: 0;
+  }
 `;
 
 const PreferenceTitle = styled.div`
@@ -369,19 +398,23 @@ const PreferenceTitle = styled.div`
 const PreferenceDescription = styled.div`
   color: #5c5851;
   font-size: 11px;
-  line-height: 1.6;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 `;
 
 const Required = styled.span`
   flex-shrink: 0;
+  padding-top: 2px;
   color: #8c7657;
   font-size: 11px;
+  white-space: nowrap;
 `;
 
 const Toggle = styled.input`
   flex-shrink: 0;
-  width: 36px;
-  height: 20px;
+  width: 40px;
+  height: 22px;
+  margin: 0;
   accent-color: #1d1c1a;
   cursor: pointer;
 `;
