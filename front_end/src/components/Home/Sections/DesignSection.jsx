@@ -86,7 +86,7 @@ const DesignSection = () => {
   // ========================================
   // RETURN
   // ========================================
-  const ImageuRL ="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477154/enouza/products/y2bweqb3pbwsdogh2ikb.png"
+  const ImageuRL ="https://res.cloudinary.com/dzpzy1o1y/image/upload/v1794095318/stone-showroom-girl-optimized_lkqh3n.webp"
 
   return (
     <DesignContainer maxWidth={false}>
