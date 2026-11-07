@@ -211,7 +211,6 @@ const handlePageChange = (page) => {
                               <ImagePlaceholder
                                 data-review-placeholder="true"
                               >
-                                <PlaceholderMark>ENOUZA</PlaceholderMark>
                                 <PlaceholderText>
                                   {translate(
                                     "no_photo_available",
@@ -245,7 +244,6 @@ const handlePageChange = (page) => {
         </ReviewsList>
       ) : (
         <EmptyReviews>
-          <EmptyMark>ENOUZA</EmptyMark>
           <EmptyTitle>
             {translate("no_reviews", "No reviews yet")}
           </EmptyTitle>

@@ -333,28 +333,15 @@ const CustomersFeedback = () => {
 
         <Header>
 
-          <Eyebrow>
-
-            <bdi>{t("customersFeedback.eyebrow")}</bdi>
-
-          </Eyebrow>
+        
 
 
 
           <Title>
+                         <bdi>{t("customersFeedback.description")}</bdi>
 
-            <bdi>{t("customersFeedback.title")}</bdi>
 
           </Title>
-
-
-
-          <Description>
-
-            <bdi>{t("customersFeedback.description")}</bdi>
-
-          </Description>
-
 
 
           {!loading && reviews.length > 0 && (
@@ -911,29 +898,12 @@ const Header = styled.div`
 
 
 
-const Eyebrow = styled.span`
-
-  display: block;
-
-  margin-bottom: 18px;
-
-  font-size: 11px;
-
-  font-weight: 600;
-
-  letter-spacing: 2.5px;
-
-  text-transform: uppercase;
-
-  color: #777;
-
-`;
 
 
 
 const Title = styled.h2`
 
-  margin: 0;
+  margin-bottom: 18px;
 
   font-family: Georgia, "Times New Roman", serif;
 
@@ -951,29 +921,7 @@ const Title = styled.h2`
 
 
 
-const Description = styled.p`
 
-  max-width: 560px;
-
-  margin: 24px auto 32px;
-
-  font-size: 16px;
-
-  line-height: 1.7;
-
-  color: #666;
-
-
-
-  @media (max-width: 550px) {
-
-    margin-top: 20px;
-
-    font-size: 14px;
-
-  }
-
-`;
 
 
 

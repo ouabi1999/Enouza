@@ -59,7 +59,6 @@ function Ratings({
   return (
     <Container dir={i18n.language === "ar" ? "rtl" : "ltr"}>
       <RatingsHeader>
-        <Eyebrow>ENOUZA</Eyebrow>
 
         <Title>
           {t(
@@ -151,15 +150,7 @@ const RatingsHeader = styled.div`
   text-align: center;
 `;
 
-const Eyebrow = styled.span`
-  margin-bottom: 7px;
-  color: #a88a62;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-`;
+
 
 const Title = styled.h3`
   margin: 0;
