@@ -276,7 +276,7 @@ class ProductRatingsView(APIView):
             )
 
         ratings = Rating.objects.filter(product_id=product_id).order_by(
-            "-created_at", "-id"
+            "-created_at"
         )
 
         paginator = PageNumberPagination()
@@ -302,7 +302,7 @@ class RatingView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        ratings = Rating.objects.all().order_by("-id")
+        ratings = Rating.objects.all().order_by("created_at")
 
         paginator = Paginator(ratings, per_page)
         page = paginator.get_page(current_page)
