@@ -21,7 +21,8 @@ class TodoAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     list_display = ("id", "stars", "review", "created_at")
 
-
+admin.site.register(ContactUs)
+admin.site.register(Newsletter)
 admin.site.register(Products)
 admin.site.register(Display)
 
