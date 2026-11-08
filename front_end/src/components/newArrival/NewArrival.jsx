@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { optimizeCloudinaryImage } from "../../utilis/cloudinary";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { colors } from "../../utilis/colors";
 import "swiper/css";
 import CurrencyPrice from "../../../common/CurrencyPrice";
 
@@ -30,27 +29,29 @@ function NewArrival({
   return (
     <Section dir="ltr">
       <Container>
-        <Header>
-          <Title>{t(`homePage.${name}`)}</Title>
-        </Header>
+        <SectionHeaderRow>
+          <Header>
+            <Title>{t(`homePage.${name}`)}</Title>
+          </Header>
 
-        <NavigationArea>
-          <button
-            type="button"
-            aria-label="Previous products"
-            onClick={() => swiperRef.current?.slidePrev()}
-          >
-            <Arrow $direction="prev" />
-          </button>
+          <NavigationArea>
+            <button
+              type="button"
+              aria-label="Previous products"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <Arrow $direction="prev" />
+            </button>
 
-          <button
-            type="button"
-            aria-label="Next products"
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <Arrow $direction="next" />
-          </button>
-        </NavigationArea>
+            <button
+              type="button"
+              aria-label="Next products"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <Arrow $direction="next" />
+            </button>
+          </NavigationArea>
+        </SectionHeaderRow>
 
         <SwiperWrapper>
           <Swiper
@@ -223,19 +224,25 @@ function NewArrival({
 
 export default NewArrival;
 
-/* SECTION */
+/* =========================================================
+   SECTION
+========================================================= */
+
 const Section = styled.section`
   width: 100%;
-  padding: 96px 0 105px;
+  background: #f7f5f0;
+  padding: 70px 0 105px;
   overflow: hidden;
-  background: ${colors.background};
 
   @media (max-width: 600px) {
-    padding: 56px 0 64px;
+    padding: 60px 0 70px;
   }
 `;
 
-/* CONTAINER */
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 const Container = styled.div`
   width: min(1440px, calc(100% - 64px));
   margin: 0 auto;
@@ -245,63 +252,96 @@ const Container = styled.div`
   }
 `;
 
-/* HEADER */
-const Header = styled.div`
+/* =========================================================
+   HEADER
+========================================================= */
+
+const SectionHeaderRow = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 34px;
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 28px;
 
   @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 14px;
+    min-height: auto;
     margin-bottom: 24px;
   }
 `;
 
-/* TITLE */
-const Title = styled.h2`
-  margin: 0;
-  color: ${colors.primary};
-  font-family: Arial, sans-serif;
-  font-size: clamp(1.4rem, 2vw, 3rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.04em;
+const Header = styled.div`
+  width: min(700px, calc(100% - 110px));
+  margin: 0 auto;
   text-align: center;
-  text-wrap: balance;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
-/* NAVIGATION */
+const Title = styled.h2`
+  width: 100%;
+  margin: 0;
+  color: #00000;
+  font-family: Arial, sans-serif;
+  font-size: clamp(30px, 2.5vw, 50px);
+  font-weight: 400;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+
+  @media (max-width: 600px) {
+    font-size: clamp(25px, 6vw, 35px);
+    letter-spacing: 1.8px;
+  }
+`;
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
 const NavigationArea = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  margin-bottom: 20px;
+  margin: 0;
   direction: ltr;
 
   button {
-    display: flex;
     position: relative;
-    align-items: center;
-    justify-content: center;
+    flex-shrink: 0;
     width: 42px;
     height: 42px;
     padding: 0;
-    border: 1px solid ${colors.border};
+    border: 1px solid #d4cec5;
     border-radius: 50%;
-    background: ${colors.surface};
-    color: ${colors.primary};
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    color: #25221f;
     transition:
-      background 0.25s ease,
-      border-color 0.25s ease,
-      color 0.25s ease,
-      transform 0.25s ease;
+      background 0.35s ease,
+      border-color 0.35s ease,
+      color 0.35s ease,
+      transform 0.35s ease;
 
     &:hover {
+      background: #25221f;
+      border-color: #25221f;
+      color: #fff;
       transform: translateY(-2px);
-      border-color: ${colors.accent};
-      background: ${colors.accent};
     }
 
     &:active {
@@ -309,17 +349,20 @@ const NavigationArea = styled.div`
     }
 
     &:focus-visible {
-      outline: 2px solid ${colors.accent};
+      outline: 2px solid #9b815f;
       outline-offset: 3px;
     }
   }
 
-  @media (max-width: 400px) {
-    display: none;
-  }
+  @media (max-width: 600px) {
+    display:none;
+}
 `;
 
-/* ARROW */
+/* =========================================================
+   ARROW
+========================================================= */
+
 const Arrow = styled.span`
   width: 7px;
   height: 7px;
@@ -327,13 +370,20 @@ const Arrow = styled.span`
   border-right: 1px solid currentColor;
 
   transform: ${({ $direction }) =>
-    $direction === "prev" ? "rotate(-135deg)" : "rotate(45deg)"};
+    $direction === "prev"
+      ? "rotate(-135deg)"
+      : "rotate(45deg)"};
 
   ${({ $direction }) =>
-    $direction === "prev" ? "margin-left: 3px;" : "margin-right: 3px;"}
+    $direction === "prev"
+      ? "margin-left: 3px;"
+      : "margin-right: 3px;"}
 `;
 
-/* SWIPER */
+/* =========================================================
+   SWIPER
+========================================================= */
+
 const SwiperWrapper = styled.div`
   width: 100%;
 
@@ -357,31 +407,35 @@ const SwiperWrapper = styled.div`
   }
 `;
 
-/* PRODUCT CARD */
+/* =========================================================
+   PRODUCT
+========================================================= */
+
 const ProductCard = styled.article`
-  position: relative;
   width: 100%;
+  position: relative;
 `;
 
-/* PRODUCT LINK */
 const ProductLink = styled(Link)`
   display: block;
   color: inherit;
   text-decoration: none;
 `;
 
-/* IMAGE WRAPPER */
+/* =========================================================
+   IMAGE
+========================================================= */
+
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 0.82;
   overflow: hidden;
+  background: #ebe7df;
   isolation: isolate;
-  background: ${colors.surfaceHover || colors.background};
   cursor: pointer;
 `;
 
-/* PRODUCT IMAGE */
 const ProductImage = styled.img`
   position: absolute;
   inset: 0;
@@ -389,15 +443,27 @@ const ProductImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: ${({ $secondary }) => ($secondary ? 0 : 1)};
-  transform: scale(1);
+
   transition:
-    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  opacity: ${({ $secondary }) =>
+    $secondary ? 0 : 1};
+
+  transform: scale(1);
 
   ${ProductCard}:hover & {
     transform: scale(1.025);
-    opacity: ${({ $secondary }) => ($secondary ? 1 : 0)};
+
+    ${({ $secondary }) =>
+      $secondary
+        ? `
+          opacity: 1;
+        `
+        : `
+          opacity: 0;
+        `}
   }
 
   @media (max-width: 768px) {
@@ -405,172 +471,233 @@ const ProductImage = styled.img`
 
     ${ProductCard}:hover & {
       transform: none;
-      opacity: ${({ $secondary }) => ($secondary ? 0 : 1)};
+      opacity: ${({ $secondary }) =>
+        $secondary ? 0 : 1};
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
   }
 `;
 
-/* PRODUCT LABELS */
+/* =========================================================
+   PRODUCT LABELS
+========================================================= */
+
 const ProductLabels = styled.div`
   position: absolute;
   top: 15px;
-  ${({ $isArabic }) => ($isArabic ? "right: 15px;" : "left: 15px;")}
-  z-index: 4;
+
+  ${({ $isArabic }) =>
+    $isArabic
+      ? `
+        right: 15px;
+      `
+      : `
+        left: 15px;
+      `}
+
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 7px;
+  z-index: 4;
   pointer-events: none;
 `;
 
-/* PRODUCT LABEL */
 const Label = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 25px;
   padding: 0 10px;
-  background: ${colors.primary};
-  color: ${colors.surface};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  background: rgba(37, 34, 31, 0.94);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
 `;
 
-/* DISCOUNT LABEL */
 const SaveLabel = styled.span`
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 25px;
   padding: 0 10px;
-  background: ${colors.accent};
-  color: ${colors.primary};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  overflow: hidden;
+
+  background: #a88556;
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
   line-height: 1;
   white-space: nowrap;
+
+  box-shadow: 0 2px 7px rgba(100, 76, 43, 0.12);
+  animation: saveLabelPulse 2.4s ease-in-out infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -120%;
+    width: 70%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.48) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: saveLabelShine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes saveLabelPulse {
+    0%, 100% {
+      box-shadow: 0 2px 7px rgba(100, 76, 43, 0.12);
+    }
+    50% {
+      box-shadow: 0 3px 12px rgba(173, 146, 112, 0.38);
+    }
+  }
+
+  @keyframes saveLabelShine {
+    0%, 25% {
+      left: -120%;
+    }
+    65%, 100% {
+      left: 160%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+
+    &::after {
+      animation: none;
+      display: none;
+    }
+  }
 `;
 
-/* PRODUCT INFORMATION */
+/* =========================================================
+   PRODUCT INFO
+========================================================= */
+
 const ProductInfo = styled.div`
+  padding-top: 20px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  text-align: center;
 `;
 
-/* PRODUCT NAME */
 const ProductName = styled.h3`
-  max-width: 95%;
   margin: 0;
-  color: ${colors.text};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.85rem;
+  max-width: 95%;
+  color: #292622;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.005em;
   text-align: center;
-  text-wrap: balance;
 `;
 
-/* PRICE GROUP */
+/* =========================================================
+   PRICE
+========================================================= */
+
 const PriceGroup = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 9px;
   margin-top: 9px;
 `;
 
-/* CURRENT PRICE */
 const CurrentPrice = styled.span`
-  color: ${colors.primary};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
+  color: #25221f;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
   white-space: nowrap;
 `;
 
-/* COMPARE PRICE */
 const ComparePrice = styled.span`
-  color: ${colors.textSecondary};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.72rem;
+  color: #aaa39b;
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
   font-weight: 400;
   text-decoration: line-through;
   white-space: nowrap;
 `;
 
-/* FREE SHIPPING */
+/* =========================================================
+   SHIPPING
+========================================================= */
+
 const Shipping = styled.div`
-  margin-top: 8px;
-  color: ${colors.success};
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  margin-top: 7px;
+  color: #918980;
+  font-family: Arial, sans-serif;
+  font-size: 0.59rem;
+  font-weight: 400;
+  letter-spacing: 0.045em;
   text-transform: uppercase;
 `;
 
-/* SKELETON CARD */
+/* =========================================================
+   SKELETON LOADING
+========================================================= */
+
 const SkeletonCard = styled.div`
   width: 100%;
 `;
 
-/* SKELETON IMAGE */
 const SkeletonImage = styled.div`
   width: 100%;
   aspect-ratio: 0.82;
-  background: ${colors.border};
+  background: #e9e5de;
   animation: pulse 1.7s ease-in-out infinite;
 
   @keyframes pulse {
-    0%,
-    100% {
+    0% {
       opacity: 0.55;
     }
 
     50% {
       opacity: 1;
     }
-  }
 
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
+    100% {
+      opacity: 0.55;
+    }
   }
 `;
 
-/* SKELETON INFORMATION */
 const SkeletonInfo = styled.div`
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
 `;
 
-/* SKELETON NAME */
 const SkeletonName = styled.div`
   width: 62%;
   height: 10px;
-  border-radius: 3px;
-  background: ${colors.border};
+  background: #e2ddd5;
 `;
 
-/* SKELETON PRICE ROW */
 const SkeletonBottom = styled.div`
   display: flex;
   align-items: center;
@@ -579,18 +706,14 @@ const SkeletonBottom = styled.div`
   margin-top: 13px;
 `;
 
-/* SKELETON PRICE */
 const SkeletonPrice = styled.div`
   width: 65px;
   height: 9px;
-  border-radius: 3px;
-  background: ${colors.border};
+  background: #e2ddd5;
 `;
 
-/* SKELETON RATING */
 const SkeletonRating = styled.div`
   width: 38px;
   height: 9px;
-  border-radius: 3px;
-  background: ${colors.border};
+  background: #e2ddd5;
 `;
