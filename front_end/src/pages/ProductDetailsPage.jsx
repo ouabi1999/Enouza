@@ -420,7 +420,7 @@ const onClose = ()=>{
         />
       )}
          <NewArrival products={similarProducts}    isLoading={similarProductsLoading}
- name=" mayAlsoLike" isAuto={false} />
+ name="mayAlsoLike" isAuto={false} />
       </>
       )}
      

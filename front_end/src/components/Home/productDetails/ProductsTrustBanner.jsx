@@ -121,7 +121,7 @@ const ProductTrustBanner = () => {
           </TrustTitle>
         </TrustItem>
 
-        <TrustItem>
+       {/*<TrustItem>
           <IconWrapper>
             <ReplayIcon className="icons" aria-hidden="true" />
           </IconWrapper>
@@ -130,7 +130,7 @@ const ProductTrustBanner = () => {
             {t("trust.returns.title")}
           </TrustTitle>
         </TrustItem>
-
+*/}
         <TrustItem>
           <IconWrapper>
             <WorkspacePremiumOutlinedIcon
@@ -267,7 +267,7 @@ const TrustGrid = styled.div`
   margin-top: 32px;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   place-content:center;
 `;
 

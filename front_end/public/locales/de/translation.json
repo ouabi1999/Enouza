@@ -582,12 +582,12 @@
 
     "fastDelivery": {
       "title": "Weltweite Lieferung",
-      "text": "Internationale Lieferung in 5–15 Tagen"
+      "text": "Internationale Lieferung in 5–7 Tagen"
     },
 
     "returns": {
-      "title": "100-Tage-Rückgabe",
-      "text": "Einfache Rücksendungen innerhalb von 100 Tagen"
+      "title": "90-Tage-Rückgabe",
+      "text": "Einfache Rücksendungen innerhalb von 90 Tagen"
     },
 
     "warranty": {
