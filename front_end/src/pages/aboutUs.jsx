@@ -15,7 +15,7 @@ import SEO from "../components/SEO/SEO";
 
 const images = {
   story:
-    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789772276/enouza/products/cf9x7hm6kfetpdhrqusc.png",
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1794095318/stone-showroom-girl-optimized_lkqh3n.webp",
   statement:
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1791651525/enouza/products/imgi_33_BRONZE_PRODUCT_PAGE_4_bxanev.jpg",
   approach:
@@ -23,7 +23,7 @@ const images = {
   selection:
     "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789759246/wz8kkye0zyrbrhnpc5qx.png",
   promise:
-    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1789477153/enouza/products/uxdsswoykxmqdb37195t.png",
+    "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1794096537/enouza-about-us-optimized_uetz8x.webp",
 };
 
 const COLORS = {
