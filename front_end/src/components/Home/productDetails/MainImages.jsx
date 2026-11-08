@@ -101,7 +101,6 @@ function MainImages(props) {
 
   const openFullscreen = () => {
 
-    if (!activeImage) return;
 
     setIsFullscreen(true);
 
