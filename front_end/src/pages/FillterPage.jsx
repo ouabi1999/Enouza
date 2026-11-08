@@ -17,7 +17,7 @@ import SEO from "../components/SEO/SEO";
 ============================================================ */
 
 const cover_image =
-  "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1790529844/ChatGPT_Image_Sep_27_2026_07_23_04_PM_csaple.png";
+  "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1794098778/enouza-natural-collection-cover_e2dcch.webp";
 
 /* ============================================================
    ANIMATIONS
@@ -439,7 +439,7 @@ const CollectionTitle = styled.h1`
   color: #fffaf2;
 
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
 
   letter-spacing: -0.035em;
