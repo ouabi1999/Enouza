@@ -8,7 +8,6 @@ export default function FixedAddBuyButtons({
   currentSku,
   productData,
   shippingInfo,
-  buy_Now_item,
   add_item_to_cart,
   purchaseRef,
   bottomRef,
