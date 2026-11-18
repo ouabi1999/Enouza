@@ -25,7 +25,7 @@ const OrderSuccess = () => {
       // on order success page, after API confirms order
 trackPurchase({
   transactionId: "ORD_12345", // required — e.g., "ORD_12345"
-  items: cartItems.map(item => ({
+  items: cartItems?.map(item => ({
     productId: item.id,
     name: item.name,
     price: item.price,
