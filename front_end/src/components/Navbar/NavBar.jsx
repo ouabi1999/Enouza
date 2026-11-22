@@ -729,6 +729,7 @@ const Container = styled.div`
   .menu-icon {
     display: none;
     cursor: pointer;
+    background:none;
   }
 
   @media (max-width: 860px) {

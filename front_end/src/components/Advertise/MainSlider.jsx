@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import {
   optimizeCloudinaryVideo,
 } from "../../utilis/cloudinary";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const MainSlider = () => {
   const { t, i18n } = useTranslation();
@@ -61,6 +62,7 @@ const MainSlider = () => {
         <p>{t("mainSlider.description")}</p>
         <ShopNowButton to="/collections" onClick={() => dispatch(toggleCategory(""))}>
           {t("profile.start_shopping")}
+          <ArrowRight size={16} aria-hidden="true" />
         </ShopNowButton>
       </Overlay>
     </Container>
@@ -146,21 +148,42 @@ const ShopNowButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   box-sizing: border-box;
-  min-height: 44px;
-  color: #fff;
+  min-height: 46px;
+  margin-block-start: 8px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: #f5efe5;
+  color: #24231f;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.3;
-  text-decoration: underline;
-  text-underline-offset: 5px;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease,
+    color 160ms ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:dir(rtl) svg {
+    transform: scaleX(-1);
+  }
 
   &:hover {
-    color: #ead6b9;
+    border-color: #f5efe5;
+    background-color: #24231f;
+    color: #f5efe5;
   }
 
   &:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `;

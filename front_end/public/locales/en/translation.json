@@ -1439,87 +1439,201 @@
     }
   },
 
-  "returnFaq": [
+
+ 
+
+  "shippingFaq": [
     {
       "id": 1,
-      "question": "What's your return policy?",
+      "question": "Do you offer free shipping?",
       "answer": {
         "paragraphe": [
-          "If you’re looking to return your order for whatever reason, we're here to help with no hassle! We offer returns within 30 days of purchase. You can return your product for a refund to the original payment method if the product did not meet your expectations. The refund will be processed back to its original form of payment within 5-10 business days."
+          "Yes! We're delighted to offer free shipping on selected products and eligible destinations. We believe shopping for something special should be simple, convenient, and transparent.",
+          "Shipping costs may vary depending on your destination and the products in your order. Here's an overview of our international shipping rates:"
         ],
         "list": [
-          "Clearance items are final sale and cannot be returned or exchanged.",
-          "Returned items must include identifying information and be returned in the original product packaging.",
-          "Returned items must have no visible signs of wear or use.",
-          "The shipping cost will not be refunded unless you were sent a wrong or damaged item.",
-          "A prepaid return label will not be provided unless the wrong item was sent, or the item was damaged in transit.",
-          "We do not process apparel exchanges. If the item you purchased doesn't fit, please return it for a refund. You may then place a new order for your desired size. For more information and RMA labels, please contact our Customer Service Team."
+          "Canada: $0.00 – $19.99",
+          "Europe: $0.00 – $40.00",
+          "Australia: $0.00 – $43.99",
+          "Other international destinations: Free shipping available on selected products.",
+          "Your final shipping cost will always be displayed at checkout before you complete your purchase."
         ]
       }
     },
     {
       "id": 2,
-      "question": "How do you return a product?",
+      "question": "What happens if my package is lost or doesn't arrive?",
       "answer": {
-        "paragraphe": [],
-        "list": [
-          "Log in to your Enouza account and contact our Customer Service Team.",
-          "Provide as much information as possible about the products you wish to return or exchange from your order.",
-          "Returned items must have no visible signs of wear or use.",
-          "Print the prepaid shipping label that you will receive by email.",
-          "Please note that a prepaid return label will not be provided unless the wrong item was sent, or the item was damaged in transit.",
-          "Send all items back to us using the label provided."
-        ]
+        "paragraphe": [
+          "Your order is important to us, and we're here to help if something doesn't go as planned.",
+          "If your tracking information shows that your package has been delivered but you haven't received it, please check with your local carrier and contact our Customer Support Team within 30 days of the reported delivery date.",
+          "If the carrier confirms that your package was lost due to a delivery error, we'll help arrange an appropriate solution, including a replacement or refund where applicable.",
+          "Please double-check your shipping address before completing your order. Incorrect or incomplete addresses may result in delivery delays or additional shipping charges.",
+          "If you notice an error in your delivery details, contact us as soon as possible with your order number and the correct address. We'll do our best to update your information before dispatch."
+        ],
+        "list": []
       }
     },
     {
       "id": 3,
-      "question": "My product arrived damaged! What should I do?",
+      "question": "How long does delivery take?",
       "answer": {
         "paragraphe": [
-          "Sorry collectors! We understand how disappointing it is to receive a damaged item - especially an item you have waited months for! Unfortunately, mistakes happen and products may get damaged during transit. In the event that this happens, please contact us with pictures of the damaged item and we will replace or issue a partial or full refund. Your satisfaction is our #1 priority!"
+          "We know you're excited to receive your order! That's why we work hard to prepare and ship every purchase as quickly as possible.",
+          "Orders are typically processed within 1–3 business days (Monday to Friday, excluding public holidays).",
+          "Once dispatched, standard delivery usually takes 5–10 business days, depending on your location and product availability.",
+          "The total estimated timeframe is approximately 6–13 business days from the date your order is placed.",
+          "You'll receive a shipping confirmation email with tracking information as soon as your order is on its way, whenever tracking is available.",
+          "Please note that delivery times are estimates and may vary due to customs clearance, local carriers, public holidays, or unexpected shipping delays."
         ],
         "list": []
       }
     },
     {
       "id": 4,
-      "question": "What products are excluded from the return policy?",
+      "question": "Will my order arrive in one package?",
       "answer": {
-        "paragraphe": [],
-        "list": [
-          "Digital products, including memberships and gift cards, are not eligible for refunds or returns. If you experience any issue accessing or using a digital product, please contact us and we will be happy to assist you.",
-          "Products purchased as part of clearance or final-sale promotions may not be eligible for return, except where required by law.",
-          "Products that have been used, installed, or modified after delivery may not be eligible for return, depending on the condition of the product and our return policy.",
-          "If your product arrives damaged or has a defect, please contact us as soon as possible so we can assist you and find an appropriate solution.",
-          "Additional conditions may apply to certain products and will be indicated on the relevant product page where applicable."
-        ]
+        "paragraphe": [
+          "We work with different fulfillment locations to bring you a carefully curated selection of products.",
+          "If your order contains items shipped from different warehouses, they may arrive in separate packages and on different dates.",
+          "Don't worry! You won't be charged additional shipping fees beyond the amount confirmed at checkout simply because your order arrives in multiple shipments."
+        ],
+        "list": []
       }
     },
     {
       "id": 5,
-      "question": "My product has a defect / missing parts. What should I do?",
+      "question": "How are shipping costs calculated?",
       "answer": {
         "paragraphe": [
-          "Contact us directly with pictures and explanation of the defect.",
-          "Please note: home video products are not guaranteed to come with a slipcover."
+          "We believe in clear and transparent pricing, so you'll always know what to expect before placing your order.",
+          "Simply add your favorite products to your cart and proceed to checkout. Once you enter your delivery address, any applicable shipping fees will be calculated based on your destination and order details.",
+          "If your products and destination qualify for free shipping, the shipping charge will be displayed as $0.00.",
+          "You'll have the opportunity to review your complete order total, including any shipping charges, before confirming your purchase."
         ],
         "list": []
       }
     },
     {
       "id": 6,
-      "question": "What's your refund policy?",
+      "question": "How do refunds work?",
       "answer": {
-        "paragraphe": [],
+        "paragraphe": [
+          "We want you to shop with complete confidence. If an eligible order is canceled or a return is approved, our team will help make the refund process as straightforward as possible.",
+          "Approved refunds are issued to the original payment method, and you'll receive an email confirmation once your refund has been processed."
+        ],
         "list": [
-          "After an order is cancelled or a return is processed, your refund will be issued to its original form of payment.",
-          "Upon completion of your return, a refund will be processed within 1-5 business days.",
-          "After a refund has been processed, please allow 3-5 business days for PayPal refunds and 3-10 business days for all other payment methods.",
-          "We will notify you via email when your refund has been issued.",
-          "A full refund will be issued even if an Enouza Store Digital Gift Card was used as full or partial payment on the order.",
-          "An order can be cancelled and immediately refunded if the package has not yet begun processing for shipment.",
-          "Once a package begins processing for shipment, it will have to be delivered to its destination and returned to Enouza before a refund can be issued. Please contact our Customer Service Team for more detailed information."
+          "Refunds are generally processed within 1–5 business days after your return has been received and approved.",
+          "PayPal refunds typically appear within 3–5 business days after processing.",
+          "Refunds to other payment methods may take approximately 3–10 business days, depending on your payment provider.",
+          "Orders that haven't entered shipment processing may be eligible for cancellation and a prompt refund.",
+          "If your order has already been dispatched, a return may be required before a refund can be issued.",
+          "Our Customer Support Team is always available to guide you through the process."
+        ]
+      }
+    }
+  ],
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "What is your return policy?",
+      "answer": {
+        "paragraphe": [
+          "Shop with confidence! We want you to love every purchase from Enouza. If something isn't quite right, we're here to help make the return process simple and straightforward.",
+          "We offer a 30-day return policy for eligible products. If your purchase doesn't meet your expectations, you can request a return for a refund to your original payment method, subject to our return conditions.",
+          "Once your return has been received and approved, we'll process your refund within 1–5 business days. The time it takes to appear in your account depends on your payment provider."
+        ],
+        "list": [
+          "Items should be returned in their original packaging, including all accessories and components.",
+          "For change-of-mind returns, products must be unused and in their original condition, without visible signs of wear or modification.",
+          "Clearance and final-sale items may have specific return restrictions, except where required by law.",
+          "Original shipping charges are generally non-refundable for voluntary returns.",
+          "Return shipping costs are generally the customer's responsibility for change-of-mind returns.",
+          "If you receive an incorrect, damaged, or defective product, please contact us so we can arrange an appropriate solution.",
+          "Your statutory consumer rights remain unaffected by this policy."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "How do I return a product?",
+      "answer": {
+        "paragraphe": [
+          "Need to return something? No worries! Our Customer Support Team is here to make the process as easy as possible.",
+          "Simply follow these steps to request a return:"
+        ],
+        "list": [
+          "Contact our Customer Support Team within the applicable return period and provide your order number.",
+          "Let us know which product you'd like to return and briefly explain the reason.",
+          "Our team will review your request and provide clear return instructions.",
+          "Carefully pack the product in its original packaging, including all accessories and components.",
+          "Ship the item to the return address provided by our support team.",
+          "Once your return has been received and inspected, we'll notify you of the outcome and process any approved refund.",
+          "If your item arrived damaged, defective, or incorrect, please contact us before returning it so we can help arrange the appropriate solution."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "What should I do if my order arrives damaged?",
+      "answer": {
+        "paragraphe": [
+          "We're sorry if your order didn't arrive in perfect condition. We take great care in delivering a positive shopping experience, and we're committed to making things right.",
+          "If your product arrives damaged or defective, please contact our Customer Support Team as soon as possible.",
+          "Include your order number, a brief description of the issue, and clear photos of the product and packaging whenever possible.",
+          "Our team will review your request and help arrange an appropriate solution, which may include a replacement, repair, or partial or full refund, depending on the circumstances.",
+          "Your satisfaction matters to us, and we'll work to resolve the issue as smoothly as possible."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Are there any products that cannot be returned?",
+      "answer": {
+        "paragraphe": [
+          "Most eligible products can be returned within our return period. However, certain items may have specific return conditions for hygiene, safety, or other reasons.",
+          "Where applicable, product-specific return restrictions will be clearly indicated on the relevant product page."
+        ],
+        "list": [
+          "Products marked as final sale or clearance may be excluded from voluntary returns, except where required by law.",
+          "Items that have been used, damaged after delivery, installed, or modified may not qualify for a change-of-mind return.",
+          "Certain hygiene-sensitive or personal-use products may not be eligible for return once opened or unsealed, where permitted by applicable law.",
+          "Customized or personalized products may have specific return restrictions.",
+          "Products returned without their original accessories or essential components may require additional review.",
+          "Damaged, defective, or incorrectly supplied products are handled separately in accordance with applicable consumer protection laws.",
+          "If you're unsure whether a product is eligible for return, our Customer Support Team will be happy to assist you."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "What if my product is defective or has missing parts?",
+      "answer": {
+        "paragraphe": [
+          "We want every product you receive to meet your expectations. If something is missing or isn't working as it should, we're here to help.",
+          "Please contact our Customer Support Team with your order number, a description of the issue, and photos or a short video whenever possible.",
+          "Our team will review your request and help arrange an appropriate solution, such as replacement parts, a replacement product, repair, or refund, depending on the circumstances and applicable consumer rights.",
+          "We recommend keeping the original packaging and included accessories until the issue has been resolved."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "When will I receive my refund?",
+      "answer": {
+        "paragraphe": [
+          "Once your eligible return has been received and approved, we'll begin processing your refund as quickly as possible.",
+          "Refunds are issued to the original payment method, and we'll notify you by email once your refund has been processed."
+        ],
+        "list": [
+          "Refund processing typically takes 1–5 business days after return approval.",
+          "PayPal refunds generally appear within 3–5 business days after processing.",
+          "Other payment methods may take approximately 3–10 business days, depending on your bank or payment provider.",
+          "Eligible orders canceled before shipment processing may be refunded without requiring a return.",
+          "Orders already dispatched may need to be returned before a refund is issued.",
+          "If your refund hasn't appeared after the expected processing period, please contact our Customer Support Team for assistance."
         ]
       }
     }
@@ -1551,84 +1665,7 @@
     }
   },
 
-  "shippingFaq": [
-    {
-      "id": 1,
-      "question": "How much does shipping cost?",
-      "answer": {
-        "paragraphe": [
-          "International shipping costs vary depending on the destination. Here is a breakdown of shipping costs for each destination:"
-        ],
-        "list": [
-          "Canada: $0 - $19.99",
-          "Europe: $0 - $40",
-          "Australia: $0 - $43.99",
-          "Worldwide: Free shipping for some products"
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "question": "What happens if my package is lost in transit?",
-      "answer": {
-        "paragraphe": [
-          "If a package is shown as delivered but you have not received it, please contact the carrier and notify us within 30 days of the delivery date.",
-          "If it is determined that the package was lost due to a delivery error by the carrier, we will replace your order.",
-          "If the package is lost due to an incomplete or incorrect address, we cannot offer a refund or exchange—customers are responsible for ensuring their shipping address is correct at the time of purchase. If the package is returned to us, you will need to pay an additional shipping fee for resending it.",
-          "If you find that your shipping address is incorrect or has changed since placing your order, please notify us with your order number/ID and the updated address."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 3,
-      "question": "When will my order ship?",
-      "answer": {
-        "paragraphe": [
-          "Your order will be processed during normal business days (Monday to Friday, excluding holidays).",
-          "If an item is in stock, your order will be processed within 1 to 5 business days. Delivery time after processing will vary based on the shipping address. Currently, delivery times range between 5 to 15 business days.",
-          "Once an item ships, you will receive an email with tracking information. In some special cases, tracking numbers may not be available."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 4,
-      "question": "Will I receive my order in multiple packages?",
-      "answer": {
-        "paragraphe": [
-          "If you purchase in-stock items shipped from different warehouses, you will receive multiple shipments."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 5,
-      "question": "How are shipping prices calculated?",
-      "answer": {
-        "paragraphe": [
-          "Shipping charges are calculated during checkout. You can add items to your cart, proceed to checkout, and enter your shipping address to see the shipping cost for your order."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 6,
-      "question": "What is your refund policy?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "After an order is canceled or a return is processed, a refund will be issued to the original payment method.",
-          "Once the return process is complete, the refund will be processed within 1-5 business days.",
-          "After the refund is processed, please allow 3-5 business days for PayPal refunds, and 3-10 business days for all other payment methods.",
-          "We will notify you via email once the refund has been issued.",
-          "A full refund will be issued even if an Enouza Store Digital Gift Card was used as full or partial payment for the order.",
-          "An order can be canceled and immediately refunded if the package has not yet begun processing for shipment.",
-          "Once a package begins processing for shipment, it must be delivered to its destination and returned to Enouza before a refund can be issued. Please contact our Customer Service team for more detailed information."
-        ]
-      }
-    }
-  ],
+ 
 
   "terms": {
     "seoTitle": "Enouza - Terms of Service",

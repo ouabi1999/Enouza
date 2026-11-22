@@ -1441,91 +1441,7 @@
     }
   },
 
-  "returnFaq": [
-    {
-      "id": 1,
-      "question": "¿Cuál es vuestra política de devoluciones?",
-      "answer": {
-        "paragraphe": [
-          "Si quieres devolver tu pedido por el motivo que sea, ¡estamos aquí para ayudarte sin complicaciones! Ofrecemos devoluciones dentro de los 30 días posteriores a la compra. Puedes devolver tu producto y recibir un reembolso al método de pago original si el producto no cumplió tus expectativas. El reembolso se realizará a la forma de pago original en un plazo de 5-10 días laborables."
-        ],
-        "list": [
-          "Los artículos de liquidación son venta final y no se pueden devolver ni cambiar.",
-          "Los artículos devueltos deben incluir la información identificativa y devolverse en el embalaje original del producto.",
-          "Los artículos devueltos no deben presentar signos visibles de desgaste o uso.",
-          "Los gastos de envío no se reembolsarán, salvo que se te haya enviado un artículo equivocado o dañado.",
-          "No se facilitará una etiqueta de devolución prepagada, salvo que se haya enviado un artículo equivocado o que el artículo se haya dañado durante el transporte.",
-          "No gestionamos cambios de prendas. Si el artículo que compraste no te queda bien, devuélvelo para obtener un reembolso. Después podrás realizar un nuevo pedido con la talla que desees. Para más información y etiquetas RMA, contacta con nuestro equipo de atención al cliente."
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "question": "¿Cómo se devuelve un producto?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Inicia sesión en tu cuenta de Enouza y contacta con nuestro equipo de atención al cliente.",
-          "Proporciona toda la información posible sobre los productos de tu pedido que deseas devolver o cambiar.",
-          "Los artículos devueltos no deben presentar signos visibles de desgaste o uso.",
-          "Imprime la etiqueta de envío prepagada que recibirás por correo electrónico.",
-          "Ten en cuenta que no se facilitará una etiqueta de devolución prepagada, salvo que se haya enviado un artículo equivocado o que el artículo se haya dañado durante el transporte.",
-          "Envíanos todos los artículos de vuelta utilizando la etiqueta facilitada."
-        ]
-      }
-    },
-    {
-      "id": 3,
-      "question": "¡Mi producto llegó dañado! ¿Qué debo hacer?",
-      "answer": {
-        "paragraphe": [
-          "¡Lo sentimos, coleccionistas! Entendemos lo decepcionante que es recibir un artículo dañado, especialmente uno que has esperado durante meses. Por desgracia, ocurren errores y los productos pueden dañarse durante el transporte. Si esto sucede, contáctanos con fotos del artículo dañado y lo sustituiremos o te haremos un reembolso parcial o total. ¡Tu satisfacción es nuestra prioridad n.º 1!"
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 4,
-      "question": "¿Qué productos están excluidos de la política de devoluciones?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Los productos digitales, incluidas las membresías y las tarjetas regalo, no son reembolsables ni se pueden devolver. Si tienes algún problema para acceder a un producto digital o utilizarlo, contáctanos y estaremos encantados de ayudarte.",
-          "Los productos comprados en promociones de liquidación o venta final pueden no ser aptos para devolución, salvo que la ley lo exija.",
-          "Los productos que hayan sido utilizados, instalados o modificados después de la entrega pueden no ser aptos para devolución, según el estado del producto y nuestra política de devoluciones.",
-          "Si tu producto llega dañado o tiene algún defecto, contáctanos lo antes posible para que podamos ayudarte y encontrar una solución adecuada.",
-          "Pueden aplicarse condiciones adicionales a determinados productos, que se indicarán en la página del producto correspondiente cuando proceda."
-        ]
-      }
-    },
-    {
-      "id": 5,
-      "question": "Mi producto tiene un defecto / faltan piezas. ¿Qué debo hacer?",
-      "answer": {
-        "paragraphe": [
-          "Contáctanos directamente con fotos y una explicación del defecto.",
-          "Ten en cuenta: no se garantiza que los productos de vídeo doméstico incluyan una funda exterior."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 6,
-      "question": "¿Cuál es vuestra política de reembolsos?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Después de cancelar un pedido o procesar una devolución, tu reembolso se realizará a la forma de pago original.",
-          "Una vez completada tu devolución, el reembolso se procesará en un plazo de 1-5 días laborables.",
-          "Una vez procesado el reembolso, ten en cuenta que pueden pasar 3-5 días laborables para reembolsos de PayPal y 3-10 días laborables para el resto de métodos de pago.",
-          "Te avisaremos por correo electrónico cuando se haya emitido tu reembolso.",
-          "Se emitirá un reembolso completo incluso si se utilizó una tarjeta regalo digital de Enouza Store como pago total o parcial del pedido.",
-          "Un pedido puede cancelarse y reembolsarse de inmediato si el paquete aún no ha empezado a prepararse para el envío.",
-          "Una vez que un paquete empieza a prepararse para el envío, deberá entregarse en su destino y devolverse a Enouza antes de poder emitir un reembolso. Contacta con nuestro equipo de atención al cliente para obtener información más detallada."
-        ]
-      }
-    }
-  ],
+  
 
   "shipping": {
     "seoTitle": "Enouza - Política de envíos",
@@ -1553,53 +1469,63 @@
     }
   },
 
+  
+
   "shippingFaq": [
     {
       "id": 1,
-      "question": "¿Cuánto cuesta el envío?",
+      "question": "¿Ofrecéis envío gratuito?",
       "answer": {
         "paragraphe": [
-          "Los gastos de envío internacional varían según el destino. Este es el desglose de los gastos de envío para cada destino:"
+          "¡Sí! Nos alegra ofrecer envío gratuito en una selección de productos y destinos. Queremos que tu experiencia de compra sea cómoda, sencilla y transparente.",
+          "Los gastos de envío pueden variar según el destino y los productos de tu pedido. A continuación, encontrarás un resumen de nuestras tarifas de envío internacional:"
         ],
         "list": [
-          "Canadá: 0 $ - 19,99 $",
-          "Europa: 0 $ - 40 $",
-          "Australia: 0 $ - 43,99 $",
-          "Resto del mundo: envío gratis en algunos productos"
+          "Canadá: de 0,00 a 19,99 $",
+          "Europa: de 0,00 a 40,00 $",
+          "Australia: de 0,00 a 43,99 $",
+          "Otros destinos internacionales: envío gratuito disponible en productos seleccionados.",
+          "El coste final del envío se mostrará claramente durante el proceso de pago, antes de confirmar tu compra."
         ]
       }
     },
     {
       "id": 2,
-      "question": "¿Qué pasa si mi paquete se pierde durante el transporte?",
+      "question": "¿Qué ocurre si mi paquete se pierde o no llega?",
       "answer": {
         "paragraphe": [
-          "Si un paquete figura como entregado pero no lo has recibido, contacta con la empresa de transporte y avísanos en un plazo de 30 días desde la fecha de entrega.",
-          "Si se determina que el paquete se perdió por un error de entrega del transportista, sustituiremos tu pedido.",
-          "Si el paquete se pierde debido a una dirección incompleta o incorrecta, no podemos ofrecer un reembolso ni un cambio: los clientes son responsables de asegurarse de que su dirección de envío sea correcta en el momento de la compra. Si el paquete nos es devuelto, tendrás que pagar un coste de envío adicional para reenviarlo.",
-          "Si observas que tu dirección de envío es incorrecta o ha cambiado desde que hiciste el pedido, avísanos indicando tu número/ID de pedido y la dirección actualizada."
+          "Tu pedido es importante para nosotros. Si surge algún imprevisto durante la entrega, estaremos encantados de ayudarte.",
+          "Si el seguimiento indica que tu paquete ha sido entregado, pero no lo has recibido, te recomendamos contactar primero con la empresa de transporte y comunicarlo a nuestro equipo de atención al cliente dentro de los 30 días posteriores a la fecha de entrega indicada.",
+          "Si la empresa de transporte confirma que el paquete se ha perdido debido a un error en la entrega, te ayudaremos a encontrar una solución adecuada, que podrá incluir un reemplazo o un reembolso, según corresponda.",
+          "Te recomendamos comprobar que la dirección de entrega sea correcta antes de finalizar tu compra. Una dirección incorrecta o incompleta puede ocasionar retrasos o gastos de envío adicionales.",
+          "Si detectas algún error en los datos de entrega, ponte en contacto con nosotros lo antes posible e indícanos tu número de pedido y la dirección correcta. Haremos todo lo posible por actualizar la información antes del envío."
         ],
         "list": []
       }
     },
     {
       "id": 3,
-      "question": "¿Cuándo se enviará mi pedido?",
+      "question": "¿Cuánto tarda en llegar mi pedido?",
       "answer": {
         "paragraphe": [
-          "Tu pedido se procesará durante los días laborables habituales (de lunes a viernes, excluyendo festivos).",
-          "Si un artículo está en stock, tu pedido se procesará en un plazo de 1 a 5 días laborables. El plazo de entrega tras el procesamiento variará según la dirección de envío. Actualmente, los plazos de entrega oscilan entre 5 y 15 días laborables.",
-          "Una vez enviado el artículo, recibirás un correo electrónico con la información de seguimiento. En algunos casos especiales, es posible que no haya números de seguimiento disponibles."
+          "¡Sabemos que tienes ganas de recibir tu pedido! Por eso, trabajamos para prepararlo y enviarlo lo antes posible.",
+          "Los pedidos suelen prepararse en un plazo de 1 a 3 días laborables, de lunes a viernes, excluidos los festivos.",
+          "Una vez enviado el pedido, la entrega estándar suele tardar entre 5 y 10 días laborables, dependiendo de tu ubicación y de la disponibilidad del producto.",
+          "Por tanto, el plazo total estimado para recibir tu pedido es de aproximadamente 6 a 13 días laborables desde la fecha de compra.",
+          "En cuanto enviemos tu pedido, recibirás un correo electrónico de confirmación con la información de seguimiento, siempre que esté disponible.",
+          "Ten en cuenta que los plazos de entrega son estimados y pueden variar debido a trámites aduaneros, empresas de transporte locales, festivos o circunstancias imprevistas."
         ],
         "list": []
       }
     },
     {
       "id": 4,
-      "question": "¿Recibiré mi pedido en varios paquetes?",
+      "question": "¿Recibiré todos los productos en un solo paquete?",
       "answer": {
         "paragraphe": [
-          "Si compras artículos en stock que se envían desde diferentes almacenes, recibirás varios envíos."
+          "Colaboramos con diferentes centros logísticos para ofrecerte una selección de productos cuidadosamente elegidos.",
+          "Si tu pedido incluye artículos enviados desde distintos almacenes, es posible que los recibas en paquetes separados y en fechas diferentes.",
+          "¡No te preocupes! No tendrás que pagar gastos de envío adicionales a los confirmados durante el proceso de compra simplemente porque tu pedido llegue en varios paquetes."
         ],
         "list": []
       }
@@ -1609,28 +1535,141 @@
       "question": "¿Cómo se calculan los gastos de envío?",
       "answer": {
         "paragraphe": [
-          "Los gastos de envío se calculan durante el proceso de compra. Puedes añadir artículos al carrito, continuar hasta finalizar la compra e introducir tu dirección de envío para ver el coste de envío de tu pedido."
+          "Creemos en la transparencia de los precios para que sepas exactamente cuánto vas a pagar antes de realizar tu compra.",
+          "Solo tienes que añadir tus productos favoritos al carrito y continuar con el proceso de pago. Una vez introducida tu dirección de entrega, calcularemos los gastos de envío aplicables según el destino y los detalles del pedido.",
+          "Si tus productos y tu destino cumplen las condiciones para disfrutar del envío gratuito, los gastos de envío aparecerán como 0,00 $.",
+          "Antes de confirmar la compra, podrás revisar el importe total de tu pedido, incluidos los gastos de envío que correspondan."
         ],
         "list": []
       }
     },
     {
       "id": 6,
-      "question": "¿Cuál es vuestra política de reembolsos?",
+      "question": "¿Cómo funcionan los reembolsos?",
       "answer": {
-        "paragraphe": [],
+        "paragraphe": [
+          "Queremos que compres en Enouza con total confianza. Si cancelas un pedido que cumple las condiciones o se aprueba una devolución, nuestro equipo te ayudará a gestionar el reembolso de forma sencilla.",
+          "Los reembolsos aprobados se realizan a través del método de pago original. Te enviaremos un correo electrónico de confirmación una vez que se haya procesado."
+        ],
         "list": [
-          "Después de cancelar un pedido o procesar una devolución, se emitirá un reembolso al método de pago original.",
-          "Una vez completado el proceso de devolución, el reembolso se procesará en un plazo de 1-5 días laborables.",
-          "Una vez procesado el reembolso, ten en cuenta que pueden pasar 3-5 días laborables para reembolsos de PayPal y 3-10 días laborables para el resto de métodos de pago.",
-          "Te avisaremos por correo electrónico cuando se haya emitido el reembolso.",
-          "Se emitirá un reembolso completo incluso si se utilizó una tarjeta regalo digital de Enouza Store como pago total o parcial del pedido.",
-          "Un pedido puede cancelarse y reembolsarse de inmediato si el paquete aún no ha empezado a prepararse para el envío.",
-          "Una vez que un paquete empieza a prepararse para el envío, deberá entregarse en su destino y devolverse a Enouza antes de poder emitir un reembolso. Contacta con nuestro equipo de atención al cliente para obtener información más detallada."
+          "Los reembolsos suelen procesarse en un plazo de 1 a 5 días laborables después de recibir y aprobar la devolución.",
+          "Los reembolsos a través de PayPal suelen reflejarse en un plazo de 3 a 5 días laborables después de su procesamiento.",
+          "Con otros métodos de pago, el importe puede tardar aproximadamente entre 3 y 10 días laborables en aparecer en tu cuenta, dependiendo del proveedor de pago.",
+          "Los pedidos que todavía no hayan entrado en la fase de preparación para el envío podrán cancelarse y reembolsarse con mayor rapidez, siempre que cumplan las condiciones.",
+          "Si tu pedido ya ha sido enviado, puede ser necesario devolver el producto antes de recibir el reembolso.",
+          "Nuestro equipo de atención al cliente estará encantado de ayudarte durante todo el proceso."
         ]
       }
     }
   ],
+
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "¿Cuál es vuestra política de devoluciones?",
+      "answer": {
+        "paragraphe": [
+          "¡Compra con total tranquilidad! Queremos que disfrutes de cada producto que elijas en Enouza. Si algo no cumple tus expectativas, estamos aquí para ayudarte a realizar la devolución de forma sencilla.",
+          "Ofrecemos un plazo de devolución de 30 días desde la fecha de compra para los productos que cumplan las condiciones. Si tu compra no es lo que esperabas, puedes solicitar su devolución y el reembolso a través del método de pago original, de acuerdo con nuestra política de devoluciones.",
+          "Una vez recibida y aprobada la devolución, procesaremos el reembolso en un plazo de 1 a 5 días laborables. El tiempo necesario para que el importe aparezca en tu cuenta dependerá de tu proveedor de pago."
+        ],
+        "list": [
+          "Los artículos deben devolverse preferiblemente en su embalaje original, junto con todos los accesorios y componentes incluidos.",
+          "En las devoluciones voluntarias por cambio de opinión, los productos deben estar sin usar y en su estado original, sin señales visibles de desgaste o modificaciones.",
+          "Los artículos en liquidación o venta final pueden estar sujetos a condiciones especiales de devolución, salvo cuando la legislación establezca lo contrario.",
+          "Los gastos de envío originales generalmente no se reembolsan en las devoluciones voluntarias.",
+          "En las devoluciones por cambio de opinión, los gastos de envío de la devolución suelen correr a cargo del cliente.",
+          "Si recibes un producto incorrecto, dañado o defectuoso, ponte en contacto con nosotros para que podamos ofrecerte una solución adecuada.",
+          "Esta política no afecta a tus derechos legales como consumidor."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "¿Cómo puedo devolver un producto?",
+      "answer": {
+        "paragraphe": [
+          "¿Necesitas devolver un artículo? ¡No te preocupes! Nuestro equipo de atención al cliente está aquí para ayudarte y hacer que el proceso sea lo más sencillo posible.",
+          "Solo tienes que seguir estos pasos:"
+        ],
+        "list": [
+          "Contacta con nuestro equipo de atención al cliente dentro del plazo de devolución correspondiente e indícanos tu número de pedido.",
+          "Dinos qué producto deseas devolver y explícanos brevemente el motivo.",
+          "Nuestro equipo revisará tu solicitud y te facilitará las instrucciones necesarias para realizar la devolución.",
+          "Embala cuidadosamente el producto, preferiblemente en su embalaje original, e incluye todos los accesorios y componentes.",
+          "Envía el artículo a la dirección de devolución que te indique nuestro equipo.",
+          "Una vez recibida e inspeccionada la devolución, te informaremos del resultado y procesaremos el reembolso correspondiente si ha sido aprobado.",
+          "Si has recibido un artículo dañado, defectuoso o incorrecto, ponte en contacto con nosotros antes de devolverlo para que podamos ayudarte a encontrar la mejor solución."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "¿Qué hago si mi pedido llega dañado?",
+      "answer": {
+        "paragraphe": [
+          "Sentimos mucho que tu pedido no haya llegado en perfectas condiciones. Nos importa tu experiencia de compra y queremos ayudarte a solucionar cualquier incidencia.",
+          "Si recibes un producto dañado o defectuoso, ponte en contacto con nuestro equipo de atención al cliente lo antes posible.",
+          "Facilítanos tu número de pedido, una breve descripción del problema y, si es posible, fotografías claras del producto y su embalaje.",
+          "Nuestro equipo revisará tu caso y te ayudará a encontrar una solución adecuada, que podrá incluir una sustitución, reparación o un reembolso parcial o completo, según las circunstancias.",
+          "Tu satisfacción es importante para nosotros y haremos todo lo posible por resolver la incidencia de manera rápida y sencilla."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "¿Hay productos que no se pueden devolver?",
+      "answer": {
+        "paragraphe": [
+          "La mayoría de los productos que cumplen las condiciones pueden devolverse dentro del plazo establecido. Sin embargo, algunos artículos pueden estar sujetos a condiciones especiales por motivos de higiene, seguridad o por su propia naturaleza.",
+          "Cuando corresponda, las restricciones específicas de devolución se indicarán claramente en la página del producto."
+        ],
+        "list": [
+          "Los productos de liquidación o marcados como venta final pueden estar excluidos de las devoluciones voluntarias, siempre que la legislación lo permita.",
+          "Los artículos utilizados, dañados después de la entrega, instalados o modificados pueden no ser aptos para una devolución voluntaria por cambio de opinión.",
+          "Determinados productos de higiene o cuidado personal pueden quedar excluidos de la devolución una vez abiertos o desprecintados, cuando la normativa aplicable lo permita.",
+          "Los productos personalizados o fabricados por encargo pueden estar sujetos a restricciones especiales de devolución.",
+          "Los artículos devueltos sin sus accesorios originales o componentes esenciales pueden requerir una revisión adicional.",
+          "Los productos dañados, defectuosos o enviados por error se gestionarán por separado, de acuerdo con la legislación de protección al consumidor aplicable.",
+          "Si tienes dudas sobre si un producto puede devolverse, nuestro equipo de atención al cliente estará encantado de ayudarte antes de realizar tu compra."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "¿Qué hago si mi producto está defectuoso o le faltan piezas?",
+      "answer": {
+        "paragraphe": [
+          "Queremos que cada producto que recibas cumpla tus expectativas. Si falta alguna pieza o el artículo no funciona correctamente, estamos aquí para ayudarte.",
+          "Ponte en contacto con nuestro equipo de atención al cliente e indícanos tu número de pedido y una descripción del problema. Si es posible, adjunta fotografías o un vídeo corto.",
+          "Nuestro equipo revisará tu solicitud y te ayudará a encontrar la solución más adecuada, como el envío de las piezas que faltan, la sustitución del producto, su reparación o un reembolso, según las circunstancias y tus derechos legales como consumidor.",
+          "Te recomendamos conservar el embalaje original y todos los accesorios hasta que la incidencia se haya resuelto."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "¿Cuándo recibiré mi reembolso?",
+      "answer": {
+        "paragraphe": [
+          "Una vez que hayamos recibido y aprobado la devolución, comenzaremos a gestionar tu reembolso lo antes posible.",
+          "El importe se devolverá mediante el método de pago original utilizado en la compra. Te enviaremos una confirmación por correo electrónico cuando el reembolso haya sido procesado."
+        ],
+        "list": [
+          "El procesamiento del reembolso suele tardar entre 1 y 5 días laborables después de aprobar la devolución.",
+          "Los reembolsos realizados a través de PayPal suelen aparecer en un plazo de 3 a 5 días laborables después de su procesamiento.",
+          "Con otros métodos de pago, el importe puede tardar aproximadamente entre 3 y 10 días laborables, dependiendo del banco o proveedor de pago.",
+          "Los pedidos que cumplan las condiciones y se cancelen antes de comenzar su preparación para el envío podrán reembolsarse sin necesidad de realizar una devolución.",
+          "Si el pedido ya ha sido enviado, puede ser necesario devolver el producto antes de emitir el reembolso.",
+          "Si el importe no aparece en tu cuenta después del plazo estimado, ponte en contacto con nuestro equipo de atención al cliente para que podamos ayudarte."
+        ]
+      }
+    }
+  ],
+
+
 
   "terms": {
     "seoTitle": "Enouza - Términos del servicio",

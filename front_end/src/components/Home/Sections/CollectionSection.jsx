@@ -65,7 +65,7 @@ export default CollectionSection;
 
 const Section = styled.section`
   background: #f7f5f0;
-  padding-bottom:65px;
+  padding:20px 0 ;
 `;
 
 const Title = styled.h2`
@@ -93,7 +93,6 @@ const CollectionCard = styled(Link)`
   min-width: 0;
   overflow: hidden;
   border: 1px solid #e6e0d7;
-  border-radius: 8px;
   background: #fff;
   color: #29251f;
   text-decoration: none;

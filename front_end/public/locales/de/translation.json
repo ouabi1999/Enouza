@@ -1440,87 +1440,200 @@
       "text": "Wir benachrichtigen Sie, sobald wir Ihre Rücksendung erhalten und geprüft haben, und teilen Ihnen mit, ob die Rückerstattung genehmigt wurde. Wenn genehmigt, wird Ihnen automatisch auf Ihre ursprüngliche Zahlungsmethode zurückerstattet. Bitte beachten Sie, dass es einige Zeit dauern kann, bis Ihre Bank oder Kreditkartengesellschaft die Rückerstattung verarbeitet und verbucht."
     }
   },
-  "returnFaq": [
+  
+
+  "shippingFaq": [
     {
       "id": 1,
-      "question": "Wie lautet Ihre Rückgaberichtlinie?",
+      "question": "Bieten Sie kostenlosen Versand an?",
       "answer": {
         "paragraphe": [
-          "Wenn Sie Ihre Bestellung aus irgendeinem Grund zurückgeben möchten, sind wir gerne ohne Umstände für Sie da! Wir bieten Rücksendungen innerhalb von 30 Tagen nach dem Kauf an. Sie können Ihr Produkt zur Rückerstattung auf die ursprüngliche Zahlungsmethode zurücksenden, wenn das Produkt Ihre Erwartungen nicht erfüllt hat. Die Rückerstattung wird innerhalb von 5-10 Werktagen auf die ursprüngliche Zahlungsform bearbeitet."
+          "Ja! Wir freuen uns, für ausgewählte Produkte und Lieferziele kostenlosen Versand anbieten zu können. Wir möchten, dass Ihr Einkauf so einfach, angenehm und transparent wie möglich ist.",
+          "Die Versandkosten können je nach Lieferland und bestellten Produkten variieren. Hier finden Sie eine Übersicht unserer internationalen Versandkosten:"
         ],
         "list": [
-          "Ausverkaufsartikel sind Endverkäufe und können nicht zurückgegeben oder umgetauscht werden.",
-          "Zurückgesendete Artikel müssen identifizierende Informationen enthalten und in der Originalproduktverpackung zurückgesendet werden.",
-          "Zurückgesendete Artikel dürfen keine sichtbaren Anzeichen von Abnutzung oder Gebrauch aufweisen.",
-          "Die Versandkosten werden nicht erstattet, es sei denn, Ihnen wurde ein falscher oder beschädigter Artikel zugesandt.",
-          "Ein vorbezahltes Rücksendeetikett wird nicht bereitgestellt, es sei denn, der falsche Artikel wurde versandt oder der Artikel wurde während des Transports beschädigt.",
-          "Wir bearbeiten keine Kleidungsumtausche. Wenn der von Ihnen gekaufte Artikel nicht passt, senden Sie ihn bitte zur Rückerstattung zurück. Sie können dann eine neue Bestellung für Ihre gewünschte Größe aufgeben. Für weitere Informationen und RMA-Etiketten kontaktieren Sie bitte unser Kundenservice-Team."
+          "Kanada: 0,00–19,99 $",
+          "Europa: 0,00–40,00 $",
+          "Australien: 0,00–43,99 $",
+          "Weitere internationale Lieferziele: Kostenloser Versand für ausgewählte Produkte verfügbar.",
+          "Die endgültigen Versandkosten werden Ihnen vor Abschluss Ihrer Bestellung transparent an der Kasse angezeigt."
         ]
       }
     },
     {
       "id": 2,
-      "question": "Wie sendet man ein Produkt zurück?",
+      "question": "Was passiert, wenn mein Paket verloren geht oder nicht ankommt?",
       "answer": {
-        "paragraphe": [],
-        "list": [
-          "Melden Sie sich in Ihrem Enouza-Konto an und kontaktieren Sie unser Kundenservice-Team.",
-          "Geben Sie so viele Informationen wie möglich über die Produkte an, die Sie aus Ihrer Bestellung zurückgeben oder umtauschen möchten.",
-          "Zurückgesendete Artikel dürfen keine sichtbaren Anzeichen von Abnutzung oder Gebrauch aufweisen.",
-          "Drucken Sie das vorbezahlte Versandetikett, das Sie per E-Mail erhalten.",
-          "Bitte beachten Sie, dass ein vorbezahltes Rücksendeetikett nicht bereitgestellt wird, es sei denn, der falsche Artikel wurde versandt oder der Artikel wurde während des Transports beschädigt.",
-          "Senden Sie alle Artikel mit dem bereitgestellten Etikett an uns zurück."
-        ]
+        "paragraphe": [
+          "Ihre Bestellung liegt uns am Herzen. Sollte bei der Lieferung etwas nicht wie geplant verlaufen, sind wir gerne für Sie da.",
+          "Wenn Ihre Sendungsverfolgung anzeigt, dass Ihr Paket zugestellt wurde, Sie es jedoch nicht erhalten haben, wenden Sie sich bitte zunächst an den zuständigen Versanddienstleister und informieren Sie unseren Kundenservice innerhalb von 30 Tagen nach dem angegebenen Zustelldatum.",
+          "Bestätigt der Versanddienstleister, dass Ihr Paket aufgrund eines Zustellfehlers verloren gegangen ist, unterstützen wir Sie bei der Suche nach einer passenden Lösung, einschließlich einer Ersatzlieferung oder Rückerstattung, sofern zutreffend.",
+          "Bitte überprüfen Sie Ihre Lieferadresse sorgfältig, bevor Sie Ihre Bestellung abschließen. Fehlerhafte oder unvollständige Adressen können zu Lieferverzögerungen oder zusätzlichen Versandkosten führen.",
+          "Sollten Sie einen Fehler in Ihren Lieferdaten feststellen, kontaktieren Sie uns bitte schnellstmöglich mit Ihrer Bestellnummer und der korrekten Adresse. Wir werden unser Bestes tun, Ihre Angaben noch vor dem Versand zu aktualisieren."
+        ],
+        "list": []
       }
     },
     {
       "id": 3,
-      "question": "Mein Produkt kam beschädigt an! Was soll ich tun?",
+      "question": "Wie lange dauert die Lieferung?",
       "answer": {
         "paragraphe": [
-          "Entschuldigung, Sammler! Wir verstehen, wie enttäuschend es ist, einen beschädigten Artikel zu erhalten — besonders einen Artikel, auf den Sie monatelang gewartet haben! Leider passieren Fehler und Produkte können während des Transports beschädigt werden. Sollte dies der Fall sein, kontaktieren Sie uns bitte mit Fotos des beschädigten Artikels und wir werden ihn ersetzen oder eine teilweise oder vollständige Rückerstattung gewähren. Ihre Zufriedenheit ist unsere Priorität Nr. 1!"
+          "Wir wissen, wie sehr Sie sich auf Ihre Bestellung freuen! Deshalb setzen wir alles daran, Ihre Produkte schnellstmöglich für den Versand vorzubereiten.",
+          "Bestellungen werden in der Regel innerhalb von 1–3 Werktagen bearbeitet (Montag bis Freitag, ausgenommen gesetzliche Feiertage).",
+          "Nach dem Versand beträgt die reguläre Lieferzeit üblicherweise 5–10 Werktage, abhängig von Ihrem Standort und der Produktverfügbarkeit.",
+          "Die gesamte voraussichtliche Lieferzeit beträgt somit etwa 6–13 Werktage ab Bestelleingang.",
+          "Sobald Ihre Bestellung versendet wurde, erhalten Sie eine Versandbestätigung per E-Mail mit Informationen zur Sendungsverfolgung, sofern diese verfügbar sind.",
+          "Bitte beachten Sie, dass es sich bei den Lieferzeiten um Schätzungen handelt. Zollabfertigungen, lokale Versanddienstleister, Feiertage oder unvorhergesehene Verzögerungen können die Lieferzeit beeinflussen."
         ],
         "list": []
       }
     },
     {
       "id": 4,
-      "question": "Welche Produkte sind von der Rückgaberichtlinie ausgeschlossen?",
+      "question": "Wird meine Bestellung in einem einzigen Paket geliefert?",
       "answer": {
-        "paragraphe": [],
-        "list": [
-          "Digitale Produkte, einschließlich Mitgliedschaften und Geschenkkarten, sind nicht für Rückerstattungen oder Rücksendungen berechtigt. Wenn Sie Probleme beim Zugriff auf oder bei der Nutzung eines digitalen Produkts haben, kontaktieren Sie uns bitte und wir helfen Ihnen gerne.",
-          "Produkte, die im Rahmen von Ausverkaufs- oder Endverkaufsaktionen gekauft wurden, sind möglicherweise nicht rückgabeberechtigt, außer wenn gesetzlich vorgeschrieben.",
-          "Produkte, die nach der Lieferung verwendet, installiert oder verändert wurden, sind je nach Zustand des Produkts und unserer Rückgaberichtlinie möglicherweise nicht rückgabeberechtigt.",
-          "Wenn Ihr Produkt beschädigt ankommt oder einen Defekt aufweist, kontaktieren Sie uns bitte so bald wie möglich, damit wir Ihnen helfen und eine angemessene Lösung finden können.",
-          "Für bestimmte Produkte können zusätzliche Bedingungen gelten, die gegebenenfalls auf der betreffenden Produktseite angegeben werden."
-        ]
+        "paragraphe": [
+          "Wir arbeiten mit verschiedenen Versandstandorten zusammen, um Ihnen eine sorgfältig ausgewählte Produktvielfalt anbieten zu können.",
+          "Wenn Ihre Bestellung Artikel aus unterschiedlichen Lagern enthält, können diese in mehreren Paketen und an verschiedenen Tagen bei Ihnen eintreffen.",
+          "Keine Sorge! Durch die Aufteilung Ihrer Lieferung entstehen Ihnen keine zusätzlichen Versandkosten über den beim Checkout bestätigten Betrag hinaus."
+        ],
+        "list": []
       }
     },
     {
       "id": 5,
-      "question": "Mein Produkt hat einen Defekt / fehlende Teile. Was soll ich tun?",
+      "question": "Wie werden die Versandkosten berechnet?",
       "answer": {
         "paragraphe": [
-          "Kontaktieren Sie uns direkt mit Fotos und einer Erklärung des Defekts.",
-          "Bitte beachten Sie: Heimvideoprodukte werden nicht garantiert mit einer Schutzhülle geliefert."
+          "Wir legen großen Wert auf transparente Preise, damit Sie bereits vor Ihrer Bestellung genau wissen, welche Kosten auf Sie zukommen.",
+          "Legen Sie Ihre Lieblingsprodukte einfach in den Warenkorb und gehen Sie zur Kasse. Sobald Sie Ihre Lieferadresse eingegeben haben, werden die anfallenden Versandkosten anhand Ihres Lieferziels und Ihrer Bestelldaten berechnet.",
+          "Wenn Ihre Produkte und Ihr Lieferziel für kostenlosen Versand qualifiziert sind, werden die Versandkosten mit 0,00 $ angezeigt.",
+          "Vor Abschluss Ihrer Bestellung können Sie den vollständigen Gesamtbetrag einschließlich aller anfallenden Versandkosten überprüfen."
         ],
         "list": []
       }
     },
     {
       "id": 6,
-      "question": "Wie lautet Ihre Rückerstattungsrichtlinie?",
+      "question": "Wie funktioniert die Rückerstattung?",
       "answer": {
-        "paragraphe": [],
+        "paragraphe": [
+          "Wir möchten, dass Sie bei Enouza mit einem guten Gefühl einkaufen. Wenn eine berechtigte Bestellung storniert oder eine Rücksendung genehmigt wird, gestalten wir die Rückerstattung für Sie so unkompliziert wie möglich.",
+          "Genehmigte Rückerstattungen erfolgen über die ursprünglich verwendete Zahlungsmethode. Sobald Ihre Rückerstattung bearbeitet wurde, erhalten Sie eine Bestätigung per E-Mail."
+        ],
         "list": [
-          "Nachdem eine Bestellung storniert oder eine Rücksendung bearbeitet wurde, wird Ihre Rückerstattung auf die ursprüngliche Zahlungsform ausgegeben.",
-          "Nach Abschluss Ihrer Rücksendung wird eine Rückerstattung innerhalb von 1-5 Werktagen bearbeitet.",
-          "Nach Bearbeitung einer Rückerstattung rechnen Sie bitte mit 3-5 Werktagen für PayPal-Rückerstattungen und 3-10 Werktagen für alle anderen Zahlungsmethoden.",
-          "Wir benachrichtigen Sie per E-Mail, wenn Ihre Rückerstattung ausgegeben wurde.",
-          "Eine vollständige Rückerstattung wird auch dann gewährt, wenn eine Digitale Geschenkkarte des Enouza-Shops als vollständige oder teilweise Zahlung für die Bestellung verwendet wurde.",
-          "Eine Bestellung kann storniert und sofort zurückerstattet werden, wenn das Paket noch nicht mit der Bearbeitung für den Versand begonnen hat.",
-          "Sobald ein Paket mit der Bearbeitung für den Versand beginnt, muss es an sein Ziel geliefert und an Enouza zurückgesendet werden, bevor eine Rückerstattung ausgegeben werden kann. Bitte kontaktieren Sie unser Kundenservice-Team für detailliertere Informationen."
+          "Rückerstattungen werden in der Regel innerhalb von 1–5 Werktagen nach Eingang und Genehmigung Ihrer Rücksendung bearbeitet.",
+          "Bei PayPal erscheint die Rückerstattung normalerweise innerhalb von 3–5 Werktagen nach der Bearbeitung.",
+          "Bei anderen Zahlungsmethoden kann die Gutschrift je nach Zahlungsanbieter etwa 3–10 Werktage dauern.",
+          "Bestellungen, deren Versandvorbereitung noch nicht begonnen hat, können gegebenenfalls storniert und zeitnah erstattet werden.",
+          "Wurde Ihre Bestellung bereits versendet, kann vor der Rückerstattung eine Rücksendung erforderlich sein.",
+          "Unser Kundenservice begleitet Sie gerne durch den gesamten Ablauf."
+        ]
+      }
+    }
+  ],
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "Wie lauten Ihre Rückgabebedingungen?",
+      "answer": {
+        "paragraphe": [
+          "Kaufen Sie mit einem guten Gefühl ein! Wir möchten, dass Sie mit jedem Einkauf bei Enouza rundum zufrieden sind. Sollte ein Produkt einmal nicht Ihren Erwartungen entsprechen, helfen wir Ihnen gerne bei einer unkomplizierten Rückgabe.",
+          "Für berechtigte Produkte bieten wir ein 30-tägiges Rückgaberecht. Wenn Sie mit Ihrem Kauf nicht zufrieden sind, können Sie unter Berücksichtigung unserer Rückgabebedingungen eine Rücksendung und Rückerstattung über Ihre ursprüngliche Zahlungsmethode beantragen.",
+          "Sobald Ihre Rücksendung eingegangen und genehmigt wurde, bearbeiten wir Ihre Rückerstattung innerhalb von 1–5 Werktagen. Wann der Betrag auf Ihrem Konto erscheint, hängt von Ihrem Zahlungsanbieter ab."
+        ],
+        "list": [
+          "Artikel sollten in ihrer Originalverpackung einschließlich sämtlicher Zubehörteile und Bestandteile zurückgesendet werden.",
+          "Bei freiwilligen Rückgaben müssen die Produkte unbenutzt und im Originalzustand sein und dürfen keine sichtbaren Gebrauchs- oder Veränderungsspuren aufweisen.",
+          "Für reduzierte Artikel und als endgültiger Verkauf gekennzeichnete Produkte können besondere Rückgabebeschränkungen gelten, soweit gesetzlich zulässig.",
+          "Die ursprünglichen Versandkosten werden bei freiwilligen Rückgaben in der Regel nicht erstattet.",
+          "Bei einer Rückgabe aufgrund eines Meinungswechsels trägt der Kunde normalerweise die Rücksendekosten.",
+          "Falls Sie einen falschen, beschädigten oder mangelhaften Artikel erhalten haben, kontaktieren Sie uns bitte, damit wir eine passende Lösung finden können.",
+          "Ihre gesetzlichen Verbraucherrechte bleiben von diesen Bedingungen unberührt."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Wie kann ich einen Artikel zurücksenden?",
+      "answer": {
+        "paragraphe": [
+          "Sie möchten einen Artikel zurückgeben? Kein Problem! Unser Kundenservice unterstützt Sie dabei, die Rücksendung so einfach wie möglich abzuwickeln.",
+          "Folgen Sie einfach diesen Schritten:"
+        ],
+        "list": [
+          "Kontaktieren Sie unseren Kundenservice innerhalb der geltenden Rückgabefrist und teilen Sie uns Ihre Bestellnummer mit.",
+          "Nennen Sie uns den Artikel, den Sie zurücksenden möchten, und beschreiben Sie kurz den Grund Ihrer Rückgabe.",
+          "Unser Team prüft Ihre Anfrage und stellt Ihnen die erforderlichen Rücksendeinformationen zur Verfügung.",
+          "Verpacken Sie den Artikel sorgfältig in seiner Originalverpackung einschließlich aller Zubehörteile und Bestandteile.",
+          "Senden Sie den Artikel an die von unserem Kundenservice mitgeteilte Rücksendeadresse.",
+          "Sobald Ihre Rücksendung eingegangen und geprüft wurde, informieren wir Sie über das Ergebnis und veranlassen gegebenenfalls die genehmigte Rückerstattung.",
+          "Falls Ihr Artikel beschädigt, mangelhaft oder falsch geliefert wurde, kontaktieren Sie uns bitte vor der Rücksendung, damit wir die passende Lösung für Sie organisieren können."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "Was kann ich tun, wenn mein Artikel beschädigt ankommt?",
+      "answer": {
+        "paragraphe": [
+          "Es tut uns leid, wenn Ihre Bestellung nicht in einwandfreiem Zustand bei Ihnen angekommen ist. Ein positives Einkaufserlebnis ist uns wichtig, und wir möchten das Problem schnellstmöglich lösen.",
+          "Sollte Ihr Produkt beschädigt oder mangelhaft ankommen, kontaktieren Sie bitte so bald wie möglich unseren Kundenservice.",
+          "Teilen Sie uns Ihre Bestellnummer und eine kurze Beschreibung des Problems mit. Wenn möglich, fügen Sie aussagekräftige Fotos des Produkts und der Verpackung bei.",
+          "Unser Team prüft Ihr Anliegen und hilft Ihnen, eine geeignete Lösung zu finden. Je nach Situation kann dies eine Ersatzlieferung, Reparatur oder teilweise beziehungsweise vollständige Rückerstattung umfassen.",
+          "Ihre Zufriedenheit ist uns wichtig. Wir setzen alles daran, Ihr Anliegen schnell und unkompliziert zu klären."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Welche Produkte sind von der Rückgabe ausgeschlossen?",
+      "answer": {
+        "paragraphe": [
+          "Die meisten berechtigten Produkte können innerhalb unserer Rückgabefrist zurückgegeben werden. Für bestimmte Artikel können jedoch aus hygienischen, sicherheitsbezogenen oder anderen Gründen besondere Rückgabebedingungen gelten.",
+          "Sofern zutreffend, werden produktspezifische Rückgabebeschränkungen auf der jeweiligen Produktseite angegeben."
+        ],
+        "list": [
+          "Für als endgültiger Verkauf gekennzeichnete Artikel und Ausverkaufsprodukte können Einschränkungen bei freiwilligen Rückgaben gelten, soweit gesetzlich zulässig.",
+          "Produkte, die nach der Lieferung benutzt, beschädigt, installiert oder verändert wurden, können von einer freiwilligen Rückgabe ausgeschlossen sein.",
+          "Bestimmte Hygiene- und Körperpflegeprodukte können nach dem Öffnen oder Entfernen der Versiegelung von der Rückgabe ausgeschlossen sein, sofern dies gesetzlich zulässig ist.",
+          "Für individuell angefertigte oder personalisierte Produkte können besondere Rückgabebeschränkungen gelten.",
+          "Bei Produkten, die ohne Originalzubehör oder wesentliche Bestandteile zurückgesendet werden, kann eine zusätzliche Prüfung erforderlich sein.",
+          "Beschädigte, mangelhafte oder falsch gelieferte Produkte werden gesondert und gemäß den geltenden Verbraucherschutzgesetzen behandelt.",
+          "Wenn Sie unsicher sind, ob ein Produkt zurückgegeben werden kann, hilft Ihnen unser Kundenservice gerne weiter."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "Was kann ich tun, wenn mein Produkt defekt ist oder Teile fehlen?",
+      "answer": {
+        "paragraphe": [
+          "Wir möchten, dass jedes Produkt Ihren Erwartungen entspricht. Sollte etwas fehlen oder nicht wie vorgesehen funktionieren, sind wir gerne für Sie da.",
+          "Kontaktieren Sie unseren Kundenservice mit Ihrer Bestellnummer, einer Beschreibung des Problems und möglichst aussagekräftigen Fotos oder einem kurzen Video.",
+          "Unser Team prüft Ihre Anfrage und unterstützt Sie bei einer passenden Lösung. Je nach Situation und Ihren gesetzlichen Verbraucherrechten kann dies die Nachlieferung fehlender Teile, eine Ersatzlieferung, Reparatur oder Rückerstattung umfassen.",
+          "Wir empfehlen Ihnen, die Originalverpackung und sämtliches Zubehör aufzubewahren, bis das Problem vollständig geklärt ist."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Wann erhalte ich meine Rückerstattung?",
+      "answer": {
+        "paragraphe": [
+          "Sobald Ihre berechtigte Rücksendung bei uns eingegangen und genehmigt wurde, kümmern wir uns schnellstmöglich um Ihre Rückerstattung.",
+          "Die Rückzahlung erfolgt über Ihre ursprünglich verwendete Zahlungsmethode. Sobald die Erstattung bearbeitet wurde, erhalten Sie eine Bestätigung per E-Mail."
+        ],
+        "list": [
+          "Die Bearbeitung einer Rückerstattung dauert nach Genehmigung der Rücksendung in der Regel 1–5 Werktage.",
+          "Bei PayPal wird der Betrag normalerweise innerhalb von 3–5 Werktagen nach der Bearbeitung gutgeschrieben.",
+          "Bei anderen Zahlungsmethoden kann die Gutschrift je nach Bank oder Zahlungsanbieter etwa 3–10 Werktage dauern.",
+          "Berechtigte Bestellungen, die vor Beginn der Versandvorbereitung storniert werden, können ohne Rücksendung erstattet werden.",
+          "Bereits versendete Bestellungen müssen gegebenenfalls vor einer Rückerstattung zurückgesendet werden.",
+          "Sollte Ihre Rückerstattung nach Ablauf der erwarteten Bearbeitungszeit noch nicht eingegangen sein, wenden Sie sich bitte an unseren Kundenservice."
         ]
       }
     }
@@ -1552,84 +1665,7 @@
     }
   },
 
-  "shippingFaq": [
-    {
-      "id": 1,
-      "question": "Wie viel kostet der Versand?",
-      "answer": {
-        "paragraphe": [
-          "Die internationalen Versandkosten variieren je nach Zielort. Hier ist eine Aufschlüsselung der Versandkosten für jedes Ziel:"
-        ],
-        "list": [
-          "Kanada: 0$ - 19,99$",
-          "Europa: 0$ - 40$",
-          "Australien: 0$ - 43,99$",
-          "Weltweit: Kostenloser Versand für einige Produkte"
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "question": "Was passiert, wenn mein Paket während des Transports verloren geht?",
-      "answer": {
-        "paragraphe": [
-          "Wenn ein Paket als zugestellt angezeigt wird, Sie es aber nicht erhalten haben, kontaktieren Sie bitte den Spediteur und benachrichtigen Sie uns innerhalb von 30 Tagen nach dem Zustellungsdatum.",
-          "Wenn festgestellt wird, dass das Paket aufgrund eines Zustellfehlers des Spediteurs verloren ging, ersetzen wir Ihre Bestellung.",
-          "Wenn das Paket aufgrund einer unvollständigen oder falschen Adresse verloren geht, können wir keine Rückerstattung oder keinen Umtausch anbieten — Kunden sind dafür verantwortlich, sicherzustellen, dass ihre Lieferadresse zum Zeitpunkt des Kaufs korrekt ist. Wenn das Paket an uns zurückgesandt wird, müssen Sie eine zusätzliche Versandgebühr für den erneuten Versand zahlen.",
-          "Wenn Sie feststellen, dass Ihre Lieferadresse falsch ist oder sich seit der Aufgabe Ihrer Bestellung geändert hat, benachrichtigen Sie uns bitte mit Ihrer Bestellnummer/ID und der aktualisierten Adresse."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 3,
-      "question": "Wann wird meine Bestellung versandt?",
-      "answer": {
-        "paragraphe": [
-          "Ihre Bestellung wird während normaler Werktage (Montag bis Freitag, außer Feiertage) bearbeitet.",
-          "Wenn ein Artikel auf Lager ist, wird Ihre Bestellung innerhalb von 1 bis 5 Werktagen bearbeitet. Die Lieferzeit nach der Bearbeitung variiert je nach Lieferadresse. Derzeit liegen die Lieferzeiten zwischen 5 und 15 Werktagen.",
-          "Sobald ein Artikel versandt wird, erhalten Sie eine E-Mail mit Tracking-Informationen. In einigen Sonderfällen sind möglicherweise keine Sendungsnummern verfügbar."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 4,
-      "question": "Erhalte ich meine Bestellung in mehreren Paketen?",
-      "answer": {
-        "paragraphe": [
-          "Wenn Sie vorrätige Artikel kaufen, die aus verschiedenen Lagern versandt werden, erhalten Sie mehrere Sendungen."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 5,
-      "question": "Wie werden die Versandpreise berechnet?",
-      "answer": {
-        "paragraphe": [
-          "Die Versandkosten werden während des Checkouts berechnet. Sie können Artikel zu Ihrem Warenkorb hinzufügen, zur Kasse gehen und Ihre Lieferadresse eingeben, um die Versandkosten für Ihre Bestellung zu sehen."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 6,
-      "question": "Wie lautet Ihre Rückerstattungsrichtlinie?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Nachdem eine Bestellung storniert oder eine Rücksendung bearbeitet wurde, wird eine Rückerstattung auf die ursprüngliche Zahlungsmethode ausgegeben.",
-          "Sobald der Rücksendeprozess abgeschlossen ist, wird die Rückerstattung innerhalb von 1-5 Werktagen bearbeitet.",
-          "Nach Bearbeitung der Rückerstattung rechnen Sie bitte mit 3-5 Werktagen für PayPal-Rückerstattungen und 3-10 Werktagen für alle anderen Zahlungsmethoden.",
-          "Wir benachrichtigen Sie per E-Mail, sobald die Rückerstattung ausgegeben wurde.",
-          "Eine vollständige Rückerstattung wird auch dann gewährt, wenn eine Digitale Geschenkkarte des Enouza-Shops als vollständige oder teilweise Zahlung für die Bestellung verwendet wurde.",
-          "Eine Bestellung kann storniert und sofort zurückerstattet werden, wenn das Paket noch nicht mit der Bearbeitung für den Versand begonnen hat.",
-          "Sobald ein Paket mit der Bearbeitung für den Versand beginnt, muss es an sein Ziel geliefert und an Enouza zurückgesendet werden, bevor eine Rückerstattung ausgegeben werden kann. Bitte kontaktieren Sie unser Kundenservice-Team für detailliertere Informationen."
-        ]
-      }
-    }
-  ],
+ 
   "terms": {
     "seoTitle": "Enouza - Nutzungsbedingungen",
     "title": "Nutzungsbedingungen",
