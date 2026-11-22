@@ -730,7 +730,7 @@ const Container = styled.div`
     display: none;
     cursor: pointer;
     background:none;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgb(0, 0, 0);
 
   }
 
