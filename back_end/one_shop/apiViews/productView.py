@@ -536,6 +536,15 @@ class ProductFilterView(APIView):
                 )
             )
 
+        elif sort == "newest":
+            products.sort(
+                key=lambda product: (
+                    product.release_date is None,
+                    -(product.release_date.timestamp() if product.release_date else 0),
+                    product.id,
+                )
+            )
+
         # Best match
         elif sort == "best_match" and search:
 

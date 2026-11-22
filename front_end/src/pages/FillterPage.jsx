@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Skeleton from "@mui/material/Skeleton";
 import { useTranslation } from "react-i18next";
@@ -61,12 +62,29 @@ export default function FilterPageStyled() {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const sort = useSelector((state) => state.filter.sort);
+  const storedSort = useSelector((state) => state.filter.sort);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const newestSelected = searchParams.get("sort") === "newest";
+  const sort = newestSelected ? "newest" : storedSort;
   const categories = useSelector((state) => state.filter.categories);
   const search = useSelector((state) => state.filter.search);
 
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+
+  const changeSort = (nextSort) => {
+    if (nextSort === "newest" || newestSelected) {
+      const params = new URLSearchParams(searchParams);
+      if (nextSort === "newest") {
+        params.set("sort", "newest");
+      } else {
+        params.delete("sort");
+      }
+      setSearchParams(params);
+    }
+
+    if (nextSort !== "newest") dispatch(setSort(nextSort));
+  };
 
   /* ============================================================
      FETCH PRODUCTS
@@ -188,36 +206,14 @@ export default function FilterPageStyled() {
             <SortLabel>{t("common.sortBy")}</SortLabel>
               </bdi>
             <SortBarContainer>
-              <SortButton
-                type="button"
-                $active={sort === "best_match"}
-                onClick={() => dispatch(setSort("best_match"))}
-              >
-                {t("common.bestMatch")}
-              </SortButton>
-
-              <SortButton
-                type="button"
-                $active={sort === "orders"}
-                onClick={() => dispatch(setSort("orders"))}
-              >
-                {t("common.orders")}
-              </SortButton>
-
-              <SortButton
+               <SortButton
                 type="button"
                 $active={
                   sort === "price_asc" ||
                   sort === "price_desc"
                 }
                 onClick={() =>
-                  dispatch(
-                    setSort(
-                      sort === "price_asc"
-                        ? "price_desc"
-                        : "price_asc"
-                    )
-                  )
+                  changeSort(sort === "price_asc" ? "price_desc" : "price_asc")
                 }
               >
                 {t("common.price")}
@@ -229,6 +225,32 @@ export default function FilterPageStyled() {
                 >
                   {getPriceArrow()}
                 </SortArrow>
+              </SortButton>
+              <SortButton
+                type="button"
+                $active={sort === "best_match"}
+                onClick={() => changeSort("best_match")}
+              >
+                {t("common.bestMatch")}
+              </SortButton>
+
+             
+
+              <SortButton
+                type="button"
+                $active={sort === "orders"}
+                onClick={() => changeSort("orders")}
+              >
+                {t("common.orders")}
+              </SortButton>
+
+             
+               <SortButton
+                type="button"
+                $active={sort === "newest"}
+                onClick={() => changeSort("newest")}
+              >
+                {t("common.newestFirst")}
               </SortButton>
             </SortBarContainer>
           </SortWrapper>

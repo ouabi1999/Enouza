@@ -265,6 +265,10 @@
     "catlabel": "ENTDECKEN",
 
     "categories": {
+      "lamp_collection": {
+        "title": "Lampenkollektion",
+        "description": "Entdecken Sie Lampen, die Ihrem Zuhause Wärme und Charakter verleihen – von sanft leuchtenden Nachttischlampen bis hin zu skulpturalen Stehlampen."
+      },
       "table_lamps": {
         "title": "Tischlampen",
         "description": "Skulpturale Beleuchtung, die Wärme, Atmosphäre und dezente Eleganz in Ihr Interieur bringt."
@@ -285,14 +289,7 @@
         "title": "Deckenleuchten",
         "description": "Raffinierte Deckenbeleuchtung, die die Atmosphäre formt und den Charakter eines Raumes vervollständigt."
       },
-      "bedside_lamps": {
-        "title": "Nachttischlampen",
-        "description": "Sanfte, einladende Beleuchtung, die Komfort und ruhige Raffinesse an Ihr Bett bringt."
-      },
-      "desk_office_lamps": {
-        "title": "Schreibtisch- & Bürolampen",
-        "description": "Durchdachte Arbeitsbeleuchtung, die Alltagsfunktionalität mit einer polierten, zeitgenössischen Ästhetik ausbalanciert."
-      },
+     
       "outdoor_lighting": {
         "title": "Außenbeleuchtung",
         "description": "Wunderschön gefertigte Beleuchtung, die Wärme, Eleganz und Atmosphäre in Außenbereiche bringt."
@@ -300,6 +297,10 @@
       "mirrors": {
         "title": "Spiegel",
         "description": "Elegante Spiegel, die natürliches Licht verstärken, ein Raumgefühl schaffen und Ihrem Interieur eine raffinierte letzte Note verleihen."
+      },
+      "decorative_accessories": {
+        "title": "Deko-Accessoires",
+        "description": "Dekorative Akzente, die Regalen, Tischflächen und Wohnbereichen Struktur und Charakter verleihen."
       }
     }
   },
@@ -330,7 +331,8 @@
     "clearFilters": "Filter Löschen",
     "search_did_not_match": "Entschuldigung, Ihre Suche hat keine Produkte gefunden.",
     "collection_description": "Entdecken Sie raffinierte Beleuchtung, die Wärme, Charakter und zeitlose Eleganz in jeden Raum bringt.",
-    "collection": "ENOUZA KOLLEKTION",
+    "collection": "kollektion",
+    "collections": "kollektionen",
     "discover": "ENTDECKEN"
   },
   "customer_reviews": {

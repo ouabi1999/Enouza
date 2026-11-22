@@ -265,6 +265,10 @@
     "catlabel": "UTFORSKA",
 
     "categories": {
+      "lamp_collection": {
+        "title": "Lampkollektion",
+        "description": "Upptäck lampor som ger ditt hem värme och karaktär, från sänglampor med mjukt ljus till skulpturala golvlampor."
+      },
       "table_lamps": {
         "title": "Bordslampor",
         "description": "Skulptural belysning som ger värme, atmosfär och diskret elegans åt din interiör."
@@ -285,14 +289,7 @@
         "title": "Taklampor",
         "description": "Förfinad takbelysning skapad för att forma atmosfären och fullända karaktären i ett rum."
       },
-      "bedside_lamps": {
-        "title": "Sänglampor",
-        "description": "Mjuk, inbjudande belysning designad för att ge komfort och stilla sofistikering vid din säng."
-      },
-      "desk_office_lamps": {
-        "title": "Skrivbords- & Kontorslampor",
-        "description": "Genomtänkt designad arbetsbelysning som balanserar vardaglig funktionalitet med en polerad, samtida estetik."
-      },
+    
       "outdoor_lighting": {
         "title": "Utomhusbelysning",
         "description": "Vackert utformad belysning som ger värme, elegans och atmosfär åt utomhusutrymmen."
@@ -300,6 +297,10 @@
       "mirrors": {
         "title": "Speglar",
         "description": "Eleganta speglar som förstärker naturligt ljus, skapar en känsla av rymd och ger en förfinad sista touch åt din interiör."
+      },
+      "decorative_accessories": {
+        "title": "Inredningsdetaljer",
+        "description": "Detaljer som ger textur och karaktär åt hyllor, bord och hemmets vardagsmiljöer."
       }
     }
   },
@@ -330,7 +331,8 @@
     "clearFilters": "Rensa Filter",
     "search_did_not_match": "Tyvärr, din sökning matchade inga produkter.",
     "collection_description": "Upptäck förfinad belysning designad för att ge värme, karaktär och tidlös elegans åt varje utrymme.",
-    "collection": "ENOUZA-KOLLEKTIONEN",
+    "collection": "kollektionen",
+    "collections": "kollektionerna",
     "discover": "UPPTÄCK"
   },
   "customer_reviews": {

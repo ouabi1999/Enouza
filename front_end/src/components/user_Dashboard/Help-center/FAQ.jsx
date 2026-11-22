@@ -55,8 +55,6 @@ function FAQ() {
       ================================================= */}
 
       <Header>
-        <Eyebrow>ENOUZA</Eyebrow>
-
         <MainHeader>
           {globalT("profile.enouza_faq")}
         </MainHeader>

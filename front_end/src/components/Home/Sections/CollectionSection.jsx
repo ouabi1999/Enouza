@@ -17,9 +17,9 @@ const CollectionSection = () => {
       link: "/collections?category=pendant_lights",
     },
     {
-      key: "mirrors",
-      image: "https://sc04.alicdn.com/kf/Hee6d98ce7169495aa69a3be38ec78dddT.jpg",
-      link: "/collections?category=mirrors",
+      key: "decorative_accessories",
+      image: "https://res.cloudinary.com/dzpzy1o1y/image/upload/v1795302820/marble_tray_compressed_jsseye.webp",
+      link: "/collections?category=decorative_accessories",
     },
     {
       key: "table_lamps",
@@ -81,7 +81,7 @@ const CollectionSection = () => {
 
                 <bdi>
                   <Explore>
-                    {t("collectionSection.catlabel")}
+                    {t("countdownSection.shopNow")}
                     <TrendingFlatIcon
                       className="arrow-icon"
                       style={{

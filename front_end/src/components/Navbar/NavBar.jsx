@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -17,7 +17,6 @@ import ApiInstance from "../../../common/baseUrl";
 import DropDownMenu from "./DropDownMenu";
 import DropDownMenuLang from "./DropDownMenuLang";
 import SideBar from "./SideBar";
-import {optimizeCloudinaryImage} from "../../utilis/cloudinary"
 
 import { useTranslation } from "react-i18next";
 import UserServices from "../Services/UserServices";
@@ -30,12 +29,21 @@ import UserServices from "../Services/UserServices";
 const COLORS = {
   cream: "#F7F5F0",
   white: "#FFFFFF",
-  ink: "#1D1C1A",
+  ink: "#373737",
   muted: "#77736B",
   gold: "#B39A76",
   softGold: "#DED4C4",
   border: "#E4DED4",
 };
+
+
+// ============================================================
+// COLLECTION KEYS
+// ============================================================
+
+const COLLECTION_KEYS = [
+  "table_lamps",
+];
 
 
 // ============================================================
@@ -73,9 +81,6 @@ function NavBar({ outlet, setSearchValue, value }) {
   // ----------------------------------------------------------
   // STATE
   // ----------------------------------------------------------
-
-  const [language, setLanguage] = useState("");
-  const [currency, setCureency] = useState("");
 
   const [isSearchInputOpen, setIsSearchInputOpen] =
     useState(false);
@@ -116,8 +121,6 @@ function NavBar({ outlet, setSearchValue, value }) {
 
         navigate("/");
 
-        console.log(response.data);
-
       })
 
       .catch((error) => {
@@ -156,7 +159,7 @@ function NavBar({ outlet, setSearchValue, value }) {
 
     if (value) {
 
-      navigate("/collections/?search");
+      navigate(`/collections/?search=${encodeURIComponent(value)}`);
 
     } else {
 
@@ -225,6 +228,7 @@ function NavBar({ outlet, setSearchValue, value }) {
 
 
             <button
+              type="button"
               className="search-icon-container"
               onClick={handleSearchInput}
               aria-label={t("common.search")}
@@ -249,26 +253,29 @@ function NavBar({ outlet, setSearchValue, value }) {
           MAIN NAVBAR
       ====================================================== */}
 
-   <UserServices/>
+      <UserServices />
+
       <Container>
-   
 
         {/* ====================================================
-            LEFT SIDE
+            LEFT: menu + logo + collection nav
         ==================================================== */}
 
         <ChildContainer>
-           {/* ==================================================
+
+          {/* ==================================================
               MOBILE MENU
               ================================================== */}
 
-          <MenuIcon
-
+          <button
+            type="button"
             className="menu-icon"
-
+            aria-label="Menu"
+            aria-expanded={isSideBarOpen}
             onClick={hideSideBarMenu}
-
-          />
+          >
+            <MenuIcon aria-hidden="true" />
+          </button>
 
           {/* ==================================================
               LOGO
@@ -279,7 +286,7 @@ function NavBar({ outlet, setSearchValue, value }) {
             <BrandLogo>
 
               <img
-                    src="https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto,q_auto,w_100/v1791076399/enouza_logo_black_vpsxgw.png"
+                src="https://res.cloudinary.com/dzpzy1o1y/image/upload/f_auto,q_auto,w_100/v1791076399/enouza_logo_black_vpsxgw.png"
 
                 alt="ENOUZA"
               />
@@ -290,6 +297,40 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           </LogoLink>
 
+
+          {/* ==================================================
+              COLLECTION LINKS (BESIDE LOGO)
+              ================================================== */}
+
+          <CollectionsNav
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          >
+
+            <NavLink to="/collections/?sort=newest" end>
+              {t("common.new")} {t("filterPage.collection")}
+            </NavLink>
+
+            <NavLink to="/collections/?sort=best_sellers">
+              {t("homePage.best_sellers")}
+            </NavLink>
+
+            <NavLink to="/collections/?category=collection_lamp">
+              {t("collectionSection.categories.lamp_collection.title")}
+            </NavLink>
+
+
+
+
+          </CollectionsNav>
+
+        </ChildContainer>
+
+
+        {/* ====================================================
+            RIGHT: search + icons
+        ==================================================== */}
+
+        <Wrapper>
 
           {/* ==================================================
               DESKTOP SEARCH
@@ -331,10 +372,10 @@ function NavBar({ outlet, setSearchValue, value }) {
 
 
             <button
+              type="button"
               className="search-icon-container"
               onClick={handleSearchInput}
               aria-label={t("common.search")}
-
               onMouseLeave={() =>
                 setRequired(false)
               }
@@ -348,18 +389,9 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           </SearchContainer>
 
-        </ChildContainer>
-
-
-        {/* ====================================================
-            RIGHT SIDE
-        ==================================================== */}
-
-        <Wrapper>
-
 
           {/* ==================================================
-              MOBILE SEARCH
+              MOBILE SEARCH ICON
               ================================================== */}
 
           <div className="search-icon-container-responsive">
@@ -385,13 +417,9 @@ function NavBar({ outlet, setSearchValue, value }) {
 
             <DropDownMenuLang
 
-              isLangMenuOpen={
-                isLangMenuOpen
-              }
+              isLangMenuOpen={isLangMenuOpen}
 
-              setIsLangMenuOpen={
-                setIsLangMenuOpen
-              }
+              setIsLangMenuOpen={setIsLangMenuOpen}
 
               country={country}
 
@@ -420,17 +448,11 @@ function NavBar({ outlet, setSearchValue, value }) {
 
               isAuth={isAuth}
 
-              isProfileOpen={
-                isProfileOpen
-              }
+              isProfileOpen={isProfileOpen}
 
-              openProfileMenu={
-                openProfileMenu
-              }
+              openProfileMenu={openProfileMenu}
 
-              setIsProfileOpen={
-                setIsProfileOpen
-              }
+              setIsProfileOpen={setIsProfileOpen}
 
               t={t}
 
@@ -453,7 +475,6 @@ function NavBar({ outlet, setSearchValue, value }) {
                 className="shopping-cart-icon"
               />
 
-
               <div className="cart-number-container">
 
                 <span>
@@ -465,9 +486,6 @@ function NavBar({ outlet, setSearchValue, value }) {
             </div>
 
           </Link>
-
-
-         
 
         </Wrapper>
 
@@ -486,33 +504,23 @@ function NavBar({ outlet, setSearchValue, value }) {
 
           isAuth={isAuth}
 
-          isLangMenuOpen={
-            isLangMenuOpen
-          }
+          isLangMenuOpen={isLangMenuOpen}
 
-          setIsLangMenuOpen={
-            setIsLangMenuOpen
-          }
+          setIsLangMenuOpen={setIsLangMenuOpen}
 
           country={country}
 
-          hideSideBarMenu={
-            hideSideBarMenu
-          }
+          hideSideBarMenu={hideSideBarMenu}
 
           logout={logout}
 
-          isProfileOpen={
-            isProfileOpen
-          }
+          isProfileOpen={isProfileOpen}
 
-          openProfileMenu={
-            openProfileMenu
-          }
+          openProfileMenu={openProfileMenu}
 
-          setIsProfileOpen={
-            setIsProfileOpen
-          }
+          setIsProfileOpen={setIsProfileOpen}
+
+          collectionKeys={COLLECTION_KEYS}
 
         />
 
@@ -532,10 +540,6 @@ function NavBar({ outlet, setSearchValue, value }) {
 
 export default NavBar;
 
-
-// ============================================================
-// PARENT CONTAINER
-// ============================================================
 
 const ParentContainer = styled.div`
 
@@ -697,323 +701,115 @@ const ParentContainer = styled.div`
 
 `;
 
-
-// ============================================================
-// MAIN NAVBAR
-// ============================================================
-
 const Container = styled.div`
-
   position: sticky;
-
-
   top: 34px;
-
   z-index: 2;
-
-  height: 60px;
-
   display: flex;
-
-  align-items: center;
-
-  padding: 0 32px;
-
+  min-height: 60px;
   box-sizing: border-box;
-
-  background: rgba(247, 245, 240, 0.96);
-
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 40px);
+  padding-inline: clamp(16px, 3vw, 40px);
+  border-bottom: 1px solid ${COLORS.border};
+  background: ${COLORS.white};
   color: ${COLORS.ink};
 
-  border-bottom: 1px solid ${COLORS.border};
-
-  backdrop-filter: blur(12px);
-
-  -webkit-backdrop-filter: blur(12px);
-
-
-  /* ========================================================
-     LINKS
-  ======================================================== */
-
   a {
-
-    color: ${COLORS.ink};
-
+    color: inherit;
     text-decoration: none;
-
   }
 
-
-  /* ========================================================
-     MOBILE MENU
-  ======================================================== */
+  :is(a, button):focus-visible {
+    outline: 2px solid #806547;
+    outline-offset: 2px;
+  }
 
   .menu-icon {
-
     display: none;
-
-    color: ${COLORS.ink};
-
     cursor: pointer;
-
-    font-size: 27px;
-
-    transition:
-      color 0.2s ease;
-
   }
 
-
-  .menu-icon:hover {
-
-    color: ${COLORS.gold};
-
-  }
-
-
-  /* ========================================================
-     DROPDOWNS
-  ======================================================== */
-
-  .drop-down-lang-container,
-  .drop-down-menu-container {
-
-    display: flex;
-
-    align-items: center;
-
-  }
-
-
-  /* ========================================================
-     TABLET
-  ======================================================== */
-
-  @media only screen and (max-width: 1000px) {
-
-    padding: 0 24px;
-
-  }
-
-
-  /* ========================================================
-     MOBILE
-  ======================================================== */
-
-  @media only screen and (max-width: 860px) {
-
-    padding: 0 20px;
-
+  @media (max-width: 860px) {
+    min-height: 54px;
 
     .menu-icon {
-
-      display: flex;
-
+      display: block;
     }
-
 
     .drop-down-lang-container,
     .drop-down-menu-container {
-
       display: none;
-
     }
-
   }
-
-
-  /* ========================================================
-     SMALL MOBILE
-  ======================================================== */
-
-  @media only screen and (max-width: 816px) {
-
-    height: 50px;
-     top: 34px;
-  }
-
 `;
-
-
-// ============================================================
-// LEFT SIDE
-// ============================================================
 
 const ChildContainer = styled.div`
-
-  width: 60%;
-
   display: flex;
-
   align-items: center;
-
-  justify-content: space-between;
-
-  gap: 28px;
-
+  gap: clamp(16px, 3vw, 44px);
   min-width: 0;
-
-
-  @media only screen and (max-width: 1000px) {
-
-    width: 58%;
-
-  }
-
-
-  /* ========================================================
-     MOBILE
-     Logo is positioned independently by LogoLink.
-  ======================================================== */
-
-  @media only screen and (max-width: 860px) {
-
-    width: auto;
-
-    flex: 0 0 auto;
-
-  }
-
 `;
-
-
-// ============================================================
-// LOGO LINK
-// ============================================================
 
 const LogoLink = styled(Link)`
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  color: inherit;
-
-  text-decoration: none;
-
+  display: inline-flex;
   flex-shrink: 0;
 
-
-  /* ========================================================
-     TRUE MOBILE CENTER
-  ======================================================== */
-
-  @media only screen and (max-width: 860px) {
-
+  @media (max-width: 860px) {
     position: absolute;
-
-    left: 50%;
-
     top: 50%;
-
+    left: 50%;
     transform: translate(-50%, -50%);
-
-    z-index: 2;
-
-    white-space: nowrap;
-
   }
-
 `;
-
-
-// ============================================================
-// LOGO
-// ============================================================
 
 const BrandLogo = styled.div`
-
-  color: #20201d;
-
   display: flex;
-
   align-items: center;
-
-  font-family:
-    "Times New Roman",
-    serif;
-
-  font-size: 27px;
-
-  letter-spacing: 0.17em;
-
-  line-height: 1;
-
+  color: #20201d;
+  font: 26px / 1 Georgia, serif;
+  letter-spacing: 0.15em;
 
   img {
-
-    width: 27px;
-    
-
-
     display: block;
-
-    margin-bottom: 0.5px;
-
+    width: 26px;
   }
 
-
-  span {
-
-    display: inline-block;
-
-    transition:
-      color 0.25s ease;
-
-  }
-
-
-  @media (hover: hover) and (pointer: fine) {
-
-    span:hover {
-
-      color: ${COLORS.gold} !important;
-
-    }
-
-  }
-
-
-  /* ========================================================
-     MOBILE LOGO
-  ======================================================== */
-
-  @media only screen and (max-width: 650px) {
-
-    font-size: 24px;
-
+  @media (max-width: 420px) {
+    font-size: 22px;
 
     img {
-
-      width: 25px;
-
+      width: 22px;
     }
-
   }
-
-
-  @media only screen and (max-width: 380px) {
-
-    font-size: 20px;
-
-
-    img {
-
-      width: 21px;
-
-    }
-
-  }
-
 `;
 
+const CollectionsNav = styled.nav`
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 2px clamp(8px, 1vw, 16px);
+  padding-block: 8px;
 
-// ============================================================
-// SEARCH
-// ============================================================
+  a {
+    padding: 7px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  a:is(:hover, :focus-visible) {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    color: #563f29;
+  }
+
+  @media (max-width: 1250px) {
+    display: none;
+  }
+`;
 
 const SearchContainer = styled.div`
 
@@ -1142,31 +938,11 @@ const SearchContainer = styled.div`
 
 `;
 
-
-// ============================================================
-// RIGHT SIDE
-// ============================================================
-
 const Wrapper = styled.div`
-
-  width: 39%;
-
   display: flex;
-
+  flex-shrink: 0;
   align-items: center;
-
-  justify-content: flex-end;
-
-  gap: 30px;
-
-  box-sizing: border-box;
-
-  padding-right: 0;
-
-
-  /* ========================================================
-     SHOPPING CART
-  ======================================================== */
+  gap: clamp(12px, 1.5vw, 24px);
 
   .shopping-cart {
 
@@ -1254,98 +1030,19 @@ const Wrapper = styled.div`
   }
 
 
-  /* ========================================================
-     MOBILE SEARCH ICON
-  ======================================================== */
+  .search-icon-responsive {
+    display: block;
+    font-size: 22px;
+  }
 
   .search-icon-container-responsive {
-
     display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-  }
-
-
-  .search-icon-responsive {
-
-    display: block;
-
-    color: ${COLORS.ink};
-
     cursor: pointer;
-
-    font-size: 22px;
-
-    transition:
-      color 0.25s ease,
-      transform 0.25s ease;
-
   }
 
-
-  .search-icon-responsive:hover {
-
-    color: ${COLORS.gold};
-
-    transform: translateY(-1px);
-
-  }
-
-
-  /* ========================================================
-     MOBILE
-  ======================================================== */
-
-  @media only screen and (max-width: 860px) {
-
-    width: auto;
-
-    flex: 1;
-
-    gap: 22px;
-
-    justify-content: flex-end;
-
-
+  @media (max-width: 860px) {
     .search-icon-container-responsive {
-
       display: flex;
-
     }
-
   }
-
-
-  /* ========================================================
-     SMALL MOBILE
-  ======================================================== */
-
-  @media only screen and (max-width: 650px) {
-
-    gap: 20px;
-
-  }
-
-
-  /* ========================================================
-     VERY SMALL MOBILE
-  ======================================================== */
-
-  @media only screen and (max-width: 420px) {
-
-    gap: 18px;
-
-
-    .shopping-cart-icon,
-    .search-icon-responsive {
-
-      font-size: 21px;
-
-    }
-
-  }
-
 `;

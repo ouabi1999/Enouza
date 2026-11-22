@@ -25,23 +25,13 @@ export const categoryList = [
     value: "ceiling_lights",
   },
   {
-    id: 6,
-    label: "Bedside Lamps",
-    value: "bedside_lamps",
-  },
-  {
-    id: 7,
-    label: "Desk & Office Lamps",
-    value: "desk_office_lamps",
-  },
-  {
     id: 8,
     label: "Outdoor Lighting",
     value: "outdoor_lighting",
   },
   {
     id: 9,
-    label: "Mirrors",
-    value: "mirrors",
+    label: "Decorative Accessories",
+    value: "decorative_accessories",
   },
 ];

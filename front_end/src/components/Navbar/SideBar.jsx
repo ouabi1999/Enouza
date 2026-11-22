@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import styled from "styled-components";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PersonIcon from "@mui/icons-material/Person";
@@ -63,6 +63,17 @@ function SideBar(props) {
             country={props.country}
           />
         </div>
+        <CollectionsNav aria-label={t("filterPage.collections")}>
+          <NavLink to="/collections/?sort=newest" end onClick={props.hideSideBarMenu}>
+            {t("common.new")} {t("filterPage.collection")}
+          </NavLink>
+          <NavLink to="/collections/?sort=best_sellers" onClick={props.hideSideBarMenu}>
+            {t("homePage.best_sellers")}
+          </NavLink>
+          <NavLink to="/collections/?category=collection_lamp" onClick={props.hideSideBarMenu}>
+            {t("collectionSection.categories.lamp_collection.title")}
+          </NavLink>
+        </CollectionsNav>
         <h4>{t("footer.policies.title")}:</h4>
         <Wrapper>
           <Wrapp>
@@ -117,6 +128,7 @@ const Container = styled.div`
   width: 300px;
   background: #ffffff;
   height: 100%;
+  overflow-y: auto;
   transition: ease-in-out;
   animation-duration: 1s;
   animation-name: hideShowMenu;
@@ -145,6 +157,26 @@ const Container = styled.div`
   }
   
 `;
+const CollectionsNav = styled.nav`
+  display: grid;
+  margin-block: 12px;
+  border-block: 1px solid #e4ded4;
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: #373737;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  a:is(:hover, :focus-visible) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
