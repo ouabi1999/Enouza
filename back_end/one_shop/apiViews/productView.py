@@ -276,7 +276,7 @@ class ProductRatingsView(APIView):
             )
 
         ratings = Rating.objects.filter(product_id=product_id).order_by(
-            "-created_at"
+            "-created_at", "-id"
         )
 
         paginator = PageNumberPagination()
@@ -288,7 +288,11 @@ class ProductRatingsView(APIView):
 
         serializer = RatingSerializer(page, many=True)
 
-        return paginator.get_paginated_response(serializer.data)
+        response = paginator.get_paginated_response(serializer.data)
+        response.data["rating_counts"] = dict(
+            ratings.order_by().values_list("stars").annotate(count=Count("id"))
+        )
+        return response
 
 
 class RatingView(APIView):
@@ -351,7 +355,7 @@ class RatingView(APIView):
         review["images"] = images_urls
         data["review"] = review
 
-        serializer = RatingSerializer(data=request.data)
+        serializer = RatingSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(

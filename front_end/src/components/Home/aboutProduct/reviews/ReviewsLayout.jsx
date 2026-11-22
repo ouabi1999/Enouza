@@ -12,10 +12,12 @@ function ReviewsLayout() {
   const user = useSelector(state => state.auth.user)
   const [comment, setComment] = useState({ images: [], text: "" })
   const [isLoading, setIsLoading] = useState(false)
-  const [newRatings, setNewRatings] = useState(null)
+  const [reviewsVersion, setReviewsVersion] = useState(0);
+  const [submitError, setSubmitError] = useState(false);
   const [required, setRequired] = useState(false)
   const [loading, setLoading] = useState(true);
   const [totalReviews, setTotalReviews] = useState(0);
+  const [ratingSummary, setRatingSummary] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -23,8 +25,6 @@ function ReviewsLayout() {
 
   const PAGE_SIZE = 6;
   const { t, i18n } = useTranslation()
-
-  const [preveiwImages, setPreviewImages] = useState([])
 
   const [star_rating, set_star_rating] = useState(1);
   const [ratings, setRatings] = useState([])
@@ -38,47 +38,43 @@ const oneStar = productData?.one_star_count ?? 0;
 let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
 
 
-  const handelRatingSubmit = (event) => {
+  const handelRatingSubmit = async () => {
+    if (isLoading || !productData?.id || !user?.id) return;
 
-    if (comment.text !== "") {
+    setSubmitError(false);
+    const text = comment.text.trim();
+    setRequired(!text);
+    if (!text) return;
 
+    setIsLoading(true);
+    try {
+      await ApiInstance.post("ratings/", {
+        product: productData.id,
+        user: {
+          id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          country: user.country,
+          countryCode: user.countryCode,
+        },
+        stars: star_rating,
+        review: { ...comment, text },
+      });
 
-      event.preventDefault()
-      setIsLoading(true)
-      ApiInstance.post("ratings/",
-
-        {
-          product: productData.id,
-          user: {
-            "id": user.id,
-            "firstName": user.firstName,
-            "lastName": user.lastName,
-            "country": user.country,
-            "countryCode": user.countryCode
-          },
-          stars: star_rating,
-          review: comment,
-
-        })
-        .then((response) => {
-          setNewRatings(response.data)
-          setIsLoading(false)
-          setComment({ text: "", images: [] })
-          setPreviewImages
-          set_star_rating(1)
-          setRequired(false)
-        })
-        .catch(message => {
-          console.log(message)
-          setIsLoading(false)
-          setRequired(false)
-        })
+      setComment({ text: "", images: [] });
+      set_star_rating(1);
+      setCurrentPage(1);
+      setReviewsVersion((version) => version + 1);
+      if (currentPage === 1) {
+        reviewsTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } catch (error) {
+      console.error("Failed to submit product review:", error);
+      setSubmitError(true);
+    } finally {
+      setIsLoading(false);
     }
-    else {
-      setRequired(true)
-    }
-  }
-
+  };
 
   useEffect(() => {
     if (!productData?.id) {
@@ -110,6 +106,9 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
 
         setRatings(results);
         setTotalReviews(count);
+        if (data.rating_counts) {
+          setRatingSummary({ productId: productData.id, count, buckets: data.rating_counts });
+        }
         setTotalPages(
           Number(data?.total_pages) || Math.max(1, Math.ceil(count / PAGE_SIZE))
         );
@@ -131,7 +130,7 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
     return () => {
       mounted = false;
     };
-  }, [productData?.id, currentPage]);
+  }, [productData?.id, currentPage, reviewsVersion]);
 
   const previousPageRef = useRef(currentPage);
 
@@ -146,15 +145,7 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
 
   }, [currentPage]);
 
-  useEffect(() => {
-    if (previousPageRef.current !== currentPage) {
-      previousPageRef.current = currentPage;
-      reviewsTopRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [currentPage]);
+
 
   return (
     <Container>
@@ -165,9 +156,9 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
         threeStars={threeStars}
         oneStar={oneStar}
         productData={productData}
+        ratingSummary={ratingSummary?.productId === productData?.id ? ratingSummary : null}
         sum_stars={sum_stars}
         ratings={ratings}
-        newRatings={newRatings}
         t={t}
         i18n={i18n} />
         </div>
@@ -182,7 +173,6 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
           productData={productData}
           sum_stars={sum_stars}
           ratings={ratings}
-          newRatings={newRatings}
           totalReviews={totalReviews}
           totalPages={totalPages}
           currentPage={currentPage}
@@ -196,15 +186,11 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
           comment={comment}
           setComment={setComment}
           isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          newRatings={newRatings}
-          setNewRatings={setNewRatings}
+          submitError={submitError}
           required={required}
           star_rating={star_rating}
           set_star_rating={set_star_rating}
           handelRatingSubmit={handelRatingSubmit}
-          preveiwImages={preveiwImages}
-          setPreviewImages={setPreviewImages}
           t={t}
           i18n={i18n}
         />
@@ -217,18 +203,21 @@ let sum_stars = Number(productData?.average_rating).toFixed(1) || 0
 
 export default ReviewsLayout
 const Container = styled.div`
+  --reviews-gutter: 32px;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 30px 32px 64px;
+  padding: 30px var(--reviews-gutter) 64px;
   box-sizing: border-box;
   color: #29251f;
 
   @media (max-width: 768px) {
-    padding: 52px 20px 60px;
+    --reviews-gutter: 20px;
+    padding-block: 52px 60px;
   }
 
   @media (max-width: 480px) {
-    padding: 42px 16px 50px;
+    --reviews-gutter: 16px;
+    padding-block: 42px 50px;
   }
 `

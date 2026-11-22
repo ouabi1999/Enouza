@@ -24,8 +24,8 @@ function ProductTitle({ formData, setFormData }) {
         <Input type="text" name="es" value={formData?.name?.es} onChange={handelChange} />
       </TitleGroup>
       <TitleGroup>
-        <Label>Product Title Arabic</Label>
-        <Input type="text" name="ar" value={formData?.name?.ar} onChange={handelChange} />
+        <Label>Product Title French</Label>
+        <Input type="text" name="fr" value={formData?.name?.fr} onChange={handelChange} />
       </TitleGroup>
     </Container>
   );

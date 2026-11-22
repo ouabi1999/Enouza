@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -11,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 
 const MainSlider = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const videoRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -29,7 +28,7 @@ const MainSlider = () => {
   }, []);
 
   return (
-    <Container>
+    <Container dir={i18n.dir()}>
       <video
         className="mobile-video"
         ref={videoRef}
@@ -44,37 +43,26 @@ const MainSlider = () => {
         <source src={optimizeCloudinaryVideo(videoUrl)} type="video/mp4" />
       </video>
 
-      <Poster>
-        <video
-          className="desktop-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={optimizeCloudinaryImage(posterUrl, { width: 1820 })}
-          aria-label="Enouza luxury home lighting and interior design"
-        >
-          <source src={optimizeCloudinaryVideo(videoUrl2)} type="video/mp4" />
-        </video>
-      </Poster>
-
-      {/* Subtle overlay to improve text readability */}
-      <OverlayBackground />
+      <video
+        className="desktop-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={optimizeCloudinaryImage(posterUrl, { width: 1820 })}
+        aria-label="Enouza luxury home lighting and interior design"
+      >
+        <source src={optimizeCloudinaryVideo(videoUrl2)} type="video/mp4" />
+      </video>
 
       <Overlay>
-        <bdi>
         <h1>{t("mainSlider.title")}</h1>
-        <span>{t("mainSlider.description")}</span>
-                 </bdi>
+        <p>{t("mainSlider.description")}</p>
+        <ShopNowButton to="/collections" onClick={() => dispatch(toggleCategory(""))}>
+          {t("profile.start_shopping")}
+        </ShopNowButton>
       </Overlay>
-
-      <ShopNowButton
-        to="/collections"
-        onClick={() => dispatch(toggleCategory(""))}
-      >
-        {t("profile.start_shopping")}
-      </ShopNowButton>
     </Container>
   );
 };
@@ -83,200 +71,96 @@ export default MainSlider;
 
 const Container = styled.div`
   position: relative;
-  width: 100%;
-  min-width: 200px;
-  height: 550px;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  justify-items: start;
+  box-sizing: border-box;
+  min-height: clamp(450px, 48vw, 550px);
+  padding: clamp(24px, 5vw, 56px);
   overflow: hidden;
   background: #24231f;
+
+  video,
+  &::before {
+    position: absolute;
+    inset: 0;
+  }
+
+  video {
+    z-index: -2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &::before {
+    z-index: -1;
+    content: "";
+    background: linear-gradient(to bottom, transparent 30%, #171512e6 100%);
+    pointer-events: none;
+  }
 
   .mobile-video {
     display: none;
   }
 
-  .desktop-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  @media only screen and (max-width: 850px) {
-    min-width: 315px;
-    height: 500px;
-  }
-
-  @media only screen and (max-width: 445px) {
-    min-width: 290px;
-    height: 450px;
-
+  @media (max-width: 445px) {
     .desktop-video {
       display: none;
     }
 
     .mobile-video {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
-`;
-
-const Poster = styled.div`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-/* Minimal dark gradient for readable text */
-const OverlayBackground = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.22) 0%,
-    rgba(0, 0, 0, 0.12) 35%,
-    rgba(0, 0, 0, 0.42) 100%
-  );
 `;
 
 const Overlay = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-
-  width: 90%;
-  max-width: 850px;
-
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  max-width: 420px;
   color: #fff;
-  text-align: center;
-  font-family: "Playfair Display", serif;
+  text-align: start;
 
   h1 {
-    margin: 0 0 16px;
-    font-size: clamp(34px, 4.2vw, 58px);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: 0.3px;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
-  }
-
-  span {
-    display: block;
-    max-width: 650px;
-    margin: 0 auto;
+    margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(18px, 2vw, 23px);
-    line-height: 1.6;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
+    font-size: clamp(22px, 2.5vw, 34px);
+    font-weight: 500;
+    line-height: 1.15;
   }
 
-  h5 {
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 2.5px;
-    line-height: 1.8;
-    text-transform: uppercase;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
-  }
-
-  @media only screen and (max-width: 850px) {
-    width: 88%;
-
-    h1 {
-      font-size: 38px;
-    }
-
-    span {
-      font-size: 18px;
-    }
-  }
-
-  @media only screen and (max-width: 445px) {
-    width: 90%;
-
-    h1 {
-      margin-bottom: 12px;
-      font-size: 27px;
-      line-height: 1.3;
-      letter-spacing: 0;
-    }
-
-    span {
-      max-width: 330px;
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    h5 {
-      margin-top: 14px;
-      font-size: 8px;
-      letter-spacing: 1.5px;
-      line-height: 1.7;
-    }
-  }
-
-  @media only screen and (max-width: 350px) {
-    h1 {
-      font-size: 24px;
-    }
-
-    span {
-      font-size: 14px;
-    }
+  p {
+    max-width: 44ch;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-wrap: pretty;
   }
 `;
 
 const ShopNowButton = styled(Link)`
-  color: #ffffff;
-  font-family: "Playfair Display", serif;
-
-  padding: 10px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-
-  position: absolute;
-  cursor: pointer;
-  text-wrap: nowrap;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-
-  z-index: 1;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background: rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 
   &:hover {
-    color: #e6d2a8;
-    border-color: #e6d2a8;
-    background: rgba(0, 0, 0, 0.3);
+    color: #ead6b9;
   }
 
   &:focus-visible {
-    outline: 2px solid #e6d2a8;
+    outline: 2px solid #fff;
     outline-offset: 4px;
-  }
-
-  @media only screen and (max-width: 445px) {
-    top: 89%;
-    padding: 9px 14px;
-    font-size: 10px;
-    letter-spacing: 0.7px;
   }
 `;

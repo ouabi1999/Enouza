@@ -247,7 +247,6 @@ const handlePageChange = (page) => {
           <EmptyTitle>
             {translate("no_reviews", "No reviews yet")}
           </EmptyTitle>
-          <EmptyAccent />
         </EmptyReviews>
       )}
 
@@ -268,7 +267,7 @@ const handlePageChange = (page) => {
               onClick={() => handlePageChange(currentPage - 1)}
               aria-label={translate("previous_page", "Previous page")}
             >
-              <span aria-hidden="true">{i18n?.language[0] === "ar" ? "→" : "←"}</span>
+              <span aria-hidden="true">{i18n?.dir() === "rtl" ? "→" : "←"}</span>
               <span>{t("common.previous", "Previous")}</span>
             </PaginationButton>
 
@@ -281,7 +280,7 @@ const handlePageChange = (page) => {
               aria-label={t("next_page", "Next page")}
             >
               <span>{t("common.next", "Next")}</span>
-              <span aria-hidden="true">{i18n?.language[0] === "ar" ? "←" : "→"}</span>
+              <span aria-hidden="true">{i18n?.dir() === "rtl" ? "←" : "→"}</span>
             </PaginationButton>
           </PaginationControls>
         </Pagination>
@@ -335,25 +334,10 @@ function ReviewSkeleton() {
 
 export default CustomerReviews;
 
-/* =========================================================
-   LUXURY REVIEW DESIGN
-   Editorial / quiet luxury direction
-========================================================= */
-
 const Container = styled.section`
   width: 100%;
-  max-width: 1160px;
-  margin: 30px auto;
-  box-sizing: border-box;
-  color: #211e1a;
-
-  @media (max-width: 700px) {
-    padding: 0 18px 12px;
-  }
-
-  @media (max-width: 420px) {
-    padding: 0 14px 10px;
-  }
+  margin-block: 24px;
+  color: #29251f;
 `;
 
 
@@ -362,86 +346,39 @@ const Container = styled.section`
 
 
 const ReviewsList = styled.div`
-  width: 100%;
+  display: grid;
+  gap: 12px;
 `;
 
 const ReviewCard = styled.article`
-  position: relative;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
-  column-gap: 48px;
-  width: 100%;
-  padding: 42px 4px;
-  box-sizing: border-box;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: #e4ded6;
-  }
-
-  &:first-child::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: #e4ded6;
-  }
-
-  @media (max-width: 850px) {
-    grid-template-columns: 150px minmax(0, 1fr);
-    column-gap: 32px;
-    padding: 34px 2px;
-  }
-
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 30px 0;
-  }
+  gap: 14px;
+  min-width: 0;
+  padding: clamp(16px, 4vw, 24px);
+  border: 1px solid #e6e0d7;
+  border-radius: 10px;
+  background: #fff;
 `;
 
 const ReviewIdentity = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 2px;
-
-  @media (max-width: 650px) {
-    flex-direction: row;
-    align-items: center;
-    gap: 13px;
-    padding-top: 0;
-  }
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 `;
 
 const Avatar = styled.div`
-  width: 46px;
-  height: 46px;
-  flex: 0 0 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  border: 1px solid #d7cec2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
   border-radius: 50%;
-  color: #a88a62;
-  background: #fcfaf7;
+  background: #f7f5f0;
+  color: #806547;
 
   svg {
-    width: 21px;
-    height: 21px;
-    stroke-width: 1.25;
-  }
-
-  @media (max-width: 650px) {
-    margin-bottom: 0;
+    font-size: 20px;
   }
 `;
 
@@ -452,26 +389,19 @@ const IdentityInfo = styled.div`
 `;
 
 const CustomerName = styled.span`
-  color: #29251f;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.025em;
-  text-transform:capitalize;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
 `;
 
 const VerifiedLabel = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 7px;
-  color: #8f8172;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
+  margin-block-start: 3px;
+  color: #625d55;
+  font-size: 12px;
+  line-height: 1.4;
 `;
 
 const VerifiedMark = styled.span`
@@ -490,16 +420,11 @@ const ReviewMain = styled.div`
 
 const ReviewMeta = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 17px;
-
-  @media (max-width: 500px) {
-    flex-wrap: wrap;
-    gap: 9px;
-    margin-bottom: 14px;
-  }
+  gap: 6px 12px;
+  margin-block-end: 8px;
 `;
 
 const RatingStars = styled.div`
@@ -522,51 +447,24 @@ const RatingStars = styled.div`
 `;
 
 const ReviewDate = styled.time`
-  flex-shrink: 0;
-  color: #9d9184;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: #625d55;
+  font-size: 12px;
 `;
 
 const ReviewText = styled.p`
-  max-width: 720px;
   margin: 0;
   color: #403a34;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  font-size: clamp(17px, 1.7vw, 20px);
-  font-weight: 400;
-  line-height: 1.72;
-  letter-spacing: 0.005em;
+  font-size: 15px;
+  line-height: 1.65;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-
-  &::before {
-    content: "“";
-    margin-right: 2px;
-    color: #b49a78;
-  }
-
-  &::after {
-    content: "”";
-    margin-left: 2px;
-    color: #b49a78;
-  }
-
-  @media (max-width: 650px) {
-    font-size: 17px;
-    line-height: 1.65;
-  }
 `;
 
 const ReviewImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 23px;
+  margin-block-start: 14px;
 `;
 
 const ReviewImageButton = styled.button`
@@ -577,7 +475,7 @@ const ReviewImageButton = styled.button`
   overflow: hidden;
   border: 1px solid
     ${({ $selected }) => ($selected ? "#a88a62" : "#ddd5cb")};
-  border-radius: 1px;
+  border-radius: 6px;
   background: #f7f3ee;
   cursor: pointer;
   transition:
@@ -659,39 +557,17 @@ const MoreImages = styled.span`
 `;
 
 const EmptyReviews = styled.div`
-  min-height: 230px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid #e4ded6;
-  border-bottom: 1px solid #e4ded6;
-  padding: 40px 20px;
-  box-sizing: border-box;
-`;
-
-const EmptyMark = styled.span`
-  color: #a88a62;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.38em;
+  padding: 24px 16px;
+  border: 1px solid #e6e0d7;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
 `;
 
 const EmptyTitle = styled.p`
-  margin: 12px 0 0;
-  color: #62594f;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0.015em;
-`;
-
-const EmptyAccent = styled.span`
-  width: 28px;
-  height: 1px;
-  margin-top: 14px;
-  background: #a88a62;
+  margin: 0;
+  color: #625d55;
+  font-size: 14px;
 `;
 
 const Pagination = styled.nav`
@@ -789,46 +665,11 @@ const PageNumber = styled.span`
   font-size: 12px;
 `;
 
-const SkeletonList = styled.div`
-  width: 100%;
-  border-top: 1px solid #e4ded6;
-`;
+const SkeletonList = styled(ReviewsList)``;
 
-const SkeletonReviewCard = styled.div`
-  position: relative;
-  display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
-  column-gap: 48px;
-  width: 100%;
-  padding: 42px 4px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #e4ded6;
+const SkeletonReviewCard = styled(ReviewCard).attrs({ as: "div" })``;
 
-  @media (max-width: 850px) {
-    grid-template-columns: 150px minmax(0, 1fr);
-    column-gap: 32px;
-    padding: 34px 2px;
-  }
-
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 30px 0;
-  }
-`;
-
-const SkeletonIdentity = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-
-  @media (max-width: 650px) {
-    flex-direction: row;
-    align-items: center;
-    gap: 13px;
-  }
-`;
+const SkeletonIdentity = styled(ReviewIdentity)``;
 
 const SkeletonIdentityText = styled.div`
   display: flex;

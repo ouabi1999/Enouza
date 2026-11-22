@@ -16,6 +16,7 @@ function SideCart(props) {
   const purchaseRef = useRef(null);
 
   const productData = useSelector((state) => state.product.productData);
+   const savedCountry = window.localStorage.getItem("country")
 
   const { t, i18n } = useTranslation();
 
@@ -88,7 +89,8 @@ function SideCart(props) {
 
             <ShippingContent>
               <ShippingValue>
-                {t("purchaseOptions.Delivrey")}
+               {t("shoppingCart.freeExpressTo")} {t(`countries.${savedCountry}`)}
+
               </ShippingValue>
 
               <SmallLabel>

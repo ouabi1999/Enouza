@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useTranslation } from "react-i18next";
 import SEO from "../../SEO/SEO"
@@ -50,9 +49,6 @@ function FAQ() {
       description="Find answers to common questions about Enouza shipping, returns, refunds, orders, and our luxury lighting products."
       canonical="/faq"
     />
-      {/* =================================================
-          PAGE HEADER
-      ================================================= */}
 
       <Header>
         <MainHeader>
@@ -67,15 +63,9 @@ function FAQ() {
         </HeaderDescription>
       </Header>
 
-
-      {/* =================================================
-          SHIPPING
-      ================================================= */}
-
       <FAQSection>
 
         <SectionHeading>
-          <SectionNumber>01</SectionNumber>
 
           <SectionTitle>
             {globalT("footer.help.shipping", {
@@ -91,7 +81,6 @@ function FAQ() {
 
             return (
               <FAQItem
-                className={isOpen ? "is-open" : ""}
                 key={item.id || index}
               >
 
@@ -103,17 +92,8 @@ function FAQ() {
                   aria-expanded={isOpen}
                 >
 
-                  <ArrowWrapper>
-                    {isOpen ? (
-                      <KeyboardArrowDownIcon className="arrow-icon" />
-                    ) : (
-                      <KeyboardArrowRightIcon className="arrow-icon" />
-                    )}
-                  </ArrowWrapper>
-
-                  <Question>
-                    {item.question}
-                  </Question>
+                  <span>{item.question}</span>
+                  <KeyboardArrowDownIcon aria-hidden="true" />
 
                 </QuestionButton>
 
@@ -150,15 +130,9 @@ function FAQ() {
 
       </FAQSection>
 
-
-      {/* =================================================
-          RETURNS
-      ================================================= */}
-
-      <FAQSection className="return-section">
+      <FAQSection>
 
         <SectionHeading>
-          <SectionNumber>02</SectionNumber>
 
           <SectionTitle>
             {globalT("footer.help.returns", {
@@ -174,7 +148,6 @@ function FAQ() {
 
             return (
               <FAQItem
-                className={isOpen ? "is-open" : ""}
                 key={item.id || index}
               >
 
@@ -186,17 +159,8 @@ function FAQ() {
                   aria-expanded={isOpen}
                 >
 
-                  <ArrowWrapper>
-                    {isOpen ? (
-                      <KeyboardArrowDownIcon className="arrow-icon" />
-                    ) : (
-                      <KeyboardArrowRightIcon className="arrow-icon" />
-                    )}
-                  </ArrowWrapper>
-
-                  <Question>
-                    {item.question}
-                  </Question>
+                  <span>{item.question}</span>
+                  <KeyboardArrowDownIcon aria-hidden="true" />
 
                 </QuestionButton>
 
@@ -240,492 +204,116 @@ function FAQ() {
 export default FAQ;
 
 
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
-
 const Container = styled.main`
-  width: min(100% - 48px, 1080px);
-
-  margin: 0 auto;
-
-  padding: 52px 0 100px;
-
-  color: #1c1c1c;
-
-  @media (max-width: 700px) {
-    width: calc(100% - 30px);
-    padding: 38px 0 65px;
-  }
-
-  @media (max-width: 460px) {
-    width: calc(100% - 24px);
-    padding-top: 28px;
-  }
+  --faq-line: #e6e0d7;
+  --faq-muted: #625d55;
+  width: min(calc(100% - 32px), 760px);
+  margin-inline: auto;
+  padding-block: clamp(32px, 6vw, 72px);
+  color: #24211e;
 `;
-
-
-/* =====================================================
-   HEADER
-===================================================== */
 
 const Header = styled.header`
+  margin-block-end: clamp(32px, 5vw, 52px);
   text-align: center;
-
-  margin-bottom: 78px;
-
-  @media (max-width: 700px) {
-    margin-bottom: 58px;
-  }
-
-  @media (max-width: 460px) {
-    margin-bottom: 48px;
-  }
-`;
-
-const Eyebrow = styled.div`
-  margin-bottom: 15px;
-
-  font-size: 10px;
-  font-weight: 600;
-
-  letter-spacing: 4px;
-  text-transform: uppercase;
-
-  color: #978f84;
 `;
 
 const MainHeader = styled.h1`
   margin: 0;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 40px;
-  font-weight: 400;
-
-  line-height: 1.18;
-  letter-spacing: 0.2px;
-
-  color: #171717;
-
-  @media (max-width: 700px) {
-    font-size: 31px;
-  }
-
-  @media (max-width: 460px) {
-    font-size: 27px;
-  }
+  font: 400 clamp(28px, 5vw, 46px) / 1.15 Georgia, serif;
 `;
 
 const HeaderDescription = styled.p`
-  max-width: 540px;
-
-  margin: 18px auto 0;
-
-  color: #8a857d;
-
-  font-size: 13px;
-  font-weight: 400;
-
-  line-height: 1.8;
-
-  @media (max-width: 460px) {
-    max-width: 330px;
-    font-size: 12px;
-  }
+  max-width: 52ch;
+  margin: 12px auto 0;
+  color: var(--faq-muted);
+  font-size: 15px;
+  line-height: 1.65;
 `;
-
-
-/* =====================================================
-   FAQ SECTION
-===================================================== */
 
 const FAQSection = styled.section`
-  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--faq-line);
+  border-radius: 10px;
+  background: #fff;
 
-  &.return-section {
-    margin-top: 92px;
-  }
-
-  @media (max-width: 700px) {
-    &.return-section {
-      margin-top: 65px;
-    }
-  }
-
-  @media (max-width: 460px) {
-    &.return-section {
-      margin-top: 55px;
-    }
+  & + & {
+    margin-block-start: 24px;
   }
 `;
-
-
-/* =====================================================
-   SECTION HEADING
-===================================================== */
 
 const SectionHeading = styled.div`
-  display: flex;
-  align-items: baseline;
-
-  gap: 18px;
-
-  margin-bottom: 27px;
-
-  @media (max-width: 460px) {
-    gap: 13px;
-    margin-bottom: 22px;
-  }
-`;
-
-const SectionNumber = styled.span`
-  flex-shrink: 0;
-
-  font-size: 10px;
-  font-weight: 600;
-
-  letter-spacing: 2.5px;
-
-  color: #aaa297;
+  padding: 14px clamp(16px, 4vw, 26px);
+  background: #f7f5f0;
 `;
 
 const SectionTitle = styled.h2`
   margin: 0;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 26px;
-  font-weight: 400;
-
-  line-height: 1.2;
-
-  color: #242424;
-
-  @media (max-width: 700px) {
-    font-size: 23px;
-  }
-
-  @media (max-width: 460px) {
-    font-size: 21px;
-  }
+  font: 400 22px / 1.25 Georgia, serif;
 `;
-
-
-/* =====================================================
-   FAQ ITEM
-===================================================== */
 
 const FAQItem = styled.div`
-  border-top: 1px solid #e9e5df;
-
-  &:last-child {
-    border-bottom: 1px solid #e9e5df;
-  }
-
-  &.is-open {
-    .arrow-icon {
-      color: #242424;
-    }
-  }
+  border-block-start: 1px solid var(--faq-line);
 `;
 
-
-/* =====================================================
-   QUESTION BUTTON
-===================================================== */
-
 const QuestionButton = styled.button`
-  width: 100%;
-  min-height: 88px;
-
-  padding: 0 8px;
-
   display: grid;
-
-  grid-template-columns: 30px 1fr;
-
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-
-  column-gap: 22px;
-
-  border: none;
-  outline: none;
-
+  gap: 12px;
+  width: 100%;
+  min-height: 54px;
+  padding: 13px clamp(16px, 4vw, 26px);
+  border: 0;
   background: transparent;
-
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: start;
   cursor: pointer;
 
-  color: #1c1c1c;
-
-  text-align: left;
-
-  transition:
-    color 0.35s ease,
-    padding 0.35s ease;
-
   &:hover {
-    color: #77736d;
-
-    padding-left: 16px;
-
-    .arrow-icon {
-      color: #1c1c1c;
-
-      transform: translateX(4px);
-    }
+    background: #faf8f5;
   }
 
   &:focus-visible {
-    outline: 1px solid #c9c3ba;
-    outline-offset: -1px;
+    outline: 2px solid #806547;
+    outline-offset: -3px;
   }
 
-  @media (max-width: 700px) {
-    min-height: 76px;
-
-    grid-template-columns: 27px 1fr;
-
-    column-gap: 14px;
-
-    padding: 0 4px;
-
-    &:hover {
-      padding-left: 9px;
-    }
-  }
-
-  @media (max-width: 460px) {
-    min-height: 70px;
-
-    grid-template-columns: 25px 1fr;
-
-    column-gap: 10px;
-
-    padding: 0 2px;
-
-    &:hover {
-      padding-left: 6px;
-    }
-  }
-
-  [dir="rtl"] & {
-    text-align: right;
-
-    &:hover {
-      padding-left: 8px;
-      padding-right: 16px;
-
-      .arrow-icon {
-        transform: translateX(-4px);
-      }
-    }
-
-    @media (max-width: 700px) {
-      &:hover {
-        padding-left: 4px;
-        padding-right: 9px;
-      }
-    }
-
-    @media (max-width: 460px) {
-      &:hover {
-        padding-left: 2px;
-        padding-right: 6px;
-      }
-    }
-  }
-`;
-
-
-/* =====================================================
-   ARROW
-===================================================== */
-
-const ArrowWrapper = styled.span`
-  width: 27px;
-  height: 27px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-
-  .arrow-icon {
+  svg {
+    color: var(--faq-muted);
     font-size: 20px;
-
-    color: #928c83;
-
-    transition:
-      color 0.35s ease,
-      transform 0.35s ease;
   }
 
-  @media (max-width: 700px) {
-    width: 25px;
-    height: 25px;
-
-    .arrow-icon {
-      font-size: 19px;
-    }
-  }
-
-  @media (max-width: 460px) {
-    width: 23px;
-    height: 23px;
-
-    .arrow-icon {
-      font-size: 18px;
-    }
+  &[aria-expanded="true"] svg {
+    transform: rotate(180deg);
   }
 `;
-
-
-/* =====================================================
-   QUESTION
-===================================================== */
-
-const Question = styled.span`
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 16px;
-  font-weight: 400;
-
-  line-height: 1.55;
-
-  letter-spacing: 0.15px;
-
-  color: inherit;
-
-  @media (max-width: 700px) {
-    font-size: 14.5px;
-  }
-
-  @media (max-width: 460px) {
-    font-size: 13.5px;
-  }
-`;
-
-
-/* =====================================================
-   ANSWER
-===================================================== */
 
 const Answer = styled.div`
-  max-width: 720px;
-
-  margin-left: 52px;
-
-  padding: 0 28px 34px 0;
-
-  color: #6e6961;
-
+  padding: 0 clamp(16px, 4vw, 26px) 18px;
+  color: var(--faq-muted);
   font-size: 14px;
-  font-weight: 400;
-
-  line-height: 1.9;
-
-  animation: answerReveal 0.35s ease both;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 
   p {
-    margin: 0 0 14px;
+    margin: 0;
   }
 
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  @keyframes answerReveal {
-    from {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 700px) {
-    margin-left: 41px;
-
-    padding-right: 10px;
-    padding-bottom: 27px;
-
-    font-size: 13.5px;
-
-    line-height: 1.8;
-  }
-
-  @media (max-width: 460px) {
-    margin-left: 35px;
-
-    padding-right: 5px;
-    padding-bottom: 23px;
-
-    font-size: 12.8px;
-
-    line-height: 1.8;
-  }
-
-  [dir="rtl"] & {
-    margin-left: 0;
-    margin-right: 52px;
-
-    padding-left: 28px;
-    padding-right: 0;
-
-    text-align: right;
-
-    @media (max-width: 700px) {
-      margin-right: 41px;
-
-      padding-left: 10px;
-    }
-
-    @media (max-width: 460px) {
-      margin-right: 35px;
-
-      padding-left: 5px;
-    }
+  p + p {
+    margin-block-start: 10px;
   }
 `;
 
-
-/* =====================================================
-   ANSWER LIST
-===================================================== */
-
 const AnswerList = styled.ul`
-  margin: 15px 0 0;
+  margin: 10px 0 0;
+  padding-inline-start: 20px;
 
-  padding-left: 20px;
-
-  li {
-    margin-bottom: 8px;
-
-    padding-left: 5px;
-  }
-
-  [dir="rtl"] & {
-    padding-left: 0;
-    padding-right: 20px;
-
-    li {
-      padding-left: 0;
-      padding-right: 5px;
-    }
+  li + li {
+    margin-block-start: 4px;
   }
 `;

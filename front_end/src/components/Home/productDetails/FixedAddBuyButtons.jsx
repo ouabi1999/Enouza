@@ -57,13 +57,20 @@ export default function FixedAddBuyButtons({
       ? Number(currentSku.sellingPrice)
       : Number(productData?.price) || null;
 
-  const currency =
-    currentSku?.currency || productData?.currency || "€";
-
+  const currency = window.localStorage.getItem("selectedCurrency")
   const formattedPrice =
     rawPrice !== null
       ? `${rawPrice.toFixed(2)} ${currency}`
       : "";
+
+  const comparePrice =
+    Number(currentSku?.comparePrice) > 0
+      ? Number(currentSku.comparePrice)
+      : Number(productData?.discount) || 0;
+  const discountPercent =
+    rawPrice > 0 && Number.isFinite(comparePrice) && comparePrice > rawPrice
+      ? Math.round(((comparePrice - rawPrice) / comparePrice) * 100)
+      : 0;
 
   /* ---------- Scroll visibility ---------- */
   useEffect(() => {
@@ -122,7 +129,14 @@ export default function FixedAddBuyButtons({
             )}
 
             {formattedPrice && (
-              <ProductPrice>{formattedPrice}</ProductPrice>
+              <PriceLine>
+                <ProductPrice>{formattedPrice}</ProductPrice>
+                {discountPercent > 0 && (
+                  <DiscountBadge dir={i18n.dir()}>
+                    {t("productInfo.save")} <bdi>{discountPercent}%</bdi>
+                  </DiscountBadge>
+                )}
+              </PriceLine>
             )}
           </ProductMeta>
         </ProductInfo>
@@ -316,12 +330,29 @@ const VariantLabel = styled.span`
   }
 `;
 
+const PriceLine = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 6px;
+`;
+
+const DiscountBadge = styled.span`
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #f4e9dc;
+  color: #664627;
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+`;
+
 const ProductPrice = styled.span`
   font-size: 0.82rem;
 
   font-weight: 600;
 
-  color: #9b815f;
+  color: #cc3000;
 
   @media (max-width: 480px) {
     font-size: 0.78rem;

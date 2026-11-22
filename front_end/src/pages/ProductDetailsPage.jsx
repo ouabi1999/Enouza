@@ -18,6 +18,7 @@ import ApiInstance from "../../common/baseUrl";
 import ProductDetailsSkeleton from "../components/Services/skeletons/ProductDetailsSkeleton";
 import SlideOutShoppingCart from "../components/Cart/SlideOutShoppingCart";
 import { trackAddToCart,  trackBeginCheckout, trackViewItem } from "../utilis/analytics"
+import FAQ from "../components/user_Dashboard/Help-center/FAQ";
 function ProductDetailsPage({footerRef}) {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -403,7 +404,9 @@ const onClose = ()=>{
       <AboutSection>
         <AboutProductLayout />
       </AboutSection>
-
+      <div style={{background:"#ffff"}}>
+       <FAQ/>
+       </div>
       {isPopUpShippingOpen && (
         <PopUpShoppingMethod
           setIsPopUpShippingOpen={

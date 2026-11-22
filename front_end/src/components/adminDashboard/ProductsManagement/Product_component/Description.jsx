@@ -15,7 +15,7 @@ function Description({ formData, setFormData }) {
   const handleChangeAr = (content, delta, source, editor) => {
     setFormData(prev => ({
       ...prev,
-      description: { ...prev.description, ar: editor.getHTML() }
+      description: { ...prev.description, fr: editor.getHTML() }
     }));
   };
 
@@ -52,7 +52,7 @@ function Description({ formData, setFormData }) {
       <StyledQuill value={formData.description.es} onChange={handleChangeEs} modules={modules} formats={formats} />
 
       <Label>Description Arabic</Label>
-      <StyledQuill value={formData.description.ar} onChange={handleChangeAr} modules={modules} formats={formats} />
+      <StyledQuill value={formData.description.fr} onChange={handleChangeAr} modules={modules} formats={formats} />
     </Container>
   );
 }

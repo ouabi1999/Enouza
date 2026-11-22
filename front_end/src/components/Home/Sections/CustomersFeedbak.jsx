@@ -828,7 +828,7 @@ const Section = styled.section`
 
   width: 100%;
 
-  padding: 90px 20px 100px;
+  padding: 30px 20px 65px;
 
   background: #faf9f7;
 

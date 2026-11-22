@@ -231,7 +231,7 @@ export default NewArrival;
 const Section = styled.section`
   width: 100%;
   background: #f7f5f0;
-  padding: 70px 0 105px;
+  padding: 70px 0 65px;
   overflow: hidden;
 
   @media (max-width: 600px) {

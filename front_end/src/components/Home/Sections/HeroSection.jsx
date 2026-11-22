@@ -88,42 +88,17 @@ export default function HeroSection() {
    HERO SKELETON
 ========================= */
 const HeroSkeleton = ({ $rtl }) => {
-  const { t, i18n } = useTranslation();
-
   return (
     <HeroBox $rtl={$rtl} aria-busy="true">
-      <HeroContainer>
-        {/* TEXT SIDE */}
-
-        <SkeletonContent dir={i18n.dir()}>
-          <SkeletonTitle>
-            <SkeletonBase />
-            <SkeletonBase />
-            <SkeletonBase $short />
-          </SkeletonTitle>
-
-          <SkeletonDescription>
-            <SkeletonBase />
-            <SkeletonBase />
-            <SkeletonBase $short />
-          </SkeletonDescription>
-
-          <SkeletonDecoration />
+      <HeroContainer aria-hidden="true">
+        <SkeletonContent>
+          <span className="skeleton-heading" />
+          <span className="skeleton-line" />
+          <span className="skeleton-line skeleton-line-short" />
         </SkeletonContent>
 
-        {/* IMAGE SIDE */}
-
         <SkeletonImageSide>
-          <SkeletonImageContainer>
-            <SkeletonImage />
-
-            {/* SHOP BUTTON PLACEHOLDER */}
-
-            <SkeletonShopButton>
-              <SkeletonButtonText />
-              <SkeletonButtonArrow />
-            </SkeletonShopButton>
-          </SkeletonImageContainer>
+          <SkeletonImage />
         </SkeletonImageSide>
       </HeroContainer>
     </HeroBox>
@@ -131,128 +106,34 @@ const HeroSkeleton = ({ $rtl }) => {
 };
 
 
-/* =========================
-   SKELETON ANIMATION
-========================= */
-
-const skeletonShimmer = keyframes`
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
-`;
-
-const SkeletonBase = styled.div`
-  background: linear-gradient(
-    90deg,
-    #e8e3db 25%,
-    #f5f2ed 50%,
-    #e8e3db 75%
-  );
-
-  background-size: 200% 100%;
-
-  animation: ${skeletonShimmer} 1.6s ease-in-out infinite;
-
-  border-radius: 3px;
-`;
-
-
-
-
-/* =========================
-   SKELETON TEXT
-========================= */
-
 const SkeletonContent = styled.div`
-  width: 100%;
-  max-width: 570px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  width: min(100%, 520px);
+  margin-inline: auto;
+  padding-block: clamp(8px, 2vw, 24px);
 
-  text-align: center;
+  span {
+    border-radius: 4px;
+    background: #e8e8e8;
+  }
 
-  @media (max-width: 900px) {
-    max-width: 680px;
-    margin: 0 auto;
+  .skeleton-heading {
+    width: 66%;
+    height: clamp(24px, 4vw, 44px);
+    margin-block-end: 8px;
+  }
+
+  .skeleton-line {
+    width: 80%;
+    height: 10px;
+  }
+
+  .skeleton-line-short {
+    width: 56%;
   }
 `;
-
-const SkeletonTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 12px;
-
-  margin-bottom: 37px;
-
-  div {
-    width: 90%;
-    height: 42px;
-  }
-
-  div:nth-child(2) {
-    width: 78%;
-  }
-
-  div:nth-child(3) {
-    width: 48%;
-  }
-
-  @media (max-width: 600px) {
-    gap: 10px;
-    margin-bottom: 20px;
-
-    div {
-      height: 30px;
-    }
-  }
-`;
-
-const SkeletonDescription = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 11px;
-
-  margin-bottom: 37px;
-
-  div {
-    width: 100%;
-    height: 12px;
-  }
-
-  div:nth-child(2) {
-    width: 90%;
-  }
-
-  div:nth-child(3) {
-    width: 65%;
-  }
-
-  @media (max-width: 600px) {
-    gap: 10px;
-    margin-bottom: 23px;
-
-    div {
-      height: 10px;
-    }
-  }
-`;
-
-const SkeletonDecoration = styled(SkeletonBase)`
-  width: 90px;
-  height: 2px;
-
-  margin: 0 auto;
-`;
-
-/* =========================
-   SKELETON IMAGE
-========================= */
 
 const SkeletonImageSide = styled.div`
   width: 100%;
@@ -263,28 +144,9 @@ const SkeletonImageSide = styled.div`
   }
 `;
 
-const SkeletonImageContainer = styled.div`
-  position: relative;
-
+const SkeletonImage = styled.div`
   width: 100%;
-
-  overflow: hidden;
-
-  background: #ded9d0;
-
-  box-shadow:
-    0 26px 65px rgba(48, 43, 39, 0.13),
-    0 8px 22px rgba(48, 43, 39, 0.06);
-
-  @media (max-width: 600px) {
-    box-shadow:
-      0 20px 45px rgba(48, 43, 39, 0.12),
-      0 6px 18px rgba(48, 43, 39, 0.05);
-  }
-`;
-
-const SkeletonImage = styled(SkeletonBase)`
-  width: 100%;
+  background: #e2e2e2;
 
   height: clamp(470px, 46vw, 620px);
 
@@ -303,54 +165,6 @@ const SkeletonImage = styled(SkeletonBase)`
     min-height: 350px;
   }
 `;
-
-/* =========================
-   SKELETON SHOP BUTTON
-========================= */
-
-const SkeletonShopButton = styled.div`
-  position: absolute;
-
-  right: 7%;
-  bottom: 20px;
-
-  display: inline-flex;
-  align-items: center;
-
-  gap: 9px;
-
-  padding: 10px 15px;
-
-  border: 2px solid rgba(255, 255, 255, 0.6);
-
-  background: rgba(0, 0, 0, 0.15);
-
-  z-index: 5;
-
-  @media (max-width: 700px) {
-    right: 50%;
-    transform: translateX(50%);
-
-    bottom: 30px;
-  }
-
-  @media (max-width: 420px) {
-    bottom: 24px;
-  }
-`;
-
-const SkeletonButtonText = styled(SkeletonBase)`
-  width: 75px;
-  height: 9px;
-`;
-
-const SkeletonButtonArrow = styled(SkeletonBase)`
-  width: 14px;
-  height: 14px;
-
-  border-radius: 50%;
-`;
-
 
 /* =========================
    ANIMATIONS

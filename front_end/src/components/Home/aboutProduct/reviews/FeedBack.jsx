@@ -1,230 +1,220 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import StarIcon from '@mui/icons-material/Star';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import CircularProgress, {
-    circularProgressClasses,
-  } from '@mui/material/CircularProgress';
-import {useSelector} from "react-redux"
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import StarIcon from "@mui/icons-material/Star";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import CircularProgress from "@mui/material/CircularProgress";
 
-function Feedback(props) {
+const ratings = [1, 2, 3, 4, 5];
 
-    
-    const [hoverValue, setHoverValue] = useState(null)
+function Feedback({
+  handelRatingSubmit,
+  setComment,
+  required,
+  set_star_rating,
+  isLoading,
+  submitError,
+  star_rating,
+  comment,
+  t,
+}) {
+  const [hoverValue, setHoverValue] = useState(null);
+  const [isReadingImage, setIsReadingImage] = useState(false);
+  const imageInput = useRef(null);
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    event.target.value = "";
+    if (!file) return;
 
-    const {handelRatingSubmit , setComment, required , set_star_rating, isLoading, star_rating , comment, t} = props;
- 
-    const stars = Array(5).fill(0);
-    const imgInput = React.createRef()
-
-    const handel_CommentChange = (e) => {
-        setComment({...comment, text:e.target.value})
-    }
-
-    const handle_Rating_Click = value => {
-        set_star_rating(value + 1)
-    }
-
-    const handleMouseOver = (newHoverValue) => {
-        setHoverValue(newHoverValue)
+    const reader = new FileReader();
+    setIsReadingImage(true);
+    reader.onload = () => {
+      setComment((current) => ({
+        ...current,
+        images: [...current.images, reader.result],
+      }));
     };
+    reader.onloadend = () => setIsReadingImage(false);
+    reader.readAsDataURL(file);
+  };
 
-    const handleMouseLeave = () => {
-        setHoverValue(null)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!isLoading && !isReadingImage) handelRatingSubmit();
+  };
 
-   
+  return (
+    <ReviewForm onSubmit={handleSubmit} aria-label={t("productInfo.give_us_your_feedback")}>
+      <h3>{t("productInfo.give_us_your_feedback")}</h3>
 
+      <div className="stars" onMouseLeave={() => setHoverValue(null)}>
+        {ratings.map((rating) => (
+          <button
+            key={rating}
+            type="button"
+            className={(hoverValue ?? star_rating) >= rating ? "selected" : undefined}
+            aria-label={`${rating} ${t(rating === 1 ? "productInfo.star" : "productInfo.stars")}`}
+            aria-pressed={star_rating === rating}
+            disabled={isLoading}
+            onMouseEnter={() => setHoverValue(rating)}
+            onClick={() => set_star_rating(rating)}
+          >
+            <StarIcon />
+          </button>
+        ))}
+      </div>
 
-    const imageHandler = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setComment({...comment ,images:[...comment.images, reader.result]})
-            }
-        }
-        reader.readAsDataURL(e.target.files[0])
-     
-    }
+      <textarea
+        value={comment.text}
+        placeholder={t("productInfo.comment")}
+        aria-label={t("productInfo.comment")}
+        aria-required="true"
+        aria-invalid={required}
+        disabled={isLoading}
+        onChange={(event) => {
+          const text = event.target.value;
+          setComment((current) => ({ ...current, text }));
+        }}
+      />
 
-    const handleImageInput = (e) => {
-        e.preventDefault()
-        if (e.target.id === e.target.name) {
-            return false
-        } else {
-            imgInput.current.click()
-        }
-    }
- 
-    return (
-        <Conatiner>
-            <h3> {t("productInfo.give_us_your_feedback")}</h3>
-            <div className='Stars'>
-                {stars.map((_, index) => {
-                    return (
-                        <StarIcon
-                            key={index}
-                            className={(star_rating || hoverValue) > index ? "on" : "off"}
-                            onClick={() => handle_Rating_Click(index)}
-                            onMouseOver={() => handleMouseOver(index + 1)}
-                            onMouseLeave={handleMouseLeave}
-                        />
-                    )
-                })}
-            </div>
-            <Wraper>
-                <Wrap>
-                    <textarea
-                        className="feedback_feild"
-                        onChange={handel_CommentChange}
-                        value = {comment.text}
-                        type = "text"
-                        placeholder = {t("productInfo.comment")}
-                        required = {true}
-                    />
-                    <input
-                        type="file"
-                        ref={imgInput}
-                        style={{ display: "none" }}
-                        accept = "image/*"
-                        onChange= {imageHandler}
-                    />
-                    <Add_image_container>
-                        <button
-                            className="add-image"
-                            name="imageinput"
-                            id="imageinput"
-                            onClick={handleImageInput}
-                        >
-                            <AddPhotoAlternateIcon className="add-image-icon" />
-                        </button>
-                        {comment.images?.map((item, index) => {
-                            return (
-                                <img key={index} src={item} width="50px"  height="50px" />
-                            )
-                        })}
-                    </Add_image_container>
-                    {required === true &&(
-                        <span className="required"> {t("common.text_field_required")} </span>
-                    )}
-                    <button
-                        type="submit"
-                        className='submit-button'
-                        onClick={(e) => handelRatingSubmit(e, comment, star_rating)}>
-                        {isLoading ? (
-                            <>
-                                <span>{t("common.submit")}</span>
-                                <CircularProgress
-                                    style={{ marginLeft: "3px" }}
-                                    size={20}
-                                    thickness={5}
-                                    value={100}
-                                />
-                            </>)
-                            : t("common.send")}
-                    </button>
-                    
-             
-                </Wrap>
-            </Wraper>
-        </Conatiner>
-    )
+      <div className="photos">
+        <input type="file" ref={imageInput} hidden accept="image/*" onChange={handleImageChange} />
+        <button
+          type="button"
+          className="photo-button"
+          aria-label={t("productInfo.add_photo", { defaultValue: "Add photo" })}
+          disabled={isLoading || isReadingImage}
+          onClick={() => imageInput.current.click()}
+        >
+          <AddPhotoAlternateIcon />
+        </button>
+        {comment.images.map((image, index) => (
+          <img key={index} src={image} alt="" width="44" height="44" />
+        ))}
+      </div>
+
+      {required && <p role="alert">{t("common.text_field_required")}</p>}
+      {submitError && <p role="alert">{t("errors.unknown_error")}</p>}
+
+      <button
+        type="submit"
+        className="submit-button"
+        disabled={isLoading || isReadingImage}
+        aria-busy={isLoading}
+      >
+        {isLoading && <CircularProgress size={16} color="inherit" />}
+        {t("common.submit")}
+      </button>
+    </ReviewForm>
+  );
 }
 
-export default Feedback
-const Conatiner = styled.div`
-  h3{
-    font-family:roboto sant serif;
-    text-transform:uppercase;
-    margin-bottom:8px;
+export default Feedback;
+
+const ReviewForm = styled.form`
+  display: grid;
+  gap: 12px;
+  max-width: 650px;
+  margin-block-start: 28px;
+  padding: clamp(16px, 4vw, 24px);
+  border: 1px solid #e6e0d7;
+  border-radius: 10px;
+  background: #fff;
+
+  @media (max-width: 540px) {
+    margin-inline: calc(-1 * var(--reviews-gutter, 0px));
+    border-inline: 0;
+    border-radius: 0;
   }
-    .Stars{
-      margin-bottom:10px;
-    }
-.on{
-    color: #d8b24a;
-    cursor:pointer;
-}
-.off{
-    color: #ccc;
-    cursor:pointer;
-}
-.required{
-    color: red;
-    font-size:12px;
-}
 
-`
-const Wrap = styled.div`
+  h3 {
+    margin: 0;
+    font: 400 24px / 1.25 Georgia, serif;
+  }
 
-    display:flex;
-    flex-direction:column;
-    
-    .feedback_feild{
+  button {
+    cursor: pointer;
+  }
 
-       width:100%;
-       min-height:180px;
-       padding:5px;
-       border-color: #e0d2bb;
-       border-bottom:none;
-       resize: none;
-       border-radius:4px 4px 0 0 ;
- background: #f8f6f1;
-       &:focus{
-        border-color: #eec280;
-        outline: none
-       }
-    }
-    
-    .submit-button{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:black;
-        color:white;
-        padding:8px 10px;
-        height:35px;
-        width:70px;
-        margin-top:4px;
-        border-radius:4px;
+  button:disabled {
+    cursor: default;
+  }
 
-        
-    }
-    input{
-        position:relative;
-        top:-5px;
-        padding:5px;
-        border-left:1px solid lightblue;
-        border-right:1px solid lightblue;
-        background:#FFE5B1;
-        width:100%;
-       
+  :is(button, textarea):focus-visible {
+    outline: 2px solid #806547;
+    outline-offset: 2px;
+  }
 
+  .stars,
+  .photos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 
-    }
-    
-    
-`
-const Wraper = styled.div`
-      min-width:280px;
-      max-width:650px;
+  .stars button,
+  .photo-button {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #81786b;
+  }
 
-`
-const Add_image_container = styled.div`
-    display:flex;
-    flex-wrap:wrap;
-    background:  #f2ece2;
+  .stars .selected {
+    color: #9a6b1c;
+  }
 
-    padding:5px;
-    border: 1px solid  #e0d2bb;
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid #d9d0c4;
+    border-radius: 6px;
+    background: #faf8f5;
+    color: inherit;
+    font: inherit;
+    resize: vertical;
+  }
 
-    border-top:1px solid lightgray;
-    border-radius: 0 0 4px 4px;
-    width:100%;
+  .photo-button {
+    border: 1px solid #e6e0d7;
+    border-radius: 6px;
+  }
 
-    .add-image{
-        background:none;
-    }
+  img {
+    border-radius: 6px;
+    object-fit: cover;
+  }
 
-`
+  p {
+    margin: 0;
+    color: #9b2e27;
+    font-size: 13px;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    justify-self: start;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 124px;
+    min-height: 44px;
+    padding-inline: 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #29251f;
+    color: #fff;
+    font: inherit;
+  }
+
+  .submit-button:disabled {
+    background: #514a42;
+  }
+`;

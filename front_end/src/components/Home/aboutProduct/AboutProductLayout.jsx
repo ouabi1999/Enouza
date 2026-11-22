@@ -12,27 +12,28 @@ function AboutProductLayout() {
     <Container id="reviews">
       <TabsWrapper>
         <Tabs dir = {i18n.dir() === "rtl" ? "rtl" : "ltr"}>
-          <Tab
+           <Tab
             type="button"
             $active={isOpen === 1}
             onClick={() => setIsOpen(1)}
           >
-            {t("productInfo.CostumerReviews")}
+            {t("productInfo.description")}
           </Tab>
-
           <Tab
             type="button"
             $active={isOpen === 3}
             onClick={() => setIsOpen(3)}
           >
-            {t("productInfo.description")}
+            {t("productInfo.CostumerReviews")}
           </Tab>
+
+         
         </Tabs>
       </TabsWrapper>
 
       <Content>
-        {isOpen === 1 && <ReviewsLayout />}
-        {isOpen === 3 && <Description />}
+        {isOpen === 3 && <ReviewsLayout />}
+        {isOpen === 1 && <Description />}
       </Content>
     </Container>
   );

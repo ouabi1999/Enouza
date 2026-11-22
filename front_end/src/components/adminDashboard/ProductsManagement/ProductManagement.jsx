@@ -23,15 +23,14 @@ const createEmptyForm = () => ({
   name: {
     en: "",
     fr: "",
-    es: "",
-    ar: "",
+    es: ""
+   
   },
 
   description: {
     en: "",
     fr: "",
-    es: "",
-    ar: "",
+    es: ""
   },
 
   brand: "",
@@ -177,7 +176,7 @@ const mapAliExpressProduct = (
         product.ae_item_base_info_dto?.subject || "",
       fr: "",
       es: "",
-      ar: "",
+     
     },
 
     skuInfo,
