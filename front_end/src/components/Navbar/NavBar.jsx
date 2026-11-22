@@ -730,6 +730,8 @@ const Container = styled.div`
     display: none;
     cursor: pointer;
     background:none;
+    color: rgba(0, 0, 0, 0.2);
+
   }
 
   @media (max-width: 860px) {
@@ -737,7 +739,6 @@ const Container = styled.div`
 
     .menu-icon {
       display: block;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
     }
 
     .drop-down-lang-container,
