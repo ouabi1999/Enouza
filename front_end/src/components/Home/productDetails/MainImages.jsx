@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { createPortal } from "react-dom";
 
@@ -55,6 +55,7 @@ function MainImages(props) {
 
 
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const swipeStart = useRef(null);
 
 
 
@@ -246,6 +247,37 @@ function MainImages(props) {
 
   };
 
+  const handleTouchStart = (event) => {
+    swipeStart.current = null;
+    if (
+      images.length < 2 ||
+      event.touches.length !== 1 ||
+      !window.matchMedia("(max-width: 768px)").matches
+    ) return;
+
+    const { clientX, clientY } = event.touches[0];
+    swipeStart.current = { clientX, clientY };
+  };
+
+  const handleTouchEnd = (event) => {
+    const start = swipeStart.current;
+    swipeStart.current = null;
+    if (!start || event.touches.length) return;
+
+    const { clientX, clientY } = event.changedTouches[0];
+    const distanceX = clientX - start.clientX;
+    const distanceY = clientY - start.clientY;
+    if (Math.abs(distanceX) < 40 || Math.abs(distanceX) <= Math.abs(distanceY)) return;
+
+    const swipedTowardNext = i18n.dir() === "rtl" ? distanceX > 0 : distanceX < 0;
+    if (swipedTowardNext) handleNext();
+    else handlePrevious();
+  };
+
+  const handleTouchCancel = () => {
+    swipeStart.current = null;
+  };
+
 
 
 
@@ -354,7 +386,11 @@ function MainImages(props) {
 
 
 
-            <ImageViewport>
+            <ImageViewport
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchCancel}
+            >
 
 
 
@@ -668,7 +704,11 @@ function MainImages(props) {
 
             <FullscreenContent>
 
-              <FullscreenImage>
+              <FullscreenImage
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchCancel}
+              >
 
                 <motion.img
 
@@ -1007,6 +1047,10 @@ const ImageViewport = styled.div`
   justify-content: center;
 
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    touch-action: pan-y pinch-zoom;
+  }
 `;
 
 
@@ -1269,16 +1313,7 @@ const NavigationButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    width: 20px;
-
-    height: 20px;
-
-   
-
-
-    svg {
-      font-size: 22px;
-    }
+    display: none;
   }
 `;
 
@@ -1446,6 +1481,10 @@ const FullscreenImage = styled.div`
   user-select: none;
 
   -webkit-user-drag: none;
+
+  @media (max-width: 768px) {
+    touch-action: pan-y pinch-zoom;
+  }
    img{
     object-fit: contain;
       height: 100vh;
@@ -1505,26 +1544,8 @@ const FullscreenNavigation = styled.button`
       rgba(255, 255, 255, 0.3);
   }
 
-  @media (max-width: 700px) {
-    width: 42px;
-    height: 42px;
-
-    ${({ $position }) =>
-    $position === "left"
-      ? "left: 12px;"
-      : "right: 12px;"}
-  }
-
-  @media (max-width: 480px) {
-    width: 38px;
-    height: 38px;
-
-    font-size: 15px;
-
-    ${({ $position }) =>
-    $position === "left"
-      ? "left: 8px;"
-      : "right: 8px;"}
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -1605,4 +1626,4 @@ const FullscreenHint = styled.span`
   @media (max-width: 600px) {
     display: none;
   }
-`; 
+`;

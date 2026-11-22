@@ -501,59 +501,45 @@ const Arrow = styled.span`
 const ShopButton = styled(Link)`
   position: absolute;
   right: 7%;
-  border: 2px solid #ffffff;
-  padding:10px 15px;
   bottom: 20px;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  color: #ffffff;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 86%;
+  padding: 10px 18px;
+  border: 1px solid #f5efe5;
+  border-radius: 4px;
+  background: #f5efe5;
+  color: #24231f;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
   text-decoration: none;
-   background: #0000004f;
-
-  font-wieght:500;
-    font-size: 0.7rem;
-
-  white-space: nowrap; /* ✅ fixed */
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  z-index: 5; /* ✅ prevents hiding behind image */
-  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease; /* ✅ explicit + gap */
+  z-index: 5;
+  transition: background-color 160ms ease, color 160ms ease;
 
   &:hover {
-    border-color: #000000;
-      color: #ffffff;
-
-    gap: 12px; /* optional: makes arrow move on hover */
+    background: #24231f;
+    color: #f5efe5;
   }
 
   &:focus-visible {
-    outline: 1px solid white;
-    outline-offset: 5px;
+    outline: 2px solid #fff;
+    outline-offset: 4px;
   }
 
-  /* RTL support */
-  [dir="rtl"] & {
-    left: auto;
-    right: 7%;
-
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 
   @media (max-width: 700px) {
-    left: auto; /* ✅ clear the desktop left value */
     right: 50%;
     transform: translateX(50%);
     bottom: 30px;
-    font-size: 0.7rem;
-
-    /* RTL fix for mobile */
-    [dir="rtl"] & {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%); /* mirror the centering */
-          font-size: 10rem;
-
-    }
   }
 
   @media (max-width: 420px) {

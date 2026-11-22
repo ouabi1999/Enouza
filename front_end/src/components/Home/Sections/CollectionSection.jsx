@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -39,14 +38,12 @@ const CollectionSection = () => {
             to={collection.link}
             onClick={() => dispatch(toggleCategory(collection.key))}
           >
-            <ImageWrapper>
-              <CollectionImage
-                src={optimizeCloudinaryImage(collection.image, { width: 800 })}
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-            </ImageWrapper>
+            <CollectionImage
+              src={optimizeCloudinaryImage(collection.image, { width: 800 })}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
             <CardContent>
               <CardTitle>{t(`collectionSection.categories.${collection.key}.title`)}</CardTitle>
               <Explore>
@@ -65,7 +62,7 @@ export default CollectionSection;
 
 const Section = styled.section`
   background: #f7f5f0;
-  padding:20px 0 ;
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 3vw, 40px);
 `;
 
 const Title = styled.h2`
@@ -88,17 +85,27 @@ const CollectionGrid = styled.div`
 `;
 
 const CollectionCard = styled(Link)`
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: end;
   min-width: 0;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  border: 1px solid #e6e0d7;
-  background: #fff;
-  color: #29251f;
+  background: #29251f;
+  color: #fff;
   text-decoration: none;
 
   &:is(:hover, :focus-visible) {
-    color: #806547;
+    color: #fff;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, #171410 0%, #171410a6 20%, transparent 50%);
   }
 
   &:focus-visible {
@@ -107,17 +114,10 @@ const CollectionCard = styled(Link)`
   }
 `;
 
-const ImageWrapper = styled.div`
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: #eee9e1;
-
-  @media (max-width: 680px) {
-    aspect-ratio: 4 / 3;
-  }
-`;
-
 const CollectionImage = styled.img`
+  position: absolute;
+  inset: 0;
+  z-index: -2;
   display: block;
   width: 100%;
   height: 100%;
@@ -135,20 +135,20 @@ const CollectionImage = styled.img`
 const CardContent = styled.div`
   display: grid;
   align-content: start;
-  gap: 6px;
-  padding: clamp(12px, 2vw, 20px);
+  gap: 10px;
+  padding: clamp(16px, 2.4vw, 30px);
 `;
 
 const CardTitle = styled.h3`
   margin: 0;
-  font: 500 clamp(20px, 2.2vw, 27px) / 1.2 "Cormorant Garamond", Georgia, serif;
+  font: 500 clamp(25px, 2.6vw, 36px) / 1.1 "Cormorant Garamond", Georgia, serif;
 `;
 
 const Explore = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #664d32;
+  color: #f5e8d6;
   font-size: 12px;
   font-weight: 600;
 
@@ -161,7 +161,6 @@ const Explore = styled.span`
   }
 
   ${CollectionCard}:is(:hover, :focus-visible) & {
-    color: #806547;
     text-decoration: underline;
     text-underline-offset: 3px;
   }

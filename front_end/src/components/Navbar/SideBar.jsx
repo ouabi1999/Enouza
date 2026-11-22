@@ -86,7 +86,7 @@ function SideBar(props) {
         <h4>{t("footer.followUs.title")}</h4>
         <SocialMedia>
           <a
-            href="https://www.facebook.com/profile.php?id=61571681156358"
+            href="https://www.facebook.com/profile.php?id=61596599395504"
             target="_blank"
             rel="noreferrer"
           >

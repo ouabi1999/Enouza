@@ -354,7 +354,7 @@ const NavigationArea = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     display:none;
 }
 `;
