@@ -90,7 +90,7 @@ export default function CheckoutForm() {
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: "https://esonra.com/order-success",
+          return_url: "https://enouza.com/order-success",
         },
       });
 
@@ -231,6 +231,18 @@ export default function CheckoutForm() {
               {message && (
                 <div className="message error-message">{message}</div>
               )}
+                 {/* Total price */}
+      <div className="order-total">
+        <div className="total-label">
+          <span>{t("checkoutPage.totalToPay")}</span>
+          <small>{t("checkoutPage.includingShipping")}</small>
+        </div>
+
+        <strong>
+          
+          <CurrencyPrice price={finalTotal.toFixed(2)} />
+        </strong>
+      </div>
 
               <button
                 type="submit"
@@ -266,6 +278,18 @@ export default function CheckoutForm() {
             {message && (
               <div className="message error-message">{message}</div>
             )}
+              {/* Total price */}
+      <div className="order-total">
+        <div className="total-label">
+          <span>{t("checkoutPage.totalToPay")}</span>
+          <small>{t("checkoutPage.includingShipping")}</small>
+        </div>
+
+        <strong>
+          
+          <CurrencyPrice price={finalTotal.toFixed(2)} />
+        </strong>
+      </div>
 
             <button
               type="button"
@@ -283,19 +307,7 @@ export default function CheckoutForm() {
         )}
       </div>
 
-      {/* Total price */}
-      <div className="order-total">
-        <div className="total-label">
-          <span>{t("checkoutPage.totalToPay")}</span>
-          <small>{t("checkoutPage.includingShipping")}</small>
-        </div>
-
-        <strong>
-          
-          <CurrencyPrice price={finalTotal.toFixed(2)} />
-        </strong>
-      </div>
-
+     
       {/* Security note */}
       <div className="secure-note">
         <span className="secure-icon">🔒</span>

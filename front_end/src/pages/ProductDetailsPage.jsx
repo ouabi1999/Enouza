@@ -98,14 +98,16 @@ function ProductDetailsPage({footerRef}) {
 
     if (viewedProductRef.current === productData.id) return;
 
-
-
-
-    
-
+    trackViewItem({
+      productId: productData.id,
+      name: productData.name.en || "product name",
+      price,
+      currency: selectedCurrency,
+      category: productData.category,
+    });
 
     viewedProductRef.current = productData.id;
-  }, [productData]);
+  }, [productData, price, selectedCurrency]);
   
 useEffect(() => {
   if (!slug) return;
@@ -128,13 +130,6 @@ useEffect(() => {
       behavior: "auto",
     });
 
-       trackViewItem({
-    productId:  productData?.id,
-    name: productData?.name?.en || "luxuy lamp",
-    price,
-    currency: selectedCurrency,
-    category: productData?.category,
-  });
   }, [slug]);
 
 
@@ -264,8 +259,8 @@ const get_similar_products = async (category) => {
 
 trackAddToCart({
   productId: productId,
-  name: productData?.name?.en ||  "Luxury Lamp",
-  price,
+  name: productData?.name?.en || "product name",
+  price : price,
   quantity :quantity || 1,
 
   currency: selectedCurrency,
@@ -301,13 +296,10 @@ trackAddToCart({
       selectedSku.sellingPrice
     );
 
-   trackBeginCheckout({
-  productId: productId,
-  name: name?.en || "Luxury Lamp",
-  price,
-  quantity :quantity || 1,
-  currency: selectedCurrency,
-});
+    trackBeginCheckout({
+      items: [{ productId, name, price, quantity: quantity || 1 }],
+      currency: selectedCurrency,
+    });
     dispatch(
       buyNowItem({
         id: productId,
