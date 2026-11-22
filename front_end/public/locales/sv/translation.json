@@ -1439,92 +1439,7 @@
       "text": "Vi meddelar dig när vi har tagit emot och inspekterat din retur, och låter dig veta om återbetalningen godkändes. Om den godkänns kommer du automatiskt att återbetalas till din ursprungliga betalningsmetod. Kom ihåg att det kan ta lite tid för din bank eller kreditkortsföretag att behandla och bokföra återbetalningen."
     }
   },
-  "returnFaq": [
-    {
-      "id": 1,
-      "question": "Vad är er returpolicy?",
-      "answer": {
-        "paragraphe": [
-          "Om du vill returnera din beställning av någon anledning är vi här för att hjälpa utan krångel! Vi erbjuder returer inom 30 dagar från köpet. Du kan returnera din produkt för återbetalning till den ursprungliga betalningsmetoden om produkten inte uppfyllde dina förväntningar. Återbetalningen kommer att behandlas tillbaka till dess ursprungliga betalningsform inom 5-10 arbetsdagar."
-        ],
-        "list": [
-          "Reaartiklar är slutlig försäljning och kan inte returneras eller bytas ut.",
-          "Returnerade artiklar måste innehålla identifierande information och returneras i originalproduktens förpackning.",
-          "Returnerade artiklar får inte ha några synliga tecken på slitage eller användning.",
-          "Fraktkostnaden återbetalas inte om du inte har skickats en felaktig eller skadad artikel.",
-          "En förbetald returetikett tillhandahålls inte om inte fel artikel skickades, eller artikeln skadades under transporten.",
-          "Vi behandlar inte klädbyten. Om artikeln du köpte inte passar, returnera den för återbetalning. Du kan sedan lägga en ny beställning för önskad storlek. För mer information och RMA-etiketter, kontakta vårt Kundserviceteam."
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "question": "Hur returnerar man en produkt?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Logga in på ditt Enouza-konto och kontakta vårt Kundserviceteam.",
-          "Ange så mycket information som möjligt om de produkter du vill returnera eller byta ut från din beställning.",
-          "Returnerade artiklar får inte ha några synliga tecken på slitage eller användning.",
-          "Skriv ut den förbetalda fraktetiketten som du kommer att få via e-post.",
-          "Observera att en förbetald returetikett inte tillhandahålls om inte fel artikel skickades, eller artikeln skadades under transporten.",
-          "Skicka tillbaka alla artiklar till oss med den medföljande etiketten."
-        ]
-      }
-    },
-    {
-      "id": 3,
-      "question": "Min produkt kom skadad! Vad ska jag göra?",
-      "answer": {
-        "paragraphe": [
-          "Förlåt samlare! Vi förstår hur besvikande det är att få en skadad artikel — särskilt en artikel du har väntat månader på! Tyvärr händer misstag och produkter kan skadas under transporten. Om detta händer, kontakta oss med bilder på den skadade artikeln och vi kommer att ersätta eller utfärda en partiell eller full återbetalning. Din tillfredsställelse är vår prioritet #1!"
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 4,
-      "question": "Vilka produkter är undantagna från returpolicyn?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "Digitala produkter, inklusive medlemskap och presentkort, är inte berättigade till återbetalningar eller returer. Om du upplever något problem med att komma åt eller använda en digital produkt, kontakta oss och vi hjälper dig gärna.",
-          "Produkter som köpts som en del av rea- eller slututförsäljningskampanjer är kanske inte berättigade till retur, förutom där lagen kräver det.",
-          "Produkter som har använts, installerats eller modifierats efter leverans är kanske inte berättigade till retur, beroende på produktens skick och vår returpolicy.",
-          "Om din produkt kommer skadad eller har en defekt, kontakta oss så snart som möjligt så att vi kan hjälpa dig och hitta en lämplig lösning.",
-          "Ytterligare villkor kan gälla för vissa produkter och kommer att anges på relevant produktsida där det är tillämpligt."
-        ]
-      }
-    },
-    {
-      "id": 5,
-      "question": "Min produkt har en defekt / saknade delar. Vad ska jag göra?",
-      "answer": {
-        "paragraphe": [
-          "Kontakta oss direkt med bilder och förklaring av defekten.",
-          "Observera: hemvideoprodukter garanteras inte att komma med ett skyddshölje."
-        ],
-        "list": []
-      }
-    },
-    {
-      "id": 6,
-      "question": "Vad är er återbetalningspolicy?",
-      "answer": {
-        "paragraphe": [],
-        "list": [
-          "När en beställning har avbrutits eller en retur har behandlats, kommer din återbetalning att utfärdas till dess ursprungliga betalningsform.",
-          "När din retur är klar kommer en återbetalning att behandlas inom 1-5 arbetsdagar.",
-          "Efter att en återbetalning har behandlats, tillåt 3-5 arbetsdagar för PayPal-återbetalningar och 3-10 arbetsdagar för alla andra betalningsmetoder.",
-          "Vi meddelar dig via e-post när din återbetalning har utfärdats.",
-          "En full återbetalning kommer att utfärdas även om ett Digitalt Presentkort från Enouza Store användes som fullständig eller partiell betalning för beställningen.",
-          "En beställning kan avbrytas och omedelbart återbetalas om paketet ännu inte har börjat behandlas för frakt.",
-          "När ett paket börjar behandlas för frakt måste det levereras till sin destination och returneras till Enouza innan en återbetalning kan utfärdas. Kontakta vårt Kundserviceteam för mer detaljerad information."
-        ]
-      }
-    }
-  ],
-
+  
   "shipping": {
     "seoTitle": "Enouza - Fraktpolicy",
     "title": "Fraktpolicy",
@@ -1551,84 +1466,206 @@
     }
   },
 
+  
+
   "shippingFaq": [
     {
       "id": 1,
-      "question": "Hur mycket kostar frakten?",
+      "question": "Proposez-vous la livraison gratuite ?",
       "answer": {
         "paragraphe": [
-          "Internationella fraktkostnader varierar beroende på destination. Här är en uppdelning av fraktkostnaderna för varje destination:"
+          "Oui ! Nous avons le plaisir de proposer la livraison gratuite sur une sélection de produits et vers certaines destinations. Nous souhaitons vous offrir une expérience d'achat simple, agréable et transparente.",
+          "Les frais de livraison peuvent varier selon votre destination et les articles commandés. Voici un aperçu de nos tarifs de livraison internationale :"
         ],
         "list": [
-          "Kanada: 0$ - 19,99$",
-          "Europa: 0$ - 40$",
-          "Australien: 0$ - 43,99$",
-          "Världen: Gratis frakt för vissa produkter"
+          "Canada : de 0,00 $ à 19,99 $",
+          "Europe : de 0,00 $ à 40,00 $",
+          "Australie : de 0,00 $ à 43,99 $",
+          "Autres destinations internationales : livraison gratuite disponible sur certains produits.",
+          "Le montant définitif des frais de livraison sera clairement indiqué lors du paiement, avant la confirmation de votre commande."
         ]
       }
     },
     {
       "id": 2,
-      "question": "Vad händer om mitt paket förloras under transporten?",
+      "question": "Que faire si mon colis est perdu ou n'arrive pas ?",
       "answer": {
         "paragraphe": [
-          "Om ett paket visas som levererat men du inte har mottagit det, kontakta transportören och meddela oss inom 30 dagar från leveransdatumet.",
-          "Om det fastställs att paketet gick förlorat på grund av ett leveransfel från transportören, kommer vi att ersätta din beställning.",
-          "Om paketet går förlorat på grund av en ofullständig eller felaktig adress kan vi inte erbjuda återbetalning eller byte — kunder ansvarar för att säkerställa att deras leveransadress är korrekt vid köptillfället. Om paketet returneras till oss måste du betala en ytterligare fraktavgift för att skicka det igen.",
-          "Om du upptäcker att din leveransadress är felaktig eller har ändrats sedan du lade din beställning, meddela oss med ditt ordernummer/ID och den uppdaterade adressen."
+          "Votre commande compte beaucoup pour nous. Si un problème survient pendant la livraison, notre équipe est là pour vous accompagner.",
+          "Si le suivi indique que votre colis a été livré, mais que vous ne l'avez pas reçu, nous vous invitons à contacter d'abord le transporteur, puis à informer notre service client dans les 30 jours suivant la date de livraison indiquée.",
+          "Si le transporteur confirme que votre colis a été perdu à la suite d'une erreur de livraison, nous vous aiderons à trouver une solution adaptée, pouvant inclure un remplacement ou un remboursement, selon la situation.",
+          "Nous vous recommandons de vérifier attentivement votre adresse de livraison avant de valider votre commande. Une adresse incorrecte ou incomplète peut entraîner des retards ou des frais de livraison supplémentaires.",
+          "Si vous constatez une erreur dans vos coordonnées de livraison, contactez-nous dès que possible en indiquant votre numéro de commande et la bonne adresse. Nous ferons notre maximum pour modifier ces informations avant l'expédition."
         ],
         "list": []
       }
     },
     {
       "id": 3,
-      "question": "När skickas min beställning?",
+      "question": "Quels sont les délais de livraison ?",
       "answer": {
         "paragraphe": [
-          "Din beställning kommer att behandlas under normala arbetsdagar (måndag till fredag, exklusive helgdagar).",
-          "Om en artikel finns i lager kommer din beställning att behandlas inom 1 till 5 arbetsdagar. Leveranstiden efter behandling varierar beroende på leveransadressen. För närvarande ligger leveranstiderna mellan 5 och 15 arbetsdagar.",
-          "När en artikel har skickats kommer du att få ett e-postmeddelande med spårningsinformation. I vissa speciella fall kan spårningsnummer inte vara tillgängliga."
+          "Nous savons que vous avez hâte de recevoir votre commande ! C'est pourquoi nous mettons tout en œuvre pour préparer et expédier vos articles dans les meilleurs délais.",
+          "Les commandes sont généralement préparées sous 1 à 3 jours ouvrés, du lundi au vendredi, hors jours fériés.",
+          "Une fois votre commande expédiée, la livraison standard prend habituellement entre 5 et 10 jours ouvrés, selon votre destination et la disponibilité des produits.",
+          "Le délai total estimé pour recevoir votre commande est donc d'environ 6 à 13 jours ouvrés à compter de la date de commande.",
+          "Dès l'expédition de votre commande, vous recevrez un e-mail de confirmation contenant les informations de suivi, lorsqu'elles sont disponibles.",
+          "Veuillez noter que ces délais sont indicatifs et peuvent varier en raison des formalités douanières, des transporteurs locaux, des jours fériés ou de circonstances imprévues."
         ],
         "list": []
       }
     },
     {
       "id": 4,
-      "question": "Kommer jag att få min beställning i flera paket?",
+      "question": "Vais-je recevoir tous mes articles dans un seul colis ?",
       "answer": {
         "paragraphe": [
-          "Om du köper artiklar i lager som skickas från olika lager kommer du att få flera leveranser."
+          "Nous collaborons avec différents centres logistiques afin de vous proposer une sélection de produits soigneusement choisis.",
+          "Si votre commande contient des articles expédiés depuis plusieurs entrepôts, vous pouvez les recevoir dans des colis séparés et à des dates différentes.",
+          "Rassurez-vous ! Aucun frais de livraison supplémentaire ne vous sera facturé au-delà du montant confirmé lors du paiement simplement parce que votre commande est expédiée en plusieurs colis."
         ],
         "list": []
       }
     },
     {
       "id": 5,
-      "question": "Hur beräknas fraktpriserna?",
+      "question": "Comment les frais de livraison sont-ils calculés ?",
       "answer": {
         "paragraphe": [
-          "Fraktavgifterna beräknas vid kassan. Du kan lägga till artiklar i din varukorg, gå till kassan och ange din leveransadress för att se fraktkostnaden för din beställning."
+          "Nous privilégions une tarification claire et transparente pour que vous connaissiez le montant de votre commande avant de finaliser votre achat.",
+          "Ajoutez simplement vos articles préférés à votre panier et passez à l'étape du paiement. Une fois votre adresse de livraison renseignée, les frais applicables seront calculés en fonction de votre destination et des caractéristiques de votre commande.",
+          "Si vos produits et votre destination sont éligibles à la livraison gratuite, les frais de livraison seront affichés à 0,00 $.",
+          "Vous pourrez vérifier le montant total de votre commande, y compris les éventuels frais de livraison, avant de confirmer votre achat."
         ],
         "list": []
       }
     },
     {
       "id": 6,
-      "question": "Vad är er återbetalningspolicy?",
+      "question": "Comment fonctionnent les remboursements ?",
       "answer": {
-        "paragraphe": [],
+        "paragraphe": [
+          "Nous souhaitons que vous puissiez acheter chez Enouza en toute confiance. Si une commande éligible est annulée ou si un retour est approuvé, notre équipe vous accompagne pour rendre la procédure de remboursement aussi simple que possible.",
+          "Les remboursements approuvés sont effectués sur le moyen de paiement initial. Vous recevrez un e-mail de confirmation dès que votre remboursement aura été traité."
+        ],
         "list": [
-          "När en beställning har avbrutits eller en retur har behandlats, kommer en återbetalning att utfärdas till den ursprungliga betalningsmetoden.",
-          "När returprocessen är klar kommer återbetalningen att behandlas inom 1-5 arbetsdagar.",
-          "Efter att återbetalningen har behandlats, tillåt 3-5 arbetsdagar för PayPal-återbetalningar och 3-10 arbetsdagar för alla andra betalningsmetoder.",
-          "Vi meddelar dig via e-post när återbetalningen har utfärdats.",
-          "En full återbetalning kommer att utfärdas även om ett Digitalt Presentkort från Enouza Store användes som fullständig eller partiell betalning för beställningen.",
-          "En beställning kan avbrytas och omedelbart återbetalas om paketet ännu inte har börjat behandlas för frakt.",
-          "När ett paket börjar behandlas för frakt måste det levereras till sin destination och returneras till Enouza innan en återbetalning kan utfärdas. Kontakta vårt Kundserviceteam för mer detaljerad information."
+          "Les remboursements sont généralement traités sous 1 à 5 jours ouvrés après réception et approbation du retour.",
+          "Les remboursements effectués via PayPal apparaissent habituellement sous 3 à 5 jours ouvrés après leur traitement.",
+          "Pour les autres moyens de paiement, le montant peut mettre environ 3 à 10 jours ouvrés à apparaître sur votre compte, selon votre prestataire de paiement.",
+          "Les commandes dont la préparation pour l'expédition n'a pas encore commencé peuvent, sous certaines conditions, être annulées et remboursées rapidement.",
+          "Si votre commande a déjà été expédiée, un retour du produit peut être nécessaire avant l'émission du remboursement.",
+          "Notre service client reste à votre disposition pour vous accompagner à chaque étape."
         ]
       }
     }
   ],
+  "returnFaq": [
+    {
+      "id": 1,
+      "question": "Quelle est votre politique de retour ?",
+      "answer": {
+        "paragraphe": [
+          "Achetez en toute sérénité ! Nous souhaitons que chaque produit commandé chez Enouza vous apporte entière satisfaction. Si un article ne répond pas à vos attentes, nous sommes là pour vous aider à effectuer votre retour simplement.",
+          "Nous proposons un délai de retour de 30 jours à compter de la date d'achat pour les produits éligibles. Si votre achat ne vous convient pas, vous pouvez demander son retour et son remboursement sur votre moyen de paiement initial, conformément à nos conditions de retour.",
+          "Une fois votre retour reçu et approuvé, nous traiterons votre remboursement sous 1 à 5 jours ouvrés. Le délai nécessaire pour que le montant apparaisse sur votre compte dépendra de votre prestataire de paiement."
+        ],
+        "list": [
+          "Les articles doivent de préférence être retournés dans leur emballage d'origine, avec tous les accessoires et composants fournis.",
+          "Pour les retours volontaires liés à un changement d'avis, les produits doivent être inutilisés et dans leur état d'origine, sans traces visibles d'usure ou de modification.",
+          "Les articles en liquidation ou en vente finale peuvent être soumis à des restrictions particulières, sauf disposition légale contraire.",
+          "Les frais de livraison initiaux ne sont généralement pas remboursés dans le cadre des retours volontaires.",
+          "En cas de retour pour changement d'avis, les frais de retour sont généralement à la charge du client.",
+          "Si vous recevez un produit incorrect, endommagé ou défectueux, contactez-nous afin que nous puissions vous proposer une solution adaptée.",
+          "Cette politique ne porte pas atteinte à vos droits légaux en tant que consommateur."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Comment retourner un produit ?",
+      "answer": {
+        "paragraphe": [
+          "Vous souhaitez retourner un article ? Pas d'inquiétude ! Notre service client est là pour vous accompagner et rendre la procédure aussi simple que possible.",
+          "Il vous suffit de suivre les étapes suivantes :"
+        ],
+        "list": [
+          "Contactez notre service client pendant le délai de retour applicable et communiquez-nous votre numéro de commande.",
+          "Indiquez-nous le produit que vous souhaitez retourner et expliquez brièvement la raison de votre demande.",
+          "Notre équipe examinera votre demande et vous transmettra les instructions nécessaires pour effectuer le retour.",
+          "Emballez soigneusement le produit, de préférence dans son emballage d'origine, avec tous les accessoires et composants.",
+          "Expédiez l'article à l'adresse de retour communiquée par notre service client.",
+          "Une fois votre retour reçu et inspecté, nous vous informerons du résultat et procéderons au remboursement correspondant s'il a été approuvé.",
+          "Si votre article est arrivé endommagé, défectueux ou ne correspond pas à votre commande, contactez-nous avant de le renvoyer afin que nous puissions organiser la solution la plus adaptée."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "Que faire si mon produit arrive endommagé ?",
+      "answer": {
+        "paragraphe": [
+          "Nous sommes sincèrement désolés si votre commande n'est pas arrivée en parfait état. Votre satisfaction nous tient à cœur et nous souhaitons résoudre tout problème dans les meilleures conditions.",
+          "Si vous recevez un produit endommagé ou défectueux, veuillez contacter notre service client dès que possible.",
+          "Communiquez-nous votre numéro de commande, une brève description du problème et, si possible, des photos claires du produit et de son emballage.",
+          "Notre équipe examinera votre demande et vous aidera à trouver une solution appropriée, pouvant inclure un remplacement, une réparation ou un remboursement partiel ou intégral, selon les circonstances.",
+          "Votre satisfaction est essentielle pour nous et nous ferons tout notre possible pour résoudre votre problème rapidement et simplement."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 4,
+      "question": "Quels produits ne peuvent pas être retournés ?",
+      "answer": {
+        "paragraphe": [
+          "La plupart des produits éligibles peuvent être retournés pendant la période prévue. Toutefois, certains articles peuvent être soumis à des conditions particulières pour des raisons d'hygiène, de sécurité ou liées à leur nature.",
+          "Le cas échéant, les restrictions spécifiques seront clairement indiquées sur la page du produit concerné."
+        ],
+        "list": [
+          "Les articles en liquidation ou signalés comme vente finale peuvent être exclus des retours volontaires, dans les limites autorisées par la législation applicable.",
+          "Les produits utilisés, endommagés après leur réception, installés ou modifiés peuvent ne pas être éligibles à un retour volontaire pour changement d'avis.",
+          "Certains produits d'hygiène ou de soins personnels peuvent être exclus du retour après ouverture ou retrait de leur scellé de protection, lorsque la loi le permet.",
+          "Les produits personnalisés ou fabriqués sur commande peuvent être soumis à des restrictions particulières.",
+          "Les articles retournés sans leurs accessoires d'origine ou leurs composants essentiels peuvent nécessiter une vérification supplémentaire.",
+          "Les produits endommagés, défectueux ou envoyés par erreur sont traités séparément, conformément aux lois applicables en matière de protection des consommateurs.",
+          "Si vous avez un doute sur l'éligibilité d'un produit au retour, notre service client sera ravi de vous renseigner avant votre achat."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "Que faire si mon produit est défectueux ou s'il manque des pièces ?",
+      "answer": {
+        "paragraphe": [
+          "Nous souhaitons que chaque produit reçu soit à la hauteur de vos attentes. Si une pièce manque ou si votre article ne fonctionne pas correctement, nous sommes là pour vous aider.",
+          "Contactez notre service client en indiquant votre numéro de commande et en décrivant le problème. Si possible, joignez des photos ou une courte vidéo.",
+          "Notre équipe examinera votre demande et vous proposera une solution adaptée, comme l'envoi des pièces manquantes, le remplacement du produit, sa réparation ou un remboursement, selon les circonstances et vos droits légaux.",
+          "Nous vous recommandons de conserver l'emballage d'origine et tous les accessoires jusqu'à la résolution complète du problème."
+        ],
+        "list": []
+      }
+    },
+    {
+      "id": 6,
+      "question": "Quand recevrai-je mon remboursement ?",
+      "answer": {
+        "paragraphe": [
+          "Dès que votre retour éligible aura été reçu et approuvé, nous commencerons à traiter votre remboursement dans les meilleurs délais.",
+          "Le remboursement sera effectué sur le moyen de paiement initial utilisé lors de votre achat. Vous recevrez un e-mail de confirmation une fois le traitement terminé."
+        ],
+        "list": [
+          "Le traitement du remboursement prend généralement entre 1 et 5 jours ouvrés après l'approbation du retour.",
+          "Les remboursements via PayPal apparaissent habituellement sous 3 à 5 jours ouvrés après leur traitement.",
+          "Pour les autres moyens de paiement, le montant peut mettre environ 3 à 10 jours ouvrés à apparaître, selon votre banque ou votre prestataire de paiement.",
+          "Les commandes éligibles annulées avant le début de leur préparation pour l'expédition peuvent être remboursées sans nécessiter de retour.",
+          "Si votre commande a déjà été expédiée, le retour du produit peut être nécessaire avant l'émission du remboursement.",
+          "Si votre remboursement n'apparaît pas après le délai prévu, contactez notre service client afin que nous puissions vous aider."
+        ]
+      }
+    }
+  ],
+
+
   "terms": {
     "seoTitle": "Enouza - Användarvillkor",
     "title": "Användarvillkor",
