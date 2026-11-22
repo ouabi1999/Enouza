@@ -737,6 +737,7 @@ const Container = styled.div`
 
     .menu-icon {
       display: block;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
     }
 
     .drop-down-lang-container,

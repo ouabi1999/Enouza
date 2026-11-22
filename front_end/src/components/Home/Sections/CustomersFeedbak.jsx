@@ -1128,7 +1128,7 @@ const ReviewCard = styled.article`
   flex-direction: column;
   background: #fff;
   border: 1px solid #eae7df;
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
   box-sizing: border-box;
 
   transition:

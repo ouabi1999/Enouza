@@ -571,7 +571,7 @@ const ReviewCard = styled.article`
   overflow: hidden;
   background: #fff;
   border: 1px solid #eae7df;
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 
   &:hover {
