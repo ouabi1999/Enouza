@@ -838,7 +838,7 @@ const SearchContainer = styled.div`
 
     box-sizing: border-box;
 
-    width: clamp(170px, 30vw, 420px);
+    width: clamp(170px, 25vw, 420px);
 
     height: 38px;
 

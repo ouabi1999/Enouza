@@ -58,7 +58,6 @@ export default function FixedAddBuyButtons({
       ? Number(currentSku.sellingPrice)
       : Number(productData?.price) || null;
 
-  const currency = window.localStorage.getItem("selectedCurrency")
  
 
   const comparePrice =
@@ -181,7 +180,7 @@ const FixedPurchaseBar = styled.div`
 
   width: 30%;
 
-  padding: 12px 20px;
+  padding: 10px 20px;
 
   background: rgba(255, 255, 255, 0.96);
 
@@ -288,26 +287,7 @@ const ProductMeta = styled.div`
   min-width: 0;
 `;
 
-const ProductName = styled.span`
-  overflow: hidden;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  max-width: 260px;
-
-  font-size: 0.82rem;
-
-  font-weight: 600;
-
-  color: #1c1c1c;
-
-  @media (max-width: 480px) {
-    max-width: 160px;
-
-    font-size: 0.78rem;
-  }
-`;
 
 const VariantLabel = styled.span`
   overflow: hidden;
@@ -337,13 +317,12 @@ const PriceLine = styled.div`
 
 const DiscountBadge = styled.span`
   padding: 2px 5px;
-  border-radius: 4px;
   background: #f4e9dc;
   color: #664627;
   font-size: 0.68rem;
   font-weight: 600;
   white-space: nowrap;
-  text-transform:capatilize;
+  text-transform:uppercase;
 `;
 
 const ProductPrice = styled.span`

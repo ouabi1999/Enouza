@@ -29,7 +29,7 @@ export default function HeroSection() {
   }, []);
 
   const imageUrl = optimizeCloudinaryImage(
-    product?.multimediaInfo?.image_urls?.[2],
+    product?.multimediaInfo?.image_urls?.[0],
     { width: 620 }
   );
 
