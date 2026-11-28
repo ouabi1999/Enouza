@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { useTranslation } from "react-i18next";
+import CurrencyPrice from "../../../../common/CurrencyPrice";
 
 export default function FixedAddBuyButtons({
   available,
@@ -58,10 +59,7 @@ export default function FixedAddBuyButtons({
       : Number(productData?.price) || null;
 
   const currency = window.localStorage.getItem("selectedCurrency")
-  const formattedPrice =
-    rawPrice !== null
-      ? `${rawPrice.toFixed(2)} ${currency}`
-      : "";
+ 
 
   const comparePrice =
     Number(currentSku?.comparePrice) > 0
@@ -128,9 +126,9 @@ export default function FixedAddBuyButtons({
               <VariantLabel>{variantLabel}</VariantLabel>
             )}
 
-            {formattedPrice && (
+            {rawPrice && (
               <PriceLine>
-                <ProductPrice>{formattedPrice}</ProductPrice>
+                <ProductPrice> <CurrencyPrice price={rawPrice} /></ProductPrice>
                 {discountPercent > 0 && (
                   <DiscountBadge dir={i18n.dir()}>
                     {t("productInfo.save")} <bdi>{discountPercent}%</bdi>
@@ -345,6 +343,7 @@ const DiscountBadge = styled.span`
   font-size: 0.68rem;
   font-weight: 600;
   white-space: nowrap;
+  text-transform:capatilize;
 `;
 
 const ProductPrice = styled.span`
